@@ -1,0 +1,114 @@
+﻿@using Domain
+@model QuestionnaireQuestion
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/dynamicForm.js" asp-append-version="true"></script>
+
+@{
+    int fieldSetCount = 1;
+    int optionSetCount = 1;
+}
+
+<h1>Edit questionnaire</h1>
+
+@using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post))
+{
+    <input asp-for="questionnaire.id" type="hidden">
+    <table>
+        <tr>
+            <td>
+                <h4>What is the name of your questionnaire?</h4>
+                <input asp-for="questionnaire.name" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Add questions to your existing questionnaire:</h4>
+                <button type="button" id="btnAddField">Add Question</button>
+                @Html.AntiForgeryToken()
+                <div id="fields">
+                    @foreach (var question in Model.questions)
+                    {
+                        <div id="@("dynamicDiv"+fieldSetCount)">
+                            <hr>
+                            <h5>What do you want to ask?</h5>
+                            <input name="@("question-"+@question.id)" type="text" value="@question.question"/>
+                            <br>
+                            <h5>What type of a question is this?</h5>
+                            <fieldset id="@("dynamicFieldset"+fieldSetCount)">
+                                @if (question.questionType == QuestionType.OPEN_QUESTION)
+                                { <input type="radio" id="@("dynamicTextArea"+fieldSetCount)" 
+                                           name="@("dynamicFieldset"+fieldSetCount)" value="textarea" checked /> }
+                                else
+                                { <input type="radio" id="@("dynamicTextArea"+fieldSetCount)" 
+                                         name="@("dynamicFieldset"+fieldSetCount)" value="textarea" /> }
+                                <span> Text area</span>
+                                <br>
+                                @if (question.questionType == QuestionType.MAILADDRESS)
+                                { <input type="radio" id="@("dynamicEmail" + fieldSetCount)"
+                                           name="@("dynamicFieldset" + fieldSetCount)" value="email" checked/> }
+                                else
+                                { <input type="radio" id="@("dynamicEmail" + fieldSetCount)"
+                                        name="@("dynamicFieldset" + fieldSetCount)" value="email" /> }
+                                <span> E-mail field</span>
+                                <br>
+                                @if (question.questionType == QuestionType.DROPDOWN)
+                                { <input type="radio" id="@("dynamicDropDown" + fieldSetCount)"
+                                         name="@("dynamicFieldset" + fieldSetCount)" value="dropdown" checked/> }
+                                else
+                                { <input type="radio" id="@("dynamicDropDown" + fieldSetCount)"
+                                         name="@("dynamicFieldset" + fieldSetCount)" value="dropdown" /> }
+                                <span> Dropdown menu</span>
+                                <br>
+                                @if (question.questionType == QuestionType.RADIO_BUTTON)
+                                { <input type="radio" id="@("dynamicRadioButton" + fieldSetCount)"
+                                        name="@("dynamicFieldset" + fieldSetCount)" value="radiobutton" checked/> }
+                                else
+                                { <input type="radio" id="@("dynamicRadioButton" + fieldSetCount)"
+                                         name="@("dynamicFieldset" + fieldSetCount)" value="radiobutton" /> }
+                                <span> Radio buttons</span>
+                                <br>
+                                @if (question.questionType == QuestionType.CHECK_BOX)
+                                { <input type="radio" id="@("dynamicCheckBox" + fieldSetCount)"
+                                         name="@("dynamicFieldset" + fieldSetCount)" value="checkbox" checked/> }
+                                else
+                                { <input type="radio" id="@("dynamicCheckBox" + fieldSetCount)"
+                                         name="@("dynamicFieldset" + fieldSetCount)" value="checkbox" /> }
+                                <span> Check boxes</span>
+                                <br>
+                            </fieldset>
+                            <div id="@("addOptionPlaceholder"+fieldSetCount)">
+                                <button type="button" id="@("btnAddOption"+fieldSetCount)">Add option</button>
+                            </div>
+                            <div id="@("optionPlaceholder" + fieldSetCount)">
+                                @{ var currentOption = optionSetCount; }
+                                @foreach (var option in question.options)
+                                {
+                                    <div id="@("optionField"+currentOption+fieldSetCount)">
+                                        <input type="text" id="@("inputOption"+currentOption+fieldSetCount)"
+                                               name="@("question.options-"+currentOption+"-"+fieldSetCount+"-"+@question.id)"
+                                               value="@option.option"/>
+                                        <button type="button" id="@("btnRemoveOption-" + currentOption + "-" + fieldSetCount)">
+                                            Remove option
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="@("currentOption-"+currentOption+"-"+fieldSetCount)"
+                                           value="@("currentOption-"+currentOption+"-"+fieldSetCount)" />
+                                    currentOption++;
+                                }
+                                <input type="hidden" name="options" id="@("options-"+@fieldSetCount)" value="@currentOption" />
+                            </div>
+                            <button type="button" id="@("btnRemoveField"+fieldSetCount)">Remove question</button>
+                        </div>
+                        { fieldSetCount++; }
+                    }
+                </div>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="fieldSetCount" id="fieldSetCount" value="@fieldSetCount" />
+    <h4>Keep in mind that if you edit this questionnaire, all the collected data will be lost because it would not be relevant to the newly edited version!</h4>
+    <div class="form-group">
+        <input type="submit" value="Save changes" class="btn btn-default"/>
+    </div>
+}

@@ -1,0 +1,74 @@
+﻿@using DAL.EF
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model DAL.EF.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit admin";
+}
+
+@using (Html.BeginForm("EditUser", "Admin", FormMethod.Post))
+{
+    <h1>@ViewData["Title"]</h1>
+    <h3>Edit the details of an admin</h3>
+    <div class="row">
+        <div class="col-md-5">
+            <hr />
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <div>
+                    <select asp-for="Gender" class="form-control">
+                        @if (Model.Gender == "M")
+                        {
+                            <option class="dropdown-item" value="M" select>Man</option>
+                            <option class="dropdown-item" value="V">Women</option>
+                        }
+                        else if (Model.Gender == "V")
+                        {
+                            <option class="dropdown-item" value="M">Man</option>
+                            <option class="dropdown-item" value="V" select>Women</option>
+                        }
+                        else
+                        {
+                            <option class="dropdown-item" value="U" disabled selected>Unknown</option>
+                            <option class="dropdown-item" value="M">Man</option>
+                            <option class="dropdown-item" value="V">Women</option>
+                        }
+                    </select> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age"></label>
+                <input asp-for="Age" class="form-control"/>
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode"></label>
+                <input asp-for="PostalCode" class="form-control"/>
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    
+    <input asp-for="Id" type="hidden">
+    <input type="submit" class="btn btn-primary" value="Save changes"/>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

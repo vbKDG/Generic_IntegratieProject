@@ -1,0 +1,37 @@
+
+@using System.Xml.Linq
+@using UI.MVC.Models.Ideas
+@using Domain
+@model UI.MVC.Models.Ideas.IdeaViewModel
+
+@foreach (var item in Model.ideationQuestion)
+{
+    <p>@item</p>
+}
+
+
+
+<form asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
+
+   
+    
+   <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
+   @Html.EditorFor(x => x.textFieldViewModel)    
+   @Html.EditorFor(x => x.imageFieldViewModel)
+   @Html.EditorFor(x => x.videoFieldViewModel)
+   @Html.EditorFor(x => x.mapFieldViewModel)
+     
+
+   
+  
+
+
+                                       
+    
+        
+     
+   
+     <input type="submit" value="save">   
+         
+    
+</form>

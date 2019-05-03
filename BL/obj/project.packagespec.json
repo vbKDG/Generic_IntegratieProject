@@ -1,0 +1,58 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\BL\\BL.csproj",
+    "projectName": "BL",
+    "projectPath": "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\BL\\BL.csproj",
+    "outputPath": "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\BL\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.2"
+    ],
+    "frameworks": {
+      "netcoreapp2.2": {
+        "projectReferences": {
+          "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
+            "projectPath": "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\DAL\\DAL.csproj"
+          },
+          "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
+            "projectPath": "D:\\OneDrive\\Documenten\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.2": {
+      "dependencies": {
+        "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[2.2.2, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

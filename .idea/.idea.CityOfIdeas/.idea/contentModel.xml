@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\vin-c\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.857546131.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
+      <e p="BL" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="BL.csproj" t="IncludeRecursive" />
+        <e p="IdeationManager.cs" t="Include" />
+        <e p="IIdeationManager.cs" t="Include" />
+        <e p="IProjectManager.cs" t="Include" />
+        <e p="IQuestionnaireManager.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="BL.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ProjectManager.cs" t="Include" />
+        <e p="QuestionnaireManager.cs" t="Include" />
+        <e p="UnitOfWorkManager.cs" t="Include" />
+      </e>
+      <e p="CityOfIdeas.sln" t="IncludeFlat" />
+      <e p="DAL" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DAL.csproj" t="IncludeRecursive" />
+        <e p="EF" t="Include">
+          <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="ApplicationDbInitializer.cs" t="Include" />
+          <e p="ApplicationRole.cs" t="Include" />
+          <e p="ApplicationUser.cs" t="Include" />
+          <e p="Organisation.cs" t="Include" />
+        </e>
+        <e p="Helper.cs" t="Include" />
+        <e p="IdeationRepository.cs" t="Include" />
+        <e p="IIdeationRepository.cs" t="Include" />
+        <e p="IProjectRepository.cs" t="Include" />
+        <e p="IQuestionnaireRepository.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="DAL.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="ProjectRepository.cs" t="Include" />
+        <e p="QuestionnaireRepository.cs" t="Include" />
+        <e p="UnitOfWork.cs" t="Include" />
+      </e>
+      <e p="Domain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include">
+          <e p="Address.cs" t="Include" />
+          <e p="FieldType.cs" t="Include" />
+          <e p="Gender.cs" t="Include" />
+          <e p="Place.cs" t="Include" />
+          <e p="QuestionType.cs" t="Include" />
+        </e>
+        <e p="Domain.csproj" t="IncludeRecursive" />
+        <e p="Field" t="Include">
+          <e p="Field.cs" t="Include" />
+          <e p="ImageField.cs" t="Include" />
+          <e p="MapField.cs" t="Include" />
+          <e p="QuestionField.cs" t="Include" />
+          <e p="TextField.cs" t="Include" />
+          <e p="VideoField.cs" t="Include" />
+        </e>
+        <e p="Ideation" t="Include">
+          <e p="Idea.cs" t="Include" />
+          <e p="IdeaTemplate.cs" t="Include" />
+          <e p="Ideation.cs" t="Include" />
+          <e p="IdeationQuestion.cs" t="Include" />
+          <e p="Reaction.cs" t="Include" />
+        </e>
+        <e p="Like" t="Include">
+          <e p="IdeaLike.cs" t="Include" />
+          <e p="IotVote.cs" t="Include" />
+          <e p="Like.cs" t="Include" />
+          <e p="ProjectLike.cs" t="Include" />
+          <e p="ReactionLike.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="Domain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Project" t="Include">
+          <e p="IotSetup.cs" t="Include" />
+          <e p="Phase.cs" t="Include" />
+          <e p="Platform.cs" t="Include" />
+          <e p="Project.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Questionnaire" t="Include">
+          <e p="Option.cs" t="Include" />
+          <e p="Question.cs" t="Include" />
+          <e p="Questionnaire.cs" t="Include" />
+          <e p="QuestionUser.cs" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="UI.MVC" t="IncludeRecursive">
+        <e p="app.db" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="Areas" t="Include">
+          <e p="Identity" t="Include">
+            <e p="IdentityHostingStartup.cs" t="Include" />
+            <e p="Pages" t="Include">
+              <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="_ViewStart.cshtml" t="Include" />
+              <e p="Account" t="Include">
+                <e p="_ViewImports.cshtml" t="Include" />
+                <e p="AccessDenied.cshtml" t="Include" />
+                <e p="AccessDenied.cshtml.cs" t="Include" />
+                <e p="ConfirmEmail.cshtml" t="Include" />
+                <e p="ConfirmEmail.cshtml.cs" t="Include" />
+                <e p="CreateAdmin.cshtml" t="Include" />
+                <e p="CreateAdmin.cshtml.cs" t="Include" />
+                <e p="CreateModerator.cshtml" t="Include" />
+                <e p="CreateModerator.cshtml.cs" t="Include" />
+                <e p="ExternalLogin.cshtml" t="Include" />
+                <e p="ExternalLogin.cshtml.cs" t="Include" />
+                <e p="ForgotPassword.cshtml" t="Include" />
+                <e p="ForgotPassword.cshtml.cs" t="Include" />
+                <e p="ForgotPasswordConfirmation.cshtml" t="Include" />
+                <e p="ForgotPasswordConfirmation.cshtml.cs" t="Include" />
+                <e p="Lockout.cshtml" t="Include" />
+                <e p="Lockout.cshtml.cs" t="Include" />
+                <e p="Login.cshtml" t="Include" />
+                <e p="Login.cshtml.cs" t="Include" />
+                <e p="LoginWith2fa.cshtml" t="Include" />
+                <e p="LoginWith2fa.cshtml.cs" t="Include" />
+                <e p="LoginWithRecoveryCode.cshtml" t="Include" />
+                <e p="LoginWithRecoveryCode.cshtml.cs" t="Include" />
+                <e p="Logout.cshtml" t="Include" />
+                <e p="Logout.cshtml.cs" t="Include" />
+                <e p="Manage" t="Include">
+                  <e p="_Layout.cshtml" t="Include" />
+                  <e p="_ManageNav.cshtml" t="Include" />
+                  <e p="_StatusMessage.cshtml" t="Include" />
+                  <e p="_ViewImports.cshtml" t="Include" />
+                  <e p="ChangePassword.cshtml" t="Include" />
+                  <e p="ChangePassword.cshtml.cs" t="Include" />
+                  <e p="DeletePersonalData.cshtml" t="Include" />
+                  <e p="DeletePersonalData.cshtml.cs" t="Include" />
+                  <e p="Disable2fa.cshtml" t="Include" />
+                  <e p="Disable2fa.cshtml.cs" t="Include" />
+                  <e p="DownloadPersonalData.cshtml" t="Include" />
+                  <e p="DownloadPersonalData.cshtml.cs" t="Include" />
+                  <e p="EnableAuthenticator.cshtml" t="Include" />
+                  <e p="EnableAuthenticator.cshtml.cs" t="Include" />
+                  <e p="ExternalLogins.cshtml" t="Include" />
+                  <e p="ExternalLogins.cshtml.cs" t="Include" />
+                  <e p="GenerateRecoveryCodes.cshtml" t="Include" />
+                  <e p="GenerateRecoveryCodes.cshtml.cs" t="Include" />
+                  <e p="Index.cshtml" t="Include" />
+                  <e p="Index.cshtml.cs" t="Include" />
+                  <e p="ManageNavPages.cs" t="Include" />
+                  <e p="PersonalData.cshtml" t="Include" />
+                  <e p="PersonalData.cshtml.cs" t="Include" />
+                  <e p="ResetAuthenticator.cshtml" t="Include" />
+                  <e p="ResetAuthenticator.cshtml.cs" t="Include" />
+                  <e p="SetPassword.cshtml" t="Include" />
+                  <e p="SetPassword.cshtml.cs" t="Include" />
+                  <e p="TwoFactorAuthentication.cshtml" t="Include" />
+                  <e p="TwoFactorAuthentication.cshtml.cs" t="Include" />
+                </e>
+                <e p="Register.cshtml" t="Include" />
+                <e p="Register.cshtml.cs" t="Include" />
+                <e p="ResetPassword.cshtml" t="Include" />
+                <e p="ResetPassword.cshtml.cs" t="Include" />
+                <e p="ResetPasswordConfirmation.cshtml" t="Include" />
+                <e p="ResetPasswordConfirmation.cshtml.cs" t="Include" />
+              </e>
+              <e p="Error.cshtml" t="Include" />
+              <e p="Error.cshtml.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AdminController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="IdeaController.cs" t="Include" />
+          <e p="ProjectController.cs" t="Include" />
+          <e p="QuestionnaireController.cs" t="Include" />
+          <e p="RiderProjects - Snelkoppeling.lnk" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="ErrorModel.cs" t="Include" />
+          <e p="FillInQuestionnaireModel.cs" t="Include" />
+          <e p="Ideas" t="Include">
+            <e p="IdeaViewModel.cs" t="Include" />
+          </e>
+          <e p="Idee.cs" t="Include" />
+          <e p="OptionsAmount.cs" t="Include" />
+          <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="QuestionnaireQuestion.cs" t="Include" />
+          <e p="QuestionResultModel.cs" t="Include" />
+          <e p="QuestionUserModel.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="UI.MVC.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="UI.MVC.csproj" t="IncludeRecursive" />
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Admin" t="Include">
+            <e p="DeleteAdminPage.cshtml" t="Include" />
+            <e p="DeleteModeratorPage.cshtml" t="Include" />
+            <e p="EditAdminPage.cshtml" t="Include" />
+            <e p="EditModeratorPage.cshtml" t="Include" />
+            <e p="ManageAdmins.cshtml" t="Include" />
+            <e p="ManageModerators.cshtml" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="About.cshtml" t="Include" />
+            <e p="Contact.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Login.cshtml" t="Include" />
+            <e p="Privacy.cshtml" t="Include" />
+          </e>
+          <e p="Idea" t="Include">
+            <e p="CreateIdeaPage.cshtml" t="Include" />
+            <e p="DisplayTemplates" t="Include">
+              <e p="ImageFieldViewModel.cshtml" t="Include" />
+              <e p="MapFieldViewModel.cshtml" t="Include" />
+              <e p="TextFieldViewModel.cshtml" t="Include" />
+            </e>
+            <e p="EditorTemplates" t="Include">
+              <e p="ImageFieldViewModel.cshtml" t="Include" />
+              <e p="MapFieldViewModel.cshtml" t="Include" />
+              <e p="QuestionFieldViewModel.cshtml" t="Include" />
+              <e p="TextFieldViewModel.cshtml" t="Include" />
+              <e p="VideoFieldViewModel.cshtml" t="Include" />
+            </e>
+            <e p="MapInput.cshtml" t="Include" />
+          </e>
+          <e p="Project" t="Include">
+            <e p="_ImagePreview.cshtml" t="Include" />
+            <e p="Ideas.cshtml" t="Include" />
+            <e p="ImageTest.cshtml" t="Include" />
+            <e p="Maptest.cshtml" t="Include" />
+            <e p="Project.cshtml" t="Include" />
+            <e p="Projects.cshtml" t="Include" />
+          </e>
+          <e p="Questionnaire" t="Include">
+            <e p="CreateQuestionnairePage.cshtml" t="Include" />
+            <e p="DeleteQuestionnairePage.cshtml" t="Include" />
+            <e p="EditQuestionnairePage.cshtml" t="Include" />
+            <e p="Questionnaire.cshtml" t="Include" />
+            <e p="Questionnaires.cshtml" t="Include" />
+            <e p="ShowResultsPage.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_CookieConsentPartial.cshtml" t="Include" />
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_LoginPartial.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="maps.css" t="Include" />
+            <e p="site.css" t="Include" />
+            <e p="site.min.css" t="Include" />
+          </e>
+          <e p="favicon.ico" t="Include" />
+          <e p="images" t="Include">
+            <e p="antwerp.jpg" t="Include" />
+            <e p="banner1.svg" t="Include" />
+            <e p="banner2.svg" t="Include" />
+            <e p="banner3.svg" t="Include" />
+            <e p="bgcity.jpg" t="Include" />
+            <e p="building3.jpg" t="Include" />
+            <e p="comments.png" t="Include" />
+            <e p="delen.jpg" t="Include" />
+            <e p="ideeLogo.jpg" t="Include" />
+            <e p="image1.jpg" t="Include" />
+            <e p="image2.jpg" t="Include" />
+            <e p="image3.jpg" t="Include" />
+            <e p="leuk.jpg" t="Include" />
+            <e p="park1.jpg" t="Include" />
+            <e p="park2.jpg" t="Include" />
+            <e p="park3.jpg" t="Include" />
+            <e p="park4.jpg" t="Include" />
+            <e p="person.png" t="Include" />
+            <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
+            <e p="straat2.jpg" t="Include" />
+            <e p="straat3.jpg" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="checkIfOrganisation.js" t="Include" />
+            <e p="dynamicForm.js" t="Include" />
+            <e p="ImageUpload.js" t="Include" />
+            <e p="Maps.js" t="Include" />
+            <e p="site.js" t="Include" />
+            <e p="site.min.js" t="Include" />
+            <e p="UploadScript.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-theme.css" t="Include" />
+                  <e p="bootstrap-theme.css.map" t="Include" />
+                  <e p="bootstrap-theme.min.css" t="Include" />
+                  <e p="bootstrap-theme.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                </e>
+                <e p="fonts" t="Include">
+                  <e p="glyphicons-halflings-regular.eot" t="Include" />
+                  <e p="glyphicons-halflings-regular.svg" t="Include" />
+                  <e p="glyphicons-halflings-regular.ttf" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff" t="Include" />
+                  <e p="glyphicons-halflings-regular.woff2" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="npm.js" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p=".bower.json" t="Include" />
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
+          <e p="upload" t="Include">
+            <e p="AI-Robotic-Process-Automation-Teaser-1.jpg" t="Include" />
+            <e p="Bitdefender.svg.png" t="Include" />
+            <e p="bjj.PNG" t="Include" />
+            <e p="EliahSnor.PNG" t="Include" />
+            <e p="eyes.PNG" t="Include" />
+            <e p="Iot1.PNG" t="Include" />
+            <e p="jepje.jpeg" t="Include" />
+            <e p="jepperd.PNG" t="Include" />
+            <e p="redbull.png" t="Include" />
+            <e p="sticks.PNG" t="Include" />
+            <e p="testvid.mp4" t="Include" />
+            <e p="tom.png" t="Include" />
+          </e>
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

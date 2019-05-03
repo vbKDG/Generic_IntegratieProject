@@ -1,0 +1,53 @@
+@model UI.MVC.Models.Ideas.VideoFieldViewModel
+
+@*<div>
+    <label>Video:</label>
+    <input asp-for="videoName" type="hidden" class="form-control" value="test"/>
+    <input asp-for="videoFile" type="file" class="form-control" multiple >
+
+</div>*@
+
+<div>
+    <label>Image:</label>
+    @*   <input id="image" name="image" type="file"/> #pogin 1
+    @Html.TextBoxFor(m => m.file, new {type = "file"})#poging 2 
+    <input type="file" id="imageFile" name="imageFile" value="ActionHandlerForForm"/> #poging3          *@
+    <input asp-for="videoName" type="hidden" class="form-control" value="test"/>
+    <input asp-for="videoFile"
+           type="file" 
+           class="form-control"
+           onchange="readVideo(this)"
+           multiple 
+           accept="video/*"
+    >
+    
+    
+    <video id="video_preview" width="560"
+           height="315"
+           hidden
+           frameborder="0"
+           controls
+          >
+    </video>
+    
+
+    
+</div>
+
+
+<script type="text/javascript">        
+    function readVideo(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#video_preview').attr('src', e.target.result);
+                $('#video_preview').attr('hidden', false);
+
+                
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

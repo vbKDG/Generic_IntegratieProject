@@ -1,0 +1,18 @@
+﻿@using DAL.EF
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@model DAL.EF.ApplicationUser
+
+@{
+    ViewData["Title"] = "Delete moderator";
+}
+
+
+
+@using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+{
+    <h1>@ViewData["Title"]</h1>
+    <h3>Are you sure you want to delete @Model.Email</h3>
+    <input asp-for="Id" type="hidden">
+    <input type="submit" class="btn btn-primary" value="Delete moderator"/>
+}

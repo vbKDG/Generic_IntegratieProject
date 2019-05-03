@@ -1,0 +1,33 @@
+﻿@using Domain
+@model QuestionnaireQuestion
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/dynamicForm.js" asp-append-version="true"></script>
+
+<h1>Create a new questionnaire</h1>
+
+@using (Html.BeginForm("CreateQuestionnaire", "Questionnaire", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td><input asp-for="projectId" type="hidden"></td>
+        </tr>
+        <tr>
+            <td>
+                <h4>What is the name of your questionnaire?</h4>
+                <input asp-for="questionnaire.name" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Add questions to your new questionnaire:</h4>
+                <button type="button" id="btnAddField">Add Question</button>
+                @Html.AntiForgeryToken()
+                <div id="fields"></div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Create new questionnaire" class="btn btn-default"/>
+    </div>
+}

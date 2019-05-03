@@ -1,0 +1,12 @@
+@model ICollection<Domain.ImageField>
+
+<p>qsdflmqsdfqsdf</p>
+
+@foreach (var item in Model)
+{
+    var base64 = Convert.ToBase64String(item.imageData);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    
+    <img src="@imgSrc" />
+    
+}

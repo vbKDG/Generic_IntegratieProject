@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Domain.Questionnaire>
+
+<h1>Questionnaires</h1> 
+<p>
+    @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage", 
+        "Questionnaire", new { projectId=Model.ToList()[0].project.projectId })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            <p>name</p>
+        </th>
+        <th>
+            <p>Amount of questions</p>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.questionAmount)
+            </td>
+            <td>
+                @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                    , new { questionnaireId=item.id })
+            </td>
+            <td>
+                @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
+                    , new { questionnaireId = item.id })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
+                    , new {questionnaireId = item.id}) | 
+                @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
+                    , new {questionnaireId = item.id})
+            </td>
+        </tr>
+        
+    }
+</table>

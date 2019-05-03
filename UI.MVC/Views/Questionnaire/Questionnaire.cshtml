@@ -1,0 +1,80 @@
+﻿@using Domain
+@model FillInQuestionnaireModel
+
+<h1>Complete a questionnaire</h1>
+<h4>The questionnaire is about: @Model.questionnaire.name</h4>
+@using (Html.BeginForm("CreateUserQuestion", "Questionnaire",
+    new { userId=1 }, FormMethod.Post))
+{
+    <table class="table">
+        @foreach (var item in Model.questions)
+        {
+            if (item.questionType == QuestionType.MAILADDRESS)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.question) <br>
+                        <input name="Answer-@item.id" type="text">
+                    </td>
+                </tr>
+            }
+            if (item.questionType == QuestionType.DROPDOWN)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.question) <br>
+                        <select id="ddlOptions" name="Answer-@item.id">
+                            <option value="0">Please select</option>
+                            @foreach (var option in item.options)
+                            {
+                                <option value="@option.option">@option.option</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            }
+            if (item.questionType == QuestionType.OPEN_QUESTION)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.question) <br>
+                        <textarea name="Answer-@item.id" type="text"></textarea>
+                    </td>
+                </tr>
+            }
+            if (item.questionType == QuestionType.RADIO_BUTTON)
+            {
+                <tr>
+                    <td>
+                        <fieldset id="@item.id">
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            @foreach (var option in item.options)
+                            {
+                                <input type="radio" value="@option.option" name="Answer-@item.id"/>
+                                @Html.DisplayFor(modelItem => option.option)<br>
+                            }
+                        </fieldset>
+                    </td>
+                </tr>
+            }
+            if (item.questionType == QuestionType.CHECK_BOX)
+            {
+                <tr>
+                    <td>
+                        <fieldset id="@item.id">
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            @foreach (var option in item.options)
+                            {
+                                <input type="checkbox" value="@option.option" name="Answer-@item.id"/>
+                                @Html.DisplayFor(modelItem => option.option)<br>
+                            }
+                        </fieldset>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Submit answers" class="btn btn-default"/>
+    </div>
+}
