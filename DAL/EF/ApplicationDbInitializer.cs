@@ -286,6 +286,24 @@ namespace DAL.EF
             questionnaire3.questions = new List<Question>() { q6, q7, q8, q9 };
             #endregion
             
+            Project p3 = new Project();
+            MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
+            ImageField img1 = new ImageField();            
+            img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
+            p3.name = "Summer bbq's";
+            p3.description =
+                "The city of antwerp wants to host local bbq's this summmer for the inhabitants.";
+            p3.startDate = new DateTime(2019,7,1);
+            p3.endDate = new DateTime(2019,8,1);
+            p3.phases = new List<Phase>
+            {
+                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,7,1),endDate =  new DateTime(2019,7,20)},
+                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,7,25),endDate =  new DateTime(2019,8,20)},
+
+            };
+            p3.mapField = map1;
+            p3.imageField = img1;
+            
             //Phases
             Phase ph1 = new Phase() { project = p1, name = "Brainstorming",description = "We are starting this project by gathering input from the community"};
             Phase ph2 = new Phase() { project = p1, name = "Construction",description = "We are building the most suggested constructions in the playground"};
@@ -331,7 +349,7 @@ namespace DAL.EF
             u2.ideas = new List<Idea>(){i2};
             u3.reactions = new List<Reaction>(){a1,a2};
 
-            ctx.projects.AddRange(p1, p2);
+            ctx.projects.AddRange(p1, p2,p3);
             ctx.questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
             ctx.questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
             ctx.iotSetups.AddRange(iot1);

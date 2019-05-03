@@ -12,7 +12,13 @@ namespace Domain
        public string imageName { get; set; }
        public byte[] imageData { get; set; }
       
-    
+       public string GetImageString()
+       {
+           
+            
+           var base64 = Convert.ToBase64String(imageData);
+           return String.Format("data:image/png;base64,{0}", base64);
+       }
         
        
 

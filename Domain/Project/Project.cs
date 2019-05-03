@@ -9,10 +9,13 @@ namespace Domain
         [Required]     
         public int projectId { get; set; }
         public String name { get; set; }
-        public  int like { get; set; }
         public String description { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
+        
+        public ImageField imageField { get; set; }
+        
+        public MapField mapField { get; set; }
         public Place place { get; set; }
         public ICollection<Ideation> ideations { get; set; }
         public ICollection<Questionnaire> questionnaires { get; set; }

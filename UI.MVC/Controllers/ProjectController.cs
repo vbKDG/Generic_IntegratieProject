@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using BL;
+using D.UI.MVC.Models.Projects;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +16,13 @@ namespace UI.MVC.Controllers
     {
         private IProjectManager projectMgr;
         private IIdeationManager ideationMgr;
-        
+
         public ProjectController(ApplicationDbContext ctx)
         {
             projectMgr = new ProjectManager(ctx);
             ideationMgr = new IdeationManager(ctx);
         }
-       
+
         public IActionResult Projects()
         {
             IEnumerable<Project> allProjects = projectMgr.getProjects();
@@ -38,7 +40,7 @@ namespace UI.MVC.Controllers
 
         public IActionResult Ideas(int id)
         {
-            IEnumerable <Idea>  ideas = ideationMgr.getIdeas(id);
+            IEnumerable<Idea> ideas = ideationMgr.getIdeas(id);
             return View(ideas);
         }
 
@@ -46,23 +48,71 @@ namespace UI.MVC.Controllers
         {
             return View();
         }
-     
-        
-        
-        
-        public ActionResult ImageTest()
+
+        public IActionResult ProjectImageDisplay()
         {
-            Idea idea = ideationMgr.getIdea(19);
-           // Field[] fields = idea.fields.ToArray();
-           var fields = idea.fields.ToArray();
-           ICollection<ImageField> imageFields = new List<ImageField>();
-           
-           foreach (var imagefield in fields)
-           {
-             imageFields.Add((ImageField)imagefield);
-           }
-          
-            return View(imageFields);
+            Project p = projectMgr.getProject(3);
+
+            return View(p);
+
         }
+
+        public IActionResult CreateProjectPage()
+        {
+            ProjectVM projectVm = new ProjectVM();
+            List<PhaseVM> phases = new List<PhaseVM>();
+
+            return View(projectVm);
+        }
+
+        public IActionResult CreateProject(ProjectVM projectVm)
+        {
+            Project project = new Project();
+            MapField mapField = new MapField();
+            ImageField imageField = new ImageField();
+            ICollection<Phase> phases = new List<Phase>();
+
+            project.name = projectVm.name;
+            project.description = projectVm.description;
+            project.startDate = projectVm.startDate;
+            project.endDate = projectVm.endDate;
+
+            mapField.latitude = projectVm.mapFieldVM.latitude;
+            mapField.longitude = projectVm.mapFieldVM.longitude;
+            project.mapField = mapField;
+
+            using (var reader = projectVm.imageFieldVM.imageFile.OpenReadStream())
+            using (var stream = new MemoryStream())
+            {
+                {
+                    reader.CopyTo(stream);
+                    imageField.imageData = stream.ToArray();
+
+                }
+
+            }
+
+            project.imageField = imageField;
+
+            foreach (var phaseVm in projectVm.phases)
+            {
+                phases.Add(new Phase
+                {
+                    name = phaseVm.name, description = phaseVm.description, startDate = phaseVm.startDate,
+                    endDate = phaseVm.endDate
+                });
+            }
+
+            project.phases = phases;
+
+            projectMgr.addProject(project);
+
+
+
+
+            return RedirectToAction("Project", "Project", new {id = 1});
+        }
+
+
     }
 }

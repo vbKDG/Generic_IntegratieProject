@@ -5,53 +5,55 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BL;
+using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UI.MVC.Models.Ideas;
 
 namespace UI.MVC.Controllers
 {
     public class IdeaController : Controller
     {
         private IIdeationManager ideationMgr;
+
         public IdeaController(ApplicationDbContext ctx)
         {
             ideationMgr = new IdeationManager(ctx);
         }
+
         public IActionResult CreateIdeaPage(int ideationId)
         {
-            
+
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
-            IdeaViewModel ideaViewModel = new IdeaViewModel();
+            IdeaVM ideaVm = new IdeaVM();
 
 
             String[] questions = new string[ideationQuestions.Length];
 
             for (int i = 0; i < ideationQuestions.Length; i++)
             {
-                    questions[i] = ideationQuestions[i].question;
+                questions[i] = ideationQuestions[i].question;
 
             }
 
-            ideaViewModel.ideationQuestion = questions;
-            ideaViewModel.ideationId = ideationId;
-                
-      
-          
-            
-            return View(ideaViewModel);
+            ideaVm.ideationQuestion = questions;
+            ideaVm.ideationId = ideationId;
+
+
+
+
+            return View(ideaVm);
         }
 
         public IActionResult MapInput()
         {
             return View();
         }
-            
 
 
-        public IActionResult CreateIdea(IdeaViewModel ideaViewModel)
+
+        public IActionResult CreateIdea(IdeaVM ideaVm)
         {
             Idea idea = new Idea();
             ICollection<Field> fields = new List<Field>();
@@ -60,37 +62,39 @@ namespace UI.MVC.Controllers
             VideoField videoField = new VideoField();
             MapField mapField = new MapField();
 
-            textField.text = Convert.ToString(ideaViewModel.textFieldViewModel.text);
-            mapField.latitude = ideaViewModel.mapFieldViewModel.latitude;
-            mapField.longitude = ideaViewModel.mapFieldViewModel.longitude;
+            textField.text = Convert.ToString(ideaVm.textFieldVM.text);
+            mapField.latitude = ideaVm.mapFieldVM.latitude;
+            mapField.longitude = ideaVm.mapFieldVM.longitude;
 
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                ideaViewModel.imageFieldViewModel.imageFile.CopyTo(memoryStream);
+                ideaVm.imageFieldVM.imageFile.CopyTo(memoryStream);
                 imageField.imageData = memoryStream.ToArray();
             }
-            using (var reader = ideaViewModel.imageFieldViewModel.imageFile.OpenReadStream())
-            using (var stream = new MemoryStream())
-            {
-                {    
-                   reader.CopyTo(stream);
-                   imageField.imageData = stream.ToArray();
 
-                }    
-                                        
-            }
-            using (var reader = ideaViewModel.videoFieldViewModel.videoFile.OpenReadStream())
+            using (var reader = ideaVm.imageFieldVM.imageFile.OpenReadStream())
             using (var stream = new MemoryStream())
             {
-                {    
+                {
+                    reader.CopyTo(stream);
+                    imageField.imageData = stream.ToArray();
+
+                }
+
+            }
+
+            using (var reader = ideaVm.videoFieldVM.videoFile.OpenReadStream())
+            using (var stream = new MemoryStream())
+            {
+                {
                     reader.CopyTo(stream);
                     videoField.videoData = stream.ToArray();
 
-                }    
-                                        
+                }
+
             }
 
-            Ideation ideation = ideationMgr.getIdeation(ideaViewModel.ideationId);
+            Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
 
             idea.ideation = ideation;
             fields.Add(textField);
@@ -100,16 +104,16 @@ namespace UI.MVC.Controllers
             idea.fields = fields;
             ideationMgr.createIdea(idea);
 
-            var projectId = ideationMgr.getIdeation(ideaViewModel.ideationId).project.projectId;
-            
-            
+            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.projectId;
 
 
-            return RedirectToAction("Project" , "Project" , new { id= projectId });
+
+
+            return RedirectToAction("Project", "Project", new {id = projectId});
         }
-        
 
-      
+
+
     }
-    
+
 }

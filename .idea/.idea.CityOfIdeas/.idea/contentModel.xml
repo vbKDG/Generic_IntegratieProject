@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\vin-c\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\vin-c\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\vin-c\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\vin-c\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.857546131.00" t="ExcludeRecursive" />
-    <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="BL.csproj" t="IncludeRecursive" />
@@ -196,13 +196,19 @@
         </e>
         <e p="Models" t="Include">
           <e p="ErrorModel.cs" t="Include" />
+          <e p="Fields" t="Include">
+            <e p="FieldVM.cs" t="Include" />
+          </e>
           <e p="FillInQuestionnaireModel.cs" t="Include" />
           <e p="Ideas" t="Include">
-            <e p="IdeaViewModel.cs" t="Include" />
+            <e p="IdeaVM.cs" t="Include" />
           </e>
           <e p="Idee.cs" t="Include" />
           <e p="OptionsAmount.cs" t="Include" />
           <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="Projects" t="Include">
+            <e p="ProjectVM.cs" t="Include" />
+          </e>
           <e p="QuestionnaireQuestion.cs" t="Include" />
           <e p="QuestionResultModel.cs" t="Include" />
           <e p="QuestionUserModel.cs" t="Include" />
@@ -240,26 +246,18 @@
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
-            <e p="DisplayTemplates" t="Include">
-              <e p="ImageFieldViewModel.cshtml" t="Include" />
-              <e p="MapFieldViewModel.cshtml" t="Include" />
-              <e p="TextFieldViewModel.cshtml" t="Include" />
-            </e>
-            <e p="EditorTemplates" t="Include">
-              <e p="ImageFieldViewModel.cshtml" t="Include" />
-              <e p="MapFieldViewModel.cshtml" t="Include" />
-              <e p="QuestionFieldViewModel.cshtml" t="Include" />
-              <e p="TextFieldViewModel.cshtml" t="Include" />
-              <e p="VideoFieldViewModel.cshtml" t="Include" />
-            </e>
             <e p="MapInput.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
-            <e p="_ImagePreview.cshtml" t="Include" />
+            <e p="CreateProjectPage.cshtml" t="Include" />
+            <e p="EditorTemplates" t="Include">
+              <e p="PhaseVM.cshtml" t="Include" />
+            </e>
             <e p="Ideas.cshtml" t="Include" />
             <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
             <e p="Project.cshtml" t="Include" />
+            <e p="ProjectImageDisplay.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />
           </e>
           <e p="Questionnaire" t="Include">
@@ -275,6 +273,18 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LoginPartial.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="DisplayTemplates" t="Include">
+              <e p="ImageFieldVM.cshtml" t="Include" />
+              <e p="MapFieldVM.cshtml" t="Include" />
+              <e p="TextFieldVM.cshtml" t="Include" />
+            </e>
+            <e p="EditorTemplates" t="Include">
+              <e p="ImageFieldVM.cshtml" t="Include" />
+              <e p="MapFieldVM.cshtml" t="Include" />
+              <e p="QuestionFieldVM.cshtml" t="Include" />
+              <e p="TextFieldVM.cshtml" t="Include" />
+              <e p="VideoFieldVM.cshtml" t="Include" />
+            </e>
             <e p="Error.cshtml" t="Include" />
           </e>
         </e>
@@ -290,6 +300,7 @@
             <e p="banner1.svg" t="Include" />
             <e p="banner2.svg" t="Include" />
             <e p="banner3.svg" t="Include" />
+            <e p="bbq.PNG" t="Include" />
             <e p="bgcity.jpg" t="Include" />
             <e p="building3.jpg" t="Include" />
             <e p="comments.png" t="Include" />

@@ -57,6 +57,15 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="Views\Idea\DisplayTemplates\ImageFieldViewModel.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Idea\DisplayTemplates\MapFieldViewModel.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Idea\DisplayTemplates\TextFieldViewModel.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\Ideas.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\ImageTest.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\Maptest.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\Project.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\Projects.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Project\_ImagePreview.cshtml" />
     </ItemGroup>
 
 </Project>

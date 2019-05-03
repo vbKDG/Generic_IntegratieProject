@@ -1,0 +1,106 @@
+@model  D.UI.MVC.Models.Projects.ProjectVM
+
+<form asp-controller="Project" asp-action="CreateProject" method="post" enctype="multipart/form-data">
+    
+    
+    <table>
+        <tr>
+            <label>Title: </label>
+            <input asp-for="name" type="text"/>
+        </tr>
+        <tr>
+            <label>Description:</label>
+            <input asp-for="description" type="text" width="200" height="400"/>
+        </tr>
+        <tr>
+            
+            <label>Project Image:</label>
+            @Html.EditorFor(x => x.imageFieldVM)
+        </tr>
+        <tr>
+            
+            <label>Start date: </label>
+            <input asp-for="startDate" type="date"/>
+        </tr>
+        <tr>
+            <label>End date: </label>
+            <input asp-for="endDate" type="date"/>
+        </tr>
+        
+        <label>Map: </label>
+        @Html.EditorFor( x => x.mapFieldVM)
+    </table>
+    
+    
+    
+    
+    
+    <h1> Phases</h1>
+    
+    <label asp-for="name">Name: </label>
+    <label asp-for="description">Description: </label>
+    <label asp-for="startDate">Start Date: </label>
+    <label asp-for="endDate">End Date: </label>
+
+    <div id="phaseList">
+
+
+
+
+     </div>
+     
+    <input type="button" name="addRow" id="addRow"  value="klik"/> 
+    
+    <input type="submit" value="save">  
+
+  
+</form>
+
+<script type="text/javascript">
+    
+        $("#addRow").click(function() {
+            
+            var rowCount = $('.phaseRow').length;
+            var inputString = "";
+                      
+                    inputString += '<td><input name="Phases[' + rowCount + '].name" type="text" class="nameType"/></td>';
+                    inputString += '<td><input name="Phases[' + rowCount + '].description" type="text" class="descriptionType"/></td>';
+                    inputString += '<td><input name="Phases[' + rowCount + '].startDate" type="date" class="startDateType"/></td>';
+                    inputString += '<td><input name="Phases[' + rowCount + '].endDate" type="date"  class="endDateType"/></td>';
+                    inputString += '<a href="javascript:void(0);" class="remRow">Remove</a>';
+                    $("#phaseList").append('<div class="phaseRow">' + inputString + '</div>');
+//            inputString += '<input name="Phases[' + rowCount + '].name" type="text" class="nameType"/>';
+//            inputString += '<input name="Phases[' + rowCount + '].description" type="text" class="descriptionType" />';
+//            inputString += '<input name="Phases[' + rowCount + '].startDate" type="date" class="startDateType"/>';
+//            inputString += '<input name="Phases[' + rowCount + '].endDate" type="date"  class="endDateType"/>';
+//            inputString += '<a href="javascript:void(0);" class="remRow">Remove</a>';
+//            $("#phaseList").append('<div class="phaseRow">' + inputString + '</div>');
+
+           
+        });
+
+        $("#phaseList").on('click','.remRow', function() {
+                
+                (this).closest(".phaseRow").remove();
+                
+                $('.nameType').each(function(index) {
+                    $(this).attr('name', 'Phases[' + index + '].name');
+                });
+
+                $('.descriptionType').each(function(index) {
+                    $(this).attr('name', 'Phases[' + index + '].description');
+                });
+                
+                $('.startDateType').each(function(index) {
+                    $(this).attr('name', 'Phases[' + index + '].startDate');
+                });
+                
+                $('.endDateType').each(function(index) {
+                    $(this).attr('name', 'Phases[' + index + '].endDate');
+                });
+            });
+    
+</script>
+
+<link rel="stylesheet" href="~/css/CreatePage.css"> 
+

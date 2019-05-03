@@ -1,8 +1,8 @@
 
 @using System.Xml.Linq
-@using UI.MVC.Models.Ideas
+@using D.UI.MVC.Models.Ideas
 @using Domain
-@model UI.MVC.Models.Ideas.IdeaViewModel
+@model D.UI.MVC.Models.Ideas.IdeaVM
 
 @foreach (var item in Model.ideationQuestion)
 {
@@ -15,11 +15,11 @@
 
    
     
-   <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
-   @Html.EditorFor(x => x.textFieldViewModel)    
-   @Html.EditorFor(x => x.imageFieldViewModel)
-   @Html.EditorFor(x => x.videoFieldViewModel)
-   @Html.EditorFor(x => x.mapFieldViewModel)
+    <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
+    @Html.EditorFor(x => x.textFieldVM)    
+    @Html.EditorFor(x => x.imageFieldVM)
+    @Html.EditorFor(x => x.videoFieldVM)
+    @Html.EditorFor(x => x.mapFieldVM)
      
 
    
@@ -31,7 +31,7 @@
         
      
    
-     <input type="submit" value="save">   
+    <input type="submit" value="save">   
          
     
 </form>
