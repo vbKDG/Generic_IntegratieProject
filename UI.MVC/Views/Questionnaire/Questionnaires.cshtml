@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<Domain.Questionnaire>
 
-<h1>Questionnaires</h1> 
-<p>
-    @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage", 
-        "Questionnaire", new { projectId=Model.ToList()[0].project.projectId })
-</p>
+<h1>Questionnaires</h1>
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage", 
+            "Questionnaire", new { projectId=Model.ToList()[0].project.projectId })
+    </p>
+}
 
 <table class="table">
     <tr>
@@ -28,16 +31,19 @@
                 @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
                     , new { questionnaireId=item.id })
             </td>
-            <td>
-                @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
-                    , new { questionnaireId = item.id })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
-                    , new {questionnaireId = item.id}) | 
-                @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
-                    , new {questionnaireId = item.id})
-            </td>
+            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
+                        , new { questionnaireId = item.id })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
+                        , new {questionnaireId = item.id}) | 
+                    @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
+                        , new {questionnaireId = item.id})
+                </td>
+            }
         </tr>
         
     }

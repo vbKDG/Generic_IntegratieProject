@@ -10,7 +10,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="BL.csproj" t="IncludeRecursive" />
         <e p="IdeationManager.cs" t="Include" />
+        <e p="IdentityManager.cs" t="Include" />
         <e p="IIdeationManager.cs" t="Include" />
+        <e p="IIdentityManager.cs" t="Include" />
         <e p="IProjectManager.cs" t="Include" />
         <e p="IQuestionnaireManager.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
@@ -31,13 +33,12 @@
         <e p="EF" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
           <e p="ApplicationDbInitializer.cs" t="Include" />
-          <e p="ApplicationRole.cs" t="Include" />
-          <e p="ApplicationUser.cs" t="Include" />
-          <e p="Organisation.cs" t="Include" />
         </e>
         <e p="Helper.cs" t="Include" />
         <e p="IdeationRepository.cs" t="Include" />
+        <e p="IdentityRepository.cs" t="Include" />
         <e p="IIdeationRepository.cs" t="Include" />
+        <e p="IIdentityRepository.cs" t="Include" />
         <e p="IProjectRepository.cs" t="Include" />
         <e p="IQuestionnaireRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
@@ -95,13 +96,17 @@
           <e p="Phase.cs" t="Include" />
           <e p="Platform.cs" t="Include" />
           <e p="Project.cs" t="Include" />
-          <e p="User.cs" t="Include" />
         </e>
         <e p="Questionnaire" t="Include">
           <e p="Option.cs" t="Include" />
           <e p="Question.cs" t="Include" />
           <e p="Questionnaire.cs" t="Include" />
           <e p="QuestionUser.cs" t="Include" />
+        </e>
+        <e p="User" t="Include">
+          <e p="ApplicationRole.cs" t="Include" />
+          <e p="ApplicationUser.cs" t="Include" />
+          <e p="Organisation.cs" t="Include" />
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
@@ -192,7 +197,6 @@
           <e p="IdeaController.cs" t="Include" />
           <e p="ProjectController.cs" t="Include" />
           <e p="QuestionnaireController.cs" t="Include" />
-          <e p="RiderProjects - Snelkoppeling.lnk" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="ErrorModel.cs" t="Include" />

@@ -22,7 +22,7 @@ namespace DAL
         void deleteQuestion(int questionId);
         void updateOption(Option o);
         void deleteOption(int optionId);
-        void createQuestionUser(int userId, int questionId, String answer);
+        void createQuestionUser(string userId, int questionId, String answer);
         void deleteQuestionUser(int questionUserId);
     }
 }

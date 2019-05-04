@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Mail;
+using Domain;
 using Microsoft.AspNetCore.Identity;
 
 namespace DAL.EF
@@ -41,5 +43,13 @@ namespace DAL.EF
         public string Gender { get; set; }
         
         public Organisation Organisation { get; set; }
+        
+        public ICollection<QuestionUser> questionnaireAnswer { get; set; }
+        public ICollection<Idea> ideas { get; set; }
+        public ICollection<Reaction> reactions { get; set; }
+        public ICollection<IdeaLike> ideaLikes { get; set; }
+        public ICollection<ProjectLike> projectLikes { get; set; }
+        public ICollection<ReactionLike> reactionLikes { get; set; }
+        public ICollection<IotVote> iotVotes { get; set; }
     }
 }

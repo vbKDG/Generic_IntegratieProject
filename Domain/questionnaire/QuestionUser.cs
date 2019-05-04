@@ -1,4 +1,5 @@
 using System;
+using DAL.EF;
 
 namespace Domain
 {
@@ -6,7 +7,7 @@ namespace Domain
     {
         public int id { get; set; }
         public Question Question { get; set; }
-        public User User { get; set; }
         public String Answer { get; set; }
+        public ApplicationUser User { get; set;  }
     }
 }

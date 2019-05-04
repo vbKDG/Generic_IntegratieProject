@@ -1,5 +1,10 @@
 $(document).ready(function() {
-    $('#organisationInfo').hide();
+    var option = $('#organisation').children("option:selected").val();
+    if(option === "true") {
+        $('#organisationInfo').show();
+    } else if (option === "false") {
+        $('#organisationInfo').hide();
+    }
     $('#organisation option').click(function() {
         if($(this).val() === "true") {
             $('#organisationInfo').show();

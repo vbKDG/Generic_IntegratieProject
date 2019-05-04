@@ -62,9 +62,9 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Is this account in name of an organisation?</label>
+                <label asp-for="Input.isOrganisation"></label>
                 <div>
-                    <select id="organisation" class="form-control">
+                    <select asp-for="Input.isOrganisation" id="organisation" class="form-control">
                         <option class="dropdown-item" value="false">No</option>
                         <option class="dropdown-item" value="true">Yes</option>
                     </select> 

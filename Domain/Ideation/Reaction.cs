@@ -11,7 +11,7 @@ namespace Domain
         public  int reactionId { get; set; }
         [Required]
         public Idea idea { get; set; }
-        public User user { get; set; }
+        public string UserId { get; set; }
         public string content { get; set; }
         public DateTime date { get; set; }
         public ICollection<ReactionLike> reactionLikes { get; set; }

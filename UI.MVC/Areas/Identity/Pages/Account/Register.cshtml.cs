@@ -83,6 +83,9 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             [MaxLength(1)]
             public string Gender { get; set; }
             
+            [Display(Name = "Is this account in name of an organisation?")]
+            public bool isOrganisation { get; set; }
+            
             [DataType(DataType.Text)]
             [MaxLength(30)]
             [Display(Name = "Organisation Name")]
@@ -111,10 +114,27 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     Age = Input.Age,
                     Gender = Input.Gender,
-                    PostalCode = Input.PostalCode,
+                    PostalCode = Input.PostalCode
                 };
+                if (Input.isOrganisation)
+                {
+                    var organisation = new Organisation
+                    {
+                        OrganisationName = Input.OrganisationName,
+                        OrganisationEventInput = Input.OrganisationEventInput,
+                        ApplicationUser = user
+                    };
+                    user.Organisation = organisation;
+                }
                 var resultUser = await _userManager.CreateAsync(user, Input.Password);
-                var resultRole = await _userManager.AddToRoleAsync(user, "SignedInUser");
+                if (Input.isOrganisation)
+                {
+                    await _userManager.AddToRoleAsync(user, "SignedInUserOrganisation");
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, "SignedInUser");
+                }
                 if (resultUser.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
