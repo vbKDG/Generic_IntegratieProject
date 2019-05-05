@@ -60,10 +60,6 @@ namespace BL
         
         public void addQuestionnaire(List<Question> questions, String name, int questionAmount, int projectId)
         {
-            foreach (var q in questions)
-            {
-                Console.WriteLine(q.question);
-            }
             Questionnaire newQuestionnaire = new Questionnaire();
             newQuestionnaire.questions = questions;
             newQuestionnaire.name = name;
@@ -71,7 +67,7 @@ namespace BL
             repo.createQuestionnaire(newQuestionnaire, projectId);
         }
 
-        public void addQuestionUser(int userId, int questionId, String answer)
+        public void addQuestionUser(string userId, int questionId, String answer)
         {
             repo.createQuestionUser(userId, questionId, answer);
         }

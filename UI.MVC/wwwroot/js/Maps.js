@@ -25,8 +25,8 @@ function geocodeAddress(geocoder, resultsMap) {
            // console.log(lat);
 
 
-            $('input[name="mapFieldViewModel.latitude"]').attr('value',lat);
-            $('input[name="mapFieldViewModel.longitude"]').attr('value',lng);
+            $('input[name="mapFieldVM.latitude"]').attr('value',lat);
+            $('input[name="mapFieldVM.longitude"]').attr('value',lng);
 
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({

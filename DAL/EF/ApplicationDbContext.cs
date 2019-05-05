@@ -58,8 +58,9 @@ namespace DAL.EF
         //Iotset
         public DbSet<IotSetup> iotSetups { get; set; }
         
-        //User
-        public DbSet<User> users { get; set; }
+        //Identity
+        public DbSet<Organisation> Organisations { get; set; }
+        
         #endregion
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -79,6 +80,11 @@ namespace DAL.EF
         protected override void OnModelCreating(ModelBuilder builder)  
         {  
             base.OnModelCreating(builder);  
+
+            builder.Entity<Organisation>().Property<string>("ApplicationUserFK_shadow");
+            builder.Entity<Organisation>().HasOne(sm => sm.ApplicationUser)
+                .WithOne(fm => fm.Organisation)
+                .HasForeignKey<Organisation>("ApplicationUserFK_shadow");
         }
 
         public override int SaveChanges()

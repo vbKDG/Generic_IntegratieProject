@@ -4,7 +4,7 @@
 <h1>Complete a questionnaire</h1>
 <h4>The questionnaire is about: @Model.questionnaire.name</h4>
 @using (Html.BeginForm("CreateUserQuestion", "Questionnaire",
-    new { userId=1 }, FormMethod.Post))
+    FormMethod.Post))
 {
     <table class="table">
         @foreach (var item in Model.questions)

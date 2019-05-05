@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using BL;
 using DAL.EF;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UI.MVC.Models;
-using QuestionUser = Domain.QuestionUser;
 
 namespace UI.MVC.Controllers
 {
@@ -35,7 +36,8 @@ namespace UI.MVC.Controllers
             fillInQuestionnaireModel.questionnaire = qmgr.getQuestionnaire(questionnaireId);
             return View(fillInQuestionnaireModel);
         }
-
+        
+        [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult CreateQuestionnairePage(int projectId)
         {
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
@@ -43,6 +45,7 @@ namespace UI.MVC.Controllers
             return View(combinedModel);
         }
 
+        [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult ShowResultsPage(int questionnaireId)
         {
             QuestionResultModel combinedModel = new QuestionResultModel();
@@ -126,6 +129,7 @@ namespace UI.MVC.Controllers
             return View(combinedModel);
         }
 
+        [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult EditQuestionnairePage(int questionnaireId)
         {
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
@@ -134,12 +138,14 @@ namespace UI.MVC.Controllers
             return View(combinedModel);
         }
 
+        [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult DeleteQuestionnairePage(int questionnaireId)
         {
             Questionnaire questionnaire = qmgr.getQuestionnaire(questionnaireId);
             return View(questionnaire);
         }
 
+        [Authorize(Roles="SuperAdmin, Admin")]
         [HttpPost]
         public IActionResult EditQuestionnaire(IFormCollection form)
         {
@@ -319,6 +325,7 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Projects","Project");
         }
 
+        [Authorize(Roles="SuperAdmin, Admin")]
         [HttpPost]
         public IActionResult DeleteQuestionnaire(IFormCollection form)
         {
@@ -348,6 +355,7 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Projects","Project");
         }
         
+        [Authorize(Roles="SuperAdmin, Admin")]
         [HttpPost]
         public IActionResult CreateQuestionnaire(IFormCollection form)
         {
@@ -437,14 +445,21 @@ namespace UI.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUserQuestion(int userId, IFormCollection form)
+        public IActionResult CreateUserQuestion(IFormCollection form)
         {
             foreach (var key in form.Keys)
             {
                 if (key.StartsWith("Answer-"))
                 {
                     var parts = key.Split("-");
-                    qmgr.addQuestionUser(userId, Convert.ToInt32(parts[1]), form[key]);
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        qmgr.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
+                    }
+                    else
+                    {
+                        qmgr.addQuestionUser("", Convert.ToInt32(parts[1]), form[key]);
+                    }
                 }
             }
             return RedirectToAction("Projects", "Project");

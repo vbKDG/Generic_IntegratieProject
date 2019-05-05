@@ -82,7 +82,9 @@ namespace DAL
 
         public IEnumerable<Idea> readIdeas(int ideationId)
         {
-            return ctx.ideas.Include(i => i.ideation).Include(i => i.user).Where( i => i.ideation.ideationId == ideationId);
+            return ctx.ideas.Where(i => i.ideation.ideationId == ideationId);
+            // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
+            return ctx.ideas.Include(i => i.ideation).Include(i => i.ideaId).Where( i => i.ideation.ideationId == ideationId);
         }
 
         #region Idea

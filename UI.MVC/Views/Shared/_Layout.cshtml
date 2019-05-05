@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using DAL.EF
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -43,11 +48,12 @@
                 <li><a asp-area="" asp-controller="Home" asp-action="About"><p><i class="fas fa-project-diagram"></i><b> General Projects |</b></p></a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="Contact"><p><i class="fas fa-question"></i><b> Form elements |</b></p></a></li>
                 <li><a asp-area="" asp-controller="Project" asp-action="Projects"><p><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Privacy"><p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
-                <li><a asp-area="Identity"  asp-page="/Account/Login"><p><i class="far fa-user"></i><b> Inloggen</b></p></a></li>
-
+                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
+                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy"><p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
+                }
+                <partial name="_LoginPartial" />
             </ul>
-
         </div>
     </div>
 </nav>

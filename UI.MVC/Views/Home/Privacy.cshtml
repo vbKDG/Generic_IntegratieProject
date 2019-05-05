@@ -269,15 +269,11 @@
 
 @if (User.IsInRole("SuperAdmin"))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ManageAdmins">Manage admins</a>
-    </li>
+    <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageAdmins">Manage admins</a></button>
 }
 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="ManageModerators">Manage moderators</a>
-    </li>
+    <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageModerators">Manage moderators</a></button>
 }
 
    

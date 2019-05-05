@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using BL;
 using DAL.EF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -18,15 +19,18 @@ namespace UI.MVC.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IIdentityManager _imgr;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext ctx)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _imgr = new IdentityManager(ctx);
         }
 
         public string Username { get; set; }
@@ -55,20 +59,33 @@ namespace UI.MVC.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Last name")]
             public string LastName { get; set; }
             
-            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Gender")]
             public string Gender { get; set; }
             
-            [Required]
             [DataType(DataType.Text)]
+            [MaxLength(2)]
+            [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Count must be a natural number")]
             [Display(Name = "Age")]
             public string Age { get; set; }
             
-            [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Postal code")]
+            [MaxLength(15)]
+            [Display(Name = "Postal Code")]
             public string PostalCode { get; set; }
+            
+            [Display(Name = "Is this account in name of an organisation?")]
+            public bool isOrganisation { get; set; }
+            
+            [DataType(DataType.Text)]
+            [MaxLength(30)]
+            [Display(Name = "Organisation Name")]
+            public string OrganisationName { get; set; }
+            
+            [Display(Name = "Event Input")]
+            [MaxLength(50)]
+            [DataType(DataType.Text)]
+            public string OrganisationEventInput { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -84,15 +101,20 @@ namespace UI.MVC.Areas.Identity.Pages.Account.Manage
 
             Username = userName;
 
-            Input = new InputModel
+            Input = new InputModel();
+            Input.Email = email;
+            Input.FirstName = user.FirstName;
+            Input.LastName = user.LastName;
+            Input.Gender = user.Gender;
+            Input.Age = user.Age;
+            Input.PostalCode = user.PostalCode;
+
+            if (_imgr.getOrganisation(user.Id) != null)
             {
-                Email = email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Gender = user.Gender,
-                Age = user.Age,
-                PostalCode = user.PostalCode
-            };
+                Input.isOrganisation = true;
+                Input.OrganisationName = _imgr.getOrganisation(user.Id).OrganisationName;
+                Input.OrganisationEventInput = _imgr.getOrganisation(user.Id).OrganisationEventInput;
+            }
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
 
@@ -142,6 +164,43 @@ namespace UI.MVC.Areas.Identity.Pages.Account.Manage
             if (Input.PostalCode != user.PostalCode)
             {
                 user.PostalCode = Input.PostalCode;
+            }
+            if (Input.isOrganisation)
+            {
+                if (_imgr.getOrganisation(user.Id) == null)
+                {
+                    var organisation = new Organisation
+                    {
+                        OrganisationName = Input.OrganisationName,
+                        OrganisationEventInput = Input.OrganisationEventInput,
+                        ApplicationUser = user
+                    };
+                    user.Organisation = organisation;
+                }
+                else if (_imgr.getOrganisation(user.Id) != null)
+                {
+                    Organisation o = _imgr.getOrganisation(user.Id);
+                    o.OrganisationName = Input.OrganisationName;
+                    o.OrganisationEventInput = Input.OrganisationEventInput;
+                    _imgr.changeOrganisation(o);
+                }
+                if (_userManager.GetRolesAsync(user).Result.First() == "SignedInUserOrganisation")
+                {
+                    await _userManager.RemoveFromRoleAsync(user, "SignedInUserOrganisation");
+                    await _userManager.AddToRoleAsync(user, "SignedInUser");
+                }
+            }
+            if (!Input.isOrganisation)
+            {
+                if (_imgr.getOrganisation(user.Id) != null)
+                {
+                    _imgr.removeOrganisation(_imgr.getOrganisation(user.Id).Id);
+                }
+                if (_userManager.GetRolesAsync(user).Result.First() == "SignedInUser")
+                {
+                    await _userManager.RemoveFromRoleAsync(user, "SignedInUser");
+                    await _userManager.AddToRoleAsync(user, "SignedInUserOrganisation");
+                }
             }
             
             await _userManager.UpdateAsync(user);

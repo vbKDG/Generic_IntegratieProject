@@ -8,7 +8,7 @@ namespace Domain
         [Required]
         public int likeId { get; set; }
         public DateTime likeTime { get; set; }
-        public User user { get; set; }
+        public string userId { get; set; }
 
 
     }

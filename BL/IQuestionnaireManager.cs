@@ -20,7 +20,7 @@ namespace BL
         void addOption(String option, Question question);
         void changeQuestionnaire(Questionnaire q);
         void removeQuestionnaire(int id);
-        void addQuestionUser(int userId, int questionId, String answer);
+        void addQuestionUser(string userId, int questionId, String answer);
         void removeQuestionUser(int questionUserId);
         void changeQuestion(Question q);
         void removeQuestion(int id);

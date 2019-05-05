@@ -3,7 +3,7 @@ using Domain;
 
 namespace BL.Application
 {
-    public class OrchestratorSystemController : IQuestionnaireManager
+    public class OrchestratorSystemController 
     {
         private UnitOfWorkManager uowManager;
         
@@ -121,99 +121,116 @@ namespace BL.Application
         #region Questionnaire
 
          public IEnumerable<Questionnaire> getQuestionnaires(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+         {
+             return questionnaireMgr.getQuestionnaires(id);
+         }
 
         public IEnumerable<IotSetup> getIotSetups()
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getIotSetups();
         }
 
         public IEnumerable<Question> getQuestions(int id)
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getQuestions(id);
+
         }
 
         public IEnumerable<Option> getOptions(int questionId)
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getOptions(questionId);
         }
 
         public Questionnaire getQuestionnaire(int id)
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getQuestionnaire(id);
+
         }
 
         public Question getQuestion(int id)
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getQuestion(id);
+
         }
 
         public IEnumerable<QuestionUser> getQuestionUsers(int questionaireId)
         {
-            throw new System.NotImplementedException();
+            return questionnaireMgr.getQuestionUsers(questionaireId);
+
         }
 
         public void addQuestionnaire(List<Question> questions, string name, int questionAmount, int projectId)
         {
-            throw new System.NotImplementedException();
+            questionnaireMgr.addQuestionnaire(questions, name, questionAmount, projectId);
+            uowManager.Save();
+
         }
 
         public void addQuestion(string question, QuestionType questionType)
         {
-            throw new System.NotImplementedException();
+             questionnaireMgr.addQuestion(question, questionType);
+             uowManager.Save();
+
         }
 
         public void addQuestion(Question question)
         {
-            throw new System.NotImplementedException();
+             questionnaireMgr.addQuestion(question);
+            uowManager.Save();
         }
 
         public void addOption(string option, Question question)
         {
-            throw new System.NotImplementedException();
+             questionnaireMgr.addOption(option, question);
+             uowManager.Save();
         }
 
         public void changeQuestionnaire(Questionnaire q)
         {
-            throw new System.NotImplementedException();
+             questionnaireMgr.changeQuestionnaire(q);
+             uowManager.Save();
         }
 
         public void removeQuestionnaire(int id)
         {
-            throw new System.NotImplementedException();
-        }
+            questionnaireMgr.removeQuestionnaire(id);
+            uowManager.Save();        }
 
         public void addQuestionUser(int userId, int questionId, string answer)
         {
-            throw new System.NotImplementedException();
+          //  questionnaireMgr.addQuestionUser(userId ,questionId,answer);
+            uowManager.Save();
+
         }
 
         public void removeQuestionUser(int questionUserId)
         {
-            throw new System.NotImplementedException();
+            questionnaireMgr.removeQuestionUser(questionUserId);
+            uowManager.Save();
+            
         }
 
         public void changeQuestion(Question q)
         {
-            throw new System.NotImplementedException();
-        }
+            questionnaireMgr.changeQuestion(q);
+            uowManager.Save();        }
 
         public void removeQuestion(int id)
         {
-            throw new System.NotImplementedException();
-        }
+            questionnaireMgr.removeQuestion(id);
+            uowManager.Save();        }
 
         public void changeOption(Option o)
         {
-            throw new System.NotImplementedException();
+            questionnaireMgr.changeOption(o);
+            uowManager.Save();
+            
         }
 
         public void removeOption(int optionId)
         {
-            throw new System.NotImplementedException();
-        }
+            questionnaireMgr.removeOption(optionId);
+            uowManager.Save();        }
 
         #endregion
 

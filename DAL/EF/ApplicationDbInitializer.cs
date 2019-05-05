@@ -64,19 +64,14 @@ namespace DAL.EF
                 await roleManager.CreateAsync(new ApplicationRole(role6));
             }
 
+            #region users
             if (await userManager.FindByNameAsync("super.admin@gmail.com") == null)
             {
-                var organisation = new Organisation
-                {
-                    OrganisationName = "Testname",
-                    OrganisationEventInput = "testinput"
-                };
                 var user = new ApplicationUser {
                     UserName = "super.admin@gmail.com",
                     Email = "super.admin@gmail.com",
                     FirstName = "Super",
-                    LastName = "Admin",
-                    Organisation = organisation
+                    LastName = "Admin"
                 };
 
                 var result = await userManager.CreateAsync(user);
@@ -85,26 +80,63 @@ namespace DAL.EF
                     await userManager.AddToRoleAsync(user, role1);
                 }
             }
-            
-            
-            var previousBehaviour = ctx.ChangeTracker.QueryTrackingBehavior;
-            ctx.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
-            
-            #region User
-            User u1 = new User()
+
+            if (await userManager.FindByNameAsync("jan.jaap@gmail.com") == null)
             {
-                firstName = "Jan",
-                lastName = "Jaap",
-                age = 21,
-                eMailAddress = "test.persoon@gmail.com",
-                gender = Gender.M,
-                password = "test",
-                postalCode = "2450",
-                questionnaireAnswer = new List<QuestionUser>()
-            };
-            User u2 = new User(){ firstName = "Peter", lastName = "Smet"};
-            User u3 = new User(){ firstName = "Dirk", lastName = "Bakker"};
+                var user = new ApplicationUser {
+                    UserName = "jan.jaap@gmail.com",
+                    Email = "jan.jaap@gmail.com",
+                    FirstName = "Jan",
+                    LastName = "Jaap",
+                    Age = "25",
+                    Gender = "M",
+                    PostalCode = "2340"
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            
+            if (await userManager.FindByNameAsync("peter.smet@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "peter.smet@gmail.com",
+                    Email = "peter.smet@gmail.com",
+                    FirstName = "Peter",
+                    LastName = "Smet",
+                    Age = "52",
+                    Gender = "M",
+                    PostalCode = "2480"
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            
+            if (await userManager.FindByNameAsync("dirk.bakker@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "dirk.bakker@gmail.com",
+                    Email = "dirk.bakker@gmail.com",
+                    FirstName = "dirk",
+                    LastName = "bakker",
+                    Age = "62",
+                    Gender = "M",
+                    PostalCode = "2000"
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
             #endregion
+            
+           
             
             #region TestProject 1
             Project p1 = new Project()
@@ -326,8 +358,8 @@ namespace DAL.EF
          //   fields.Add(if1);
             //Ideas 
             
-            Idea i1 = new Idea(){ideation = it1 , user = u1 };
-            Idea i2 = new Idea(){ideation = it1 , user = u2 };
+            Idea i1 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.Id };
+            Idea i2 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("peter.smet@gmail.com").Result.Id };
 
            // it1.fields = null;
             
@@ -339,22 +371,21 @@ namespace DAL.EF
             //answers 
            // Reaction a3 = new Reaction(){content = "test",idea = null};
             
-            Reaction a1 = new Reaction(){idea = i1, user = u3,content = " Great Idea !" };
-            Reaction a2 = new Reaction(){idea = i2, user = u3,content = " Terrible Idea !" };
+            Reaction a1 = new Reaction(){idea = i1, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Great Idea !" };
+            Reaction a2 = new Reaction(){idea = i2, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Terrible Idea !" };
             
             i1.reactions = new List<Reaction>(){a1};
             i2.reactions = new List<Reaction>(){a2};
             
-            u1.ideas = new List<Idea>(){i1};
-            u2.ideas = new List<Idea>(){i2};
-            u3.reactions = new List<Reaction>(){a1,a2};
+            userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.ideas = new List<Idea>(){i1};
+            userManager.FindByEmailAsync("peter.smet@gmail.com").Result.ideas = new List<Idea>(){i2};
+            userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.reactions = new List<Reaction>(){a1,a2};
 
             ctx.projects.AddRange(p1, p2,p3);
             ctx.questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
             ctx.questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
             ctx.iotSetups.AddRange(iot1);
             ctx.phases.AddRange(ph1,ph2);
-            ctx.users.AddRange(u1,u2,u3);
             ctx.ideations.Add(it1);
             ctx.ideationQuestions.Add(iq1);
             ctx.ideas.AddRange(i1,i2);
@@ -363,11 +394,6 @@ namespace DAL.EF
             ctx.options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
             
             ctx.SaveChanges();
-            
-            foreach (var entry in ctx.ChangeTracker.Entries().ToList())
-                entry.State = EntityState.Detached;
-            
-            ctx.ChangeTracker.QueryTrackingBehavior = previousBehaviour;
         }
     }
 }

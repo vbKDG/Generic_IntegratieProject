@@ -25,10 +25,13 @@ namespace DAL
         }
         #region Interface Implementation
 
-        public void createQuestionUser(int userId, int questionId, String answer)
+        public void createQuestionUser(string userId, int questionId, String answer)
         {
             QuestionUser qu = new QuestionUser();
-            qu.User = ctx.users.Find(userId);
+            if (!(userId == ""))
+            {
+                qu.User = ctx.Users.Find(userId);
+            }
             qu.Question = ctx.questions.Find(questionId);
             qu.Answer = answer;
             ctx.questionUsers.Add(qu);
