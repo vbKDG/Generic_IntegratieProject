@@ -6,13 +6,24 @@ using Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace DAL.EF
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string> {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) { }
-        
+        public ApplicationDbContext()          
+        {
+            
+        }
+//        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+//            : base(options)
+//        {
+//            
+            
+            
+    //    }
         #region Sets
         // Fields 
         public DbSet<Field> fields { get; set; }
@@ -53,12 +64,60 @@ namespace DAL.EF
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlite("Data Source=app.db");
+            
             base.OnConfiguring(optionsBuilder);
+            
+            optionsBuilder.UseLoggerFactory(new LoggerFactory(
+                new[] { new DebugLoggerProvider(
+                    (category, level) => category == DbLoggerCategory.Database.Command.Name
+                                         && level == LogLevel.Information
+                )}
+            ));
         }
         
         protected override void OnModelCreating(ModelBuilder builder)  
         {  
             base.OnModelCreating(builder);  
-        }   
+        }
+
+        public override int SaveChanges()
+        {
+        
+            if (delaySave)
+                return -1;
+            return base.SaveChanges();
+
+
+
+
+
+
+        }
+        private readonly bool delaySave = false;
+
+        public ApplicationDbContext(bool isUnitOfWorkPresent) : this()
+        {
+            delaySave = isUnitOfWorkPresent;
+        }
+        
+        internal int CommitChanges() // in combinatie met override van 'SaveChanges' met UoW-pattern implementatie!
+        {
+            if (delaySave)
+            {
+                Helper.PrintDbContextTrackedEntitiesStates(this, "STATES BEFORE CommitChanges() (TO DB)");
+            
+                int infectedRecords = base.SaveChanges();
+            
+                Helper.PrintDbContextTrackedEntitiesStates(this, "STATES AFTER CommitChanges() (TO DB)");            
+            
+                return infectedRecords;
+            }
+            
+            throw new InvalidOperationException("No UnitOfWork present, use SaveChanges instead");
+        }
+        
+
+     
     }
 }

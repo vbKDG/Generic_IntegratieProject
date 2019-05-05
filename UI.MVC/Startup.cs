@@ -79,7 +79,7 @@ namespace UI.MVC
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             
-            DemoDbInitializer.Initialize(context, userManager, roleManager);
+            ApplicationDbInitializer.Initialize(context, userManager, roleManager);
         }
     }
 }

@@ -16,6 +16,13 @@ namespace DAL
             this.ctx = ctx;
         }
         
+        public QuestionnaireRepository(UnitOfWork unitOfWork)
+        {
+            if (unitOfWork == null)
+                throw new ArgumentNullException("unitOfWork");
+
+            ctx = unitOfWork.Context;
+        }
         #region Interface Implementation
 
         public void createQuestionUser(int userId, int questionId, String answer)

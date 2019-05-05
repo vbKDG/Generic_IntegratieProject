@@ -15,6 +15,13 @@ namespace BL
         {
             repo = new QuestionnaireRepository(ctx);
         }
+        public QuestionnaireManager(UnitOfWorkManager unitOfWorkManager)
+        {
+            if (unitOfWorkManager == null)
+                throw new ArgumentNullException("unitOfWorkManager");
+
+            repo = new DAL.QuestionnaireRepository(unitOfWorkManager.UnitOfWork);
+        }
 
         public IEnumerable<Questionnaire> getQuestionnaires(int id)
         {

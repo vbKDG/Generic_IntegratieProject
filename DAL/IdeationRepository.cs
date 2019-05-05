@@ -15,6 +15,13 @@ namespace DAL
         {
             this.ctx = ctx;
         }
+        public IdeationRepository(UnitOfWork unitOfWork)
+        {
+            if (unitOfWork == null)
+                throw new ArgumentNullException("unitOfWork");
+
+            ctx = unitOfWork.Context;
+        }
         
         public IEnumerable<Ideation> readIdeations(int projectId)
         {

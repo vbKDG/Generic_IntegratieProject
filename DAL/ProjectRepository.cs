@@ -16,6 +16,14 @@ namespace DAL
             this.ctx = ctx;
         }
         
+        public ProjectRepository(UnitOfWork unitOfWork)
+        {
+            if (unitOfWork == null)
+                throw new ArgumentNullException("unitOfWork");
+
+            ctx = unitOfWork.Context;
+        }
+        
         #region Projects
         public IEnumerable<Project> readProjects()
         {

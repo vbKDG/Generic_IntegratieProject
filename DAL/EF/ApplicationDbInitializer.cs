@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.EF
 {
-    public class DemoDbInitializer
+    public class ApplicationDbInitializer
     {
         private static bool hasRunDuringApplicationExecution;
         public static ApplicationDbContext ctx = null;

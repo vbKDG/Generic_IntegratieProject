@@ -15,7 +15,13 @@ namespace BL
         {
             repo = new ProjectRepository(ctx);
         }
-        
+        public ProjectManager(UnitOfWorkManager unitOfWorkManager)
+        {
+            if (unitOfWorkManager == null)
+                throw new ArgumentNullException("unitOfWorkManager");
+
+            repo = new DAL.ProjectRepository(unitOfWorkManager.UnitOfWork);
+        }
         public IEnumerable<Project> getProjects()
         {
             return repo.readProjects();

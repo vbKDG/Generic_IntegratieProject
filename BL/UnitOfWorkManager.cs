@@ -16,7 +16,7 @@ namespace BL
         // kunnen worden gepersisteert naar de databank
         public void Save()
         {
-            //UnitOfWork.CommitChanges();
+            UnitOfWork.CommitChanges();
         }
         
         

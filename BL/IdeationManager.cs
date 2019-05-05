@@ -15,6 +15,14 @@ namespace BL
         {
             ideationRepo = new IdeationRepository(ctx);
         }
+        
+        public IdeationManager(UnitOfWorkManager unitOfWorkManager)
+        {
+            if (unitOfWorkManager == null)
+                throw new ArgumentNullException("unitOfWorkManager");
+
+            ideationRepo = new DAL.IdeationRepository(unitOfWorkManager.UnitOfWork);
+        }
 
         public Ideation getIdeation(int ideationId)
         {

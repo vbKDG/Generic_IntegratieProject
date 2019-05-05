@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BL;
+using BL.Application;
 using D.UI.MVC.Models.Projects;
 using DAL.EF;
 using Domain;
@@ -14,25 +15,32 @@ namespace UI.MVC.Controllers
 {
     public class ProjectController : Controller
     {
-        private IProjectManager projectMgr;
-        private IIdeationManager ideationMgr;
+        private readonly OrchestratorSystemController orchestrator;
+        
+//        private IProjectManager projectMgr;
+//        private IIdeationManager ideationMgr;
+//
+//        public ProjectController(ApplicationDbContext ctx)
+//        {
+//            projectMgr = new ProjectManager(ctx);
+//            ideationMgr = new IdeationManager(ctx);
+//        }
 
-        public ProjectController(ApplicationDbContext ctx)
+        public ProjectController()
         {
-            projectMgr = new ProjectManager(ctx);
-            ideationMgr = new IdeationManager(ctx);
+            orchestrator = new OrchestratorSystemController();
         }
 
         public IActionResult Projects()
         {
-            IEnumerable<Project> allProjects = projectMgr.getProjects();
+            IEnumerable<Project> allProjects = orchestrator.getProjects();
             return View(allProjects);
         }
 
         public IActionResult Project(int id)
         {
-            Project p1 = projectMgr.getProject(id);
-            IEnumerable<IdeationQuestion> ideationQuestions1 = ideationMgr.GetIdeationQuestionsForProject(id);
+            Project p1 = orchestrator.getProject(id);
+            IEnumerable<IdeationQuestion> ideationQuestions1 = orchestrator.GetIdeationQuestionsForProject(id);
             var model = new ProjectAndQuestions() {ideationQuestions = ideationQuestions1, project = p1};
 
             return View(model);
@@ -40,7 +48,7 @@ namespace UI.MVC.Controllers
 
         public IActionResult Ideas(int id)
         {
-            IEnumerable<Idea> ideas = ideationMgr.getIdeas(id);
+            IEnumerable<Idea> ideas = orchestrator.getIdeas(id);
             return View(ideas);
         }
 
@@ -51,7 +59,7 @@ namespace UI.MVC.Controllers
 
         public IActionResult ProjectImageDisplay()
         {
-            Project p = projectMgr.getProject(3);
+            Project p = orchestrator.getProject(3);
 
             return View(p);
 
@@ -105,7 +113,7 @@ namespace UI.MVC.Controllers
 
             project.phases = phases;
 
-            projectMgr.addProject(project);
+            orchestrator.addProject(project);
 
 
 
