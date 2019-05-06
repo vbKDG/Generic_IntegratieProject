@@ -38,8 +38,17 @@ namespace UI.MVC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddIdentity<ApplicationUser, ApplicationRole>(
-                    options => options.Stores.MaxLengthForKeys = 128)
+                    options =>
+                    {
+                        options.Stores.MaxLengthForKeys = 128;
+                        options.Password.RequireDigit = false;
+                        options.Password.RequiredLength = 6;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequireUppercase = false;
+                    })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();

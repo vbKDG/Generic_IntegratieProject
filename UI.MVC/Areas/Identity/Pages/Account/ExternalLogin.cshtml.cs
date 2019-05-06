@@ -52,7 +52,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Give in a password for extra security and for a manual log in")]
+            [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
@@ -156,9 +156,9 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                 }
                 
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                await _userManager.AddToRoleAsync(user, "SignedInUserVerified");
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "SignedInUserVerified");
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {

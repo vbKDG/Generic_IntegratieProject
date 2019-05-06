@@ -127,16 +127,16 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                     user.Organisation = organisation;
                 }
                 var resultUser = await _userManager.CreateAsync(user, Input.Password);
-                if (Input.isOrganisation)
-                {
-                    await _userManager.AddToRoleAsync(user, "SignedInUserOrganisation");
-                }
-                else
-                {
-                    await _userManager.AddToRoleAsync(user, "SignedInUser");
-                }
                 if (resultUser.Succeeded)
                 {
+                    if (Input.isOrganisation)
+                    {
+                        await _userManager.AddToRoleAsync(user, "SignedInUserOrganisation");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "SignedInUser");
+                    }
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
