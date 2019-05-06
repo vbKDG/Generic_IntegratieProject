@@ -43,6 +43,22 @@ namespace UI.MVC
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+            
+            services.AddAuthentication()
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = "463981528828-s13f519mg5qaoi3toun1tllidcoavkvu.apps.googleusercontent.com";
+                    googleOptions.ClientSecret = "P18Mb16um5dqwbEcXT3-eEaW";
+                })
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = "2852127991493820";
+                    facebookOptions.AppSecret = "504c1951b2a32d78a7f955835f8424e7";
+                    facebookOptions.Scope.Add("user_birthday");
+                    facebookOptions.Scope.Add("user_gender");
+                    facebookOptions.Fields.Add("birthday");
+                    facebookOptions.Fields.Add("gender");
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

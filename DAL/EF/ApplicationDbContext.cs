@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace DAL.EF
@@ -68,14 +67,7 @@ namespace DAL.EF
             optionsBuilder.UseSqlite("Data Source=app.db");
             
             base.OnConfiguring(optionsBuilder);
-            
-            optionsBuilder.UseLoggerFactory(new LoggerFactory(
-                new[] { new DebugLoggerProvider(
-                    (category, level) => category == DbLoggerCategory.Database.Command.Name
-                                         && level == LogLevel.Information
-                )}
-            ));
-        }
+            }
         
         protected override void OnModelCreating(ModelBuilder builder)  
         {  
