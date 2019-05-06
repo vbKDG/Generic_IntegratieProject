@@ -11,9 +11,9 @@ namespace DAL
     {
         private ApplicationDbContext ctx;
 
-        public IdeationRepository(ApplicationDbContext ctx)
+        public IdeationRepository()
         {
-            this.ctx = ctx;
+            ctx = new ApplicationDbContext();
         }
         public IdeationRepository(UnitOfWork unitOfWork)
         {

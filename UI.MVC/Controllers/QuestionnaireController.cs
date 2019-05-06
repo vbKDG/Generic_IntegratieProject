@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
+using Autofac;
 using BL;
 using DAL.EF;
 using Domain;
@@ -17,10 +18,23 @@ namespace UI.MVC.Controllers
     public class QuestionnaireController : Controller
     {
         private readonly IQuestionnaireManager qmgr;
+        private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
+
         
-        public QuestionnaireController(ApplicationDbContext ctx)
+//        public QuestionnaireController(ApplicationDbContext ctx)
+//        {
+//            qmgr = new QuestionnaireManager(ctx);
+//        }
+
+//        public QuestionnaireController(IQuestionnaireManager questionnaireManager)
+//        {
+//          //  DIConfig = new DependencyInjectionConfig();
+//            qmgr = DIConfig.container.Resolve<IQuestionnaireManager>();
+//        }
+
+        public QuestionnaireController()
         {
-            qmgr = new QuestionnaireManager(ctx);
+            qmgr = new QuestionnaireManager();
         }
         
         public IActionResult Questionnaires(int projectId)

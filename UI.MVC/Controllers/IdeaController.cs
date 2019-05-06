@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using BL;
 using D.UI.MVC.Models.Ideas;
 using DAL.EF;
@@ -16,10 +17,21 @@ namespace UI.MVC.Controllers
     public class IdeaController : Controller
     {
         private IIdeationManager ideationMgr;
+        private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
-        public IdeaController(ApplicationDbContext ctx)
+//        public IdeaController(ApplicationDbContext ctx)
+//        {
+//            ideationMgr = new IdeationManager(ctx);
+//        }
+
+//        public IdeaController()
+//        {
+//            ideationMgr = DIConfig.container.Resolve<IdeationManager>();
+//        }
+
+        public IdeaController()
         {
-            ideationMgr = new IdeationManager(ctx);
+            ideationMgr = new IdeationManager();
         }
 
         public IActionResult CreateIdeaPage(int ideationId)
@@ -27,7 +39,7 @@ namespace UI.MVC.Controllers
 
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
             IdeaVM ideaVm = new IdeaVM();
-
+            
 
             String[] questions = new string[ideationQuestions.Length];
 
@@ -111,6 +123,15 @@ namespace UI.MVC.Controllers
 
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
+
+        public IActionResult CreateIdeationPage( int projectId)
+        {
+            
+            
+            return View();
+        }
+        
+        
 
 
 

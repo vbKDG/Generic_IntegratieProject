@@ -11,9 +11,9 @@ namespace DAL
     {
         private ApplicationDbContext ctx;
 
-        public QuestionnaireRepository(ApplicationDbContext ctx)
+        public QuestionnaireRepository()
         {
-            this.ctx = ctx;
+            ctx = new ApplicationDbContext();
         }
         
         public QuestionnaireRepository(UnitOfWork unitOfWork)

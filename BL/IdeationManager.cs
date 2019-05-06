@@ -4,6 +4,7 @@ using System.Drawing;
 using DAL;
 using DAL.EF;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace BL
 {
@@ -11,9 +12,18 @@ namespace BL
     {
         private IIdeationRepository ideationRepo;
         
-        public IdeationManager(ApplicationDbContext ctx)
+//        public IdeationManager(ApplicationDbContext ctx)
+//        {
+//            ideationRepo = new IdeationRepository(ctx);
+//        }
+
+//        public IdeationManager(IIdeationRepository repo)
+//        {
+//            ideationRepo = repo;
+//        }
+        public IdeationManager()
         {
-            ideationRepo = new IdeationRepository(ctx);
+            ideationRepo = new IdeationRepository();
         }
         
         public IdeationManager(UnitOfWorkManager unitOfWorkManager)

@@ -11,10 +11,20 @@ namespace BL
     {
         private IQuestionnaireRepository repo;
 
-        public QuestionnaireManager(ApplicationDbContext ctx)
+//        public QuestionnaireManager(ApplicationDbContext ctx)
+//        {
+//            repo = new QuestionnaireRepository(ctx);
+//        }
+
+//        public QuestionnaireManager(IQuestionnaireRepository questionnaireRepo)
+//        {
+//            repo = questionnaireRepo;
+//        }
+        public QuestionnaireManager()
         {
-            repo = new QuestionnaireRepository(ctx);
+            repo = new QuestionnaireRepository();
         }
+        
         public QuestionnaireManager(UnitOfWorkManager unitOfWorkManager)
         {
             if (unitOfWorkManager == null)

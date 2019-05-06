@@ -201,6 +201,7 @@
           <e p="ProjectController.cs" t="Include" />
           <e p="QuestionnaireController.cs" t="Include" />
         </e>
+        <e p="DependencyInjectionConfig.cs" t="Include" />
         <e p="Models" t="Include">
           <e p="ErrorModel.cs" t="Include" />
           <e p="Fields" t="Include">
@@ -209,6 +210,9 @@
           <e p="FillInQuestionnaireModel.cs" t="Include" />
           <e p="Ideas" t="Include">
             <e p="IdeaVM.cs" t="Include" />
+          </e>
+          <e p="Ideations" t="Include">
+            <e p="IdeationVM.cs" t="Include" />
           </e>
           <e p="Idee.cs" t="Include" />
           <e p="OptionsAmount.cs" t="Include" />
@@ -253,6 +257,7 @@
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
+            <e p="CreateIdeationPage.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">

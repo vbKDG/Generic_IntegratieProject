@@ -11,10 +11,19 @@ namespace BL
     {
         private IProjectRepository repo;
         
-        public ProjectManager(ApplicationDbContext ctx) 
-        {
-            repo = new ProjectRepository(ctx);
+//        public ProjectManager(ApplicationDbContext ctx) 
+//        {
+//            repo = new ProjectRepository(ctx);
+//        }
+
+//        public ProjectManager(IProjectRepository projectRepo)
+//        {
+//            repo = projectRepo;
+//        }
+        public ProjectManager(){
+            repo = new ProjectRepository();
         }
+        
         public ProjectManager(UnitOfWorkManager unitOfWorkManager)
         {
             if (unitOfWorkManager == null)

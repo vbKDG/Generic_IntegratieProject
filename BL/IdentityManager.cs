@@ -5,12 +5,21 @@ namespace BL
 {
     public class IdentityManager : IIdentityManager
     {
-        private IdentityRepository repo;
+        private IIdentityRepository repo;
         
         public IdentityManager(ApplicationDbContext ctx)
         {
             repo = new IdentityRepository(ctx);
         }
+
+        public IdentityManager(IIdentityRepository identityRepo)
+        {
+            repo = identityRepo;
+        }
+//        public IdentityManager()
+//        {
+//            repo = new IdentityRepository();
+//        }
 
         public Organisation getOrganisation(string UserId)
         {

@@ -36,6 +36,10 @@
   "frameworks": {
     "netcoreapp2.2": {
       "dependencies": {
+        "Autofac": {
+          "target": "Package",
+          "version": "[4.9.2, )"
+        },
         "Microsoft.AspNetCore.App": {
           "suppressParent": "All",
           "target": "Package",
@@ -68,6 +72,10 @@
         "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
           "target": "Package",
           "version": "[2.2.3, )"
+        },
+        "Unity.NetCore": {
+          "target": "Package",
+          "version": "[4.0.3, )"
         }
       },
       "imports": [
