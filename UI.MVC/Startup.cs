@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UI.MVC.Services;
 
 namespace UI.MVC
 {
@@ -20,7 +22,7 @@ namespace UI.MVC
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -42,6 +44,7 @@ namespace UI.MVC
             services.AddIdentity<ApplicationUser, ApplicationRole>(
                     options =>
                     {
+                        options.SignIn.RequireConfirmedEmail = true;
                         options.Stores.MaxLengthForKeys = 128;
                         options.Password.RequireDigit = false;
                         options.Password.RequiredLength = 6;
@@ -68,6 +71,8 @@ namespace UI.MVC
                     facebookOptions.Fields.Add("birthday");
                     facebookOptions.Fields.Add("gender");
                 });
+            
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

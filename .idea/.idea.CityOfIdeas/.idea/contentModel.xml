@@ -115,7 +115,6 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
         <e p="app.db" t="Include" />
-        <e p="app.db-journal" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -231,6 +230,9 @@
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="EmailSender.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="UI.MVC.csproj" t="IncludeRecursive" />

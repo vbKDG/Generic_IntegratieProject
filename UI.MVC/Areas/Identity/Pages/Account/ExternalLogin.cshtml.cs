@@ -132,6 +132,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 user.FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName);
                 user.LastName = info.Principal.FindFirstValue(ClaimTypes.Surname);
+                user.EmailConfirmed = true;
 
                 var dob = info.Principal.FindFirstValue(ClaimTypes.DateOfBirth);
                 if (dob != null)
