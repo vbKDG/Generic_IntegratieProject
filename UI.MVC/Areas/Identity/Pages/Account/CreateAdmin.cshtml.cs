@@ -91,17 +91,14 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                     PostalCode = Input.PostalCode,
                 };
                 var resultUser = await _userManager.CreateAsync(user, Input.Password);
-                var resultRole = await _userManager.AddToRoleAsync(user, "Admin");
-                if (resultUser.Succeeded && resultRole.Succeeded)
+                
+                if (resultUser.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Admin");
                     _logger.LogInformation("Super Admin created a new Admin account with password.");
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in resultUser.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                foreach (var error in resultRole.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }

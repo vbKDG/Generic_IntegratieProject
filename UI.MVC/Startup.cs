@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UI.MVC.Services;
 
 namespace UI.MVC
 {
@@ -20,7 +22,7 @@ namespace UI.MVC
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -38,11 +40,39 @@ namespace UI.MVC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddIdentity<ApplicationUser, ApplicationRole>(
-                    options => options.Stores.MaxLengthForKeys = 128)
+                    options =>
+                    {
+                        options.SignIn.RequireConfirmedEmail = true;
+                        options.Stores.MaxLengthForKeys = 128;
+                        options.Password.RequireDigit = false;
+                        options.Password.RequiredLength = 6;
+                        options.Password.RequireLowercase = false;
+                        options.Password.RequireNonAlphanumeric = false;
+                        options.Password.RequireUppercase = false;
+                    })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+            
+            services.AddAuthentication()
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = "463981528828-s13f519mg5qaoi3toun1tllidcoavkvu.apps.googleusercontent.com";
+                    googleOptions.ClientSecret = "P18Mb16um5dqwbEcXT3-eEaW";
+                })
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = "2852127991493820";
+                    facebookOptions.AppSecret = "504c1951b2a32d78a7f955835f8424e7";
+                    facebookOptions.Scope.Add("user_birthday");
+                    facebookOptions.Scope.Add("user_gender");
+                    facebookOptions.Fields.Add("birthday");
+                    facebookOptions.Fields.Add("gender");
+                });
+            
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

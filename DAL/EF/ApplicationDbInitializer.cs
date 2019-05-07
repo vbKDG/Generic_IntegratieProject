@@ -71,7 +71,8 @@ namespace DAL.EF
                     UserName = "super.admin@gmail.com",
                     Email = "super.admin@gmail.com",
                     FirstName = "Super",
-                    LastName = "Admin"
+                    LastName = "Admin",
+                    EmailConfirmed = true
                 };
 
                 var result = await userManager.CreateAsync(user);
@@ -90,7 +91,8 @@ namespace DAL.EF
                     LastName = "Jaap",
                     Age = "25",
                     Gender = "M",
-                    PostalCode = "2340"
+                    PostalCode = "2340",
+                    EmailConfirmed = true
                 };
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded) {
@@ -108,7 +110,8 @@ namespace DAL.EF
                     LastName = "Smet",
                     Age = "52",
                     Gender = "M",
-                    PostalCode = "2480"
+                    PostalCode = "2480",
+                    EmailConfirmed = true
                 };
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded) {
@@ -126,7 +129,8 @@ namespace DAL.EF
                     LastName = "bakker",
                     Age = "62",
                     Gender = "M",
-                    PostalCode = "2000"
+                    PostalCode = "2000",
+                    EmailConfirmed = true
                 };
                 var result = await userManager.CreateAsync(user);
                 if (result.Succeeded) {

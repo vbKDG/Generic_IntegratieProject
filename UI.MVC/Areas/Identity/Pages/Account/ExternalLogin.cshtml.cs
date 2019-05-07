@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.Extensions.Logging;
 using UI.MVC.Models;
 
@@ -46,6 +48,17 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string ConfirmPassword { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -117,9 +130,36 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user);
+                user.FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName);
+                user.LastName = info.Principal.FindFirstValue(ClaimTypes.Surname);
+                user.EmailConfirmed = true;
+
+                var dob = info.Principal.FindFirstValue(ClaimTypes.DateOfBirth);
+                if (dob != null)
+                {
+                    var birthday = DateTime.ParseExact(dob, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    var now = DateTime.Today;
+                    var age = now.Year - birthday.Year;
+                    if (birthday > now.AddYears(-age)) age--;
+                    user.Age = Convert.ToString(age);
+                }
+                
+                var gender = info.Principal.FindFirstValue(ClaimTypes.Gender);
+                if (gender != null)
+                {
+                    if (gender == "male")
+                    {
+                        user.Gender = "M";
+                    } else if (gender == "female")
+                    {
+                        user.Gender = "V";
+                    }
+                }
+                
+                var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "SignedInUserVerified");
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
