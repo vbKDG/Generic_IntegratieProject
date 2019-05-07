@@ -302,6 +302,7 @@
         </e>
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
+            <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />

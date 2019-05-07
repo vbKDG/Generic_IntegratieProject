@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using BL;
+using D.UI.MVC.Models.Fields;
 using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
@@ -39,6 +40,7 @@ namespace UI.MVC.Controllers
 
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
             IdeaVM ideaVm = new IdeaVM();
+            ideaVm.textfields = new TextFieldVm[0];
             
 
             String[] questions = new string[ideationQuestions.Length];

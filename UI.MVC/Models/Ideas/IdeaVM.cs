@@ -31,6 +31,8 @@ namespace D.UI.MVC.Models.Ideas
         public int ideaViewModelId { get; set; }
         public string name { get; set; }
       //  public ICollection<FieldViewModel> fields { get; set; }
+      
+        public TextFieldVm[] textfields { get; set; }
         public TextFieldVm textFieldVM { get; set; }
         public ImageFieldVm imageFieldVM { get; set; }
         public VideoFieldVm videoFieldVM { get; set; }

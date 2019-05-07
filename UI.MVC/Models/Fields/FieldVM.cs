@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 
@@ -25,7 +26,9 @@ namespace D.UI.MVC.Models.Fields
         // [Required, Microsoft.Web.Mvc.FileExtensions(Extensions = "jpeg",ErrorMessage = "Specify a jpeg file.")]
        
         public string imageName { get; set; }
+        [Display(Name ="Choose Image")]
         public IFormFile imageFile { get; set; }
+        public IFormFile[] imageFiles { get; set; }
 
         
 
