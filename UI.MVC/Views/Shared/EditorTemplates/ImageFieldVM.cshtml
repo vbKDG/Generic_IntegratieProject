@@ -1,20 +1,20 @@
 @model D.UI.MVC.Models.Fields.ImageFieldVm
 <div>
-    <label>Image:</label>
+    <!--<label>Image:</label>-->
     @*   <input id="image" name="image" type="file"/> #pogin 1
-    @Html.TextBoxFor(m => m.file, new {type = "file"})#poging 2 
-    <input type="file" id="imageFile" name="imageFile" value="ActionHandlerForForm"/> #poging3          *@
-    <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
-    <input asp-for="imageFile" type="file" 
+        @Html.TextBoxFor(m => m.file, new {type = "file"})#poging 2
+        <input type="file" id="imageFile" name="imageFile" value="ActionHandlerForForm"/> #poging3          *@
+    <input asp-for="imageName" type="hidden" class="form-control" value="test" />
+    <input asp-for="imageFile" type="file"
            class="form-control"
-           onchange="readImage(this)" 
+           onchange="readImage(this)"
            multiple
            accept="image/*">
-    <img id="image_preview" src="#" alt="your image" width="200" height="200" hidden=""/>
+    <img id="image_preview" src="#" alt="your image" width="200" height="200" hidden="" />
 
-    
 
-    
+
+
 </div>
 
 
