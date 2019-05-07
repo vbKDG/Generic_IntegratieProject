@@ -12,6 +12,7 @@ using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UI.MVC.Models.Ideations;
 
 namespace UI.MVC.Controllers
 {
@@ -131,6 +132,16 @@ namespace UI.MVC.Controllers
             
             
             return View();
+        }
+
+        public IActionResult CreateIdeation(IdeationVM ideationVm)
+        {
+            
+            
+            
+            return RedirectToAction("Project", "Project", new {id = 1});
+
+            
         }
         
         

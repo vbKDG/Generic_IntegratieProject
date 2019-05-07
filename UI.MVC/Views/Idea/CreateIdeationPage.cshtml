@@ -1,0 +1,16 @@
+@model UI.MVC.Models.Ideations.IdeationVM
+
+<form asp-controller="Idea" asp-action="CreateIdeation" method="post" enctype="multipart/form-data">
+
+    
+    <label> Aantal Tekst</label>
+    <select asp-for="amountTextFields">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+
+    </select>
+
+    <input type="submit" value="save">   
+
+</form>
