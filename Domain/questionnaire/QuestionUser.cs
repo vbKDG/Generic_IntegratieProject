@@ -9,5 +9,6 @@ namespace Domain
         public Question Question { get; set; }
         public String Answer { get; set; }
         public ApplicationUser User { get; set;  }
+        public bool Confirmed { get; set; }
     }
 }

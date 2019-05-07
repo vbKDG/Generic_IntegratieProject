@@ -9,21 +9,24 @@
     <table class="table">
         @foreach (var item in Model.questions)
         {
-            if (item.questionType == QuestionType.MAILADDRESS)
+            if (!User.Identity.IsAuthenticated)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.question) <br>
-                        <input name="Answer-@item.id" type="text">
-                    </td>
-                </tr>
+                if (item.questionType == QuestionType.MAILADDRESS)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            <input name="email" type="text">
+                        </td>
+                    </tr>
+                }
             }
             if (item.questionType == QuestionType.DROPDOWN)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.question) <br>
-                        <select id="ddlOptions" name="Answer-@item.id">
+                        <select id="ddlOptions" name="Answer-@item.id-dropdown">
                             <option value="0">Please select</option>
                             @foreach (var option in item.options)
                             {
@@ -38,7 +41,7 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.question) <br>
-                        <textarea name="Answer-@item.id" type="text"></textarea>
+                        <textarea name="Answer-@item.id-openquestion" type="text"></textarea>
                     </td>
                 </tr>
             }
@@ -50,7 +53,7 @@
                             @Html.DisplayFor(modelItem => item.question) <br>
                             @foreach (var option in item.options)
                             {
-                                <input type="radio" value="@option.option" name="Answer-@item.id"/>
+                                <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
                                 @Html.DisplayFor(modelItem => option.option)<br>
                             }
                         </fieldset>
@@ -65,7 +68,7 @@
                             @Html.DisplayFor(modelItem => item.question) <br>
                             @foreach (var option in item.options)
                             {
-                                <input type="checkbox" value="@option.option" name="Answer-@item.id"/>
+                                <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
                                 @Html.DisplayFor(modelItem => option.option)<br>
                             }
                         </fieldset>
@@ -74,6 +77,7 @@
             }
         }
     </table>
+    <input type="hidden" name="questionnaireId" value="@Model.questionnaire.id"/>
     <div class="form-group">
         <input type="submit" value="Submit answers" class="btn btn-default"/>
     </div>

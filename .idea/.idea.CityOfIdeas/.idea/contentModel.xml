@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\vin-c\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.857546131.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -130,6 +130,8 @@
                 <e p="AccessDenied.cshtml.cs" t="Include" />
                 <e p="ConfirmEmail.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml.cs" t="Include" />
+                <e p="ConfirmQuestionnaire.cshtml" t="Include" />
+                <e p="ConfirmQuestionnaire.cshtml.cs" t="Include" />
                 <e p="CreateAdmin.cshtml" t="Include" />
                 <e p="CreateAdmin.cshtml.cs" t="Include" />
                 <e p="CreateModerator.cshtml" t="Include" />
@@ -235,6 +237,9 @@
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
+        <e p="Services" t="Include">
+          <e p="EmailSender.cs" t="Include" />
+        </e>
         <e p="Startup.cs" t="Include" />
         <e p="UI.MVC.csproj" t="IncludeRecursive" />
         <e p="Views" t="Include">
@@ -273,6 +278,7 @@
             <e p="Projects.cshtml" t="Include" />
           </e>
           <e p="Questionnaire" t="Include">
+            <e p="ConfirmQuestionnairePage.cshtml" t="Include" />
             <e p="CreateQuestionnairePage.cshtml" t="Include" />
             <e p="DeleteQuestionnairePage.cshtml" t="Include" />
             <e p="EditQuestionnairePage.cshtml" t="Include" />

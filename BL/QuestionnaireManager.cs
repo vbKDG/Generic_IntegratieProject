@@ -68,6 +68,16 @@ namespace BL
             return repo.readQuestionUsers(questionnaireId);
         }
         
+        public IEnumerable<QuestionUser> getQuestionUsers()
+        {
+            return repo.readQuestionUsers();
+        }
+
+        public QuestionUser getQuestionUser(int questionUserId)
+        {
+            return repo.readQuestionUser(questionUserId);
+        }
+
         public void addQuestionnaire(List<Question> questions, String name, int questionAmount, int projectId)
         {
             Questionnaire newQuestionnaire = new Questionnaire();
@@ -107,6 +117,11 @@ namespace BL
         {
             Validator.ValidateObject(q, new ValidationContext(q));
             repo.updateQuestionnaire(q);
+        }
+
+        public void changeQuestionUser(QuestionUser questionUser)
+        {
+            repo.updateQuestionUser(questionUser);
         }
 
         public void removeQuestionnaire(int id)

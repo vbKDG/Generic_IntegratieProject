@@ -78,3 +78,7 @@ card {
         display: none;
     }
 }
+
+input, select, textarea { 
+    color: black;
+}
