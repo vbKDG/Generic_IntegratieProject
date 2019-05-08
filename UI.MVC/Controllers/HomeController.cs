@@ -9,11 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using UI.MVC.Models;
+using BL.Application;
 
 namespace UI.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly OrchestratorSystemController orchestrator;
+
         public IActionResult Index()
         {
             return View();
@@ -33,9 +36,17 @@ namespace UI.MVC.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AdminPage()
         {
             return View();
+        }
+
+        public IActionResult BestProject()
+        {
+            Project p = orchestrator.getProject(1);
+
+            return View(p);
+
         }
 
         public IActionResult Login()

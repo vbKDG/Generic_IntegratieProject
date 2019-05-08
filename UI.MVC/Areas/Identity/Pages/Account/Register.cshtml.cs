@@ -62,7 +62,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
             [Display(Name ="First Name")]
             public string FirstName { get; set; }
-
+            
             [Required]
             [DataType(DataType.Text)]
             [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
