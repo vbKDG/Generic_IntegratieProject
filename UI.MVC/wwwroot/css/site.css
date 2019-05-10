@@ -9,6 +9,10 @@ html, body {
     
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 #discoverbutton{
     padding-bottom: 10px;
@@ -18,10 +22,10 @@ html, body {
     
 }
 
-
 #ProjectsCard {
     
     background-color: #b4b4b4;
+
 }
 
 #rowPictures {
@@ -34,16 +38,19 @@ html, body {
     padding-top:100px;
 }
 
+
+
 #Homepage {
-    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
     background-repeat: no-repeat;
     height: 100%;
 }
 
-#projects-head-section{
+#projects-head-section {
+    background-color: #cae5ff;
 
     padding-top: 20px;
-    background-color: #d3d3d3;
+
     width: 100%;
 }
 
@@ -60,26 +67,24 @@ h1, h3, h4 {
     margin-bottom: -50px;
 }
 
-.footer,
-.push {
-    height: 50px;
-}
-.footer {
-    
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+#projectsgeneral {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
-.carousel-item{
+
+.carousel-item {
     height: 340px;
 }
 
+.container body-content{
+    height: 100%;
+}
 
-.carousel-image-1{
+.carousel-image-1 {
     background: url(/images/carousel-image1.jpg);
-    background-size:cover;
+    background-size: cover;
 }
 
 .carousel-image-2 {
@@ -104,8 +109,29 @@ input, select, textarea {
 #register-page{
 }
 
-#registerPage {
+#deleteQuestionnairePage {
     background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+#deleteCard{
+    height: 100%;
+}
+
+#AboutPage {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#SettingsManager {
+    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+#registerPage {
+    background-image: linear-gradient(to bottom,#ffffff,#97f6ff);
     background-repeat: no-repeat;
     height: 100%;
 }
@@ -126,9 +152,10 @@ card {
 
 
 #login {
-    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
     background-repeat: no-repeat;
     height: 100%;
+
 }
 
 

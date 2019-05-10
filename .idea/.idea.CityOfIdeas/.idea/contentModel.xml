@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\Cem\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Cem\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Cem\.Rider2018.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\Cem\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Cem\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-99018827.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Cem\Documents\identityrepo\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -213,6 +214,7 @@
           <e p="Idee.cs" t="Include" />
           <e p="OptionsAmount.cs" t="Include" />
           <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="ProjectCollectionsVM.cs" t="Include" />
           <e p="Projects" t="Include">
             <e p="ProjectVM.cs" t="Include" />
           </e>
@@ -246,10 +248,12 @@
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />
+            <e p="AboutPage.cshtml" t="Include" />
+            <e p="AdminPage.cshtml" t="Include" />
+            <e p="BestProject.cshtml" t="Include" />
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
-            <e p="Login.cshtml" t="Include" />
-            <e p="Privacy.cshtml" t="Include" />
+            <e p="UserActivityPartial.cshtml" t="Include" />
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
@@ -265,6 +269,7 @@
             <e p="Maptest.cshtml" t="Include" />
             <e p="Project.cshtml" t="Include" />
             <e p="ProjectImageDisplay.cshtml" t="Include" />
+            <e p="projectImageDisplay2.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />
           </e>
           <e p="Questionnaire" t="Include">
@@ -303,28 +308,29 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
-            <e p="antwerp.jpg" t="Include" />
-            <e p="banner1.svg" t="Include" />
-            <e p="banner2.svg" t="Include" />
-            <e p="banner3.svg" t="Include" />
-            <e p="bbq.PNG" t="Include" />
-            <e p="bgcity.jpg" t="Include" />
             <e p="building3.jpg" t="Include" />
-            <e p="comments.png" t="Include" />
-            <e p="delen.jpg" t="Include" />
-            <e p="ideeLogo.jpg" t="Include" />
-            <e p="image1.jpg" t="Include" />
-            <e p="image2.jpg" t="Include" />
-            <e p="image3.jpg" t="Include" />
+            <e p="carousel-image1.jpg" t="Include" />
+            <e p="carousel-image2.jpg" t="Include" />
+            <e p="carousel-image3.jpg" t="Include" />
+            <e p="carousel-images" t="Include">
+              <e p="car-img1.jpg" t="Include" />
+              <e p="car-img2.jpg" t="Include" />
+              <e p="car-img3.jpg" t="Include" />
+            </e>
+            <e p="dummy-theme.jpg" t="Include" />
+            <e p="icon-person.png" t="Include" />
             <e p="leuk.jpg" t="Include" />
-            <e p="park1.jpg" t="Include" />
-            <e p="park2.jpg" t="Include" />
-            <e p="park3.jpg" t="Include" />
-            <e p="park4.jpg" t="Include" />
-            <e p="person.png" t="Include" />
-            <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
-            <e p="straat2.jpg" t="Include" />
-            <e p="straat3.jpg" t="Include" />
+            <e p="project-antique-flea-market.jpg" t="Include" />
+            <e p="project-art-evening.jpg" t="Include" />
+            <e p="project-asian-food.jpg" t="Include" />
+            <e p="project-bbq.PNG" t="Include" />
+            <e p="project-flea-market.jpg" t="Include" />
+            <e p="project-lava.jpg" t="Include" />
+            <e p="project-park-badminton.jpg" t="Include" />
+            <e p="project-parking-lot.jpg" t="Include" />
+            <e p="project-renaissance-faire.jpg" t="Include" />
+            <e p="project-soccer.jpg" t="Include" />
+            <e p="project-sushi.jpg" t="Include" />
           </e>
           <e p="js" t="Include">
             <e p="checkIfOrganisation.js" t="Include" />

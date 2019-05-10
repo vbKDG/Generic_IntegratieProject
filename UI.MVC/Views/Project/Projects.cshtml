@@ -22,26 +22,26 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <div class="col-lg-12">
-                                            @Html.DisplayFor(modelItem => item.name)
-                                            </div>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.description)
-                                    </td>
-                                    <td>
-                                       
-                                        @Html.ActionLink("Questionnaires", "Questionnaires", "Questionnaire"
-                                            , new { projectId=item.projectId })
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Ideations", "Project", "Project"
-                                            , new { id=item.projectId })
+                            <tr>
+                                <td>
+                                    <div class="col-lg-12">
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
 
-                                    </td>
-                                </tr>
+                                    @Html.ActionLink("Questionnaires", "Questionnaires", "Questionnaire"
+                                        , new { projectId=item.projectId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Ideations", "Project", "Project"
+                                        , new { id=item.projectId })
+
+                                </td>
+                            </tr>
                             }
                            
                         </tbody>

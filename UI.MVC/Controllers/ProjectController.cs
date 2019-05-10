@@ -36,6 +36,7 @@ namespace UI.MVC.Controllers
             IEnumerable<Project> allProjects = orchestrator.getProjects();
             return View(allProjects);
         }
+        
 
         public IActionResult Project(int id)
         {
@@ -59,11 +60,13 @@ namespace UI.MVC.Controllers
 
         public IActionResult ProjectImageDisplay()
         {
-            Project p = orchestrator.getProject(3);
+            Project p = orchestrator.getProject(6);
 
             return View(p);
 
         }
+
+
 
         public IActionResult CreateProjectPage()
         {

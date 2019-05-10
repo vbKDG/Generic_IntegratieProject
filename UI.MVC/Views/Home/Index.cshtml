@@ -1,10 +1,26 @@
-﻿@model Domain.Project
+﻿@model IEnumerable<Domain.Project>
 
+
+@foreach (var project in @Model)
+{
+    <p>
+                
+        @project.name
+        @project.description
+                                    
+                
+    </p>
+    <img src="@project.imageField.GetImageString()" width="200" height="200" />
+}
+                
+<div id="discoverbutton" class="col text-center">
+    <a asp-action="About" class="btn btn-success btn-lg">Discover more</a>
+</div>-->
+
+
+</div>
 
 <body id="Homepage">
-
-
-
 
     <section id="showcase">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -64,227 +80,112 @@
     <!-- HOME SECTION -->
     <div class="container">
         <div class="col text-center py-5">
-            <h1 class="text-light">Welkom!</h1>
-            <h3 class="text-light">
+            <h1 class="text-dark">Welcome</h1>
+            <h3 class="text-dark">
 
                 Wij van treecompany hebben dit platform ontworpen zodat burgers hun opinie's en ideeen kunnen geven over projecten
                 die in hun omgeving verwezenlijkt zullen worden. Want elke stem telt!
 
             </h3>
-            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-                Aanmelden
-            </button>
+            <div id="signInButton" class="col text-center">
+                <a class="btn btn-success btn-lg" href="#projectTop">More</a>
+
+            </div>
         </div>
+    </div>
+
+
+    <!-- Projects HEAD -->
+    <section id="projectTop">
+        <div id="projects-head-section" class="container-fluid">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>Our Projects</h1>
+                    <h4>
+                        Are you interested in projects in your neighbourhood, No need to look further.
+                    </h4>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
-
-            <div class="modal" id="myModal">
-                <div class="modal-dialog modal-sm bg-dark">
-                    <div class="modal-content bg-dark">
-
-                        <div class="card bg-dark card-form">
-                            <div class="card-body bg-dark">
-                                <h3 id="signButton" class="text-white"><u>Aanmelden</u></h3>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email"
-                                               class="form-control form-control-lg"
-                                               placeholder="Email" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password"
-                                               class="form-control form-control-lg"
-                                               placeholder="Wachtwoord" />
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Inloggen</button>
-
-                                    <div class="d-flex justify-content-center mb-3">
-                                        <div class="p-2"> <i class="fab fa-google"></i></div>
-
-                                        <div class="p-2"> <i class="fab fa-facebook-f"></i></div>
-
-                                    </div>
-                                    <div class="d-flex flex-column mb-3">
-                                        <div class="p-2">Registreren</div>
-                                        <div class="p-2">Wachtwoord Vergeten?</div>
-                                    </div>
 
 
 
-                                </form>
-                            </div>
+            <!-- Project Section -->
+
+    </section>
+
+    
+    <div class="col text-center py-5">
+        <a href="#navbar"><i class="fas fa-arrow-up fa-2x"></i></a>
+    </div>
+    <div class="col text-center py-5">
+        <h2>Recent Activities</h2>
+    </div>
+    <section id="Recent" class="p-5">
+        <div class="container.flow">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card bg-info text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
                         </div>
-
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-info text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-
-
-
-        <!-- Projects HEAD -->
-        <section id="projectTop">
-            <div id="projects-head-section" class="container.flow">
-                <div class="row">
-                    <div class="col text-center">
-                        <h1>Our Projects</h1>
-                        <h4>
-                            Are you interested in projects in your neighbourhood, No need to look further.
-                        </h4>
-                    </div>
-                </div>
-
-
-
-
-                <!-- Project Section -->
-
-                <div id="rowPictures" class="row row mb-4">
-                    <div class="col-md-4 ">
-                        <h5 class="text-center"><b>Generate name</b></h5>
-                        <img src="~/images/project-soccer.jpg" alt="Project image" style="width:100%">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
-                        </div>
-                        <div>
-                            <p>
-                                <i class="far fa-heart"></i> 5
-                                <i class="far fa-comments"></i> 6
-                                <i class="fas fa-share-alt"></i> 8
-                            </p>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <h5 class="text-center"><b>Generate name</b></h5>
-                        <img src="~/images/project-asian-food.jpg" alt="Project Image" style="width:100%">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
-                        </div>
-                        <div>
-                            <p>
-                                <i class="far fa-heart"></i> 5
-                                <i class="far fa-comments"></i> 6
-                                <i class="fas fa-share-alt"></i> 8
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h5 class="text-center"><b>Generate name</b></h5>
-                        <img src="~/images/project-art-evening.jpg" alt="Project image" style="width:100%">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
-                        </div>
-                        <div>
-                            <p>
-                                <i class="far fa-heart"></i> 5
-                                <i class="far fa-comments"></i> 6
-                                <i class="fas fa-share-alt"></i> 8
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-                    <div id="discoverbutton" class="col text-center">
-                        <a asp-action="About" class="btn btn-success btn-lg">Discover more</a>
-                    </div>
-
-
-
-                </div>
-            </div>
-
-
-        </section>
-
-        <div class="col text-center py-5">
-            <h2>Recent Activities</h2>
-        </div>
-
-        <section id="Recent" class="p-5">
-            <div class="container.flow">
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card bg-info text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-dark text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-info text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
                         </div>
                     </div>
                 </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card bg-dark text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
+                <div class="col-md-4">
+                    <div class="card bg-info text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card bg-info text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-dark text-white text-center">
-                            <div class="card-body">
-                                <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
-                                <h3 class="text-light">"Naam"</h3>
-                                Deze persoon heeft gereageerd op.....
-                            </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width:20%">
+                            <h3 class="text-light">"Naam"</h3>
+                            Deze persoon heeft gereageerd op.....
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-
-
-
-
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-                integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-                crossorigin="anonymous"></script>
 
 
 </body>

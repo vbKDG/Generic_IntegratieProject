@@ -11,7 +11,7 @@
     <title>@ViewData["Title"] - City of Ideas</title> @*--aangepast--*@
     <environment include="Development">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -42,11 +42,12 @@
                 <ul id="navitems" class="nav navbar-nav mr-auto text-black">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index"><p class="text-dark"><i class="fas fa-home"></i><b> Home |</b></p></a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About"><p class="text-dark"><i class="fas fa-project-diagram"></i><b> General Projects |</b></p></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact"><p class="text-dark"><i class="fas fa-question"></i><b> Form elements |</b></p></a></li>
                     <li><a asp-area="" asp-controller="Project" asp-action="Projects"><p class="text-dark"><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="AboutPage"><p class="text-dark"><i class="fas fa-question"></i><b> About |</b></p></a></li>
+
                     @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                     {
-                        <li><a asp-area="" asp-controller="Home" asp-action="AdminPage"><p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="AdminPage"><p class="text-dark"><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                     }
                     <partial name="_LoginPartial" />
                 </ul>
@@ -56,13 +57,15 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div id="Elements" class="container body-content">
         @RenderBody()
-        <hr />
-        <footer id="footer">
+    </div>
+    <hr />
+        <footer id="Footer">
             <p>&copy; 2019 - City of Ideas</p>
         </footer>
-    </div>
+
+
 
 
     <environment include="Development">

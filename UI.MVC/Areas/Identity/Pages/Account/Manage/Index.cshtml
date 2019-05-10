@@ -5,98 +5,107 @@
 <script src="~/js/checkIfOrganisation.js" asp-append-version="true"></script>
 
 @{
-    ViewData["Title"] = "Profile";
+    
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h4>@ViewData["Title"]</h4>
-<partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.FirstName"></label>
-                <input asp-for="Input.FirstName" class="form-control" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.LastName"></label>
-                <input asp-for="Input.LastName" class="form-control" />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Gender"></label>
-                <div>
-                    <select asp-for="Input.Gender" class="form-control">
-                        @if (Model.Input.Gender == null)
-                        {
-                            <option class="dropdown-item" selected disabled value="U">Unknown</option>
-                            <option class="dropdown-item" value="M">Man</option>
-                            <option class="dropdown-item" value="V">Women</option>
-                        }
-                        @if (Model.Input.Gender == "M")
-                        {
-                            <option class="dropdown-item" value="M" selected>Man</option>
-                            <option class="dropdown-item" value="V">Women</option>
-                        }
-                        @if (Model.Input.Gender == "V")
-                        {
-                            <option class="dropdown-item" value="M">Man</option>
-                            <option class="dropdown-item" value="V" selected>Women</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Age"></label>
-                <input asp-for="Input.Age" class="form-control" />
-                <span asp-validation-for="Input.Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.PostalCode"></label>
-                <input asp-for="Input.PostalCode" class="form-control" />
-            </div>
-            @if (User.IsInRole("SignedInUser") || User.IsInRole("SignedInUserOrganisation"))
-            {
-                <div class="form-group">
-                    <label asp-for="Input.isOrganisation"></label>
-                    <div>
-                        <select asp-for="Input.isOrganisation" id="organisation" class="form-control">
-                            @if (Model.Input.isOrganisation)
-                            {
-                                <option class="dropdown-item" value="false">No</option>
-                                <option class="dropdown-item" value="true" selected>Yes</option>
-                            }
-                            else if (!Model.Input.isOrganisation)
-                            {
-                                <option class="dropdown-item" value="false" selected>No</option>
-                                <option class="dropdown-item" value="true">Yes</option>
-                            }
-                        </select>
+
+
+<body id="SettingsManager">
+    <h4>@ViewData["Title"]</h4>
+    <partial name="_StatusMessage" for="StatusMessage" />
+        <header>
+            <div class="dark-overlay">
+                <div class="home-inner container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card bg-light text-center card-form">
+                                <div class="card-body">
+                                    <h3><b>Profile</b></h3>
+                                    <form id="profile-form" method="post">
+                                        <div class="form-group">
+                                            <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="Input.FirstName" class="form-control" placeholder="First name" />
+                                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="Input.LastName" class="form-control" placeholder="Last name" />
+                                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <select asp-for="Input.Gender" class="form-control">
+                                                    @if (Model.Input.Gender == null)
+                                                    {
+                                                        <option class="dropdown-item" selected disabled value="U">Gender</option>
+                                                        <option class="dropdown-item" value="M">Man</option>
+                                                        <option class="dropdown-item" value="V">Women</option>
+                                                    }
+                                                    @if (Model.Input.Gender == "M")
+                                                    {
+                                                        <option class="dropdown-item" value="M" selected>Man</option>
+                                                        <option class="dropdown-item" value="V">Women</option>
+                                                    }
+                                                    @if (Model.Input.Gender == "V")
+                                                    {
+                                                        <option class="dropdown-item" value="M">Man</option>
+                                                        <option class="dropdown-item" value="V" selected>Women</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="Input.Age" class="form-control" placeholder="Age" />
+                                            <span asp-validation-for="Input.Age" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="Input.PostalCode" class="form-control" placeholder="Postal code" />
+                                        </div>
+                                        @if (User.IsInRole("SignedInUser") || User.IsInRole("SignedInUserOrganisation"))
+                                        {
+                                            <div class="form-group">
+                                                <label asp-for="Input.isOrganisation"></label>
+                                                <div>
+                                                    <select asp-for="Input.isOrganisation" id="organisation" class="form-control">
+                                                        @if (Model.Input.isOrganisation)
+                                                        {
+                                                            <option class="dropdown-item" value="false">No</option>
+                                                            <option class="dropdown-item" value="true" selected>Yes</option>
+                                                        }
+                                                        else if (!Model.Input.isOrganisation)
+                                                        {
+                                                            <option class="dropdown-item" value="false" selected>No</option>
+                                                            <option class="dropdown-item" value="true">Yes</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="organisationInfo">
+                                                <div class="form-group">
+                                                    <label asp-for="Input.OrganisationName"></label>
+                                                    <input asp-for="Input.OrganisationName" class="form-control" />
+                                                    <span asp-validation-for="Input.OrganisationName" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="Input.OrganisationEventInput"></label>
+                                                    <input asp-for="Input.OrganisationEventInput" class="form-control" />
+                                                    <span asp-validation-for="Input.OrganisationEventInput" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        }
+                                        <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="organisationInfo">
-                    <div class="form-group">
-                        <label asp-for="Input.OrganisationName"></label>
-                        <input asp-for="Input.OrganisationName" class="form-control" />
-                        <span asp-validation-for="Input.OrganisationName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Input.OrganisationEventInput"></label>
-                        <input asp-for="Input.OrganisationEventInput" class="form-control" />
-                        <span asp-validation-for="Input.OrganisationEventInput" class="text-danger"></span>
-                    </div>
-                </div>
-            }
-            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
-</div>
+            </div>
+        </header>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
