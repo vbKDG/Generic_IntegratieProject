@@ -346,10 +346,7 @@ namespace DAL.EF
             
             p1.phases = new List<Phase>(){ph1,ph2};
             
-         /*
-   
-            //Projects CEM 
-             Project p3 = new Project();
+           Project p3 = new Project();
             MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField img1 = new ImageField();            
             img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
@@ -369,7 +366,7 @@ namespace DAL.EF
 
             // Soccer Tournament Project
             Project p4 = new Project();
-            MapField map4 = new MapField { latitude = 51.19482591025128, longitude = 4.424488633272745};
+            MapField map4 = new MapField { latitude = 51.19482591025128, longitude = 4.424488633272745 };
             ImageField img4 = new ImageField();
             img4.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park1.jpg");
             p4.name = "Soccer Tournament";
@@ -438,8 +435,8 @@ namespace DAL.EF
             img8.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\straat3.jpg");
             p8.name = "Art gallery in Antwerp";
             p8.description = "From june 6 to june 11, school of art in Antwerp is organizing an art gallery";
-            p8.startDate = new DateTime(2019,6,6);
-            p8.endDate = new DateTime(2019,6,11);
+            p8.startDate = new DateTime(2019, 6, 6);
+            p8.endDate = new DateTime(2019, 6, 11);
             p8.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,5,20),endDate =  new DateTime(2019,5,25)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,6,3),endDate =  new DateTime(2019,6,6)},
@@ -466,8 +463,8 @@ namespace DAL.EF
             // Badminton tournament
             Project p10 = new Project();
             MapField map10 = new MapField { latitude = 51.21315287598253, longitude = 4.415047195504712 };
-         //   ImageField img10 = new ImageField();
-          //  img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
+            ImageField img10 = new ImageField();
+            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
             p10.name = " Badminton tournament";
             p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
             p10.startDate = new DateTime(2019, 7, 1);
@@ -476,14 +473,14 @@ namespace DAL.EF
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,1),endDate =  new DateTime(2019,6,15)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,6,20),endDate =  new DateTime(2019,6,30)},
             };
-            //p10.imageField = img10;
+            p10.imageField = img10;
             p10.mapField = map10;
 
             // Parking lot movie 
             Project p11 = new Project();
-            MapField map11 = new MapField { latitude= 51.21847254325475, longitude= 51.21847254325475 };
+            MapField map11 = new MapField { latitude = 51.21847254325475, longitude = 51.21847254325475 };
             ImageField img11 = new ImageField();
-            //img11.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg");
+            img11.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg");
             p11.name = "Parking lot movie";
             p11.description = "The people of the harbour will organize a parking lot movie weekend for everyone!";
             p11.startDate = new DateTime(2019, 8, 3);
@@ -492,7 +489,7 @@ namespace DAL.EF
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,8,1),endDate =  new DateTime(2019,6,15)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,8,20),endDate =  new DateTime(2019,6,30)},
             };
-          //  p11.imageField = img11;
+            p11.imageField = img11;
             p11.mapField = map11;
 
             // Renaissance faire
@@ -527,8 +524,6 @@ namespace DAL.EF
 
             p13.imageField = img13;
             p13.mapField = map13;
-*/
-
 
             
             //Ideations 
@@ -569,7 +564,7 @@ namespace DAL.EF
             userManager.FindByEmailAsync("peter.smet@gmail.com").Result.ideas = new List<Idea>(){i2};
             userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.reactions = new List<Reaction>(){a1,a2};
 
-            ctx.projects.AddRange(p1, p2);
+            ctx.projects.AddRange(p1, p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13);
             ctx.questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
             ctx.questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
             ctx.iotSetups.AddRange(iot1);

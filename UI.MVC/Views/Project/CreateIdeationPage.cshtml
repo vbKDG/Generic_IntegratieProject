@@ -1,0 +1,137 @@
+@model UI.MVC.Models.Ideations.IdeationVM
+
+<form asp-controller="Idea" asp-action="CreateIdeation" method="post" enctype="multipart/form-data">
+
+    <input asp-for="ProjectId" value="@Model.ProjectId" type="hidden"/>
+
+    <h1>Project: @Model.ProjectName </h1>
+    
+    
+    <table>
+        <tr>
+            <th>Only admins can submit ideas: </th>
+            <th> <input asp-for="AdminOnly" type="checkbox"/> </th>
+
+        </tr>
+       
+      
+    </table>
+    
+    <table>
+        <tr>
+            <th></th>
+            <th>Minimum</th>
+            <th>Maximum</th>
+
+        </tr>
+        <tr>
+            <th><label>Amount of textfields:</label> </th>
+            <th>
+                <input asp-for="TextField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+            </th>
+            <th>
+                <input asp-for="TextField.Maximum" type="number" max="5" min="0" value="0"/>
+            </th>
+        </tr>
+        <tr>
+            <th><label>Amount of Images: </label></th>
+            <th>
+                <input asp-for="ImageField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+            </th>
+            <th>
+                <input asp-for="ImageField.Maximum" type="number" max="5" min="0" value="0"/>
+            </th>
+        </tr>
+        <tr>
+            <th><label>Amount of Videos: </label></th>
+            <th>
+                <input asp-for="VideoField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+            </th>
+            <th>
+                <input asp-for="VideoField.Maximum" type="number" max="5" min="0" value="0" />
+            </th>
+        </tr>
+        <tr>
+            <th><label>Amount of Locations: </label></th>
+            <th>
+                <input asp-for="MapField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+            </th>
+            <th>
+                <input asp-for="MapField.Maximum" type="number" max="5" min="0" value="0"/>
+            </th>
+        </tr>
+
+    </table>
+    
+    <table>
+        <tr>
+            <th>    <p>Provide extra background link: </p>
+            </th>
+            <th>     <input asp-for="link" type="url"/>
+            </th>
+        </tr>
+    </table>
+    
+    <h2>Add Central Question</h2>
+    
+    <div id="QuestionList">
+        <div class="QuestionRow">
+            <input name="ideationQuestionVMs[0].question" type="text" class="QuestionRow"/>
+        </div>
+       
+    </div>
+    
+    <input type="button" name="addRow" id="addRow" value="Add Another Question" class="btn bg-success btn-sm">
+    
+   
+    
+
+
+    <input type="submit" value="save">   
+
+</form>
+<script>
+    function SetMinimum(input) {
+        var val = input.value.valueOf();
+        var name = input.name.valueOf().split(".")[0] + "_Maximum";
+        var maxInput = document.getElementById(name);
+        maxInput.min = val;
+        if (val > maxInput.value) {
+            maxInput.value = val;
+
+        }
+
+    }
+    
+</script>
+
+<script type="text/javascript">
+
+    $("#addRow").click(function () {
+
+        var rowCount = $('.QuestionRow').length;
+        if (rowCount <= 3) {
+            var inputString = "";
+
+            inputString += '<td><input name="ideationQuestionVMs['+ rowCount +'].question type="text" class="questionType"/></td>';       
+            inputString += '<a href="javascript:void(0);" class="remRow">Remove</a>';
+            $("#QuestionList").append('<div class="QuestionRow">' + inputString + '</div>');
+        }
+       
+       
+    });
+
+    $("#QuestionList").on('click', '.remRow', function () {
+
+        (this).closest(".QuestionRow").remove();
+
+        $('.questionType').each(function (index) {
+            $(this).attr('name', 'ideationQuestionVMs['+ index +'].question');
+        });
+
+       
+    });
+
+
+
+</script>

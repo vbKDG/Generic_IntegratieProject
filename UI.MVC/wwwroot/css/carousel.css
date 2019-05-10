@@ -2,7 +2,8 @@
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 1000px;
+   /* max-width: 1000px; */
+    width: 200px;
     position: relative;
     margin: auto;
 }
@@ -10,6 +11,7 @@
 /* Hide the images by default */
 .mySlides {
     display: none;
+    
 }
 
 /* Next & previous buttons */
@@ -32,6 +34,9 @@
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
+}
+.prev {
+    left: 0;
 }
 
 /* On hover, add a black background color with a little bit see-through */
@@ -91,4 +96,15 @@
 @keyframes fade {
     from {opacity: .4}
     to {opacity: 1}
+}
+#ImageUploads{
+    position: relative;
+   
+}
+
+.ImageUpload{
+    position: absolute;
+    top: 0;
+    left: 0;
+   
 }

@@ -10,6 +10,7 @@ using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using UI.MVC.Models;
+using UI.MVC.Models.Ideations;
 
 namespace UI.MVC.Controllers
 {
@@ -46,11 +47,7 @@ namespace UI.MVC.Controllers
             return View(model);
         }
 
-        public IActionResult Ideas(int id)
-        {
-            IEnumerable<Idea> ideas = orchestrator.getIdeas(id);
-            return View(ideas);
-        }
+        
 
         public IActionResult MapTest()
         {
@@ -121,6 +118,18 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Project", "Project", new {id = 1});
         }
 
+        public IActionResult CreateIdeationPage( int projectId)
+        {
+            IdeationVM ideationVm = new IdeationVM();
+            List<IdeationQuestionVM> questionVms = new List<IdeationQuestionVM>{new IdeationQuestionVM()};
+            ideationVm.ideationQuestionVMs = questionVms;
+            Project project = orchestrator.getProject(projectId);
+            ideationVm.ProjectId = projectId;
+            ideationVm.ProjectName = project.name;
+            
+            
+            return View(ideationVm);
+        }
 
     }
 }

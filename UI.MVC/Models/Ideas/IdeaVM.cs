@@ -32,7 +32,12 @@ namespace D.UI.MVC.Models.Ideas
         public string name { get; set; }
       //  public ICollection<FieldViewModel> fields { get; set; }
       
-        public TextFieldVm[] textfields { get; set; }
+        public TextFieldVm[] TextFieldVms { get; set; }
+        
+        public ImageFieldVm[] ImageFieldVms { get; set; }
+        
+        public VideoFieldVm[] VideoFieldVms { get; set; }
+        public MapFieldVm[] MapFieldVms { get; set; }
         public TextFieldVm textFieldVM { get; set; }
         public ImageFieldVm imageFieldVM { get; set; }
         public VideoFieldVm videoFieldVM { get; set; }
@@ -41,10 +46,16 @@ namespace D.UI.MVC.Models.Ideas
 
         
     //  public FieldViewModel fieldViewModel { get; set; }
-    
-    
+            
+        
+    }
+
+    public class IdeasVM
+    {
         
         
+        public int IdeationId { get; set; }
+        public List<IdeaVM> IdeaVms { get; set; }
     }
 
    

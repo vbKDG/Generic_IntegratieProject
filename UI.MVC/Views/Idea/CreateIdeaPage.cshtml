@@ -12,23 +12,42 @@
 
 
 <form asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
-
-    <p>ddddddddddddddddd</p>
+    <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
     
-    @for (int i = 0; i < @Model.textfields.Length; i++)
+    @for (int i = 0; i < @Model.TextFieldVms.Length; i++)
     {
-        @Html.EditorFor(x => x.textfields[i])
+        @Html.EditorFor(x => x.TextFieldVms[i])
 
     }
+    <div id="ImageUploads">
+    @for (int i = 0; i < @Model.ImageFieldVms.Length; i++)
+    {
+        @Html.EditorFor(x => x.ImageFieldVms[i], new { index = i} )
+
+    }
+    </div>
+    
+    @for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
+    {
+        @Html.EditorFor(x => x.VideoFieldVms[i])
+
+    }
+    @for (int i = 0; i < @Model.MapFieldVms.Length; i++)
+    {
+        @Html.EditorFor(x => x.MapFieldVms[i])
+
+    }
+    @*
     @Html.EditorFor(x => x.imageFieldVM)
 
 
-    <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
+
     @Html.EditorFor(x => x.textFieldVM)    
     
   
     @Html.EditorFor(x => x.videoFieldVM)
     @Html.EditorFor(x => x.mapFieldVM)
+    *@
      
 
    

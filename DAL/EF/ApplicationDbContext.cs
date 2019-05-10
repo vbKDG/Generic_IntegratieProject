@@ -26,6 +26,7 @@ namespace DAL.EF
     //    }
         #region Sets
         // Fields 
+        public DbSet<FieldRange> FieldRanges { get; set; }
         public DbSet<Field> fields { get; set; }
         public DbSet<TextField> textFields { get; set; }
         public DbSet<ImageField> imageFields { get; set; }

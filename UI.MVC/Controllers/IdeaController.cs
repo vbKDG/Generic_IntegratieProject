@@ -39,9 +39,16 @@ namespace UI.MVC.Controllers
         public IActionResult CreateIdeaPage(int ideationId)
         {
 
+            Ideation ideation = ideationMgr.getIdeation(ideationId);
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
             IdeaVM ideaVm = new IdeaVM();
-            ideaVm.textfields = new TextFieldVm[0];
+         //   TextFieldVm[] textFieldVms = new TextFieldVm[ideation.TextFieldRange.Maximum];
+            ideaVm.TextFieldVms = new TextFieldVm[ideation.TextFieldRange.Maximum];
+            ideaVm.ImageFieldVms = new ImageFieldVm[ideation.ImageFieldRange.Maximum];
+            ideaVm.VideoFieldVms = new VideoFieldVm[ideation.VideoRange.Maximum];
+            ideaVm.MapFieldVms = new MapFieldVm[ideation.MapFieldRange.Maximum];
+
+            
             
 
             String[] questions = new string[ideationQuestions.Length];
@@ -126,23 +133,62 @@ namespace UI.MVC.Controllers
 
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
-
-        public IActionResult CreateIdeationPage( int projectId)
+        
+        public IActionResult Ideas(int ideationId)
         {
+            IdeasVM ideasVm = new IdeasVM();
+            List<IdeaVM> ideaVmList = new List<IdeaVM>();
+            IEnumerable<Idea> ideas = ideationMgr.getIdeas(ideationId);
+            foreach (var idea in ideas)
+            {
+                ideaVmList.Add(new IdeaVM
+                {
+                    ideationId = idea.ideaId
+                    
+                });
+            }
+
+            ideasVm.IdeationId = ideationId;
+            ideasVm.IdeaVms = ideaVmList;
             
-            
-            return View();
+            return View(ideasVm);
         }
 
+       
         public IActionResult CreateIdeation(IdeationVM ideationVm)
         {
             
+            Ideation ideation = new Ideation();
+            ideation.TextFieldRange = ideationVm.TextField;
+            ideation.ImageFieldRange = ideationVm.ImageField;
+            ideation.VideoRange = ideationVm.VideoField;
+            ideation.MapFieldRange = ideationVm.MapField;
+            ideation.QuestionFieldRange = ideationVm.QuestionField;
+
+            ideation.adminOnly = ideationVm.AdminOnly;
+            
+            List<IdeationQuestion> ideationQuestions = new List<IdeationQuestion>();
+
+            foreach (var item in ideationVm.ideationQuestionVMs)
+            {            
+                ideationQuestions.Add(new IdeationQuestion{question = item.question}); 
+            }
+
+            ideation.questions = ideationQuestions;
+             
+            ideationMgr.CreateIdeation(ideation,ideationVm.ProjectId);
+            
+           
+            
+          
             
             
-            return RedirectToAction("Project", "Project", new {id = 1});
+            return RedirectToAction("Project", "Project", new {id = ideationVm.ProjectId});
 
             
         }
+
+       
         
         
 

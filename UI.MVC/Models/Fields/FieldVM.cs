@@ -22,8 +22,7 @@ namespace D.UI.MVC.Models.Fields
 
     public class ImageFieldVm : FieldVM
     {
-        //public string imageName { get; set; }
-        // [Required, Microsoft.Web.Mvc.FileExtensions(Extensions = "jpeg",ErrorMessage = "Specify a jpeg file.")]
+      
        
         public string imageName { get; set; }
         [Display(Name ="Choose Image")]
@@ -64,7 +63,7 @@ namespace D.UI.MVC.Models.Fields
         public double longitude { get; set; }
     }
 
-    public class QuestionFieldVm : ImageFieldVm
+    public class QuestionFieldVm : FieldVM
     {
         
         

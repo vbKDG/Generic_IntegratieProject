@@ -5,6 +5,7 @@
 
 <h2> @Model.project.name</h2>
 
+@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.project.projectId})
 <table class="table">
     <tr>
         <th>
@@ -33,7 +34,7 @@
             </td>
             
             <td>
-                @Html.ActionLink("Ideas", "Ideas", "Project"
+                @Html.ActionLink("Ideas", "Ideas", "Idea"
                     , new { id=item.ideation.ideationId })
             </td>
 

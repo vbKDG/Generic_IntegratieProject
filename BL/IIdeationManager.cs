@@ -11,6 +11,10 @@ namespace BL
 
         IEnumerable<IdeationQuestion> GetIdeationQuestions(int ideationId);
 
+        void CreateIdeation(Ideation ideation);
+        
+        void CreateIdeation(Ideation ideation, int projectId);
+
         IEnumerable<Idea> getIdeas(int ideationId);
         void createIdea(Idea i);
         void createIdea(ICollection<Field> fields);

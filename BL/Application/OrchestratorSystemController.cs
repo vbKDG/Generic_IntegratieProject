@@ -3,7 +3,7 @@ using Domain;
 
 namespace BL.Application
 {
-    public class OrchestratorSystemController 
+    public class OrchestratorSystemController : IIdeationManager
     {
         private UnitOfWorkManager uowManager;
         
@@ -42,6 +42,21 @@ namespace BL.Application
         public IEnumerable<IdeationQuestion> GetIdeationQuestions(int ideationId)
         {
             return ideationMgr.GetIdeationQuestions(ideationId);
+
+        }
+
+       
+
+        public void CreateIdeation(Ideation ideation, int projectId)
+        {
+            ideationMgr.CreateIdeation(ideation,projectId);
+            uowManager.Save();
+        }
+
+        public void CreateIdeation(Ideation ideation)
+        {
+           ideationMgr.CreateIdeation(ideation);
+           uowManager.Save();
 
         }
 

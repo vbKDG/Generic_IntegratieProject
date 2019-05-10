@@ -28,14 +28,30 @@ namespace DAL
             return ctx.ideations.Include(p => p.project).Where(p => p.project.projectId == projectId);
         }
 
-        public void createIdeation(Ideation i)
+        public void createIdeation(Ideation ideation)
         {
-            throw new System.NotImplementedException();
+             
+            ctx.ideations.Add(ideation);
+            ctx.SaveChanges();
+
+        }
+
+        public void createIdeation(Ideation ideation, int projectId)
+        {
+            ideation.project = ctx.projects.Find(projectId);
+            ctx.ideations.Add(ideation);
+            ctx.SaveChanges();
         }
 
         public Ideation readIdeation(int id)
         {
-            return ctx.ideations.Include(p => p.project).SingleOrDefault(i => i.ideationId == id);
+            return ctx.ideations.Include(p => p.project)
+                .Include(f => f.TextFieldRange)
+                .Include(f => f.ImageFieldRange)
+                .Include(f => f.VideoRange)
+                .Include(f => f.MapFieldRange)
+                .Include(f => f.QuestionFieldRange)
+                .SingleOrDefault(i => i.ideationId == id);
 
         }
 
@@ -82,7 +98,7 @@ namespace DAL
 
         public IEnumerable<Idea> readIdeas(int ideationId)
         {
-            return ctx.ideas.Where(i => i.ideation.ideationId == ideationId);
+            return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
             // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
             return ctx.ideas.Include(i => i.ideation).Include(i => i.ideaId).Where( i => i.ideation.ideationId == ideationId);
         }

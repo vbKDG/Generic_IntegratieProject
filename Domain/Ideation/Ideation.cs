@@ -13,7 +13,15 @@ namespace Domain
         public ICollection<IdeationQuestion> questions { get; set; }
         public ICollection<Idea> ideas { get; set; }
         
-        public ICollection<Field> fields { get; set; }
+        public FieldRange TextFieldRange { get; set; }
+        
+        public FieldRange ImageFieldRange { get; set; }
+        
+        public FieldRange VideoRange { get; set; }
+        
+        public FieldRange MapFieldRange { get; set; }
+        
+        public FieldRange QuestionFieldRange { get; set; }
 
         
         public ICollection<IotSetup> iotSetups { get; set; }

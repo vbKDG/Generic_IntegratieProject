@@ -54,6 +54,16 @@ namespace BL
             return ideationRepo.ReadIdeationQuestions(ideationId);
         }
 
+        public void CreateIdeation(Ideation ideation)
+        {
+            ideationRepo.createIdeation(ideation);
+        }
+
+        public void CreateIdeation(Ideation ideation, int projectId)
+        {
+            ideationRepo.createIdeation(ideation,projectId);
+        }
+
 
         #region Ideas
         public IEnumerable<Idea> getIdeas(int ideationId)

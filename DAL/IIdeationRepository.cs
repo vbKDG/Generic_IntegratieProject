@@ -8,7 +8,9 @@ namespace DAL
         #region Ideations
 
         IEnumerable<Ideation> readIdeations(int projectId);
-        void createIdeation(Ideation i);
+        void createIdeation(Ideation ideation);
+        void createIdeation(Ideation ideation , int projectId);
+
         Ideation readIdeation(int id);
         void updateIdeation(Ideation i);
         void deleteIdeation(int id);

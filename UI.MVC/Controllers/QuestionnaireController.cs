@@ -18,7 +18,7 @@ namespace UI.MVC.Controllers
     public class QuestionnaireController : Controller
     {
         private readonly IQuestionnaireManager qmgr;
-        private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
+       // private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
         
 //        public QuestionnaireController(ApplicationDbContext ctx)

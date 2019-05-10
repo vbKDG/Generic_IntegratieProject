@@ -67,6 +67,7 @@
         <e p="Domain.csproj" t="IncludeRecursive" />
         <e p="Field" t="Include">
           <e p="Field.cs" t="Include" />
+          <e p="FieldRange.cs" t="Include" />
           <e p="ImageField.cs" t="Include" />
           <e p="MapField.cs" t="Include" />
           <e p="QuestionField.cs" t="Include" />
@@ -260,15 +261,15 @@
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
-            <e p="CreateIdeationPage.cshtml" t="Include" />
+            <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
+            <e p="CreateIdeationPage.cshtml" t="Include" />
             <e p="CreateProjectPage.cshtml" t="Include" />
             <e p="EditorTemplates" t="Include">
               <e p="PhaseVM.cshtml" t="Include" />
             </e>
-            <e p="Ideas.cshtml" t="Include" />
             <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
             <e p="Project.cshtml" t="Include" />
@@ -331,6 +332,10 @@
             <e p="park3.jpg" t="Include" />
             <e p="park4.jpg" t="Include" />
             <e p="person.png" t="Include" />
+            <e p="project-flea-market.jpg" t="Include" />
+            <e p="project-park-badminton.jpg" t="Include" />
+            <e p="project-parking-lot.jpg" t="Include" />
+            <e p="project-renaissance-faire.jpg" t="Include" />
             <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
             <e p="straat2.jpg" t="Include" />
             <e p="straat3.jpg" t="Include" />
