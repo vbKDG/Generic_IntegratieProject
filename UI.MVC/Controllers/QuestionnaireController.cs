@@ -21,14 +21,14 @@ namespace UI.MVC.Controllers
     public class QuestionnaireController : Controller
     {
         private readonly IQuestionnaireManager qmgr;
-<<<<<<< HEAD
+
        // private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
-=======
+
         private UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
->>>>>>> origin/VB/QuestionIdeaForm
-        
+
+
         public QuestionnaireController(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             qmgr = new QuestionnaireManager();

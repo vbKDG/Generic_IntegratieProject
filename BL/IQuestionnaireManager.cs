@@ -13,6 +13,8 @@ namespace BL
         Questionnaire getQuestionnaire(int id);
         Question getQuestion(int id);
         IEnumerable<QuestionUser> getQuestionUsers(int questionaireId);
+        IEnumerable<QuestionUser> getQuestionUsers();
+        QuestionUser getQuestionUser(int questionUserId);
         void addQuestionnaire(List<Question> questions, String name,
             int questionAmount, int projectId);
         void addQuestion(String question, QuestionType questionType);
@@ -22,6 +24,7 @@ namespace BL
         void removeQuestionnaire(int id);
         void addQuestionUser(string userId, int questionId, String answer);
         void removeQuestionUser(int questionUserId);
+        void changeQuestionUser(QuestionUser questionUser);
         void changeQuestion(Question q);
         void removeQuestion(int id);
         void changeOption(Option o);

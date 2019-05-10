@@ -131,6 +131,8 @@
                 <e p="AccessDenied.cshtml.cs" t="Include" />
                 <e p="ConfirmEmail.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml.cs" t="Include" />
+                <e p="ConfirmQuestionnaire.cshtml" t="Include" />
+                <e p="ConfirmQuestionnaire.cshtml.cs" t="Include" />
                 <e p="CreateAdmin.cshtml" t="Include" />
                 <e p="CreateAdmin.cshtml.cs" t="Include" />
                 <e p="CreateModerator.cshtml" t="Include" />
@@ -261,6 +263,7 @@
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
+            <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
           </e>
@@ -277,6 +280,7 @@
             <e p="Projects.cshtml" t="Include" />
           </e>
           <e p="Questionnaire" t="Include">
+            <e p="ConfirmQuestionnairePage.cshtml" t="Include" />
             <e p="CreateQuestionnairePage.cshtml" t="Include" />
             <e p="DeleteQuestionnairePage.cshtml" t="Include" />
             <e p="EditQuestionnairePage.cshtml" t="Include" />
@@ -343,6 +347,7 @@
           <e p="js" t="Include">
             <e p="checkIfOrganisation.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
+            <e p="dynamicFormIdea.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
             <e p="site.js" t="Include" />
