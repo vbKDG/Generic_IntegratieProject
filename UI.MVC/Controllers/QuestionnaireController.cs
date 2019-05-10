@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
 using System.Threading;
-using Autofac;
+using System.Threading.Tasks;
 using BL;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using UI.MVC.Models;
 
@@ -18,23 +21,19 @@ namespace UI.MVC.Controllers
     public class QuestionnaireController : Controller
     {
         private readonly IQuestionnaireManager qmgr;
+<<<<<<< HEAD
        // private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
+=======
+        private UserManager<ApplicationUser> _userManager;
+        private readonly IEmailSender _emailSender;
+>>>>>>> origin/VB/QuestionIdeaForm
         
-//        public QuestionnaireController(ApplicationDbContext ctx)
-//        {
-//            qmgr = new QuestionnaireManager(ctx);
-//        }
-
-//        public QuestionnaireController(IQuestionnaireManager questionnaireManager)
-//        {
-//          //  DIConfig = new DependencyInjectionConfig();
-//            qmgr = DIConfig.container.Resolve<IQuestionnaireManager>();
-//        }
-
-        public QuestionnaireController()
+        public QuestionnaireController(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             qmgr = new QuestionnaireManager();
+            _userManager = userManager;
+            _emailSender = emailSender;
         }
         
         public IActionResult Questionnaires(int projectId)
@@ -48,6 +47,13 @@ namespace UI.MVC.Controllers
             FillInQuestionnaireModel fillInQuestionnaireModel = new FillInQuestionnaireModel();
             fillInQuestionnaireModel.questions = qmgr.getQuestions(questionnaireId);
             fillInQuestionnaireModel.questionnaire = qmgr.getQuestionnaire(questionnaireId);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var ApplicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
+                fillInQuestionnaireModel.ApplicationUser = ApplicationUser;
+            }
             return View(fillInQuestionnaireModel);
         }
         
@@ -459,8 +465,9 @@ namespace UI.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUserQuestion(IFormCollection form)
+        public async Task<IActionResult> CreateUserQuestion(IFormCollection form)
         {
+            IList<int> questionUserIds = new List<int>();
             foreach (var key in form.Keys)
             {
                 if (key.StartsWith("Answer-"))
@@ -473,10 +480,41 @@ namespace UI.MVC.Controllers
                     else
                     {
                         qmgr.addQuestionUser("", Convert.ToInt32(parts[1]), form[key]);
+                        questionUserIds.Add(qmgr.getQuestionUsers().Last().id);
                     }
                 }
             }
+            foreach (var key in form.Keys)
+            {
+                if (key == "email")
+                {
+                    var callbackUrl = Url.Action(
+                        "QuestionnaireConfirmed", "Questionnaire",
+                        values: new { questionUserIds = questionUserIds },
+                        protocol: Request.Scheme);
+                        
+                    await _emailSender.SendEmailAsync(form[key], "Confirm your answered questionnaire",
+                        $"Please confirm your recently answered questionnaire by " +
+                        $"<a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                }       
+            }
             return RedirectToAction("Projects", "Project");
+        }
+        
+        public IActionResult ConfirmQuestionnairePage()
+        {
+            return View();
+        }
+        
+        public IActionResult QuestionnaireConfirmed(IList<int> questionUserIds)
+        {
+            foreach (var quId in questionUserIds)
+            {
+                QuestionUser questionUser = qmgr.getQuestionUser(quId);
+                questionUser.Confirmed = true;
+                qmgr.changeQuestionUser(questionUser);
+            }
+            return RedirectToAction("ConfirmQuestionnairePage", "Questionnaire");
         }
     }
 }

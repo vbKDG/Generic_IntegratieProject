@@ -10,7 +10,7 @@ namespace UI.MVC.Services
     {
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute("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", subject, message, email);
+            return Execute("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", subject, message, email);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)
@@ -18,7 +18,7 @@ namespace UI.MVC.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("treecompany@generics.com", "Team generics"),
+                From = new EmailAddress("generics@treecompany.com", "Team generics"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

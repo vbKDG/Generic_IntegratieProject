@@ -28,9 +28,11 @@ namespace DAL
         public void createQuestionUser(string userId, int questionId, String answer)
         {
             QuestionUser qu = new QuestionUser();
+            qu.Confirmed = false;
             if (!(userId == ""))
             {
                 qu.User = ctx.Users.Find(userId);
+                qu.Confirmed = true;
             }
             qu.Question = ctx.questions.Find(questionId);
             qu.Answer = answer;
@@ -77,6 +79,11 @@ namespace DAL
             }
             return questionUsers;
         }
+        
+        public IEnumerable<QuestionUser> readQuestionUsers()
+        {
+            return ctx.questionUsers;
+        }
 
         public void createQuestionnaire(Questionnaire q, int projectId)
         {
@@ -107,6 +114,11 @@ namespace DAL
             return ctx.questionnaires.Find(questionnaireId);
         }
 
+        public QuestionUser readQuestionUser(int questionUserId)
+        {
+            return ctx.questionUsers.Find(questionUserId);
+        }
+
         public Question readQuestion(int questionId)
         {
             return ctx.questions.Find(questionId);
@@ -131,6 +143,12 @@ namespace DAL
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
             ctx.questionnaires.Remove(ctx.questionnaires.Find(questionnaireId));
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
+            ctx.SaveChanges();
+        }
+
+        public void updateQuestionUser(QuestionUser questionUser)
+        {
+            ctx.questionUsers.Update(questionUser);
             ctx.SaveChanges();
         }
 

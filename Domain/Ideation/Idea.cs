@@ -14,6 +14,6 @@ namespace Domain
         public ICollection<Reaction> reactions { get; set; }
         public ICollection<IdeaLike> ideaLikes { get; set; }
         public ICollection<Field> fields { get; set; }
-        
+        public ICollection<Question> questions { get; set; }
     }
 }

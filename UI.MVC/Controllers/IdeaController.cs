@@ -19,6 +19,7 @@ namespace UI.MVC.Controllers
     public class IdeaController : Controller
     {
         private IIdeationManager ideationMgr;
+        private IQuestionnaireManager questionnaireMgr;
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
 //        public IdeaController(ApplicationDbContext ctx)
@@ -34,6 +35,7 @@ namespace UI.MVC.Controllers
         public IdeaController()
         {
             ideationMgr = new IdeationManager();
+            questionnaireMgr = new QuestionnaireManager();
         }
 
         public IActionResult CreateIdeaPage(int ideationId)
@@ -118,6 +120,7 @@ namespace UI.MVC.Controllers
 
             Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
 
+            
             idea.ideation = ideation;
             fields.Add(textField);
             fields.Add(imageField);
@@ -127,8 +130,6 @@ namespace UI.MVC.Controllers
             ideationMgr.createIdea(idea);
 
             var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.projectId;
-
-
 
 
             return RedirectToAction("Project", "Project", new {id = projectId});
@@ -188,12 +189,71 @@ namespace UI.MVC.Controllers
             
         }
 
-       
+        public IActionResult CreateQuestionPage()
+        {
+            return View();
+        }
         
-        
+        [HttpPost]
+        public IActionResult CreateQuestion(IFormCollection form)
+        {
+            /*Idea idea = new Idea();
+            ICollection<Field> fields = new List<Field>();
+            
+            Ideation ideation = ideationMgr.getIdeation(1);
+            idea.ideation = ideation;
+            
+            QuestionField q = new QuestionField()
+            {
+                question = new Question()
+                {
+                    question = ideaVm.QuestionFieldVm.question.question,
+                    questionType = ideaVm.QuestionFieldVm.question.questionType
+                }
+            };
+            
+            fields.Add(q);
+            idea.fields = fields;
+            ideationMgr.createIdea(idea);*/
 
+           
+            Question question = new Question()
+            {
+                options = new List<Option>()
+            };
+            IList<Option> options = new List<Option>();
+            
+            foreach (var key in form.Keys)
+            {
+                if (key == "questionFieldset")
+                {
+                    if (form[key] == "radiobutton") { question.questionType = QuestionType.RADIO_BUTTON; }
+                    if (form[key] == "checkbox") { question.questionType = QuestionType.CHECK_BOX; }
+                }
 
+                if (key == "question")
+                {
+                    question.question = form[key];
+                }
+                if (key.StartsWith("question.options"))
+                {
+                    Option o = new Option()
+                    {
+                        option = form[key]
+                    };
+                    options.Add(o);
+                }
+            }
+            questionnaireMgr.addQuestion(question);
 
+            foreach (var option in options)
+            {
+                questionnaireMgr.addOption(option.option, question);
+            }
+
+            question.options = options;
+            questionnaireMgr.changeQuestion(question);
+            return RedirectToAction("Index","Home");
+        }
     }
-
 }
