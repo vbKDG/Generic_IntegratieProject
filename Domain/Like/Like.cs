@@ -9,7 +9,5 @@ namespace Domain
         public int likeId { get; set; }
         public DateTime likeTime { get; set; }
         public string userId { get; set; }
-
-
     }
 }

@@ -263,6 +263,7 @@
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
             <e p="CreateIdeationPage.cshtml" t="Include" />
+            <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
@@ -341,6 +342,7 @@
           <e p="js" t="Include">
             <e p="checkIfOrganisation.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
+            <e p="dynamicFormIdea.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
             <e p="site.js" t="Include" />

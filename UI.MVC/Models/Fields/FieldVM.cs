@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace D.UI.MVC.Models.Fields
 {
@@ -64,10 +67,10 @@ namespace D.UI.MVC.Models.Fields
         public double longitude { get; set; }
     }
 
-    public class QuestionFieldVm : ImageFieldVm
+    public class QuestionFieldVm : FieldVM
     {
-        
-        
-        
-    }
+        public int projectId { get; set; }
+        public Questionnaire questionnaire { get; set; }
+        public Question question { get; set; }
+        public IEnumerable<Question> questions { get; set; }    }
 }

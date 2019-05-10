@@ -37,6 +37,7 @@ namespace D.UI.MVC.Models.Ideas
         public ImageFieldVm imageFieldVM { get; set; }
         public VideoFieldVm videoFieldVM { get; set; }
         public MapFieldVm    mapFieldVM { get; set; }
+        public QuestionFieldVm QuestionFieldVm { get; set; }
         
 
         
