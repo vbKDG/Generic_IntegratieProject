@@ -27,7 +27,13 @@ namespace DAL
         #region Projects
         public IEnumerable<Project> readProjects()
         {
-            return ctx.projects.AsEnumerable();
+            return ctx.projects
+                .Include(p => p.questionnaires)
+                .Include( p => p.imageField)
+                .Include(p => p.mapField)
+                .Include(p => p.phases)
+                .Include(p => p.ideations)
+                .Include(p => p.projectLikes);
         }
 
         public Project readProject(int id)

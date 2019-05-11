@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\vin-c\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.857546131.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -220,6 +220,7 @@
           <e p="Idee.cs" t="Include" />
           <e p="OptionsAmount.cs" t="Include" />
           <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="ProjectDetailModel.cs" t="Include" />
           <e p="Projects" t="Include">
             <e p="ProjectVM.cs" t="Include" />
           </e>
@@ -276,6 +277,7 @@
             <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
             <e p="Project.cshtml" t="Include" />
+            <e p="ProjectDetailPage.cshtml" t="Include" />
             <e p="ProjectImageDisplay.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />
           </e>
@@ -312,6 +314,7 @@
           <e p="css" t="Include">
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
+            <e p="phaseLine.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />
           </e>
@@ -350,6 +353,7 @@
             <e p="dynamicFormIdea.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
+            <e p="phaseLine.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
             <e p="UploadScript.js" t="Include" />

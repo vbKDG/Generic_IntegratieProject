@@ -346,7 +346,7 @@ namespace DAL.EF
             
             p1.phases = new List<Phase>(){ph1,ph2};
             
-           Project p3 = new Project();
+            Project p3 = new Project();
             MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField img1 = new ImageField();            
             img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
@@ -453,7 +453,7 @@ namespace DAL.EF
             p9.description = "This summer the people of antwerp will organise a traditional japanese weekend.";
             p9.startDate = new DateTime(2019, 7, 5);
             p9.endDate = new DateTime(2019, 7, 7);
-            p8.phases = new List<Phase>{
+            p9.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,7,1),endDate =  new DateTime(2019,7,4)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,7,5),endDate =  new DateTime(2019,7,7)},
             };
@@ -467,11 +467,13 @@ namespace DAL.EF
             img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
             p10.name = " Badminton tournament";
             p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
-            p10.startDate = new DateTime(2019, 7, 1);
-            p10.endDate = new DateTime(2019, 7, 15);
+            p10.startDate = new DateTime(2019, 5, 1);
+            p10.endDate = new DateTime(2019, 5, 23);
             p10.phases = new List<Phase>{
-                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,1),endDate =  new DateTime(2019,6,15)},
-                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,6,20),endDate =  new DateTime(2019,6,30)},
+                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,5,1),endDate =  new DateTime(2019,5,10)},
+                new Phase{name = "Construction",description = "Creat everything we need before the event",startDate =  new DateTime(2019,5,11),endDate =  new DateTime(2019,5,16)},
+                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,5,17),endDate =  new DateTime(2019,5,20)},
+                new Phase{name = "Event",description = "The badminton tournament takes place",startDate =  new DateTime(2019,5,21),endDate =  new DateTime(2019,5,23)},
             };
             p10.imageField = img10;
             p10.mapField = map10;

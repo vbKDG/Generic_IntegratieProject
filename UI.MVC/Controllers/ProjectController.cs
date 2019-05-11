@@ -42,11 +42,23 @@ namespace UI.MVC.Controllers
         {
             Project p1 = orchestrator.getProject(id);
             IEnumerable<IdeationQuestion> ideationQuestions1 = orchestrator.GetIdeationQuestionsForProject(id);
+            p1.phases.ToList().Sort((x, y) => DateTime.Compare(x.startDate, y.startDate));
             var model = new ProjectAndQuestions() {ideationQuestions = ideationQuestions1, project = p1};
 
             return View(model);
         }
 
+        public IActionResult ProjectDetailPage(int projectId)
+        {
+            ProjectDetailModel projectDetailModel = new ProjectDetailModel();
+            Project p = orchestrator.getProject(projectId);
+            ICollection<IdeationQuestion> ideationQuestions =
+                orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
+            projectDetailModel.ideationQuestions = ideationQuestions;
+            projectDetailModel.project = p;
+            
+            return View(projectDetailModel);
+        }
         
 
         public IActionResult MapTest()

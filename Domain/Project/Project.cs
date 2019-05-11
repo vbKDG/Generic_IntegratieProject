@@ -22,6 +22,5 @@ namespace Domain
         public ICollection<Phase> phases { get; set; }
         
         public ICollection<ProjectLike> projectLikes { get; set; }
-
     }
 }    

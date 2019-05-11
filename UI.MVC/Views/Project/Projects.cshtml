@@ -21,13 +21,8 @@
                 @Html.DisplayFor(modelItem => item.description)
             </td>
             <td>
-                @Html.ActionLink("Questionnaires", "Questionnaires", "Questionnaire"
+                @Html.ActionLink("Details", "ProjectDetailPage", "Project"
                     , new { projectId=item.projectId })
-            </td>
-            <td>
-                @Html.ActionLink("Ideations", "Project", "Project"
-                    , new { id=item.projectId })
-                
             </td>
         </tr>
     }
