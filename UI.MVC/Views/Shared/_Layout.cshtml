@@ -26,6 +26,7 @@
     </environment>
 </head>
 <body>
+<div id="Start"></div>
 <nav class="navbar navbar-expand-lg fixed-top">
     @*--aangepast--
             <a class="navbar-brand" href="#">
@@ -40,29 +41,39 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><i class="far fa-lightbulb"></i><b> City Of Ideas</b></></a> @*--aangepast--*@
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark"><i class="far fa-lightbulb"></i><b> City Of Ideas</b></></a> @*--aangepast--*@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav mr-auto">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index"><p><i class="fas fa-home"></i><b> Home |</b></p></a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="About"><p><i class="fas fa-project-diagram"></i><b> General Projects |</b></p></a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Contact"><p><i class="fas fa-question"></i><b> Form elements |</b></p></a></li>
-                <li><a asp-area="" asp-controller="Project" asp-action="Projects"><p><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <p class="text-dark"><i class="fas fa-home"></i><b> Home |</b></p></a></li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About">
+                        <p class="text-dark"><i class="fas fa-project-diagram"></i><b> General Projects |</b></p></a></li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">
+                        <p class="text-dark"><i class="fas fa-question"></i><b> Form elements |</b></p></a></li>
+                <li>
+                    <a asp-area="" asp-controller="Project" asp-action="Projects">
+                        <p class="text-dark"><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                 {
-                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy"><p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
-                <partial name="_LoginPartial" />
+                <partial name="_LoginPartial"/>
             </ul>
         </div>
     </div>
 </nav>
 
-<partial name="_CookieConsentPartial" />
+<partial name="_CookieConsentPartial"/>
 
 <div class="container body-content text-center text-white ">
     @RenderBody()
-    <hr />
+    <hr/>
     <footer>
         <p>&copy; 2019 - City Of Ideas</p>
 

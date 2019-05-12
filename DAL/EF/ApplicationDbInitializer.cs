@@ -150,6 +150,11 @@ namespace DAL.EF
                 startDate = new DateTime(2019,4,10),
                 name = "Playground"
             };
+            MapField mapproj1 = new MapField{latitude = 51.21248,longitude = 4.409641};
+            ImageField imgproj1 = new ImageField();            
+            imgproj1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
+            p1.mapField = mapproj1;
+            p1.imageField = imgproj1;
             
             // Questionnaires
             Questionnaire questionnaire1 = new Questionnaire()
@@ -262,6 +267,11 @@ namespace DAL.EF
                 name = "SAFE THE BIRDS!",
                 place = new Place(),
             };
+            MapField mapproj2 = new MapField{latitude = 51.21248,longitude = 4.409641};
+            ImageField imgproj2 = new ImageField();            
+            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
+            p2.mapField = mapproj2;
+            p2.imageField = imgproj2;
             
             // Questionnaires
             Questionnaire questionnaire3 = new Questionnaire()

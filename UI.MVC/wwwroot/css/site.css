@@ -1,47 +1,142 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 
-* {
-    box-sizing: border-box;
+html, body {
+    height: 100%;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px
+
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 
-.carousel-item{
-    height: 385px;
-   
+#discoverbutton{
+    padding-bottom: 10px;
 }
 
-.carousel-image-1{
-    background: url(/images/image1.jpg);
-    background-size:cover;
+#signButton{
+
+}
+
+#ProjectsCard {
+
+    background-color: #b4b4b4;
+
+}
+
+#rowPictures {
+    padding-left: 10px;
+    padding-right: 5px;
+
+}
+
+#projectTop{
+    padding-top:100px;
+}
+
+
+
+#Homepage {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#projects-head-section {
+    background-color: #cae5ff;
+
+    padding-top: 20px;
+
+    width: 100%;
+}
+
+
+h1, h3, h4 {
+    color: black;
+}
+
+
+.wrapper {
+    min-height: 100%;
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+
+#projectsgeneral {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+
+.carousel-item {
+    height: 340px;
+}
+
+.container body-content{
+    height: 100%;
+}
+
+.carousel-image-1 {
+    background: url(/images/carousel-image1.jpg);
+    background-size: cover;
 }
 
 .carousel-image-2 {
-    background: url(/images/image2.jpg);
+    background: url(/images/carousel-image2.jpg);
     background-size: cover;
 }
 
 
 .carousel-image-3 {
-    background: url(/images/image3.jpg);
+    background: url(/images/carousel-image3.jpg);
     background-size: cover;
 }
 
-
-
-body {
-
-    
-    background-image: url("../images/bgcity.jpg") ,linear-gradient(to bottom, rgba(90, 89, 89, 0.83), #000000);
-    background-repeat: no-repeat;
+textarea:focus, input:focus {
+    color: #000000;
 }
 
+input, select, textarea {
+    color: #000000;
+}
+
+#register-page{
+}
+
+#deleteQuestionnairePage {
+    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+#deleteCard{
+    height: 100%;
+}
+
+#AboutPage {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#SettingsManager {
+    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+#registerPage {
+    background-image: linear-gradient(to bottom,#ffffff,#97f6ff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
 
 /* body {padding top & bottom aangepast background-color: #252525; background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;} */
-
-
-
-
 
 card {
     padding-top: 10px;
@@ -53,6 +148,18 @@ card {
     width: 33%;
     padding: 2px;
 }
+
+
+
+#login {
+    background-image: linear-gradient(to bottom,#ffffff,#cae5ff);
+    background-repeat: no-repeat;
+    height: 100%;
+
+}
+
+
+
 
 
 /* Clearfix (clear floats) */
@@ -77,7 +184,4 @@ card {
     .carousel-caption {
         display: none;
     }
-}
-input, select, textarea{
-    color: black;
 }
