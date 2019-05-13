@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\DAL\\DAL.csproj",
+    "projectUniqueName": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj",
     "projectName": "DAL",
-    "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\DAL\\DAL.csproj",
-    "outputPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\DAL\\obj\\",
+    "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj",
+    "outputPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12,11 +12,14 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
-            "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
+            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj"
           }
         }
       }

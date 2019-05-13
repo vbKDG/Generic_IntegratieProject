@@ -55,11 +55,11 @@ namespace UI.MVC.Controllers
  */
         }
 
-        public IActionResult About()
+        public IActionResult ProjectsGeneral()
         {
-            ViewData["Message"] = "Your application description page.";
+            IEnumerable<Project> allProjects = orchestrator.getProjects();
+            return View(allProjects);
 
-            return View();
         }
 
         public IActionResult Contact()

@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
+    "projectUniqueName": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
     "projectName": "UI.MVC",
-    "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
-    "outputPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\UI.MVC\\obj\\",
+    "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
+    "outputPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\UI.MVC\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12,17 +12,20 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\BL\\BL.csproj": {
-            "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\BL\\BL.csproj"
+          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj": {
+            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj"
           },
-          "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
-            "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\DAL\\DAL.csproj"
+          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
+            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj"
           },
-          "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
-            "projectPath": "C:\\Users\\Cem\\Documents\\identityrepo\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
+            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj"
           }
         }
       }

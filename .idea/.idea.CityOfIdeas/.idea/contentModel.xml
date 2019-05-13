@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Cem\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Cem\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Cem\.Rider2018.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\Cem\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Cem\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-99018827.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Cem\Documents\identityrepo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\sefik\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sefik\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_CityOfIdeas.1777919897.00" t="ExcludeRecursive" />
+    <e p="C:\Users\sefik\OneDrive\Documenten\GitHub\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -257,11 +254,10 @@
             <e p="ManageModerators.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
-            <e p="About.cshtml" t="Include" />
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
-            <e p="Login.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
+            <e p="ProjectsGeneral.cshtml" t="Include" />
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
