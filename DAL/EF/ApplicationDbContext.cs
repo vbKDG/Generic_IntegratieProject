@@ -47,7 +47,7 @@ namespace DAL.EF
         public DbSet<Ideation> ideations { get; set; }
         public DbSet<IdeationQuestion> ideationQuestions { get; set; }
         public DbSet<Idea> ideas { get; set; }
-        public DbSet<Reaction> answers { get; set; }
+        public DbSet<Reaction> reactions { get; set; }
         
         //Questionnaire 
         public DbSet<Questionnaire> questionnaires { get; set; }

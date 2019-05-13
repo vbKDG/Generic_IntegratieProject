@@ -42,10 +42,17 @@ namespace BL.Application
         public IEnumerable<IdeationQuestion> GetIdeationQuestions(int ideationId)
         {
             return ideationMgr.GetIdeationQuestions(ideationId);
-
         }
 
-       
+        public void LikeIdea(int ideaId, string userId)
+        {
+            ideationMgr.LikeIdea(ideaId, userId);
+        }
+
+        public IEnumerable<TextField> GetFields(int ideaId)
+        {
+            return ideationMgr.GetFields(ideaId);
+        }
 
         public void CreateIdeation(Ideation ideation, int projectId)
         {

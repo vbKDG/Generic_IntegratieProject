@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Autofac;
 using BL;
@@ -10,8 +11,10 @@ using D.UI.MVC.Models.Fields;
 using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using UI.MVC.Models.Ideations;
 
 namespace UI.MVC.Controllers
@@ -137,14 +140,16 @@ namespace UI.MVC.Controllers
         
         public IActionResult Ideas(int ideationId)
         {
-            IdeasVM ideasVm = new IdeasVM();
+            /*IdeasVM ideasVm = new IdeasVM();
             List<IdeaVM> ideaVmList = new List<IdeaVM>();
             IEnumerable<Idea> ideas = ideationMgr.getIdeas(ideationId);
+            
+            ideationMgr.GetIdeationQuestions(ideationId);
             foreach (var idea in ideas)
             {
                 ideaVmList.Add(new IdeaVM
                 {
-                    ideationId = idea.ideaId
+                    ideationId = idea.ideaId,
                     
                 });
             }
@@ -152,9 +157,30 @@ namespace UI.MVC.Controllers
             ideasVm.IdeationId = ideationId;
             ideasVm.IdeaVms = ideaVmList;
             
+            return View(ideasVm);*/
+            
+            IdeasVM ideasVm = new IdeasVM();
+            ideasVm.IdeationId = ideationId;
+            ideasVm.ideas = ideationMgr.getIdeas(ideationId).ToList();
+            ideasVm.fields = new List<TextField>();
+            foreach (var idea in ideasVm.ideas)
+            {
+                foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
+                {
+                    ideasVm.fields.Add(field);
+                }
+            }
             return View(ideasVm);
         }
 
+        public IActionResult LikeIdea(int ideaId)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                ideationMgr.LikeIdea(ideaId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            }
+            return NoContent();
+        }
        
         public IActionResult CreateIdeation(IdeationVM ideationVm)
         {

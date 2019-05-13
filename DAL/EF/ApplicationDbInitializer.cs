@@ -475,8 +475,85 @@ namespace DAL.EF
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,5,17),endDate =  new DateTime(2019,5,20)},
                 new Phase{name = "Event",description = "The badminton tournament takes place",startDate =  new DateTime(2019,5,21),endDate =  new DateTime(2019,5,23)},
             };
+            Ideation id = new Ideation
+            {
+                ideas = new List<Idea> {
+                    new Idea {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea1 f1"
+                            },
+                            new TextField
+                            {
+                            required = true,
+                            text = "test idea1 f2"
+                            }
+                        },
+                        reactions = new List<Reaction>
+                        {
+                            new Reaction
+                            {
+                                content = "reaction 1 idea 1",
+                                date = DateTime.Now,
+                                user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                            },
+                            new Reaction
+                            {
+                                content = "reaction 2 idea 1",
+                                date = DateTime.Now,
+                                user = userManager.FindByEmailAsync("peter.smet@gmail.com").Result
+                            }
+                        }
+                    }, 
+                    new Idea {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            },
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f2"
+                            },
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f3"
+                            }
+                        },
+                        reactions = new List<Reaction>
+                        {
+                        new Reaction
+                        {
+                            content = "reaction 1 idea 2",
+                            date = DateTime.Now,
+                            user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                        }
+                    }
+                    }  
+                }
+            };
+            p10.ideations = new List<Ideation>()
+            {
+                id
+            };
             p10.imageField = img10;
             p10.mapField = map10;
+            IdeationQuestion iq10 = new IdeationQuestion()
+            {
+                ideation = id,
+                question = "central question"
+            };
+            ctx.ideationQuestions.Add(iq10);
+            id.questions.Add(iq10);
 
             // Parking lot movie 
             Project p11 = new Project();
@@ -543,8 +620,8 @@ namespace DAL.EF
          //   fields.Add(if1);
             //Ideas 
             
-            Idea i1 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.Id };
-            Idea i2 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("peter.smet@gmail.com").Result.Id };
+            Idea i1 = new Idea(){ideation = it1 , user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result };
+            Idea i2 = new Idea(){ideation = it1 , user = userManager.FindByEmailAsync("peter.smet@gmail.com").Result };
 
            // it1.fields = null;
             
@@ -556,8 +633,8 @@ namespace DAL.EF
             //answers 
            // Reaction a3 = new Reaction(){content = "test",idea = null};
             
-            Reaction a1 = new Reaction(){idea = i1, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Great Idea !" };
-            Reaction a2 = new Reaction(){idea = i2, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Terrible Idea !" };
+            Reaction a1 = new Reaction(){idea = i1, user = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,content = " Great Idea !" };
+            Reaction a2 = new Reaction(){idea = i2, user = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,content = " Terrible Idea !" };
             
             i1.reactions = new List<Reaction>(){a1};
             i2.reactions = new List<Reaction>(){a2};
@@ -575,7 +652,7 @@ namespace DAL.EF
             ctx.ideationQuestions.Add(iq1);
             ctx.ideas.AddRange(i1,i2);
 
-            ctx.answers.AddRange(a1,a2);
+            ctx.reactions.AddRange(a1,a2);
             ctx.options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
             
             ctx.SaveChanges();

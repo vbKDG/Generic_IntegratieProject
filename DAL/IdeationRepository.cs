@@ -98,9 +98,39 @@ namespace DAL
 
         public IEnumerable<Idea> readIdeas(int ideationId)
         {
-            return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
+            //return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
             // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
-            return ctx.ideas.Include(i => i.ideation).Include(i => i.ideaId).Where( i => i.ideation.ideationId == ideationId);
+            return ctx.ideas
+                .Include(i => i.fields)
+                .Include(i => i.user)
+                .Include(i => i.ideaLikes)
+                .Include(i => i.reactions)
+                .Where( i => i.ideation.ideationId == ideationId);
+        }
+
+        public IEnumerable<TextField> readFields(int ideaId)
+        {
+            IEnumerable<TextField> fields = ctx.textFields
+                .Where(f => f.idea.ideaId == ideaId);
+
+            return fields;
+        }
+
+        public void LikeIdea(int ideaId, string userId)
+        {
+            bool unique = ctx.ideaLikes
+                .Any(x => x.User.Id == userId && x.Idea.ideaId == ideaId);
+            Console.WriteLine(unique);
+                
+            if (!unique)
+            {
+                IdeaLike like = new IdeaLike();
+                like.User = ctx.Users.Find(userId);
+                like.likeTime = DateTime.Now;
+                like.Idea = ctx.ideas.Find(ideaId);
+                ctx.ideaLikes.Add(like);
+                ctx.SaveChanges();
+            }
         }
 
         #region Idea

@@ -38,10 +38,13 @@ namespace DAL
          Idea readIdea(int ideaId);
          void updateIdea(Idea i);
          void deleteIdea(int ideaId);
+         IEnumerable<TextField> readFields(int ideaId);
+         void LikeIdea(int ideaId, string userId);
 
-         
+
 
          #endregion
+
 /*
          #region Answers
          IEnumerable<Ideation> readIdeations(int id);

@@ -1,38 +1,42 @@
 @model D.UI.MVC.Models.Ideas.IdeasVM
 
-<h1>Projects</h1>
+<h1>Ideas</h1>
 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
     , new { ideationId=@Model.IdeationId})
 
 <table class="table">
     <tr>
         <th>
-            <p>User</p>
+            <p>Ideas</p>
         </th>
-        <th>
-            <p>Title</p>
-        </th>
-        
-        <th>Content</th>
     </tr>
-    @foreach (var item in Model.IdeaVms.ToList())
-    {/*
+    @foreach (var idea in Model.ideas)
+    {
         <tr>
             <td>
-                @item.user.firstName.Substring(0,1).@Html.DisplayFor(modelItem => item.user.lastName)
-            
-           
-                          
+                @idea.user
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink(" LIKE", "LikeIdea", "Idea"
+                        , new {ideaId = @idea.ideaId})
+                    <span>-</span>
+                    @idea.ideaLikes.Count
+                }
+                else
+                {
+                    <a href="" data-toggle="tooltip" title="You have to be signed in!">LIKE</a>
+                }
+                
+                <span>Show reactions</span> <span>REPORT</span><br>
+                @foreach (var field in Model.fields)
+                {
+                    if (idea.ideaId == field.idea.ideaId)
+                    {
+                        @field.text
+                        <br>
+                    }
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ideaId)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.ideaId)
-            </td>
-        </tr>*/
+        </tr>
     }
-    
-    
 </table>

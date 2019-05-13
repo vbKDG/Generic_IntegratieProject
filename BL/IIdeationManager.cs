@@ -10,6 +10,7 @@ namespace BL
         IEnumerable<IdeationQuestion> GetIdeationQuestionsForProject(int projectId);
 
         IEnumerable<IdeationQuestion> GetIdeationQuestions(int ideationId);
+        IEnumerable<TextField> GetFields(int ideaId); 
 
         void CreateIdeation(Ideation ideation);
         
@@ -21,7 +22,7 @@ namespace BL
 
         Idea getIdea(int id);
 
-
+        void LikeIdea(int ideaId, string userId);
 
 
 

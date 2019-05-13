@@ -43,6 +43,16 @@ namespace BL
         {
            return  ideationRepo.readIdeations(projectId);
         }
+
+        public IEnumerable<TextField> GetFields(int ideaId)
+        {
+            return ideationRepo.readFields(ideaId);
+        }
+
+        public void LikeIdea(int ideaId, string userId)
+        {
+            ideationRepo.LikeIdea(ideaId, userId);
+        }
         
         public IEnumerable<IdeationQuestion> GetIdeationQuestionsForProject(int projectId)
         {
