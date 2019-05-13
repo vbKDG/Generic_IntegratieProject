@@ -269,7 +269,7 @@ namespace DAL.EF
             };
             MapField mapproj2 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField imgproj2 = new ImageField();            
-            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
+            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park4.jpg");
             p2.mapField = mapproj2;
             p2.imageField = imgproj2;
             
@@ -378,10 +378,10 @@ namespace DAL.EF
             Project p4 = new Project();
             MapField map4 = new MapField { latitude = 51.19482591025128, longitude = 4.424488633272745 };
             ImageField img4 = new ImageField();
-            img4.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park1.jpg");
+            img4.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg");
             p4.name = "Soccer Tournament";
             p4.description = "The locals in Berchem are planning on organizing a Soccer Tournament set in June, 2019.";
-            p4.startDate = new DateTime(2019, 6, 6);
+            p4.startDate = new DateTime(2019, 5, 6);
             p4.endDate = new DateTime(2019, 7, 7);
             p4.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,6),endDate =  new DateTime(2019,6,10)},
@@ -474,10 +474,10 @@ namespace DAL.EF
             Project p10 = new Project();
             MapField map10 = new MapField { latitude = 51.21315287598253, longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
-            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
+            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\volleyballProject.jpg");
             p10.name = " Badminton tournament";
-            p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
-            p10.startDate = new DateTime(2019, 7, 1);
+            p10.description = "In the summer , the city will organize a volleyball tournament in City park. Everybody is welcome!";
+            p10.startDate = new DateTime(2019, 5, 1);
             p10.endDate = new DateTime(2019, 7, 15);
             p10.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,1),endDate =  new DateTime(2019,6,15)},
