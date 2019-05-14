@@ -46,25 +46,33 @@
         }
     </div>
     
-
-    <div id="ImageUploads">
-        @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
-        {
-            @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
+    @if (@Model.ImageFieldVms.Count != 0){
+        <h2>Upload Images</h2>
+        <div id="ImageUploads">
+            @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+            {
+                @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
      
-        }
+            }
          
 
-    </div>
-
-    <div id="VideoUploads">
-    @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
-    {
-        @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
-     
+        </div>
     }
-    </div>   
 
+    @if (@Model.VideoFieldVms.Count != 0)
+    {
+        <h2>Upload Videos</h2>
+        <div id="VideoUploads">
+            @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
+            {
+                @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
+     
+            }
+        </div>   
+
+    }
+   
+   
     
     @*@Html.EditorFor(x => x.ImageFieldVms[0] , new { index = 0} )    
     @Html.EditorFor(x => x.ImageFieldVms[1] , new { index = 1} )    
