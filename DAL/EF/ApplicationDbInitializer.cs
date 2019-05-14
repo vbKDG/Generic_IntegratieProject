@@ -152,7 +152,7 @@ namespace DAL.EF
             };
             MapField mapproj1 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField imgproj1 = new ImageField();            
-            imgproj1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
+            imgproj1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg");
             p1.mapField = mapproj1;
             p1.imageField = imgproj1;
             
@@ -442,7 +442,7 @@ namespace DAL.EF
             Project p8 = new Project();
             MapField map8 = new MapField { latitude = 51.21250372160042, longitude = 4.4180404853490245 };
             ImageField img8 = new ImageField();
-            img8.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\straat3.jpg");
+            img8.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg");
             p8.name = "Art gallery in Antwerp";
             p8.description = "From june 6 to june 11, school of art in Antwerp is organizing an art gallery";
             p8.startDate = new DateTime(2019, 6, 6);

@@ -84,27 +84,26 @@
                     Are you interested in projects in your neighbourhood, No need to look further.
                 </h3>
             </div>
-        </div>  
-
-        <div id="rowPictures"class="row">
-            @foreach (var project in @Model)
-            {
-                <div class="column text-center text-black">
-                    <h4>@project.name</h4>
-                    <img src="@project.imageField.GetImageString()" width="365" height="200"/>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
-                    </div>
-                    <div>
-                        <p class="text-dark">
-                            <i class="far fa-heart"></i> 5
-                            <i class="far fa-comments"></i> 6
-                            <i class="fas fa-share-alt"></i> 8
-                        </p>
-                    </div>
-                </div>
-            }
         </div>
+        <div id="rowPictures"class="row">
+                    @foreach (var project in @Model)
+                    {
+                        <div class="column text-center text-black">
+                            <h4>@project.name</h4>
+                            <img src="@project.imageField.GetImageString()" width="365" height="200"/>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
+                            </div>
+                            <div>
+                                <p class="text-dark">
+                                    <i class="far fa-heart"></i> 5
+                                    <i class="far fa-comments"></i> 6
+                                    <i class="fas fa-share-alt"></i> 8
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
         <div class="row">
             <div class="col text-center py-5">
                 <div id="ProjectsButton" class="col text-center">
@@ -194,5 +193,11 @@
 </section>
 *@
 
+
+
+
+        
+        
+        
 
 </body>
