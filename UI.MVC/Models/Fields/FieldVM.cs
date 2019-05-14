@@ -29,15 +29,15 @@ namespace D.UI.MVC.Models.Fields
        
         public string imageName { get; set; }
         [Display(Name ="Choose Image")]
-        public IFormFile imageFile { get; set; }
-        public IFormFile[] imageFiles { get; set; }
+        public IFormCollection imageFile { get; set; }
+      //  public IFormFile[] imageFiles { get; set; }
 
         
 
         public string GetImageData()
         {
             Byte[] data;
-            using (var reader = imageFile.OpenReadStream())
+            using (var reader = imageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
             {
                 {    
@@ -57,7 +57,7 @@ namespace D.UI.MVC.Models.Fields
     public class VideoFieldVm : FieldVM
     {
         public string videoName { get; set; }
-        public IFormFile videoFile { get; set; }
+        public IFormCollection VideoFile { get; set; }
     }
 
     public class MapFieldVm : FieldVM

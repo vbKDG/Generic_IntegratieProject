@@ -8,6 +8,7 @@ using Domain;
 using System.Web;
 using D.UI.MVC.Models.Fields;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace D.UI.MVC.Models.Ideas
 {
@@ -23,23 +24,34 @@ namespace D.UI.MVC.Models.Ideas
             };
         }
     }*/
-    public class IdeaVM
+    public class IdeaVM 
     {
+
+       
+        
         public int ideationId { get; set; }
         public String[] ideationQuestion { get; set; }
         
         public int ideaViewModelId { get; set; }
         public string name { get; set; }
       //  public ICollection<FieldViewModel> fields { get; set; }
-      
-        public TextFieldVm[] TextFieldVms { get; set; }
-        
-        public ImageFieldVm[] ImageFieldVms { get; set; }
-        
-        public VideoFieldVm[] VideoFieldVms { get; set; }
+
+       //public IFormFile[] Files { get; set; }
+       
+       public IFormCollection images { get; set; }
+       public IFormFile file { get; set; }
+       public List<ImageFieldVm> ImageFieldVms { get; set; }
+
+       // public TextFieldVm[] TextFieldVms  { get; set; }
+        public List<TextFieldVm> TextFieldVms { get; set; }
+
+        //public ImageFieldVm[] ImageFieldVms { get; set; }
+        public List<VideoFieldVm> VideoFieldVms { get; set; }
+
+        //public VideoFieldVm[] VideoFieldVms { get; set; }
         public MapFieldVm[] MapFieldVms { get; set; }
         public TextFieldVm textFieldVM { get; set; }
-        public ImageFieldVm imageFieldVM { get; set; }
+      //  public ImageFieldVm imageFieldVM { get; set; }
         public VideoFieldVm videoFieldVM { get; set; }
         public MapFieldVm    mapFieldVM { get; set; }
         public QuestionFieldVm QuestionFieldVm { get; set; }
@@ -47,8 +59,8 @@ namespace D.UI.MVC.Models.Ideas
 
         
     //  public FieldViewModel fieldViewModel { get; set; }
-            
-        
+
+  
     }
 
     public class IdeasVM

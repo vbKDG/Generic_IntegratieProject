@@ -86,7 +86,7 @@ namespace UI.MVC.Controllers
             mapField.longitude = projectVm.mapFieldVM.longitude;
             project.mapField = mapField;
 
-            using (var reader = projectVm.imageFieldVM.imageFile.OpenReadStream())
+            using (var reader = projectVm.imageFieldVM.imageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
             {
                 {

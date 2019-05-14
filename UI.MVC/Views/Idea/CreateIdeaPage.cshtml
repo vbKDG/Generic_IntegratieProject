@@ -1,7 +1,9 @@
 
+@using System.Collections.Immutable
 @using System.Xml.Linq
 @using D.UI.MVC.Models.Ideas
 @using Domain
+@using Microsoft.AspNetCore.Http.Internal
 @model D.UI.MVC.Models.Ideas.IdeaVM
 
 @foreach (var item in Model.ideationQuestion)
@@ -10,24 +12,175 @@
 }
 
 
+@*
+@using (Html.BeginForm("CreateIdea", "Idea", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    <!-- Note here I have used TextBoxFor the model property -->
+    @Html.TextBoxFor(m => m.TextFieldVms[0].text)
+    
+    $1$
+    @Html.TextBoxFor(m => m.ImageFieldVms[0].imageName)
+    @Html.TextBoxFor(m => m.ImageFieldVms[0].imageFile, new { type = "file" })#1#
+    @Html.TextBoxFor(m => m.images.Files[0], new { type = "file" })
+    @Html.TextBoxFor(m => m.images.Files[1], new { type = "file" })
+
+
+
+    
+    
+    <input type="submit" value="upload" />
+
+}
+*@
+
 
 <form asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
     <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
     
-    @for (int i = 0; i < @Model.TextFieldVms.Length; i++)
-    {
-        @Html.EditorFor(x => x.TextFieldVms[i])
+  
+  
+    
+    @*
+    <input asp-for="ImageFieldVms[0].imageName" type="text"/>
+    
+    <input asp-for="ImageFieldVms[0].imageName" type="text"/>*@
 
-    }
+    @*<input asp-for="ImageFieldVms[0].imageFile.Files[0]" type="file"/>
+    <input asp-for="ImageFieldVms[1].imageFile.Files[0]" type="file"/>
+    <input asp-for="ImageFieldVms[2].imageFile.Files[0]" type="file"/>*@
+ 
+    
+    
+   @*
+   <input @Model.images.Files[@Model.images.Keys.Count] type="file"/>
+   *@
+
+    <h2>Upload Images</h2>
     <div id="ImageUploads">
-    @for (int i = 0; i < @Model.ImageFieldVms.Length; i++)
+        @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+        {
+            @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
+     
+        }
+         
+
+    </div>
+    <h2>Upload Videos</h2>
+
+    <div id="VideoUploads">
+    @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
+    {
+        @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
+     
+    }
+    </div>   
+
+    
+    @*@Html.EditorFor(x => x.ImageFieldVms[0] , new { index = 0} )    
+    @Html.EditorFor(x => x.ImageFieldVms[1] , new { index = 1} )    
+    @Html.EditorFor(x => x.ImageFieldVms[2] , new { index = 2} )    *@
+
+   
+   
+    
+    @*@for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+    {
+                        
+     <input asp-for="ImageFieldVms[i].imageFile.Files[0]" type="file"/>
+                 
+        
+    }*@
+        
+    @*<div id="ImageUploads">
+    @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+    {
+                        
+        @Html.EditorFor(x => x.ImageFieldVms[i], new {index= i})                 
+        
+    }
+
+    </div>*@
+    
+    
+    
+    @*
+    <link rel="stylesheet" href="~/css/carousel.css"> 
+    
+    
+    <div>
+        @if (ViewBag.index == 0)
+        {
+          
+
+            <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
+            <input class="ImageUpload" asp-for="imageFile" type="file" accept="image/*" onchange="readImage(this)" multiple/>
+            <button onclick="ClearImage()"> Remove</button>
+
+        }
+        else
+        {
+            <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
+            <input class="ImageUpload" asp-for="imageFile" type="file" accept="image/*" onchange="readImage(this)" multiple hidden="true"/>
+        }
+
+
+
+
+    
+        @if (ViewBag.index == 0)
+        {
+            <div class="slideshow-container">
+
+                $2$<div class="mySlides">
+                    <img id="carousel1" src="#" width="200" height="200"/>
+                </div>#2#
+
+                <!-- Next and previous buttons -->
+                <div id="sliders" hidden="true">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- The dots/circles -->
+            <div id="dots" style="text-align: center" hidden="true">
+                $2$<span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>#2#
+            </div>
+
+
+        }
+
+
+
+    </div>#1#
+    *@
+
+     
+  
+    @*<div id="ImageUploads">
+    @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
     {
         @Html.EditorFor(x => x.ImageFieldVms[i], new { index = i} )
 
     }
-    </div>
+    </div>*@
     
-    @for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
+    @*<input name="ImageFieldVms[0].imageFile" type="file"/>
+    <input asp-for="ImageFieldVms[0].imageName" type="text"/>*@
+
+    
+    @*<input asp-for=@Model.ImageFieldVms[0].imageFile type="file"/>
+    
+   // <input asp-for=@Model.ImageFieldVms[0].imageFile type="file"/>*@
+    
+    @*@for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
     {
         @Html.EditorFor(x => x.VideoFieldVms[i])
 
@@ -36,7 +189,7 @@
     {
         @Html.EditorFor(x => x.MapFieldVms[i])
 
-    }
+    }*@
     @*
     @Html.EditorFor(x => x.imageFieldVM)
 
@@ -59,7 +212,40 @@
         
      
    
-    <input type="submit" value="save">   
+    <input type="submit" value="save" onclick="disable()" >   
+    
+    <script>
+        function disable(parameters) {
+            var images = document.getElementsByClassName("ImageUpload");
+            var slides = document.getElementsByClassName("mySlides");
+            console.log(images.length);
+            console.log(slides.length);
+
+
+            for (var i = slides.length; i < images.length; i++) {
+                $(images[i]).attr('disabled', true);
+            }
+          
+        }
+    </script>
+    
+    
+    @*<form id="test" action="CreateIdea">
+        
+    </form>
+    
+    <button onclick="send()"> Remove</button>
+
+    
+    <script>
+        
+        function send() {
+            $("#test").ajaxSubmit({ url: '', type: 'post' });
+
+        }
+        
+        
+    </script>*@
          
     
 </form>

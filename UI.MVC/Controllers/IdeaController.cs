@@ -12,6 +12,7 @@ using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using UI.MVC.Models.Ideations;
 
 namespace UI.MVC.Controllers
@@ -43,11 +44,28 @@ namespace UI.MVC.Controllers
 
             Ideation ideation = ideationMgr.getIdeation(ideationId);
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
+            List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
+            List<TextFieldVm> textFieldVms = new List<TextFieldVm>{new TextFieldVm()};
+            List<VideoFieldVm> videoFieldVms  = new List<VideoFieldVm>();
+            
+            
             IdeaVM ideaVm = new IdeaVM();
-         //   TextFieldVm[] textFieldVms = new TextFieldVm[ideation.TextFieldRange.Maximum];
-            ideaVm.TextFieldVms = new TextFieldVm[ideation.TextFieldRange.Maximum];
-            ideaVm.ImageFieldVms = new ImageFieldVm[ideation.ImageFieldRange.Maximum];
-            ideaVm.VideoFieldVms = new VideoFieldVm[ideation.VideoRange.Maximum];
+            ideaVm.ImageFieldVms = imageFieldVms;
+            ideaVm.VideoFieldVms = videoFieldVms;
+        
+           ideaVm.TextFieldVms = textFieldVms;     
+            
+           for (int i = 0; i < ideation.VideoRange.Maximum ; i++)
+           {        
+              ideaVm.VideoFieldVms.Add(new VideoFieldVm());   
+           }
+           
+           for (int i = 0; i < ideation.ImageFieldRange.Maximum ; i++)
+            {        
+                ideaVm.ImageFieldVms.Add(new ImageFieldVm{});    
+            }
+           // ideaVm.ImageFieldVms = new ImageFieldVm[ideation.ImageFieldRange.Maximum];
+           ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.MapFieldVms = new MapFieldVm[ideation.MapFieldRange.Maximum];
 
             
@@ -76,55 +94,119 @@ namespace UI.MVC.Controllers
         }
 
 
-
+        [HttpPost]
         public IActionResult CreateIdea(IdeaVM ideaVm)
         {
             Idea idea = new Idea();
+            
+            
             ICollection<Field> fields = new List<Field>();
             TextField textField = new TextField();
-            ImageField imageField = new ImageField();
-            VideoField videoField = new VideoField();
+            List<ImageField> imageFields = new List<ImageField>();
+            List<VideoField> videoFields = new List<VideoField>();
+
+           // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
+            //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
             MapField mapField = new MapField();
+            
+            
+            
+//            textField.text = Convert.ToString(ideaVm.textFieldVM.text);
+//            mapField.latitude = ideaVm.mapFieldVM.latitude;
+//            mapField.longitude = ideaVm.mapFieldVM.longitude;
 
-            textField.text = Convert.ToString(ideaVm.textFieldVM.text);
-            mapField.latitude = ideaVm.mapFieldVM.latitude;
-            mapField.longitude = ideaVm.mapFieldVM.longitude;
+//            using (MemoryStream memoryStream = new MemoryStream())
+//            {
+//                ideaVm.imageFieldVM.imageFile.Files[0].CopyTo(memoryStream);
+//                imageField.imageData = memoryStream.ToArray();
+//            }
+           // var imageIndex = 0;
+           // var videoIndex = 0;
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            for (int i = 0; i < ideaVm.images.Files.Count; i++)
             {
-                ideaVm.imageFieldVM.imageFile.CopyTo(memoryStream);
-                imageField.imageData = memoryStream.ToArray();
-            }
-
-            using (var reader = ideaVm.imageFieldVM.imageFile.OpenReadStream())
-            using (var stream = new MemoryStream())
-            {
+                if (ideaVm.images.Files[i].ContentType.StartsWith("image"))
                 {
-                    reader.CopyTo(stream);
-                    imageField.imageData = stream.ToArray();
+                   // imageFields[imageIndex] = new ImageField();
+                   
+                    using (var reader = ideaVm.images.Files[i].OpenReadStream())
+                    using (var stream = new MemoryStream())
+                    {
+                        {
+                        
+                            reader.CopyTo(stream);
+                            imageFields.Add(new ImageField{imageData = stream.ToArray()});
+                           // imageFields[imageIndex].imageData = stream.ToArray();
+
+                        }
+
+                    }
+                  //  imageIndex++;
+                    
+                } else if (ideaVm.images.Files[i].ContentType.StartsWith("video"))
+                {
+                   // videoFields[videoIndex] = new VideoField();
+                    using (var reader = ideaVm.images.Files[i].OpenReadStream())
+                    using (var stream = new MemoryStream())
+                    {
+                        {
+                        
+                            reader.CopyTo(stream);
+                            videoFields.Add(new VideoField{videoData = stream.ToArray()});
+
+                        }
+
+                    } 
+                   // videoIndex++;
 
                 }
-
+               
             }
-
-            using (var reader = ideaVm.videoFieldVM.videoFile.OpenReadStream())
-            using (var stream = new MemoryStream())
+            
+            /*for (int i = 0; i < ideaVm.images.Files.Count; i++)
             {
+                videoFields[i] = new VideoField();
+                using (var reader = ideaVm.images.Files[i].OpenReadStream())
+                using (var stream = new MemoryStream())
                 {
-                    reader.CopyTo(stream);
-                    videoField.videoData = stream.ToArray();
+                    {
+                        
+                        reader.CopyTo(stream);
+                        videoFields[i].videoData = stream.ToArray();
+
+                    }
 
                 }
+            }*/
+            
 
-            }
+//            using (var reader = ideaVm.videoFieldVM.videoFile.OpenReadStream())
+//            using (var stream = new MemoryStream())
+//            {
+//                {
+//                    reader.CopyTo(stream);
+//                    videoField.videoData = stream.ToArray();
+//
+//                }
+//
+//            }
 
             Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
 
             
             idea.ideation = ideation;
             fields.Add(textField);
-            fields.Add(imageField);
-            fields.Add(videoField);
+            foreach (var imageField in imageFields)
+            {
+                fields.Add(imageField);
+
+            }
+
+            foreach (var videoField in videoFields)
+            {
+                fields.Add(videoField);
+
+            }
             fields.Add(mapField);
             idea.fields = fields;
             ideationMgr.createIdea(idea);

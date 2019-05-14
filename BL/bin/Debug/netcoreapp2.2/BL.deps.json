@@ -1231,8 +1231,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.2",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.2.2",
-          "Microsoft.Extensions.Logging.Debug": "2.2.0.0"
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.2.2"
         },
         "runtime": {
           "DAL.dll": {}
@@ -1245,14 +1244,6 @@
         },
         "runtime": {
           "Domain.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Logging.Debug.Reference/2.2.0.0": {
-        "runtime": {
-          "Microsoft.Extensions.Logging.Debug.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.18315"
-          }
         }
       }
     }
@@ -2047,11 +2038,6 @@
     },
     "Domain/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.Extensions.Logging.Debug.Reference/2.2.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

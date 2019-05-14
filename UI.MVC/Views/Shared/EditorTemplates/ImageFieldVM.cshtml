@@ -1,47 +1,40 @@
 
-@using Microsoft.CodeAnalysis
 @model D.UI.MVC.Models.Fields.ImageFieldVm
 
 
-<link rel="stylesheet" href="~/css/carousel.css"> 
 
                                                                                    
   
+
 <div>
     @if (ViewBag.index == 0)
     {
-        <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
-        <input class="ImageUpload" asp-for="imageFile" type="file" accept="image/*" onchange="readImage(this)" multiple/>
+        <link rel="stylesheet" href="~/css/carousel.css"> 
+        
+        <input class="ImageUpload" asp-for=@Model.imageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)" />
+        
+
     }
     else
     {
-        <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
-        <input class="ImageUpload" asp-for="imageFile" type="file" accept="image/*" onchange="readImage(this)" multiple hidden="true"/>
+        <input class="ImageUpload" asp-for=@Model.imageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)"  hidden="true" />
     }
+   
 
 
 
 
-    @*<input asp-for="imageFile" type="file" 
-           class="form-control"
-           onchange="readImage(this)" 
-           multiple
-           accept="image/*">
-             @Html.TextBoxFor(imagefield.imageFile, new { type="file",   onchange="readImage(this)", accept="image/*"})
-    <img id="image_preview" src="#" alt="your image" width="200" height="200" hidden=""/>*@
+    
     @if (ViewBag.index == 0)
     {
-        <input type="button" id="Clear" value="Remove" onclick="clear(this)"/>
-        <div class="slideshow-container">
+        <div id="ImageSlideshow" class="slideshow-container">
 
-            @*<div class="mySlides">
-            <img id="carousel1" src="#" width="200" height="200"/>
-        </div>*@
+          
 
             <!-- Next and previous buttons -->
             <div id="sliders" hidden="true">
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
         </div>
 
@@ -56,16 +49,13 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>*@
         </div>
-
-
-    }
-
-
-
-</div>
-<script type="text/javascript">
+        <button id="removeImage" onclick="ClearImage()" hidden="true"> Remove</button>
+        <script type="text/javascript">
+    
+    
+    
     var slideIndex = 1;
-   // showSlides(slideIndex);
+    // showSlides(slideIndex);
 
 // Next/previous controls
     function plusSlides(n) {
@@ -93,32 +83,23 @@
         slides[slideIndex-1].style.display = "block"; 
         dots[slideIndex-1].className += " active";
     }
-@*</script>
-<script type="text/javascript">*@
+    
     var imageFiles = [];
 
     function readImage(input) {
-//        if (input.files && input.files[0]) {
-//            var reader = new FileReader();
-//            reader.onload = function(e) {
-//                $('#image_preview').attr('src', e.target.result);
-//                $('#image_preview').attr('hidden', false);
-//            }
-//            reader.readAsDataURL(input.files[0]);
-//        }
-        // Creating an imagefield and filling it 
+
         if (input.files && input.files[0]) {
 
-        var inputString = "";
+            var inputString = "";
         
-        imageFiles[imageFiles.length] = input.file;
-       // console.log(imageFiles.length);
+            imageFiles[imageFiles.length] = input.file;
+            // console.log(imageFiles.length);
          
-        inputString += '<img id="carousel' + imageFiles.length + '" src="#" width="200" height="200"/>';
-        $(".slideshow-container").append('<div class="mySlides">'+ inputString +'</div>');
+            inputString += '<img id="carousel' + imageFiles.length + '" src="#" width="200" height="200"/>';
+            $("#ImageSlideshow").append('<div class="mySlides">'+ inputString +'</div>');
 
-        var name = "#carousel" + (imageFiles.length).toString();
-       // console.log(name);
+            var name = "#carousel" + (imageFiles.length).toString();
+            // console.log(name);
             var reader = new FileReader();
             reader.onload = function(e) {
                 $(name).attr('src', e.target.result);
@@ -127,56 +108,112 @@
             reader.readAsDataURL(input.files[0]);
         
        
-        //
-        var dotString = '<span class="dot" onclick="currentSlide('+ imageFiles.length +')"></span>'
-        $("#dots").append(dotString);
-        console.log(imageFiles.length);
-        slideIndex = imageFiles.length;
-        showSlides(slideIndex);
-        var btn1 = '#ImageFieldVms_' + (imageFiles.length -1 ).toString() + '__imageFile';
-        var btn2 = '#ImageFieldVms_' + imageFiles.length.toString() + '__imageFile';
+            //
+            var dotString = '<span class="dot" onclick="currentSlide('+ imageFiles.length +')"></span>'
+            $("#dots").append(dotString);
+            //console.log(imageFiles.length);
+            slideIndex = imageFiles.length;
+            showSlides(slideIndex);
+            var btn1 = '#ImageFieldVms_' + (imageFiles.length -1 ).toString() + '__imageFile_Files_0_';
+            var btn2 = '#ImageFieldVms_' + imageFiles.length.toString() + '__imageFile_Files_0_';
+            var remove = '#removeImage';
+           
+    
+          
 
-        //console.log(btn);
+            //  $(btn2).attr('disabled', false);
+            if (imageFiles.length > 0) {
+                $(remove).attr('hidden', false);
+
+            } else {
+                $(remove).attr('hidden', true);
+
+            }
+            //console.log(btn);
        
-        $(btn1).attr('hidden', true);
-        $(btn2).attr('hidden', false);
+            $(btn1).attr('hidden', true);
+            $(btn2).attr('hidden', false);
+          //  $(btn2).attr('disabled', false);
+
         
-        if (imageFiles.length > 1) {
-            $('#sliders').attr('hidden', false);
-            $('#dots').attr('hidden', false);
-        } else {
-            $('#sliders').attr('hidden', true);
-            $('#dots').attr('hidden', true);
-        }
+            if (imageFiles.length > 1) {
+                $('#sliders').attr('hidden', false);
+                $('#dots').attr('hidden', false);
+            } else {
+                $('#sliders').attr('hidden', true);
+                $('#dots').attr('hidden', true);
+            }
 //        document.getElementsByName('ImageFieldVms[' + imageFiles.length - 1 + '].imageName').attr('hidden', true);
 //        document.getElementsByName('ImageFieldVms[' + imageFiles.length  + '].imageName').attr('hidden', false);
         }
+        
+        
+        
+    }
+    
+    function ClearImage() {
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        var inputs = document.getElementsByClassName("ImageUpload");
+        console.log(slides);
+        console.log(dots);
+        slides[slides.length -1].remove();
+        dots[dots.length - 1].remove();
+        imageFiles.pop();
+        if (imageFiles.length > 0) {
+            slideIndex = imageFiles.length;
+            showSlides(slideIndex);
+        }
+        var remove = '#removeImage';
+           
+    
+          
+
+        //  $(btn2).attr('disabled', false);
+        if (imageFiles.length > 0) {
+            $(remove).attr('hidden', false);
+
+        } else {
+            $(remove).attr('hidden', true);
+
+        }
+                
+        if(imageFiles.length < 1) {
+            $('#sliders').attr('hidden', true);
+            $('#dots').attr('hidden', true);
+        }
+        var btn1 = '#ImageFieldVms_' + (imageFiles.length ).toString() + '__imageFile_Files_0_';
+        if (imageFiles.length < inputs.length) {
+        var btn2 = '#ImageFieldVms_' + (imageFiles.length + 1).toString() + '__imageFile_Files_0_';
+        
+        $(btn2).attr('hidden', true);
+        
+        }
+        $(btn1).attr('hidden', false);
+
+        $(btn1).wrap('<form>').closest('form').get(0).reset();
+        $(btn1).unwrap();
+        $(btn1).attr('disabled', false);
+
+       
+
+
     }
 
-    function clear(input) {
-        var removeString = '<img id="carousel' + imageFiles.length + '" src="#" width="200" height="200"/>';
-        console.log("test");
-
-        $(".slideshow-container").remove('<div class="mySlides">'+ removeString +'</div>');
-        console.log("test");
-    }
-         
-
-        // inputstring =+ '<img id="carousel2" src="#" width="200" height="200"/>';
-     
-
-//        $(".slideshow-container").append('<div class="mySlides">'+ inputString +'</div>');
-//        (function(file) {
-//            var reader1 = new FileReader();
-//            var name = '#carousel' + imageFiles.length-1;
-//            reader1.onload = function(e) {
-//                $('#carousel1').attr('src', e.target.result);
-//            
-//            }
-//            reader1.readAsDataURL(input.file);
-//
-//        })(input.file);
+             
 </script>
+
+
+
+    }
+
+
+
+</div>
+
+
+
+
 
 
 @*
