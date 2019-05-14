@@ -44,9 +44,39 @@ namespace BL.Application
             return ideationMgr.GetIdeationQuestions(ideationId);
         }
 
+        public IEnumerable<Reaction> getReactions(int ideaId)
+        {
+            return ideationMgr.getReactions(ideaId);
+        }
+
         public void LikeIdea(int ideaId, string userId)
         {
             ideationMgr.LikeIdea(ideaId, userId);
+        }
+
+        public IEnumerable<Report> getReports(int ideaId)
+        {
+            return ideationMgr.getReports(ideaId);
+        }
+
+        public Reaction getReaction(int reactionId)
+        {
+            return ideationMgr.getReaction(reactionId);
+        }
+
+        public Report addReport(int ideaId, string reportMessage, string userId, string type)
+        {
+            return ideationMgr.addReport(ideaId, reportMessage, userId, type);
+        }
+
+        public void ReactIdea(string ideaId, string userId, string content)
+        {
+            ideationMgr.ReactIdea(ideaId, userId, content);
+        }
+
+        public void LikeReaction(int reactionId, string userId)
+        {
+            ideationMgr.LikeReaction(reactionId, userId);
         }
 
         public IEnumerable<TextField> GetFields(int ideaId)

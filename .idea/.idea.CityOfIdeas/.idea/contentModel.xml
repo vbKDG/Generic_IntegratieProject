@@ -107,6 +107,11 @@
           <e p="Questionnaire.cs" t="Include" />
           <e p="QuestionUser.cs" t="Include" />
         </e>
+        <e p="Report" t="Include">
+          <e p="NewReportDTO.cs" t="Include" />
+          <e p="Report.cs" t="Include" />
+          <e p="ReportDTO.cs" t="Include" />
+        </e>
         <e p="User" t="Include">
           <e p="ApplicationRole.cs" t="Include" />
           <e p="ApplicationUser.cs" t="Include" />
@@ -203,6 +208,7 @@
           <e p="IdeaController.cs" t="Include" />
           <e p="ProjectController.cs" t="Include" />
           <e p="QuestionnaireController.cs" t="Include" />
+          <e p="ReportsController.cs" t="Include" />
         </e>
         <e p="DependencyInjectionConfig.cs" t="Include" />
         <e p="Models" t="Include">
@@ -329,6 +335,7 @@
             <e p="building3.jpg" t="Include" />
             <e p="comments.png" t="Include" />
             <e p="delen.jpg" t="Include" />
+            <e p="green_check.png" t="Include" />
             <e p="ideeLogo.jpg" t="Include" />
             <e p="image1.jpg" t="Include" />
             <e p="image2.jpg" t="Include" />
@@ -343,6 +350,7 @@
             <e p="project-park-badminton.jpg" t="Include" />
             <e p="project-parking-lot.jpg" t="Include" />
             <e p="project-renaissance-faire.jpg" t="Include" />
+            <e p="red_cross.jpg" t="Include" />
             <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
             <e p="straat2.jpg" t="Include" />
             <e p="straat3.jpg" t="Include" />
@@ -354,6 +362,7 @@
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
             <e p="UploadScript.js" t="Include" />

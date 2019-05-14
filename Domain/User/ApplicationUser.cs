@@ -51,5 +51,6 @@ namespace DAL.EF
         public ICollection<ProjectLike> projectLikes { get; set; }
         public ICollection<ReactionLike> reactionLikes { get; set; }
         public ICollection<IotVote> iotVotes { get; set; }
+        public ICollection<Report> reports { get; set; }
     }
 }

@@ -36,10 +36,16 @@ namespace DAL
          void createIdea(Idea i);
          void createIdea(ICollection<Field> fields);
          Idea readIdea(int ideaId);
+         Reaction readReaction(int reactionId);
          void updateIdea(Idea i);
          void deleteIdea(int ideaId);
          IEnumerable<TextField> readFields(int ideaId);
+         IEnumerable<Reaction> readReactions(int ideaId);
          void LikeIdea(int ideaId, string userId);
+         void ReactIdea(string ideaId, string userId, string content);
+         void LikeReaction(int reactionId, string userId);
+         IEnumerable<Report> readReportsOfIdea(int ideaId);
+         Report createReport(Report report, string userId);
 
 
 

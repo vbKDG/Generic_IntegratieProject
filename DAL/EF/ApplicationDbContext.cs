@@ -36,7 +36,7 @@ namespace DAL.EF
         public DbSet<Like> likes { get; set; }
         public DbSet<IdeaLike> ideaLikes { get; set; }
         public DbSet<ProjectLike> projectLikes { get; set; }
-        public DbSet<ReactionLike> answerLikes { get; set; }
+        public DbSet<ReactionLike> reactionLikes { get; set; }
         public DbSet<IotVote> iotLikes { get; set; }
 
         //Project
@@ -60,6 +60,9 @@ namespace DAL.EF
         
         //Identity
         public DbSet<Organisation> Organisations { get; set; }
+        
+        //Report
+        public DbSet<Report> reports { get; set; }
         
         #endregion
         

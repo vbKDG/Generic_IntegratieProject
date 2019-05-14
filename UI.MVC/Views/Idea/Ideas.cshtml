@@ -1,5 +1,8 @@
 @model D.UI.MVC.Models.Ideas.IdeasVM
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
+
 <h1>Ideas</h1>
 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
     , new { ideationId=@Model.IdeationId})
@@ -10,33 +13,167 @@
             <p>Ideas</p>
         </th>
     </tr>
-    @foreach (var idea in Model.ideas)
+    @for (var i = 0; i < Model.ideas.Count; i++)
     {
         <tr>
             <td>
-                @idea.user
+                @Model.ideas.ToList()[i].user
                 @if (User.Identity.IsAuthenticated)
                 {
-                    @Html.ActionLink(" LIKE", "LikeIdea", "Idea"
-                        , new {ideaId = @idea.ideaId})
-                    <span>-</span>
-                    @idea.ideaLikes.Count
+                    <button type="button" onclick="location.href='@Url.Action("LikeIdea", "Idea"
+                           , new {ideaId = @Model.ideas.ToList()[i].ideaId})'" >Like</button>
+                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
                 }
                 else
                 {
-                    <a href="" data-toggle="tooltip" title="You have to be signed in!">LIKE</a>
+                    <button title="You have to be signed in">Like</button>
+                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
                 }
+                <br>
                 
-                <span>Show reactions</span> <span>REPORT</span><br>
                 @foreach (var field in Model.fields)
                 {
-                    if (idea.ideaId == field.idea.ideaId)
+                    if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)
                     {
                         @field.text
                         <br>
                     }
                 }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button onclick="showPopup(@Model.ideas.ToList()[i].ideaId, 'idea')">Report idea</button><br>
+                }
+                else
+                {
+                    <button title="You have to be signed in to report an idea">Report idea</button><br>
+                }
+                
+                <button id="showReactions-@i">Show reactions</button>
+                <div id="reactions-@i">
+                    @foreach (var reaction in Model.reactions.ToList())
+                    {
+                        if (reaction.idea.ideaId == @Model.ideas.ToList()[i].ideaId)
+                        {
+                            @reaction.content
+                            <button type="button" onclick="location.href='@Url.Action("LikeReaction", "Idea"
+                                                                              , new {reactionId = @reaction.reactionId})'" >Like</button>
+                            <span>(@reaction.reactionLikes.Count)</span>
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <button onclick="showPopup(@reaction.reactionId, 'reaction')">Report reaction</button><br>
+                            }
+                            else
+                            {
+                                <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                            }
+                            <br>
+                        }
+                    }
+                    <div>
+                        @using (Html.BeginForm("ReactIdea", "Idea",
+                            FormMethod.Post))
+                        {
+                            <p>Write your own reaction: </p>
+                            <input name="reaction" type="text" />
+                            <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden" />
+                            <input type="submit" value="React" />
+                        }
+                    </div>
+                </div>
             </td>
         </tr>
     }
 </table>
+
+<div style="top: 0; bottom: 0; left: 0; right: 0; position: fixed; background-color: lightgrey; opacity: 0.7; display: none" id="blur" name="blur">
+</div>
+<div style="color: black; position: absolute; left: 50%; top: 50%; background-color: whitesmoke; width: 53%; height: 40%; transform: translate(-50%, -50%); display: none" id="popup" name="popup">
+    <div name="popupContent" id="popupContent" style="height: 80%">
+        <div name="inputArea" id="inputArea" style="width: 100%; height: 100%">
+            <p style="text-align: center; padding: 10px; margin: 0px">Why do you want to report this 
+                <span id="reportType"></span>?
+             </p>
+            <div style="text-align: center; height: 70%">
+                <textarea style="width: 90%; height: 100%; resize: none" id="reportText" name="reportText"></textarea>
+            </div>
+        </div>
+        <div name="successMessage" id="successMessage" style="text-align: center; width: 100%; height: 100%; padding-top: 80px">
+            <img src="/images/green_check.png" style="width: 50px; height: 50px"/>
+            <p>Your report has been successfully submitted.</p>
+        </div>
+        <div name="failureMessage" id="failureMessage" style="text-align: center; width: 100%; height: 100%; padding-top: 80px">
+            <img src="/images/red_cross.jpg" style="width: 50px; height: 50px"/>
+            <p>Something went wrong, please try again later.</p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 5px; height: 20%">
+        <button style="margin-right: 10px" onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var newId = 0;
+    function showPopup(id, reportType) {
+        newId = id;
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("blur").style.display = "block";
+        document.getElementById("inputArea").style.display = "block";
+        document.getElementById("submitButton").style.display = "inline";
+        if (reportType === "reaction") {
+            document.getElementById("reportType").innerHTML = "reaction";
+        }
+        if (reportType === "idea") {
+            document.getElementById("reportType").innerHTML = "idea";
+        }
+        closeSubmissionMessage();
+    }
+    
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("blur").style.display = "none";
+        document.getElementById("reportText").value = "";
+        closeSubmissionMessage();
+    }
+    
+    function submitReportIdea() {
+        var reportMessage = $('#reportText').val();
+        var reportType = $('#reportType').text();
+        var newReport = null;
+        if (reportMessage) {
+            if (reportType === "reaction")
+            {
+                newReport = { Reaction: newId, Message: reportMessage }
+            }
+            if (reportType === "idea")
+            {
+                newReport = { Idea: newId, Message: reportMessage }
+            }
+            
+            $.ajax('/api/Reports',
+                    {
+                        type: 'POST',
+                        data: JSON.stringify(newReport),
+                        contentType: 'application/json',
+                        datatType: 'json'
+                    })
+                .done(function(data) {
+                    closeInputArea();
+                    document.getElementById("successMessage").style.display = "block";
+                })
+                .fail(function() {
+                    closeInputArea();
+                    document.getElementById("failureMessage").style.display = "block";
+                });
+        }
+    }
+    
+    function closeInputArea() {
+        document.getElementById("reportText").value = "";
+        document.getElementById("inputArea").style.display = "none";
+        document.getElementById("submitButton").style.display = "none";
+    }
+    function closeSubmissionMessage() {
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("failureMessage").style.display = "none";
+    }
+</script>

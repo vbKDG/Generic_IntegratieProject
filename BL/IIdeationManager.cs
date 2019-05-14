@@ -21,11 +21,14 @@ namespace BL
         void createIdea(ICollection<Field> fields);
 
         Idea getIdea(int id);
+        IEnumerable<Reaction> getReactions(int ideaId);
 
         void LikeIdea(int ideaId, string userId);
+        void LikeReaction(int reactionId, string userId);
+        void ReactIdea(string ideaId, string userId, string content);
 
-
-
-
+        IEnumerable<Report> getReports(int ideaId);
+        Report addReport(int id, string reportMessage,string userId, string type);
+        Reaction getReaction(int reactionId);
     }
 }

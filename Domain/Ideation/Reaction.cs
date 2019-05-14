@@ -16,6 +16,6 @@ namespace Domain
         public string content { get; set; }
         public DateTime date { get; set; }
         public ICollection<ReactionLike> reactionLikes { get; set; }
-        
+        public ICollection<Report> reports { get; set; }
     }
 }

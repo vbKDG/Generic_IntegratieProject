@@ -10,7 +10,5 @@ namespace Domain
         public int likeId { get; set; }
         public DateTime likeTime { get; set; }
         public ApplicationUser User { get; set; }
-
-
     }
 }

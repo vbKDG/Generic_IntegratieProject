@@ -163,11 +163,17 @@ namespace UI.MVC.Controllers
             ideasVm.IdeationId = ideationId;
             ideasVm.ideas = ideationMgr.getIdeas(ideationId).ToList();
             ideasVm.fields = new List<TextField>();
+            ideasVm.reactions = new List<Reaction>();
             foreach (var idea in ideasVm.ideas)
             {
                 foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
                 {
                     ideasVm.fields.Add(field);
+                }
+
+                foreach (var reaction in ideationMgr.getReactions(idea.ideaId).ToList())
+                {
+                    ideasVm.reactions.Add(reaction);
                 }
             }
             return View(ideasVm);
@@ -179,6 +185,36 @@ namespace UI.MVC.Controllers
             {
                 ideationMgr.LikeIdea(ideaId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
             }
+            return NoContent();
+        }
+
+        public IActionResult LikeReaction(int reactionId)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                ideationMgr.LikeReaction(reactionId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            }
+            return NoContent();
+        }
+
+        public IActionResult ReactIdea(IFormCollection form)
+        {
+            string content = "";
+            string userId = "";
+            string ideaId = "";
+            foreach (var key in form.Keys)
+            {
+                if (key == "reaction")
+                {
+                    content = form[key];
+                    userId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                }
+                if (key == "idea")
+                {
+                    ideaId = form[key];
+                }
+            }
+            ideationMgr.ReactIdea(ideaId, userId, content);
             return NoContent();
         }
        

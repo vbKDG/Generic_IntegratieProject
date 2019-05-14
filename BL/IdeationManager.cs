@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using DAL;
 using DAL.EF;
 using Domain;
@@ -53,7 +54,85 @@ namespace BL
         {
             ideationRepo.LikeIdea(ideaId, userId);
         }
+
+        public void LikeReaction(int reactionId, string userId)
+        {
+            ideationRepo.LikeReaction(reactionId, userId);
+        }
         
+        public IEnumerable<Report> getReports(int ideaId)
+        {
+            return ideationRepo.readReportsOfIdea(ideaId);
+        }
+
+        public Report addReport(int id, string reportMessage, string userId, string type)
+        {
+            if (type == "reaction")
+            {
+                Reaction reaction = getReaction(id);
+                
+                if (reaction != null)
+                {
+                    Report newReport = new Report();
+                    newReport.reaction = reaction;
+                    newReport.dateSubmitted = DateTime.Now;
+                    newReport.reportMessage = reportMessage;
+
+                    var reports = getReports(id);
+
+                    if (reports != null)
+                    {
+                        reaction.reports = reports.ToList();
+                    }
+                    else
+                    {
+                        reaction.reports = new List<Report>();
+                    }
+
+                    reaction.reports.Add(newReport);
+
+                    ideationRepo.createReport(newReport, userId);
+
+                    return newReport;
+                }
+            } 
+            else if (type == "idea")
+            {
+                Idea idea = getIdea(id);
+
+                if (idea != null)
+                {
+                    Report newReport = new Report();
+                    newReport.idea = idea;
+                    newReport.dateSubmitted = DateTime.Now;
+                    newReport.reportMessage = reportMessage;
+
+                    var reports = getReports(id);
+
+                    if (reports != null)
+                    {
+                        idea.reports = reports.ToList();
+                    }
+                    else
+                    {
+                        idea.reports = new List<Report>();
+                    }
+
+                    idea.reports.Add(newReport);
+
+                    ideationRepo.createReport(newReport, userId);
+
+                    return newReport;
+                }
+            }
+            throw new ArgumentException("Id " + id + " not found!");
+        }
+
+        public IEnumerable<Reaction> getReactions(int ideaId)
+        {
+            return ideationRepo.readReactions(ideaId);
+        }
+
         public IEnumerable<IdeationQuestion> GetIdeationQuestionsForProject(int projectId)
         {
             return  ideationRepo.ReadIdeationQuestionsForProject(projectId);
@@ -74,6 +153,10 @@ namespace BL
             ideationRepo.createIdeation(ideation,projectId);
         }
 
+        public void ReactIdea(string ideaId, string userId, string content)
+        {
+            ideationRepo.ReactIdea(ideaId, userId, content);
+        }
 
         #region Ideas
         public IEnumerable<Idea> getIdeas(int ideationId)
@@ -87,11 +170,17 @@ namespace BL
 
         public void createIdea(ICollection<Field> fields)
         {
-            ideationRepo.createIdea(fields);        }
+            ideationRepo.createIdea(fields);        
+        }
 
         public Idea getIdea(int id)
         {
            return ideationRepo.readIdea(id);
+        }
+
+        public Reaction getReaction(int reactionId)
+        {
+            return ideationRepo.readReaction(reactionId);
         }
 
         #endregion
