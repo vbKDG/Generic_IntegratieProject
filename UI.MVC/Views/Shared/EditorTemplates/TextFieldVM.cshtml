@@ -2,20 +2,27 @@
 
 <div>
    
-    @if (ViewBag.index == 0)
-    {
-        <label>Text:</label>
-       <textarea asp-for="text" rows="10" cols="30" ></textarea>
-       <button type="button" id="AddText" onclick="readText()">Add Text</button>
-    }
-    else
-    {
-        <textarea asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+   
+                
+                @if (ViewBag.index == 0)
+                {
+                    <link rel="stylesheet" href="~/css/TextSlideShow.css"> 
 
-    }
-    
-    
-    @if (ViewBag.index == 0)
+                    <label>Text:</label>
+                    <textarea asp-for="text" rows="10" cols="60" ></textarea>
+                    <button type="button" id="AddText" onclick="readText()">Add Text</button>
+                }
+                else
+                {
+                    <textarea asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+
+                }
+                
+                
+       
+            
+            <th>
+                 @if (ViewBag.index == 0)
     {
         <div id="TextSlideshow" class="textslideshow-container">
 
@@ -100,7 +107,7 @@
             var dotString = '<span class="Textdot" onclick="currentText(' + TextFiles.length + ')"></span>';
             $("#textdots").append(dotString);
             $("#textdots").attr("hidden", false);
-        $("#textsliders").attr("hidden", false);
+            $("#textsliders").attr("hidden", false);
             slideIndex = TextFiles.length;
             showTexts(slideIndex);
             /*var btn1 = '#VideoFieldVms_' + (TextFiles.length -1 ).toString() + '__VideoFile_Files_0_';
@@ -194,6 +201,17 @@
         
         
     }
+        
+            
+            
+      
+        
+        
+   
+   
+    
+    
+   
    
    
     

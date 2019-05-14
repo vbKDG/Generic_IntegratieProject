@@ -2,28 +2,48 @@
 
 /* Slideshow container */
 .textslideshow-container div {
-    max-width: 700px;
-    max-height: 360px;
+    width: 400px;
+    height: 300px;
     position: relative;
     margin: auto;
     align-items: center;
     text-align: center;
-    padding-top: 50px;
+  
 
 }
-
+#TextSlideshow {
+    width: 400px;
+   max-height: 300px;
+}
 
 
 /* Hide the images by default */
-.TextSlides {
-    width: 200px;
+.TextSlides p{
+    width: 400px;
+    height: 300px;
+    align-self: center;
+    align-items: center;
+   
+    color: white;
+    font-size: 20px;
+
+
 }
+.TextSlides{
+    width: 400px;
+    align-self: center;
+    margin: auto;
+
+
+}
+
+
 #textsliders{
     position: absolute;
-    width: 930px;
-    height: 420px;
+    width: 500px;
+    height: 300px;
     align-self: center;
-    padding-top: 50px;
+   
 
 }
 
@@ -47,7 +67,7 @@
 
 
 
-#VideoUploads{
+#TextUploads{
     width: 700px;
     position: relative;
 }
@@ -60,11 +80,11 @@
 
 /* Position the "next button" to the right */
 .nextText {
-    top: 50%;
+    
     right: 0;
     border-radius: 3px 0 0 3px;
 }
-.nextText {
+.prevText {
     left: 0;
 }
 
@@ -94,7 +114,7 @@
 }
 
 /* The dots/bullets/indicators */
-Textdot. {
+.Textdot {
     cursor: pointer;
     height: 15px;
     width: 15px;
@@ -105,7 +125,7 @@ Textdot. {
     transition: background-color 0.6s ease;
 }
 #textdots{
-    padding-top: 15px;
+    
 
 }
 
