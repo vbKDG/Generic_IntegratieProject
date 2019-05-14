@@ -9,6 +9,8 @@
 <div>
     @if (ViewBag.index == 0)
     {
+        <h2>Upload Images</h2>
+
         <link rel="stylesheet" href="~/css/carousel.css"> 
         
         <input class="ImageUpload" asp-for=@Model.imageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)" />
@@ -27,6 +29,7 @@
     
     @if (ViewBag.index == 0)
     {
+
         <div id="ImageSlideshow" class="slideshow-container">
 
           

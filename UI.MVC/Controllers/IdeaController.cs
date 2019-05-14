@@ -45,16 +45,21 @@ namespace UI.MVC.Controllers
             Ideation ideation = ideationMgr.getIdeation(ideationId);
             IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
             List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
-            List<TextFieldVm> textFieldVms = new List<TextFieldVm>{new TextFieldVm()};
+            List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
             List<VideoFieldVm> videoFieldVms  = new List<VideoFieldVm>();
             
             
             IdeaVM ideaVm = new IdeaVM();
             ideaVm.ImageFieldVms = imageFieldVms;
             ideaVm.VideoFieldVms = videoFieldVms;
-        
-           ideaVm.TextFieldVms = textFieldVms;     
+            ideaVm.TextFieldVms = textFieldVms;
             
+            
+            
+            for (int i = 0; i < ideation.TextFieldRange.Maximum ; i++)
+            {        
+                ideaVm.TextFieldVms.Add(new TextFieldVm());   
+            }  
            for (int i = 0; i < ideation.VideoRange.Maximum ; i++)
            {        
               ideaVm.VideoFieldVms.Add(new VideoFieldVm());   
@@ -62,7 +67,7 @@ namespace UI.MVC.Controllers
            
            for (int i = 0; i < ideation.ImageFieldRange.Maximum ; i++)
             {        
-                ideaVm.ImageFieldVms.Add(new ImageFieldVm{});    
+                ideaVm.ImageFieldVms.Add(new ImageFieldVm());    
             }
            // ideaVm.ImageFieldVms = new ImageFieldVm[ideation.ImageFieldRange.Maximum];
            ideaVm.VideoFieldVms = videoFieldVms;
@@ -123,13 +128,13 @@ namespace UI.MVC.Controllers
            // var imageIndex = 0;
            // var videoIndex = 0;
 
-            for (int i = 0; i < ideaVm.images.Files.Count; i++)
+            for (int i = 0; i < ideaVm.Files.Files.Count; i++)
             {
-                if (ideaVm.images.Files[i].ContentType.StartsWith("image"))
+                if (ideaVm.Files.Files[i].ContentType.StartsWith("image"))
                 {
                    // imageFields[imageIndex] = new ImageField();
                    
-                    using (var reader = ideaVm.images.Files[i].OpenReadStream())
+                    using (var reader = ideaVm.Files.Files[i].OpenReadStream())
                     using (var stream = new MemoryStream())
                     {
                         {
@@ -143,10 +148,10 @@ namespace UI.MVC.Controllers
                     }
                   //  imageIndex++;
                     
-                } else if (ideaVm.images.Files[i].ContentType.StartsWith("video"))
+                } else if (ideaVm.Files.Files[i].ContentType.StartsWith("video"))
                 {
                    // videoFields[videoIndex] = new VideoField();
-                    using (var reader = ideaVm.images.Files[i].OpenReadStream())
+                    using (var reader = ideaVm.Files.Files[i].OpenReadStream())
                     using (var stream = new MemoryStream())
                     {
                         {

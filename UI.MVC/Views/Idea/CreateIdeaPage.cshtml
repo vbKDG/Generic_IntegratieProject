@@ -39,23 +39,14 @@
     
   
   
+    <div id="TextUploads">
+        @for(int i = 0; i < @Model.TextFieldVms.Count; i++){
+            
+            @Html.EditorFor(x => x.TextFieldVms[i], new {index = i })
+        }
+    </div>
     
-    @*
-    <input asp-for="ImageFieldVms[0].imageName" type="text"/>
-    
-    <input asp-for="ImageFieldVms[0].imageName" type="text"/>*@
 
-    @*<input asp-for="ImageFieldVms[0].imageFile.Files[0]" type="file"/>
-    <input asp-for="ImageFieldVms[1].imageFile.Files[0]" type="file"/>
-    <input asp-for="ImageFieldVms[2].imageFile.Files[0]" type="file"/>*@
- 
-    
-    
-   @*
-   <input @Model.images.Files[@Model.images.Keys.Count] type="file"/>
-   *@
-
-    <h2>Upload Images</h2>
     <div id="ImageUploads">
         @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
         {
@@ -65,7 +56,6 @@
          
 
     </div>
-    <h2>Upload Videos</h2>
 
     <div id="VideoUploads">
     @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
@@ -217,14 +207,26 @@
     <script>
         function disable(parameters) {
             var images = document.getElementsByClassName("ImageUpload");
-            var slides = document.getElementsByClassName("mySlides");
-            console.log(images.length);
-            console.log(slides.length);
+            var videos = document.getElementsByClassName("VideoUpload");
 
+            
 
-            for (var i = slides.length; i < images.length; i++) {
-                $(images[i]).attr('disabled', true);
+            for (var i = 0; i < videos.length; i++) {
+                if(videos[i].files.length == 0)
+                {
+                    $(videos[i]).attr('disabled', true);
+
+                }
             }
+            
+            for (var i = 0; i < images.length; i++) {
+                if(images[i].files.length == 0)
+                {
+                    $(images[i]).attr('disabled', true);
+
+                }
+            }
+            
           
         }
     </script>

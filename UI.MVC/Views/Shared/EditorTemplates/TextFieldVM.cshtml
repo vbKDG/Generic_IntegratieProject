@@ -1,12 +1,202 @@
 @model D.UI.MVC.Models.Fields.TextFieldVm
 
 <div>
-    <label>Text:</label>
-    <input asp-for="text" type="text"/>
-    @*@Html.TextAreaFor(x => x.text) 
-    $1$
-    <input asp-for="text" type="text"/>
-    #1#*@
+   
+    @if (ViewBag.index == 0)
+    {
+        <label>Text:</label>
+       <textarea asp-for="text" rows="10" cols="30" ></textarea>
+       <button type="button" id="AddText" onclick="readText()">Add Text</button>
+    }
+    else
+    {
+        <textarea asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+
+    }
+    
+    
+    @if (ViewBag.index == 0)
+    {
+        <div id="TextSlideshow" class="textslideshow-container">
+
+          
+
+            <!-- Next and previous buttons -->
+            <div id="textsliders" hidden="true">
+                <a class="prevText" onclick="plusTexts(-1)">&#10094;</a>
+                <a class="nextText" onclick="plusTexts(1)">&#10095;</a>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- The dots/circles -->
+        <div id="textdots" style="text-align: center" hidden="true">
+            @*<span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>*@
+        </div>
+        <button id="removeVid" onclick="ClearVideo()" hidden="true"> Remove</button>
+
+        <script type="text/javascript">
+    
+    
+    
+    var slideIndex = 1;
+    // showSlides(slideIndex);
+
+// Next/previous controls
+    function plusTexts(n) {
+        showTexts(slideIndex += n);
+    }
+
+// Thumbnail Text controls
+    function currentText(n) {
+        showTexts(slideIndex = n);
+    }
+
+
+    function showTexts(n) {
+        var i;
+        var slides = document.getElementsByClassName("TextSlides");
+        var textDots = document.getElementsByClassName("TextDot");
+      
+        if (n > slides.length) {slideIndex = 1} 
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; 
+        }
+        for (i = 0; i < textDots.length; i++) {
+            textDots[i].className = textDots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block"; 
+        textDots[slideIndex-1].className += " active";
+    }
+    
+    var TextFiles = [];
+
+    function readText() {
+        var input = document.getElementById('TextFieldVms_0__text').value;
+        console.log(input);
+        if (input != "") {
+            TextFiles[TextFiles.length] = input;
+        }
+            
+            var inputString = "";
+        
+                   
+            inputString += '<p id="text' + TextFiles.length + '" >' + TextFiles[TextFiles.length - 1].toString() +'  </p>';
+            $("#TextSlideshow").append('<div class="TextSlides" >'+ inputString +'</div>');
+            
+            
+            
+           
+        
+       
+            //
+            var dotString = '<span class="Textdot" onclick="currentText(' + TextFiles.length + ')"></span>';
+            $("#textdots").append(dotString);
+            $("#textdots").attr("hidden", false);
+        $("#textsliders").attr("hidden", false);
+            slideIndex = TextFiles.length;
+            showTexts(slideIndex);
+            /*var btn1 = '#VideoFieldVms_' + (TextFiles.length -1 ).toString() + '__VideoFile_Files_0_';
+            var btn2 = '#VideoFieldVms_' + TextFiles.length.toString() + '__VideoFile_Files_0_';
+            var remove = '#removeVid';
+           
+    
+            $(btn1).attr('hidden', true);
+            $(btn2).attr('hidden', false);
+            $(remove).attr('hidden', false);
+
+          //  $(btn2).attr('disabled', false);
+            if (TextFiles.length > 0) {
+                $(remove).attr('hidden', false);
+
+            } else {
+                $(remove).attr('hidden', true);
+
+            }*/
+        
+            if (TextFiles.length > 1) {
+                $('#textsliders').attr('hidden', false);
+                $('#textdots').attr('hidden', false);
+                
+            } else {
+                $('#textsliders').attr('hidden', true);
+                $('#textdots').attr('hidden', true);
+                
+            }
+      
+    }
+        
+        
+        
+    
+    
+    function ClearText() {
+        var slides = document.getElementsByClassName("VideoSlides");
+        var videoDots = document.getElementsByClassName("VideoDot");
+        var inputs = document.getElementsByClassName("VideoUpload");
+        console.log(slides);
+        console.log(videoDots);
+        slides[slides.length -1].remove();
+        videoDots[videoDots.length - 1].remove();
+        TextFiles.pop();
+        if (TextFiles.length > 0) {
+            slideIndex = TextFiles.length;
+            showTexts(slideIndex);
+        }
+                
+        if(TextFiles.length < 1) {
+            $('#videosliders').attr('hidden', true);
+            $('#textdots').attr('hidden', true);
+        }
+        
+        var remove = '#removeVid';
+           
+           
+
+        if (TextFiles.length > 0) {
+            $(remove).attr('hidden', false);
+
+        } else {
+            $(remove).attr('hidden', true);
+
+        }
+        
+        var btn1 = '#VideoFieldVms_' + (TextFiles.length ).toString() + '__VideoFile_Files_0_';
+        if (TextFiles.length < inputs.length) {
+        var btn2 = '#VideoFieldVms_' + (TextFiles.length + 1).toString() + '__VideoFile_Files_0_';
+        
+        $(btn2).attr('hidden', true);
+        
+        }
+        $(btn1).attr('hidden', false);
+
+        $(btn1).wrap('<form>').closest('form').get(0).reset();
+        $(btn1).unwrap();
+
+       
+
+
+    }
+
+             
+</script>
+
+        
+        
+        
+        
+        
+    }
+   
+   
     
 </div>
+
 

@@ -38,7 +38,7 @@ namespace D.UI.MVC.Models.Ideas
 
        //public IFormFile[] Files { get; set; }
        
-       public IFormCollection images { get; set; }
+       public IFormCollection Files { get; set; }
        public IFormFile file { get; set; }
        public List<ImageFieldVm> ImageFieldVms { get; set; }
 

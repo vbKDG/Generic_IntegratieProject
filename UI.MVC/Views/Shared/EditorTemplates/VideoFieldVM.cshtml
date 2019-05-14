@@ -4,6 +4,8 @@
 
     @if (ViewBag.index == 0)
     {
+        <h2>Upload Videos</h2>
+
         <link rel="stylesheet" href="~/css/VideoSlideShow.css"> 
 
         <input class="VideoUpload" asp-for=@Model.VideoFile.Files[0] type="file"  accept="video/*"  onchange="readVideo(this)" />
