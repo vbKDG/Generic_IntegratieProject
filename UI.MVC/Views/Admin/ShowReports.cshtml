@@ -13,11 +13,19 @@
     <tr>
         <td>
             <b>Fields of the idea:</b><br>
-
             @foreach (var textfield in Model.TextFields)
             {
                 @textfield.text<br>
             }
+            <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
+                    , new { ideaId = @Model.idea.ideaId})'" >Approve</button>
+            <button type="button" onclick="location.href='@Url.Action("DisapproveIdea", "Admin"
+                    , new { ideaId = @Model.idea.ideaId})'" >Disapprove</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h4>A list of all reports</h4>
         </td>
     </tr>
     @foreach (var report in Model.reports)
@@ -120,6 +128,38 @@
                 </td>
             </tr> 
         }
-        
+    }
+    <tr>
+        <td>
+            <h4>A list of all the reactions on this idea without a report</h4>
+        </td>
+    </tr>
+    @foreach (var reaction in Model.reactions)
+    {
+        var reportReactions = 0;
+        foreach (var report in Model.reports)
+        {
+            if (report.reaction == reaction)
+            {
+                reportReactions++;
+            }
+        }
+        if (reportReactions == 0)
+        {
+            <tr>
+                <td>
+                    <b>Reaction is from:</b>
+                    @reaction.user.Email
+                    <button type="button" onclick="location.href='@Url.Action("BlockUser", "Admin"
+                                                                      , new { userId = @reaction.user.Id})'" >Block user</button><br>
+                    <b>Reaction:</b>
+                    @reaction.content<br>
+                    <button type="button" onclick="location.href='@Url.Action("ApproveReaction", "Admin"
+                             , new { reactionId = @reaction.reactionId})'" >Approve</button>
+                    <button type="button" onclick="location.href='@Url.Action("DisapproveReaction", "Admin"
+                             , new { reactionId = @reaction.reactionId})'" >Disapprove</button>
+                </td>
+            </tr>
+        }
     }
 </table>

@@ -62,7 +62,6 @@ namespace DAL
         public IEnumerable<Report> readReports(int ideaId)
         {
             IEnumerable<Report> reports = ctx.reports
-                .Include(r => r.reaction)
                 .Include(r => r.idea)
                 .Include(r => r.reaction)
                 .Include(r => r.user)
