@@ -44,9 +44,15 @@ namespace DAL
          void LikeIdea(int ideaId, string userId);
          void ReactIdea(string ideaId, string userId, string content);
          void LikeReaction(int reactionId, string userId);
-         IEnumerable<Report> readReportsOfIdea(int ideaId);
+         IEnumerable<Report> readReports(int ideaId);
          Report createReport(Report report, string userId);
-
+         void sendToAdmin(int reportId);
+         void updateReaction(Reaction reaction);
+         void approveReaction(int reactionId);
+         void disapproveReaction(int reactionId);
+         void approveIdea(int ideaId);
+         void disapproveIdea(int ideaId);
+         void blockUser(string userId);
 
 
          #endregion

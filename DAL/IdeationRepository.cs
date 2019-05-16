@@ -25,7 +25,11 @@ namespace DAL
         
         public IEnumerable<Ideation> readIdeations(int projectId)
         {
-            return ctx.ideations.Include(p => p.project).Where(p => p.project.projectId == projectId);
+            return ctx.ideations
+                .Include(p => p.project)
+                .Include(p => p.questions)
+                .Include(p => p.ideas)
+                .Where(p => p.project.projectId == projectId);
         }
 
         public void createIdeation(Ideation ideation)
@@ -55,18 +59,82 @@ namespace DAL
 
         }
         
-        public IEnumerable<Report> readReportsOfIdea(int ideaId)
+        public IEnumerable<Report> readReports(int ideaId)
         {
-            IEnumerable<Report> reports = ctx.reports.Where(r => r.idea.ideaId == ideaId).AsEnumerable();
+            IEnumerable<Report> reports = ctx.reports
+                .Include(r => r.reaction)
+                .Include(r => r.idea)
+                .Include(r => r.reaction)
+                .Include(r => r.user)
+                .Where(r => r.idea.ideaId == ideaId).AsEnumerable();
             return reports;
         }
 
         public Report createReport(Report report, string userId)
         {
             report.user = ctx.Users.Find(userId);
+            report.sendToAdmin = false;
             ctx.reports.Add(report);
             ctx.SaveChanges();
             return report;
+        }
+        
+        public void sendToAdmin(int reportId)
+        {
+            Report report = ctx.reports.Find(reportId);
+            report.sendToAdmin = true;
+            ctx.reports.Update(report);
+            ctx.SaveChanges();
+        }
+
+        public void blockUser(string userId)
+        {
+            ApplicationUser user = ctx.Users.Find(userId);
+            user.blocked = true;
+            ctx.Users.Update(user);
+            ctx.SaveChanges();
+        }
+
+        public void updateReaction(Reaction reaction)
+        {
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void approveReaction(int reactionId)
+        {
+            Reaction reaction = ctx.reactions.Find(reactionId);
+            reaction.approved = true;
+            reaction.disapproved = false;
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            Reaction reaction = ctx.reactions.Find(reactionId);
+            reaction.disapproved = true;
+            reaction.approved = false;
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            Idea idea = ctx.ideas.Find(ideaId);
+            idea.approved = true;
+            idea.disapproved = false;
+            ctx.ideas.Update(idea);
+            ctx.SaveChanges();
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            Idea idea = ctx.ideas.Find(ideaId);
+            idea.disapproved = true;
+            idea.approved = false;
+            ctx.ideas.Update(idea);
+            ctx.SaveChanges();
         }
 
         public void updateIdeation(Ideation i)
@@ -119,6 +187,7 @@ namespace DAL
                 .Include(i => i.user)
                 .Include(i => i.ideaLikes)
                 .Include(i => i.reactions)
+                .Include(i => i.reports)
                 .Where( i => i.ideation.ideationId == ideationId);
         }
 
@@ -127,6 +196,7 @@ namespace DAL
             return ctx.reactions
                 .Include(r => r.user)
                 .Include(r => r.reactionLikes)
+                .Include(r => r.reports)
                 .Where(r => r.idea.ideaId == ideaId);
         }
 
@@ -205,7 +275,10 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            return ctx.ideas.Include(i => i.fields).SingleOrDefault(i => i.ideaId == ideaId);
+            return ctx.ideas
+                .Include(i => i.fields)
+                .Include(i => i.user)
+                .SingleOrDefault(i => i.ideaId == ideaId);
         }
 
         public Reaction readReaction(int reactionId)

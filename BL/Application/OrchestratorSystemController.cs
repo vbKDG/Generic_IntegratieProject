@@ -64,9 +64,44 @@ namespace BL.Application
             return ideationMgr.getReaction(reactionId);
         }
 
-        public Report addReport(int ideaId, string reportMessage, string userId, string type)
+        public Report addReport(int ideaId, string reportMessage, string userId, string type, int reactionId)
         {
-            return ideationMgr.addReport(ideaId, reportMessage, userId, type);
+            return ideationMgr.addReport(ideaId, reportMessage, userId, type, reactionId);
+        }
+
+        public void sendToAdmin(int reportId)
+        {
+            ideationMgr.sendToAdmin(reportId);
+        }
+
+        public void approveReaction(int reactionId)
+        {
+            ideationMgr.approveReaction(reactionId);
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            ideationMgr.disapproveReaction(reactionId);
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            ideationMgr.approveIdea(ideaId);
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            ideationMgr.disapproveIdea(ideaId);
+        }
+
+        public void blockUser(string userId)
+        {
+            ideationMgr.blockUser(userId);
+        }
+
+        public void changeReaction(Reaction reaction)
+        {
+            ideationMgr.changeReaction(reaction);
         }
 
         public void ReactIdea(string ideaId, string userId, string content)

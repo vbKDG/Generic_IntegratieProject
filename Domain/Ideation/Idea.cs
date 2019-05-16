@@ -16,5 +16,7 @@ namespace Domain
         public ICollection<IdeaLike> ideaLikes { get; set; }
         public ICollection<Field> fields { get; set; }
         public ICollection<Report> reports { get; set; }
+        public bool approved { get; set; }
+        public bool disapproved { get; set; }
     }
 }

@@ -28,7 +28,14 @@ namespace BL
         void ReactIdea(string ideaId, string userId, string content);
 
         IEnumerable<Report> getReports(int ideaId);
-        Report addReport(int id, string reportMessage,string userId, string type);
+        Report addReport(int ideaId, string reportMessage,string userId, string type, int reactionId);
         Reaction getReaction(int reactionId);
+        void sendToAdmin(int reportId);
+        void changeReaction(Reaction reaction);
+        void approveReaction(int reactionId);
+        void disapproveReaction(int reactionId);
+        void approveIdea(int ideaId);
+        void disapproveIdea(int ideaId);
+        void blockUser(string userId);
     }
 }

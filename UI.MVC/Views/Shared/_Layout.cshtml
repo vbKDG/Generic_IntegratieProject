@@ -52,6 +52,11 @@
                 {
                     <li><a asp-area="" asp-controller="Home" asp-action="Privacy"><p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
+                @if (User.IsInRole("Moderator"))
+                {
+                    <button type="button" onclick="location.href='@Url.Action("ManagePosts", "Admin"
+                       , new { projectId = 1})'" >Manage posts</button>
+                }
                 <partial name="_LoginPartial" />
             </ul>
         </div>

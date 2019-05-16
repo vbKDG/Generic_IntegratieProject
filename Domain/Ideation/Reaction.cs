@@ -17,5 +17,7 @@ namespace Domain
         public DateTime date { get; set; }
         public ICollection<ReactionLike> reactionLikes { get; set; }
         public ICollection<Report> reports { get; set; }
+        public bool approved { get; set; }
+        public bool disapproved { get; set; }
     }
 }

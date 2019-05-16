@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BL;
 using DAL.EF;
+using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -14,10 +16,14 @@ namespace UI.MVC.Controllers
     public class AdminController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
+        private IIdeationManager ideationMgr;
+        private IProjectManager projectMgr;
 
         public AdminController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
+            ideationMgr = new IdeationManager();
+            projectMgr = new ProjectManager();
         }
         
         [Authorize(Roles="SuperAdmin")]
@@ -32,6 +38,101 @@ namespace UI.MVC.Controllers
         {
             ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
             return View(applicationUser);
+        }
+
+        [Authorize(Roles = "Moderator")]
+        public IActionResult ShowReports(int ideaId)
+        {
+            ReportModel reportModel = new ReportModel
+            {
+                reports = ideationMgr.getReports(ideaId).ToList(),
+                idea = ideationMgr.getIdea(ideaId),
+                reactions = ideationMgr.getReactions(ideaId).ToList(),
+                TextFields = ideationMgr.GetFields(ideaId).ToList()
+            };
+            return View(reportModel);
+        }
+        
+        [Authorize(Roles = "Moderator")]
+        public IActionResult ManagePosts(int projectId)
+        {
+            ReportModel reportModel = new ReportModel
+            {
+                ideations = (ideationMgr.getIdeations(projectId)).ToList(),
+                ideas = new List<Idea>(),
+                reactions = new List<Reaction>(),
+                TextFields = new List<TextField>(),
+                reports = new List<Report>(),
+                projects = projectMgr.getProjects().ToList(),
+                selectedProject = projectId
+            };
+
+            foreach (var ideation in reportModel.ideations)
+            {
+                foreach (var idea in ideationMgr.getIdeas(ideation.ideationId))
+                {
+                    foreach(var report in ideationMgr.getReports(idea.ideaId))
+                    {
+                        reportModel.reports.Add(report);
+                    }
+                    foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
+                    {
+                        reportModel.TextFields.Add(field);
+                    }
+                    ideation.ideas.Add(idea);
+                }
+            }
+            return View(reportModel);
+        }
+        
+        public IActionResult SendToAdmin(int reportId)
+        {
+            ideationMgr.sendToAdmin(reportId);
+            return NoContent();
+        }
+
+        public IActionResult ApproveReaction(int reactionId)
+        {
+            ideationMgr.approveReaction(reactionId);
+            return NoContent();
+        }
+        
+        public IActionResult DisapproveReaction(int reactionId)
+        {
+            ideationMgr.disapproveReaction(reactionId);
+            return NoContent();
+        }
+        
+        public IActionResult ApproveIdea(int ideaId)
+        {
+            ideationMgr.approveIdea(ideaId);
+            return NoContent();
+        }
+        
+        public IActionResult DisapproveIdea(int ideaId)
+        {
+            ideationMgr.disapproveIdea(ideaId);
+            return NoContent();
+        }
+
+        public IActionResult BlockUser(string userId)
+        {
+            ideationMgr.blockUser(userId);
+            return NoContent();
+        }
+        
+        public IActionResult ChangeReaction(IFormCollection form, int reactionId, int ideaId)
+        {
+            Reaction reaction = ideationMgr.getReaction(reactionId);
+            foreach (var key in form.Keys)
+            {
+                if (key == "reportText")
+                {
+                    reaction.content = form[key];
+                }
+            }
+            ideationMgr.changeReaction(reaction);
+            return RedirectToAction("ShowReports", "Admin", new {ideaId = ideaId});
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]

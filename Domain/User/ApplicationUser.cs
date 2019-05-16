@@ -52,5 +52,6 @@ namespace DAL.EF
         public ICollection<ReactionLike> reactionLikes { get; set; }
         public ICollection<IotVote> iotVotes { get; set; }
         public ICollection<Report> reports { get; set; }
+        public bool blocked { get; set; }
     }
 }

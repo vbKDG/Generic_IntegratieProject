@@ -62,34 +62,41 @@ namespace BL
         
         public IEnumerable<Report> getReports(int ideaId)
         {
-            return ideationRepo.readReportsOfIdea(ideaId);
+            return ideationRepo.readReports(ideaId);
         }
 
-        public Report addReport(int id, string reportMessage, string userId, string type)
+        public void sendToAdmin(int reportId)
+        {
+            ideationRepo.sendToAdmin(reportId);
+        }
+
+        public Report addReport(int ideaId, string reportMessage, string userId, string type, int reactionId)
         {
             if (type == "reaction")
             {
-                Reaction reaction = getReaction(id);
+                Reaction reaction = getReaction(reactionId);
+                Idea idea = getIdea(ideaId);
                 
                 if (reaction != null)
                 {
                     Report newReport = new Report();
                     newReport.reaction = reaction;
                     newReport.dateSubmitted = DateTime.Now;
+                    newReport.idea = idea;
                     newReport.reportMessage = reportMessage;
 
-                    var reports = getReports(id);
+                    var reports = getReports(ideaId);
 
                     if (reports != null)
                     {
-                        reaction.reports = reports.ToList();
+                        idea.reports = reports.ToList();
                     }
                     else
                     {
-                        reaction.reports = new List<Report>();
+                        idea.reports = new List<Report>();
                     }
 
-                    reaction.reports.Add(newReport);
+                    idea.reports.Add(newReport);
 
                     ideationRepo.createReport(newReport, userId);
 
@@ -98,7 +105,7 @@ namespace BL
             } 
             else if (type == "idea")
             {
-                Idea idea = getIdea(id);
+                Idea idea = getIdea(ideaId);
 
                 if (idea != null)
                 {
@@ -107,7 +114,7 @@ namespace BL
                     newReport.dateSubmitted = DateTime.Now;
                     newReport.reportMessage = reportMessage;
 
-                    var reports = getReports(id);
+                    var reports = getReports(ideaId);
 
                     if (reports != null)
                     {
@@ -125,7 +132,7 @@ namespace BL
                     return newReport;
                 }
             }
-            throw new ArgumentException("Id " + id + " not found!");
+            throw new ArgumentException("ideaId " + ideaId + " or reactionId " + reactionId + " not found!");
         }
 
         public IEnumerable<Reaction> getReactions(int ideaId)
@@ -153,9 +160,39 @@ namespace BL
             ideationRepo.createIdeation(ideation,projectId);
         }
 
+        public void approveReaction(int reactionId)
+        {
+            ideationRepo.approveReaction(reactionId);
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            ideationRepo.disapproveReaction(reactionId);
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            ideationRepo.approveIdea(ideaId);
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            ideationRepo.disapproveIdea(ideaId);
+        }
+
+        public void blockUser(string userId)
+        {
+            ideationRepo.blockUser(userId);
+        }
+
         public void ReactIdea(string ideaId, string userId, string content)
         {
             ideationRepo.ReactIdea(ideaId, userId, content);
+        }
+
+        public void changeReaction(Reaction reaction)
+        {
+            ideationRepo.updateReaction(reaction);
         }
 
         #region Ideas

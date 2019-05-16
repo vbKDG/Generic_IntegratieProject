@@ -134,6 +134,7 @@
                 <e p="_ViewImports.cshtml" t="Include" />
                 <e p="AccessDenied.cshtml" t="Include" />
                 <e p="AccessDenied.cshtml.cs" t="Include" />
+                <e p="Blocked.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml.cs" t="Include" />
                 <e p="ConfirmQuestionnaire.cshtml" t="Include" />
@@ -233,6 +234,7 @@
           <e p="QuestionnaireQuestion.cs" t="Include" />
           <e p="QuestionResultModel.cs" t="Include" />
           <e p="QuestionUserModel.cs" t="Include" />
+          <e p="ReportModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -260,6 +262,8 @@
             <e p="EditModeratorPage.cshtml" t="Include" />
             <e p="ManageAdmins.cshtml" t="Include" />
             <e p="ManageModerators.cshtml" t="Include" />
+            <e p="ManagePosts.cshtml" t="Include" />
+            <e p="ShowReports.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="About.cshtml" t="Include" />
@@ -321,6 +325,7 @@
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
             <e p="phaseLine.css" t="Include" />
+            <e p="reportPopUp.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />
           </e>
@@ -356,12 +361,14 @@
             <e p="straat3.jpg" t="Include" />
           </e>
           <e p="js" t="Include">
+            <e p="changeProjectPosts.js" t="Include" />
             <e p="checkIfOrganisation.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="showPostChange.js" t="Include" />
             <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />

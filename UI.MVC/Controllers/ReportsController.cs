@@ -1,10 +1,13 @@
 using System;
+using System.Linq;
 using System.Security.Claims;
 using BL;
 using D.UI.MVC.Models;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
+using UI.MVC.Models;
 
 namespace D.UI.MVC.Controllers.Api
 {
@@ -24,7 +27,7 @@ namespace D.UI.MVC.Controllers.Api
         {
             var reports = ideationMgr.getReports(ideaId);
             
-            if (reports == null || !reports.Any())
+            if (reports == null || !EnumerableExtensions.Any(reports))
             {
                 return NoContent();
             }
@@ -40,11 +43,11 @@ namespace D.UI.MVC.Controllers.Api
                 Report createdReport = new Report();
                 if (newReport.Reaction == 0)
                 {
-                    createdReport = ideationMgr.addReport(newReport.Idea, newReport.Message, User.FindFirst(ClaimTypes.NameIdentifier).Value, "idea");
+                    createdReport = ideationMgr.addReport(newReport.Idea, newReport.Message, User.FindFirst(ClaimTypes.NameIdentifier).Value, "idea", newReport.Reaction);
                 } 
-                else if (newReport.Idea == 0)
+                else if (newReport.Reaction != 0)
                 {
-                    createdReport = ideationMgr.addReport(newReport.Reaction, newReport.Message, User.FindFirst(ClaimTypes.NameIdentifier).Value, "reaction");
+                    createdReport = ideationMgr.addReport(newReport.Idea, newReport.Message, User.FindFirst(ClaimTypes.NameIdentifier).Value, "reaction", newReport.Reaction);
                 }
                 
                 if (createdReport == null)

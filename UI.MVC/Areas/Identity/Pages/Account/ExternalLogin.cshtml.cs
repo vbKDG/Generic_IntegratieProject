@@ -93,6 +93,12 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
             if (result.Succeeded)
             {
+                var user = _userManager.FindByEmailAsync(info.Principal.FindFirstValue(ClaimTypes.Email)).Result;
+                if (user.blocked)
+                {
+                    await _signInManager.SignOutAsync();
+                    return RedirectToPage("./Blocked");
+                }
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 return LocalRedirect(returnUrl);
             }

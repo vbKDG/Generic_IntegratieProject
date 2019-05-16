@@ -13,5 +13,6 @@ namespace Domain
         public Idea idea { get; set; }
         public Reaction reaction { get; set; }
         public ApplicationUser user { get; set; }
+        public bool sendToAdmin { get; set; }
     }
 }
