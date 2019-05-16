@@ -37,5 +37,7 @@ namespace BL
         void approveIdea(int ideaId);
         void disapproveIdea(int ideaId);
         void blockUser(string userId);
+        int getIdeaLikes(int ideaId);
+        int getReactionLikes(int reactionId);
     }
 }

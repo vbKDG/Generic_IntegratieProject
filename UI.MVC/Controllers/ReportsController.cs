@@ -21,7 +21,7 @@ namespace D.UI.MVC.Controllers.Api
         {
             ideationMgr = new IdeationManager();
         }
-
+        
         [HttpGet]
         public IActionResult Get(int ideaId)
         {

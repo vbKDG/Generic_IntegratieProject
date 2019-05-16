@@ -59,7 +59,17 @@ namespace BL
         {
             ideationRepo.LikeReaction(reactionId, userId);
         }
-        
+
+        public int getIdeaLikes(int ideaId)
+        {
+            return ideationRepo.getIdeaLikes(ideaId);
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            return ideationRepo.getReactionLikes(reactionId);
+        }
+
         public IEnumerable<Report> getReports(int ideaId)
         {
             return ideationRepo.readReports(ideaId);

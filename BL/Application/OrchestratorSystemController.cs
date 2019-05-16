@@ -99,6 +99,16 @@ namespace BL.Application
             ideationMgr.blockUser(userId);
         }
 
+        public int getIdeaLikes(int ideaId)
+        {
+            return ideationMgr.getIdeaLikes(ideaId);
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            return ideationMgr.getReactionLikes(reactionId);
+        }
+
         public void changeReaction(Reaction reaction)
         {
             ideationMgr.changeReaction(reaction);

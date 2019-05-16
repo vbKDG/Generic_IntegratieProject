@@ -56,9 +56,21 @@ namespace DAL
                 .Include(f => f.MapFieldRange)
                 .Include(f => f.QuestionFieldRange)
                 .SingleOrDefault(i => i.ideationId == id);
-
         }
-        
+
+        public int getIdeaLikes(int ideaId)
+        {
+            ICollection<IdeaLike> likes = ctx.ideaLikes.Where(l => l.Idea.ideaId == ideaId).ToList();
+            return likes.Count;
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            ICollection<ReactionLike> likes = ctx.reactionLikes
+                .Where(r => r.reaction.reactionId == reactionId).ToList();
+            return likes.Count;
+        }
+
         public IEnumerable<Report> readReports(int ideaId)
         {
             IEnumerable<Report> reports = ctx.reports

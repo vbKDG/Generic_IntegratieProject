@@ -53,6 +53,20 @@ namespace UI.MVC.Controllers
             return View(reportModel);
         }
         
+        [HttpGet]
+        public IActionResult GetIdeaLikes(int ideaId)
+        {
+            int likes = ideationMgr.getIdeaLikes(ideaId);
+            return new JsonResult(likes);
+        }
+        
+        [HttpGet]
+        public IActionResult GetReactionLikes(int reactionId)
+        {
+            int likes = ideationMgr.getReactionLikes(reactionId);
+            return new JsonResult(likes);
+        }
+        
         [Authorize(Roles = "Moderator")]
         public IActionResult ManagePosts(int projectId)
         {

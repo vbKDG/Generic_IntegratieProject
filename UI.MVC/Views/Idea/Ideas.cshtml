@@ -8,6 +8,51 @@
 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
     , new { ideationId=@Model.IdeationId})
 
+<script>
+    $(document).ready(function() {
+        $("button[id^='likeIdea-']").each(function() {
+            var parts = $(this).attr('id').toString().split("-");
+            $(this).click(function() {
+                setTimeout(function() {
+                    $.ajax({
+                        url: '@Url.Action("GetIdeaLikes", "Admin")',
+                        type: "GET",
+                        data: { ideaId: parts[1] },
+                        contentType: 'json',
+                        success: function(result) {
+                            $("#ideaLikeCount-" + parts[1]).text("(" + result + ")");
+                        }
+                    });
+                }, 100);
+            });
+        });
+        $("button[id^='likeReaction-']").each(function() {
+            var parts = $(this).attr('id').toString().split("-");
+            $(this).click(function() {
+                setTimeout(function() {
+                    $.ajax({
+                        url: '@Url.Action("GetReactionLikes", "Admin")',
+                        type: "GET",
+                        data: { reactionId: parts[1] },
+                        contentType: 'json',
+                        success: function(result) {
+                            $("#reactionLikeCount-" + parts[1]).text("(" + result + ")");
+                        }
+                    });
+                }, 100);
+            });
+        });
+        $("button[id^='submitReaction-']").each(function() {
+            var parts = $(this).attr('id').toString().split("-");
+            $(this).click(function() {
+                var text = $("#reaction-" + parts[1]).val();
+                $("#newReaction-" + parts[1]).append(text + "<br>");
+                $("#reaction-" + parts[1]).val("");
+            });
+        });
+    });
+</script>
+
 <table class="table">
     <tr>
         <th>
@@ -21,9 +66,10 @@
                 @Model.ideas.ToList()[i].user
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <button type="button" onclick="location.href='@Url.Action("LikeIdea", "Idea"
+                    <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
+                            onclick="location.href='@Url.Action("LikeIdea", "Idea"
                            , new {ideaId = @Model.ideas.ToList()[i].ideaId})'" >Like</button>
-                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
+                    <span id="ideaLikeCount-@Model.ideas.ToList()[i].ideaId">(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
                 }
                 else
                 {
@@ -56,9 +102,10 @@
                         if (reaction.idea.ideaId == @Model.ideas.ToList()[i].ideaId)
                         {
                             @reaction.content
-                            <button type="button" onclick="location.href='@Url.Action("LikeReaction", "Idea"
+                            <button id="likeReaction-@reaction.reactionId" type="button" 
+                                    onclick="location.href='@Url.Action("LikeReaction", "Idea"
                                       , new {reactionId = @reaction.reactionId})'" >Like</button>
-                            <span>(@reaction.reactionLikes.Count)</span>
+                            <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
                             if (User.Identity.IsAuthenticated)
                             {
                                 <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
@@ -69,14 +116,15 @@
                             }
                         }
                     }
+                    <div id="newReaction-@Model.ideas.ToList()[i].ideaId"></div>
                     <div>
                         @using (Html.BeginForm("ReactIdea", "Idea",
                             FormMethod.Post))
                         {
                             <p>Write your own reaction: </p>
-                            <input name="reaction" type="text" />
+                            <input name="reaction" id="reaction-@Model.ideas.ToList()[i].ideaId" type="text" />
                             <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden" />
-                            <input type="submit" value="React" />
+                            <button id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit">React</button>
                         }
                     </div>
                 </div>
