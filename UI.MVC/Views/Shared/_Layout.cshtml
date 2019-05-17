@@ -57,6 +57,7 @@
                 <li>
                     <a asp-area="" asp-controller="Project" asp-action="Projects">
                         <p class="text-dark"><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
+                
                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                 {
                     <li>
@@ -64,6 +65,12 @@
                             <p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
                 <partial name="_LoginPartial"/>
+                
+                <form class="form-inline">
+                    <input class="form-control form-group-sm" type="text" placeholder="Search">
+                    <button class="btn btn-success btn-sm " type="submit">Search</button>
+
+                </form>
             </ul>
         </div>
     </div>

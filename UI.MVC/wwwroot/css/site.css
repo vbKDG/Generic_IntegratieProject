@@ -125,9 +125,25 @@ footer {
     
 }
 
+.form-inline{
+    padding-bottom: 2px;
+}
+
 
 #projecttitlepadding{
     padding-bottom: 35px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#ChangePassword{
+    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
+    background-repeat: no-repeat;
+}
+
+#general-theme{
+    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
+    background-repeat: no-repeat;
 }
 
 #projectelementpadding{
@@ -200,14 +216,25 @@ input, select, textarea {
     height: 100%;
 }
 
-#explore-section{
-    background-color: rgba(108, 245, 242, 0.42);}
+
 #info-section{
     background-color: rgba(108, 245, 242, 0.42);}
 
+#explore-section{
+    background-color: rgba(91, 76, 255, 0.58);
+    padding-left: 0px;
+    padding-right: 0px;
+    
+}
+
+#explore-section2{
+    background-color: rgba(23, 0, 255, 0.58);
+    padding-right: 0px;
+
+}
 
 #AboutPage {
-    background-image: linear-gradient(to bottom, #ffffff, #cae5ff);
+    background-image: linear-gradient(to bottom, #cae5ff, #ffffff);
     background-repeat: no-repeat;
     min-height: 170%;
 }

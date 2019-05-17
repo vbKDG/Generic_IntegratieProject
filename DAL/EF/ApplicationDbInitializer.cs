@@ -269,7 +269,7 @@ namespace DAL.EF
             };
             MapField mapproj2 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField imgproj2 = new ImageField();            
-            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park4.jpg");
+            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
             p2.mapField = mapproj2;
             p2.imageField = imgproj2;
             
@@ -390,13 +390,13 @@ namespace DAL.EF
             p4.mapField = map4;
             p4.imageField = img4;
 
-            // The floor is lava
+            // tug of war
             Project p5 = new Project();
             MapField map5 = new MapField { latitude = 51.19085124996951, longitude = 4.426741327814966 };
             ImageField img5 = new ImageField();
-            img5.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park2.jpg");
-            p5.name = "The floor is lava!";
-            p5.description = "An elementary school is organizing an event to start off the summer with a boom. People will be able to play the floor is lava in a huge park. This event will start on june 1";
+            img5.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg");
+            p5.name = "Tug of war!";
+            p5.description = "An elementary school is organizing an event to start off the summer with a boom. People will be able to play tug of war in a huge park.";
             p5.startDate = new DateTime(2019, 6, 1);
             p5.endDate = new DateTime(2019, 6, 5);
             p5.phases = new List<Phase>{
@@ -426,7 +426,7 @@ namespace DAL.EF
             Project p7 = new Project();
             MapField map7 = new MapField { latitude = 51.1987041954414, longitude = 4.42399545204978 };
             ImageField img7 = new ImageField();
-            img7.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\straat2.jpg");
+            img7.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg");
             p7.name = "Flea market in Berchem";
             p7.description = "The people of Antwerp are organizing a flea market which will take place for 3 days.";
             p7.startDate = new DateTime(2019, 6, 10);
@@ -458,7 +458,7 @@ namespace DAL.EF
             Project p9 = new Project();
             MapField map9 = new MapField { latitude = 51.21205064975499, longitude = 4.4135022509701685 };
             ImageField img9 = new ImageField();
-            img9.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park4.jpg");
+            img9.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg");
             p9.name = "Sushi evening";
             p9.description = "This summer the people of antwerp will organise a traditional japanese weekend.";
             p9.startDate = new DateTime(2019, 7, 5);
@@ -522,7 +522,7 @@ namespace DAL.EF
             Project p13 = new Project();
             MapField map13 = new MapField { latitude = 51.20595899589377, longitude = 4.383128206683523 };
             ImageField img13 = new ImageField();
-            img13.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-flea-market.jpg");
+            img13.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg");
             p13.name = "Antique flea market";
             p13.description = "This years Antique flea market will be hosted in Antwerp. The market will be filled with extraordinary itmes, please join us!";
             p13.startDate = new DateTime(2019, 6, 1);
@@ -561,8 +561,8 @@ namespace DAL.EF
             MapField map15 = new MapField { latitude = 51.21205064975499, longitude = 4.4135022509701685 };
             ImageField img15 = new ImageField();
             img15.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg");
-            p15.name = "Concert in the park";
-            p15.description = "This summer the people of antwerp will organise a concert and everybody is welcome.";
+            p15.name = "marathon";
+            p15.description = "A local school is organizing a marathon to support their schooltrip.";
             p15.startDate = new DateTime(2019, 4, 5);
             p15.endDate = new DateTime(2019, 4, 7);
             p15.phases = new List<Phase>{
