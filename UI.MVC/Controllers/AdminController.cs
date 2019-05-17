@@ -41,7 +41,7 @@ namespace UI.MVC.Controllers
         }
 
         [Authorize(Roles = "Moderator")]
-        public IActionResult ShowReports(int ideaId)
+        public IActionResult ShowReportsModerator(int ideaId)
         {
             ReportModel reportModel = new ReportModel
             {
@@ -146,7 +146,7 @@ namespace UI.MVC.Controllers
                 }
             }
             ideationMgr.changeReaction(reaction);
-            return RedirectToAction("ShowReports", "Admin", new {ideaId = ideaId});
+            return RedirectToAction("ShowReportsModerator", "Admin", new {ideaId = ideaId});
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]
