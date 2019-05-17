@@ -39,14 +39,13 @@ namespace D.UI.MVC.Models.Ideas
        //public IFormFile[] Files { get; set; }
        
        public IFormCollection Files { get; set; }
-       public IFormFile file { get; set; }
        public List<ImageFieldVm> ImageFieldVms { get; set; }
 
-       // public TextFieldVm[] TextFieldVms  { get; set; }
         public List<TextFieldVm> TextFieldVms { get; set; }
 
-        //public ImageFieldVm[] ImageFieldVms { get; set; }
         public List<VideoFieldVm> VideoFieldVms { get; set; }
+        
+        public List<QuestionFieldVm> QuestionFieldVms { get; set; }
 
         //public VideoFieldVm[] VideoFieldVms { get; set; }
         public MapFieldVm[] MapFieldVms { get; set; }

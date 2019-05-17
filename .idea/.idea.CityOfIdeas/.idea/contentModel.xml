@@ -225,6 +225,9 @@
           </e>
           <e p="QuestionnaireQuestion.cs" t="Include" />
           <e p="QuestionResultModel.cs" t="Include" />
+          <e p="Questions" t="Include">
+            <e p="QuestionVM.cs" t="Include" />
+          </e>
           <e p="QuestionUserModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -312,6 +315,7 @@
           <e p="css" t="Include">
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
+            <e p="QuestionSliders.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />
             <e p="TextSlideShow.css" t="Include" />

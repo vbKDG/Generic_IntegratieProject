@@ -47,15 +47,20 @@ namespace UI.MVC.Controllers
             List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
             List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
             List<VideoFieldVm> videoFieldVms  = new List<VideoFieldVm>();
+            List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
             
             
             IdeaVM ideaVm = new IdeaVM();
             ideaVm.ImageFieldVms = imageFieldVms;
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.TextFieldVms = textFieldVms;
+            ideaVm.QuestionFieldVms = questionFieldVms;
             
             
-            
+            for (int i = 0; i < ideation.QuestionFieldRange.Maximum ; i++)
+            {        
+                ideaVm.QuestionFieldVms.Add(new QuestionFieldVm{Options = new string[5]});   
+            }         
             for (int i = 0; i < ideation.TextFieldRange.Maximum ; i++)
             {        
                 ideaVm.TextFieldVms.Add(new TextFieldVm());   
@@ -106,9 +111,9 @@ namespace UI.MVC.Controllers
             
             
             ICollection<Field> fields = new List<Field>();
-            TextField textField = new TextField();
             List<ImageField> imageFields = new List<ImageField>();
             List<VideoField> videoFields = new List<VideoField>();
+            List<QuestionField> questionFields = new List<QuestionField>();
 
            // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
             //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
@@ -127,6 +132,11 @@ namespace UI.MVC.Controllers
 //            }
            // var imageIndex = 0;
            // var videoIndex = 0;
+           
+           
+           
+           
+           
 
             for (int i = 0; i < ideaVm.Files.Files.Count; i++)
             {
@@ -200,7 +210,12 @@ namespace UI.MVC.Controllers
 
             
             idea.ideation = ideation;
-            fields.Add(textField);
+//            fields.Add(textField);
+//            foreach (var textfield in textField)
+//            {
+//                fields.Add(imageField);
+//
+//            }
             foreach (var imageField in imageFields)
             {
                 fields.Add(imageField);
