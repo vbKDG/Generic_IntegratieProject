@@ -1,0 +1,109 @@
+﻿@model ReportModel
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/showPostChange.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/reportPopUp.css">
+
+@{
+    ViewData["Title"] = "Show reports";
+}
+
+<div id="blur" name="blur"></div>
+<table class="table">
+    <tr>
+        <td>
+            <h4>A list of all reports on ideas and it's reactions (send by the moderator)</h4>
+        </td>
+    </tr>
+    @foreach (var report in Model.reports)
+    {
+        if (report.reaction == null && report.sendToAdmin)
+        {
+            <tr>
+                <td>
+                    <b>Idea is from:</b>
+                    @if (Model.idea.ideaId == report.idea.ideaId)
+                    {
+                        @Model.idea.user.Email
+                        <button type="button" onclick="location.href='@Url.Action("BlockUser", "Admin"
+                             , new { userId = @Model.idea.user.Id})'" >Block user</button><br>
+                    }
+                    <b>Reported by:</b> @report.user.Email<br>
+                    <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
+                           , new { ideaId = @Model.idea.ideaId})'" >Approve</button>
+                    <button type="button" onclick="location.href='@Url.Action("DisapproveIdea", "Admin"
+                           , new { ideaId = @Model.idea.ideaId})'" >Disapprove</button>
+                </td>
+                <td>
+                    <b>Report message:</b><br>
+                    @report.reportMessage
+                </td>
+                <td>
+                    <b>Submit date:</b><br>
+                    @report.dateSubmitted
+                </td>
+            </tr>
+            
+        }
+        else if (report.reaction != null && report.sendToAdmin)
+        {
+            <tr>
+                <td>
+                    <b>Reaction is from:</b>
+                    @foreach (var reaction in Model.reactions)
+                    {
+                        if (reaction.reactionId == report.reaction.reactionId)
+                        {
+                            @reaction.user.Email 
+                            <button type="button" onclick="location.href='@Url.Action("BlockUser", "Admin"
+                                 , new { userId = @reaction.user.Id})'" >Block user</button><br>
+                        }
+                    }
+                    <b>Reported by:</b> @report.user.Email<br>
+                    @if (report.reaction != null)
+                    {
+                        foreach (var reaction in Model.reactions)
+                        {
+                            if (reaction.reactionId == report.reaction.reactionId)
+                            {
+                                using (Html.BeginForm("ChangeReaction", "Admin", 
+                                    new { reactionId = @reaction.reactionId, ideaId = @Model.idea.ideaId }, FormMethod.Post))
+                                {
+                                    <div class="popup" id="popup-@reaction.reactionId" name="popup">
+                                        <div name="popupContent" id="popupContent">
+                                            <div name="inputArea" class="inputArea" id="inputArea-@reaction.reactionId">
+                                                <p id="titelRep">Change this reaction</p>
+                                                <div id="repTextContainer">
+                                                    <textarea id="reportText" name="reportText">@reaction.content</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="submitReportContainer">
+                                            <button class="submitButton" type="submit">Change reaction</button>
+                                            <button onclick="closePopup(@reaction.reactionId)">Close</button>
+                                        </div>
+                                    </div>
+                                }
+                                <b>Reaction:</b>
+                                @reaction.content<br>
+                                <button onclick="showPopup(@reaction.reactionId);">Change reaction</button>
+                                <button type="button" onclick="location.href='@Url.Action("ApproveReaction", "Admin"
+                                         , new { reactionId = @reaction.reactionId})'" >Approve</button>
+                                <button type="button" onclick="location.href='@Url.Action("DisapproveReaction", "Admin"
+                                         , new { reactionId = @reaction.reactionId})'" >Disapprove</button>
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    <b>Report message:</b><br>
+                    @report.reportMessage
+                </td>
+                <td>
+                    <b>Submit date:</b><br>
+                    @report.dateSubmitted
+                </td>
+            </tr> 
+        }
+    }
+</table>
