@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using BL;
+using BL.Application;
 using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Microsoft.AspNetCore.Http;
@@ -14,16 +15,51 @@ namespace UI.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly OrchestratorSystemController orchestrator;
+        
+        public HomeController()
         {
-            return View();
+            orchestrator = new OrchestratorSystemController();
         }
 
-        public IActionResult About()
+        public IActionResult Index()
         {
-            ViewData["Message"] = "Your application description page.";
+            List<Project> projects = orchestrator.getProjects().ToList();
+            List<Project> Top3 = new List<Project>();
 
-            return View();
+            Top3.Add(projects[4]);
+            Top3.Add(projects[5]);
+            Top3.Add(projects[6]);
+            return View(Top3);
+            
+            /*
+              ProjectCollectionsVM projectCollectionsVm = new ProjectCollectionsVM();
+              List<Project> projects = orchestrator.getProjects().ToList(); 
+              //top3projects
+              projectCollectionsVm.top3Projects.Add(projects[0]); 
+              projectCollectionsVm.top3Projects.Add(projects[1]); 
+              projectCollectionsVm.top3Projects.Add(projects[2]);
+              projectCollectionsVm.top3Projects.Add(projects[3]); 
+              //popularProjects
+              projectCollectionsVm.popularProjects.Add(projects[6]);
+              projectCollectionsVm.popularProjects.Add(projects[7]);
+              projectCollectionsVm.popularProjects.Add(projects[8]);
+              projectCollectionsVm.popularProjects.Add(projects[9]);
+              //newestProjects
+              projectCollectionsVm.newestProjects.Add(projects[10]);
+              //closedProjects
+              projectCollectionsVm.closedProjects.Add(projects[11]);
+              projectCollectionsVm.closedProjects.Add(projects[12]);
+              
+              return View(projectCollectionsVm);
+ */
+        }
+
+        public IActionResult ProjectsGeneral()
+        {
+            IEnumerable<Project> allProjects = orchestrator.getProjects();
+            return View(allProjects);
+
         }
 
         public IActionResult Contact()
