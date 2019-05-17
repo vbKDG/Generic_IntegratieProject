@@ -471,20 +471,112 @@ namespace DAL.EF
             p9.mapField = map9;
 
             // Badminton tournament
+             // Badminton tournament
             Project p10 = new Project();
             MapField map10 = new MapField { latitude = 51.21315287598253, longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
-            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\volleyballProject.jpg");
+            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
             p10.name = " Badminton tournament";
-            p10.description = "In the summer , the city will organize a volleyball tournament in City park. Everybody is welcome!";
-            p10.startDate = new DateTime(2019, 7, 1);
-            p10.endDate = new DateTime(2019, 7, 15);
+            p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
+            p10.startDate = new DateTime(2019, 5, 1);
+            p10.endDate = new DateTime(2019, 5, 23);
             p10.phases = new List<Phase>{
-                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,1),endDate =  new DateTime(2019,6,15)},
-                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,6,20),endDate =  new DateTime(2019,6,30)},
+                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,5,1),endDate =  new DateTime(2019,5,10)},
+                new Phase{name = "Construction",description = "Creat everything we need before the event",startDate =  new DateTime(2019,5,11),endDate =  new DateTime(2019,5,16)},
+                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,5,17),endDate =  new DateTime(2019,5,20)},
+                new Phase{name = "Event",description = "The badminton tournament takes place",startDate =  new DateTime(2019,5,21),endDate =  new DateTime(2019,5,23)},
+            };
+            Ideation id = new Ideation
+            {
+                ideas = new List<Idea> {
+                    new Idea {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea1 f1"
+                            },
+                            new TextField
+                            {
+                            required = true,
+                            text = "test idea1 f2"
+                            }
+                        },
+                        reactions = new List<Reaction>
+                        {
+                            new Reaction
+                            {
+                                content = "reaction 1 idea 1",
+                                date = DateTime.Now,
+                                user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                            },
+                            new Reaction
+                            {
+                                content = "reaction 2 idea 1",
+                                date = DateTime.Now,
+                                user = userManager.FindByEmailAsync("peter.smet@gmail.com").Result
+                            }
+                        }
+                    }, 
+                    new Idea {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            },
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f2"
+                            },
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f3"
+                            }
+                        },
+                        reactions = new List<Reaction>
+                        {
+                        new Reaction
+                        {
+                            content = "reaction 1 idea 2",
+                            date = DateTime.Now,
+                            user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                        }
+                    }
+                    }  
+                }
+            };
+            p10.ideations = new List<Ideation>()
+            {
+                id
             };
             p10.imageField = img10;
             p10.mapField = map10;
+            IdeationQuestion iq10d1 = new IdeationQuestion()
+            {
+                ideation = id,
+                question = "central question d1",
+                description = "omschrijving centrale vraag d2",
+                backgroundInfo = "www.google.be"
+            };
+            IdeationQuestion iq10d2 = new IdeationQuestion()
+            {
+                ideation = id,
+                question = "central question d2",
+                description = "omschrijving centrale vraag d2",
+                backgroundInfo = "www.google.be"
+            };
+            ctx.ideationQuestions.Add(iq10d1);
+            ctx.ideationQuestions.Add(iq10d2);
+            id.questions.Add(iq10d1);
+            id.questions.Add(iq10d2);
+
 
             // Parking lot movie 
             Project p11 = new Project();
@@ -588,8 +680,8 @@ namespace DAL.EF
          //   fields.Add(if1);
             //Ideas 
             
-            Idea i1 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.Id };
-            Idea i2 = new Idea(){ideation = it1 , UserId = userManager.FindByEmailAsync("peter.smet@gmail.com").Result.Id };
+            Idea i1 = new Idea(){ideation = it1 , user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result };
+            Idea i2 = new Idea(){ideation = it1 , user = userManager.FindByEmailAsync("peter.smet@gmail.com").Result };
 
            // it1.fields = null;
             
@@ -601,8 +693,8 @@ namespace DAL.EF
             //answers 
            // Reaction a3 = new Reaction(){content = "test",idea = null};
             
-            Reaction a1 = new Reaction(){idea = i1, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Great Idea !" };
-            Reaction a2 = new Reaction(){idea = i2, UserId = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Id,content = " Terrible Idea !" };
+            Reaction a1 = new Reaction(){idea = i1, user = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,content = " Great Idea !" };
+            Reaction a2 = new Reaction(){idea = i2, user = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,content = " Terrible Idea !" };
             
             i1.reactions = new List<Reaction>(){a1};
             i2.reactions = new List<Reaction>(){a2};
@@ -620,7 +712,7 @@ namespace DAL.EF
             ctx.ideationQuestions.Add(iq1);
             ctx.ideas.AddRange(i1,i2);
 
-            ctx.answers.AddRange(a1,a2);
+            ctx.reactions.AddRange(a1,a2);
             ctx.options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
             
             ctx.SaveChanges();

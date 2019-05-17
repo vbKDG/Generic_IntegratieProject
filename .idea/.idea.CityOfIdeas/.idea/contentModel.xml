@@ -107,6 +107,11 @@
           <e p="Questionnaire.cs" t="Include" />
           <e p="QuestionUser.cs" t="Include" />
         </e>
+        <e p="Report" t="Include">
+          <e p="NewReportDTO.cs" t="Include" />
+          <e p="Report.cs" t="Include" />
+          <e p="ReportDTO.cs" t="Include" />
+        </e>
         <e p="User" t="Include">
           <e p="ApplicationRole.cs" t="Include" />
           <e p="ApplicationUser.cs" t="Include" />
@@ -203,6 +208,7 @@
           <e p="IdeaController.cs" t="Include" />
           <e p="ProjectController.cs" t="Include" />
           <e p="QuestionnaireController.cs" t="Include" />
+          <e p="ReportsController.cs" t="Include" />
         </e>
         <e p="DependencyInjectionConfig.cs" t="Include" />
         <e p="Models" t="Include">
@@ -220,6 +226,8 @@
           <e p="Idee.cs" t="Include" />
           <e p="OptionsAmount.cs" t="Include" />
           <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="ProjectCollectionsVM.cs" t="Include" />
+          <e p="ProjectDetailModel.cs" t="Include" />
           <e p="Projects" t="Include">
             <e p="ProjectVM.cs" t="Include" />
           </e>
@@ -229,6 +237,7 @@
             <e p="QuestionVM.cs" t="Include" />
           </e>
           <e p="QuestionUserModel.cs" t="Include" />
+          <e p="ReportModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -256,13 +265,14 @@
             <e p="EditModeratorPage.cshtml" t="Include" />
             <e p="ManageAdmins.cshtml" t="Include" />
             <e p="ManageModerators.cshtml" t="Include" />
+            <e p="ManagePosts.cshtml" t="Include" />
+            <e p="ShowReports.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
-            <e p="About.cshtml" t="Include" />
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
-            <e p="Login.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
+            <e p="ProjectsGeneral.cshtml" t="Include" />
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
@@ -279,6 +289,7 @@
             <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
             <e p="Project.cshtml" t="Include" />
+            <e p="ProjectDetailPage.cshtml" t="Include" />
             <e p="ProjectImageDisplay.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />
           </e>
@@ -315,7 +326,9 @@
           <e p="css" t="Include">
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
+            <e p="phaseLine.css" t="Include" />
             <e p="QuestionSliders.css" t="Include" />
+            <e p="reportPopUp.css" t="Include" />
             <e p="site.css" t="Include" />
             <e p="site.min.css" t="Include" />
             <e p="TextSlideShow.css" t="Include" />
@@ -323,39 +336,60 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
+            <e p="antique-project.jpg" t="Include" />
             <e p="antwerp.jpg" t="Include" />
+            <e p="artgallery-project.jpg" t="Include" />
+            <e p="asian-food-project.jpg" t="Include" />
             <e p="banner1.svg" t="Include" />
             <e p="banner2.svg" t="Include" />
             <e p="banner3.svg" t="Include" />
+            <e p="barbeque-project.jpg" t="Include" />
+            <e p="bbq-project.jpg" t="Include" />
             <e p="bbq.PNG" t="Include" />
             <e p="bgcity.jpg" t="Include" />
             <e p="building3.jpg" t="Include" />
+            <e p="carousel-image1.jpg" t="Include" />
+            <e p="carousel-image2.jpg" t="Include" />
+            <e p="carousel-image3.jpg" t="Include" />
             <e p="comments.png" t="Include" />
+            <e p="concertproject.jpg" t="Include" />
             <e p="delen.jpg" t="Include" />
+            <e p="fleamarket-project.jpg" t="Include" />
+            <e p="green_check.png" t="Include" />
+            <e p="icon-person.png" t="Include" />
             <e p="ideeLogo.jpg" t="Include" />
-            <e p="image1.jpg" t="Include" />
-            <e p="image2.jpg" t="Include" />
-            <e p="image3.jpg" t="Include" />
             <e p="leuk.jpg" t="Include" />
+            <e p="marathon-project.jpg" t="Include" />
             <e p="park1.jpg" t="Include" />
             <e p="park2.jpg" t="Include" />
             <e p="park3.jpg" t="Include" />
             <e p="park4.jpg" t="Include" />
-            <e p="person.png" t="Include" />
+            <e p="perry-grone-732606-unsplash.jpg" t="Include" />
+            <e p="playground-project.jpg" t="Include" />
             <e p="project-flea-market.jpg" t="Include" />
             <e p="project-park-badminton.jpg" t="Include" />
             <e p="project-parking-lot.jpg" t="Include" />
             <e p="project-renaissance-faire.jpg" t="Include" />
+            <e p="red_cross.jpg" t="Include" />
+            <e p="ropepulling-project.jpg" t="Include" />
             <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
+            <e p="safebird-project.jpg" t="Include" />
+            <e p="soccerProject.jpg" t="Include" />
             <e p="straat2.jpg" t="Include" />
             <e p="straat3.jpg" t="Include" />
+            <e p="sushi-project.jpg" t="Include" />
+            <e p="volleyballProject.jpg" t="Include" />
           </e>
           <e p="js" t="Include">
+            <e p="changeProjectPosts.js" t="Include" />
             <e p="checkIfOrganisation.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
+            <e p="phaseLine.js" t="Include" />
+            <e p="showPostChange.js" t="Include" />
+            <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
             <e p="UploadScript.js" t="Include" />

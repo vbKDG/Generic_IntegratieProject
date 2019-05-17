@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Autofac;
 using BL;
@@ -239,22 +240,80 @@ namespace UI.MVC.Controllers
         
         public IActionResult Ideas(int ideationId)
         {
-            IdeasVM ideasVm = new IdeasVM();
+            /*IdeasVM ideasVm = new IdeasVM();
             List<IdeaVM> ideaVmList = new List<IdeaVM>();
             IEnumerable<Idea> ideas = ideationMgr.getIdeas(ideationId);
+            
+            ideationMgr.GetIdeationQuestions(ideationId);
             foreach (var idea in ideas)
             {
                 ideaVmList.Add(new IdeaVM
                 {
-                    ideationId = idea.ideaId
+                    ideationId = idea.ideaId,
                     
                 });
             }
-
             ideasVm.IdeationId = ideationId;
             ideasVm.IdeaVms = ideaVmList;
             
+            return View(ideasVm);*/
+            
+            IdeasVM ideasVm = new IdeasVM();
+            ideasVm.IdeationId = ideationId;
+            ideasVm.ideas = ideationMgr.getIdeas(ideationId).ToList();
+            ideasVm.fields = new List<TextField>();
+            ideasVm.reactions = new List<Reaction>();
+            foreach (var idea in ideasVm.ideas)
+            {
+                foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
+                {
+                    ideasVm.fields.Add(field);
+                }
+
+                foreach (var reaction in ideationMgr.getReactions(idea.ideaId).ToList())
+                {
+                    ideasVm.reactions.Add(reaction);
+                }
+            }
             return View(ideasVm);
+        }
+
+        public IActionResult LikeIdea(int ideaId)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                ideationMgr.LikeIdea(ideaId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            }
+            return NoContent();
+        }
+
+        public IActionResult LikeReaction(int reactionId)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                ideationMgr.LikeReaction(reactionId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            }
+            return NoContent();
+        }
+        public IActionResult ReactIdea(IFormCollection form)
+        {
+            string content = "";
+            string userId = "";
+            string ideaId = "";
+            foreach (var key in form.Keys)
+            {
+                if (key == "reaction")
+                {
+                    content = form[key];
+                    userId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                }
+                if (key == "idea")
+                {
+                    ideaId = form[key];
+                }
+            }
+            ideationMgr.ReactIdea(ideaId, userId, content);
+            return NoContent();
         }
 
        

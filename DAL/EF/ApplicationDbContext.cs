@@ -36,9 +36,10 @@ namespace DAL.EF
         public DbSet<Like> likes { get; set; }
         public DbSet<IdeaLike> ideaLikes { get; set; }
         public DbSet<ProjectLike> projectLikes { get; set; }
-        public DbSet<ReactionLike> answerLikes { get; set; }
+        public DbSet<ReactionLike> reactionLikes { get; set; }
         public DbSet<IotVote> iotLikes { get; set; }
-
+        
+        public DbSet<Report> reports { get; set; }
         //Project
         public DbSet<Project> projects { get; set; }
         public DbSet<Phase> phases { get; set; }
@@ -47,7 +48,7 @@ namespace DAL.EF
         public DbSet<Ideation> ideations { get; set; }
         public DbSet<IdeationQuestion> ideationQuestions { get; set; }
         public DbSet<Idea> ideas { get; set; }
-        public DbSet<Reaction> answers { get; set; }
+        public DbSet<Reaction> reactions { get; set; }
         
         //Questionnaire 
         public DbSet<Questionnaire> questionnaires { get; set; }

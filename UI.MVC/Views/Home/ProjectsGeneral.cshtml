@@ -15,7 +15,7 @@
             @foreach (var project in @Model)
             {
 
-                @if (project.startDate < DateTime.Now && DateTime.Now < project.endDate)
+                if (project.startDate < DateTime.Now && DateTime.Now < project.endDate)
                  {
                      <div class="col-md-6">
                          <div class="col-md-12">
@@ -59,7 +59,7 @@
     @foreach (var project in @Model)
     {
 
-        @if (project.startDate > DateTime.Now)
+        if (project.startDate > DateTime.Now)
          {
              <div class="col-md-4">
                  <div class="col-md-16">
@@ -104,7 +104,7 @@
             @foreach (var project in @Model)
             {
 
-                @if (project.endDate < DateTime.Now)
+                if (project.endDate < DateTime.Now)
                  {
                      <div class="col-md-3">
                          <div class="col-md-16">
