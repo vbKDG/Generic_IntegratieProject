@@ -12,7 +12,7 @@ namespace Domain
         
         public Ideation ideation { get; set; }
         public string question { get; set; }
-        
-        
+        public string description { get; set; }
+        public string backgroundInfo { get; set; }
     }
 }

@@ -8,51 +8,6 @@
 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
     , new { ideationId=@Model.IdeationId})
 
-<script>
-    $(document).ready(function() {
-        $("button[id^='likeIdea-']").each(function() {
-            var parts = $(this).attr('id').toString().split("-");
-            $(this).click(function() {
-                setTimeout(function() {
-                    $.ajax({
-                        url: '@Url.Action("GetIdeaLikes", "Admin")',
-                        type: "GET",
-                        data: { ideaId: parts[1] },
-                        contentType: 'json',
-                        success: function(result) {
-                            $("#ideaLikeCount-" + parts[1]).text("(" + result + ")");
-                        }
-                    });
-                }, 100);
-            });
-        });
-        $("button[id^='likeReaction-']").each(function() {
-            var parts = $(this).attr('id').toString().split("-");
-            $(this).click(function() {
-                setTimeout(function() {
-                    $.ajax({
-                        url: '@Url.Action("GetReactionLikes", "Admin")',
-                        type: "GET",
-                        data: { reactionId: parts[1] },
-                        contentType: 'json',
-                        success: function(result) {
-                            $("#reactionLikeCount-" + parts[1]).text("(" + result + ")");
-                        }
-                    });
-                }, 100);
-            });
-        });
-        $("button[id^='submitReaction-']").each(function() {
-            var parts = $(this).attr('id').toString().split("-");
-            $(this).click(function() {
-                var text = $("#reaction-" + parts[1]).val();
-                $("#newReaction-" + parts[1]).append(text + "<br>");
-                $("#reaction-" + parts[1]).val("");
-            });
-        });
-    });
-</script>
-
 <table class="table">
     <tr>
         <th>
@@ -63,7 +18,7 @@
     {
         <tr>
             <td>
-                @Model.ideas.ToList()[i].user
+                @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1).
                 @if (User.Identity.IsAuthenticated)
                 {
                     <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
@@ -76,8 +31,6 @@
                     <button title="You have to be signed in">Like</button>
                     <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
                 }
-                <br>
-                
                 @foreach (var field in Model.fields)
                 {
                     if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)

@@ -547,13 +547,24 @@ namespace DAL.EF
             };
             p10.imageField = img10;
             p10.mapField = map10;
-            IdeationQuestion iq10 = new IdeationQuestion()
+            IdeationQuestion iq10d1 = new IdeationQuestion()
             {
                 ideation = id,
-                question = "central question"
+                question = "central question d1",
+                description = "omschrijving centrale vraag d2",
+                backgroundInfo = "www.google.be"
             };
-            ctx.ideationQuestions.Add(iq10);
-            id.questions.Add(iq10);
+            IdeationQuestion iq10d2 = new IdeationQuestion()
+            {
+                ideation = id,
+                question = "central question d2",
+                description = "omschrijving centrale vraag d2",
+                backgroundInfo = "www.google.be"
+            };
+            ctx.ideationQuestions.Add(iq10d1);
+            ctx.ideationQuestions.Add(iq10d2);
+            id.questions.Add(iq10d1);
+            id.questions.Add(iq10d2);
 
             // Parking lot movie 
             Project p11 = new Project();
@@ -613,7 +624,13 @@ namespace DAL.EF
             
             //IdeationQuestions 
 
-            IdeationQuestion iq1 = new IdeationQuestion(){ideation = it1, question = "What type of constructions do you want on the playground ? "};
+            IdeationQuestion iq1 = new IdeationQuestion
+            {
+                ideation = it1, 
+                question = "What type of constructions do you want on the playground ? ",
+                backgroundInfo = "background info link",
+                description = "www.google.be"
+            };
             it1.questions = new List<IdeationQuestion>(){iq1};
             
            

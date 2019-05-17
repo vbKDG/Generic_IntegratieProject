@@ -1,4 +1,46 @@
 $(document).ready(function() {
+    $("button[id^='likeIdea-']").each(function() {
+        var parts = $(this).attr('id').toString().split("-");
+        $(this).click(function() {
+            console.log('test');
+            setTimeout(function() {
+                $.ajax({
+                    url: '/Admin/GetIdeaLikes',
+                    type: "GET",
+                    data: { ideaId: parts[1] },
+                    contentType: 'json',
+                    success: function(result) {
+                        $("#ideaLikeCount-" + parts[1]).text("(" + result + ")");
+                    }
+                });
+            }, 100);
+        });
+    });
+    $("button[id^='likeReaction-']").each(function() {
+        var parts = $(this).attr('id').toString().split("-");
+        $(this).click(function() {
+            setTimeout(function() {
+                $.ajax({
+                    url: '/Admin/GetReactionLikes',
+                    type: "GET",
+                    data: { reactionId: parts[1] },
+                    contentType: 'json',
+                    success: function(result) {
+                        $("#reactionLikeCount-" + parts[1]).text("(" + result + ")");
+                    }
+                });
+            }, 100);
+        });
+    });
+    $("button[id^='submitReaction-']").each(function() {
+        var parts = $(this).attr('id').toString().split("-");
+        $(this).click(function() {
+            var text = $("#reaction-" + parts[1]).val();
+            $("#newReaction-" + parts[1]).append(text + "<br>");
+            $("#reaction-" + parts[1]).val("");
+        });
+    });
+    
     $("div[id^='reactions-']").each(function(){
         $(this).hide();
         var number = $(this).attr('id').toString().split('-')[1];
