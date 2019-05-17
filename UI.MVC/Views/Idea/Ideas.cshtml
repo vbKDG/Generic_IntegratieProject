@@ -1,38 +1,112 @@
 @model D.UI.MVC.Models.Ideas.IdeasVM
 
-<h1>Projects</h1>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/reportPopUp.css">
+
+<h1>Ideas</h1>
 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
     , new { ideationId=@Model.IdeationId})
 
 <table class="table">
     <tr>
         <th>
-            <p>User</p>
+            <p>Ideas</p>
         </th>
-        <th>
-            <p>Title</p>
-        </th>
-        
-        <th>Content</th>
     </tr>
-    @foreach (var item in Model.IdeaVms.ToList())
-    {/*
+    @for (var i = 0; i < Model.ideas.Count; i++)
+    {
         <tr>
             <td>
-                @item.user.firstName.Substring(0,1).@Html.DisplayFor(modelItem => item.user.lastName)
-            
-           
-                          
+                @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1).
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
+                            onclick="location.href='@Url.Action("LikeIdea", "Idea"
+                           , new {ideaId = @Model.ideas.ToList()[i].ideaId})'" >Like</button>
+                    <span id="ideaLikeCount-@Model.ideas.ToList()[i].ideaId">(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
+                }
+                else
+                {
+                    <button title="You have to be signed in">Like</button>
+                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
+                }
+                @foreach (var field in Model.fields)
+                {
+                    if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)
+                    {
+                        @field.text
+                        <br>
+                    }
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button onclick="showPopup(@Model.ideas.ToList()[i].ideaId, 'idea', 0);">Report idea</button><br>
+                }
+                else
+                {
+                    <button title="You have to be signed in to report an idea">Report idea</button><br>
+                }
+                
+                <button id="showReactions-@i">Show reactions</button>
+                <div id="reactions-@i">
+                    @foreach (var reaction in Model.reactions.ToList())
+                    {
+                        if (reaction.idea.ideaId == @Model.ideas.ToList()[i].ideaId)
+                        {
+                            @reaction.content
+                            <button id="likeReaction-@reaction.reactionId" type="button" 
+                                    onclick="location.href='@Url.Action("LikeReaction", "Idea"
+                                      , new {reactionId = @reaction.reactionId})'" >Like</button>
+                            <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
+                            }
+                            else
+                            {
+                                <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                            }
+                        }
+                    }
+                    <div id="newReaction-@Model.ideas.ToList()[i].ideaId"></div>
+                    <div>
+                        @using (Html.BeginForm("ReactIdea", "Idea",
+                            FormMethod.Post))
+                        {
+                            <p>Write your own reaction: </p>
+                            <input name="reaction" id="reaction-@Model.ideas.ToList()[i].ideaId" type="text" />
+                            <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden" />
+                            <button id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit">React</button>
+                        }
+                    </div>
+                </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ideaId)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.ideaId)
-            </td>
-        </tr>*/
+        </tr>
     }
-    
-    
 </table>
+
+<div id="blur" name="blur"></div>
+<div id="popup" name="popup">
+    <div name="popupContent" id="popupContent">
+        <div name="inputArea" id="inputArea">
+            <p id="titelRep">Why do you want to report this 
+                <span id="reportType"></span>?
+             </p>
+            <div id="repTextContainer">
+                <textarea id="reportText" name="reportText"></textarea>
+            </div>
+        </div>
+        <div name="successMessage" id="successMessage">
+            <img src="/images/green_check.png" id="succesImg" />
+            <p>Your report has been successfully submitted.</p>
+        </div>
+        <div name="failureMessage" id="failureMessage">
+            <img src="/images/red_cross.jpg" id="failureImgr"/>
+            <p>Something went wrong, please try again later.</p>
+        </div>
+    </div>
+    <div id="submitReportContainer">
+        <button onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
+    </div>
+</div>

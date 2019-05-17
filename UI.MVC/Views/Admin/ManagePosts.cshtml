@@ -1,0 +1,54 @@
+﻿@model ReportModel
+
+@{
+    ViewData["Title"] = "Manage posts";
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/js/changeProjectPosts.js" asp-append-version="true"></script>
+
+<h1>Current project</h1>
+<select onchange = "redirect(this.value)">
+    @foreach (var project in Model.projects)
+    {
+        if (project.projectId == Model.selectedProject)
+        {
+            <option value="@project.projectId" selected>@project.name</option>
+        }
+        else
+        {
+            <option value="@project.projectId">@project.name</option>
+        }
+       
+    }
+</select>
+
+<table class="table">
+    @foreach (var ideation in Model.ideations)
+    {
+        foreach (var idea in ideation.ideas)
+        {
+            var reportReactions = 0;
+            foreach (var report in Model.reports)
+            {
+                if (report.idea.ideaId == idea.ideaId)
+                {
+                    reportReactions++;
+                }
+            }
+            <tr>
+                <td>
+                    Central questions:<br>
+                    @foreach (var centralQ in ideation.questions)
+                    {
+                        @centralQ.question<br>
+                    }
+                    Idea from: @idea.user.Email <br>
+                    Amount of reports: @reportReactions <br>
+                    <button type="button" onclick="location.href='@Url.Action("ShowReports", "Admin"
+                        , new { ideaId = @idea.ideaId})'" >Handle posts</button>
+                </td>
+            </tr>
+        }
+    }
+</table>

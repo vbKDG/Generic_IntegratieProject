@@ -1,8 +1,6 @@
 @using Domain
 @model ProjectAndQuestions
 
-
-
 <h2> @Model.project.name</h2>
 
 @Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.project.projectId})

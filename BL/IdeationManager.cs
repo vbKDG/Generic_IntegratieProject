@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using DAL;
 using DAL.EF;
 using Domain;
@@ -43,7 +44,112 @@ namespace BL
         {
            return  ideationRepo.readIdeations(projectId);
         }
-        
+
+        public IEnumerable<TextField> GetFields(int ideaId)
+        {
+            return ideationRepo.readFields(ideaId);
+        }
+
+        public void LikeIdea(int ideaId, string userId)
+        {
+            ideationRepo.LikeIdea(ideaId, userId);
+        }
+
+        public void LikeReaction(int reactionId, string userId)
+        {
+            ideationRepo.LikeReaction(reactionId, userId);
+        }
+
+        public int getIdeaLikes(int ideaId)
+        {
+            return ideationRepo.getIdeaLikes(ideaId);
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            return ideationRepo.getReactionLikes(reactionId);
+        }
+
+        public IEnumerable<Report> getReports(int ideaId)
+        {
+            return ideationRepo.readReports(ideaId);
+        }
+
+        public void sendToAdmin(int reportId)
+        {
+            ideationRepo.sendToAdmin(reportId);
+        }
+
+        public Report addReport(int ideaId, string reportMessage, string userId, string type, int reactionId)
+        {
+            if (type == "reaction")
+            {
+                Reaction reaction = getReaction(reactionId);
+                Idea idea = getIdea(ideaId);
+                
+                if (reaction != null)
+                {
+                    Report newReport = new Report();
+                    newReport.reaction = reaction;
+                    newReport.dateSubmitted = DateTime.Now;
+                    newReport.idea = idea;
+                    newReport.reportMessage = reportMessage;
+
+                    var reports = getReports(ideaId);
+
+                    if (reports != null)
+                    {
+                        idea.reports = reports.ToList();
+                    }
+                    else
+                    {
+                        idea.reports = new List<Report>();
+                    }
+
+                    idea.reports.Add(newReport);
+
+                    ideationRepo.createReport(newReport, userId);
+
+                    return newReport;
+                }
+            } 
+            else if (type == "idea")
+            {
+                Idea idea = getIdea(ideaId);
+
+                if (idea != null)
+                {
+                    Report newReport = new Report();
+                    newReport.idea = idea;
+                    newReport.dateSubmitted = DateTime.Now;
+                    newReport.reportMessage = reportMessage;
+
+                    var reports = getReports(ideaId);
+
+                    if (reports != null)
+                    {
+                        idea.reports = reports.ToList();
+                    }
+                    else
+                    {
+                        idea.reports = new List<Report>();
+                    }
+
+                    idea.reports.Add(newReport);
+
+                    ideationRepo.createReport(newReport, userId);
+
+                    return newReport;
+                }
+            }
+            throw new ArgumentException("ideaId " + ideaId + " or reactionId " + reactionId + " not found!");
+        }
+
+        public IEnumerable<Reaction> getReactions(int ideaId)
+        {
+            return ideationRepo.readReactions(ideaId);
+        }
+
         public IEnumerable<IdeationQuestion> GetIdeationQuestionsForProject(int projectId)
         {
             return  ideationRepo.ReadIdeationQuestionsForProject(projectId);
@@ -64,6 +170,40 @@ namespace BL
             ideationRepo.createIdeation(ideation,projectId);
         }
 
+        public void approveReaction(int reactionId)
+        {
+            ideationRepo.approveReaction(reactionId);
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            ideationRepo.disapproveReaction(reactionId);
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            ideationRepo.approveIdea(ideaId);
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            ideationRepo.disapproveIdea(ideaId);
+        }
+
+        public void blockUser(string userId)
+        {
+            ideationRepo.blockUser(userId);
+        }
+
+        public void ReactIdea(string ideaId, string userId, string content)
+        {
+            ideationRepo.ReactIdea(ideaId, userId, content);
+        }
+
+        public void changeReaction(Reaction reaction)
+        {
+            ideationRepo.updateReaction(reaction);
+        }
 
         #region Ideas
         public IEnumerable<Idea> getIdeas(int ideationId)
@@ -77,11 +217,17 @@ namespace BL
 
         public void createIdea(ICollection<Field> fields)
         {
-            ideationRepo.createIdea(fields);        }
+            ideationRepo.createIdea(fields);        
+        }
 
         public Idea getIdea(int id)
         {
            return ideationRepo.readIdea(id);
+        }
+
+        public Reaction getReaction(int reactionId)
+        {
+            return ideationRepo.readReaction(reactionId);
         }
 
         #endregion

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using DAL.EF;
 
 namespace Domain
 {
@@ -8,8 +9,6 @@ namespace Domain
         [Required]
         public int likeId { get; set; }
         public DateTime likeTime { get; set; }
-        public string userId { get; set; }
-
-
+        public ApplicationUser User { get; set; }
     }
 }

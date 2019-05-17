@@ -42,10 +42,92 @@ namespace BL.Application
         public IEnumerable<IdeationQuestion> GetIdeationQuestions(int ideationId)
         {
             return ideationMgr.GetIdeationQuestions(ideationId);
-
         }
 
-       
+        public IEnumerable<Reaction> getReactions(int ideaId)
+        {
+            return ideationMgr.getReactions(ideaId);
+        }
+
+        public void LikeIdea(int ideaId, string userId)
+        {
+            ideationMgr.LikeIdea(ideaId, userId);
+        }
+
+        public IEnumerable<Report> getReports(int ideaId)
+        {
+            return ideationMgr.getReports(ideaId);
+        }
+
+        public Reaction getReaction(int reactionId)
+        {
+            return ideationMgr.getReaction(reactionId);
+        }
+
+        public Report addReport(int ideaId, string reportMessage, string userId, string type, int reactionId)
+        {
+            return ideationMgr.addReport(ideaId, reportMessage, userId, type, reactionId);
+        }
+
+        public void sendToAdmin(int reportId)
+        {
+            ideationMgr.sendToAdmin(reportId);
+        }
+
+        public void approveReaction(int reactionId)
+        {
+            ideationMgr.approveReaction(reactionId);
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            ideationMgr.disapproveReaction(reactionId);
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            ideationMgr.approveIdea(ideaId);
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            ideationMgr.disapproveIdea(ideaId);
+        }
+
+        public void blockUser(string userId)
+        {
+            ideationMgr.blockUser(userId);
+        }
+
+        public int getIdeaLikes(int ideaId)
+        {
+            return ideationMgr.getIdeaLikes(ideaId);
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            return ideationMgr.getReactionLikes(reactionId);
+        }
+
+        public void changeReaction(Reaction reaction)
+        {
+            ideationMgr.changeReaction(reaction);
+        }
+
+        public void ReactIdea(string ideaId, string userId, string content)
+        {
+            ideationMgr.ReactIdea(ideaId, userId, content);
+        }
+
+        public void LikeReaction(int reactionId, string userId)
+        {
+            ideationMgr.LikeReaction(reactionId, userId);
+        }
+
+        public IEnumerable<TextField> GetFields(int ideaId)
+        {
+            return ideationMgr.GetFields(ideaId);
+        }
 
         public void CreateIdeation(Ideation ideation, int projectId)
         {

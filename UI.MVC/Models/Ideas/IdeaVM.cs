@@ -64,10 +64,11 @@ namespace D.UI.MVC.Models.Ideas
 
     public class IdeasVM
     {
-        
-        
+        public ICollection<Idea> ideas { get; set; }
+        public ICollection<TextField> fields { get; set; }
+        public ICollection<Reaction> reactions { get; set; }
         public int IdeationId { get; set; }
-        public List<IdeaVM> IdeaVms { get; set; }
+        //public List<IdeaVM> IdeaVms { get; set; }
     }
 
    

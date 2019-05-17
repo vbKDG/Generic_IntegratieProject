@@ -25,7 +25,11 @@ namespace DAL
         
         public IEnumerable<Ideation> readIdeations(int projectId)
         {
-            return ctx.ideations.Include(p => p.project).Where(p => p.project.projectId == projectId);
+            return ctx.ideations
+                .Include(p => p.project)
+                .Include(p => p.questions)
+                .Include(p => p.ideas)
+                .Where(p => p.project.projectId == projectId);
         }
 
         public void createIdeation(Ideation ideation)
@@ -52,7 +56,96 @@ namespace DAL
                 .Include(f => f.MapFieldRange)
                 .Include(f => f.QuestionFieldRange)
                 .SingleOrDefault(i => i.ideationId == id);
+        }
 
+        public int getIdeaLikes(int ideaId)
+        {
+            ICollection<IdeaLike> likes = ctx.ideaLikes.Where(l => l.Idea.ideaId == ideaId).ToList();
+            return likes.Count;
+        }
+
+        public int getReactionLikes(int reactionId)
+        {
+            ICollection<ReactionLike> likes = ctx.reactionLikes
+                .Where(r => r.reaction.reactionId == reactionId).ToList();
+            return likes.Count;
+        }
+
+        public IEnumerable<Report> readReports(int ideaId)
+        {
+            IEnumerable<Report> reports = ctx.reports
+                .Include(r => r.idea)
+                .Include(r => r.reaction)
+                .Include(r => r.user)
+                .Where(r => r.idea.ideaId == ideaId).AsEnumerable();
+            return reports;
+        }
+
+        public Report createReport(Report report, string userId)
+        {
+            report.user = ctx.Users.Find(userId);
+            report.sendToAdmin = false;
+            ctx.reports.Add(report);
+            ctx.SaveChanges();
+            return report;
+        }
+        
+        public void sendToAdmin(int reportId)
+        {
+            Report report = ctx.reports.Find(reportId);
+            report.sendToAdmin = true;
+            ctx.reports.Update(report);
+            ctx.SaveChanges();
+        }
+
+        public void blockUser(string userId)
+        {
+            ApplicationUser user = ctx.Users.Find(userId);
+            user.blocked = true;
+            ctx.Users.Update(user);
+            ctx.SaveChanges();
+        }
+
+        public void updateReaction(Reaction reaction)
+        {
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void approveReaction(int reactionId)
+        {
+            Reaction reaction = ctx.reactions.Find(reactionId);
+            reaction.approved = true;
+            reaction.disapproved = false;
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void disapproveReaction(int reactionId)
+        {
+            Reaction reaction = ctx.reactions.Find(reactionId);
+            reaction.disapproved = true;
+            reaction.approved = false;
+            ctx.reactions.Update(reaction);
+            ctx.SaveChanges();
+        }
+
+        public void approveIdea(int ideaId)
+        {
+            Idea idea = ctx.ideas.Find(ideaId);
+            idea.approved = true;
+            idea.disapproved = false;
+            ctx.ideas.Update(idea);
+            ctx.SaveChanges();
+        }
+
+        public void disapproveIdea(int ideaId)
+        {
+            Idea idea = ctx.ideas.Find(ideaId);
+            idea.disapproved = true;
+            idea.approved = false;
+            ctx.ideas.Update(idea);
+            ctx.SaveChanges();
         }
 
         public void updateIdeation(Ideation i)
@@ -98,9 +191,77 @@ namespace DAL
 
         public IEnumerable<Idea> readIdeas(int ideationId)
         {
-            return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
+            //return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
             // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
-            return ctx.ideas.Include(i => i.ideation).Include(i => i.ideaId).Where( i => i.ideation.ideationId == ideationId);
+            return ctx.ideas
+                .Include(i => i.fields)
+                .Include(i => i.user)
+                .Include(i => i.ideaLikes)
+                .Include(i => i.reactions)
+                .Include(i => i.reports)
+                .Where( i => i.ideation.ideationId == ideationId);
+        }
+
+        public IEnumerable<Reaction> readReactions(int ideaId)
+        {
+            return ctx.reactions
+                .Include(r => r.user)
+                .Include(r => r.reactionLikes)
+                .Include(r => r.reports)
+                .Where(r => r.idea.ideaId == ideaId);
+        }
+
+        public IEnumerable<TextField> readFields(int ideaId)
+        {
+            IEnumerable<TextField> fields = ctx.textFields
+                .Where(f => f.idea.ideaId == ideaId);
+
+            return fields;
+        }
+
+        public void LikeIdea(int ideaId, string userId)
+        {
+            bool unique = ctx.ideaLikes
+                .Any(x => x.User.Id == userId && x.Idea.ideaId == ideaId);
+                
+            if (!unique)
+            {
+                IdeaLike like = new IdeaLike();
+                like.User = ctx.Users.Find(userId);
+                like.likeTime = DateTime.Now;
+                like.Idea = ctx.ideas.Find(ideaId);
+                ctx.ideaLikes.Add(like);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void LikeReaction(int reactionId, string userId)
+        {
+            bool unique = ctx.reactionLikes
+                .Any(x => x.User.Id == userId && x.reaction.reactionId == reactionId);
+
+            if (!unique)
+            {
+                ReactionLike like = new ReactionLike();
+                like.reaction = ctx.reactions.Find(reactionId);
+                like.User = ctx.Users.Find(userId);
+                like.likeTime = DateTime.Now;
+                ctx.reactionLikes.Add(like);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void ReactIdea(string ideaId, string userId, string content)
+        {
+            Reaction reaction = new Reaction
+            {
+                content = content,
+                user = ctx.Users.Find(userId),
+                date = DateTime.Now,
+                idea = ctx.ideas.Find(Convert.ToInt32(ideaId))
+            };
+            ctx.reactions.Add(reaction);
+            ctx.SaveChanges();
         }
 
         #region Idea
@@ -125,7 +286,15 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            return ctx.ideas.Include(i => i.fields).SingleOrDefault(i => i.ideaId == ideaId);
+            return ctx.ideas
+                .Include(i => i.fields)
+                .Include(i => i.user)
+                .SingleOrDefault(i => i.ideaId == ideaId);
+        }
+
+        public Reaction readReaction(int reactionId)
+        {
+            return ctx.reactions.SingleOrDefault(r => r.reactionId == reactionId);
         }
 
         public void updateIdea(Idea i)
