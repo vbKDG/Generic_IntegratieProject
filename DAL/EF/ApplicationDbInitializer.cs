@@ -476,7 +476,7 @@ namespace DAL.EF
             MapField map10 = new MapField { latitude = 51.21315287598253, longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
             img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
-            p10.name = " Badminton tournament";
+            p10.name = "Badminton tournament";
             p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
             p10.startDate = new DateTime(2019, 5, 1);
             p10.endDate = new DateTime(2019, 5, 23);

@@ -86,6 +86,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
+                    EmailConfirmed = true,
                     Age = Input.Age,
                     Gender = Input.Gender,
                     PostalCode = Input.PostalCode,

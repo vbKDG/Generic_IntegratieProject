@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using BL;
 using BL.Application;
 using D.UI.MVC.Models.Projects;
@@ -37,7 +38,29 @@ namespace UI.MVC.Controllers
             IEnumerable<Project> allProjects = orchestrator.getProjects();
             return View(allProjects);
         }
-
+        
+        /*[HttpGet]
+        public IActionResult GetAllProjects()
+        {
+            IEnumerable<Project> allProjects = orchestrator.getProjects();
+            return new JsonResult(allProjects.ToList()[0].name);
+        }*/
+        
+        [HttpGet]
+        public IActionResult GetAllProjects()
+        {
+            var projects = new List<Project>();
+            foreach (var project in orchestrator.getProjects().ToList())
+            {
+                projects.Add(new Project()
+                {
+                    projectId = project.projectId,
+                    name = project.name
+                });
+            }
+            return new JsonResult(projects);
+        }
+        
         public IActionResult Project(int id)
         {
             Project p1 = orchestrator.getProject(id);
@@ -52,6 +75,7 @@ namespace UI.MVC.Controllers
         {
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
             Project p = orchestrator.getProject(projectId);
+            p.phases = p.phases.OrderBy(x => x.startDate).ToList();
             ICollection<IdeationQuestion> ideationQuestions =
                 orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
             projectDetailModel.ideationQuestions = ideationQuestions;

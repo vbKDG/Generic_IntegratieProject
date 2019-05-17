@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\vin-c\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vin-c\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.857546131.00" t="ExcludeRecursive" />
+    <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -120,7 +120,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
-        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -134,6 +133,7 @@
                 <e p="_ViewImports.cshtml" t="Include" />
                 <e p="AccessDenied.cshtml" t="Include" />
                 <e p="AccessDenied.cshtml.cs" t="Include" />
+                <e p="Blocked.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml" t="Include" />
                 <e p="ConfirmEmail.cshtml.cs" t="Include" />
                 <e p="ConfirmQuestionnaire.cshtml" t="Include" />
@@ -324,6 +324,7 @@
         </e>
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
+            <e p="autocomplete.css" t="Include" />
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
             <e p="phaseLine.css" t="Include" />
@@ -388,6 +389,7 @@
             <e p="ImageUpload.js" t="Include" />
             <e p="Maps.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="searchBarAutoComplete.js" t="Include" />
             <e p="showPostChange.js" t="Include" />
             <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />

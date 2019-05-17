@@ -11,73 +11,73 @@
 {
     <img src=@Model.project.imageField.GetImageString() width="500"/>
 }
-<h4>Phases of the project</h4>
-<div class="phaseContainer">
-    <ul class="progressbar">
-        @for (int i = 0; i < @Model.project.phases.Count(); i++)
-        {
-            if (i == 0)
+@if (@Model.project.phases.Count > 0)
+{
+    <h4>Phases of the project</h4>
+    <div class="phaseContainer">
+        <ul class="progressbar">
+            @for (int i = 0; i < @Model.project.phases.Count(); i++)
             {
-                if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                if (i == 0)
                 {
-                    <li class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                    if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                    {
+                        <li class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                    }
+                    else
+                    {
+                        <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                    }
+                }
+                else if (i == @Model.project.phases.Count() - 1)
+                {
+                    if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                    {
+                        <li  id="phase-@i"  class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                    }
+                    else
+                    {
+                        <li  id="phase-@i" class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                    }
                 }
                 else
                 {
-                    <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                    if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                    {
+                        <li class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
+                    }
+                    else
+                    {
+                        <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
+                    }
+    
                 }
+                <div class="popper-content hide">
+                    <h4>@Model.project.phases.ToList()[i].name</h4>
+                    <p>From @Model.project.phases.ToList()[i].startDate <br>
+                        Till @Model.project.phases.ToList()[i].endDate</p>
+                    <p>@Model.project.phases.ToList()[i].description</p>
+                </div>
             }
-            else if (i == @Model.project.phases.Count() - 1)
-            {
-                if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
-                {
-                    <li  id="phase-@i"  class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
-                }
-                else
-                {
-                    <li  id="phase-@i" class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
-                }
-            }
-            else
-            {
-                if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
-                {
-                    <li class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
-                }
-                else
-                {
-                    <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
-                }
-
-            }
-            <div class="popper-content hide">
-                <h4>@Model.project.phases.ToList()[i].name</h4>
-                <p>From @Model.project.phases.ToList()[i].startDate <br>
-                    Till @Model.project.phases.ToList()[i].endDate</p>
-                <p>@Model.project.phases.ToList()[i].description</p>
-            </div>
-        }
-    </ul>
-</div>
+        </ul>
+    </div>
+}
 
 @if (@Model.project.ideations.Count > 0)
 {
     <table class="table">
         <h4>Top 5 ideations</h4>
-        <tr>
-            <th>Central question</th>
-        </tr>
         @if (@Model.project.ideations.Count - 1 < 4)
         {
-            foreach (var ideationQuestion in @Model.ideationQuestions)
+            foreach (var ideation in @Model.project.ideations)
             {
                 <tr>
                     <td>
-                        @ideationQuestion.question
+                        Ideation
                     </td>
                     <td>
                         @Html.ActionLink("Show ideas", "Ideas", "Idea"
-                            , new {ideationId = ideationQuestion.ideation.ideationId})
+                            , new {ideationId = ideation.ideationId})
                     </td>
                 </tr>
             }

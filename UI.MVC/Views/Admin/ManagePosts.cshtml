@@ -38,14 +38,9 @@
             }
             <tr>
                 <td>
-                    Central questions:<br>
-                    @foreach (var centralQ in ideation.questions)
-                    {
-                        @centralQ.question<br>
-                    }
                     Idea from: @idea.user.Email <br>
                     Amount of reports: @reportReactions <br>
-                    <button type="button" onclick="location.href='@Url.Action("ShowReportsModerator", "Admin"
+                    <button type="button" onclick="location.href='@Url.Action("ShowReports", "Admin"
                         , new { ideaId = @idea.ideaId})'" >Handle posts</button>
                 </td>
             </tr>

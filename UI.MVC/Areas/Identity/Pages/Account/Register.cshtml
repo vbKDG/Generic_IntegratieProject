@@ -8,159 +8,85 @@
     ViewData["Title"] = "Register";
 }
 
-<body id="registerPage">
+<h1>@ViewData["Title"]</h1>
 
-        <header>
-            <div class="dark-overlay">
-                <div class="home-inner container">
-                        <div class="card bg-light text-center card-form">
-                            <div class="card-body">
-                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                                    <h3><b>Create a new account.</b></h3>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <h4><b>Profile</b></h4>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <h4><b>Account</b></h4>
-                                            </div>
-                                        </div>
-                                    </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
 
-                                    <div class="row">
-
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <input asp-for="Input.FirstName" class="form-control" placeholder="First name" />
-                                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-
-                                            <div class="form-group">
-                                                <input asp-for="Input.LastName" class="form-control" placeholder="Last name" />
-                                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-3">
-
-                                            <div class="form-group">
-                                                <div>
-                                                    <select asp-for="Input.Gender" class="form-control">
-                                                        <option class="dropdown-item" selected disabled value="U">Gender</option>
-                                                        <option class="dropdown-item" value="M">Man</option>
-                                                        <option class="dropdown-item" value="V">Women</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <input asp-for="Input.Age" class="form-control" placeholder="Age" />
-                                                <span asp-validation-for="Input.Age" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col">
-                                            <div class="form-group">
-                                                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
-                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-3">
-
-                                            <div class="form-group">
-                                                <input asp-for="Input.PostalCode" class="form-control" placeholder="Postal code" />
-                                                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm password" />
-                                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <h4><b>Organization</b></h4>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <h4><b></b></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-6">
-                                         <div class="form-group">
-                                           <div>
-                                               <select asp-for="Input.isOrganisation" id="organisation" class="form-control">
-                                               <option class="dropdown-item" selected disabled value="U">*Organization related?</option>
-                                             <option class="dropdown-item" value="false">No</option>
-                                           <option class="dropdown-item" value="true">Yes</option>
-                                                    </select>
-                                                       </div>
-                                                </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-6">
-                                            <div id="organisationInfo">
-                                                <div class="form-group">
-                                                    <input asp-for="Input.OrganisationName" class="form-control" placeholder="Organisation name" />
-                                                    <span asp-validation-for="Input.OrganisationName" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-6">
-                                            <div class="form-group">
-                                                <input asp-for="Input.OrganisationEventInput" class="form-control" placeholder="Event input" />
-                                                <span asp-validation-for="Input.OrganisationEventInput" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-primary"><b>Register</b></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Gender"></label>
+                <div>
+                    <select asp-for="Input.Gender" class="form-control">
+                        <option class="dropdown-item" selected disabled value="U">Unknown</option>
+                        <option class="dropdown-item" value="M">Man</option>
+                        <option class="dropdown-item" value="V">Women</option>
+                    </select> 
                 </div>
-
-
-        </header>
-
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Age"></label>
+                <input asp-for="Input.Age" class="form-control" />
+                <span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PostalCode"></label>
+                <input asp-for="Input.PostalCode" class="form-control" />
+                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.isOrganisation"></label>
+                <div>
+                    <select asp-for="Input.isOrganisation" id="organisation" class="form-control">
+                        <option class="dropdown-item" value="false">No</option>
+                        <option class="dropdown-item" value="true">Yes</option>
+                    </select> 
+                </div>
+            </div>
+            <div id="organisationInfo">
+                <div class="form-group">
+                    <label asp-for="Input.OrganisationName"></label>
+                    <input asp-for="Input.OrganisationName" class="form-control" />
+                    <span asp-validation-for="Input.OrganisationName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.OrganisationEventInput"></label>
+                    <input asp-for="Input.OrganisationEventInput" class="form-control" />
+                    <span asp-validation-for="Input.OrganisationEventInput" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-</body>

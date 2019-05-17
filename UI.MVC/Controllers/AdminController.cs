@@ -40,8 +40,8 @@ namespace UI.MVC.Controllers
             return View(applicationUser);
         }
 
-        [Authorize(Roles = "Moderator")]
-        public IActionResult ShowReportsModerator(int ideaId)
+        [Authorize(Roles = "Moderator, Admin")]
+        public IActionResult ShowReports(int ideaId)
         {
             ReportModel reportModel = new ReportModel
             {
@@ -67,7 +67,7 @@ namespace UI.MVC.Controllers
             return new JsonResult(likes);
         }
         
-        [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator, Admin")]
         public IActionResult ManagePosts(int projectId)
         {
             ReportModel reportModel = new ReportModel
@@ -146,7 +146,7 @@ namespace UI.MVC.Controllers
                 }
             }
             ideationMgr.changeReaction(reaction);
-            return RedirectToAction("ShowReportsModerator", "Admin", new {ideaId = ideaId});
+            return RedirectToAction("ShowReports", "Admin", new {ideaId = ideaId});
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]

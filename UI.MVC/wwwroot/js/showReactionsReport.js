@@ -37,7 +37,9 @@ $(document).ready(function() {
         $(this).click(function() {
             var text = $("#reaction-" + parts[1]).val();
             $("#newReaction-" + parts[1]).append(text + "<br>");
-            $("#reaction-" + parts[1]).val("");
+            setTimeout(function() {
+                $("#reaction-" + parts[1]).val("");
+            }, 100);            
         });
     });
     

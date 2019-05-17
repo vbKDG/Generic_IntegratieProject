@@ -14,8 +14,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="~/js/searchBarAutoComplete.js" asp-append-version="true"></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/autocomplete.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
@@ -64,12 +66,18 @@
                         <a asp-area="" asp-controller="Home" asp-action="Privacy">
                             <p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
-                @if (User.IsInRole("Moderator"))
+                @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
                 {
                     <button type="button" onclick="location.href='@Url.Action("ManagePosts", "Admin"
                        , new { projectId = 1})'" >Manage posts</button>
                 }
                 <partial name="_LoginPartial" />
+                <form autocomplete="off" class="navbar-form navbar-left">
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="myitem" placeholder="Search a project">
+                    </div>
+                    <button onclick="klik()" id="search" type="button" class="btn btn-default">search</button>
+                </form>
             </ul>
         </div>
     </div>
@@ -77,7 +85,7 @@
 
 <partial name="_CookieConsentPartial"/>
 
-<div class="container-fluid body-content text-center text-white ">
+<div class="container-fluid body-content text-center">
     @RenderBody()
     <hr/>
     <footer>
