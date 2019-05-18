@@ -80,6 +80,10 @@
         "Unity.NetCore": {
           "target": "Package",
           "version": "[4.0.3, )"
+        },
+        "toastr": {
+          "target": "Package",
+          "version": "[2.1.1, )"
         }
       },
       "imports": [

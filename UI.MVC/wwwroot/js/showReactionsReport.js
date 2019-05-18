@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+    
     $("button[id^='likeIdea-']").each(function() {
         var parts = $(this).attr('id').toString().split("-");
         $(this).click(function() {
