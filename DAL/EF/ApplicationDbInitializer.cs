@@ -148,7 +148,11 @@ namespace DAL.EF
                 description = "We are thinking about building a new playground in the middle of central park",
                 endDate = new DateTime(2019, 3,9),
                 startDate = new DateTime(2019,4,10),
-                name = "Playground"
+                name = "Playground",
+                imageField = new ImageField()
+                {
+                    imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\park4.jpg")
+                }
             };
             
             // Questionnaires
@@ -412,6 +416,8 @@ namespace DAL.EF
             p6.imageField = img6;
             p6.mapField = map6;
 
+            p2.imageField = img6;
+
             // Flea market
             Project p7 = new Project();
             MapField map7 = new MapField { latitude = 51.1987041954414, longitude = 4.42399545204978 };
@@ -459,6 +465,8 @@ namespace DAL.EF
             };
             p9.imageField = img9;
             p9.mapField = map9;
+
+            //p1.imageField = img9;
 
             // Badminton tournament
             Project p10 = new Project();
@@ -525,7 +533,7 @@ namespace DAL.EF
             p13.imageField = img13;
             p13.mapField = map13;
 
-            
+
             //Ideations 
             
             Ideation it1 = new Ideation(){project = p1};

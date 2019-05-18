@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-296472797.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\Lukas\.Rider2019.1\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Lukas\.Rider2019.1\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Lukas\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Lukas\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_CityOfIdeas.-611213118.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Lukas\Desktop\Cursussen 2018-2019\Integratieproject\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -199,6 +199,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="AdminController.cs" t="Include" />
+          <e p="api" t="Include">
+            <e p="ProjectsController.cs" t="Include" />
+          </e>
           <e p="HomeController.cs" t="Include" />
           <e p="IdeaController.cs" t="Include" />
           <e p="ProjectController.cs" t="Include" />
@@ -221,6 +224,7 @@
           <e p="OptionsAmount.cs" t="Include" />
           <e p="ProjectAndQuestions.cs" t="Include" />
           <e p="Projects" t="Include">
+            <e p="ProjectRESTModel.cs" t="Include" />
             <e p="ProjectVM.cs" t="Include" />
           </e>
           <e p="QuestionnaireQuestion.cs" t="Include" />

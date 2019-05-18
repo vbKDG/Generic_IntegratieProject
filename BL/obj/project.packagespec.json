@@ -1,25 +1,28 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\BL\\BL.csproj",
+    "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\BL\\BL.csproj",
     "projectName": "BL",
-    "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\BL\\BL.csproj",
-    "outputPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\BL\\obj\\",
+    "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\BL\\BL.csproj",
+    "outputPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\BL\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
-            "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\DAL\\DAL.csproj"
+          "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
+            "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\DAL\\DAL.csproj"
           },
-          "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
-            "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
+            "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj"
           }
         }
       }
@@ -46,6 +49,10 @@
           "target": "Package",
           "version": "[2.2.0, )",
           "autoReferenced": true
+        },
+        "System.Drawing.Common": {
+          "target": "Package",
+          "version": "[4.5.1, )"
         }
       },
       "imports": [
