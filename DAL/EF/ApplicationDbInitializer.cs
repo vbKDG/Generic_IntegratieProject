@@ -360,7 +360,7 @@ namespace DAL.EF
             MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField img1 = new ImageField();            
             img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq-project.jpg");
-            p3.name = "Summer bbq's";
+            p3.name = "Summer bbqs";
             p3.description =
                 "The city of antwerp wants to host local bbq's this summmer for the inhabitants.";
             p3.startDate = new DateTime(2019,7,1);

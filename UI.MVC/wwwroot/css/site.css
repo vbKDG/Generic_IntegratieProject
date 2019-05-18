@@ -12,6 +12,10 @@ html, body {
     height: auto;
 }
 
+#card {
+    width: 400px
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -292,6 +296,10 @@ card {
     padding-top: 0px;
 }
 
+.extraNavItem {
+    cursor: pointer;
+}
+
 
 
 /* Hide/rearrange for smaller screens */
@@ -299,5 +307,11 @@ card {
     /* Hide captions */
     .carousel-caption {
         display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #card {
+        width: 100%;
     }
 }

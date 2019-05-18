@@ -64,12 +64,14 @@
                 {
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="Privacy">
-                            <p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
+                            <p class="text-dark"><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
                 @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
                 {
-                    <button type="button" onclick="location.href='@Url.Action("ManagePosts", "Admin"
-                       , new { projectId = 1})'" >Manage posts</button>
+                    <li class="extraNavItem">
+                        <a onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
+                            <p class="text-dark"><b>Manage posts |</b></p></a>
+                    </li>
                 }
                 <partial name="_LoginPartial" />
                 <form autocomplete="off" class="navbar-form navbar-left">
