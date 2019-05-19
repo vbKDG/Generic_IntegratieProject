@@ -55,8 +55,12 @@ namespace DAL
          void blockUser(string userId);
          int getIdeaLikes(int ideaId);
          int getReactionLikes(int reactionId);
+         void addFaqAnswer(string userId, string answer, int faqId);
+         void addFaq(string question, string userId);
 
          #endregion
+         
+         IEnumerable<Faq> readFaqs();
 
 /*
          #region Answers

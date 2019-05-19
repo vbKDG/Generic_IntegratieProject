@@ -1,0 +1,70 @@
+﻿@using System.Security.Claims
+@using DAL.EF
+@using Microsoft.AspNetCore.Identity
+@model ICollection<Domain.Faq>
+
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="~/js/handleFaq.js"></script>
+
+<h1>Frequently Asked Questions (FAQ)</h1>
+<table class="table text-left">
+    <tr>
+        <th>
+            Question
+        </th>
+        <th>
+            Answers
+        </th>
+    </tr>
+    @foreach (var faq in Model)
+    {
+        <tr>
+            <td>
+                <b>@faq.User.FirstName @faq.User.LastName.Substring(0, 1).</b><br>
+                @faq.Question
+                @if (User.Identity.IsAuthenticated)
+                {
+                    using (Html.BeginForm("AnswerFaq", "Idea",
+                        FormMethod.Post))
+                    {
+                        <br>
+                        <p><b>Answer this question:</b></p>
+                        <input id="faqAnswer-@faq.id" name="answer" type="text"/>
+                        <input name="faq" value="@faq.id" type="hidden"/>
+                        <input id="faqUser-@faq.id" value="@user.FirstName @user.LastName.Substring(0, 1)." type="hidden"/>
+                        <button id="faqSubmit-@faq.id" type="submit">Answer</button>
+                    }
+                }
+            </td>
+            <td id="faqQuestions-@faq.id">
+                @foreach (var answers in faq.Answers)
+                {
+                    <b>@answers.User.FirstName @answers.User.LastName.Substring(0, 1).</b>
+                    <br>
+                    @answers.Answer<hr>
+                }
+            </td>
+        </tr>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <tr>
+            <td>
+                <p><b>If you can't find your answer, ask your own question here</b></p>
+                @using (Html.BeginForm("NewFaqQuestion", "Idea",
+                    FormMethod.Post))
+                {
+                    <input id="newFaqQuestion" name="answer" type="text"/>
+                    <button id="faqSubmit" type="submit">Ask question</button>
+                }
+            </td>
+            <td id="faqInfo"></td>
+        </tr>
+    }
+</table>

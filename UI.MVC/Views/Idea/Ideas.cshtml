@@ -1,6 +1,8 @@
 @model D.UI.MVC.Models.Ideas.IdeasVM
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="~/js/toastr.js"></script>
+<link rel="stylesheet" href="~/css/toastr.css">
 <script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
 <link rel="stylesheet" href="~/css/reportPopUp.css">
 
@@ -25,7 +27,7 @@
                     {
                         <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
                                 onclick="location.href='@Url.Action("LikeIdea", "Idea"
-                               , new {ideaId = @Model.ideas.ToList()[i].ideaId})'" >Like</button>
+                               , new {ideaId = @Model.ideas.ToList()[i].ideaId})', userLikedIdea()" >Like</button>
                         <span id="ideaLikeCount-@Model.ideas.ToList()[i].ideaId">(@Model.ideas.ToList()[i].ideaLikes.Count)</span><br>
                     }
                     else
@@ -62,7 +64,7 @@
                                     @reaction.content
                                     <button id="likeReaction-@reaction.reactionId" type="button" 
                                             onclick="location.href='@Url.Action("LikeReaction", "Idea"
-                                                                        , new {reactionId = @reaction.reactionId})'" >Like</button>
+                                              , new {reactionId = @reaction.reactionId})', userLikedReaction()" >Like</button>
                                     <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
                                     if (User.Identity.IsAuthenticated)
                                     {
@@ -89,7 +91,7 @@
                                 <p>Write your own reaction: </p>
                                 <input name="reaction" id="reaction-@Model.ideas.ToList()[i].ideaId" type="text" />
                                 <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden" />
-                                <button id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit">React</button>
+                                <button id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit" onclick="userSubmittedReaction()">React</button>
                             }
                         </div>
                     </div>
@@ -130,6 +132,6 @@
         </div>
     </div>
     <div id="submitReportContainer">
-        <button onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
+        <button onclick="submitReportIdea(), userSubmittedReport()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
     </div>
 </div>

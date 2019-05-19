@@ -356,7 +356,7 @@ namespace DAL.EF
             
             p1.phases = new List<Phase>(){ph1,ph2};
             
-           Project p3 = new Project();
+            Project p3 = new Project();
             MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField img1 = new ImageField();            
             img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq-project.jpg");
@@ -702,7 +702,27 @@ namespace DAL.EF
             userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.ideas = new List<Idea>(){i1};
             userManager.FindByEmailAsync("peter.smet@gmail.com").Result.ideas = new List<Idea>(){i2};
             userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.reactions = new List<Reaction>(){a1,a2};
+            
+            //Faq
+            Faq faq = new Faq
+            {
+                Question = "How do I create an account?",
+                User = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,
+                Answers = new List<FaqAnswer>
+                {
+                    new FaqAnswer
+                    {
+                        Answer = "You have to press the register button on top of the page!",
+                        User = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                    }, new FaqAnswer
+                    {
+                        Answer = "Press the register button at the top and fill in your info and then klik the link in the email you received",
+                        User = userManager.FindByEmailAsync("peter.smet@gmail.com").Result
+                    }
+                }
+            };
 
+            ctx.Faqs.Add(faq);
             ctx.projects.AddRange(p1, p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15);
             ctx.questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
             ctx.questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);

@@ -35,6 +35,21 @@ namespace BL
             ideationRepo = new DAL.IdeationRepository(unitOfWorkManager.UnitOfWork);
         }
 
+        public void createFaqAnswer(string userId, string answer, int faqId)
+        {
+            ideationRepo.addFaqAnswer(userId, answer, faqId);
+        }
+
+        public void createFaq(string question, string userId)
+        {
+            ideationRepo.addFaq(question, userId);
+        }
+
+        public IEnumerable<Faq> getFaqs()
+        {
+            return ideationRepo.readFaqs();
+        }
+
         public Ideation getIdeation(int ideationId)
         {
             return ideationRepo.readIdeation(ideationId);

@@ -20,6 +20,21 @@ namespace BL.Application
             
         }
 
+        public IEnumerable<Faq> getFaqs()
+        {
+            return ideationMgr.getFaqs();
+        }
+
+        public void createFaqAnswer(string userId, string answer, int faqId)
+        {
+            ideationMgr.createFaqAnswer(userId, answer, faqId);
+        }
+
+        public void createFaq(string question, string userId)
+        {
+            ideationMgr.createFaq(question, userId);
+        }
+
         #region Ideation
 
         public Ideation getIdeation(int ideationId)

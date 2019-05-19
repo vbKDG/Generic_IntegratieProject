@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    
-    
     $("button[id^='likeIdea-']").each(function() {
         var parts = $(this).attr('id').toString().split("-");
         $(this).click(function() {
@@ -114,7 +112,7 @@ function submitReportIdea() {
             })
             .done(function(data) {
                 closeInputArea();
-                document.getElementById("successMessage").style.display = "block";
+                document.getElementById("successMessage").style.display = "block";                
             })
             .fail(function() {
                 closeInputArea();

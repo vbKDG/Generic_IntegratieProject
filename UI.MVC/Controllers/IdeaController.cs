@@ -237,6 +237,38 @@ namespace UI.MVC.Controllers
 
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
+
+        public IActionResult AnswerFaq(IFormCollection form)
+        {
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            string answer = "";
+            int faqId = 0;
+            foreach (var key in form.Keys)
+            {
+                if (key == "answer")
+                {
+                    answer = form[key];
+                }
+                if (key == "faq")
+                {
+                    faqId = Convert.ToInt32(form[key]);
+                }
+            }
+            ideationMgr.createFaqAnswer(userId, answer, faqId);
+            return NoContent();
+        }
+
+        public IActionResult NewFaqQuestion(IFormCollection form)
+        {
+            foreach (var key in form.Keys)
+            {
+                if (key == "answer")
+                {
+                    ideationMgr.createFaq(form[key], User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                }
+            }
+            return NoContent();
+        }
         
         public IActionResult Ideas(int ideationId)
         {

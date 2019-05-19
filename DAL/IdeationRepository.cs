@@ -58,6 +58,51 @@ namespace DAL
                 .SingleOrDefault(i => i.ideationId == id);
         }
 
+        public void addFaqAnswer(string userId, string answer, int faqId)
+        {
+            FaqAnswer faqAnswer = new FaqAnswer
+            {
+                User = ctx.Users.Find(userId),
+                Answer = answer,
+                Faq = ctx.Faqs.Find(faqId)
+            };
+            ctx.FaqAnswers.Add(faqAnswer);
+            ctx.SaveChanges();
+        }
+
+        public void addFaq(string question, string userId)
+        {
+            Faq faq = new Faq
+            {
+                Question = question,
+                User = ctx.Users.Find(userId)
+            };
+            ctx.Faqs.Add(faq);
+            ctx.SaveChanges();
+        }
+
+        public IEnumerable<Faq> readFaqs()
+        {
+            IEnumerable<Faq> faqs = ctx.Faqs
+                .Include(f => f.Answers)
+                .Include(f => f.User);
+            IEnumerable<FaqAnswer> faqAnswers = ctx.FaqAnswers
+                .Include(f => f.Faq)
+                .Include(f => f.User);
+            foreach (var faq in faqs)
+            {
+                foreach (var answer in faqAnswers)
+                {
+                    if (answer.Faq == faq)
+                    {
+                        faq.Answers.Add(answer);
+                    }
+                }
+            }
+
+            return faqs;
+        }
+
         public int getIdeaLikes(int ideaId)
         {
             ICollection<IdeaLike> likes = ctx.ideaLikes.Where(l => l.Idea.ideaId == ideaId).ToList();

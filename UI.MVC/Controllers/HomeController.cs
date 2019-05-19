@@ -22,6 +22,17 @@ namespace UI.MVC.Controllers
             orchestrator = new OrchestratorSystemController();
         }
 
+        public IActionResult EmailConfirmInfo()
+        {
+            return View();
+        }
+
+        public IActionResult Faq()
+        {
+            ICollection<Faq> faqs = orchestrator.getFaqs().ToList();
+            return View(faqs);
+        }
+        
         public IActionResult Index()
         {
             List<Project> projects = orchestrator.getProjects().ToList();

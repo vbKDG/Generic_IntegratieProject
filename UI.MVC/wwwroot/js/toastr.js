@@ -9,19 +9,50 @@
  * ARIA Support: Greta Krafsig
  * Project: https://github.com/CodeSeven/toastr
  */
-$(document).ready(function() {
-   $('#registerAccount').click(function() {
-       toastr.options.fadeOut = 5000;
-       toastr.info('Check your email!')
-   });
+function userLikedIdea() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Thank you for your feedback', 'Your like on this idea has been received!');
+}
 
-    $("button[id^='like']").each(function() {
-        $(this).click(function() {
-            toastr.options.fadeOut = 4000;
-            toastr.success('Thank you for your feedback', 'Vote received!');
-        });        
-    });
-});
+function userLikedReaction() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Thank you for your feedback', 'Your like on this reaction has been received!');
+}
+
+function userSubmittedReaction() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Thank you for leaving a reaction', 'Your reaction on this idea has been received!');
+}
+
+function userSubmittedReport() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Thank you for leaving a report', 'We will take care of this post!');
+}
+
+function approvePost() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Users will still be able to see this post.', 'This post has been approved.');
+}
+
+function disaprovePost() {
+    toastr.options.fadeOut = 4000;
+    toastr.warning('Users will not be able to see this post anymore.', 'This post has been disapproved.');
+}
+
+function blockUser() {
+    toastr.options.fadeOut = 4000;
+    toastr.warning('This user will no longer be able to log in with his account.', 'This user is blocked');
+}
+
+function sendToAdmin() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('The administrator will handle further actions', 'The post has been send to the admin');
+}
+
+function changeReaction() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Users will now be able to see your changes', 'You have succesfully changed this reaction');
+}
 
 ; (function (define) {
     define(['jquery'], function ($) {
@@ -173,7 +204,7 @@ $(document).ready(function() {
                     showEasing: 'swing', //swing and linear are built into jQuery
                     onShown: undefined,
                     hideMethod: 'fadeOut',
-                    hideDuration: 1000,
+                    hideDuration: 4000,
                     hideEasing: 'swing',
                     onHidden: undefined,
 

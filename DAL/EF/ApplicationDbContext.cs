@@ -62,6 +62,10 @@ namespace DAL.EF
         //Identity
         public DbSet<Organisation> Organisations { get; set; }
         
+        //Faq
+        public DbSet<Faq> Faqs { get; set; }
+        public DbSet<FaqAnswer> FaqAnswers { get; set; }
+        
         #endregion
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

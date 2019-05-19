@@ -39,5 +39,8 @@ namespace BL
         void blockUser(string userId);
         int getIdeaLikes(int ideaId);
         int getReactionLikes(int reactionId);
+        void createFaqAnswer(string userId, string answer, int faqId);
+        void createFaq(string question, string userId);
+        IEnumerable<Faq> getFaqs();
     }
 }

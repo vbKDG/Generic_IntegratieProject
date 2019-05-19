@@ -96,6 +96,8 @@
           </e>
         </e>
         <e p="Project" t="Include">
+          <e p="Faq.cs" t="Include" />
+          <e p="FaqAnswer.cs" t="Include" />
           <e p="IotSetup.cs" t="Include" />
           <e p="Phase.cs" t="Include" />
           <e p="Platform.cs" t="Include" />
@@ -271,6 +273,8 @@
           </e>
           <e p="Home" t="Include">
             <e p="Contact.cshtml" t="Include" />
+            <e p="EmailConfirmInfo.cshtml" t="Include" />
+            <e p="Faq.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
             <e p="ProjectsGeneral.cshtml" t="Include" />
@@ -388,6 +392,7 @@
             <e p="checkIfOrganisation.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />
+            <e p="handleFaq.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="logoutForm.js" t="Include" />
             <e p="Maps.js" t="Include" />

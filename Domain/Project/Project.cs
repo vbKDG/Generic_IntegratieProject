@@ -20,7 +20,6 @@ namespace Domain
         public ICollection<Ideation> ideations { get; set; }
         public ICollection<Questionnaire> questionnaires { get; set; }
         public ICollection<Phase> phases { get; set; }
-        
         public ICollection<ProjectLike> projectLikes { get; set; }
 
     }
