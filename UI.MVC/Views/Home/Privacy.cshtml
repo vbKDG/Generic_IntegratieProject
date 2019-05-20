@@ -7,6 +7,169 @@
 
 <body>
 
+    <!-- POSTS -->
+    <section id="posts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card bg-dark">
+                        <div class="card-header">
+                            <h4 class="text-white">Admin Settings</h4>
+                        </div>
+                        <table class="table text-white">
+                            <tbody>
+                                                
+                <div class="col-md-4" id="bodyadmin">
+                    <div class="card text-center bg-primary text-white mb-3">
+                        <div class="card-body">
+                            <h3>Manage admins</h3>
+                            <h4 class="display-4">
+                                <i class="fas fa-pencil-alt"></i> 
+                            </h4>
+                             @if (User.IsInRole("SuperAdmin"))
+                                            {
+                                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageAdmins">View</a></button>
+                                            }
+                             
+                        </div>
+                    </div>
+
+                    <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>Manage moderators</h3>
+                            <h4 class="display-4">
+                                <i class="fas fa-folder"></i>
+                            </h4>
+                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                            {
+                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageModerators">View</a></button>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+@*
+    <!-- MODALS -->
+    <!-- ADD POST MODAL -->
+    <div class="modal fade" id="addPostModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Add Post</h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select class="form-control">
+                                <option value="">dummy</option>
+                                <option value="">dummy</option>
+                                <option value="">dummy</option>
+                                <option value="">dummy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Upload Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image">
+                                <label for="image" class="custom-file-label">Choose File</label>
+                            </div>
+                            <small class="form-text text-muted">Max Size 3mb</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Body</label>
+                            <textarea name="editor1" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD CATEGORY MODAL -->
+    <div class="modal fade" id="addCategoryModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Add Category</h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD USER MODAL -->
+    <div class="modal fade" id="addUserModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title">Add User</h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <!-- ACTIONS -->
@@ -122,24 +285,33 @@
                         </table>
                     </div>
                 </div>
+                
                 <div class="col-md-3">
                     <div class="card text-center bg-primary text-white mb-3">
                         <div class="card-body">
-                            <h3>Posts</h3>
+                            <h3>Manage admins</h3>
                             <h4 class="display-4">
                                 <i class="fas fa-pencil-alt"></i> 6
                             </h4>
-                            <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
+                             @if (User.IsInRole("SuperAdmin"))
+                                            {
+                                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageAdmins">View</a></button>
+                                            }
+                             
                         </div>
                     </div>
 
                     <div class="card text-center bg-success text-white mb-3">
                         <div class="card-body">
-                            <h3>Categories</h3>
+                            <h3>Manage moderators</h3>
                             <h4 class="display-4">
                                 <i class="fas fa-folder"></i> 4
                             </h4>
-                            <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                            {
+                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageModerators">View</a></button>
+                            }
+
                         </div>
                     </div>
 
@@ -266,16 +438,7 @@
             </div>
         </div>
     </div>
-
-@if (User.IsInRole("SuperAdmin"))
-{
-    <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageAdmins">Manage admins</a></button>
-}
-@if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-{
-    <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageModerators">Manage moderators</a></button>
-}
-
+*@
    
 </body>
 

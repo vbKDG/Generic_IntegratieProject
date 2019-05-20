@@ -133,8 +133,140 @@
 
             }
         </div>
-        <div class="col text-center py-5">
-            <a href="#Start"><i class="fas fa-arrow-up fa-2x"></i></a>
-        </div>
+<div class="col text-center py-5">
+    <a href="#Start"><i class="fas fa-arrow-up fa-2x"></i></a>
+</div>
+
+<h2 class="text-center"><b>Onze projecten</b></h2>
+            <div class="container mt-3">  
+            <!-- tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#ongoing">Ongoing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#closed">Closed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#recent">Recent</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Tab panes -->
+            <div class="p-5">
+                <div class="tab-content">
+        
+                    <div id="ongoing" class="container-fluid tab-pane active">
+        
+                        <div id="projecttitlepadding" class="row">    
+                            @foreach (var project in @Model)
+                            {
+                        
+                                @if (project.startDate > DateTime.Now)
+                                 {
+                                     <div class="col-md-4">
+                                         <div class="col-md-16">
+                                       X      <div class="textWithBlurredBg">
+                                                 <img src="@project.imageField.GetImageString()"/>
+                                                 <div class="text-center">
+                                                     <h3 class="text-light">@project.name</h3>
+                                                     <h4 class="text-light">@project.description</h4>
+                                                 </div>
+                                             </div>
+                                             <div  class="progress center-block">
+                                                 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:60%">
+                                                 </div>
+                                             </div>
+                        
+                                             <div>
+                                                 <p class="text-dark">
+                                                     <i class="far fa-heart fa-lg"></i> 5
+                                                     <i class="far fa-comments fa-lg"></i> 6
+                                                     <i class="fas fa-share-alt fa-lg"></i> 8
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 }
+                            }
+                        </div>
+                      
+                                </div>
+                    
+
+        
+                    <div id="closed" class="container tab-pane fade">
+                                              <div id="projecttitlepadding" class="row">    
+                                                                         @foreach (var project in @Model)
+                                                                         {
+                                                                     
+                                                                             @if (project.startDate > DateTime.Now)
+                                                                              {
+                                                                                  <div class="col-md-4">
+                                                                                      <div class="col-md-16">
+                                                                                          <div class="textWithBlurredBg">
+                                                                                              <img src="@project.imageField.GetImageString()"/>
+                                                                                              <div class="text-center">
+                                                                                                  <h3 class="text-light">@project.name</h3>
+                                                                                                  <h4 class="text-light">@project.description</h4>
+                                                                                              </div>
+                                                                                          </div>
+                                                                                          <div  class="progress center-block">
+                                                                                              <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:60%">
+                                                                                              </div>
+                                                                                          </div>
+                                                                     
+                                                                                          <div>
+                                                                                              <p class="text-dark">
+                                                                                                  <i class="far fa-heart fa-lg"></i> 5
+                                                                                                  <i class="far fa-comments fa-lg"></i> 6
+                                                                                                  <i class="fas fa-share-alt fa-lg"></i> 8
+                                                                                              </p>
+                                                                                          </div>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              }
+                                                                         }
+                                                                     </div>
+                        
+                    </div>
+        
+                    <div id="recent" class="container tab-pane fade">
+
+                        <div id="projecttitlepadding" class="row">    
+                            @foreach (var project in @Model)
+                            {    
+                        
+                                @if (project.startDate < DateTime.Now && DateTime.Now < project.endDate)
+                                 {
+                                     <div class="col-md-4">
+                                         <div class="col-md-16">
+                                             <div class="textWithBlurredBg">
+                                                 <img src="@project.imageField.GetImageString()"/>
+                                                 <div class="text-center">
+                                                     <h3 class="text-light">@project.name</h3>
+                                                     <h4 class="text-light">@project.description</h4>
+                                                 </div>
+                                             </div>
+                                             <div  class="progress center-block">
+                                                 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:60%">
+                                                 </div>
+                                             </div>
+                        
+                                             <div>
+                                                 <p class="text-dark">
+                                                     <i class="far fa-heart fa-lg"></i> 5
+                                                     <i class="far fa-comments fa-lg"></i> 6
+                                                     <i class="fas fa-share-alt fa-lg"></i> 8
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 </body>

@@ -7,7 +7,7 @@
 
                                                                                    
   
-<div>
+<div class="py-3">
     @if (ViewBag.index == 0)
     {
         <input asp-for="imageName" type="hidden" class="form-control" value="test"/>
@@ -31,7 +31,9 @@
     <img id="image_preview" src="#" alt="your image" width="200" height="200" hidden=""/>*@
     @if (ViewBag.index == 0)
     {
+        <div class="py-5">
         <input type="button" id="Clear" value="Remove" onclick="clear(this)"/>
+        </div>
         <div class="slideshow-container">
 
             @*<div class="mySlides">

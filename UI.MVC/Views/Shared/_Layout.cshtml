@@ -25,24 +25,13 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body>
+<body id="general-theme">
 <div id="Start"></div>
-<nav class="navbar navbar-expand-lg fixed-top">
-    @*--aangepast--
-            <a class="navbar-brand" href="#">
 
-                <img src="~/images/ideeLogo.jpg" alt="Logo" style="width:35px;" height="30" />
-            </a> *@
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark"><i class="far fa-lightbulb"></i><b> City Of Ideas</b></></a> @*--aangepast--*@
-        </div>
+<nav class="navbar navbar-expand-sm fixed-top">
+    <div class="container-fluid">
+
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark"><i class="far fa-lightbulb"></i><b> City Of Ideas</b></></a> @*--aangepast--*@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav mr-auto">
                 <li>
@@ -57,7 +46,7 @@
                 <li>
                     <a asp-area="" asp-controller="Project" asp-action="Projects">
                         <p class="text-dark"><i class="fas fa-project-diagram"></i><b> Projects |</b></p></a></li>
-                
+
                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                 {
                     <li>
@@ -65,12 +54,13 @@
                             <p><i class="fas fa-sliders-h"></i><b> Admin page |</b></p></a></li>
                 }
                 <partial name="_LoginPartial"/>
-                
+                <li>
                 <form class="form-inline">
                     <input class="form-control form-group-sm" type="text" placeholder="Search">
                     <button class="btn btn-success btn-sm " type="submit">Search</button>
 
                 </form>
+                </li>
             </ul>
         </div>
     </div>
@@ -78,10 +68,10 @@
 
 <partial name="_CookieConsentPartial"/>
 
-<div class="container-fluid body-content text-center text-white ">
+<div class="container-fluid body-content text-center">
     @RenderBody()
     <hr/>
-    <footer>
+    <footer class="text-center">
         <p>&copy; 2019 - City Of Ideas</p>
 
     </footer>
@@ -109,7 +99,7 @@
 </environment>
 
 
-@RenderSection("styles", false);
+@RenderSection("styles", false)
 @RenderSection("Scripts", required: false)
 </body>
 </html>

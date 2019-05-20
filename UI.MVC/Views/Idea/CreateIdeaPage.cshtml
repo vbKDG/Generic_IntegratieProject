@@ -4,40 +4,54 @@
 @using Domain
 @model D.UI.MVC.Models.Ideas.IdeaVM
 
-@foreach (var item in Model.ideationQuestion)
-{
-    <p>@item</p>
-}
 
-
-
-<form asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
-    <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
+<body>
+  <form  asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
+      <div class="row center-block">
+        
+          <div class="dark-overlay">
+              <div class="container py-2">
+                  <div class="col-lg-12">
+                      <div class="card bg-light card-form">
+                          <h2 class="text-center">Create idea</h2>
+                          <hr/>
+                          <div class="card-body">
+                              <div class="col-lg-4">
+                                  @foreach (var item in Model.ideationQuestion)
+                                  {
+                                      <p><b>@item</b></p>
     
-    @for (int i = 0; i < @Model.TextFieldVms.Length; i++)
-    {
-        @Html.EditorFor(x => x.TextFieldVms[i])
+                                  }
 
-    }
-    <div id="ImageUploads">
-    @for (int i = 0; i < @Model.ImageFieldVms.Length; i++)
-    {
-        @Html.EditorFor(x => x.ImageFieldVms[i], new { index = i} )
+                    
 
-    }
-    </div>
+                                  <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
     
-    @for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
-    {
-        @Html.EditorFor(x => x.VideoFieldVms[i])
+                                  @for (int i = 0; i < @Model.TextFieldVms.Length; i++)
+                                  {
+                                      @Html.EditorFor(x => x.TextFieldVms[i])
+        
+                                  }
+                                  <div id="ImageUploads" class="text-black">
+                                      @for (int i = 0; i < @Model.ImageFieldVms.Length; i++)
+                                      {
+                                          @Html.EditorFor(x => x.ImageFieldVms[i], new { index = i} )
 
-    }
-    @for (int i = 0; i < @Model.MapFieldVms.Length; i++)
-    {
-        @Html.EditorFor(x => x.MapFieldVms[i])
+                                      }
+                                  </div>
+                            
+                              </div>
+                              @for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
+                              {
+                                  @Html.EditorFor(x => x.VideoFieldVms[i])
 
-    }
-    @*
+                              }
+                              @for (int i = 0; i < @Model.MapFieldVms.Length; i++)
+                              {
+                                  @Html.EditorFor(x => x.MapFieldVms[i])
+
+                              }
+                              @*
     @Html.EditorFor(x => x.imageFieldVM)
 
 
@@ -59,7 +73,22 @@
         
      
    
-    <input type="submit" value="save">   
+                              <input type="submit" value="save">   
          
     
-</form>
+                        
+                                
+                          </div>
+                      </div>
+                            
+                  </div>
+                    
+              </div>
+                
+          </div>
+      </div>
+      </form>
+</body>
+    
+                                                                        
+

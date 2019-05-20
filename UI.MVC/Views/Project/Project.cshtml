@@ -5,7 +5,9 @@
 
 <h2> @Model.project.name</h2>
 
-@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.project.projectId})
+<body>
+<div class="container">
+@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project", new {projectId = @Model.project.projectId})
 <table class="table">
     <tr>
         <th>
@@ -19,25 +21,27 @@
     </tr>
     @foreach (var item in Model.ideationQuestions)
     {
-        
+
         <tr>
             <td>
-                @Html.DisplayFor( modelItem => item.ideation.ideationId)
+                @Html.DisplayFor(modelItem => item.ideation.ideationId)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.question)
             </td>
             <td>
                 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
-                    , new { ideationId=item.ideation.ideationId })
+                    , new {ideationId = item.ideation.ideationId})
             </td>
-            
+
             <td>
                 @Html.ActionLink("Ideas", "Ideas", "Idea"
-                    , new { id=item.ideation.ideationId })
+                    , new {id = item.ideation.ideationId})
             </td>
 
         </tr>
     }
 </table>
+</div>
+</body>

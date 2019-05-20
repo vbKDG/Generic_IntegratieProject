@@ -7,46 +7,73 @@
     ViewData["Title"] = "Manage admins";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
+<body>
+<div class="container">
 
-<h4>Here is a list of all the administrators</h4>
-
-<p>
-    <a asp-area="Identity" asp-page="/Account/CreateAdmin">Create a new Admin</a> 
-</p>
+     <div class="row center-block">
+            
+                <div class="dark-overlay">
+                    <div class="container">
     
-<table class="table">
-    <tr>
-        <th>
-            <p>Firstname</p>
-        </th>
-        <th>
-            <p>Lastname</p>
-        </th>
-        <th>
-            <p>Email</p>
-        </th>
-    </tr>
-    @foreach (var item in Model.Result)
-    {
-        <tr>
-            <td>
-                <p>@item.FirstName</p>
-            </td>
-            <td>
-                <p>@item.LastName</p>
-            </td>
-            <td>
-                <p>@item.Email</p>
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditAdminPage", "Admin"
-                    , new {userId = item.Id}) | 
-                @Html.ActionLink("Delete", "DeleteAdminPage", "Admin"
-                    , new {userId = item.Id})
-            </td>
-        </tr>
-    }
-</table>
+                        <div class="col-lg-9">
+                            <div class="card bg-light text-center card-form">
+                                <div class="text-center">
+                                    <h1 class="display-4">Welcome</h1>
+                                    <h4>Here is a list of all the administrators</h4>
+                                </div>
+                                <div class="card-body">
+
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                <p>Firstname</p>
+                                            </th>
+                                            <th>
+                                                <p>Lastname</p>
+                                            </th>
+                                            <th>
+                                                <p>Email</p>
+                                            </th>
+                                        </tr>
+                                        @foreach (var item in Model.Result)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <p>@item.FirstName</p>
+                                                </td>
+                                                <td>
+                                                    <p>@item.LastName</p>
+                                                </td>
+                                                <td>
+                                                    <p>@item.Email</p>
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "EditAdminPage", "Admin"
+                                                        , new {userId = item.Id}) |
+                                                    @Html.ActionLink("Delete", "DeleteAdminPage", "Admin"
+                                                        , new {userId = item.Id})
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-3" id="bodyadmin">
+                            <div class="card text-center bg-primary text-white mb-3">
+                                                    <div class="card-body">
+                                                        <h3>Add admin</h3>
+                                                        <h4 class="display-4">
+                                                            <i class="fas fa-pencil-alt"></i> 
+                                                        </h4>
+                                                         <a class="btn btn-success btn-lg" asp-area="Identity" asp-page="/Account/CreateAdmin">+</a>
+                                                         
+                                                    </div>
+                                                </div>
+                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                
+</div>
+</body>
