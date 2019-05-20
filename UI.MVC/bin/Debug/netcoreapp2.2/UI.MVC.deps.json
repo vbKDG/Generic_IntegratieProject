@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "9f0a31b38ce4fbb08e3eee6d4406ab93bdb98b06"
+    "signature": "a2a14227b8ed090d61facdae6b7ff6dfc3b56fe0"
   },
   "compilationOptions": {
     "defines": [
@@ -37,7 +37,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "Sendgrid": "9.11.0",
           "Unity.NetCore": "4.0.3",
-          "toastr": "2.1.1"
+          "jQuery.UI.Interactions.Sortable": "1.8.9"
         },
         "runtime": {
           "UI.MVC.dll": {}
@@ -68,7 +68,30 @@
           "lib/netstandard2.0/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "jQuery/1.6.3": {},
+      "jQuery/1.4.4": {},
+      "jQuery.UI.Core/1.8.9": {
+        "dependencies": {
+          "jQuery": "1.4.4"
+        }
+      },
+      "jQuery.UI.Core.Mouse/1.8.9": {
+        "dependencies": {
+          "jQuery.UI.Core": "1.8.9",
+          "jQuery.UI.Core.Widget": "1.8.9"
+        }
+      },
+      "jQuery.UI.Core.Widget/1.8.9": {
+        "dependencies": {
+          "jQuery": "1.4.4"
+        }
+      },
+      "jQuery.UI.Interactions.Sortable/1.8.9": {
+        "dependencies": {
+          "jQuery.UI.Core": "1.8.9",
+          "jQuery.UI.Core.Mouse": "1.8.9",
+          "jQuery.UI.Core.Widget": "1.8.9"
+        }
+      },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "2.8.0",
@@ -825,11 +848,6 @@
           "System.Reflection.Extensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0"
-        }
-      },
-      "toastr/2.1.1": {
-        "dependencies": {
-          "jQuery": "1.6.3"
         }
       },
       "Unity.NetCore/4.0.3": {
@@ -3845,12 +3863,40 @@
       "path": "commonservicelocator.netcore/1.3.1",
       "hashPath": "commonservicelocator.netcore.1.3.1.nupkg.sha512"
     },
-    "jQuery/1.6.3": {
+    "jQuery/1.4.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vb0p7+eRmc2evBCT9W7PCUupqWiDMi9/ofBHN99LraRzLY5jPKMeFzFYBoMgwA8TiwRoFDke5hiDDLsvae7qMg==",
-      "path": "jquery/1.6.3",
-      "hashPath": "jquery.1.6.3.nupkg.sha512"
+      "sha512": "sha512-8K/DH6C/sf/RhTaLu2hYc7mOiUuH8+4yVzHV3IYL5Qhwgz9oopPbyItbBt4Ag9RVyRkE1+OIXPYm7JIZE6hD9A==",
+      "path": "jquery/1.4.4",
+      "hashPath": "jquery.1.4.4.nupkg.sha512"
+    },
+    "jQuery.UI.Core/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8MZWOufOdpziPpZSrLTOpzovuJDfapIXmlSJ3ewFZSCaKuLLHYFQwXqCJiRLLSVaxSKOecl+yyKbCP6Q3fT9Mw==",
+      "path": "jquery.ui.core/1.8.9",
+      "hashPath": "jquery.ui.core.1.8.9.nupkg.sha512"
+    },
+    "jQuery.UI.Core.Mouse/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jC3V5ZJcqlwuNcYZwk0FfenXkEFzD+mJinScybvCNBVsJW4cxJYH5aEktgxpPVd8kbhpAvOIG0SUo/25bzFZSw==",
+      "path": "jquery.ui.core.mouse/1.8.9",
+      "hashPath": "jquery.ui.core.mouse.1.8.9.nupkg.sha512"
+    },
+    "jQuery.UI.Core.Widget/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2UXwOX/IQEsFzpEFHSJZEPA5XuhhXyEIScFyYQIvgS09a4Jb07ZMpSKeP0Qw86Tty+9UVHS52dcJ3E17Jo373w==",
+      "path": "jquery.ui.core.widget/1.8.9",
+      "hashPath": "jquery.ui.core.widget.1.8.9.nupkg.sha512"
+    },
+    "jQuery.UI.Interactions.Sortable/1.8.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NcQO6QCBVpOXevGbW5CbCj+83EY4qYkcMLrwLQS0PBF6oTMLL4XfFBwzGhVO7zbRv/lHrrlRjXjQ/XKp47ycCw==",
+      "path": "jquery.ui.interactions.sortable/1.8.9",
+      "hashPath": "jquery.ui.interactions.sortable.1.8.9.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",
@@ -4159,13 +4205,6 @@
       "sha512": "sha512-Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
       "path": "system.linq.queryable/4.0.1",
       "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
-    },
-    "toastr/2.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-h/688XvzYk1xVYn213ryU+HCElE4n/drYzAHJkAi9LsSUPS3EbI6wGlvCglBUt7i4h5iESgAVarYaigjQmVpqg==",
-      "path": "toastr/2.1.1",
-      "hashPath": "toastr.2.1.1.nupkg.sha512"
     },
     "Unity.NetCore/4.0.3": {
       "type": "package",

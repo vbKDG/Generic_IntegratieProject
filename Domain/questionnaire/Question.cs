@@ -17,7 +17,6 @@ namespace Domain
         public int QuestionFK_shadow { get; set; }
         public ICollection<Option> options { get; set; }
         public ICollection<QuestionUser> questionnaireAnswers { get; set; }
-     //  public ICollection<QuestionField> fields { get; set; }
         public IotSetup IotSetup { get; set; }
         public ICollection<IotVote> iotVotes { get; set; }
 

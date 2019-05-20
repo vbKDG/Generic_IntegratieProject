@@ -16,7 +16,6 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.2" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
         <PackageReference Include="Sendgrid" Version="9.11.0" />
-        <PackageReference Include="toastr" Version="2.1.1" />
         <PackageReference Include="Unity.NetCore" Version="4.0.3" />
     </ItemGroup>
 

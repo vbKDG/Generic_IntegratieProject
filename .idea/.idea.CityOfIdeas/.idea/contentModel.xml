@@ -122,7 +122,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
-        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -284,6 +283,7 @@
             <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
+            <e p="Sort.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
             <e p="CreateIdeationPage.cshtml" t="Include" />
@@ -332,6 +332,7 @@
             <e p="autocomplete.css" t="Include" />
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
+            <e p="maps2.css" t="Include" />
             <e p="phaseLine.css" t="Include" />
             <e p="QuestionSliders.css" t="Include" />
             <e p="reportPopUp.css" t="Include" />
