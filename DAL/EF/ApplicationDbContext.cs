@@ -79,6 +79,14 @@ namespace DAL.EF
             builder.Entity<Organisation>().HasOne(sm => sm.ApplicationUser)
                 .WithOne(fm => fm.Organisation)
                 .HasForeignKey<Organisation>("ApplicationUserFK_shadow");
+
+            builder.Entity<QuestionField>().Property<int>("QuestionFK_shadow");
+            builder.Entity<QuestionField>().HasOne(q => q.question)
+                .WithOne(qf => qf.QuestionField)
+                .HasForeignKey<QuestionField>("QuestionFK_shadow");
+
+
+
         }
 
         public override int SaveChanges()

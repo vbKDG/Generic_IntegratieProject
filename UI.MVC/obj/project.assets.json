@@ -20,6 +20,36 @@
           "lib/netstandard2.0/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
+      "jQuery/1.4.4": {
+        "type": "package"
+      },
+      "jQuery.UI.Core/1.8.9": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "[1.4.4, 1.6.0)"
+        }
+      },
+      "jQuery.UI.Core.Mouse/1.8.9": {
+        "type": "package",
+        "dependencies": {
+          "jQuery.UI.Core": "[1.8.9]",
+          "jQuery.UI.Core.Widget": "[1.8.9]"
+        }
+      },
+      "jQuery.UI.Core.Widget/1.8.9": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "[1.4.4, 1.5.0]"
+        }
+      },
+      "jQuery.UI.Interactions.Sortable/1.8.9": {
+        "type": "package",
+        "dependencies": {
+          "jQuery.UI.Core": "[1.8.9]",
+          "jQuery.UI.Core.Mouse": "[1.8.9]",
+          "jQuery.UI.Core.Widget": "[1.8.9]"
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -5007,6 +5037,72 @@
         "commonservicelocator.netcore.nuspec",
         "lib/netstandard2.0/Microsoft.Practices.ServiceLocation.dll",
         "lib/netstandard2.0/Microsoft.Practices.ServiceLocation.xml"
+      ]
+    },
+    "jQuery/1.4.4": {
+      "sha512": "8K/DH6C/sf/RhTaLu2hYc7mOiUuH8+4yVzHV3IYL5Qhwgz9oopPbyItbBt4Ag9RVyRkE1+OIXPYm7JIZE6hD9A==",
+      "type": "package",
+      "path": "jquery/1.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-1.4.4-vsdoc.js",
+        "Content/Scripts/jquery-1.4.4.js",
+        "Content/Scripts/jquery-1.4.4.min.js",
+        "jquery.1.4.4.nupkg.sha512",
+        "jquery.nuspec"
+      ]
+    },
+    "jQuery.UI.Core/1.8.9": {
+      "sha512": "8MZWOufOdpziPpZSrLTOpzovuJDfapIXmlSJ3ewFZSCaKuLLHYFQwXqCJiRLLSVaxSKOecl+yyKbCP6Q3fT9Mw==",
+      "type": "package",
+      "path": "jquery.ui.core/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.ui.core.js",
+        "Content/Scripts/jquery.ui.core.min.js",
+        "jquery.ui.core.1.8.9.nupkg.sha512",
+        "jquery.ui.core.nuspec"
+      ]
+    },
+    "jQuery.UI.Core.Mouse/1.8.9": {
+      "sha512": "jC3V5ZJcqlwuNcYZwk0FfenXkEFzD+mJinScybvCNBVsJW4cxJYH5aEktgxpPVd8kbhpAvOIG0SUo/25bzFZSw==",
+      "type": "package",
+      "path": "jquery.ui.core.mouse/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.ui.mouse.js",
+        "Content/Scripts/jquery.ui.mouse.min.js",
+        "jquery.ui.core.mouse.1.8.9.nupkg.sha512",
+        "jquery.ui.core.mouse.nuspec"
+      ]
+    },
+    "jQuery.UI.Core.Widget/1.8.9": {
+      "sha512": "2UXwOX/IQEsFzpEFHSJZEPA5XuhhXyEIScFyYQIvgS09a4Jb07ZMpSKeP0Qw86Tty+9UVHS52dcJ3E17Jo373w==",
+      "type": "package",
+      "path": "jquery.ui.core.widget/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.ui.widget.js",
+        "Content/Scripts/jquery.ui.widget.min.js",
+        "jquery.ui.core.widget.1.8.9.nupkg.sha512",
+        "jquery.ui.core.widget.nuspec"
+      ]
+    },
+    "jQuery.UI.Interactions.Sortable/1.8.9": {
+      "sha512": "NcQO6QCBVpOXevGbW5CbCj+83EY4qYkcMLrwLQS0PBF6oTMLL4XfFBwzGhVO7zbRv/lHrrlRjXjQ/XKp47ycCw==",
+      "type": "package",
+      "path": "jquery.ui.interactions.sortable/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.ui.sortable.js",
+        "Content/Scripts/jquery.ui.sortable.min.js",
+        "jquery.ui.interactions.sortable.1.8.9.nupkg.sha512",
+        "jquery.ui.interactions.sortable.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -13528,7 +13624,8 @@
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
       "Sendgrid >= 9.11.0",
-      "Unity.NetCore >= 4.0.3"
+      "Unity.NetCore >= 4.0.3",
+      "jQuery.UI.Interactions.Sortable >= 1.8.9"
     ]
   },
   "packageFolders": {
@@ -13626,6 +13723,10 @@
           "Unity.NetCore": {
             "target": "Package",
             "version": "[4.0.3, )"
+          },
+          "jQuery.UI.Interactions.Sortable": {
+            "target": "Package",
+            "version": "[1.8.9, )"
           }
         },
         "imports": [

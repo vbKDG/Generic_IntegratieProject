@@ -13,6 +13,8 @@ namespace Domain
         public QuestionType questionType { get; set; }
         public String question { get; set; }
         public Questionnaire questionnaire { get; set; }
+        public QuestionField QuestionField { get; set; }
+        public int QuestionFK_shadow { get; set; }
         public ICollection<Option> options { get; set; }
         public ICollection<QuestionUser> questionnaireAnswers { get; set; }
      //  public ICollection<QuestionField> fields { get; set; }

@@ -266,7 +266,8 @@
             <e p="ManageAdmins.cshtml" t="Include" />
             <e p="ManageModerators.cshtml" t="Include" />
             <e p="ManagePosts.cshtml" t="Include" />
-            <e p="ShowReports.cshtml" t="Include" />
+            <e p="ShowReportsAdmin.cshtml" t="Include" />
+            <e p="ShowReportsModerator.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Contact.cshtml" t="Include" />
@@ -279,6 +280,7 @@
             <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
+            <e p="Sort.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
             <e p="CreateIdeationPage.cshtml" t="Include" />
@@ -326,6 +328,7 @@
           <e p="css" t="Include">
             <e p="carousel.css" t="Include" />
             <e p="maps.css" t="Include" />
+            <e p="maps2.css" t="Include" />
             <e p="phaseLine.css" t="Include" />
             <e p="QuestionSliders.css" t="Include" />
             <e p="reportPopUp.css" t="Include" />

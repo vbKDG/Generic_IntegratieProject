@@ -49,6 +49,7 @@ namespace UI.MVC.Controllers
             List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
             List<VideoFieldVm> videoFieldVms  = new List<VideoFieldVm>();
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
+            List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
             
             
             IdeaVM ideaVm = new IdeaVM();
@@ -56,6 +57,7 @@ namespace UI.MVC.Controllers
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.TextFieldVms = textFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
+            ideaVm.MapFieldVms = mapFieldVms;
             
             
             for (int i = 0; i < ideation.QuestionFieldRange.Maximum ; i++)
@@ -66,18 +68,19 @@ namespace UI.MVC.Controllers
             {        
                 ideaVm.TextFieldVms.Add(new TextFieldVm());   
             }  
-           for (int i = 0; i < ideation.VideoRange.Maximum ; i++)
-           {        
+            for (int i = 0; i < ideation.VideoRange.Maximum ; i++)
+            {        
               ideaVm.VideoFieldVms.Add(new VideoFieldVm());   
-           }
+            }
            
            for (int i = 0; i < ideation.ImageFieldRange.Maximum ; i++)
             {        
                 ideaVm.ImageFieldVms.Add(new ImageFieldVm());    
             }
-           // ideaVm.ImageFieldVms = new ImageFieldVm[ideation.ImageFieldRange.Maximum];
-           ideaVm.VideoFieldVms = videoFieldVms;
-            ideaVm.MapFieldVms = new MapFieldVm[ideation.MapFieldRange.Maximum];
+           for (int i = 0; i < ideation.MapFieldRange.Maximum ; i++)
+           {        
+               ideaVm.MapFieldVms.Add(new MapFieldVm());    
+           }
 
             
             
@@ -104,6 +107,10 @@ namespace UI.MVC.Controllers
             return View();
         }
 
+        public IActionResult Sort()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult CreateIdea(IdeaVM ideaVm)
@@ -115,11 +122,57 @@ namespace UI.MVC.Controllers
             List<ImageField> imageFields = new List<ImageField>();
             List<VideoField> videoFields = new List<VideoField>();
             List<QuestionField> questionFields = new List<QuestionField>();
+            List<MapField> mapFields = new List<MapField>();
 
            // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
             //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
-            MapField mapField = new MapField();
-            
+           // MapField mapField = new MapField();
+
+           foreach (var mapfield in ideaVm.MapFieldVms)
+           {
+               if (!(mapfield.latitude == 0 && mapfield.longitude == 0))
+               {
+                   mapFields.Add(new MapField{latitude = mapfield.latitude , longitude = mapfield.longitude});
+                   
+               }
+           }
+           
+
+            foreach (var questionVM in ideaVm.QuestionFieldVms)
+            {
+                if (questionVM.question != null)
+                {
+                    Question question = new Question();
+                    List<Option> options = new List<Option>();
+                    question.question = questionVM.question;
+                    if (questionVM.questionType.Equals("radiobutton"))
+                    {
+                        question.questionType = QuestionType.RADIO_BUTTON;
+                    }
+                    else
+                    {
+                        question.questionType = QuestionType.CHECK_BOX;
+
+                    }
+                    foreach (var OptionVM in questionVM.Options)
+                    {
+                        if (OptionVM != null)
+                        {
+                            options.Add(new Option{ option = OptionVM});
+                        }
+                        
+                    }
+                    QuestionField questionField = new QuestionField();
+                    question.options = options;
+                    questionField.question = question;
+                    questionFields.Add(questionField);
+                    
+                }
+               
+
+            }
+
+          
             
             
 //            textField.text = Convert.ToString(ideaVm.textFieldVM.text);
@@ -211,12 +264,7 @@ namespace UI.MVC.Controllers
 
             
             idea.ideation = ideation;
-//            fields.Add(textField);
-//            foreach (var textfield in textField)
-//            {
-//                fields.Add(imageField);
-//
-//            }
+//           
             foreach (var imageField in imageFields)
             {
                 fields.Add(imageField);
@@ -228,7 +276,17 @@ namespace UI.MVC.Controllers
                 fields.Add(videoField);
 
             }
-            fields.Add(mapField);
+
+            foreach (var questionField in questionFields)
+            {
+                fields.Add(questionField);
+            }
+
+            foreach (var mapField in mapFields)
+            {
+                fields.Add(mapField);
+
+            }
             idea.fields = fields;
             ideationMgr.createIdea(idea);
 

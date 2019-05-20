@@ -80,6 +80,10 @@
         "Unity.NetCore": {
           "target": "Package",
           "version": "[4.0.3, )"
+        },
+        "jQuery.UI.Interactions.Sortable": {
+          "target": "Package",
+          "version": "[1.8.9, )"
         }
       },
       "imports": [

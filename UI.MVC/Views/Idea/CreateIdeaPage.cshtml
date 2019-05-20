@@ -8,43 +8,27 @@
 
 @foreach (var item in Model.ideationQuestion)
 {
-    <p>@item</p>
+    <h1>@item</h1>
 }
 
 
-@*
-@using (Html.BeginForm("CreateIdea", "Idea", FormMethod.Post, new { encType = "multipart/form-data" }))
-{
-    <!-- Note here I have used TextBoxFor the model property -->
-    @Html.TextBoxFor(m => m.TextFieldVms[0].text)
-    
-    $1$
-    @Html.TextBoxFor(m => m.ImageFieldVms[0].imageName)
-    @Html.TextBoxFor(m => m.ImageFieldVms[0].imageFile, new { type = "file" })#1#
-    @Html.TextBoxFor(m => m.images.Files[0], new { type = "file" })
-    @Html.TextBoxFor(m => m.images.Files[1], new { type = "file" })
-
-
-
-    
-    
-    <input type="submit" value="upload" />
-
-}
-*@
 
 
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
     <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
     
   
-  
-    <div id="TextUploads">
-        @for(int i = 0; i < @Model.TextFieldVms.Count; i++){
-            
-            @Html.EditorFor(x => x.TextFieldVms[i], new {index = i })
-        }
-    </div>
+   @if (@Model.TextFieldVms.Count != 0)
+   {
+       <h2>Upload Text</h2>
+       <div id="TextUploads">
+           @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
+           {
+
+               @Html.EditorFor(x => x.TextFieldVms[i], new {index = i})
+           }
+       </div>
+   }
     
     @if (@Model.ImageFieldVms.Count != 0){
         <h2>Upload Images</h2>
@@ -71,6 +55,19 @@
         </div>   
 
     }
+    @if (@Model.MapFieldVms.Count != 0)
+    {
+        <h2>Upload Locations</h2>
+        <div id="MapUploads">
+            @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
+            {
+            @Html.EditorFor(x => x.MapFieldVms[i] , new { index = i} )    
+     
+            }
+        </div>   
+
+    }
+    
     
     @if (@Model.QuestionFieldVms.Count != 0)
     {
@@ -254,6 +251,15 @@
         function LastCheck(parameters) {
             
         }
+        
+        $(document).ready(function() {
+            $(window).keydown(function(event){
+                if(event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
     </script>
     
     

@@ -1,38 +1,41 @@
 @model D.UI.MVC.Models.Fields.TextFieldVm
 
-<div>
-   
-   
-                
-                @if (ViewBag.index == 0)
-                {
-                    <link rel="stylesheet" href="~/css/TextSlideShow.css"> 
-
-                    <label>Text:</label>
-                    <textarea asp-for="text" rows="10" cols="60" ></textarea>
-                    <button type="button" id="AddText" onclick="readText()">Add Text</button>
-                }
-                else
-                {
-                    <textarea asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
-
-                }
-                
-                
-       
+<div id="textinputs"> 
+<textarea class="textfield" asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+</div>  
+<table>
+    <td>
+        @if (ViewBag.index == 0)
+        {
             
-            <th>
-                 @if (ViewBag.index == 0)
+      
+              
+            <link rel="stylesheet" href="~/css/TextSlideShow.css"> 
+            <table>
+
+                <tr> <td>  <h2>Text:</h2> </td></tr>
+            <tr> <td>  <textarea id="TextInput" rows="10" cols="60" ></textarea>  </td></tr> 
+            <tr> <td> <button type="button" id="AddText" onclick="readText()">Add Text</button>  </td></tr> 
+            </table>
+        }
+        else
+        {
+            <textarea asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+
+        }               
+    </td>
+    
+    <td>
+        @if (ViewBag.index == 0)
     {
         <div id="TextSlideshow" class="textslideshow-container">
 
           
 
             <!-- Next and previous buttons -->
-            <div id="textsliders" hidden="true">
+            @*<div id="textsliders" hidden="true">*@
                 <a class="prevText" onclick="plusTexts(-1)">&#10094;</a>
                 <a class="nextText" onclick="plusTexts(1)">&#10095;</a>
-            </div>
         </div>
 
 
@@ -47,17 +50,33 @@
             <span class="dot" onclick="currentSlide(3)"></span>*@
         </div>
         <button id="removeVid" onclick="ClearVideo()" hidden="true"> Remove</button>
+        
 
-        <script type="text/javascript">
-    
-    
-    
-    var slideIndex = 1;
+<script type="text/javascript">
+
+    var textIndex = 0;
+    var textMax = 0;
+    var TextTracker = [];
+
+    var slideIndex = 0;
     // showSlides(slideIndex);
+    
+    $(document).ready(function() {
+        console.log('test');
+        var textCount = (document.getElementsByClassName('textfield')).length;
+        console.log('textCount: ' + textCount);
+                
+        // locationTracker = [locationCount];
+        for (var i = 0; i < textCount; i++) {
+            TextTracker[i] = true;
+        }
+        console.log(TextTracker);
+    });            
 
 // Next/previous controls
     function plusTexts(n) {
         showTexts(slideIndex += n);
+        console.log(slideIndex);
     }
 
 // Thumbnail Text controls
@@ -65,7 +84,10 @@
         showTexts(slideIndex = n);
     }
 
+    $(document).ready(function() {
+        textMax = (document.getElementsByClassName('textfield').length);
 
+    }); 
     function showTexts(n) {
         var i;
         var slides = document.getElementsByClassName("TextSlides");
@@ -80,36 +102,68 @@
             textDots[i].className = textDots[i].className.replace(" active", "");
         }
         slides[slideIndex-1].style.display = "block"; 
-        textDots[slideIndex-1].className += " active";
+       // textDots[slideIndex-1].className += " active";
     }
     
     var TextFiles = [];
 
     function readText() {
-        var input = document.getElementById('TextFieldVms_0__text').value;
-        console.log(input);
-        if (input != "") {
-            TextFiles[TextFiles.length] = input;
+        console.log(TextTracker);
+        var x = true;
+        var teller = 0;
+        while (x) {
+            if (TextTracker[teller]) {
+                textIndex = teller;
+                x = false;
+            } else {
+                teller++;
+
+            }
+            if ( teller > document.getElementsByClassName('textfield').length) {
+                x = false;
+            }
         }
-            
+        
+        textIndex = teller;
+      
+        if (textIndex < document.getElementsByClassName('textfield').length) {
+
+            var input = document.getElementById('TextInput').value;
+            console.log(input);
+            if (input != "") {
+                TextFiles[TextFiles.length] = input;
+            }
+
             var inputString = "";
-        
-                   
-            inputString += '<p id="text' + TextFiles.length + '" >' + TextFiles[TextFiles.length - 1].toString() +'  </p>';
-            $("#TextSlideshow").append('<div class="TextSlides" >'+ inputString +'</div>');
-            
-            
-            
-           
-        
-       
+
+
+            inputString += '<p id="text' +
+                TextFiles.length +
+                '" >' +
+                TextFiles[TextFiles.length - 1].toString() +
+                '  </p>';
+            $("#TextSlideshow").append('<div class="TextSlides" >' + inputString + '</div>');
+
+
+            console.log(textIndex);
             //
             var dotString = '<span class="Textdot" onclick="currentText(' + TextFiles.length + ')"></span>';
             $("#textdots").append(dotString);
             $("#textdots").attr("hidden", false);
             $("#textsliders").attr("hidden", false);
-            slideIndex = TextFiles.length;
-            showTexts(slideIndex);
+            var textfield = '#TextFieldVms_' + textIndex + '__text';
+            $(textfield).attr('value', input);
+            TextTracker[textIndex] = false;
+            slideIndex = textIndex;
+            console.log('slideindex :' + slideIndex);
+            
+            
+            showTexts(1);
+
+
+            textIndex++;
+            
+
             /*var btn1 = '#VideoFieldVms_' + (TextFiles.length -1 ).toString() + '__VideoFile_Files_0_';
             var btn2 = '#VideoFieldVms_' + TextFiles.length.toString() + '__VideoFile_Files_0_';
             var remove = '#removeVid';
@@ -127,17 +181,20 @@
                 $(remove).attr('hidden', true);
 
             }*/
-        
+
             if (TextFiles.length > 1) {
                 $('#textsliders').attr('hidden', false);
                 $('#textdots').attr('hidden', false);
-                
+
             } else {
                 $('#textsliders').attr('hidden', true);
                 $('#textdots').attr('hidden', true);
-                
+
             }
-      
+
+        } else {
+            alert("Max amount of textfields");
+        }
     }
         
         
@@ -193,14 +250,19 @@
     }
 
              
-</script>
-
-        
-        
-        
-        
-        
+</script>                     
+              
     }
+    </td>
+    
+</table>
+   
+               
+                
+                
+       
+                       
+
         
             
             
@@ -215,6 +277,5 @@
    
    
     
-</div>
 
 
