@@ -46,14 +46,16 @@ namespace D.UI.MVC.Models.Ideas
         public List<VideoFieldVm> VideoFieldVms { get; set; }
         
         public List<QuestionFieldVm> QuestionFieldVms { get; set; }
+        
+        public List<MapFieldVm> MapFieldVms { get; set; }
 
-        //public VideoFieldVm[] VideoFieldVms { get; set; }
-        public MapFieldVm[] MapFieldVms { get; set; }
-        public TextFieldVm textFieldVM { get; set; }
-      //  public ImageFieldVm imageFieldVM { get; set; }
-        public VideoFieldVm videoFieldVM { get; set; }
-        public MapFieldVm    mapFieldVM { get; set; }
-        public QuestionFieldVm QuestionFieldVm { get; set; }
+//        //public VideoFieldVm[] VideoFieldVms { get; set; }
+//        //public MapFieldVm[] MapFieldVms { get; set; }
+//        public TextFieldVm textFieldVM { get; set; }
+//      //  public ImageFieldVm imageFieldVM { get; set; }
+//        public VideoFieldVm videoFieldVM { get; set; }
+//        public MapFieldVm    mapFieldVM { get; set; }
+//        public QuestionFieldVm QuestionFieldVm { get; set; }
         
 
         
@@ -68,7 +70,6 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<TextField> fields { get; set; }
         public ICollection<Reaction> reactions { get; set; }
         public int IdeationId { get; set; }
-        //public List<IdeaVM> IdeaVms { get; set; }
     }
 
    

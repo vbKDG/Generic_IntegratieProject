@@ -152,12 +152,17 @@
         var label4 = document.getElementById("label 4");
         var label5 = document.getElementById("label 5");
         
-        window.onload = function load(parameters) {
+//        window.onload = function load(parameters) {
+//            var questions = document.getElementsByClassName('question');
+//            if (questions.length > 1) {
+//                $('#Add_Question').attr('hidden', false);
+//            }
+//        }
+        $(document).ready(function() {
             var questions = document.getElementsByClassName('question');
             if (questions.length > 1) {
                 $('#Add_Question').attr('hidden', false);
-            }
-        }
+            }        });
         
         $('#ideaForm').submit(function  SubmitQuestions(event) {
             
