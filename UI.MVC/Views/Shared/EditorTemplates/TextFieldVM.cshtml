@@ -75,13 +75,26 @@
 
 // Next/previous controls
     function plusTexts(n) {
-        showTexts(slideIndex += n);
-        console.log(slideIndex);
+        var slides = document.getElementsByClassName("TextSlides");
+
+        if ((slideIndex + n) >= slides.length) {
+            slideIndex = 0;
+
+        } else if((slideIndex + n) < 0) {
+            slideIndex = (slides.length -1);
+
+        }
+        else {
+            slideIndex += n;
+        }
+        showTexts(slideIndex);
+        
     }
 
 // Thumbnail Text controls
     function currentText(n) {
-        showTexts(slideIndex = n);
+       
+        showTexts(slideIndex);
     }
 
     $(document).ready(function() {
@@ -91,9 +104,8 @@
     function showTexts(n) {
         var i;
         var slides = document.getElementsByClassName("TextSlides");
-        var textDots = document.getElementsByClassName("TextDot");
-      
-        if (n > slides.length) {slideIndex = 1} 
+        var textDots = document.getElementsByClassName("TextDot");       
+        if (n > slides.length)       
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none"; 
@@ -101,7 +113,9 @@
         for (i = 0; i < textDots.length; i++) {
             textDots[i].className = textDots[i].className.replace(" active", "");
         }
-        slides[slideIndex-1].style.display = "block"; 
+        console.log('slideindex :' + slideIndex);
+
+        slides[slideIndex].style.display = "block"; 
        // textDots[slideIndex-1].className += " active";
     }
     
@@ -156,14 +170,15 @@
             TextTracker[textIndex] = false;
             slideIndex = textIndex;
             console.log('slideindex :' + slideIndex);
+          //  console.log(document.getElementsByClassName("TextSlides"));
             
-            
-            showTexts(1);
+            showTexts(slideIndex);
 
 
             textIndex++;
             
-
+            
+            
             /*var btn1 = '#VideoFieldVms_' + (TextFiles.length -1 ).toString() + '__VideoFile_Files_0_';
             var btn2 = '#VideoFieldVms_' + TextFiles.length.toString() + '__VideoFile_Files_0_';
             var remove = '#removeVid';
@@ -182,11 +197,14 @@
 
             }*/
 
-            if (TextFiles.length > 1) {
+            if (textIndex > 0) {
+                $('#removeVid').attr('hidden', false);
                 $('#textsliders').attr('hidden', false);
                 $('#textdots').attr('hidden', false);
 
             } else {
+                $('#removeVid').attr('hidden', true);
+
                 $('#textsliders').attr('hidden', true);
                 $('#textdots').attr('hidden', true);
 
@@ -195,13 +213,14 @@
         } else {
             alert("Max amount of textfields");
         }
+        
     }
         
         
         
     
     
-    function ClearText() {
+    /*function ClearText() {
         var slides = document.getElementsByClassName("VideoSlides");
         var videoDots = document.getElementsByClassName("VideoDot");
         var inputs = document.getElementsByClassName("VideoUpload");
@@ -247,7 +266,7 @@
        
 
 
-    }
+    }*/
 
              
 </script>                     
