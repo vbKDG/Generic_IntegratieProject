@@ -75,6 +75,8 @@ namespace UI.MVC.Controllers
         public IActionResult ProjectDetailPage(int projectId)
         {
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
+            Dictionary<int, int> likeDictionary = new Dictionary<int, int>();
+            Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
             Project p = orchestrator.getProject(projectId);
             p.phases = p.phases.OrderBy(x => x.startDate).ToList();
             p.ideations = orchestrator.getIdeations(projectId).ToList();
@@ -82,8 +84,6 @@ namespace UI.MVC.Controllers
             {
                 var LikeAmount = 0;
                 var CommentAmount = 0;
-                Dictionary<int, int> likeCount = new Dictionary<int, int>();
-                Dictionary<int, int> commentCount = new Dictionary<int, int>();
                 foreach (var idea in ideation.ideas)
                 {
                     LikeAmount = LikeAmount + orchestrator.getIdeaLikes(idea.ideaId);
@@ -93,11 +93,42 @@ namespace UI.MVC.Controllers
                     } 
                     CommentAmount = CommentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
                 }
-                likeCount.Add(ideation.ideationId, LikeAmount);
-                commentCount.Add(ideation.ideationId, CommentAmount);
-                projectDetailModel.LikeAmounts = likeCount;
-                projectDetailModel.CommentAmounts = commentCount;
+                likeDictionary.Add(ideation.ideationId, LikeAmount);
+                commentDictionary.Add(ideation.ideationId, CommentAmount);
             }
+
+            var counter = 0;
+            foreach (var likes in likeDictionary.OrderByDescending(i => i.Value))
+            {
+                counter++;
+                if (counter > 5)
+                {
+                    likeDictionary.Remove(likes.Key);
+                    commentDictionary.Remove(likes.Key);
+                }
+                //Console.WriteLine("key: {0} value: {1}", likes.Key, likes.Value);
+            }
+
+            projectDetailModel.LikeAmounts = likeDictionary;
+            projectDetailModel.CommentAmounts = commentDictionary;
+            /*var likes = from pair in projectDetailModel.LikeAmounts
+                orderby pair.Value descending 
+                select pair;
+            projectDetailModel.LikeAmounts.Clear();
+            for (var i = 0; i < likes.Count(); i++)
+            {
+                if (i >= 5)
+                {
+                    projectDetailModel.LikeAmounts.Remove(projectDetailModel.LikeAmounts.Keys.Last());
+                }
+            }
+            foreach (KeyValuePair<int, int> pair in likes)
+            {
+               // projectDetailModel.LikeAmounts.Add(pair.Key, pair.Value);
+                Console.WriteLine("key: {0} value: {1}", pair.Key, pair.Value);
+            }*/
+
+            
             ICollection<IdeationQuestion> ideationQuestions =
                 orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
             projectDetailModel.ideationQuestions = ideationQuestions;

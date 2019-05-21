@@ -486,10 +486,12 @@ namespace DAL.EF
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,5,17),endDate =  new DateTime(2019,5,20)},
                 new Phase{name = "Event",description = "The badminton tournament takes place",startDate =  new DateTime(2019,5,21),endDate =  new DateTime(2019,5,23)},
             };
-            Ideation id = new Ideation
+            Ideation id1 = new Ideation
             {
-                ideas = new List<Idea> {
-                    new Idea {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
                         user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
                         fields = new List<Field>
                         {
@@ -500,8 +502,8 @@ namespace DAL.EF
                             },
                             new TextField
                             {
-                            required = true,
-                            text = "test idea1 f2"
+                                required = true,
+                                text = "test idea1 f2"
                             }
                         },
                         reactions = new List<Reaction>
@@ -519,8 +521,9 @@ namespace DAL.EF
                                 user = userManager.FindByEmailAsync("peter.smet@gmail.com").Result
                             }
                         }
-                    }, 
-                    new Idea {
+                    },
+                    new Idea
+                    {
                         user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
                         fields = new List<Field>
                         {
@@ -542,40 +545,135 @@ namespace DAL.EF
                         },
                         reactions = new List<Reaction>
                         {
-                        new Reaction
-                        {
-                            content = "reaction 1 idea 2",
-                            date = DateTime.Now,
-                            user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                            new Reaction
+                            {
+                                content = "reaction 1 idea 2",
+                                date = DateTime.Now,
+                                user = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
+                            }
                         }
                     }
-                    }  
+                }
+            };
+            Ideation id2 = new Ideation
+            {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            }
+                        },
+                        reactions = new List<Reaction>()
+                    }
+                }
+            };
+            Ideation id3 = new Ideation
+            {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            }
+                        },
+                        reactions = new List<Reaction>()
+                    }
+                }
+            };
+            Ideation id4 = new Ideation
+            {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            }
+                        },
+                        reactions = new List<Reaction>()
+                    }
+                }
+            };
+            Ideation id5 = new Ideation
+            {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            }
+                        },
+                        reactions = new List<Reaction>()
+                    }
+                }
+            };
+            Ideation id6 = new Ideation
+            {
+                ideas = new List<Idea>
+                {
+                    new Idea
+                    {
+                        user = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
+                        fields = new List<Field>
+                        {
+                            new TextField
+                            {
+                                required = true,
+                                text = "test idea2 f1"
+                            }
+                        },
+                        reactions = new List<Reaction>()
+                    }
                 }
             };
             p10.ideations = new List<Ideation>()
             {
-                id
+                id1, id2, id3, id4, id5, id6
             };
             p10.imageField = img10;
             p10.mapField = map10;
             IdeationQuestion iq10d1 = new IdeationQuestion()
             {
-                ideation = id,
+                ideation = id1,
                 question = "central question d1",
                 description = "omschrijving centrale vraag d2",
                 backgroundInfo = "www.google.be"
             };
             IdeationQuestion iq10d2 = new IdeationQuestion()
             {
-                ideation = id,
+                ideation = id1,
                 question = "central question d2",
                 description = "omschrijving centrale vraag d2",
                 backgroundInfo = "www.google.be"
             };
             ctx.ideationQuestions.Add(iq10d1);
             ctx.ideationQuestions.Add(iq10d2);
-            id.questions.Add(iq10d1);
-            id.questions.Add(iq10d2);
+            id1.questions.Add(iq10d1);
+            id1.questions.Add(iq10d2);
 
 
             // Parking lot movie 

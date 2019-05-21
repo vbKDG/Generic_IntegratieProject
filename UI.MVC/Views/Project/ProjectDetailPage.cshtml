@@ -66,49 +66,33 @@
 @if (@Model.project.ideations.Count > 0)
 {
     <table class="table">
-        <h4>Top 5 ideations</h4>
-        @if (@Model.project.ideations.Count - 1 < 4)
+        <h4>Top 5 liked ideations</h4>
+        @foreach (var ideation in @Model.project.ideations)
         {
-            foreach (var ideation in @Model.project.ideations)
+            foreach (var countLikes in Model.LikeAmounts)
             {
-                <tr>
-                    <td>
-                        Ideation -
-                        @foreach (var count in Model.LikeAmounts)
-                        {
-                            if (count.Key == ideation.ideationId)
+                if (countLikes.Key == ideation.ideationId)
+                {
+                    <tr>
+                        <td>
+                            <span>Ideation -</span>
+                            @countLikes.Value
+                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                            @foreach (var countComments in Model.CommentAmounts)
                             {
-                                @count.Value <i class="glyphicon glyphicon-thumbs-up"></i> 
+                                if (countComments.Key == ideation.ideationId)
+                                {
+                                    @countComments.Value
+                                    <i class="glyphicon glyphicon-comment"></i>
+                                }
                             }
-                        }
-                        @foreach (var count in Model.CommentAmounts)
-                        {
-                            if (count.Key == ideation.ideationId)
-                            {
-                                @count.Value <i class="glyphicon glyphicon-comment"></i>
-                            }
-                        }
-                    </td>
-                    <td>
-                        @Html.ActionLink("Show ideas", "Ideas", "Idea"
-                            , new {ideationId = ideation.ideationId})
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                <tr>
-                    <td>
-                        Ideation
-                    </td>
-                    <td>
-                        @Html.ActionLink("Show ideas", "Ideas", "Idea"
-                            , new {id = @Model.ideationQuestions.ToList()[i].ideation.ideationId})
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Show ideas", "Ideas", "Idea"
+                                , new {ideationId = ideation.ideationId})
+                        </td>
+                    </tr>
+                }
             }
         }
     </table>
@@ -118,7 +102,7 @@
 
 @if (Model.project.questionnaires.Count > 0)
 {
-    <h4>Top 5 questionnaires</h4>
+    <h4>All questionnaires</h4>
     <table class="table">
         <tr>
             <th>
@@ -128,41 +112,20 @@
                 <p>Amount of questions</p>
             </th>
         </tr>
-        @if (@Model.project.questionnaires.ToList().Count - 1 < 4)
+        @foreach (var questionnaire in @Model.project.questionnaires)
         {
-            foreach (var questionnaire in @Model.project.questionnaires)
-            {
-                <tr>
-                    <td>
-                        @questionnaire.name
-                    </td>
-                    <td>
-                        @questionnaire.questionAmount
-                    </td>
-                    <td>
-                        @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                            , new { questionnaireId=questionnaire.id })
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            for (var i = 0; i < 5; i++)
-            {
-                <tr>
-                    <td>
-                        @Model.project.questionnaires.ToList()[i].name
-                    </td>
-                    <td>
-                        @Model.project.questionnaires.ToList()[i].questionAmount
-                    </td>
-                    <td>
-                        @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                            , new { questionnaireId=@Model.project.questionnaires.ToList()[i].id })
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>
+                    @questionnaire.name
+                </td>
+                <td>
+                    @questionnaire.questionAmount
+                </td>
+                <td>
+                    @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                        , new {questionnaireId = questionnaire.id})
+                </td>
+            </tr>
         }
     </table>
     @Html.ActionLink("Show all questionnaires", "Questionnaires", "Questionnaire"
