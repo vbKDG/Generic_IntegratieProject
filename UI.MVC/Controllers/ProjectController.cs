@@ -10,6 +10,7 @@ using D.UI.MVC.Models.Projects;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using UI.MVC.Models;
 using UI.MVC.Models.Ideations;
 
@@ -76,6 +77,27 @@ namespace UI.MVC.Controllers
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
             Project p = orchestrator.getProject(projectId);
             p.phases = p.phases.OrderBy(x => x.startDate).ToList();
+            p.ideations = orchestrator.getIdeations(projectId).ToList();
+            foreach (var ideation in p.ideations)
+            {
+                var LikeAmount = 0;
+                var CommentAmount = 0;
+                Dictionary<int, int> likeCount = new Dictionary<int, int>();
+                Dictionary<int, int> commentCount = new Dictionary<int, int>();
+                foreach (var idea in ideation.ideas)
+                {
+                    LikeAmount = LikeAmount + orchestrator.getIdeaLikes(idea.ideaId);
+                    foreach (var reaction in idea.reactions)
+                    {
+                        LikeAmount = LikeAmount + orchestrator.getReactionLikes(reaction.reactionId);
+                    } 
+                    CommentAmount = CommentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
+                }
+                likeCount.Add(ideation.ideationId, LikeAmount);
+                commentCount.Add(ideation.ideationId, CommentAmount);
+                projectDetailModel.LikeAmounts = likeCount;
+                projectDetailModel.CommentAmounts = commentCount;
+            }
             ICollection<IdeationQuestion> ideationQuestions =
                 orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
             projectDetailModel.ideationQuestions = ideationQuestions;

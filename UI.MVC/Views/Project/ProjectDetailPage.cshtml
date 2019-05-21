@@ -73,7 +73,21 @@
             {
                 <tr>
                     <td>
-                        Ideation
+                        Ideation -
+                        @foreach (var count in Model.LikeAmounts)
+                        {
+                            if (count.Key == ideation.ideationId)
+                            {
+                                @count.Value <i class="glyphicon glyphicon-thumbs-up"></i> 
+                            }
+                        }
+                        @foreach (var count in Model.CommentAmounts)
+                        {
+                            if (count.Key == ideation.ideationId)
+                            {
+                                @count.Value <i class="glyphicon glyphicon-comment"></i>
+                            }
+                        }
                     </td>
                     <td>
                         @Html.ActionLink("Show ideas", "Ideas", "Idea"
@@ -88,7 +102,7 @@
             {
                 <tr>
                     <td>
-                        @Model.ideationQuestions.ToList()[i].question
+                        Ideation
                     </td>
                     <td>
                         @Html.ActionLink("Show ideas", "Ideas", "Idea"

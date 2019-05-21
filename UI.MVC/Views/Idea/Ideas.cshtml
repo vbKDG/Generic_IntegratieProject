@@ -22,7 +22,7 @@
         {
              <tr>
                 <td>
-                    @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1).
+                    <b>@Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1). </b>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 

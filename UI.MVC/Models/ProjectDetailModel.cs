@@ -10,5 +10,7 @@ namespace UI.MVC.Models
     {
         public Project project { get; set; }
         public ICollection<IdeationQuestion> ideationQuestions { get; set; }
+        public Dictionary<int, int> LikeAmounts { get; set; }
+        public Dictionary<int, int> CommentAmounts { get; set; }
     }
 }

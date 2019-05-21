@@ -29,6 +29,7 @@ namespace DAL
                 .Include(p => p.project)
                 .Include(p => p.questions)
                 .Include(p => p.ideas)
+                    .ThenInclude(p => p.reactions)
                 .Where(p => p.project.projectId == projectId);
         }
 
