@@ -69,13 +69,6 @@
                     </a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">
-                        <p class="text-dark">
-                            <i class="fas fa-question"></i><b> About |</b>
-                        </p>
-                    </a>
-                </li>
-                <li>
                     <a asp-area="" asp-controller="Project" asp-action="Projects">
                         <p class="text-dark">
                             <i class="fas fa-project-diagram"></i><b> Projects |</b>
@@ -121,7 +114,7 @@
     @RenderBody()
     <hr/>
     <footer class="center-block text-center">
-        <p>&copy; 2019 - City Of Ideas - <a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")">About</a></p >
+        <p>&copy; 2019 - City Of Ideas - <a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")">About</a> -</p >
 
     </footer>
 </div>
@@ -148,7 +141,7 @@
 </environment>
 
 
-@RenderSection("styles", false);
+@RenderSection("styles", false)
 @RenderSection("Scripts", required: false)
 </body>
 </html>

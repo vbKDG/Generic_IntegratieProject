@@ -32,6 +32,11 @@ namespace UI.MVC.Controllers
             ICollection<Faq> faqs = orchestrator.getFaqs().ToList();
             return View(faqs);
         }
+
+        public IActionResult PrivacyPage()
+        {
+            return View();
+        }
         
         public IActionResult Index()
         {
