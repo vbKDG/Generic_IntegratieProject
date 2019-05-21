@@ -306,6 +306,16 @@ namespace DAL
                 date = DateTime.Now,
                 idea = ctx.ideas.Find(Convert.ToInt32(ideaId))
             };
+            foreach(var userRole in ctx.UserRoles.Where(ur => ur.UserId == userId))
+            {
+                foreach (var role in ctx.Roles.Where(r => r.Id == userRole.RoleId))
+                {
+                    if (role.Name == "SignedInUserVerified")
+                    {
+                        reaction.verified = true;
+                    }
+                }
+            }
             ctx.reactions.Add(reaction);
             ctx.SaveChanges();
         }

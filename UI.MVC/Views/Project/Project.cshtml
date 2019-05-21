@@ -9,30 +9,21 @@
         <th>
             <p>Ideation Id </p>
         </th>
-
-        <th>
-            <p>Question</p>
-        </th>
-
     </tr>
-    @foreach (var item in Model.ideationQuestions)
+    @foreach (var item in Model.project.ideations)
     {
         <tr>
             <td>
-                @Html.DisplayFor( modelItem => item.ideation.ideationId)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.question)
+                @Html.DisplayFor( modelItem => item.ideationId)
             </td>
             <td>
                 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
-                    , new { ideationId=item.ideation.ideationId })
+                    , new { ideationId=item.ideationId })
             </td>
             
             <td>
-                @Html.ActionLink("Ideas", "Ideas", "Idea"
-                    , new { id=item.ideation.ideationId })
+                @Html.ActionLink("Show ideas", "Ideas", "Idea"
+                    , new {ideationId = item.ideationId})
             </td>
 
         </tr>

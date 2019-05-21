@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using Domain;
 using System.Web;
 using D.UI.MVC.Models.Fields;
+using DAL.EF;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 
@@ -69,6 +70,7 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<Idea> ideas { get; set; }
         public ICollection<TextField> fields { get; set; }
         public ICollection<Reaction> reactions { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; }
         public int IdeationId { get; set; }
     }
 

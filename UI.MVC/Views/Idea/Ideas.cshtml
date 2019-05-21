@@ -23,6 +23,10 @@
              <tr>
                 <td>
                     <b>@Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1). </b>
+                    @if (@Model.ideas.ToList()[i].verified)
+                    {
+                        <i class="glyphicon glyphicon-ok-circle"></i>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
@@ -61,6 +65,10 @@
                                 if (reaction.idea.ideaId == @Model.ideas.ToList()[i].ideaId)
                                 {
                                     <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
+                                    if (@reaction.verified)
+                                    {
+                                        <i class="glyphicon glyphicon-ok-circle"></i>
+                                    }
                                     @reaction.content
                                     <button id="likeReaction-@reaction.reactionId" type="button" 
                                             onclick="location.href='@Url.Action("LikeReaction", "Idea"

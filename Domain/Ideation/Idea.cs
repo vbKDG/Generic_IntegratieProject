@@ -18,5 +18,6 @@ namespace Domain
         public ICollection<Report> reports { get; set; }
         public bool approved { get; set; }
         public bool disapproved { get; set; }
+        public bool verified { get; set; }
     }
 }
