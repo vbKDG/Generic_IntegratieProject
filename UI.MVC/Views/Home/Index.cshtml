@@ -89,7 +89,9 @@
                     @foreach (var project in @Model)
                     {
                         <div class="column text-center text-black">
-                            <h4>@project.name</h4>
+                             <h4 id="titleindex" class="text-black"> @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
+                                                , new {projectId = project.projectId})
+                          </h4>
                             <img src="@project.imageField.GetImageString()" width="365" height="200"/>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>

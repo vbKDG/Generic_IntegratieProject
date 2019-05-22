@@ -6,31 +6,55 @@ html, body {
     width: 100%;
     margin:0;
     display: table;
+    
 }
+/*site thema*/
+#general-theme{
+    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
+    background-repeat: no-repeat;
+    max-width: 100%;
+}
+#navbox{
+}
+.nav-item{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+    
+#AboutTitle{    
+    padding-left: 35%;
+}
+
+#titleindex{
+    color:black;
+}
+
+#IdeaElement{
+    padding-left: 2px;
+    
+}
+
+#detailImage{
+    padding-bottom: 25px;
+}
+
 .wrapper {
     padding: 20px;
     height: auto;
 }
 
-#card {
-    width: 400px
-}
 
+
+/*smooth scroll*/
 html {
     scroll-behavior: smooth;
 }
-
 
 #discoverbutton{
     padding-bottom: 10px;
 }
 
-#signButton{
-
-}
-
 #ProjectsCard {
-
     background-color: #b4b4b4;
 
 }
@@ -40,6 +64,7 @@ html {
     padding-right: 5px;
     
 }
+
 #rowPictures img {
     border-radius: 5px;
 }
@@ -48,12 +73,6 @@ html {
 }
 
 
-
-#Homepage {
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-    height: 100%;
-}
 
 #projects-head-section {
     background-color: #cae5ff;
@@ -70,22 +89,6 @@ h1, h3, h4 {
 
 
 
-
-#projectsgeneral {
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
-
-#forgotPasswordPage{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
-
-#confirmPasswordpage{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
-
 footer {
     color: #000000;
     display:table-row;
@@ -93,11 +96,7 @@ footer {
     
 }
 
-#ConfirmPage{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-    color: #000000;
-}
+
 
 .carousel-item {
     height: 340px;
@@ -114,10 +113,7 @@ footer {
     height: 400px;
 }   
 
-#projectspage{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
+
 
 .textWithBlurredBg{
     width: 100%;
@@ -140,15 +136,8 @@ footer {
     padding-right: 100px;
 }
 
-#ChangePassword{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
 
-#general-theme{
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-}
+
 
 #projectelementpadding{
     padding-bottom: 20px;
@@ -167,6 +156,13 @@ footer {
     padding-left: 27px;
 }
 
+
+.textWithBlurredBg h5{
+
+    
+    
+
+}
 .textWithBlurredBg h4{
 
     top: 90%;
@@ -211,11 +207,6 @@ input, select, textarea {
 #register-page{
 }
 
-#deleteQuestionnairePage {
-    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
-    background-repeat: no-repeat;
-    min-height: 100%;
-}
 #deleteCard{
     height: 100%;
 }
@@ -225,7 +216,7 @@ input, select, textarea {
     background-color: rgba(108, 245, 242, 0.42);}
 
 #explore-section{
-    background-color: rgba(91, 76, 255, 0.58);
+    background-color: white;
     padding-left: 0px;
     padding-right: 0px;
     
@@ -237,22 +228,16 @@ input, select, textarea {
 
 }
 
-#AboutPage {
-    background-image: linear-gradient(to bottom, #cae5ff, #ffffff);
-    background-repeat: no-repeat;
-    min-height: 170%;
-}
-    
-#SettingsManager {
-    background-image: linear-gradient(to bottom,#ffffff,#4d5f85);
-    background-repeat: no-repeat;
-    min-height: 100%;
+.nav-item{
+    padding-top: 10px;
+    margin-left: 10px;
 }
 
-#registerPage {
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-    height: 100%;
+#titelDetail{
+    padding-right: 60px;
+}
+#detaildesc{
+    padding-right: 15px;
 }
 
 
@@ -268,19 +253,6 @@ card {
     width: 33%;
     padding: 2px;
 }
-
-
-/*login screen*/
-#login {
-    background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
-    background-repeat: no-repeat;
-    height: 100%;
-
-}
-
-
-
-
 
 /* Clearfix (clear floats) */
 .row::after {

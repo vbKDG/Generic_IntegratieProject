@@ -1,109 +1,119 @@
 @model UI.MVC.Models.Ideations.IdeationVM
 
-<form asp-controller="Idea" asp-action="CreateIdeation" method="post" enctype="multipart/form-data">
+<body>
+<div class="container">
 
+<form asp-controller="Idea" asp-action="CreateIdeation" method="post" enctype="multipart/form-data">
     <input asp-for="ProjectId" value="@Model.ProjectId" type="hidden"/>
 
     <h1>Project: @Model.ProjectName </h1>
-    
-    
-    <table>
-        <tr>
-            <th>Only admins can submit ideas: </th>
-            <th> <input asp-for="AdminOnly" type="checkbox"/> </th>
 
-        </tr>
-       
-      
-    </table>
-    
-    <table>
-        <tr>
-            <th></th>
-            <th>Minimum</th>
-            <th>Maximum</th>
 
-        </tr>
-        <tr>
-            <th><label>Amount of textfields:</label> </th>
-            <th>
-                <input asp-for="TextField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
-            </th>
-            <th>
-                <input asp-for="TextField.Maximum" type="number" max="5" min="0" value="0"/>
-            </th>
-        </tr>
-        <tr>
-            <th><label>Amount of Images: </label></th>
-            <th>
-                <input asp-for="ImageField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
-            </th>
-            <th>
-                <input asp-for="ImageField.Maximum" type="number" max="5" min="0" value="0"/>
-            </th>
-        </tr>
-        <tr>
-            <th><label>Amount of Videos: </label></th>
-            <th>
-                <input asp-for="VideoField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
-            </th>
-            <th>
-                <input asp-for="VideoField.Maximum" type="number" max="5" min="0" value="0" />
-            </th>
-        </tr>
-        <tr>
-            <th><label>Amount of Locations: </label></th>
-            <th>
-                <input asp-for="MapField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
-            </th>
-            <th>
-                <input asp-for="MapField.Maximum" type="number" max="5" min="0" value="0"/>
-            </th>
-            
-          
-            
-        </tr>
-        
-        <tr>
-            <th><label>Amount of Questions: </label></th>
-            <th>
-                <input asp-for="QuestionField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
-            </th>
-            <th>
-                <input asp-for="QuestionField.Maximum" type="number" max="5" min="0" value="0"/>
-            </th>
 
-        </tr>
 
-    </table>
-    
-    <table>
-        <tr>
-            <th>    <p>Provide extra background link: </p>
-            </th>
-            <th>     <input asp-for="link" type="url"/>
-            </th>
-        </tr>
-    </table>
-    
-    <h2>Add Central Question</h2>
-    
-    <div id="QuestionList">
-        <div class="QuestionRow">
-            <input name="ideationQuestionVMs[0].question" type="text" class="QuestionRow"/>
+    <div class="row">
+        <div class="dark-overlay">
+            <div class="container py-5">
+                <div class="col-lg-4">
+                    <div class="card bg-light text-center card-form">
+                        <div class="card-body">
+                            <h3><b>Set up parameters</b></h3>
+                            <h4>decide elements</h4>
+                            <hr/>
+
+
+                            <div class="form-group text-dark">
+                                <th>Only admins can submit ideas: </th>
+                                <th> <input asp-for="AdminOnly" type="checkbox"/> </th>
+                                <hr/>
+                            </div>
+                            <div class="form-group text-dark">
+                                <th>Minimum</th>
+                                <th>Maximum</th>
+                            </div>
+
+                            <div class="form-group text-dark">
+                                <th><label>Amount of textfields:</label> </th>
+                                <th>
+                                    <input asp-for="TextField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+                                </th>
+                                <th>
+                                    <input asp-for="TextField.Maximum" type="number" max="5" min="0" value="0"/>
+                                </th>
+                            </div>
+
+                            <div class="form-group">
+                                <th><label>Amount of Images: </label></th>
+                                <th>
+                                    <input asp-for="ImageField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+                                </th>
+                                <th>
+                                    <input asp-for="ImageField.Maximum" type="number" max="5" min="0" value="0"/>
+                                </th>
+                            </div>
+
+                            <div class="form-group">
+                                <th><label>Amount of Videos: </label></th>
+                                <th>
+                                    <input asp-for="VideoField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+                                </th>
+                                <th>
+                                    <input asp-for="VideoField.Maximum" type="number" max="5" min="0" value="0"/>
+                                </th>
+                            </div>
+                            <div class="form-group">
+                                <th><label>Amount of Locations: </label></th>
+                                <th>
+                                    <input asp-for="MapField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+                                </th>
+                                <th>
+                                    <input asp-for="MapField.Maximum" type="number" max="5" min="0" value="0"/>
+                                </th>
+                            </div>
+                            <div class="form-group">
+                                <tr>
+                                    <th>
+                                        <p>Provide extra background link: </p>
+                                    </th>
+                                    <th> <input asp-for="link" type="url"/>
+                                    </th>
+                                </tr>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card bg-light text-center card-form">
+                        <div class="card-body">
+                            <h2>Add Central Question</h2>
+
+                            <div id="QuestionList">
+                                <div class="QuestionRow py-5">
+                                    <input name="ideationQuestionVMs[0].question" type="text" class="QuestionRow"/>
+                                </div>
+
+                            </div>
+                            <div class="py-1">
+                                <input type="button" name="addRow" id="addRow" value="Add Question" class="btn bg-success btn-sm">
+                            </div>
+
+
+
+
+                            <input type="submit" value="save">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-       
     </div>
-    
-    <input type="button" name="addRow" id="addRow" value="Add Another Question" class="btn bg-success btn-sm">
-    
-   
-    
 
-
-    <input type="submit" value="save">   
 
 </form>
+</div>
+</body>
 <script>
     function SetMinimum(input) {
         var val = input.value.valueOf();

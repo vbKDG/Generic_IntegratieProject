@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<Domain.Questionnaire>
-
-<h1>Questionnaires</h1>
+<body>
+<div class="container">
+<h1 class="text-center">Questionnaires</h1>
 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
 {
-    <p>
-        @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage", 
-            "Questionnaire", new { projectId=Model.ToList()[0].project.projectId })
-    </p>
+    
+    <div class="text-center">
+        @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
+            "Questionnaire", new {projectId = Model.ToList()[0].project.projectId})
+    </div> 
 }
 
 <table class="table">
@@ -48,3 +50,5 @@
         
     }
 </table>
+</div>
+</body>
