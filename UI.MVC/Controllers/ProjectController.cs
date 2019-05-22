@@ -106,28 +106,10 @@ namespace UI.MVC.Controllers
                     likeDictionary.Remove(likes.Key);
                     commentDictionary.Remove(likes.Key);
                 }
-                //Console.WriteLine("key: {0} value: {1}", likes.Key, likes.Value);
             }
 
             projectDetailModel.LikeAmounts = likeDictionary;
             projectDetailModel.CommentAmounts = commentDictionary;
-            /*var likes = from pair in projectDetailModel.LikeAmounts
-                orderby pair.Value descending 
-                select pair;
-            projectDetailModel.LikeAmounts.Clear();
-            for (var i = 0; i < likes.Count(); i++)
-            {
-                if (i >= 5)
-                {
-                    projectDetailModel.LikeAmounts.Remove(projectDetailModel.LikeAmounts.Keys.Last());
-                }
-            }
-            foreach (KeyValuePair<int, int> pair in likes)
-            {
-               // projectDetailModel.LikeAmounts.Add(pair.Key, pair.Value);
-                Console.WriteLine("key: {0} value: {1}", pair.Key, pair.Value);
-            }*/
-
             
             ICollection<IdeationQuestion> ideationQuestions =
                 orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
