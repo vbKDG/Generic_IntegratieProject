@@ -29,7 +29,9 @@
                             </h4>
                              @if (User.IsInRole("SuperAdmin"))
                                             {
-                                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageAdmins">View</a></button>
+                                                <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageAdmins", "Admin")'">
+                                                    View
+                                                </button>
                                             }
                              
                         </div>
@@ -43,7 +45,9 @@
                             </h4>
                             @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                             {
-                                <button class="btn btn-default"><a asp-controller="Admin" asp-action="ManageModerators">View</a></button>
+                                <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageModerators", "Admin")'">
+                                    View
+                                </button>
                             }
 
                         </div>

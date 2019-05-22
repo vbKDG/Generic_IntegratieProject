@@ -165,6 +165,7 @@ namespace UI.MVC.Controllers
             MapField mapField = new MapField();
             ImageField imageField = new ImageField();
             ICollection<Phase> phases = new List<Phase>();
+            Setting Setting = new Setting();
 
             project.name = projectVm.name;
             project.description = projectVm.description;
@@ -174,7 +175,7 @@ namespace UI.MVC.Controllers
             mapField.latitude = projectVm.mapFieldVM.latitude;
             mapField.longitude = projectVm.mapFieldVM.longitude;
             project.mapField = mapField;
-
+            
             using (var reader = projectVm.imageFieldVM.imageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
             {
@@ -199,11 +200,12 @@ namespace UI.MVC.Controllers
 
             project.phases = phases;
 
+            Setting.FontFamily = projectVm.SettingVm.FontFamily;
+            Setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
+            Setting.BackGroundColor2 = projectVm.SettingVm.BackGroundColor2;
+            project.Setting = Setting;
+
             orchestrator.addProject(project);
-
-
-
-
             return RedirectToAction("Project", "Project", new {id = 1});
         }
 

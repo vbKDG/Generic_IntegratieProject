@@ -14,3 +14,10 @@ $(document).ready(function() {
         }
     });
 });
+
+function loadPage(BackGroundColor1, BackGroundColor2, FontFamily) {
+    $('body').css("background-image", "linear-gradient(to bottom," + BackGroundColor1 + "," + BackGroundColor2 + ")");
+    $('#fontFamily').css("font-family", FontFamily)
+    
+    //$('#test').css("font-family", "Arial");
+}

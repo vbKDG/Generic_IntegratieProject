@@ -17,20 +17,13 @@ namespace D.UI.MVC.Models.Projects
         
         public MapFieldVm mapFieldVM { get; set; }
         
+        public SettingVM SettingVm { get; set; }
+        
         public List<PhaseVM> phases
         {
             get { return _phases; }
         }
         private List<PhaseVM> _phases = new List<PhaseVM>();
-
-
-
-
-
-
-
-
-
     }
 
     public class PhaseVM
@@ -39,6 +32,12 @@ namespace D.UI.MVC.Models.Projects
         public String description { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
-        
+    }
+
+    public class SettingVM
+    {
+        public string BackGroundColor1 { get; set; }
+        public string BackGroundColor2 { get; set; }
+        public string FontFamily { get; set; }
     }
 }

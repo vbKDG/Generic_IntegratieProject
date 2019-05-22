@@ -12,7 +12,7 @@ namespace Domain
         public String description { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
-        
+        public bool Open { get; set; }
         public ImageField imageField { get; set; }
         
         public MapField mapField { get; set; }
@@ -21,6 +21,6 @@ namespace Domain
         public ICollection<Questionnaire> questionnaires { get; set; }
         public ICollection<Phase> phases { get; set; }
         public ICollection<ProjectLike> projectLikes { get; set; }
-
+        public Setting Setting { get; set; }
     }
 }    

@@ -43,6 +43,7 @@ namespace DAL.EF
         //Project
         public DbSet<Project> projects { get; set; }
         public DbSet<Phase> phases { get; set; }
+        public DbSet<Setting> Settings { get; set; }
         
         //Ideation
         public DbSet<Ideation> ideations { get; set; }
@@ -89,8 +90,10 @@ namespace DAL.EF
                 .WithOne(qf => qf.QuestionField)
                 .HasForeignKey<QuestionField>("QuestionFK_shadow");
 
-
-
+            builder.Entity<Setting>().Property<int>("ProjectFK_shadow");
+            builder.Entity<Setting>().HasOne(s => s.Project)
+                .WithOne(p => p.Setting)
+                .HasForeignKey<Setting>("ProjectFK_shadow");
         }
 
         public override int SaveChanges()

@@ -29,11 +29,12 @@ namespace DAL
         {
             return ctx.projects
                 .Include(p => p.questionnaires)
-                .Include( p => p.imageField)
+                .Include(p => p.imageField)
                 .Include(p => p.mapField)
                 .Include(p => p.phases)
                 .Include(p => p.ideations)
-                .Include(p => p.projectLikes);
+                .Include(p => p.projectLikes)
+                .Include(p => p.Setting);
         }
 
         public Project readProject(int id)
@@ -45,6 +46,7 @@ namespace DAL
                 .Include(p => p.phases)
                 .Include(p => p.ideations)
                 .Include(p => p.projectLikes)
+                .Include(p => p.Setting)
                 .SingleOrDefault(p => p.projectId == id);
         }
 

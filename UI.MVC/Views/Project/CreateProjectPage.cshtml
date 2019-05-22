@@ -3,7 +3,7 @@
 <body>
     <form asp-controller="Project" asp-action="CreateProject" method="post" enctype="multipart/form-data">
 
-        <section id="contact" class="py-3">
+        <section id="contact" class="py-3 text-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -42,7 +42,6 @@
                                             <input asp-for="description" type="text" textarea class="form-control" placeholder="Description" />
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     @Html.EditorFor(x => x.mapFieldVM)
@@ -59,8 +58,40 @@
 
 
                                 </div>
-
-                                <input type="button" name="addRow" id="addRow" value="Click" class="btn bg-success btn-sm">
+                                
+                                <input type="button" name="addRow" id="addRow" value="Add" class="btn bg-success btn-sm">
+                                
+                                <h3 class="text-center text-light">Settings</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Primaire color:</label>
+                                            <select asp-for="SettingVm.BackGroundColor1">
+                                                <option value="">Standard</option>
+                                                <option value="blue">Blue</option>
+                                                <option value="red">Red</option>
+                                                <option value="green">Green</option>
+                                                <option value="yellow">Yellow</option>
+                                                <option value="white">White</option>
+                                            </select><br>
+                                            <label>Secondary color:</label>
+                                            <select asp-for="SettingVm.BackGroundColor2">
+                                                <option value="">Standard</option>
+                                                <option value="blue">Blue</option>
+                                                <option value="red">Red</option>
+                                                <option value="green">Green</option>
+                                                <option value="yellow">Yellow</option>
+                                                <option value="white">White</option>
+                                            </select><br>
+                                            <label>Font family:</label>
+                                            <select asp-for="SettingVm.FontFamily">
+                                                <option value="">Standard</option>
+                                                <option value="Times new Roman">Times new Roman</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <input type="submit" value="Submit" class="btn bg-success btn-sm">
                             </div>
                         </div>
