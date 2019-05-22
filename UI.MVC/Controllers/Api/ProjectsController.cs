@@ -45,11 +45,11 @@ namespace UI.MVC.Controllers.api
             //Either you add a service in startup.cs to ignore reference loop handling
             //or you comment/delete the 'include' line in the project repository
             Project project = mgr.getProject(id);
-            Bitmap bmp;
+            /*Bitmap bmp;
             using (var ms = new MemoryStream(project.imageField.imageData))
             {
                 bmp = new Bitmap(ms);
-            }
+            }*/
             double totalProjectDays = (project.endDate - project.startDate).Days;
             double daysSinceStartup = (DateTime.Now - project.startDate).Days;
             var percentageOfCompletion = (int)Math.Round(daysSinceStartup / totalProjectDays);
@@ -63,7 +63,7 @@ namespace UI.MVC.Controllers.api
             {
                 projectId = project.projectId,
                 name = project.name,
-                projectImage = bmp,
+                projectImage = project.imageField.imageData,
                 description = project.description,
                 startDate = project.startDate.ToUniversalTime(),
                 endDate = project.endDate.ToUniversalTime(),

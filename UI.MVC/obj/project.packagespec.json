@@ -1,31 +1,28 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
+    "projectUniqueName": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
     "projectName": "UI.MVC",
-    "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
-    "outputPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\UI.MVC\\obj\\",
+    "projectPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\UI.MVC\\UI.MVC.csproj",
+    "outputPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\UI.MVC\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
-    "sources": {
-      "https://api.nuget.org/v3/index.json": {}
-    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\BL\\BL.csproj": {
-            "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\BL\\BL.csproj"
+          "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj": {
+            "projectPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj"
           },
-          "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
-            "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\DAL\\DAL.csproj"
+          "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
+            "projectPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj"
           },
-          "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
-            "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
+            "projectPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj"
           }
         }
       }

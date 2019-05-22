@@ -9,7 +9,7 @@ namespace D.UI.MVC.Models
     {
         public int projectId { get; set; }
         public string name { get; set; }
-        public Bitmap projectImage { get; set; }
+        public byte[] projectImage { get; set; }
         public string description { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
