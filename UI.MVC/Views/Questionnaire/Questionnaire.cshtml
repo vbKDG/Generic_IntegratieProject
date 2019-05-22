@@ -1,11 +1,24 @@
 ﻿@using Domain
 @model FillInQuestionnaireModel
 
-<h1>Complete a questionnaire</h1>
-<h4>The questionnaire is about: @Model.questionnaire.name</h4>
+<body>
+
 @using (Html.BeginForm("CreateUserQuestion", "Questionnaire",
     FormMethod.Post))
 {
+    
+    
+   
+    <div class="row center-block">
+        
+    <div class="dark-overlay">
+    <div class="container">
+
+    <div class="col-lg-4">
+    <div class="card bg-light text-center card-form">
+    <h1>@Model.questionnaire.name</h1>
+    <h4>Questionnaire</h4>
+    <div class="card-body">
     <table class="table">
         @foreach (var item in Model.questions)
         {
@@ -75,10 +88,26 @@
                     </td>
                 </tr>
             }
+            
+
         }
+    
     </table>
+            
     <input type="hidden" name="questionnaireId" value="@Model.questionnaire.id"/>
     <div class="form-group">
-        <input type="submit" value="Submit answers" class="btn btn-default"/>
+        <input type="submit" value="Submit answers" class="btn btn-default btn-success"/>
     </div>
-}
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                       </div>
+
+            
+
+    }
+
+</body>

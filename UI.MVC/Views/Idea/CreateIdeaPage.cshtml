@@ -6,9 +6,13 @@
 @using Microsoft.AspNetCore.Http.Internal
 @model D.UI.MVC.Models.Ideas.IdeaVM
 
+<body>
+<div class="container">
+    
+
 @foreach (var item in Model.ideationQuestion)
 {
-    <h1>@item</h1>
+    <b><u><h1 class="text-center">@item</h1></u></b>
 }
 
 
@@ -20,7 +24,7 @@
   
    @if (@Model.TextFieldVms.Count != 0)
    {
-       <h2>Upload Text</h2>
+       <h3>Upload Text</h3>
        <div id="TextUploads">
            @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
            {
@@ -31,8 +35,8 @@
    }
     
     @if (@Model.ImageFieldVms.Count != 0){
-        <h2>Upload Images</h2>
-        <div id="ImageUploads">
+        <h3>Upload Images</h3>
+        <div id="ImageUploads" class="py-3">
             @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
             {
                 @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
@@ -45,8 +49,8 @@
 
     @if (@Model.VideoFieldVms.Count != 0)
     {
-        <h2>Upload Videos</h2>
-        <div id="VideoUploads">
+        <h3>Upload Videos</h3>
+        <div id="VideoUploads"class="py-2">
             @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
             {
                 @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
@@ -57,12 +61,12 @@
     }
     @if (@Model.MapFieldVms.Count != 0)
     {
-        <h2>Upload Locations</h2>
+        <h3 class="py-2">Upload Locations</h3>
         <div id="MapUploads">
             @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
             {
             @Html.EditorFor(x => x.MapFieldVms[i] , new { index = i} )    
-     
+                
             }
         </div>   
 
@@ -72,15 +76,30 @@
     @if (@Model.QuestionFieldVms.Count != 0)
     {
         <h2>Upload Questions</h2>
+        <div class="row">
+<div class="dark-overlay">
+<div class="container">
+<div class="d-flex" >
+        <div class="card bg-light text-center card-form">
+<div class="card-body" id="card">
         <div id="QuestionUploads">
             @for (int i = 0; i < @Model.QuestionFieldVms.Count; i++)
             {
                 @Html.EditorFor(x => x.QuestionFieldVms[i] , new { index = i +1} )    
-     
+                    
             }
-        </div>   
+            <div class="py-3">
+                <input type="submit" class="btn btn-success" value="save" onclick="disable()" >   
+</div>
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
         
-    }
+}
    
    
     
@@ -220,7 +239,6 @@
         
      
    
-    <input type="submit" value="save" onclick="disable()" >   
     
     <script>
         function disable(parameters) {
@@ -278,7 +296,10 @@
         }
         
         
-    </script>*@
+    </script>*@    
          
     
 </form>
+
+</div>
+</body>

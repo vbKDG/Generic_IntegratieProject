@@ -24,6 +24,10 @@
                                  <div class="text-center">
                                      <h3 class="text-light">@project.name</h3>
                                      <h4 class="text-light">@project.description</h4>
+                                     <h5 class="text-light">
+                                                     @Html.ActionLink("Details", "ProjectDetailPage", "Project"
+                                                         , new {projectId = project.projectId})
+                                      </h5>           
                                  </div>
                              </div>
                              
@@ -68,6 +72,11 @@
                          <div class="text-center">
                              <h3 class="text-light">@project.name</h3>
                              <h4 class="text-light">@project.description</h4>
+                             <h5 class="text-light">
+                                                                                  @Html.ActionLink("Details", "ProjectDetailPage", "Project"
+                                                                                      , new {projectId = project.projectId})
+                             </h5>   
+                             
                          </div>
                      </div>
                      <div  class="progress center-block">
@@ -113,6 +122,11 @@
                                  <div class="text-center">
                                      <h3 class="text-light">@project.name</h3>
                                      <h4 class="text-light">@project.description</h4>
+                                     <h5 class="text-light">
+                                                                                          @Html.ActionLink("Details", "ProjectDetailPage", "Project"
+                                                                                              , new {projectId = project.projectId})
+                                     </h5>   
+                                     
                                  </div>
                              </div>
                              <div  class="progress center-block">

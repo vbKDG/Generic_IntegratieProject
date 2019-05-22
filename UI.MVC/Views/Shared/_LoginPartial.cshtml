@@ -6,14 +6,17 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="~/js/logoutForm.js" asp-append-version="true"></script>
 
+
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><p class="text-dark"><i class="far fa-user"></i><b> @User.Identity.Name</b></p></a>
+        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><p><i class="far fa-user"></i><b> @User.Identity.Name</b></p></a>
     </li>
-    <li class="nav-item extraNavItem">
-        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})"></form>
-        <a class="nav-link" id="logoutLink"><p class="text-dark"><i class="far fa-user"></i><b> Logout</b></p></a>
+    <li class="nav-item">
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
+           
+            <button class="btn btn-outline-success" type="submit"><b>Logout</b></button>
+        </form>
     </li>
 }
 else
@@ -22,6 +25,6 @@ else
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Register"><p class="text-dark"><i class="far fa-user"></i><b> Register</b></p></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login"><p class="text-dark"><i class="far fa-user"></i><b> Log in  </b></p></a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login"><p class="text-dark"><i class="far fa-user"></i><b> Log in  |</b></p></a>
     </li>
 }

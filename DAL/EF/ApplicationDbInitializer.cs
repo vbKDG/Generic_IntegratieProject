@@ -355,8 +355,8 @@ namespace DAL.EF
             //Phases
             Phase ph1 = new Phase() { project = p1, name = "Brainstorming",description = "We are starting this project by gathering input from the community"};
             Phase ph2 = new Phase() { project = p1, name = "Construction",description = "We are building the most suggested constructions in the playground"};
-            
-            p1.phases = new List<Phase>(){ph1,ph2};
+            Phase ph3 = new Phase() { project = p1, name = "Opening",description = "We will celebrate the opening of this park together!"};
+            p1.phases = new List<Phase>(){ph1,ph2,ph3};
             
             Project p3 = new Project();
             MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};

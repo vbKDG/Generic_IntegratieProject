@@ -1,8 +1,23 @@
 @model ProjectDetailModel
+<body>
+<div class="container">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/js/phaseLine.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/css/phaseLine.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="~/js/phaseLine.js" asp-append-version="true"></script>
-<link rel="stylesheet" href="~/css/phaseLine.css">
+    <div class="py-5">
+        <div id="explore-section" class="container">
+            <div class="row">  
+                <div class="col-md-8">
+                     @if (@Model.project.imageField != null)
+                                            {
+                                                <img src=@Model.project.imageField.GetImageString() width="750" height="450"/>
+                                            }
+                </div>
+                <div class="col-md-4 center py-5">
+                    <h1 id="titelDetail" class="text-center py-4"><b>@Model.project.name</b></h1>
+                    <div class="py-2">
+                                                    <h2 id="detaildesc"class="py-4">@Model.project.description</h2></p>
 
 <body onload="loadPage('@Model.project.Setting.BackGroundColor1', '@Model.project.Setting.BackGroundColor2', '@Model.project.Setting.FontFamily')">
 <div id="fontFamily">
@@ -19,7 +34,25 @@
         <div class="phaseContainer">
             <ul class="progressbar">
                 @for (int i = 0; i < @Model.project.phases.Count(); i++)
+  @*
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+<div class="container-fluid">
+                        @if (@Model.project.phases.Count > 0)
+{
+    <h2 class="text-center py-5"><b>    Phases of the project</b></h2>
+    <div class="phaseContainer">
+        <ul class="progressbar">
+            @for (int i = 0; i < @Model.project.phases.Count(); i++)
+            {
+                if (i == 0)
                 {
+                    *@
                     if (i == 0)
                     {
                         if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
@@ -56,7 +89,20 @@
                         {
                             <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
                         }
+                     @*   <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
                     }
+                }
+                else if (i == @Model.project.phases.Count() - 1)
+                {
+                    if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                    {
+                        <li id="phase-@i" class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                    }
+                    else
+                    {
+                        <li id="phase-@i" class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                    }
+                    *@
                     <div class="popper-content hide">
                         <h4>@Model.project.phases.ToList()[i].name</h4>
                         <p>
@@ -99,51 +145,153 @@
                             </td>
                         </tr>
                     }
+                    else
+                    {
+                        <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
+                    }
+
                 }
+                <div class="popper-content hide">
+                    <h4>@Model.project.phases.ToList()[i].name</h4>
+                    <p>From @Model.project.phases.ToList()[i].startDate <br>
+                        Till @Model.project.phases.ToList()[i].endDate</p>
+                    <p>@Model.project.phases.ToList()[i].description</p>
+                </div>
             }
-        </table>
-        @Html.ActionLink("Show all ideations", "Project", "Project"
-            , new {id = Model.project.projectId})
-    }
+        </ul>
+    </div>
+}
+</div>
 
-    @if (Model.project.questionnaires.Count > 0)
-    {
-        <h4>All questionnaires</h4>
-        <table class="table">
-            <tr>
-                <th>
-                    <p>Questionnaire name</p>
-                </th>
-                <th>
-                    <p>Amount of questions</p>
-                </th>
-            </tr>
-            @foreach (var questionnaire in @Model.project.questionnaires)
+<div class="row py-5">
+    <div class="col-md-4 center-block">
+       
+                @if (@Model.project.ideations.Count > 0)
+                { 
+                    <div class="card bg-light text-center card-form">
+                             <div class="card-body" id="card">
+                                 <table class="table">
+                                     <h4>Top 5 ideations</h4>
+                                     @if (@Model.project.ideations.Count - 1 < 4)
+                                     {
+                                         foreach (var ideation in @Model.project.ideations)
+                                         {
+                                             <tr>
+                                                 <td>
+                                                     Ideation
+                                                 </td>
+                                                 <td>
+                                                     @Html.ActionLink("Show ideas", "Ideas", "Idea"
+                                                         , new {ideationId = ideation.ideationId})
+                                                 </td>
+                                             </tr>
+                                         }
+                                     }
+                                     else
+                                     {
+                                         for (var i = 0; i < 5; i++)
+                                         {
+                                             <tr>
+                                                 <td>
+                                                     @Model.ideationQuestions.ToList()[i].question
+                                                 </td>
+                                                 <td>
+                                                     @Html.ActionLink("Show ideas", "Ideas", "Idea"
+                                                         , new {id = @Model.ideationQuestions.ToList()[i].ideation.ideationId})
+                                                 </td>
+                                             </tr>
+                                         }
+                                     }
+                                 </table>
+
+                                 <button type="submit" class="btn btn-success">@Html.ActionLink("Show all ideations", "Project", "Project"
+                            , new {id = Model.project.projectId})</button>
+                    
+                   </div>
+               </div>
+                    
+                }
+
+    </div>
+<div class="col-md-4 center-block">
+   
+            @if (Model.project.questionnaires.Count > 0)
             {
-                <tr>
-                    <td>
-                        @questionnaire.name
-                    </td>
-                    <td>
-                        @questionnaire.questionAmount
-                    </td>
-                    <td>
-                        @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                            , new {questionnaireId = questionnaire.id})
-                    </td>
-                </tr>
+                <div class="card bg-light text-center card-form">
+                    <div class="card-body" id="card">
+                <h4>Top 5 questionnaires</h4>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    <p>Questionnaire name</p>
+                                </th>
+                                <th>
+                                    <p>Amount of questions</p>
+                                </th>
+                            </tr>
+                            @if (@Model.project.questionnaires.ToList().Count - 1 < 4)
+                            {
+                                foreach (var questionnaire in @Model.project.questionnaires)
+                                {
+                                    <tr>
+                                        <td>
+                                            @questionnaire.name
+                                        </td>
+                                        <td>
+                                            @questionnaire.questionAmount
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                                                , new {questionnaireId = questionnaire.id})
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                for (var i = 0; i < 5; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Model.project.questionnaires.ToList()[i].name
+                                        </td>
+                                        <td>
+                                            @Model.project.questionnaires.ToList()[i].questionAmount
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                                                , new {questionnaireId = @Model.project.questionnaires.ToList()[i].id})
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                        <button type="submit" class="btn btn-success text-white">
+                        @Html.ActionLink("Show all questionnaires", "Questionnaires", "Questionnaire"
+                    , new {projectId = Model.project.projectId})</button>
+            </div>
+        </div>        
             }
-        </table>
-        @Html.ActionLink("Show all questionnaires", "Questionnaires", "Questionnaire"
-            , new {projectId = Model.project.projectId})
-    }
 
-    @if (@Model.ideationQuestions.Count > 0)
-    {
-        <h3>Central questions (@Model.ideationQuestions.Count)</h3>
-        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                @for (var i = 0; i < @Model.ideationQuestions.Count; i++)
+</div>
+</div>
+
+@if (@Model.ideationQuestions.Count > 0)
+{
+    <h3 class="text-center">Central questions (@Model.ideationQuestions.Count)</h3>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner text-center" role="listbox">
+            @for (var i = 0; i < @Model.ideationQuestions.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <div class="item active">
+                        <p>@Model.ideationQuestions.ToList()[i].question</p>
+                        <p>@Model.ideationQuestions.ToList()[i].description</p>
+                        <a href="http://@Model.ideationQuestions.ToList()[i].backgroundInfo">More background info</a>
+                    </div>
+                }
+                else
                 {
                     if (i == 0)
                     {

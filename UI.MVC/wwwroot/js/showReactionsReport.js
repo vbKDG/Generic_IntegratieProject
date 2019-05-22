@@ -53,11 +53,11 @@ $(document).ready(function() {
             }            
             $("div[id^='reactions-']").each(function() {
                 var buttonNr = $(this).attr('id').toString().split('-')[1];
-                $('#showReactions-' + buttonNr).html('Show reactions');
+                $('#showReactions-' + buttonNr).html('');
                 $(this).hide(); 
             });
             if(shown) {
-                $('#showReactions-' + number).html('Hide reactions');
+                $('#showReactions-' + number).html('');
                 $('#reactions-' + number).show();
             }
         });
