@@ -297,7 +297,7 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
 
-        public IActionResult Idea(int ideaId = 6)
+        public IActionResult Idea(int ideaId = 10)
         {
             String[] test = new string[8];
             Idea idea = ideationMgr.getIdea(ideaId);

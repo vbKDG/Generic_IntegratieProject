@@ -284,6 +284,7 @@
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
             <e p="CreateQuestionPage.cshtml" t="Include" />
+            <e p="Idea.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
             <e p="Sort.cshtml" t="Include" />
@@ -398,17 +399,21 @@
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />
             <e p="handleFaq.js" t="Include" />
+            <e p="ImageFieldEditor.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="logoutForm.js" t="Include" />
-            <e p="Maps.js" t="Include" />
+            <e p="MapEditor.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="QuestionFieldEditor.js" t="Include" />
             <e p="searchBarAutoComplete.js" t="Include" />
             <e p="showPostChange.js" t="Include" />
             <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
+            <e p="TextFieldEditor.js" t="Include" />
             <e p="toastr.js" t="Include" />
             <e p="UploadScript.js" t="Include" />
+            <e p="VideoFieldEditor.js" t="Include" />
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">

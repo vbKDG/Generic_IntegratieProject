@@ -1,0 +1,310 @@
+@using Domain
+@model D.UI.MVC.Models.Ideas.IdeaVM
+
+<script src="@Url.Content("~/js/ImageFieldEditor.js")"></script>
+<link rel="stylesheet" href="~/css/carousel.css"> 
+<script src="@Url.Content("~/js/ImageFieldEditor.js")"></script>
+<link rel="stylesheet" href="~/css/TextSlideShow.css"> 
+<link rel="stylesheet" href="~/css/VideoSlideShow.css"> 
+<script src="@Url.Content("~/js/VideoFieldEditor.js")"></script>
+
+
+
+
+<div id="TextUploads">
+    <div id="TextSlideshow" class="textslideshow-container">        
+        <!-- Next and previous buttons -->
+        <a  class="prevText" onclick="plusTexts(-1)">&#10094;</a>
+        <a  class="nextText" onclick="plusTexts(1)">&#10095;</a>
+   
+     
+    @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+    {
+        if (i == 0 && @Model.TextFieldVms.Count > 1)
+        {
+            <div class="TextSlides" style="display: block;">
+                
+                <p>@Model.TextFieldVms[i].text </p>
+            </div>
+        }
+        else
+        {
+            <div  class="TextSlides" style="display: none;">
+                <p>@Model.TextFieldVms[i].text </p>
+            </div>
+        }
+           
+    }
+    </div>  
+
+    <!-- The dots/circles -->
+    <div id="textdots" style="text-align: center">
+        @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+        {
+            <span class="Textdot"></span>
+        }
+
+    </div>
+    
+    
+    <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
+</div>
+<div id="ImageUploads">
+
+    <div id="ImageSlideshow" class="slideshow-container">
+
+       
+          
+
+        <!-- Next and previous buttons -->
+        <div id="sliders" >
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+               
+        
+        @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
+        {
+            if (i == 0 && @Model.ImageFieldVms.Count > 1)
+            {
+                <div class="mySlides" style="display: block;">
+                    <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                </div>
+            }
+            else
+            {
+                <div  class="mySlides" style="display: none;">
+                    <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                </div>
+            }
+           
+        }
+    </div>
+    
+    
+
+
+
+
+
+
+    <!-- The dots/circles -->
+    <div id="dots" style="text-align: center" >
+    
+        @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
+        {
+            <span class="dot" onclick="currentSlide(i)"></span>
+        }
+    
+    
+    </div>
+</div>
+
+<div id="VideoUploads">
+    <div id="VideoSlideshow" class="videoslideshow-container">
+
+          
+
+        <!-- Next and previous buttons -->
+        <div id="videosliders" >
+            <a class="prevVid" onclick="plusVideos(-1)">&#10094;</a>
+            <a class="nextVid" onclick="plusVideos(1)">&#10095;</a>
+        </div>
+        
+        
+        @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
+        {
+            if (i == 0 && @Model.VideoFieldVms.Count > 1)
+            {
+                <div class="VideoSlides" style="display: block;">
+                    <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
+                    
+                    
+                </div>
+            }
+            else
+            {
+                <div  class="VideoSlides" style="display: none;">
+                    <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
+                </div>
+            }
+           
+        }
+        
+        
+    </div>
+
+
+
+
+
+
+    <!-- The dots/circles -->
+    <div id="videodots" style="text-align: center" >
+        @*<span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>*@
+        
+        @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
+        {
+            <span class="VideoDot " onclick="currentVideo(i)"></span>
+        }
+    </div>
+</div>
+<div id="QuestionUploads">
+ @foreach (var item in Model.QuestionFieldVms)
+ {
+     
+            if (!User.Identity.IsAuthenticated)
+            {
+                if (item.Question.questionType == QuestionType.MAILADDRESS)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            <input name="email" type="text">
+                        </td>
+                    </tr>
+                }
+            }
+            if (item.Question.questionType == QuestionType.DROPDOWN)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.question) <br>
+                        <select id="ddlOptions" name="Answer-@item.id-dropdown">
+                            <option value="0">Please select</option>
+                            @foreach (var option in item.Question.options)
+                            {
+                                <option value="@option.option">@option.option</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            }
+            if (item.Question.questionType == QuestionType.OPEN_QUESTION)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.question) <br>
+                        <textarea name="Answer-@item.id-openquestion" type="text"></textarea>
+                    </td>
+                </tr>
+            }
+            if (item.Question.questionType == QuestionType.RADIO_BUTTON)
+            {
+                <tr>
+                    <td>
+                        <fieldset id="@item.id">
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            @foreach (var option in item.Question.options)
+                            {
+                                <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
+                                @Html.DisplayFor(modelItem => option.option)<br>
+                            }
+                        </fieldset>
+                    </td>
+                </tr>
+            }
+            if (item.Question.questionType == QuestionType.CHECK_BOX)
+            {
+                <tr>
+                    <td>
+                        <fieldset id="@item.id">
+                            @Html.DisplayFor(modelItem => item.question) <br>
+                            @foreach (var option in item.Question.options)
+                            {
+                                <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
+                                @Html.DisplayFor(modelItem => option.option)<br>
+                            }
+                        </fieldset>
+                    </td>
+                </tr>
+            }
+        }
+        
+</div>   
+
+if (Model.ideas.ToList()[i].disapproved == false)
+        {
+             <tr>
+                <td>
+                    @Model._user.FirstName @Model._user.LastName.Substring(0,1).
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button id="likeIdea-@Model.IdeaId" type="button" 
+                                onclick="location.href='@Url.Action("LikeIdea", "Idea"
+                               , new {ideaId = @Model.IdeaId})', userLikedIdea()" >Like</button>
+                        <span id="ideaLikeCount-@Model.IdeaId">(@Model.ideaLikes.Count)</span><br>
+                    }
+                    else
+                    {
+                        <button title="You have to be signed in">Like</button>
+                        <span>(@Model.ideaLikes.Count)</span><br>
+                    }
+                   
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
+                    }
+                    else
+                    {
+                        <button title="You have to be signed in to report an idea">Report idea</button><br>
+                    }
+                    
+                    <button id="showReactions">Show reactions</button>
+                    <div id="reactions">
+                        @foreach (var reaction in Model.reactions.ToList())
+                        {
+                            if (reaction.disapproved == false)
+                            {
+                                if (reaction.idea.ideaId == @Model.IdeaId)
+                                {
+                                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
+                                    @reaction.content
+                                    <button id="likeReaction-@reaction.reactionId" type="button" 
+                                            onclick="location.href='@Url.Action("LikeReaction", "Idea"
+                                              , new {reactionId = @reaction.reactionId})', userLikedReaction()" >Like</button>
+                                    <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
+                                    if (User.Identity.IsAuthenticated)
+                                    {
+                                        <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
+                                    }
+                                    else
+                                    {
+                                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
+                                <span>(@reaction.reactionLikes.Count)</span>
+                                <span class="text-danger">This reaction has been blocked!</span><br>
+                            }
+                        }
+                        <div id="newReaction-@Model.IdeaId"></div>
+                        <div>
+                            @using (Html.BeginForm("ReactIdea", "Idea",
+                                FormMethod.Post))
+                            {
+                                <p>Write your own reaction: </p>
+                                <input name="reaction" id="reaction-@Model.IdeaId" type="text" />
+                                <input name="idea" value="@Model.IdeaId" type="hidden" />
+                                <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    @Model._user.FirstName @Model._user.LastName.Substring(0,1).
+                    <span>(@Model.ideaLikes.Count)</span><br>
+                    <span class="text-danger">This idea has been blocked!</span>
+                </td>
+            </tr>
+        }
