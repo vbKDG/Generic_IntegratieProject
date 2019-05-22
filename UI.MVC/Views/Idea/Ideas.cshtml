@@ -6,11 +6,9 @@
 <script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
 <link rel="stylesheet" href="~/css/reportPopUp.css">
 
-<body>
-<div class="container">
-    <div class="row center-block">
-        <div class="col-md-4">
-        <div class="card bg-light card-form">
+<h1>Ideas</h1>
+@Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
+    , new { ideationId=@Model.IdeationId})
 
 <table class="table">
     <tr>
@@ -30,21 +28,37 @@
                         <i class="glyphicon glyphicon-ok-circle"></i>
                     }
                     @if (User.Identity.IsAuthenticated)
-                    @*
-            <h1 class="text-center">Ideas</h1>
-            <div class="card-body" id="card">
-                <div class="text-center">
-                @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
-                    , new {ideationId = @Model.IdeationId})
-</div>
-                <table class="table">
-                    <tr>
-                        
-                    </tr>
-                    @for (var i = 0; i < Model.ideas.Count; i++)
-                    *@
                     {
-                        if (Model.ideas.ToList()[i].disapproved == false)
+                        <button id="likeIdea-@Model.ideas.ToList()[i].ideaId" type="button" 
+                                onclick="location.href='@Url.Action("LikeIdea", "Idea"
+                               , new {ideaId = @Model.ideas.ToList()[i].ideaId})', userLikedIdea()" >Like</button>
+                        <span id="ideaLikeCount-@Model.ideas.ToList()[i].ideaId">(@Model.ideas.ToList()[i].ideaLikes.Count)</span><br>
+                    }
+                    else
+                    {
+                        <button title="You have to be signed in">Like</button>
+                        <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span><br>
+                    }
+                    @foreach (var field in Model.fields)
+                    {
+                        if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)
+                        {
+                            @field.text
+                            <br>
+                        }
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button onclick="showPopup(@Model.ideas.ToList()[i].ideaId, 'idea', 0);">Report idea</button><br>
+                    }
+                    else
+                    {
+                        <button title="You have to be signed in to report an idea">Report idea</button><br>
+                    }
+                    
+                    <button id="showReactions-@i">Show reactions</button>
+                    <div id="reactions-@i">
+                        @foreach (var reaction in Model.reactions.ToList())
                         {
                             if (reaction.disapproved == false)
                             {
@@ -63,112 +77,47 @@
                                     if (User.Identity.IsAuthenticated)
                                     {
                                         <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
-                                        @*
-                            <tr>
-                                <td>
-                                    @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0, 1).
-                                    @if (User.Identity.IsAuthenticated)
-                                    {    
-                                        <i class="far fa-lightbulb" id="likeIdea-@Model.ideas.ToList()[i].ideaId"
-                                     
-                                      onclick="location.href='@Url.Action("LikeIdea", "Idea"
-                                                                                                                 , new {ideaId = @Model.ideas.ToList()[i].ideaId})', userLikedIdea()"
-                                        >
-                                     </i>
-                                        <span id="ideaLikeCount-@Model.ideas.ToList()[i].ideaId">(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
-                                    }
-                                    *@
-                                    else
-                                    {
-                                        <button title="You have to be signed in">Like</button>
-                                        <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span>
-                                    }
-                                    @foreach (var field in Model.fields)
-                                    {
-                                        if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)
-                                        {
-                                            @field.text
-                                        }
-                                    }
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        
-                                        <i id="IdeaElement" class="far fa-trash-alt" onclick="showPopup(@Model.ideas.ToList()[i].ideaId, 'idea', 0);"></i>                                                                                          
                                     }
                                     else
                                     {
-                                        <button title="You have to be signed in to report an idea">Report idea</button><br>
-                                    }    
-                                    <i id="showReactions-@i" class="far fa-comments"></i>
-                                    <div id="reactions-@i">
-                                        @foreach (var reaction in Model.reactions.ToList())
-                                        {
-                                            if (reaction.disapproved == false)
-                                            {
-                                                if (reaction.idea.ideaId == @Model.ideas.ToList()[i].ideaId)
-                                                {
-                                                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                                                    @reaction.content
-                                                    
-                                                    <i id="likeReaction-@reaction.reactionId" class="far fa-lightbulb" id="likeIdea-@Model.ideas.ToList()[i].ideaId"
-                                     
-                                                       onclick="location.href='@Url.Action("LikeReaction", "Idea"
-                                                                                   , new {reactionId = @reaction.reactionId})', userLikedReaction()"
-                                                       
-                                                    >
-                                                    </i>
-                                                    <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
-                                                    if (User.Identity.IsAuthenticated)
-                                                    {
-                                                        <i class="far fa-trash-alt" onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)"></i> 
-                                                        <br>
-                                                    }
-                                                    else
-                                                    {
-                                                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                                                <span>(@reaction.reactionLikes.Count)</span>
-                                                <span class="text-danger">This reaction has been blocked!</span><br>
-                                            }
-                                        }
-                                        <div id="newReaction-@Model.ideas.ToList()[i].ideaId"></div>
-                                        <div>
-                                            @using (Html.BeginForm("ReactIdea", "Idea",
-                                                FormMethod.Post))
-                                            {
-                                                <p>Write your own reaction: </p>
-                                                <input name="reaction" id="reaction-@Model.ideas.ToList()[i].ideaId" type="text"/>
-                                                <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden"/>
-                                                <button class="btn-success" id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit" onclick="userSubmittedReaction()">React</button>
-                                            }
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
+                                <span>(@reaction.reactionLikes.Count)</span>
+                                <span class="text-danger">This reaction has been blocked!</span><br>
+                            }
                         }
-                        else
-                        {
-                            <tr>
-                                <td>
-                                    @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0, 1).
-                                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span><br>
-                                    <span class="text-danger">This idea has been blocked!</span>
-                                </td>
-                            </tr>
-                        }
-                    }
-                </table>
-            </div>
-        </div>
-</div>
-    </div> 
-    </div>
-    </body>
+                        <div id="newReaction-@Model.ideas.ToList()[i].ideaId"></div>
+                        <div>
+                            @using (Html.BeginForm("ReactIdea", "Idea",
+                                FormMethod.Post))
+                            {
+                                <p>Write your own reaction: </p>
+                                <input name="reaction" id="reaction-@Model.ideas.ToList()[i].ideaId" type="text" />
+                                <input name="idea" value="@Model.ideas.ToList()[i].ideaId" type="hidden" />
+                                <button id="submitReaction-@Model.ideas.ToList()[i].ideaId" type="submit" onclick="userSubmittedReaction()">React</button>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    @Model.ideas.ToList()[i].user.FirstName @Model.ideas.ToList()[i].user.LastName.Substring(0,1).
+                    <span>(@Model.ideas.ToList()[i].ideaLikes.Count)</span><br>
+                    <span class="text-danger">This idea has been blocked!</span>
+                </td>
+            </tr>
+        }
+    }
+</table>
 
 <div id="blur" name="blur"></div>
 <div id="popup" name="popup">
