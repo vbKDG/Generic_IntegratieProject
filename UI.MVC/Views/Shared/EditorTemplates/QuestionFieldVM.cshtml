@@ -1,96 +1,12 @@
 @model D.UI.MVC.Models.Fields.QuestionFieldVm
 
-
-
-
-
-
-@*@using (Html.BeginForm("CreateQuestion", "Idea", FormMethod.Post))
-{*@
-   
-@*
-    <h5>What do you want to ask?</h5>
-    <input type="text" name="question"/>
-    <br>
-    <h5>What type of a question is this?</h5>
-    <fieldset id="questionFieldset">
-        <input type="radio" name="questionFieldset" value="radiobutton" checked/>
-        <span>Radio buttons</span><br>
-        <input type="radio" name="questionFieldset" value="checkbox"/>
-        <span>Check boxes</span><br>
-    </fieldset>
-    <button type="button" id="btnAddOption">Add option</button>
-    @Html.AntiForgeryToken()
-    <div id="options"></div>
-    <div class="form-group">
-        <input type="submit" value="Create new question" class="btn btn-default"/>
-    </div>
-    *@
-
-@*<div id="question @ViewBag.index">
-
-<h2 id="title @ViewBag.index">Question: @ViewBag.index </h2>
-<h5>What do you want to ask?</h5>
-<input type="text" name="question"/>
-<fieldset id="questionFieldset">
-    <input type="radio" name="questionFieldset" value="radiobutton" checked/>
-    <span>Radio buttons</span><br>
-    <input type="radio" name="questionFieldset" value="checkbox"/>
-    <span>Check boxes</span><br>
-</fieldset>
-<div id="options">
-    <div>
-        <button id="Add_Option" onclick="AddOption()" type="Button">Add option</button>
-        <button id="Remove_Option" onclick="RemoveOption()" type="Button" disabled="true">Remove option</button>
-    </div>
-    <table>
-
-        @for (int i = 1; i < @Model.Options.Length + 1; i++)
-        {
-
-            if (i > 2)
-            {
-
-                $1$
-                @Html.LabelFor(x => x.Options[@i],"option")
-                #1#
-                <label asp-for="Options[i - 1]" hidden="true">Option @i :</label>
-
-                $1$<label asp-for="Options[i]" >Option @i :</label>#1#
-                <div class="option"> <input asp-for="Options[i - 1]" type="text" hidden="true"/> </div>
-            }
-            else
-            {
-                <label asp-for="Options[i - 1]">Option @i :</label>
-                <div class="option"> <input asp-for="Options[i - 1]" type="text"/> </div>
-
-            }
-
-        }
-
-    </table>
-
-    <button id="Add_Question" type="button" onclick="AddQuestion()">Add Question</button>
-    
-</div>
-
-</div>*@
 @if (ViewBag.index == 1)
 {
     <link rel="stylesheet" href="~/css/QuestionSliders.css"> 
 
     <div id="template">
 
-        @*
-        <a class="title" onclick="plusSlides(-1)">&#10094;</a>
-        
-        <h2 class="title" id="questionTitle">Question 1</h2>
-        
-        <a class="title" onclick="plusSlides(1)">&#10095;</a>
-        *@
-        
-      @*  <div id="QuestionSlider"> *@
-            
+     
             
                     <a hidden="true" class="prevQuestion" onclick="ChangeQuestion(-1)">&#10094;</a>
                     <a hidden="true" class="nextQuestion" onclick="ChangeQuestion(1)">&#10095;</a>
@@ -129,7 +45,7 @@
         
   
     </div>
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         
          
         var optionIndex = 2;
@@ -247,56 +163,6 @@
                 ChangeQuestion(questionCount - questionIndex);
                 questionIndex = questionCount;
 
-                /*var questionInput = document.getElementById('QuestionFieldVms_' + questionCount + '__question');                      
-                var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionCount + '__questionType');
-                var option1Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_0_');
-                var option2Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_1_');
-                var option3Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_2_');
-                var option4Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_3_');
-                var option5Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_4_');
-                     
-                questionInput.value = question.value;
-               //  console.log(questionInput.value);
-               // console.log(questionInput.valueOf());
-               
-                
-                if (questionType_1.checked == true) {
-                    questionTypeInput.value = questionType_1.value;
-    
-                } else {
-                    questionTypeInput.value = questionType_2.value;
-    
-                }
-                //  console.log(questionTypeInput.value);
-                //  console.log(questionTypeInput.valueOf());
-    
-                
-                option1Input.value = option1.value;
-                //   console.log(option1Input.value);
-                //  console.log(option1Input.valueOf());
-    
-                
-                option2Input.value = option2.value;
-                //  console.log(option2Input.value);
-                //  console.log(option2Input.valueOf());
-    
-                
-                option3Input.value = option3.value;
-                //   console.log(option3Input.value);
-                //  console.log(option3Input.valueOf());
-                
-                option4Input.value = option4.value;
-                //    console.log(option4Input.value);
-                //   console.log(option4Input.valueOf());
-    
-                
-                option5Input.value = option5.value;
-                //  console.log(option5Input.value);
-                //  console.log(option5Input.valueOf());
-    */
-
-
-               // questionIndex++;
 
                 console.log('questionindex: ' + questionIndex);
                 console.log('questioncount: ' + questionCount);
@@ -361,31 +227,7 @@
             option4Input.value = '';
             option5Input.value = '';
             
-            /*var titleNumber = questionIndex + 1;    
-               // reset form 
-               questionTitle.innerText = "Question " + (questionIndex + 1);
-           
-               question.value = '';
-           
-               questionType_1.checked = true; 
-           
-               option1.value = '';
-           
-               option2.value = '';
-           
-               option3.value = ''; 
-               option3.hidden = true; 
-               label3.hidden = true; 
-
-               option4.value = ''; 
-               option4.hidden = true; 
-               label4.hidden = true; 
-
-
-               option5.value = '';
-               option5.hidden = true;
-               label5.hidden = true; */
-          
+         
             
             if (questionIndex == questionCount) {
                 ChangeQuestion(-1,true);
@@ -552,11 +394,9 @@
            
         
 
-//        function AddQuestion(parameters) {
-//            questionIndex++;
-//            $("#question 1").attr('hidden', true);
-//        }
-    </script>
+    </script>*@
+    <script src="@Url.Content("~/js/QuestionFieldEditor.js")"></script>
+
 }
 
     <div class="question" id="question @ViewBag.index">

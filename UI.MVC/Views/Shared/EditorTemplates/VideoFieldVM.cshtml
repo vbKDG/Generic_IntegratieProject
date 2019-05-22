@@ -45,8 +45,11 @@
             <span class="dot" onclick="currentSlide(3)"></span>*@
         </div>
         <button type="button" id="removeVid" onclick="ClearVideo()" hidden="true"> Remove</button>
+        
+        <script src="@Url.Content("~/js/VideoFieldEditor.js")"></script>
 
-        <script type="text/javascript">
+@*
+<script type="text/javascript">
     
     
     
@@ -96,13 +99,7 @@
             VideoFiles[VideoFiles.length] = input.file;
              console.log(VideoFiles.length);
             
-//            <video id="video_preview" width="560"
-//            height="315"
-//            hidden
-//            frameborder="0"
-//            controls
-//                >
-//                </video>
+
          
             inputString += '<video id="video' + VideoFiles.length + '" src="#" width="560" height="315" controls/>';
             $("#VideoSlideshow").append('<div class="VideoSlides" >'+ inputString +'</div>');
@@ -125,19 +122,19 @@
             var btn2 = '#VideoFieldVms_' + VideoFiles.length.toString() + '__VideoFile_Files_0_';
             var remove = '#removeVid';
            
-    
+            $('#removeVid').attr('hidden', false);
             $(btn1).attr('hidden', true);
             $(btn2).attr('hidden', false);
             $(remove).attr('hidden', false);
 
           //  $(btn2).attr('disabled', false);
-            if (VideoFiles.length > 0) {
-                $(remove).attr('hidden', false);
-
-            } else {
-                $(remove).attr('hidden', true);
-
-            }
+//            if (VideoFiles.length > 0) {
+//                $(remove).attr('hidden', false);
+//
+//            } else {
+//                $(remove).attr('hidden', true);
+//
+//            }
         
             if (VideoFiles.length > 1) {
                 $('#videosliders').attr('hidden', false);
@@ -205,6 +202,7 @@
 
              
 </script>
+*@
 
 
 

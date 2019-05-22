@@ -52,7 +52,17 @@
             <span class="dot" onclick="currentSlide(3)"></span>*@
         </div>
         <button type="button" id="removeImage" onclick="ClearImage()" hidden="true"> Remove</button>
-        <script type="text/javascript">
+        
+        
+
+
+        <script src="@Url.Content("~/js/ImageFieldEditor.js")"></script>
+
+
+    }
+
+@*
+<script type="text/javascript">
     
     
     
@@ -111,7 +121,7 @@
         
        
             //
-            var dotString = '<span class="dot" onclick="currentSlide('+ imageFiles.length +')"></span>'
+            var dotString = '<span class="dot" onclick="currentSlide(' + imageFiles.length + ')"></span>';
             $("#dots").append(dotString);
             //console.log(imageFiles.length);
             slideIndex = imageFiles.length;
@@ -203,27 +213,10 @@
     }
 
              
-</script>
-
-
-
-    }
-
-
+</script>*@
 
 </div>
 
 
 
 
-
-
-@*
-if (input.files && input.files[0]) {
-var reader = new FileReader();
-reader.onload = function(e) {
-$('#image_preview').attr('src', e.target.result);
-$('#image_preview').attr('hidden', false);
-}
-reader.readAsDataURL(input.files[0]);
-}*@

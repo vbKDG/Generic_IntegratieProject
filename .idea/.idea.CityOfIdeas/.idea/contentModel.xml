@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\sefik\.Rider2019.1\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\sefik\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_CityOfIdeas.1777919897.00" t="ExcludeRecursive" />
-    <e p="C:\Users\sefik\OneDrive\Documenten\GitHub\Generic_IntegratieProject" t="IncludeFlat">
+    <e p="C:\Users\Alex\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_CityOfIdeas.-269197218.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
           <e p="OrchestratorSystemController.cs" t="Include" />
@@ -280,6 +282,7 @@
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
             <e p="CreateQuestionPage.cshtml" t="Include" />
+            <e p="Idea.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="MapInput.cshtml" t="Include" />
             <e p="Sort.cshtml" t="Include" />
@@ -393,17 +396,21 @@
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />
             <e p="handleFaq.js" t="Include" />
+            <e p="ImageFieldEditor.js" t="Include" />
             <e p="ImageUpload.js" t="Include" />
             <e p="logoutForm.js" t="Include" />
-            <e p="Maps.js" t="Include" />
+            <e p="MapEditor.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="QuestionFieldEditor.js" t="Include" />
             <e p="searchBarAutoComplete.js" t="Include" />
             <e p="showPostChange.js" t="Include" />
             <e p="showReactionsReport.js" t="Include" />
             <e p="site.js" t="Include" />
             <e p="site.min.js" t="Include" />
+            <e p="TextFieldEditor.js" t="Include" />
             <e p="toastr.js" t="Include" />
             <e p="UploadScript.js" t="Include" />
+            <e p="VideoFieldEditor.js" t="Include" />
           </e>
           <e p="lib" t="Include">
             <e p="bootstrap" t="Include">

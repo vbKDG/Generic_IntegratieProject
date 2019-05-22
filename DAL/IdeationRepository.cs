@@ -331,10 +331,17 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            return ctx.ideas
+            
+            
+            Idea idea = ctx.ideas
                 .Include(i => i.fields)
                 .Include(i => i.user)
                 .SingleOrDefault(i => i.ideaId == ideaId);
+            
+            idea.fields.Add(ctx.questionFields.Find());
+            return idea;
+
+
         }
 
         public Reaction readReaction(int reactionId)

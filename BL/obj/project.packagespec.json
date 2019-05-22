@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj",
+    "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\BL\\BL.csproj",
     "projectName": "BL",
-    "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\BL\\BL.csproj",
-    "outputPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\BL\\obj\\",
+    "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\BL\\BL.csproj",
+    "outputPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\BL\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12,17 +12,14 @@
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
-    "sources": {
-      "https://api.nuget.org/v3/index.json": {}
-    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj": {
-            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\DAL\\DAL.csproj"
+          "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\DAL\\DAL.csproj": {
+            "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\DAL\\DAL.csproj"
           },
-          "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj": {
-            "projectPath": "C:\\Users\\sefik\\OneDrive\\Documenten\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj"
+          "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Domain\\Domain.csproj": {
+            "projectPath": "C:\\Users\\Alex\\Desktop\\Stack\\‌IntegratieProject 2019\\Generic_Repo\\Domain\\Domain.csproj"
           }
         }
       }
