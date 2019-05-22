@@ -1,15 +1,16 @@
 @model D.UI.MVC.Models.Fields.TextFieldVm
 
 <div id="textinputs"> 
-<textarea class="textfield" asp-for="text" rows="10" cols="30" hidden="true" ></textarea>
+    @*
+    <textarea class="textfield" asp-for=@Model.text rows="10" cols="30" hidden="true" ></textarea>
+    *@
+    <input class="textfield" asp-for="text" hidden="true"/>
 </div>  
 <table>
     <td>
         @if (ViewBag.index == 0)
         {
-            
-      
-              
+                               
             <link rel="stylesheet" href="~/css/TextSlideShow.css"> 
             <table>
 
@@ -28,34 +29,31 @@
     <td>
         @if (ViewBag.index == 0)
     {
-        <div id="TextSlideshow" class="textslideshow-container">
-
-          
-
+        <div id="TextSlideshow" class="textslideshow-container">        
             <!-- Next and previous buttons -->
-            @*<div id="textsliders" hidden="true">*@
-                <a class="prevText" onclick="plusTexts(-1)">&#10094;</a>
-                <a class="nextText" onclick="plusTexts(1)">&#10095;</a>
+                <a hidden="true" class="prevText" onclick="plusTexts(-1)">&#10094;</a>
+                <a hidden="true" class="nextText" onclick="plusTexts(1)">&#10095;</a>
         </div>
-
-
-
-
-
 
         <!-- The dots/circles -->
         <div id="textdots" style="text-align: center" hidden="true">
-            @*<span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>*@
+          
         </div>
-        <button id="removeVid" onclick="ClearVideo()" hidden="true"> Remove</button>
+        <button type="button" id="removeText" onclick="ClearText()" hidden="true"> Remove</button>
         
 
-<script type="text/javascript">
+    
+        <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
+
+              
+    }
+    </td>
+    
+</table>
+   
+      @*<script type="text/javascript">
 
     var textIndex = 0;
-    var textMax = 0;
     var TextTracker = [];
 
     var slideIndex = 0;
@@ -75,34 +73,48 @@
 
 // Next/previous controls
     function plusTexts(n) {
-        showTexts(slideIndex += n);
-        console.log(slideIndex);
+        var textCount = (document.getElementsByClassName('TextSlides')).length;
+        console.log('testcount: ' +  textCount);
+        if ((slideIndex + n) >= textCount) {
+            slideIndex = 0;
+        } else if( slideIndex + n < 0) {
+            slideIndex = textCount - 1;
+
+        } else {
+            slideIndex += n;
+        }
+        console.log('slideeeeee: ' +  slideIndex);
+        showTexts(slideIndex);
+        
     }
 
 // Thumbnail Text controls
-    function currentText(n) {
-        showTexts(slideIndex = n);
+    function currentButton(input) {
+        console.log("alexxxx");   
+        input.className.replace(" active", "");  
     }
-
-    $(document).ready(function() {
-        textMax = (document.getElementsByClassName('textfield').length);
-
-    }); 
+    
+    function currentText(n = slideIndex) {
+        slideIndex = n;
+        
+        showTexts(slideIndex);
+    }   
     function showTexts(n) {
         var i;
         var slides = document.getElementsByClassName("TextSlides");
-        var textDots = document.getElementsByClassName("TextDot");
+        var textDots = document.getElementsByClassName("Textdot");
       
-        if (n > slides.length) {slideIndex = 1} 
-        if (n < 1) {slideIndex = slides.length}
+
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none"; 
         }
         for (i = 0; i < textDots.length; i++) {
             textDots[i].className = textDots[i].className.replace(" active", "");
         }
-        slides[slideIndex-1].style.display = "block"; 
-       // textDots[slideIndex-1].className += " active";
+        console.log('slideeeeee2: ' +  slideIndex);
+
+        slides[slideIndex].style.display = "block"; 
+        textDots[slideIndex].className += " active";
     }
     
     var TextFiles = [];
@@ -142,12 +154,12 @@
                 '" >' +
                 TextFiles[TextFiles.length - 1].toString() +
                 '  </p>';
-            $("#TextSlideshow").append('<div class="TextSlides" >' + inputString + '</div>');
+            $("#TextSlideshow").append('<div class="TextSlides" id="TextSlides'+ textIndex +'" >' + inputString + '</div>');
 
 
             console.log(textIndex);
             //
-            var dotString = '<span class="Textdot" onclick="currentText(' + TextFiles.length + ')"></span>';
+            var dotString = '<span class="Textdot" ></span>';
             $("#textdots").append(dotString);
             $("#textdots").attr("hidden", false);
             $("#textsliders").attr("hidden", false);
@@ -162,33 +174,34 @@
 
 
             textIndex++;
-            
+            $('#TextInput').val('');
+         
 
-            /*var btn1 = '#VideoFieldVms_' + (TextFiles.length -1 ).toString() + '__VideoFile_Files_0_';
-            var btn2 = '#VideoFieldVms_' + TextFiles.length.toString() + '__VideoFile_Files_0_';
-            var remove = '#removeVid';
-           
-    
-            $(btn1).attr('hidden', true);
-            $(btn2).attr('hidden', false);
-            $(remove).attr('hidden', false);
+            var TextSlide = document.getElementsByClassName('TextSlides');
 
-          //  $(btn2).attr('disabled', false);
-            if (TextFiles.length > 0) {
-                $(remove).attr('hidden', false);
+            if (TextSlide.length > 1) {
+                $('.nextText').attr('hidden', false);
+                $('.prevText').attr('hidden', false);
 
-            } else {
-                $(remove).attr('hidden', true);
-
-            }*/
-
-            if (TextFiles.length > 1) {
                 $('#textsliders').attr('hidden', false);
                 $('#textdots').attr('hidden', false);
 
             } else {
+                $('.nextText').attr('hidden', true);
+                $('.prevText').attr('hidden', true);
+                
                 $('#textsliders').attr('hidden', true);
                 $('#textdots').attr('hidden', true);
+
+            }
+            
+            if (TextFiles.length > 0) {
+                
+                $('#removeVid').attr('hidden', false);
+
+                
+            } else {
+                $('#removeVid').attr('hidden', true);
 
             }
 
@@ -199,50 +212,70 @@
         
         
         
-    
+    $('#textdots').on('click', '.Textdot', function() {
+        console.log("ssssss");
+        var dots = document.getElementsByClassName('Textdot');
+        
+        for (var y = 0; y < dots.length; y++) {
+            dots[y].className = dots[y].className.replace(" active", "");
+        }
+
+        (this).closest(".Textdot").className += " active";
+        for (var i = 0; i < dots.length; i++) {
+            if (dots[i].className.includes("active")) {
+               // console.log("dotindex: " + i);
+                currentText(i);
+            }
+        }
+        
+        console.log((this).closest(".Textdot"));
+
+    });
     
     function ClearText() {
-        var slides = document.getElementsByClassName("VideoSlides");
-        var videoDots = document.getElementsByClassName("VideoDot");
-        var inputs = document.getElementsByClassName("VideoUpload");
-        console.log(slides);
-        console.log(videoDots);
-        slides[slides.length -1].remove();
-        videoDots[videoDots.length - 1].remove();
-        TextFiles.pop();
-        if (TextFiles.length > 0) {
-            slideIndex = TextFiles.length;
-            showTexts(slideIndex);
-        }
-                
-        if(TextFiles.length < 1) {
-            $('#videosliders').attr('hidden', true);
-            $('#textdots').attr('hidden', true);
-        }
         
-        var remove = '#removeVid';
-           
-           
+        var TextDot = document.getElementsByClassName('Textdot');
+        var TextSlide = document.getElementsByClassName('TextSlides');
+      //  console.log(slideIndex);
+        var id = TextSlide[slideIndex].id.charAt((TextSlide[slideIndex].id).length -1);
+        console.log('id: '+id);
+        TextTracker[id] = true;
+        TextDot[slideIndex].remove();
+        TextSlide[slideIndex].remove();
+        $('#TextFieldVms_' + slideIndex + '__text').attr('value', '');
+        console.log(TextTracker);        
+     
+        slideIndex = (document.getElementsByClassName('TextSlides')).length - 1;
+        console.log('final' + slideIndex);
+       
+        
+        if (TextSlide.length > 1) {
+            $('.nextText').attr('hidden', false);
+            $('.prevText').attr('hidden', false);
 
-        if (TextFiles.length > 0) {
-            $(remove).attr('hidden', false);
+            $('#textsliders').attr('hidden', false);
+            $('#textdots').attr('hidden', false);
 
         } else {
-            $(remove).attr('hidden', true);
+            $('.nextText').attr('hidden', true);
+            $('.prevText').attr('hidden', true);
+                
+            $('#textsliders').attr('hidden', true);
+            $('#textdots').attr('hidden', true);
 
         }
-        
-        var btn1 = '#VideoFieldVms_' + (TextFiles.length ).toString() + '__VideoFile_Files_0_';
-        if (TextFiles.length < inputs.length) {
-        var btn2 = '#VideoFieldVms_' + (TextFiles.length + 1).toString() + '__VideoFile_Files_0_';
-        
-        $(btn2).attr('hidden', true);
-        
-        }
-        $(btn1).attr('hidden', false);
+        if (TextSlide.length < 1) {
 
-        $(btn1).wrap('<form>').closest('form').get(0).reset();
-        $(btn1).unwrap();
+            $('#removeVid').attr('hidden', true);
+
+                
+        } else {
+            $('#removeVid').attr('hidden', false);
+
+        }
+        currentText(slideIndex);
+
+        
 
        
 
@@ -250,14 +283,7 @@
     }
 
              
-</script>                     
-              
-    }
-    </td>
-    
-</table>
-   
-               
+</script>         *@            
                 
                 
        

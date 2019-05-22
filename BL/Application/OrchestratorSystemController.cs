@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace BL.Application
 {
@@ -169,6 +170,12 @@ namespace BL.Application
              uowManager.Save();
 
 
+        }
+
+        public void createIdea(Idea i, string userId)
+        {
+            ideationMgr.createIdea(i,userId);
+            uowManager.Save();
         }
 
         public void createIdea(ICollection<Field> fields)

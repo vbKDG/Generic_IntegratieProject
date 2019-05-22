@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Autofac;
 using BL;
@@ -12,6 +13,7 @@ using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using UI.MVC.Models.Ideations;
@@ -22,6 +24,8 @@ namespace UI.MVC.Controllers
     {
         private IIdeationManager ideationMgr;
         private IQuestionnaireManager questionnaireMgr;
+        private UserManager<ApplicationUser> _userManager;
+
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
 //        public IdeaController(ApplicationDbContext ctx)
@@ -34,8 +38,9 @@ namespace UI.MVC.Controllers
 //            ideationMgr = DIConfig.container.Resolve<IdeationManager>();
 //        }
 
-        public IdeaController()
+        public IdeaController(UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             ideationMgr = new IdeationManager();
             questionnaireMgr = new QuestionnaireManager();
         }
@@ -123,11 +128,13 @@ namespace UI.MVC.Controllers
             List<VideoField> videoFields = new List<VideoField>();
             List<QuestionField> questionFields = new List<QuestionField>();
             List<MapField> mapFields = new List<MapField>();
+            List<TextField> textFields = new List<TextField>();
 
            // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
             //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
            // MapField mapField = new MapField();
-
+           
+           
            foreach (var mapfield in ideaVm.MapFieldVms)
            {
                if (!(mapfield.latitude == 0 && mapfield.longitude == 0))
@@ -136,8 +143,16 @@ namespace UI.MVC.Controllers
                    
                }
            }
-           
 
+           foreach (var textField in ideaVm.TextFieldVms)
+           {
+               if (textField.text != null && textField.text != "")
+               {
+                   textFields.Add(new TextField{text = textField.text});
+               }
+              
+           }
+           
             foreach (var questionVM in ideaVm.QuestionFieldVms)
             {
                 if (questionVM.question != null)
@@ -231,37 +246,18 @@ namespace UI.MVC.Controllers
                 }
                
             }
-            
-            /*for (int i = 0; i < ideaVm.images.Files.Count; i++)
+
+            var ApplicationUserId = ""; 
+            if (User.Identity.IsAuthenticated)
             {
-                videoFields[i] = new VideoField();
-                using (var reader = ideaVm.images.Files[i].OpenReadStream())
-                using (var stream = new MemoryStream())
-                {
-                    {
-                        
-                        reader.CopyTo(stream);
-                        videoFields[i].videoData = stream.ToArray();
-
-                    }
-
-                }
-            }*/
-            
-
-//            using (var reader = ideaVm.videoFieldVM.videoFile.OpenReadStream())
-//            using (var stream = new MemoryStream())
-//            {
-//                {
-//                    reader.CopyTo(stream);
-//                    videoField.videoData = stream.ToArray();
-//
-//                }
-//
-//            }
-
+                ApplicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
+                //idea.user = ApplicationUser;
+            }
             Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
+            //ApplicationUser user = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes).Value).Result;
 
+//            idea.user = user;
             
             idea.ideation = ideation;
 //           
@@ -287,13 +283,83 @@ namespace UI.MVC.Controllers
                 fields.Add(mapField);
 
             }
+
+            foreach (var textfield in textFields)
+            {
+                fields.Add(textfield);
+            }
             idea.fields = fields;
-            ideationMgr.createIdea(idea);
+            ideationMgr.createIdea(idea,ApplicationUserId);
 
             var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.projectId;
 
 
             return RedirectToAction("Project", "Project", new {id = projectId});
+        }
+
+        public IActionResult Idea(int ideaId = 6)
+        {
+            String[] test = new string[8];
+            Idea idea = ideationMgr.getIdea(ideaId);
+            IdeaVM ideaVm = new IdeaVM();
+            List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
+            List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
+            List<VideoFieldVm> videoFieldVms = new List<VideoFieldVm>();
+            List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
+            List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
+            List<IdeaLike> ideaLikes = new List<IdeaLike>();
+            List<Reaction> reactions = new List<Reaction>();
+
+
+            foreach (var field in idea.fields)
+            {
+                
+                if (field.GetType() == typeof(TextField))
+                  {
+                      var textField = (TextField) field;
+                      textFieldVms.Add(new TextFieldVm{text = textField.text});
+                  }
+//                  
+//                if (field.GetType() == typeof(MapField))
+//                {
+//                    var textField = (TextField) field;
+//                    textFieldVms.Add(new TextFieldVm{text = textField.text});
+//                }
+                 
+                if (field.GetType() == typeof(ImageField))
+                {
+                    var imagefield = (ImageField) field;
+                    imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
+                }
+               
+  
+                if (field.GetType() == typeof(VideoField))
+                {
+                    var videoField = (VideoField) field;
+                    videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.GetVideoString() });
+                }
+                   
+                  if (field.GetType() == typeof(QuestionField))
+                  {
+                      var questionField = (QuestionField) field;
+                     // Question question = new Question();
+                      //question.question = question.question;
+                      questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
+                  }
+
+               
+            }
+
+            ideaVm.ImageFieldVms = imageFieldVms;
+            ideaVm.TextFieldVms = textFieldVms;
+            ideaVm.VideoFieldVms = videoFieldVms;
+            ideaVm.QuestionFieldVms = questionFieldVms;
+            ideaVm._user = idea.user;
+            ideaVm.ideaLikes = ideaLikes;
+            ideaVm.reactions = reactions;
+
+
+            return View(ideaVm);
         }
 
         public IActionResult AnswerFaq(IFormCollection form)

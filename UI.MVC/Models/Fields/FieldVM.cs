@@ -32,7 +32,7 @@ namespace D.UI.MVC.Models.Fields
         [Display(Name = "Choose Image")] public IFormCollection imageFile { get; set; }
         //  public IFormFile[] imageFiles { get; set; }
 
-
+        public String Base64Image { get; set; }
 
         public string GetImageData()
         {
@@ -58,6 +58,9 @@ namespace D.UI.MVC.Models.Fields
     {
         public string videoName { get; set; }
         public IFormCollection VideoFile { get; set; }
+        
+        public String Base64Video { get; set; }
+
     }
 
     public class MapFieldVm : FieldVM
@@ -69,6 +72,7 @@ namespace D.UI.MVC.Models.Fields
     public class QuestionFieldVm : FieldVM
     {
         public int id { get; set; }
+        public Question Question { get; set; }
         public String questionType { get; set; }
         public String question { get; set; }
 

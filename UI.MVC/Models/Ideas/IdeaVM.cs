@@ -27,11 +27,14 @@ namespace D.UI.MVC.Models.Ideas
     }*/
     public class IdeaVM 
     {
-
-       
-        
+        public ApplicationUser _user { get; set; }
+        public int IdeaId { get; set; }
         public int ideationId { get; set; }
         public String[] ideationQuestion { get; set; }
+        
+        public List<IdeaLike> ideaLikes { get; set; }
+        public List<Reaction> reactions { get; set; }
+
         
         public int ideaViewModelId { get; set; }
         public string name { get; set; }
@@ -49,18 +52,7 @@ namespace D.UI.MVC.Models.Ideas
         public List<QuestionFieldVm> QuestionFieldVms { get; set; }
         
         public List<MapFieldVm> MapFieldVms { get; set; }
-
-//        //public VideoFieldVm[] VideoFieldVms { get; set; }
-//        //public MapFieldVm[] MapFieldVms { get; set; }
-//        public TextFieldVm textFieldVM { get; set; }
-//      //  public ImageFieldVm imageFieldVM { get; set; }
-//        public VideoFieldVm videoFieldVM { get; set; }
-//        public MapFieldVm    mapFieldVM { get; set; }
-//        public QuestionFieldVm QuestionFieldVm { get; set; }
         
-
-        
-    //  public FieldViewModel fieldViewModel { get; set; }
 
   
     }

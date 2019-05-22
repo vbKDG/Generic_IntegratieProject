@@ -326,10 +326,20 @@ namespace DAL
 
             ctx.ideas.Add(i);           
             ctx.SaveChanges();
-            Console.WriteLine("Opslagen gelukt!");
 
 
         }
+
+        public void createIdea(Idea i, string userId)
+        {
+            ApplicationUser user = ctx.Users.Find(userId);
+            i.user = user;
+            ctx.ideas.Add(i);
+            ctx.SaveChanges();
+
+
+        }
+
         public void createIdea(ICollection<Field> fields)
         {
             Idea i = new Idea();
@@ -342,10 +352,23 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            return ctx.ideas
+            var questionFields = ctx.questionFields.Where(q => q.idea.ideaId == ideaId)
+                .Include(q => q.question)
+                .ThenInclude(o => o.options);
+            
+            Idea idea = ctx.ideas
                 .Include(i => i.fields)
                 .Include(i => i.user)
                 .SingleOrDefault(i => i.ideaId == ideaId);
+            foreach (var questionField in questionFields)
+            {
+                idea.fields.Add(questionField);
+            }
+            
+           
+            return idea;
+
+
         }
 
         public Reaction readReaction(int reactionId)

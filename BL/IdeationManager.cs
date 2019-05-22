@@ -230,6 +230,11 @@ namespace BL
         {
             ideationRepo.createIdea(i);        }
 
+        public void createIdea(Idea i, string userId)
+        {
+           ideationRepo.createIdea(i,userId);
+        }
+
         public void createIdea(ICollection<Field> fields)
         {
             ideationRepo.createIdea(fields);        

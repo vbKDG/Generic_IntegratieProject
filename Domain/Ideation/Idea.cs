@@ -10,7 +10,8 @@ namespace Domain
     //
         [Required]     
         public int ideaId { get; set; }
-        public ApplicationUser user { get; set; }        public Ideation ideation { get; set; }
+        public ApplicationUser user { get; set; } 
+        public Ideation ideation { get; set; }
         public ICollection<Reaction> reactions { get; set; }
         public ICollection<IdeaLike> ideaLikes { get; set; }
         public ICollection<Field> fields { get; set; }
