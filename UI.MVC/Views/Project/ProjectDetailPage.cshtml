@@ -9,9 +9,6 @@
     <h2>Project: @Model.project.name</h2>
     <h4>Description of the project</h4>
     <p>@Model.project.description</p>
-    <p>
-        This is demo text
-    </p>
     @if (@Model.project.imageField != null)
     {
         <img src=@Model.project.imageField.GetImageString() width="500"/>

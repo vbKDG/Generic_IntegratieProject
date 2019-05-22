@@ -1,5 +1,7 @@
 @model D.UI.MVC.Models.Projects.ProjectVM
 
+<link rel="stylesheet" href="~/css/createProjectCustimize.css">
+
 <body>
     <form asp-controller="Project" asp-action="CreateProject" method="post" enctype="multipart/form-data">
 
@@ -68,26 +70,32 @@
                                         <div class="form-group">
                                             <label>Primaire color:</label>
                                             <select asp-for="SettingVm.BackGroundColor1">
-                                                <option value="">Standard</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="red">Red</option>
-                                                <option value="green">Green</option>
-                                                <option value="yellow">Yellow</option>
+                                                <option class="standard" value="">Standard</option>
+                                                <option class="blue" value="blue">Blue</option>
+                                                <option class="red" value="red">Red</option>
+                                                <option class="green" value="green">Green</option>
+                                                <option class="yellow" value="yellow">Yellow</option>
+                                                <option class="orange" value="orange">Orange</option>
                                                 <option value="white">White</option>
                                             </select><br>
                                             <label>Secondary color:</label>
                                             <select asp-for="SettingVm.BackGroundColor2">
-                                                <option value="">Standard</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="red">Red</option>
-                                                <option value="green">Green</option>
-                                                <option value="yellow">Yellow</option>
+                                                <option class="standard" value="">Standard</option>
+                                                <option class="blue" value="blue">Blue</option>
+                                                <option class="red" value="red">Red</option>
+                                                <option class="green" value="green">Green</option>
+                                                <option class="yellow" value="yellow">Yellow</option>
+                                                <option class="orange" value="orange">Orange</option>
                                                 <option value="white">White</option>
                                             </select><br>
                                             <label>Font family:</label>
                                             <select asp-for="SettingVm.FontFamily">
                                                 <option value="">Standard</option>
-                                                <option value="Times new Roman">Times new Roman</option>
+                                                <option id="times" value="Times new Roman">Times new Roman</option>
+                                                <option id="arial" value="Arial">Arial</option>
+                                                <option id="comic" value="Comic Sans MS">Comic Sans MS</option>
+                                                <option id="trebuchet" value="Trebuchet MS">Trebuchet MS</option>
+                                                <option id="impact" value="Impact">Impact</option>
                                             </select>
                                         </div>
                                     </div>
