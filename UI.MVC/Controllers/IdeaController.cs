@@ -13,6 +13,7 @@ using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using UI.MVC.Models.Ideations;
@@ -23,6 +24,8 @@ namespace UI.MVC.Controllers
     {
         private IIdeationManager ideationMgr;
         private IQuestionnaireManager questionnaireMgr;
+        private UserManager<ApplicationUser> _userManager;
+
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
 //        public IdeaController(ApplicationDbContext ctx)
@@ -35,8 +38,9 @@ namespace UI.MVC.Controllers
 //            ideationMgr = DIConfig.container.Resolve<IdeationManager>();
 //        }
 
-        public IdeaController()
+        public IdeaController(UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             ideationMgr = new IdeationManager();
             questionnaireMgr = new QuestionnaireManager();
         }
@@ -242,12 +246,18 @@ namespace UI.MVC.Controllers
                 }
                
             }
-            
-      
 
+            var ApplicationUserId = ""; 
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
+                //idea.user = ApplicationUser;
+            }
             Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
-           // ApplicationUser user = new ApplicationUser{Id = User.FindFirst(ClaimTypes.NameIdentifier).Value};
-           // idea.user = user;
+            //ApplicationUser user = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes).Value).Result;
+
+//            idea.user = user;
             
             idea.ideation = ideation;
 //           
@@ -279,7 +289,7 @@ namespace UI.MVC.Controllers
                 fields.Add(textfield);
             }
             idea.fields = fields;
-            ideationMgr.createIdea(idea);
+            ideationMgr.createIdea(idea,ApplicationUserId);
 
             var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.projectId;
 
@@ -297,6 +307,8 @@ namespace UI.MVC.Controllers
             List<VideoFieldVm> videoFieldVms = new List<VideoFieldVm>();
             List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
+            List<IdeaLike> ideaLikes = new List<IdeaLike>();
+            List<Reaction> reactions = new List<Reaction>();
 
 
             foreach (var field in idea.fields)
@@ -342,6 +354,9 @@ namespace UI.MVC.Controllers
             ideaVm.TextFieldVms = textFieldVms;
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
+            ideaVm._user = idea.user;
+            ideaVm.ideaLikes = ideaLikes;
+            ideaVm.reactions = reactions;
 
 
             return View(ideaVm);

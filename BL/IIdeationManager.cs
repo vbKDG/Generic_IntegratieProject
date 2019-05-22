@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Domain;
 
@@ -18,6 +19,9 @@ namespace BL
 
         IEnumerable<Idea> getIdeas(int ideationId);
         void createIdea(Idea i);
+        
+        void createIdea(Idea i,String userId);
+
         void createIdea(ICollection<Field> fields);
 
         Idea getIdea(int id);
