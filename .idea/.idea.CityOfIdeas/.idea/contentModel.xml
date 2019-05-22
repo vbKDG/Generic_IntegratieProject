@@ -201,6 +201,7 @@
           <e p="AdminController.cs" t="Include" />
           <e p="api" t="Include">
             <e p="ProjectsController.cs" t="Include" />
+            <e p="QuestionnairesController.cs" t="Include" />
           </e>
           <e p="HomeController.cs" t="Include" />
           <e p="IdeaController.cs" t="Include" />
@@ -225,6 +226,7 @@
           <e p="ProjectAndQuestions.cs" t="Include" />
           <e p="Projects" t="Include">
             <e p="ProjectRESTModel.cs" t="Include" />
+            <e p="ProjectRESTModelBasic.cs" t="Include" />
             <e p="ProjectVM.cs" t="Include" />
           </e>
           <e p="QuestionnaireQuestion.cs" t="Include" />

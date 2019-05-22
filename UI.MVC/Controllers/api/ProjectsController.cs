@@ -7,6 +7,7 @@ using BL;
 using D.UI.MVC.Models;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using UI.MVC.Models.Projects;
 
 namespace UI.MVC.Controllers.api
 {
@@ -18,32 +19,20 @@ namespace UI.MVC.Controllers.api
         public IActionResult GetProjects()
         {
             IEnumerable<Project> projects = mgr.getProjects();
-            List<ProjectRESTModel> newProjects = new List<ProjectRESTModel>();
+            List<ProjectRESTModelBasic> newProjects = new List<ProjectRESTModelBasic>();
             foreach (var project in projects)
             {
-                Bitmap bmp;
-                using (var ms = new MemoryStream(project.imageField.imageData))
-                {
-                    bmp = new Bitmap(ms);
-                }
-
-                int totalProjectDays = (project.endDate - project.startDate).Days;
+                /*int totalProjectDays = (project.endDate - project.startDate).Days;
                 int daysSinceStartup = (DateTime.Now - project.startDate).Days;
-                int percentageOfCompletion = daysSinceStartup / totalProjectDays;
+                int percentageOfCompletion = daysSinceStartup / totalProjectDays;*/
                 
-                /*MemoryStream ms = new MemoryStream(project.imageField.imageData);
-                Image returnImage = Image.FromStream(ms);*/
-                ProjectRESTModel newProject = new ProjectRESTModel()
+                ProjectRESTModelBasic newProject = new ProjectRESTModelBasic()
                 {
                     projectId = project.projectId,
                     name = project.name,
-                    projectImage = bmp,
-                    description = project.description,
-                    startDate = project.startDate.ToUniversalTime(),
-                    endDate = project.endDate.ToUniversalTime(),
                     numberOfLikes = project.projectLikes.Count,
-                    numberOfIdeations = project.ideations.Count,
-                    percentageCompleted = percentageOfCompletion
+                    numberOfIdeations = project.ideations.Count
+                    //numberOfReports = project.reports.Count?
                 };
                 newProjects.Add(newProject);
             }
@@ -66,6 +55,10 @@ namespace UI.MVC.Controllers.api
             var percentageOfCompletion = (int)Math.Round(daysSinceStartup / totalProjectDays);
             /*MemoryStream ms = new MemoryStream(project.imageField.imageData);
             Image returnImage = Image.FromStream(ms);*/
+            foreach (var questionnaire in project.questionnaires)
+            {
+                questionnaire.project = null;
+            }
             ProjectRESTModel newProject = new ProjectRESTModel()
             {
                 projectId = project.projectId,
@@ -80,5 +73,28 @@ namespace UI.MVC.Controllers.api
             };
             return Ok(newProject);
         }
+
+        [HttpGet("/api/ProjectImage/{id}")]
+        public IActionResult GetProjectImage(int id)
+        {
+            Project project = mgr.getProject(id);
+            string imageString = project.imageField.GetImageString();
+            
+            return Ok(imageString);
+        }
+        
+        [HttpGet("/api/Questionnaires/{id}")]
+        public IActionResult GetQuestionnaires(int id)
+        {
+            Project project = mgr.getProject(id);
+            IEnumerable<Questionnaire> questionnaires = project.questionnaires;
+            foreach (var questionnaire in questionnaires)
+            {
+                questionnaire.project = null;
+            }
+
+            return Ok(questionnaires);
+        }
+        
     }
 }
