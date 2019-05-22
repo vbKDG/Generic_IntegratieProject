@@ -2,9 +2,6 @@
 
 
 
-
-
-
 @*@using (Html.BeginForm("CreateQuestion", "Idea", FormMethod.Post))
 {*@
    
@@ -96,7 +93,7 @@
                     <a hidden="true" class="nextQuestion" onclick="ChangeQuestion(1)">&#10095;</a>
 
                                 
-        <h2 id="questionTitle">Question 1</h2>           
+        <h3 id="questionTitle">Question 1</h3>           
         <h5>What do you want to ask?</h5>
         <input type="text" id="question"/>
         <br>
@@ -108,8 +105,8 @@
             <span>Check boxes</span><br>
         </fieldset>
         <div>
-            <button id="Add_Option" onclick="AddOption()" type="Button">Add option</button>
-            <button id="Remove_Option" onclick="RemoveOption()" type="Button" disabled="true">Remove option</button>            
+            <button id="Add_Option" class="btn btn-success" onclick="AddOption()" type="Button">Add option</button>
+            <button id="Remove_Option" class="btn btn-success" onclick="RemoveOption()" type="Button" disabled="true">Remove option</button>            
         </div>
         <label id="label 1"> Option: 1</label>
         <div class="option"> <input id="option 1" type="text"/> </div>
@@ -121,9 +118,9 @@
         <div class="option" > <input id="option 4" type="text" hidden="true"/> </div>
         <label id="label 5" hidden="true"> Option: 5</label>
         <div class="option"> <input id="option 5" type="text" hidden="true"/> </div>
-        <div>
-            <button id="Add_Question" type="button" hidden="true" onclick="AddQuestion()">Add Question</button>
-            <button id="Remove_Question" type="button" hidden="true" onclick="RemoveQuestion()">Remove Question</button>
+        <div class="py-2">
+            <button class="btn btn-success" id="Add_Question" type="button" hidden="true" onclick="AddQuestion()">Add Question</button>
+            <button class="btn btn-success" id="Remove_Question" type="button" hidden="true" onclick="RemoveQuestion()">Remove Question</button>
 
         </div>
         

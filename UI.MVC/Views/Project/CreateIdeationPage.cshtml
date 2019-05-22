@@ -79,6 +79,16 @@
                                     </th>
                                 </tr>
                             </div>
+                            <tr>
+                                        <th><label>Amount of Questions: </label></th>
+                                        <th>
+                                            <input asp-for="QuestionField.Minimum" type="number" max="5" min="0" value="0" onchange="SetMinimum(this)"/>
+                                        </th>
+                                        <th>
+                                            <input asp-for="QuestionField.Maximum" type="number" max="5" min="0" value="0"/>
+                                        </th>
+                            
+                                    </tr>    
 
                         </div>
                     </div>

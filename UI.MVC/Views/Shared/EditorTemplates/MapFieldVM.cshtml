@@ -1,4 +1,5 @@
-﻿@model D.UI.MVC.Models.Fields.MapFieldVm
+﻿@using Domain
+@model D.UI.MVC.Models.Fields.MapFieldVm
 
 @if (ViewBag.index == 0)
 {
@@ -16,23 +17,30 @@
             <input id="address" type="textbox" value="België, Antwerpen">
             <input id="submit" type="button" value="Geocode">
         </div>*@
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-        <input id="search-Button" type="button" value="Add Location"/>
-        <table>
-            <tr>
-                <td>  <div id="map" style="height: 350px; width: 700px;">  </div>  </td>
-                <td>
-                    <div id="locationRows">
-                
-                    </div>  
-                </td>
-            </tr>
-         
-               
-        </table>
-             
+        <div class="row">
+        <div class="card bg-light text-center card-form">
+        <div class="card-body" id="card">
+        
+        <input id="pac-input" class="controls py-2" type="text" placeholder="Search Box">
+            <input id="search-Button" type="button" class="btn btn-success btn-sm" value="Add"/>
+            <table>
+                <tr>
+                    <td>
+                        <div id="map" style="height: 360px; width: 720px;"> </div> </td>
+<div class="col-md-4">
+<td>
+    <div id="locationRows">
+        <hr/>
+    </div>
+    <hr/>
+</td>
+</div>
+                </tr>
+            </table>
+        </div>
+        </div>
 
-      
+      </div>
       
         <script>
             

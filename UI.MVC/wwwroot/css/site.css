@@ -8,6 +8,10 @@ html, body {
     display: table;
     
 }
+
+#ImageSlideshow{
+
+}
 /*site thema*/
 #general-theme{
     background-image: linear-gradient(to bottom,#cae5ff,#ffffff);
@@ -23,6 +27,10 @@ html, body {
     
 #AboutTitle{    
     padding-left: 35%;
+}
+
+#locationRows{
+    padding-left: 10px;
 }
 
 #titleindex{
