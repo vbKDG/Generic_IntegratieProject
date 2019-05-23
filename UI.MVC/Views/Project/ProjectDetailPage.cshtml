@@ -72,7 +72,7 @@
     @if (@Model.project.ideations.Count > 0)
     {
         <table class="table">
-            <h4>Top 5 liked ideations</h4>
+            <h4>Top 5 most popular ideations</h4>
             @foreach (var ideation in @Model.project.ideations)
             {
                 foreach (var countLikes in Model.LikeAmounts)

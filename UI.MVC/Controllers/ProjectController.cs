@@ -77,6 +77,7 @@ namespace UI.MVC.Controllers
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
             Dictionary<int, int> likeDictionary = new Dictionary<int, int>();
             Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
+            Dictionary<int, int> combinedDictionary = new Dictionary<int, int>();
             Project p = orchestrator.getProject(projectId);
             p.phases = p.phases.OrderBy(x => x.startDate).ToList();
             p.ideations = orchestrator.getIdeations(projectId).ToList();
@@ -93,21 +94,23 @@ namespace UI.MVC.Controllers
                     } 
                     CommentAmount = CommentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
                 }
+                var total = LikeAmount + CommentAmount;
+                combinedDictionary.Add(ideation.ideationId, total);
                 likeDictionary.Add(ideation.ideationId, LikeAmount);
                 commentDictionary.Add(ideation.ideationId, CommentAmount);
             }
 
             var counter = 0;
-            foreach (var likes in likeDictionary.OrderByDescending(i => i.Value))
+            foreach (var total in combinedDictionary.OrderByDescending(i => i.Value))
             {
                 counter++;
                 if (counter > 5)
                 {
-                    likeDictionary.Remove(likes.Key);
-                    commentDictionary.Remove(likes.Key);
+                    likeDictionary.Remove(total.Key);
+                    commentDictionary.Remove(total.Key);
                 }
             }
-
+            
             projectDetailModel.LikeAmounts = likeDictionary;
             projectDetailModel.CommentAmounts = commentDictionary;
             
