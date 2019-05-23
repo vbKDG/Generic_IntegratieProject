@@ -72,6 +72,22 @@ namespace UI.MVC.Controllers
             return View(model);
         }
 
+        public IActionResult CloseProject(int projectId)
+        {
+            Project p = orchestrator.getProject(projectId);
+            p.Closed = true;
+            orchestrator.changeProject(p);
+            return RedirectToAction("Projects","Project");
+        }
+        
+        public IActionResult OpenProject(int projectId)
+        {
+            Project p = orchestrator.getProject(projectId);
+            p.Closed = false;
+            orchestrator.changeProject(p);
+            return RedirectToAction("Projects","Project");
+        }
+
         public IActionResult ProjectDetailPage(int projectId)
         {
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();

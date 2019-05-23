@@ -27,6 +27,20 @@
                 @Html.ActionLink("Details", "ProjectDetailPage", "Project"
                     , new {projectId = item.projectId})
             </td>
+            @if (item.Closed)
+            {
+                <td>
+                    @Html.ActionLink("Open", "OpenProject", "Project"
+                        , new {projectId = item.projectId})
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Close", "CloseProject", "Project"
+                        , new {projectId = item.projectId})
+                </td>
+            }
         </tr>
     }
 </table>

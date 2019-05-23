@@ -12,7 +12,7 @@ namespace Domain
         public String description { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
-        public bool Open { get; set; }
+        public bool Closed { get; set; }
         public ImageField imageField { get; set; }
         
         public MapField mapField { get; set; }
