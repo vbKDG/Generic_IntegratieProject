@@ -319,12 +319,12 @@ namespace UI.MVC.Controllers
                       var textField = (TextField) field;
                       textFieldVms.Add(new TextFieldVm{text = textField.text});
                   }
-//                  
-//                if (field.GetType() == typeof(MapField))
-//                {
-//                    var textField = (TextField) field;
-//                    textFieldVms.Add(new TextFieldVm{text = textField.text});
-//                }
+                  
+                if (field.GetType() == typeof(MapField))
+                {
+                    var mapfield = (MapField) field;
+                    mapFieldVms.Add(new MapFieldVm{latitude = mapfield.latitude , longitude = mapfield.longitude});
+                }
                  
                 if (field.GetType() == typeof(ImageField))
                 {
@@ -354,9 +354,12 @@ namespace UI.MVC.Controllers
             ideaVm.TextFieldVms = textFieldVms;
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
+            ideaVm.MapFieldVms = mapFieldVms;
             ideaVm._user = idea.user;
             ideaVm.ideaLikes = ideaLikes;
             ideaVm.reactions = reactions;
+            ideaVm.disapproved = idea.disapproved;
+            
 
 
             return View(ideaVm);

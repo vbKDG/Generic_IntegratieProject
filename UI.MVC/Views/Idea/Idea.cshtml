@@ -8,19 +8,29 @@
 <link rel="stylesheet" href="~/css/VideoSlideShow.css"> 
 <script src="@Url.Content("~/js/VideoFieldEditor.js")"></script>
 
+<script src="@Url.Content("~/js/DisplayMap.js")"></script>
+<link rel="stylesheet" href="~/css/maps2.css"> 
+
+
 
 
 
 <div id="TextUploads">
     <div id="TextSlideshow" class="textslideshow-container">        
         <!-- Next and previous buttons -->
-        <a  class="prevText" onclick="plusTexts(-1)">&#10094;</a>
-        <a  class="nextText" onclick="plusTexts(1)">&#10095;</a>
+        
+        @if (@Model.TextFieldVms.Count > 1)
+        {
+            <a  class="prevText" onclick="plusTexts(-1)">&#10094;</a>
+            <a  class="nextText" onclick="plusTexts(1)">&#10095;</a>
+        }
+       
+       
    
      
     @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
     {
-        if (i == 0 && @Model.TextFieldVms.Count > 1)
+        if (i == 0)
         {
             <div class="TextSlides" style="display: block;">
                 
@@ -38,14 +48,20 @@
     </div>  
 
     <!-- The dots/circles -->
-    <div id="textdots" style="text-align: center">
-        @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
-        {
-            <span class="Textdot"></span>
-        }
+    @if (@Model.TextFieldVms.Count > 1)
+    {
+        <div id="textdots" style="text-align: center">
+            @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+            {
+                <span class="Textdot"></span>
+            }
 
-    </div>
+        </div>
+    }
     
+    
+    
+       
     
     <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
 </div>
@@ -57,15 +73,18 @@
           
 
         <!-- Next and previous buttons -->
-        <div id="sliders" >
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-               
+        @if (@Model.ImageFieldVms.Count > 1)
+        {
+            <div id="sliders">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        }
+         
         
         @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
         {
-            if (i == 0 && @Model.ImageFieldVms.Count > 1)
+            if (i == 0 )
             {
                 <div class="mySlides" style="display: block;">
                     <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
@@ -89,21 +108,28 @@
 
 
     <!-- The dots/circles -->
-    <div id="dots" style="text-align: center" >
+    @if (@Model.ImageFieldVms.Count > 1)
+    {
+        <div id="dots" style="text-align: center" >
     
-        @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
-        {
-            <span class="dot" onclick="currentSlide(i)"></span>
-        }
+            @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
+            {
+                <span class="dot" onclick="currentSlide(i)"></span>
+            }
     
     
-    </div>
+        </div>
+    }
+    
+    
+      
 </div>
 
 <div id="VideoUploads">
     <div id="VideoSlideshow" class="videoslideshow-container">
 
           
+        @if (@Model.VideoFieldVms.Count > 1){
 
         <!-- Next and previous buttons -->
         <div id="videosliders" >
@@ -111,10 +137,10 @@
             <a class="nextVid" onclick="plusVideos(1)">&#10095;</a>
         </div>
         
-        
+        }
         @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
         {
-            if (i == 0 && @Model.VideoFieldVms.Count > 1)
+            if (i == 0 )
             {
                 <div class="VideoSlides" style="display: block;">
                     <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
@@ -138,25 +164,29 @@
 
 
 
+@if (@Model.VideoFieldVms.Count > 1)
+{
 
     <!-- The dots/circles -->
-    <div id="videodots" style="text-align: center" >
+    <div id="videodots" style="text-align: center">
         @*<span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>*@
-        
+
         @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
         {
             <span class="VideoDot " onclick="currentVideo(i)"></span>
         }
     </div>
+}
 </div>
 <div id="QuestionUploads">
  @foreach (var item in Model.QuestionFieldVms)
  {
-     
+           @Html.DisplayFor(x => item.Question.question)
             if (!User.Identity.IsAuthenticated)
             {
+               
                 if (item.Question.questionType == QuestionType.MAILADDRESS)
                 {
                     <tr>
@@ -223,9 +253,22 @@
             }
         }
         
-</div>   
+</div> 
+<div id="MapUploads">
+    <button type="button" id="NextLocation"></button>
+    <div id="map" style="height: 360px; width: 720px;"> </div>
+    @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
+    {
+        <p hidden="true" class="latitude"  id="location_latitude_@i">@Model.MapFieldVms[i].latitude</p>
+        <p hidden="true" class="longitude"  id="location_longitude_@i">@Model.MapFieldVms[i].longitude</p>
 
-if (Model.ideas.ToList()[i].disapproved == false)
+    }
+
+   
+</div>
+
+
+@if (Model.disapproved == false)
         {
              <tr>
                 <td>
@@ -308,3 +351,6 @@ if (Model.ideas.ToList()[i].disapproved == false)
                 </td>
             </tr>
         }
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpGkcxEKiXUYAvr2HPj9bhYvs0uZsllW4&libraries=places&callback=initAutocomplete"
+        async defer></script>

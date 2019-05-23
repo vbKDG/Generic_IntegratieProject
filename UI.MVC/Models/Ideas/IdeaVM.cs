@@ -29,6 +29,8 @@ namespace D.UI.MVC.Models.Ideas
     {
         public ApplicationUser _user { get; set; }
         public int IdeaId { get; set; }
+        
+        public Boolean disapproved { get; set; }
         public int ideationId { get; set; }
         public String[] ideationQuestion { get; set; }
         
