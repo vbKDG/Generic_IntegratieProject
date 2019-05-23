@@ -63,7 +63,7 @@ namespace UI.MVC.Controllers.api
             {
                 projectId = project.projectId,
                 name = project.name,
-                projectImage = project.imageField.imageData,
+                //projectImage = project.imageField.imageData,
                 description = project.description,
                 startDate = project.startDate.ToUniversalTime(),
                 endDate = project.endDate.ToUniversalTime(),

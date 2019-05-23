@@ -244,6 +244,7 @@
           <e p="QuestionnaireQuestion.cs" t="Include" />
           <e p="QuestionResultModel.cs" t="Include" />
           <e p="Questions" t="Include">
+            <e p="QuestionRESTModel.cs" t="Include" />
             <e p="QuestionVM.cs" t="Include" />
           </e>
           <e p="QuestionUserModel.cs" t="Include" />

@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using BL;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using UI.MVC.Models.Questions;
 
 namespace UI.MVC.Controllers.api
 {
@@ -13,13 +16,26 @@ namespace UI.MVC.Controllers.api
         public IActionResult GetQuestionnaireQuestions(int id)
         {
             IEnumerable<Question> questions = mgr.getQuestions(id);
-
+            List<QuestionRESTModel> newQuestions = new List<QuestionRESTModel>();
             foreach (var question in questions)
             {
-                question.questionnaire = null;
+                List<string> options = new List<string>();
+                foreach (var option in question.options)
+                {
+                    options.Add(option.option);
+                }
+                
+                QuestionRESTModel model = new QuestionRESTModel()
+                {
+                    id = question.id,
+                    questionType = question.questionType,
+                    question = question.question,
+                    options = options
+                };
+                newQuestions.Add(model);
             }
             
-            return Ok(questions);
+            return Ok(newQuestions);
         }
     }
 }
