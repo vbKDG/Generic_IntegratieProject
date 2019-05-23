@@ -1,0 +1,176 @@
+@model D.UI.MVC.Models.Projects.ProjectVM
+
+<link rel="stylesheet" href="~/css/createProjectCustimize.css">
+
+@{
+    var rowCount = 0;
+}
+
+<body>
+    <form asp-controller="Project" asp-action="CreateProject" method="post" enctype="multipart/form-data">
+
+        <section id="contact" class="py-3 text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card p-4 bg-dark">
+                            <div class="card-body">
+                                <h3 class="text-center text-light">Edit a project</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input asp-for="name" type="text" class="form-control" placeholder="Title"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.EditorFor(x => x.imageFieldVM, new { index = 0, Edit = true})
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input asp-for="startDate" type="date" class="form-control" placeholder="Start date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input asp-for="endDate" type="date" class="form-control" placeholder="End date" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input asp-for="description" type="text" textarea class="form-control" placeholder="Description" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.EditorFor(x => x.mapFieldVM)
+                                </div>
+
+                                <h3 class="text-center text-light">Phases</h3>
+                                <hr>
+                                <label asp-for="name">Name: </label>
+                                <label asp-for="description">Description: </label>
+                                <label asp-for="startDate">Start Date: </label>
+                                <label asp-for="endDate">End Date: </label>
+
+                                <div class="text-dark" id="phaseList">
+                                    @foreach (var phase in Model.phases)
+                                    {
+                                        <div class="phaseRow">
+                                            <input asp-for="@phase.name" name="Phases[@rowCount].name" type="text" class="nameType"/>
+                                            <input asp-for="@phase.description" name="Phases[@rowCount].description" type="text" class="descriptionType"/>
+                                            <input asp-for="@phase.startDate" name="Phases[@rowCount].startDate" type="date" class="startDateType"/>
+                                            <input asp-for="@phase.endDate" name="Phases[@rowCount].endDate" type="date" class="endDateType"/>
+                                            <a href="javascript:void(0);" class="remRow">Remove</a>
+                                        </div>
+                                        rowCount++;
+                                    }
+                                </div>
+                                
+                                <input type="button" name="addRow" id="addRow" value="Add" class="btn bg-success btn-sm">
+                                
+                                <h3 class="text-center text-light">Settings</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Primaire color:</label>
+                                            <select asp-for="SettingVm.BackGroundColor1">
+                                                <option class="standard" value="">Standard</option>
+                                                <option class="blue" value="blue">Blue</option>
+                                                <option class="red" value="red">Red</option>
+                                                <option class="green" value="green">Green</option>
+                                                <option class="yellow" value="yellow">Yellow</option>
+                                                <option class="orange" value="orange">Orange</option>
+                                                <option value="white">White</option>
+                                            </select><br>
+                                            <label>Secondary color:</label>
+                                            <select asp-for="SettingVm.BackGroundColor2">
+                                                <option class="standard" value="">Standard</option>
+                                                <option class="blue" value="blue">Blue</option>
+                                                <option class="red" value="red">Red</option>
+                                                <option class="green" value="green">Green</option>
+                                                <option class="yellow" value="yellow">Yellow</option>
+                                                <option class="orange" value="orange">Orange</option>
+                                                <option value="white">White</option>
+                                            </select><br>
+                                            <label>Font family:</label>
+                                            <select asp-for="SettingVm.FontFamily">
+                                                <option value="">Standard</option>
+                                                <option id="times" value="Times new Roman">Times new Roman</option>
+                                                <option id="arial" value="Arial">Arial</option>
+                                                <option id="comic" value="Comic Sans MS">Comic Sans MS</option>
+                                                <option id="trebuchet" value="Trebuchet MS">Trebuchet MS</option>
+                                                <option id="impact" value="Impact">Impact</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Submit" class="btn bg-success btn-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </form>
+
+</body>
+<script type="text/javascript">
+
+    $("#addRow").click(function () {
+
+        var rowCount = $('.phaseRow').length;
+        var inputString = "";
+
+        inputString += '<td><input name="Phases[' + rowCount + '].name" type="text" class="nameType"/></td>';
+        inputString += '<td><input name="Phases[' + rowCount + '].description" type="text" class="descriptionType"/></td>';
+        inputString += '<td><input name="Phases[' + rowCount + '].startDate" type="date" class="startDateType"/></td>';
+        inputString += '<td><input name="Phases[' + rowCount + '].endDate" type="date"  class="endDateType"/></td>';
+        inputString += '<a href="javascript:void(0);" class="remRow">Remove</a>';
+        $("#phaseList").append('<div class="phaseRow">' + inputString + '</div>');
+        //            inputString += '<input name="Phases[' + rowCount + '].name" type="text" class="nameType"/>';
+        //            inputString += '<input name="Phases[' + rowCount + '].description" type="text" class="descriptionType" />';
+        //            inputString += '<input name="Phases[' + rowCount + '].startDate" type="date" class="startDateType"/>';
+        //            inputString += '<input name="Phases[' + rowCount + '].endDate" type="date"  class="endDateType"/>';
+        //            inputString += '<a href="javascript:void(0);" class="remRow">Remove</a>';
+        //            $("#phaseList").append('<div class="phaseRow">' + inputString + '</div>');
+        document.getElementsByName('nameType')[0].placeholder = "Name";
+
+    });
+
+    $("#phaseList").on('click', '.remRow', function () {
+
+        (this).closest(".phaseRow").remove();
+
+        $('.nameType').each(function (index) {
+            $(this).attr('name', 'Phases[' + index + '].name');
+        });
+
+        $('.descriptionType').each(function (index) {
+            $(this).attr('name', 'Phases[' + index + '].description');
+        });
+
+        $('.startDateType').each(function (index) {
+            $(this).attr('name', 'Phases[' + index + '].startDate');
+        });
+
+        $('.endDateType').each(function (index) {
+            $(this).attr('name', 'Phases[' + index + '].endDate');
+        });
+    });
+
+
+
+</script>
+
+<!--<link rel="stylesheet" href="~/css/CreatePage.css"> -->

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<@Domain.Project>
+﻿@model IEnumerable<D.UI.MVC.Models.Projects.ProjectVM>
+
+<script src="~/js/showCorrectProject.js" asp-append-version="true"></script>
 
 <body id="Homepage">
 
@@ -62,11 +64,11 @@
     <div class="col text-center py-5">
         <h1 class="text-dark">Welcome</h1>
         <h3 class="text-dark">
-            
-            We have created this platform to get your great ideas on projects in your neighbourhood,        because every vote counts!
+
+            We have created this platform to get your great ideas on projects in your neighbourhood, because every vote counts!
 
         </h3>
-        <div id="signInButton" class="col text-center py-5">
+        <div class="col text-center py-5">
             <a class="btn btn-success btn-lg" href="#projectTop">More</a>
 
         </div>
@@ -85,45 +87,84 @@
                 </h3>
             </div>
         </div>
+        <div id="showClosed" class="row">
+            <div class="col text-center py-5">
+                <button id="showClosedBtn" class="btn btn-success btn-lg">
+                    Show Closed projects
+                </button>
+            </div>
+        </div>
+        <div id="showOpen" class="row">
+            <div class="col text-center py-5">
+                <button id="showOpenBtn" class="text-center btn btn-success btn-lg">
+                    Show Open projects
+                </button>
+            </div>
+        </div>
         <div id="rowPictures"class="row">
-                    @foreach (var project in @Model)
-                    {
-                        <div class="column text-center text-black">
-                             <h4 id="titleindex" class="text-black"> @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
-                                                , new {projectId = project.projectId})
-                          </h4>
-                            <img src="@project.imageField.GetImageString()" width="365" height="200"/>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
-                            </div>
-                            <div>
-                                <p class="text-dark">
-                                    <i class="far fa-heart"></i> 5
-                                    <i class="far fa-comments"></i> 6
-                                    <i class="fas fa-share-alt"></i> 8
-                                </p>
-                            </div>
+            @foreach (var project in @Model)
+            {
+                if (project.Closed == false)
+                {
+                    <div class="column text-center text-black openProjects">
+                        <h4 id="titleindex" class="text-black">
+                            @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
+                                , new {projectId = project.projectId})
+                        </h4>
+                        <img src="@project.Base64Image" width="365" height="200"/>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
                         </div>
-                    }
-                </div>
+                        <div>
+                            <p class="text-dark">
+                                <i class="far fa-lightbulb"></i> @project.ideaAmount
+                                <i class="far fa-heart"></i> @project.AmountOfLikes
+                                <i class="far fa-comments"></i> @project.AmountOfComments
+                            </p>
+                        </div>
+                    </div>
+                }
+                else if (project.Closed == true)
+                {
+                    <div class="column text-center text-black closedProjects">
+                        <h4 id="titleindex" class="text-black">
+                            @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
+                                , new {projectId = project.projectId})
+                        </h4>
+                        <img src="@project.Base64Image" width="365" height="200"/>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                        </div>
+                        <div>
+                            <p class="text-dark">
+                                <i class="far fa-lightbulb"></i> @project.ideaAmount
+                                <i class="far fa-heart"></i> @project.AmountOfLikes
+                                <i class="far fa-comments"></i> @project.AmountOfComments
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
         <div class="row">
             <div class="col text-center py-5">
                 <div id="ProjectsButton" class="col text-center">
-                            <a asp-action="ProjectsGeneral" class="btn btn-success btn-lg">Projects</a>
-                
-                        </div>
-            </div>
-        </div> 
-        
-</div>
+                    <a asp-action="ProjectsGeneral" class="btn btn-success btn-lg">Projects</a>
 
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 </section>
 
 
 <div class="col text-center py-5">
-    <a href="#Start"><i class="fas fa-arrow-up fa-2x"></i></a>
+    <a href="#Start">
+        <i class="fas fa-arrow-up fa-2x"></i>
+    </a>
 </div>
 
 @*
@@ -198,8 +239,8 @@
 
 
 
-        
-        
-        
+
+
+
 
 </body>

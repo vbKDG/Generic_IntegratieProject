@@ -65,7 +65,7 @@
                 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                 {
                                 
-                    <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <a asp-area="" asp-controller="Admin" asp-action="AdminPage">
                         <p class="text-dark">
                             <i class="fas fa-sliders-h"></i><b> Admin page</b>
                         </p>
@@ -112,7 +112,7 @@
             <i class="fab fa-autoprefixer"></i>
             <i class="far fa-lightbulb"></i>   
         </p>
-        <p><a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")"> About</a>- <a href="@Url.Action("PrivacyPage", "Home")">Privacy</a></p>
+        <p><a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")"> About</a>- <a href="@Url.Action("Privacy", "Home")">Privacy</a></p>
     </footer>
 </div>
 

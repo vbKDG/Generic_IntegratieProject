@@ -3,32 +3,50 @@
 
 <body id="projectspage">
 <div class="container">
-<h1 class="text-center py-2">Projects</h1>
+    <h1 class="text-center py-2">Projects</h1>
 
-<table class="table">
-    <tr>
-        <th>
-            <p>Name</p>
-        </th>
-        <th>
-            <p>Description</p>
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "ProjectDetailPage", "Project"
-                    , new {projectId = item.projectId})
-            </td>
+            <th>
+                <p>Name</p>
+            </th>
+            <th>
+                <p>Description</p>
+            </th>
         </tr>
-    }
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "ProjectDetailPage", "Project"
+                        , new {projectId = item.projectId})
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditProjectPage", "Project"
+                        , new {projectId = item.projectId})
+                </td>
+                @if (item.Closed)
+                {
+                    <td>
+                        @Html.ActionLink("Open", "OpenProject", "Project"
+                            , new {projectId = item.projectId})
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Close", "CloseProject", "Project"
+                            , new {projectId = item.projectId})
+                    </td>
+                }
+            </tr>
+        }
+    </table>
 </div>
 </body>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="app" uuid="31df4df8-4b10-4e96-b1a4-dbf365c9ef21">
+    <data-source source="LOCAL" name="app" uuid="30c3ef0c-b932-4dd9-a7aa-12fede647ab7">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Alex\Desktop\Stack\‌IntegratieProject 2019\Generic_Repo\UI.MVC\app.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\OneDrive\Documenten\Generic_IntegratieProject\UI.MVC\app.db</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>

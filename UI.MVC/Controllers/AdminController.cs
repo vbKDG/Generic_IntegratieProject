@@ -39,6 +39,12 @@ namespace UI.MVC.Controllers
             ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
             return View(applicationUser);
         }
+        
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
 
         [Authorize(Roles = "Moderator, Admin")]
         public IActionResult ShowReports(int ideaId)

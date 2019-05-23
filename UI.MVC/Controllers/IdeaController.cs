@@ -345,11 +345,8 @@ namespace UI.MVC.Controllers
                     //question.question = question.question;
                     questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
                 }
-
-               
             }
-
-
+            
             ideaVm.ImageFieldVms = imageFieldVms;
             ideaVm.TextFieldVms = textFieldVms;
             ideaVm.VideoFieldVms = videoFieldVms;

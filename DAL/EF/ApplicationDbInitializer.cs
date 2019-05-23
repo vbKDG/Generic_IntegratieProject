@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -268,7 +269,7 @@ namespace DAL.EF
                 name = "SAFE THE BIRDS!",
                 place = new Place(),
             };
-            p2.Setting = new Setting {BackGroundColor1 = "#00FFFF", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
+            p2.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj2 = new MapField{latitude = 51.21248,longitude = 4.409641};
             ImageField imgproj2 = new ImageField();            
             imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
@@ -416,6 +417,7 @@ namespace DAL.EF
             MapField map6 = new MapField { latitude = 51.18963283343007, longitude = 4.420076572104449 };
             ImageField img6 = new ImageField();
             img6.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg");
+            p6.Closed = true;
             p6.name = "Asian Cuisine";
             p6.description = "A lovely family is organizing an Asian Cuisine evening in the park for everyone!";
             p6.startDate = new DateTime(2019, 5, 20);
@@ -437,8 +439,9 @@ namespace DAL.EF
             p7.description = "The people of Antwerp are organizing a flea market which will take place for 3 days.";
             p7.startDate = new DateTime(2019, 6, 10);
             p7.endDate = new DateTime(2019, 6, 13);
+            p7.Closed = true;
             p7.Setting = new Setting {BackGroundColor1 = "orange", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
-            p6.phases = new List<Phase>{
+            p7.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,1),endDate =  new DateTime(2019,6,7)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,6,8),endDate =  new DateTime(2019,6,10)},
             };
@@ -452,6 +455,7 @@ namespace DAL.EF
             img8.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg");
             p8.name = "Art gallery in Antwerp";
             p8.description = "From june 6 to june 11, school of art in Antwerp is organizing an art gallery";
+            p8.Closed = true;
             p8.startDate = new DateTime(2019, 6, 6);
             p8.endDate = new DateTime(2019, 6, 11);
             p8.Setting = new Setting {BackGroundColor1 = "yellow", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
@@ -471,6 +475,7 @@ namespace DAL.EF
             p9.description = "This summer the people of antwerp will organise a traditional japanese weekend.";
             p9.startDate = new DateTime(2019, 7, 5);
             p9.endDate = new DateTime(2019, 7, 7);
+            p9.Closed = true;
             p9.Setting = new Setting {BackGroundColor1 = "green", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p9.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,7,1),endDate =  new DateTime(2019,7,4)},
@@ -489,7 +494,7 @@ namespace DAL.EF
             p10.description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
             p10.startDate = new DateTime(2019, 5, 1);
             p10.endDate = new DateTime(2019, 5, 23);
-            p10.Setting = new Setting {BackGroundColor1 = "#00FFFF", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
+            p10.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p10.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,5,1),endDate =  new DateTime(2019,5,10)},
                 new Phase{name = "Construction",description = "Creat everything we need before the event",startDate =  new DateTime(2019,5,11),endDate =  new DateTime(2019,5,16)},
@@ -695,6 +700,7 @@ namespace DAL.EF
             p11.description = "The people of the harbour will organize parking lot movies every weekend for a few months!";
             p11.startDate = new DateTime(2019, 5, 3);
             p11.endDate = new DateTime(2019, 8, 5);
+            p11.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p11.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,8,1),endDate =  new DateTime(2019,6,15)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,8,20),endDate =  new DateTime(2019,6,30)},
@@ -711,6 +717,7 @@ namespace DAL.EF
             p12.description = "We are very proud to announce that we are finally able to host the Renaissance faire in Antwerp, please join us for a trip back in time!";
             p12.startDate = new DateTime(2019, 7, 20);
             p12.endDate = new DateTime(2019, 7, 30);
+            p12.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p12.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,6,20),endDate =  new DateTime(2019,7,5)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,7,5),endDate =  new DateTime(2019,7,20)},
@@ -727,6 +734,7 @@ namespace DAL.EF
             p13.description = "This years Antique flea market will be hosted in Antwerp. The market will be filled with extraordinary itmes, please join us!";
             p13.startDate = new DateTime(2019, 6, 1);
             p13.endDate = new DateTime(2019, 6, 3);
+            p13.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p13.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,5,20),endDate =  new DateTime(2019,5,25)},
                 new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,5,26),endDate =  new DateTime(2019,6,1)},
@@ -744,6 +752,7 @@ namespace DAL.EF
             img14.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg");
             p14.name = "Concert in the park";
             p14.description = "This summer the people of antwerp will organise a concert and everybody is welcome.";
+            p14.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p14.startDate = new DateTime(2019, 4, 5);
             p14.endDate = new DateTime(2019, 4, 7);
             p14.phases = new List<Phase>{
@@ -764,6 +773,7 @@ namespace DAL.EF
             p15.name = "marathon";
             p15.description = "A local school is organizing a marathon to support their schooltrip.";
             p15.startDate = new DateTime(2019, 4, 5);
+            p15.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             p15.endDate = new DateTime(2019, 4, 7);
             p15.phases = new List<Phase>{
                 new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,3,1),endDate =  new DateTime(2019,3,15)},

@@ -33,6 +33,8 @@ namespace DAL
                 .Include(p => p.mapField)
                 .Include(p => p.phases)
                 .Include(p => p.ideations)
+                .ThenInclude(i => i.ideas)
+                .ThenInclude(i => i.reactions)
                 .Include(p => p.projectLikes)
                 .Include(p => p.Setting);
         }

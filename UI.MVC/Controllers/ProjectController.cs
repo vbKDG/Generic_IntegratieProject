@@ -72,11 +72,55 @@ namespace UI.MVC.Controllers
             return View(model);
         }
 
+        public IActionResult CloseProject(int projectId)
+        {
+            Project p = orchestrator.getProject(projectId);
+            p.Closed = true;
+            orchestrator.changeProject(p);
+            return RedirectToAction("Projects","Project");
+        }
+        
+        public IActionResult OpenProject(int projectId)
+        {
+            Project p = orchestrator.getProject(projectId);
+            p.Closed = false;
+            orchestrator.changeProject(p);
+            return RedirectToAction("Projects","Project");
+        }
+
+        public IActionResult EditProjectPage(int projectId)
+        {
+            ProjectVM projectVm = new ProjectVM();
+            projectVm.phases = new List<PhaseVM>();
+            projectVm.SettingVm = new SettingVM();
+            Project project = orchestrator.getProject(projectId);
+            projectVm.projectId = project.projectId;
+            projectVm.name = project.name;
+            projectVm.description = project.description;
+            projectVm.startDate = project.startDate;
+            projectVm.endDate = project.endDate;
+            foreach (var phase in project.phases)
+            {
+                PhaseVM phaseVm = new PhaseVM();
+                phaseVm.phaseId = phase.phaseId;
+                phaseVm.name = phase.name;
+                phaseVm.description = phase.description;
+                phaseVm.startDate = phase.startDate;
+                phaseVm.endDate = phase.endDate;
+                projectVm.phases.Add(phaseVm);
+            }
+            projectVm.SettingVm.FontFamily = project.Setting.FontFamily;
+            projectVm.SettingVm.BackGroundColor1 = project.Setting.BackGroundColor1;
+            projectVm.SettingVm.BackGroundColor2 = project.Setting.BackGroundColor2;
+            return View(projectVm);
+        }
+
         public IActionResult ProjectDetailPage(int projectId)
         {
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
             Dictionary<int, int> likeDictionary = new Dictionary<int, int>();
             Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
+            Dictionary<int, int> combinedDictionary = new Dictionary<int, int>();
             Project p = orchestrator.getProject(projectId);
             p.phases = p.phases.OrderBy(x => x.startDate).ToList();
             p.ideations = orchestrator.getIdeations(projectId).ToList();
@@ -93,21 +137,23 @@ namespace UI.MVC.Controllers
                     } 
                     CommentAmount = CommentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
                 }
+                var total = LikeAmount + CommentAmount;
+                combinedDictionary.Add(ideation.ideationId, total);
                 likeDictionary.Add(ideation.ideationId, LikeAmount);
                 commentDictionary.Add(ideation.ideationId, CommentAmount);
             }
 
             var counter = 0;
-            foreach (var likes in likeDictionary.OrderByDescending(i => i.Value))
+            foreach (var total in combinedDictionary.OrderByDescending(i => i.Value))
             {
                 counter++;
                 if (counter > 5)
                 {
-                    likeDictionary.Remove(likes.Key);
-                    commentDictionary.Remove(likes.Key);
+                    likeDictionary.Remove(total.Key);
+                    commentDictionary.Remove(total.Key);
                 }
             }
-
+            
             projectDetailModel.LikeAmounts = likeDictionary;
             projectDetailModel.CommentAmounts = commentDictionary;
             
