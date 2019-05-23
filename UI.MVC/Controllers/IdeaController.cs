@@ -307,9 +307,7 @@ namespace UI.MVC.Controllers
             List<VideoFieldVm> videoFieldVms = new List<VideoFieldVm>();
             List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
-            List<IdeaLike> ideaLikes = new List<IdeaLike>();
-            List<Reaction> reactions = new List<Reaction>();
-
+            List<Reaction> reactions = ideationMgr.getReactions(ideaId).ToList();
 
             foreach (var field in idea.fields)
             {
@@ -344,7 +342,7 @@ namespace UI.MVC.Controllers
                       var questionField = (QuestionField) field;
                      // Question question = new Question();
                       //question.question = question.question;
-                      questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
+                      questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question, id = questionField.question.id});
                   }
 
                
@@ -355,9 +353,11 @@ namespace UI.MVC.Controllers
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
             ideaVm._user = idea.user;
-            ideaVm.ideaLikes = ideaLikes;
+            ideaVm.verified = idea.verified;
             ideaVm.reactions = reactions;
-
+            ideaVm.IdeaId = ideaId;
+            ideaVm.disapproved = idea.disapproved;
+            ideaVm.amountOfLikes = ideationMgr.getIdeaLikes(ideaId);
 
             return View(ideaVm);
         }

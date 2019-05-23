@@ -33,7 +33,7 @@ namespace UI.MVC.Controllers
             return View(faqs);
         }
 
-        public IActionResult PrivacyPage()
+        public IActionResult Privacy()
         {
             return View();
         }
@@ -84,16 +84,6 @@ namespace UI.MVC.Controllers
 
             return View();
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-//        public IActionResult Login()
-//        {
-//            return View();
-//        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

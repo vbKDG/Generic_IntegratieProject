@@ -25,6 +25,12 @@ namespace UI.MVC.Controllers
             ideationMgr = new IdeationManager();
             projectMgr = new ProjectManager();
         }
+
+        [Authorize(Roles="SuperAdmin, Admin")]
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
         
         [Authorize(Roles="SuperAdmin")]
         public IActionResult ManageAdmins()

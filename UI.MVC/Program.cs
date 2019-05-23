@@ -21,6 +21,10 @@ namespace UI.MVC
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseDefaultServiceProvider(options =>
-                    options.ValidateScopes = false);
+                    options.ValidateScopes = false)
+                .UseKestrel(options =>
+                {
+                    options.Limits.MaxRequestBodySize = 104857600; //100MB
+                });
     }
 }

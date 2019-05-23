@@ -7,9 +7,51 @@
 <link rel="stylesheet" href="~/css/TextSlideShow.css"> 
 <link rel="stylesheet" href="~/css/VideoSlideShow.css"> 
 <script src="@Url.Content("~/js/VideoFieldEditor.js")"></script>
+<script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/reportPopUp.css">
 
 
+@if (Model.disapproved == false)
+{
+    <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). </b>
+    if (@Model.verified)
+    {
+        <i class="glyphicon glyphicon-ok-circle"></i>
+    }
+    if (User.Identity.IsAuthenticated)
+    {
+        <button id="likeIdea-@Model.IdeaId" type="button"
+                onclick="location.href = '@Url.Action("LikeIdea", "Idea"
+                   , new {ideaId = @Model.IdeaId})'">
+            Like
+        </button>
+        <span id="ideaLikeCount-@Model.IdeaId">(@Model.amountOfLikes)</span><br>
+    }
+    else
+    {
+        <button title="You have to be signed in">Like</button>
+        <span>(@Model.amountOfLikes)</span><br>
+    }
 
+    if (User.Identity.IsAuthenticated)
+    {
+        <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
+    }
+    else
+    {
+        <button title="You have to be signed in to report an idea">Report idea</button><br>
+    }
+}
+else
+{
+    <tr>
+        <td>
+            @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
+            <span>(@Model.amountOfLikes)</span><br>
+            <span class="text-danger">This idea has been blocked!</span>
+        </td>
+    </tr>
+}
 
 <div id="TextUploads">
     <div id="TextSlideshow" class="textslideshow-container">        
@@ -152,159 +194,112 @@
     </div>
 </div>
 <div id="QuestionUploads">
- @foreach (var item in Model.QuestionFieldVms)
- {
-     
-            if (!User.Identity.IsAuthenticated)
-            {
-                if (item.Question.questionType == QuestionType.MAILADDRESS)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.question) <br>
-                            <input name="email" type="text">
-                        </td>
-                    </tr>
-                }
-            }
-            if (item.Question.questionType == QuestionType.DROPDOWN)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.question) <br>
-                        <select id="ddlOptions" name="Answer-@item.id-dropdown">
-                            <option value="0">Please select</option>
-                            @foreach (var option in item.Question.options)
-                            {
-                                <option value="@option.option">@option.option</option>
-                            }
-                        </select>
-                    </td>
-                </tr>
-            }
-            if (item.Question.questionType == QuestionType.OPEN_QUESTION)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.question) <br>
-                        <textarea name="Answer-@item.id-openquestion" type="text"></textarea>
-                    </td>
-                </tr>
-            }
+    @foreach (var item in Model.QuestionFieldVms)
+    {
+        using (Html.BeginForm("AnswerQuestionFieldIdea", "Questionnaire",
+            FormMethod.Post))
+        {
+            <b>@item.Question.question</b>
             if (item.Question.questionType == QuestionType.RADIO_BUTTON)
             {
-                <tr>
-                    <td>
-                        <fieldset id="@item.id">
-                            @Html.DisplayFor(modelItem => item.question) <br>
-                            @foreach (var option in item.Question.options)
-                            {
-                                <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
-                                @Html.DisplayFor(modelItem => option.option)<br>
-                            }
-                        </fieldset>
-                    </td>
-                </tr>
+                <fieldset id="@item.id">
+                    @foreach (var option in item.Question.options)
+                    {
+                        <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
+                        @Html.DisplayFor(modelItem => option.option)<br>
+                    }
+                </fieldset>
             }
             if (item.Question.questionType == QuestionType.CHECK_BOX)
             {
-                <tr>
-                    <td>
-                        <fieldset id="@item.id">
-                            @Html.DisplayFor(modelItem => item.question) <br>
-                            @foreach (var option in item.Question.options)
-                            {
-                                <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
-                                @Html.DisplayFor(modelItem => option.option)<br>
-                            }
-                        </fieldset>
-                    </td>
-                </tr>
+                <fieldset id="@item.id">
+                    @foreach (var option in item.Question.options)
+                    {
+                        <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
+                        @Html.DisplayFor(modelItem => option.option)<br>
+                    }
+                </fieldset>
+            }
+            <button type="submit">Submit answer</button>
+        }
+        <br>
+    }
+</div>
+
+@if (Model.disapproved == false)
+{
+    <div>
+        <b>Reactions:</b><br>
+        @foreach (var reaction in Model.reactions.ToList())
+        {
+            if (reaction.disapproved == false)
+            {
+                if (reaction.idea.ideaId == @Model.IdeaId)
+                {
+                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
+                    if (@reaction.verified)
+                    {
+                        <i class="glyphicon glyphicon-ok-circle"></i>
+                    }
+                    @reaction.content
+                    <button id="likeReaction-@reaction.reactionId" type="button"
+                            onclick="location.href = '@Url.Action("LikeReaction", "Idea"
+                                                          , new {reactionId = @reaction.reactionId})', userLikedReaction()">
+                        Like
+                    </button>
+                    <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
+                    }
+                    else
+                    {
+                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                    }
+                }
+            }
+            else
+            {
+                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
+                <span>(@reaction.reactionLikes.Count)</span>
+                <span class="text-danger">This reaction has been blocked!</span><br>
             }
         }
-        
-</div>   
+        <div id="newReaction-@Model.IdeaId"></div>
+        <div>
+            @using (Html.BeginForm("ReactIdea", "Idea",
+                FormMethod.Post))
+            {
+                <p>Write your own reaction: </p>
+                <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
+                <input name="idea" value="@Model.IdeaId" type="hidden"/>
+                <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
+            }
+        </div>
+    </div>
+}
 
-if (Model.ideas.ToList()[i].disapproved == false)
-        {
-             <tr>
-                <td>
-                    @Model._user.FirstName @Model._user.LastName.Substring(0,1).
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <button id="likeIdea-@Model.IdeaId" type="button" 
-                                onclick="location.href='@Url.Action("LikeIdea", "Idea"
-                               , new {ideaId = @Model.IdeaId})', userLikedIdea()" >Like</button>
-                        <span id="ideaLikeCount-@Model.IdeaId">(@Model.ideaLikes.Count)</span><br>
-                    }
-                    else
-                    {
-                        <button title="You have to be signed in">Like</button>
-                        <span>(@Model.ideaLikes.Count)</span><br>
-                    }
-                   
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
-                    }
-                    else
-                    {
-                        <button title="You have to be signed in to report an idea">Report idea</button><br>
-                    }
-                    
-                    <button id="showReactions">Show reactions</button>
-                    <div id="reactions">
-                        @foreach (var reaction in Model.reactions.ToList())
-                        {
-                            if (reaction.disapproved == false)
-                            {
-                                if (reaction.idea.ideaId == @Model.IdeaId)
-                                {
-                                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
-                                    @reaction.content
-                                    <button id="likeReaction-@reaction.reactionId" type="button" 
-                                            onclick="location.href='@Url.Action("LikeReaction", "Idea"
-                                              , new {reactionId = @reaction.reactionId})', userLikedReaction()" >Like</button>
-                                    <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
-                                    if (User.Identity.IsAuthenticated)
-                                    {
-                                        <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
-                                    }
-                                    else
-                                    {
-                                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0,1).</b>
-                                <span>(@reaction.reactionLikes.Count)</span>
-                                <span class="text-danger">This reaction has been blocked!</span><br>
-                            }
-                        }
-                        <div id="newReaction-@Model.IdeaId"></div>
-                        <div>
-                            @using (Html.BeginForm("ReactIdea", "Idea",
-                                FormMethod.Post))
-                            {
-                                <p>Write your own reaction: </p>
-                                <input name="reaction" id="reaction-@Model.IdeaId" type="text" />
-                                <input name="idea" value="@Model.IdeaId" type="hidden" />
-                                <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
-                            }
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        }
-        else
-        {
-            <tr>
-                <td>
-                    @Model._user.FirstName @Model._user.LastName.Substring(0,1).
-                    <span>(@Model.ideaLikes.Count)</span><br>
-                    <span class="text-danger">This idea has been blocked!</span>
-                </td>
-            </tr>
-        }
+<div id="blur" name="blur"></div>
+<div id="popup" name="popup" class="text-center">
+    <div name="popupContent" id="popupContent">
+        <div name="inputArea" id="inputArea">
+            <p id="titelRep">Why do you want to report this 
+                <span id="reportType"></span>?
+            </p>
+            <div id="repTextContainer">
+                <textarea id="reportText" name="reportText"></textarea>
+            </div>
+        </div>
+        <div name="successMessage" id="successMessage">
+            <img src="/images/green_check.png" id="succesImg" />
+            <p>Your report has been successfully submitted.</p>
+        </div>
+        <div name="failureMessage" id="failureMessage">
+            <img src="/images/red_cross.jpg" id="failureImgr"/>
+            <p>Something went wrong, please try again later.</p>
+        </div>
+    </div>
+    <div id="submitReportContainer">
+        <button onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
+    </div>
+</div>

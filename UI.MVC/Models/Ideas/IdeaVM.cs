@@ -30,9 +30,11 @@ namespace D.UI.MVC.Models.Ideas
         public ApplicationUser _user { get; set; }
         public int IdeaId { get; set; }
         public int ideationId { get; set; }
+        public bool disapproved { get; set; }
         public String[] ideationQuestion { get; set; }
         
-        public List<IdeaLike> ideaLikes { get; set; }
+        public int amountOfLikes { get; set; }
+        public bool verified { get; set; }
         public List<Reaction> reactions { get; set; }
 
         
@@ -52,9 +54,6 @@ namespace D.UI.MVC.Models.Ideas
         public List<QuestionFieldVm> QuestionFieldVms { get; set; }
         
         public List<MapFieldVm> MapFieldVms { get; set; }
-        
-
-  
     }
 
     public class IdeasVM
@@ -65,9 +64,4 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<ApplicationUser> Users { get; set; }
         public int IdeationId { get; set; }
     }
-
-   
-    
-    
-        
 }
