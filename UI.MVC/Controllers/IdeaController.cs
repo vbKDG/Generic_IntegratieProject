@@ -298,7 +298,7 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
 
-        public IActionResult Idea(int ideaId = 10)
+        public PartialViewResult Idea(int ideaId = 10)
         {
             String[] test = new string[8];
             Idea idea = ideationMgr.getIdea(ideaId);
@@ -359,7 +359,7 @@ namespace UI.MVC.Controllers
             ideaVm.disapproved = idea.disapproved;
             ideaVm.amountOfLikes = ideationMgr.getIdeaLikes(ideaId);
 
-            return View(ideaVm);
+            return  PartialView("Idea",ideaVm);
         }
 
         public IActionResult AnswerFaq(IFormCollection form)

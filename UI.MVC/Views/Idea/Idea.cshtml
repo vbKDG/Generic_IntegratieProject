@@ -13,50 +13,35 @@
 <script src="@Url.Content("~/js/DisplayMap.js")"></script>
 <link rel="stylesheet" href="~/css/maps2.css"> 
 
-
-
-@if (Model.disapproved == false)
-{
-    <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). </b>
-    if (@Model.verified)
-    {
-        <i class="glyphicon glyphicon-ok-circle"></i>
-    }
-    if (User.Identity.IsAuthenticated)
-    {
-        <button id="likeIdea-@Model.IdeaId" type="button"
-                onclick="location.href = '@Url.Action("LikeIdea", "Idea"
-                   , new {ideaId = @Model.IdeaId})'">
-            Like
-        </button>
-        <span id="ideaLikeCount-@Model.IdeaId">(@Model.amountOfLikes)</span><br>
-    }
-    else
-    {
-        <button title="You have to be signed in">Like</button>
-        <span>(@Model.amountOfLikes)</span><br>
-    }
-
-    if (User.Identity.IsAuthenticated)
-    {
-        <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
-    }
-    else
-    {
-        <button title="You have to be signed in to report an idea">Report idea</button><br>
-    }
-}
-else
-{
-    <tr>
-        <td>
-            @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
-            <span>(@Model.amountOfLikes)</span><br>
-            <span class="text-danger">This idea has been blocked!</span>
-        </td>
-    </tr>
-}
-
+<div class="modal-content">
+    <div class="modal-header">
+       
+        
+        @if (Model.disapproved == false)
+        {
+            <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). </b>
+            if (@Model.verified)
+            {
+                <i class="glyphicon glyphicon-ok-circle"></i>
+            }
+           
+        }
+        else
+        {
+            <tr>
+                <td>
+                    @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
+                    <span>(@Model.amountOfLikes)</span><br>
+                    <span class="text-danger">This idea has been blocked!</span>
+                </td>
+            </tr>
+        }
+        
+      
+    </div>
+    <div class="modal-body">
+        
+            
 <div id="TextUploads">
     <div id="TextSlideshow" class="textslideshow-container">        
         <!-- Next and previous buttons -->
@@ -107,65 +92,65 @@ else
     
     <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
 </div>
-<div id="ImageUploads">
+    <div id="ImageUploads">
 
-    <div id="ImageSlideshow" class="slideshow-container">
+        <div id="ImageSlideshow" class="slideshow-container">
 
        
           
 
-        <!-- Next and previous buttons -->
-        @if (@Model.ImageFieldVms.Count > 1)
-        {
-            <div id="sliders">
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        }
+            <!-- Next and previous buttons -->
+            @if (@Model.ImageFieldVms.Count > 1)
+            {
+                <div id="sliders">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            }
          
         
-        @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
-        {
-            if (i == 0 )
-            {
-                <div class="mySlides" style="display: block;">
-                    <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
-                </div>
-            }
-            else
-            {
-                <div  class="mySlides" style="display: none;">
-                    <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
-                </div>
-            }
-           
-        }
-    </div>
-    
-    
-
-
-
-
-
-
-    <!-- The dots/circles -->
-    @if (@Model.ImageFieldVms.Count > 1)
-    {
-        <div id="dots" style="text-align: center" >
-    
             @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
             {
-                <span class="dot" onclick="currentSlide(i)"></span>
+                if (i == 0 )
+                {
+                    <div class="mySlides" style="display: block;">
+                        <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                    </div>
+                }
+                else
+                {
+                    <div  class="mySlides" style="display: none;">
+                        <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                    </div>
+                }
+           
             }
-    
-    
         </div>
-    }
+    
+    
+
+
+
+
+
+
+        <!-- The dots/circles -->
+        @if (@Model.ImageFieldVms.Count > 1)
+        {
+            <div id="dots" style="text-align: center" >
+    
+                @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
+                {
+                    <span class="dot" onclick="currentSlide(i)"></span>
+                }
+    
+    
+            </div>
+        }
     
     
       
-</div>
+    </div>
 
 <div id="VideoUploads">
     <div id="VideoSlideshow" class="videoslideshow-container">
@@ -266,84 +251,135 @@ else
         <br>
     }
 </div>
-
-@if (Model.disapproved == false)
-{
-    <div>
-        <b>Reactions:</b><br>
-        @foreach (var reaction in Model.reactions.ToList())
-        {
-            if (reaction.disapproved == false)
+  
+    @if (Model.disapproved == false)
+    {
+        <div>
+            <b>Reactions:</b><br>
+            @foreach (var reaction in Model.reactions.ToList())
             {
-                if (reaction.idea.ideaId == @Model.IdeaId)
+                if (reaction.disapproved == false)
                 {
-                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                    if (@reaction.verified)
+                    if (reaction.idea.ideaId == @Model.IdeaId)
                     {
-                        <i class="glyphicon glyphicon-ok-circle"></i>
-                    }
-                    @reaction.content
-                    <button id="likeReaction-@reaction.reactionId" type="button"
-                            onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                          , new {reactionId = @reaction.reactionId})', userLikedReaction()">
-                        Like
-                    </button>
-                    <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
-                    }
-                    else
-                    {
-                        <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                        <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
+                        if (@reaction.verified)
+                        {
+                            <i class="glyphicon glyphicon-ok-circle"></i>
+                        }
+                        @reaction.content
+                        <button id="likeReaction-@reaction.reactionId" type="button"
+                                onclick="location.href = '@Url.Action("LikeReaction", "Idea"
+                                                              , new {reactionId = @reaction.reactionId})', userLikedReaction()">
+                            Like
+                        </button>
+                        <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
+                        }
+                        else
+                        {
+                            <button title="You have to be signed in to report a reaction">Report reaction</button><br>
+                        }
                     }
                 }
+                else
+                {
+                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
+                    <span>(@reaction.reactionLikes.Count)</span>
+                    <span class="text-danger">This reaction has been blocked!</span><br>
+                }
             }
-            else
-            {
-                <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                <span>(@reaction.reactionLikes.Count)</span>
-                <span class="text-danger">This reaction has been blocked!</span><br>
-            }
-        }
-        <div id="newReaction-@Model.IdeaId"></div>
-        <div>
-            @using (Html.BeginForm("ReactIdea", "Idea",
-                FormMethod.Post))
-            {
-                <p>Write your own reaction: </p>
-                <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
-                <input name="idea" value="@Model.IdeaId" type="hidden"/>
-                <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
-            }
-        </div>
-    </div>
-}
-
-    
-<div id="blur" name="blur"></div>
-<div id="popup" name="popup" class="text-center">
-    <div name="popupContent" id="popupContent">
-        <div name="inputArea" id="inputArea">
-            <p id="titelRep">Why do you want to report this 
-                <span id="reportType"></span>?
-            </p>
-            <div id="repTextContainer">
-                <textarea id="reportText" name="reportText"></textarea>
+            <div id="newReaction-@Model.IdeaId"></div>
+            <div>
+                @using (Html.BeginForm("ReactIdea", "Idea",
+                    FormMethod.Post))
+                {
+                    <p>Write your own reaction: </p>
+                    <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
+                    <input name="idea" value="@Model.IdeaId" type="hidden"/>
+                    <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
+                }
             </div>
         </div>
-        <div name="successMessage" id="successMessage">
-            <img src="/images/green_check.png" id="succesImg" />
-            <p>Your report has been successfully submitted.</p>
+    }
+
+
+    <div id="blur" name="blur"></div>
+    <div id="popup" name="popup" class="text-center">
+        <div name="popupContent" id="popupContent">
+            <div name="inputArea" id="inputArea">
+                <p id="titelRep">Why do you want to report this
+                    <span id="reportType"></span>?
+                </p>
+                <div id="repTextContainer">
+                    <textarea id="reportText" name="reportText"></textarea>
+                </div>
+            </div>
+            <div name="successMessage" id="successMessage">
+                <img src="/images/green_check.png" id="succesImg"/>
+                <p>Your report has been successfully submitted.</p>
+            </div>
+            <div name="failureMessage" id="failureMessage">
+                <img src="/images/red_cross.jpg" id="failureImgr"/>
+                <p>Something went wrong, please try again later.</p>
+            </div>
         </div>
-        <div name="failureMessage" id="failureMessage">
-            <img src="/images/red_cross.jpg" id="failureImgr"/>
-            <p>Something went wrong, please try again later.</p>
+        <div id="submitReportContainer">
+            <button onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
         </div>
     </div>
-    <div id="submitReportContainer">
-        <button onclick="submitReportIdea()" id="submitButton">Submit</button><button onclick="closePopup()">Close</button>
-    </div>
-</div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpGkcxEKiXUYAvr2HPj9bhYvs0uZsllW4&libraries=places&callback=initAutocomplete"
             async defer></script>
+  
+                
+
+    </div>
+<div class="modal-footer">
+    @if (Model.disapproved == false)
+    {
+           
+        if (User.Identity.IsAuthenticated)
+        {
+            <button id="likeIdea-@Model.IdeaId" type="button"
+                    onclick="location.href = '@Url.Action("LikeIdea", "Idea"
+                                                  , new {ideaId = @Model.IdeaId})'">
+                Like
+            </button>
+            <span id="ideaLikeCount-@Model.IdeaId">(@Model.amountOfLikes)</span><br>
+        }
+        else
+        {
+            <button title="You have to be signed in">Like</button>
+            <span>(@Model.amountOfLikes)</span><br>
+        }
+
+        if (User.Identity.IsAuthenticated)
+        {
+            <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
+        }
+        else
+        {
+            <button title="You have to be signed in to report an idea">Report idea</button><br>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>
+                @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
+                <span>(@Model.amountOfLikes)</span><br>
+                <span class="text-danger">This idea has been blocked!</span>
+            </td>
+        </tr>
+    }
+    <button class="btn panel-primary" data-dismiss="modal">close</button>
+  
+</div>
+            
+</div>
+
+
+
+
