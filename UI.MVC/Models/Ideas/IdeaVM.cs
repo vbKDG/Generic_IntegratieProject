@@ -13,18 +13,7 @@ using Microsoft.AspNetCore.Http.Internal;
 
 namespace D.UI.MVC.Models.Ideas
 {
-    /*  public static class IdeaExtensions
-      {
-          public static IdeaViewModel ToViewModel(this Idea idea)
-          {
-              var model = new IdeaViewModel
-              {
-                  ideaViewModelId = idea.ideaId,
-                  
-                  
-              };
-          }
-      }*/
+    
     public class IdeaVM 
     {
         public ApplicationUser _user { get; set; }
@@ -63,6 +52,8 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<TextField> fields { get; set; }
         public ICollection<Reaction> reactions { get; set; }
         public ICollection<ApplicationUser> Users { get; set; }
+
+        public ICollection<IdeaVM> IdeaVms { get; set; }
         public int IdeationId { get; set; }
     }
 }
