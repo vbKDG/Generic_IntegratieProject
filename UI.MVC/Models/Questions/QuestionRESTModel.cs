@@ -10,5 +10,6 @@ namespace UI.MVC.Models.Questions
         public QuestionType questionType { get; set; }
         public String question { get; set; }
         public ICollection<string> options { get; set; }
+        public int viewId { get; set; }
     }
 }

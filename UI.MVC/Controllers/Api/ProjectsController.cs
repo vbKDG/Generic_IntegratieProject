@@ -80,7 +80,9 @@ namespace UI.MVC.Controllers.api
             Project project = mgr.getProject(id);
             byte[] imageString = project.imageField.imageData;
             
-            return Ok(imageString);
+            
+            
+            return File(imageString, "image/png");
         }
         
         [HttpGet("/api/Questionnaires/{id}")]

@@ -30,12 +30,26 @@ namespace UI.MVC.Controllers.api
                     id = question.id,
                     questionType = question.questionType,
                     question = question.question,
-                    options = options
+                    options = options,
+                    viewId = 0
                 };
                 newQuestions.Add(model);
             }
             
             return Ok(newQuestions);
+        }
+
+        [HttpPost("/api/SubmitQuestionnaire")]
+        public IActionResult SubmitQuestionnaire([FromBody] IEnumerable<QuestionAnswerRESTModel> model)
+        {
+            foreach (var question in model)
+            {
+                mgr.addQuestionUser("", question.questionId, question.answer);
+            }
+            
+            Console.WriteLine("test");
+            
+            return Ok(model);
         }
     }
 }

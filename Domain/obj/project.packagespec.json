@@ -1,17 +1,20 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj",
+    "projectUniqueName": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj",
     "projectName": "Domain",
-    "projectPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\Domain\\Domain.csproj",
-    "outputPath": "C:\\Users\\lukas\\Documents\\GitHub\\Generic_IntegratieProject\\Domain\\obj\\",
+    "projectPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\Domain.csproj",
+    "outputPath": "C:\\Users\\Lukas\\Desktop\\Cursussen 2018-2019\\Integratieproject\\Generic_IntegratieProject\\Domain\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {}
