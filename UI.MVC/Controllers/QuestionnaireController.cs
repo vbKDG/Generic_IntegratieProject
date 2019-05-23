@@ -465,6 +465,24 @@ namespace UI.MVC.Controllers
         }
 
         [HttpPost]
+        public IActionResult AnswerQuestionFieldIdea(IFormCollection form)
+        {
+            foreach (var key in form.Keys)
+            {
+                if (key.StartsWith("Answer-"))
+                {
+                    var parts = key.Split("-");
+                    Console.WriteLine(parts[1]);
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        qmgr.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
+                    }
+                }
+            }
+            return NoContent();
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreateUserQuestion(IFormCollection form)
         {
             IList<int> questionUserIds = new List<int>();

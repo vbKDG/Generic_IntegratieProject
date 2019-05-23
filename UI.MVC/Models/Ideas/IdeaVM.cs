@@ -13,39 +13,40 @@ using Microsoft.AspNetCore.Http.Internal;
 
 namespace D.UI.MVC.Models.Ideas
 {
-  /*  public static class IdeaExtensions
-    {
-        public static IdeaViewModel ToViewModel(this Idea idea)
-        {
-            var model = new IdeaViewModel
-            {
-                ideaViewModelId = idea.ideaId,
-                
-                
-            };
-        }
-    }*/
+    /*  public static class IdeaExtensions
+      {
+          public static IdeaViewModel ToViewModel(this Idea idea)
+          {
+              var model = new IdeaViewModel
+              {
+                  ideaViewModelId = idea.ideaId,
+                  
+                  
+              };
+          }
+      }*/
     public class IdeaVM 
     {
         public ApplicationUser _user { get; set; }
         public int IdeaId { get; set; }
         
-        public Boolean disapproved { get; set; }
         public int ideationId { get; set; }
+        public bool disapproved { get; set; }
         public String[] ideationQuestion { get; set; }
         
-        public List<IdeaLike> ideaLikes { get; set; }
+        public int amountOfLikes { get; set; }
+        public bool verified { get; set; }
         public List<Reaction> reactions { get; set; }
 
         
         public int ideaViewModelId { get; set; }
         public string name { get; set; }
-      //  public ICollection<FieldViewModel> fields { get; set; }
+        //  public ICollection<FieldViewModel> fields { get; set; }
 
-       //public IFormFile[] Files { get; set; }
+        //public IFormFile[] Files { get; set; }
        
-       public IFormCollection Files { get; set; }
-       public List<ImageFieldVm> ImageFieldVms { get; set; }
+        public IFormCollection Files { get; set; }
+        public List<ImageFieldVm> ImageFieldVms { get; set; }
 
         public List<TextFieldVm> TextFieldVms { get; set; }
 
@@ -54,9 +55,6 @@ namespace D.UI.MVC.Models.Ideas
         public List<QuestionFieldVm> QuestionFieldVms { get; set; }
         
         public List<MapFieldVm> MapFieldVms { get; set; }
-        
-
-  
     }
 
     public class IdeasVM
@@ -67,9 +65,4 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<ApplicationUser> Users { get; set; }
         public int IdeationId { get; set; }
     }
-
-   
-    
-    
-        
 }

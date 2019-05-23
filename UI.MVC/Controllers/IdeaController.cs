@@ -12,6 +12,7 @@ using D.UI.MVC.Models.Fields;
 using D.UI.MVC.Models.Ideas;
 using DAL.EF;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -307,18 +308,16 @@ namespace UI.MVC.Controllers
             List<VideoFieldVm> videoFieldVms = new List<VideoFieldVm>();
             List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
-            List<IdeaLike> ideaLikes = new List<IdeaLike>();
-            List<Reaction> reactions = new List<Reaction>();
-
+            List<Reaction> reactions = ideationMgr.getReactions(ideaId).ToList();
 
             foreach (var field in idea.fields)
             {
                 
                 if (field.GetType() == typeof(TextField))
-                  {
-                      var textField = (TextField) field;
-                      textFieldVms.Add(new TextFieldVm{text = textField.text});
-                  }
+                {
+                    var textField = (TextField) field;
+                    textFieldVms.Add(new TextFieldVm{text = textField.text});
+                }
                   
                 if (field.GetType() == typeof(MapField))
                 {
@@ -339,16 +338,17 @@ namespace UI.MVC.Controllers
                     videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.GetVideoString() });
                 }
                    
-                  if (field.GetType() == typeof(QuestionField))
-                  {
-                      var questionField = (QuestionField) field;
-                     // Question question = new Question();
-                      //question.question = question.question;
-                      questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
-                  }
+                if (field.GetType() == typeof(QuestionField))
+                {
+                    var questionField = (QuestionField) field;
+                    // Question question = new Question();
+                    //question.question = question.question;
+                    questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
+                }
 
                
             }
+
 
             ideaVm.ImageFieldVms = imageFieldVms;
             ideaVm.TextFieldVms = textFieldVms;
@@ -356,11 +356,11 @@ namespace UI.MVC.Controllers
             ideaVm.QuestionFieldVms = questionFieldVms;
             ideaVm.MapFieldVms = mapFieldVms;
             ideaVm._user = idea.user;
-            ideaVm.ideaLikes = ideaLikes;
+            ideaVm.verified = idea.verified;
             ideaVm.reactions = reactions;
+            ideaVm.IdeaId = ideaId;
             ideaVm.disapproved = idea.disapproved;
-            
-
+            ideaVm.amountOfLikes = ideationMgr.getIdeaLikes(ideaId);
 
             return View(ideaVm);
         }
