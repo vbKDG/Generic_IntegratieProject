@@ -18,7 +18,6 @@ function showVideos(n) {
     var slides = document.getElementsByClassName("VideoSlides");
     var videoDots = document.getElementsByClassName("VideoDot");
     var vid = document.getElementsByTagName("video");
-    // console.log(vid[0].id).pause();
     for (var y = 0; y < vid.length; y++) {
         vid[y].pause();
     }
@@ -43,7 +42,6 @@ function readVideo(input) {
         var inputString = "";
 
         VideoFiles[VideoFiles.length] = input.file;
-        console.log(VideoFiles.length);
 
 
 
@@ -51,7 +49,6 @@ function readVideo(input) {
         $("#VideoSlideshow").append('<div class="VideoSlides" >'+ inputString +'</div>');
 
         var name = "#video" + (VideoFiles.length).toString();
-        // console.log(name);
         var reader = new FileReader();
         reader.onload = function(e) {
             $(name).attr('src', e.target.result);
@@ -102,8 +99,7 @@ function ClearVideo() {
     var slides = document.getElementsByClassName("VideoSlides");
     var videoDots = document.getElementsByClassName("VideoDot");
     var inputs = document.getElementsByClassName("VideoUpload");
-    console.log(slides);
-    console.log(videoDots);
+    
     slides[slides.length -1].remove();
     videoDots[videoDots.length - 1].remove();
     VideoFiles.pop();

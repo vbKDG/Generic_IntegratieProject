@@ -27,7 +27,7 @@ namespace DAL
         #region Projects
         public IEnumerable<Project> readProjects()
         {
-            return ctx.projects
+            return ctx.Projects
                 .Include(p => p.Questionnaires)
                 .Include(p => p.ImageField)
                 .Include(p => p.MapField)
@@ -41,7 +41,7 @@ namespace DAL
 
         public Project readProject(int id)
         {
-            return ctx.projects
+            return ctx.Projects
                 .Include(p => p.Questionnaires)
                 .Include( p => p.ImageField)
                 .Include(p => p.MapField)
@@ -54,26 +54,26 @@ namespace DAL
 
         public IEnumerable<Questionnaire> readQuestionnaires()
         {
-            return ctx.questionnaires.AsEnumerable();
+            return ctx.Questionnaires.AsEnumerable();
         }
 
         public void createProject(Project p)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
-            ctx.projects.Add(p);
+            ctx.Projects.Add(p);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
             ctx.SaveChanges();
         }
 
         public void updateProject(Project p)
         {
-            foreach (var phase in ctx.phases.Where(ph => ph.Project.ProjectId == p.ProjectId))
+            foreach (var phase in ctx.Phases.Where(ph => ph.Project.ProjectId == p.ProjectId))
             {
-                ctx.phases.Remove(ctx.phases.Find(phase.PhaseId));
+                ctx.Phases.Remove(ctx.Phases.Find(phase.PhaseId));
             }
             updateSetting(p.Setting);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
-            ctx.projects.Update(p);
+            ctx.Projects.Update(p);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
             ctx.SaveChanges();
         }
@@ -87,7 +87,7 @@ namespace DAL
         public void deleteProject(int id)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
-            ctx.projects.Remove(ctx.projects.Find(id));
+            ctx.Projects.Remove(ctx.Projects.Find(id));
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
             ctx.SaveChanges();
         }

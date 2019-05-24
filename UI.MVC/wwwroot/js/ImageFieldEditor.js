@@ -38,25 +38,20 @@ function readImage(input) {
         var inputString = "";
 
         imageFiles[imageFiles.length] = input.file;
-        // console.log(imageFiles.length);
 
         inputString += '<img id="carousel' + imageFiles.length + '" src="#" width="200" height="200"/>';
         $("#ImageSlideshow").append('<div class="mySlides">'+ inputString +'</div>');
 
         var name = "#carousel" + (imageFiles.length).toString();
-        // console.log(name);
         var reader = new FileReader();
         reader.onload = function(e) {
             $(name).attr('src', e.target.result);
-            //$('#image_preview').attr('hidden', false);
         };
         reader.readAsDataURL(input.files[0]);
 
 
-        // onclick="currentSlide(' + imageFiles.length + ')"
         var dotString = '<span class="dot" ></span>';
         $("#dots").append(dotString);
-        //console.log(imageFiles.length);
         slideIndex = imageFiles.length;
         showSlides(slideIndex);
         var btn1 = '#ImageFieldVms_' + (imageFiles.length -1 ).toString() + '__ImageFile_Files_0_';
@@ -66,7 +61,6 @@ function readImage(input) {
 
 
 
-        //  $(btn2).attr('disabled', false);
         if (imageFiles.length > 0) {
             $(remove).attr('hidden', false);
 
@@ -74,11 +68,9 @@ function readImage(input) {
             $(remove).attr('hidden', true);
 
         }
-        //console.log(btn);
 
         $(btn1).attr('hidden', true);
         $(btn2).attr('hidden', false);
-        //  $(btn2).attr('disabled', false);
 
 
         if (imageFiles.length > 1) {
@@ -88,8 +80,7 @@ function readImage(input) {
             $('#sliders').attr('hidden', true);
             $('#dots').attr('hidden', true);
         }
-//        document.getElementsByName('ImageFieldVms[' + imageFiles.length - 1 + '].imageName').attr('hidden', true);
-//        document.getElementsByName('ImageFieldVms[' + imageFiles.length  + '].imageName').attr('hidden', false);
+
     }
 
 
@@ -106,13 +97,10 @@ $('#dots').on('click', '.Textdot', function() {
     (this).closest(".dot").className += " active";
     for (var i = 0; i < dots.length; i++) {
         if (dots[i].className.includes("active")) {
-            // console.log("dotindex: " + i);
             currentSlide(i);
-           // currentText(i);
         }
     }
 
-    console.log((this).closest(".dot"));
 
 });
 
@@ -121,8 +109,6 @@ function ClearImage() {
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("dot");
     var inputs = document.getElementsByClassName("ImageUpload");
-    console.log(slides);
-    console.log(dots);
     slides[slides.length -1].remove();
     dots[dots.length - 1].remove();
     imageFiles.pop();
@@ -135,7 +121,6 @@ function ClearImage() {
 
 
 
-    //  $(btn2).attr('disabled', false);
     if (imageFiles.length > 0) {
         $(remove).attr('hidden', false);
 

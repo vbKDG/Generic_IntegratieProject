@@ -26,39 +26,39 @@ namespace DAL.EF
         #region Sets
         // Fields 
         public DbSet<FieldRange> FieldRanges { get; set; }
-        public DbSet<Field> fields { get; set; }
-        public DbSet<TextField> textFields { get; set; }
-        public DbSet<ImageField> imageFields { get; set; }
-        public DbSet<MapField> mapFields { get; set; }
-        public DbSet<QuestionField> questionFields { get; set; }
-        public DbSet<VideoField> videoFields { get; set; }
+        public DbSet<Field> Fields { get; set; }
+        public DbSet<TextField> TextFields { get; set; }
+        public DbSet<ImageField> ImageFields { get; set; }
+        public DbSet<MapField> MapFields { get; set; }
+        public DbSet<QuestionField> QuestionFields { get; set; }
+        public DbSet<VideoField> VideoFields { get; set; }
         // Likes
-        public DbSet<Like> likes { get; set; }
-        public DbSet<IdeaLike> ideaLikes { get; set; }
-        public DbSet<ProjectLike> projectLikes { get; set; }
-        public DbSet<ReactionLike> reactionLikes { get; set; }
-        public DbSet<IotVote> iotLikes { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<IdeaLike> IdeaLikes { get; set; }
+        public DbSet<ProjectLike> ProjectLikes { get; set; }
+        public DbSet<ReactionLike> ReactionLikes { get; set; }
+        public DbSet<IotVote> IotLikes { get; set; }
         
-        public DbSet<Report> reports { get; set; }
+        public DbSet<Report> Reports { get; set; }
         //Project
-        public DbSet<Project> projects { get; set; }
-        public DbSet<Phase> phases { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Phase> Phases { get; set; }
         public DbSet<Setting> Settings { get; set; }
         
         //Ideation
-        public DbSet<Ideation> ideations { get; set; }
-        public DbSet<IdeationQuestion> ideationQuestions { get; set; }
-        public DbSet<Idea> ideas { get; set; }
-        public DbSet<Reaction> reactions { get; set; }
+        public DbSet<Ideation> Ideations { get; set; }
+        public DbSet<IdeationQuestion> IdeationQuestions { get; set; }
+        public DbSet<Idea> Ideas { get; set; }
+        public DbSet<Reaction> Reactions { get; set; }
         
         //Questionnaire 
-        public DbSet<Questionnaire> questionnaires { get; set; }
-        public DbSet<Question> questions { get; set; }
-        public DbSet<Option> options { get; set; }
-        public DbSet<QuestionUser> questionUsers { get; set; }
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<QuestionUser> QuestionUsers { get; set; }
 
         //Iotset
-        public DbSet<IotSetup> iotSetups { get; set; }
+        public DbSet<IotSetup> IotSetups { get; set; }
         
         //Identity
         public DbSet<Organisation> Organisations { get; set; }

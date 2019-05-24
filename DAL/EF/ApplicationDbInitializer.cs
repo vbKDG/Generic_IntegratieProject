@@ -719,8 +719,8 @@ namespace DAL.EF
                 Description = "omschrijving centrale vraag d2",
                 BackgroundInfo = "www.google.be"
             };
-            ctx.ideationQuestions.Add(iq10d1);
-            ctx.ideationQuestions.Add(iq10d2);
+            ctx.IdeationQuestions.Add(iq10d1);
+            ctx.IdeationQuestions.Add(iq10d2);
             id1.Questions.Add(iq10d1);
             id1.Questions.Add(iq10d2);
 
@@ -875,17 +875,17 @@ namespace DAL.EF
             };
 
             ctx.Faqs.Add(faq);
-            ctx.projects.AddRange(p1, p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15);
-            ctx.questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
-            ctx.questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
-            ctx.iotSetups.AddRange(iot1);
-            ctx.phases.AddRange(ph1,ph2);
-            ctx.ideations.Add(it1);
-            ctx.ideationQuestions.Add(iq1);
-            ctx.ideas.AddRange(i1,i2);
+            ctx.Projects.AddRange(p1, p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15);
+            ctx.Questionnaires.AddRange(questionnaire1, questionnaire2, questionnaire3);
+            ctx.Questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
+            ctx.IotSetups.AddRange(iot1);
+            ctx.Phases.AddRange(ph1,ph2);
+            ctx.Ideations.Add(it1);
+            ctx.IdeationQuestions.Add(iq1);
+            ctx.Ideas.AddRange(i1,i2);
 
-            ctx.reactions.AddRange(a1,a2);
-            ctx.options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
+            ctx.Reactions.AddRange(a1,a2);
+            ctx.Options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
             
             ctx.SaveChanges();
         }

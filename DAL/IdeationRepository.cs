@@ -25,7 +25,7 @@ namespace DAL
         
         public IEnumerable<Ideation> readIdeations(int projectId)
         {
-            return ctx.ideations
+            return ctx.Ideations
                 .Include(p => p.Project)
                 .Include(p => p.Questions)
                 .Include(p => p.Ideas)
@@ -36,21 +36,21 @@ namespace DAL
         public void createIdeation(Ideation ideation)
         {
              
-            ctx.ideations.Add(ideation);
+            ctx.Ideations.Add(ideation);
             ctx.SaveChanges();
 
         }
 
         public void createIdeation(Ideation ideation, int projectId)
         {
-            ideation.Project = ctx.projects.Find(projectId);
-            ctx.ideations.Add(ideation);
+            ideation.Project = ctx.Projects.Find(projectId);
+            ctx.Ideations.Add(ideation);
             ctx.SaveChanges();
         }
 
         public Ideation readIdeation(int id)
         {
-            return ctx.ideations.Include(p => p.Project)
+            return ctx.Ideations.Include(p => p.Project)
                 .Include(f => f.TextFieldRange)
                 .Include(f => f.ImageFieldRange)
                 .Include(f => f.VideoRange)
@@ -106,20 +106,20 @@ namespace DAL
 
         public int getIdeaLikes(int ideaId)
         {
-            ICollection<IdeaLike> likes = ctx.ideaLikes.Where(l => l.Idea.IdeaId == ideaId).ToList();
+            ICollection<IdeaLike> likes = ctx.IdeaLikes.Where(l => l.Idea.IdeaId == ideaId).ToList();
             return likes.Count;
         }
 
         public int getReactionLikes(int reactionId)
         {
-            ICollection<ReactionLike> likes = ctx.reactionLikes
+            ICollection<ReactionLike> likes = ctx.ReactionLikes
                 .Where(r => r.Reaction.ReactionId == reactionId).ToList();
             return likes.Count;
         }
 
         public IEnumerable<Report> readReports(int ideaId)
         {
-            IEnumerable<Report> reports = ctx.reports
+            IEnumerable<Report> reports = ctx.Reports
                 .Include(r => r.Idea)
                 .Include(r => r.Reaction)
                 .Include(r => r.User)
@@ -131,16 +131,16 @@ namespace DAL
         {
             report.User = ctx.Users.Find(userId);
             report.SendToAdmin = false;
-            ctx.reports.Add(report);
+            ctx.Reports.Add(report);
             ctx.SaveChanges();
             return report;
         }
         
         public void sendToAdmin(int reportId)
         {
-            Report report = ctx.reports.Find(reportId);
+            Report report = ctx.Reports.Find(reportId);
             report.SendToAdmin = true;
-            ctx.reports.Update(report);
+            ctx.Reports.Update(report);
             ctx.SaveChanges();
         }
 
@@ -154,43 +154,43 @@ namespace DAL
 
         public void updateReaction(Reaction reaction)
         {
-            ctx.reactions.Update(reaction);
+            ctx.Reactions.Update(reaction);
             ctx.SaveChanges();
         }
 
         public void approveReaction(int reactionId)
         {
-            Reaction reaction = ctx.reactions.Find(reactionId);
+            Reaction reaction = ctx.Reactions.Find(reactionId);
             reaction.Approved = true;
             reaction.Disapproved = false;
-            ctx.reactions.Update(reaction);
+            ctx.Reactions.Update(reaction);
             ctx.SaveChanges();
         }
 
         public void disapproveReaction(int reactionId)
         {
-            Reaction reaction = ctx.reactions.Find(reactionId);
+            Reaction reaction = ctx.Reactions.Find(reactionId);
             reaction.Disapproved = true;
             reaction.Approved = false;
-            ctx.reactions.Update(reaction);
+            ctx.Reactions.Update(reaction);
             ctx.SaveChanges();
         }
 
         public void approveIdea(int ideaId)
         {
-            Idea idea = ctx.ideas.Find(ideaId);
+            Idea idea = ctx.Ideas.Find(ideaId);
             idea.Approved = true;
             idea.Disapproved = false;
-            ctx.ideas.Update(idea);
+            ctx.Ideas.Update(idea);
             ctx.SaveChanges();
         }
 
         public void disapproveIdea(int ideaId)
         {
-            Idea idea = ctx.ideas.Find(ideaId);
+            Idea idea = ctx.Ideas.Find(ideaId);
             idea.Disapproved = true;
             idea.Approved = false;
-            ctx.ideas.Update(idea);
+            ctx.Ideas.Update(idea);
             ctx.SaveChanges();
         }
 
@@ -206,13 +206,13 @@ namespace DAL
 
         public IEnumerable<IdeationQuestion> ReadIdeationQuestionsForProject(int ProjectId)
         {
-            return ctx.ideationQuestions.Include(i => i.Ideation).Where(i => i.Ideation.Project.ProjectId == ProjectId);
+            return ctx.IdeationQuestions.Include(i => i.Ideation).Where(i => i.Ideation.Project.ProjectId == ProjectId);
 
         }
 
         public IEnumerable<IdeationQuestion> ReadIdeationQuestions(int ideationId)
         {
-            return ctx.ideationQuestions.Where(i => i.Ideation.IdeationId == ideationId);
+            return ctx.IdeationQuestions.Where(i => i.Ideation.IdeationId == ideationId);
         }
 
         public void createIdeationQuestion(IdeationQuestion i)
@@ -239,7 +239,7 @@ namespace DAL
         {
             //return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
             // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
-            return ctx.ideas
+            return ctx.Ideas
                 .Include(i => i.Fields)
                 .Include(i => i.User)
                 .Include(i => i.IdeaLikes)
@@ -250,7 +250,7 @@ namespace DAL
 
         public IEnumerable<Reaction> readReactions(int ideaId)
         {
-            return ctx.reactions
+            return ctx.Reactions
                 .Include(r => r.User)
                 .Include(r => r.ReactionLikes)
                 .Include(r => r.Reports)
@@ -259,7 +259,7 @@ namespace DAL
 
         public IEnumerable<TextField> readFields(int ideaId)
         {
-            IEnumerable<TextField> fields = ctx.textFields
+            IEnumerable<TextField> fields = ctx.TextFields
                 .Where(f => f.Idea.IdeaId == ideaId);
 
             return fields;
@@ -267,7 +267,7 @@ namespace DAL
 
         public void LikeIdea(int ideaId, string userId)
         {
-            bool unique = ctx.ideaLikes
+            bool unique = ctx.IdeaLikes
                 .Any(x => x.User.Id == userId && x.Idea.IdeaId == ideaId);
                 
             if (!unique)
@@ -275,24 +275,24 @@ namespace DAL
                 IdeaLike like = new IdeaLike();
                 like.User = ctx.Users.Find(userId);
                 like.LikeTime = DateTime.Now;
-                like.Idea = ctx.ideas.Find(ideaId);
-                ctx.ideaLikes.Add(like);
+                like.Idea = ctx.Ideas.Find(ideaId);
+                ctx.IdeaLikes.Add(like);
                 ctx.SaveChanges();
             }
         }
 
         public void LikeReaction(int reactionId, string userId)
         {
-            bool unique = ctx.reactionLikes
+            bool unique = ctx.ReactionLikes
                 .Any(x => x.User.Id == userId && x.Reaction.ReactionId == reactionId);
 
             if (!unique)
             {
                 ReactionLike like = new ReactionLike();
-                like.Reaction = ctx.reactions.Find(reactionId);
+                like.Reaction = ctx.Reactions.Find(reactionId);
                 like.User = ctx.Users.Find(userId);
                 like.LikeTime = DateTime.Now;
-                ctx.reactionLikes.Add(like);
+                ctx.ReactionLikes.Add(like);
                 ctx.SaveChanges();
             }
         }
@@ -304,7 +304,7 @@ namespace DAL
                 Content = content,
                 User = ctx.Users.Find(userId),
                 Date = DateTime.Now,
-                Idea = ctx.ideas.Find(Convert.ToInt32(ideaId))
+                Idea = ctx.Ideas.Find(Convert.ToInt32(ideaId))
             };
             foreach(var userRole in ctx.UserRoles.Where(ur => ur.UserId == userId))
             {
@@ -316,7 +316,7 @@ namespace DAL
                     }
                 }
             }
-            ctx.reactions.Add(reaction);
+            ctx.Reactions.Add(reaction);
             ctx.SaveChanges();
         }
 
@@ -324,7 +324,7 @@ namespace DAL
         public void createIdea(Idea i)
         {
 
-            ctx.ideas.Add(i);           
+            ctx.Ideas.Add(i);           
             ctx.SaveChanges();
 
 
@@ -334,7 +334,7 @@ namespace DAL
         {
             ApplicationUser user = ctx.Users.Find(userId);
             i.User = user;
-            ctx.ideas.Add(i);
+            ctx.Ideas.Add(i);
             ctx.SaveChanges();
 
 
@@ -344,7 +344,7 @@ namespace DAL
         {
             Idea i = new Idea();
             i.Fields = fields;
-            ctx.ideas.Add(i);
+            ctx.Ideas.Add(i);
             ctx.SaveChanges();
             Console.WriteLine("Opslagen gelukt!");
         }
@@ -352,11 +352,11 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            var questionFields = ctx.questionFields.Where(q => q.Idea.IdeaId == ideaId)
+            var questionFields = ctx.QuestionFields.Where(q => q.Idea.IdeaId == ideaId)
                 .Include(q => q.Question)
                 .ThenInclude(o => o.Options);
             
-            Idea idea = ctx.ideas
+            Idea idea = ctx.Ideas
                 .Include(i => i.Fields)
                 .Include(i => i.User)
                 .SingleOrDefault(i => i.IdeaId == ideaId);
@@ -373,7 +373,7 @@ namespace DAL
 
         public Reaction readReaction(int reactionId)
         {
-            return ctx.reactions.SingleOrDefault(r => r.ReactionId == reactionId);
+            return ctx.Reactions.SingleOrDefault(r => r.ReactionId == reactionId);
         }
 
         public void updateIdea(Idea i)

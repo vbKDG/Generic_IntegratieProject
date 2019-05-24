@@ -5,21 +5,16 @@ var slideIndex = 0;
 // showSlides(slideIndex);
 
 $(document).ready(function() {
-    console.log('test');
     var textCount = (document.getElementsByClassName('textfield')).length;
-    console.log('textCount: ' + textCount);
 
-    // locationTracker = [locationCount];
     for (var i = 0; i < textCount; i++) {
         TextTracker[i] = true;
     }
-    console.log(TextTracker);
 });
 
 // Next/previous controls
 function plusTexts(n) {
     var textCount = (document.getElementsByClassName('TextSlides')).length;
-    console.log('testcount: ' +  textCount);
     if ((slideIndex + n) >= textCount) {
         slideIndex = 0;
     } else if( slideIndex + n < 0) {
@@ -28,14 +23,12 @@ function plusTexts(n) {
     } else {
         slideIndex += n;
     }
-    console.log('slideeeeee: ' +  slideIndex);
     showTexts(slideIndex);
 
 }
 
 // Thumbnail Text controls
 function currentButton(input) {
-    console.log("alexxxx");
     input.className.replace(" active", "");
 }
 
@@ -56,7 +49,6 @@ function showTexts(n) {
     for (i = 0; i < textDots.length; i++) {
         textDots[i].className = textDots[i].className.replace(" active", "");
     }
-    console.log('slideeeeee2: ' +  slideIndex);
 
     slides[slideIndex].style.display = "block";
     textDots[slideIndex].className += " active";
@@ -65,7 +57,6 @@ function showTexts(n) {
 var TextFiles = [];
 
 function readText() {
-    console.log(TextTracker);
     var x = true;
     var teller = 0;
     while (x) {
@@ -86,7 +77,6 @@ function readText() {
     if (textIndex < document.getElementsByClassName('textfield').length) {
 
         var input = document.getElementById('TextInput').value;
-        console.log(input);
         if (input != "") {
             TextFiles[TextFiles.length] = input;
         }
@@ -102,7 +92,6 @@ function readText() {
         $("#TextSlideshow").append('<div class="TextSlides" id="TextSlides'+ textIndex +'" >' + inputString + '</div>');
 
 
-        console.log(textIndex);
         //
         var dotString = '<span class="Textdot" ></span>';
         $("#textdots").append(dotString);
@@ -112,7 +101,6 @@ function readText() {
         $(textfield).attr('value', input);
         TextTracker[textIndex] = false;
         slideIndex = textIndex;
-        console.log('slideindex :' + slideIndex);
 
 
         showTexts(1);
@@ -155,43 +143,17 @@ function readText() {
     }
 }
 
-
-/*
-$('#textdots').on('click', '.Textdot', function() {
-    var dots = document.getElementsByClassName('Textdot');
-
-    for (var y = 0; y < dots.length; y++) {
-        dots[y].className = dots[y].className.replace(" active", "");
-    }
-
-    (this).closest(".Textdot").className += " active";
-    for (var i = 0; i < dots.length; i++) {
-        if (dots[i].className.includes("active")) {
-            // console.log("dotindex: " + i);
-            currentText(i );
-        }
-    }
-
-    console.log((this).closest(".Textdot"));
-
-}); */
-
 function ClearText() {
 
     var TextDot = document.getElementsByClassName('Textdot');
     var TextSlide = document.getElementsByClassName('TextSlides');
-    //  console.log(slideIndex);
     var id = TextSlide[slideIndex].id.charAt((TextSlide[slideIndex].id).length -1);
-    console.log('id: '+id);
     TextTracker[id] = true;
     TextDot[slideIndex].remove();
     TextSlide[slideIndex].remove();
     $('#TextFieldVms_' + slideIndex + '__Text').attr('value', '');
-    console.log(TextTracker);
 
     slideIndex = (document.getElementsByClassName('TextSlides')).length - 1;
-    console.log('final' + slideIndex);
-
 
     if (TextSlide.length > 1) {
         $('.nextText').attr('hidden', false);

@@ -18,12 +18,7 @@ var label3 = document.getElementById("label 3");
 var label4 = document.getElementById("label 4");
 var label5 = document.getElementById("label 5");
 
-//        window.onload = function load(parameters) {
-//            var questions = document.getElementsByClassName('question');
-//            if (questions.length > 1) {
-//                $('#Add_Question').attr('hidden', false);
-//            }
-//        }
+
 $(document).ready(function() {
     var questions = document.getElementsByClassName('question');
     if (questions.length > 1) {
@@ -57,8 +52,7 @@ function SaveQuestion(parameters) {
     var option5Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_4_');
 
     questionInput.value = question.value;
-    //  console.log(questionInput.value);
-    // console.log(questionInput.valueOf());
+
 
 
     if (questionType_1.checked == true) {
@@ -68,32 +62,15 @@ function SaveQuestion(parameters) {
         questionTypeInput.value = questionType_2.value;
 
     }
-    //  console.log(questionTypeInput.value);
-    //  console.log(questionTypeInput.valueOf());
+
 
 
     option1Input.value = option1.value;
-    //   console.log(option1Input.value);
-    //  console.log(option1Input.valueOf());
-
-
     option2Input.value = option2.value;
-    //  console.log(option2Input.value);
-    //  console.log(option2Input.valueOf());
-
-
     option3Input.value = option3.value;
-    //   console.log(option3Input.value);
-    //  console.log(option3Input.valueOf());
-
     option4Input.value = option4.value;
-    //    console.log(option4Input.value);
-    //   console.log(option4Input.valueOf());
-
-
     option5Input.value = option5.value;
-    //  console.log(option5Input.value);
-    //  console.log(option5Input.valueOf());
+ 
 
 
 
@@ -112,10 +89,7 @@ function AddQuestion() {
 
         ChangeQuestion(questionCount - questionIndex);
         questionIndex = questionCount;
-
-
-        console.log('questionindex: ' + questionIndex);
-        console.log('questioncount: ' + questionCount);
+        
 
         var titleNumber = questionIndex + 1;
         // reset form 
@@ -158,8 +132,6 @@ function AddQuestion() {
 }
 
 function RemoveQuestion(parameters) {
-    console.log(questionCount);
-    console.log(questionIndex);
 
     var questionInput = document.getElementById('QuestionFieldVms_' + questionCount + '__QuestionText');
     var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionCount + '__QuestionType');
@@ -192,8 +164,6 @@ function RemoveQuestion(parameters) {
         $('#Remove_Question').attr('hidden', true);
 
     }
-    console.log('questionindex: ' + questionIndex);
-    console.log('questioncount: ' + questionCount);
 
     if (questionIndex == questionCount) {
         $('.nextQuestion').attr('hidden', true);
@@ -211,7 +181,6 @@ function AddOption() {
 
     option.hidden = false;
     label.hidden = false;
-    console.log(optionIndex);
 
 
     if (optionIndex > 2) {
@@ -232,7 +201,6 @@ function RemoveOption() {
     if (optionIndex < 4) {
         $('#Remove_Option').attr('disabled', true);
     }
-    console.log(optionIndex)
     if (optionIndex > 2) {
         optionIndex--;
     }
@@ -248,8 +216,6 @@ function ChangeQuestion(index, remove = false) {
         }
 
         questionIndex = questionIndex + index;
-        console.log('questionindex: ' + questionIndex);
-        console.log('questioncount: ' + questionCount);
         var questionInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionText');
         var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionType');
         var option1Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_0_');
@@ -293,7 +259,6 @@ function ChangeQuestion(index, remove = false) {
 
         }
         option4.value = option4Input.value;
-        console.log(option5Input.value);
         if (option5Input.value != '') {
             option5.hidden = false;
             label5.hidden = false;
@@ -318,9 +283,7 @@ function ChangeQuestion(index, remove = false) {
             $('.prevQuestion').attr('hidden', false);
             $('.nextQuestion').attr('hidden', false);
         }
-
-        console.log('questionindex: ' + questionIndex);
-        console.log('questioncount: ' + questionCount);
+        
 
     }
 

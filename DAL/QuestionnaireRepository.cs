@@ -34,27 +34,27 @@ namespace DAL
                 qu.User = ctx.Users.Find(userId);
                 qu.Confirmed = true;
             }
-            qu.Question = ctx.questions.Find(questionId);
+            qu.Question = ctx.Questions.Find(questionId);
             qu.Answer = answer;
-            ctx.questionUsers.Add(qu);
+            ctx.QuestionUsers.Add(qu);
             ctx.SaveChanges();
         }
 
         public IEnumerable<Questionnaire> readQuestionnaires(int projectId)
         {
-            return ctx.questionnaires
+            return ctx.Questionnaires
                 .Include(q => q.Project)
                 .Where(q => q.Project.ProjectId == projectId);
         }
 
         public IEnumerable<IotSetup> readIotSetups()
         {
-            return ctx.iotSetups.AsEnumerable();
+            return ctx.IotSetups.AsEnumerable();
         }
 
         public IEnumerable<Question> readQuestions(int questionnaireId)
         {
-            return ctx.questions
+            return ctx.Questions
                 .Include(q => q.Questionnaire)
                 .Include(q => q.Options)
                 .Include(q => q.IotSetup)
@@ -63,16 +63,16 @@ namespace DAL
 
         public IEnumerable<Option> readOptions(int questionId)
         {
-            return ctx.options
+            return ctx.Options
                 .Where(o => o.Question.QuestionId == questionId);
         }
 
         public IEnumerable<QuestionUser> readQuestionUsers(int questionnaireId)
         {
             IList<QuestionUser> questionUsers = new List<QuestionUser>();
-            foreach (var q in ctx.questions.Where(q => q.Questionnaire.QuestionnaireId == questionnaireId))
+            foreach (var q in ctx.Questions.Where(q => q.Questionnaire.QuestionnaireId == questionnaireId))
             {
-                foreach (var qu in ctx.questionUsers.Where(qu => qu.Question.QuestionId == q.QuestionId))
+                foreach (var qu in ctx.QuestionUsers.Where(qu => qu.Question.QuestionId == q.QuestionId))
                 {
                     questionUsers.Add(qu);
                 }
@@ -82,58 +82,58 @@ namespace DAL
         
         public IEnumerable<QuestionUser> readQuestionUsers()
         {
-            return ctx.questionUsers;
+            return ctx.QuestionUsers;
         }
 
         public void createQuestionnaire(Questionnaire q, int projectId)
         {
-            q.Project = ctx.projects.Find(projectId);
-            ctx.questionnaires.Add(q);
+            q.Project = ctx.Projects.Find(projectId);
+            ctx.Questionnaires.Add(q);
             foreach (Question question in q.Questions)
             {
-                question.Questionnaire = ctx.questionnaires.Find(q.QuestionnaireId);
-                ctx.questions.Add(question);
+                question.Questionnaire = ctx.Questionnaires.Find(q.QuestionnaireId);
+                ctx.Questions.Add(question);
             }
             ctx.SaveChanges();
         }
 
         public void createQuestion(Question q)
         {
-            ctx.questions.Add(q);
+            ctx.Questions.Add(q);
             ctx.SaveChanges();
         }
 
         public void createOption(Option o)
         {
-            ctx.options.Add(o);
+            ctx.Options.Add(o);
             ctx.SaveChanges();
         }
 
         public Questionnaire readQuestionnaire(int questionnaireId)
         {
-            return ctx.questionnaires.Find(questionnaireId);
+            return ctx.Questionnaires.Find(questionnaireId);
         }
 
         public QuestionUser readQuestionUser(int questionUserId)
         {
-            return ctx.questionUsers.Find(questionUserId);
+            return ctx.QuestionUsers.Find(questionUserId);
         }
 
         public Question readQuestion(int questionId)
         {
-            return ctx.questions.Find(questionId);
+            return ctx.Questions.Find(questionId);
         }
         
         public void deleteQuestionUser(int questionUserId)
         {
-            ctx.questionUsers.Remove(ctx.questionUsers.Find(questionUserId));
+            ctx.QuestionUsers.Remove(ctx.QuestionUsers.Find(questionUserId));
             ctx.SaveChanges();
         }
 
         public void updateQuestionnaire(Questionnaire q)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
-            ctx.questionnaires.Update(q);
+            ctx.Questionnaires.Update(q);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
             ctx.SaveChanges();
         }
@@ -141,21 +141,21 @@ namespace DAL
         public void deleteQuestionnaire(int questionnaireId)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
-            ctx.questionnaires.Remove(ctx.questionnaires.Find(questionnaireId));
+            ctx.Questionnaires.Remove(ctx.Questionnaires.Find(questionnaireId));
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionnaireRepo.Ctx)");
             ctx.SaveChanges();
         }
 
         public void updateQuestionUser(QuestionUser questionUser)
         {
-            ctx.questionUsers.Update(questionUser);
+            ctx.QuestionUsers.Update(questionUser);
             ctx.SaveChanges();
         }
 
         public void updateQuestion(Question q)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionRepo.Ctx)");
-            ctx.questions.Update(q);
+            ctx.Questions.Update(q);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionRepo.Ctx)");
             ctx.SaveChanges();
         }
@@ -163,7 +163,7 @@ namespace DAL
         public void deleteQuestion(int questionId)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionRepo.Ctx)");
-            ctx.questions.Remove(ctx.questions.Find(questionId));
+            ctx.Questions.Remove(ctx.Questions.Find(questionId));
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (QuestionRepo.Ctx)");
             ctx.SaveChanges();
         }
@@ -171,7 +171,7 @@ namespace DAL
         public void updateOption(Option o)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (OptionRepo.Ctx)");
-            ctx.options.Update(o);
+            ctx.Options.Update(o);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (OptionRepo.Ctx)");
             ctx.SaveChanges();
         }
@@ -179,7 +179,7 @@ namespace DAL
         public void deleteOption(int optionId)
         {
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (OptionRepo.Ctx)");
-            ctx.options.Remove(ctx.options.Find(optionId));
+            ctx.Options.Remove(ctx.Options.Find(optionId));
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (OptionRepo.Ctx)");
             ctx.SaveChanges();
         }

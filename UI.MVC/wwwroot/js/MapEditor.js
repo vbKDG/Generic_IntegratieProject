@@ -1,15 +1,11 @@
 var LocationIndex = 0;
 var locationTracker = [];
 $(document).ready(function() {
-    console.log('test');
     var locationCount = (document.getElementsByClassName('location')).length;
-    console.log('locationcount: ' + locationCount);
 
-    // locationTracker = [locationCount];
     for (var i = 0; i < locationCount; i++) {
         locationTracker[i] = true;
     }
-    console.log(locationTracker)
 });
 
 function initAutocomplete() {
@@ -38,7 +34,6 @@ function initAutocomplete() {
     // more details for that place.
     button.addEventListener("click", function() {
         var places = searchBox.getPlaces();
-        console.log(locationTracker);
         var x = true;
         var teller = 0;
         while (x) {
@@ -54,9 +49,7 @@ function initAutocomplete() {
             }
         }
         LocationIndex = teller;
-        //  console.log(teller);
-        //  console.log(LocationIndex);
-        //  console.log(document.getElementsByClassName('location').length);
+     
         if (LocationIndex < document.getElementsByClassName('location').length) {
 
             var address = document.getElementById('pac-input').value;
@@ -77,8 +70,7 @@ function initAutocomplete() {
                         AddLocation(results[0].formatted_address, LocationIndex);
 
 
-                        console.log(latitude);
-                        console.log(longitude);
+                       
 
                         $('#pac-input').val('');
                     }
@@ -98,7 +90,7 @@ function initAutocomplete() {
             var bounds = new google.maps.LatLngBounds();
             places.forEach(function(place) {
                 if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
+                    alert("Returned place contains no geometry");
                     return;
                 }
                 var icon = {
@@ -152,8 +144,7 @@ function AddLocation (input,index) {
 $("#locationRows").on('click', '.remRow', function () {
 
 
-    // var max = document.getElementsByClassName('location');
-    // var max = max.length;
+    
     var rowIndex = (this).closest(".locationRow").id;
     rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
 
