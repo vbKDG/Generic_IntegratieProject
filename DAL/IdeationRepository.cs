@@ -49,6 +49,11 @@ namespace DAL
         public Ideation readIdeation(int id)
         {
             return ctx.Ideations.Include(p => p.Project)
+                .Include(i => i.Ideas).ThenInclude( r => r.Reactions)
+                .Include(i => i.Ideas).ThenInclude( l => l.IdeaLikes)
+                .Include(i => i.Ideas).ThenInclude( u => u.User)
+                .Include(i => i.Ideas).ThenInclude( f => f.Fields)
+                .Include(q => q.Questions)
                 .Include(f => f.TextFieldRange)
                 .Include(f => f.ImageFieldRange)
                 .Include(f => f.VideoRange)

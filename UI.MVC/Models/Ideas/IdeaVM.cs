@@ -13,18 +13,7 @@ using Microsoft.AspNetCore.Http.Internal;
 
 namespace D.UI.MVC.Models.Ideas
 {
-    /*  public static class IdeaExtensions
-      {
-          public static IdeaViewModel ToViewModel(this Idea idea)
-          {
-              var model = new IdeaViewModel
-              {
-                  ideaViewModelId = idea.ideaId,
-                  
-                  
-              };
-          }
-      }*/
+    
     public class IdeaVM 
     {
         public ApplicationUser _user { get; set; }
@@ -67,21 +56,11 @@ namespace D.UI.MVC.Models.Ideas
         public int IdeationId { get; set; }
     }
     
-    public class IdeaListItemVM
-    {
-        public int IdeaId;
-        public String Base64Image { get; set; }
-        public String IdeaTitle { get; set; }
-        public String UserName { get; set; }
-        public int LikeCount { get; set; }
-        public int ReactionCount { get; set; }
-    }
+   
 
 //    public class IdeationVM
 //    {
-//        public int IdeationId { get; set; }
-//        public List<string> IdeationQuestions { get; set; }
-//        public List<IdeaListItemVM> IdeaListItemVms { get; set; }
+//      
 //        
 //    }
 }

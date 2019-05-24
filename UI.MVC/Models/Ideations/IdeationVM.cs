@@ -33,6 +33,22 @@ namespace UI.MVC.Models.Ideations
         
     }
 
+    public class IdeationPageVM
+    {
+        public int IdeationId { get; set; }
+        public List<string> IdeationQuestions { get; set; }
+        public List<IdeaListItemVM> IdeaListItemVms { get; set; }
+    }
+    public class IdeaListItemVM
+    {
+        public int IdeaId;
+        public String Base64Image { get; set; }
+        public String IdeaTitle { get; set; }
+        public String UserName { get; set; }
+        public int LikeCount { get; set; }
+        public int ReactionCount { get; set; }
+    }
+
 //    public class FieldRange
 //    {
 //        public int Minimum { get; set; }

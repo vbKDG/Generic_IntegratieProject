@@ -230,7 +230,9 @@ namespace UI.MVC.Controllers
             {
                 {
                     reader.CopyTo(stream);
-                    imageField.ImageData = stream.ToArray();
+                    var base64 = Convert.ToBase64String(stream.ToArray());
+                    base64 =  String.Format("data:image/png;base64,{0}", base64);
+                    imageField.ImageData = base64;
 
                 }
 

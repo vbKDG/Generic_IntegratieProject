@@ -29,15 +29,52 @@ namespace UI.MVC.Controllers
 
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
-//        public IdeaController(ApplicationDbContext ctx)
-//        {
-//            ideationMgr = new IdeationManager(ctx);
-//        }
 
-//        public IdeaController()
-//        {
-//            ideationMgr = DIConfig.container.Resolve<IdeationManager>();
-//        }
+        public IActionResult Ideation(int ideationId =  8)
+        {
+            Ideation ideation = ideationMgr.getIdeation(ideationId);
+            IdeationPageVM ideationPageVm = new IdeationPageVM();
+            List<IdeaListItemVM> ideaListItemVms = new List<IdeaListItemVM>();
+            List<String> ideationQuestions = new List<string>();   
+           // String imagePath = "./wwwroot/images/lightbulb.jpg";
+           
+
+            foreach (var idea in ideation.Ideas)
+            {
+                int likeCount = idea.IdeaLikes.Count;
+                int reactionCount = idea.Reactions.Count;
+                var username = idea.User.FirstName + '.' + idea.User.LastName.Substring(0,1);
+                string base64String = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\lightbulb.jpg")));
+
+                var teller = 0;
+                foreach (var field in idea.Fields)
+                {
+                    if (field.GetType() == typeof(ImageField) && teller==0)
+                    {
+                        teller++;
+                        var imagefield = (ImageField) field;
+                        base64String = imagefield.ImageData;
+                        
+                    }
+                   
+                    
+                }
+                
+                ideaListItemVms.Add(new IdeaListItemVM{IdeaId = idea.IdeaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+            }
+
+            foreach (var question in ideation.Questions)
+            {
+                ideationQuestions.Add(question.Question);
+            }
+
+            ideationPageVm.IdeationId = ideationId;
+            ideationPageVm.IdeaListItemVms = ideaListItemVms;
+            ideationPageVm.IdeationQuestions = ideationQuestions;
+            return View(ideationPageVm);
+            
+
+        }
 
         public IdeaController(UserManager<ApplicationUser> userManager)
         {
@@ -139,7 +176,7 @@ namespace UI.MVC.Controllers
                     {
                         teller++;
                         var imagefield = (ImageField) field;
-                        base64String = imagefield.GetImageString();
+                        base64String = imagefield.ImageData;
                         //imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
                     }
                    
@@ -227,7 +264,10 @@ namespace UI.MVC.Controllers
                     {
                         {
                             reader.CopyTo(stream);
-                            imageFields.Add(new ImageField{ImageData = stream.ToArray()});
+                            var base64 = Convert.ToBase64String(stream.ToArray());
+                             base64 =  String.Format("data:image/png;base64,{0}", base64);
+                            imageFields.Add(new ImageField{ImageData = base64});
+
                         }
 
                     }
@@ -239,7 +279,10 @@ namespace UI.MVC.Controllers
                     {
                         {
                             reader.CopyTo(stream);
-                            videoFields.Add(new VideoField{VideoData = stream.ToArray()});
+                            var base64 = Convert.ToBase64String(stream.ToArray());
+                            base64=  String.Format("data:video/mp4;base64,{0}", base64);
+                            videoFields.Add(new VideoField{VideoData = base64});
+
                         }
 
                     } 
@@ -288,10 +331,10 @@ namespace UI.MVC.Controllers
             var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
 
-            return RedirectToAction("Ideations", "Project", new {id = projectId});
+            return RedirectToAction("Ideation", "idea", new {ideationId = idea.Ideation.IdeationId});
         }
 
-        public PartialViewResult Idea(int ideaId = 11)
+        public PartialViewResult Idea(int ideaId = 10)
         {
             String[] test = new string[8];
             Idea idea = ideationMgr.getIdea(ideaId);
@@ -321,14 +364,14 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(ImageField))
                 {
                     var imagefield = (ImageField) field;
-                    imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
+                    imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.ImageData});
                 }
                
   
                 if (field.GetType() == typeof(VideoField))
                 {
                     var videoField = (VideoField) field;
-                    videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.GetVideoString() });
+                    videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.VideoData});
                 }
                    
                 if (field.GetType() == typeof(QuestionField))

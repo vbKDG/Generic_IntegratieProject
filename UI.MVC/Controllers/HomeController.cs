@@ -51,7 +51,7 @@ namespace UI.MVC.Controllers
                 projectVm.Name = project.Name;
                 projectVm.StartDate = project.StartDate;
                 projectVm.EndDate = project.EndDate;
-                projectVm.Base64Image = project.ImageField.GetImageString();
+                projectVm.Base64Image = project.ImageField.ImageData;
                 var likeAmount = 0;
                 var commentAmount = 0;
                 var ideaAmount = 0;
@@ -143,7 +143,7 @@ namespace UI.MVC.Controllers
                 projectVm.Name = project.Name;
                 projectVm.StartDate = project.StartDate;
                 projectVm.EndDate = project.EndDate;
-                projectVm.Base64Image = project.ImageField.GetImageString();
+                projectVm.Base64Image = project.ImageField.ImageData;
                 projectVm.Description = project.Description;
                 var likeAmount = 0;
                 var commentAmount = 0;
