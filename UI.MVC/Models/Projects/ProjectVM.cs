@@ -7,25 +7,24 @@ namespace D.UI.MVC.Models.Projects
 {
     public class ProjectVM
     {
-        public int projectId { get; set; }
-        public string name { get; set; }
+        public int ProjectId { get; set; }
+        public string Name { get; set; }
         
-        public string description { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public string Base64Image { get; set; }
         
-        public ImageFieldVm imageFieldVM { get; set; }
+        public ImageFieldVm ImageFieldVM { get; set; }
         
-        public MapFieldVm mapFieldVM { get; set; }
+        public MapFieldVm MapFieldVM { get; set; }
         
         public SettingVM SettingVm { get; set; }
         
-        public List<PhaseVM> phases { get; set; }
-        private List<PhaseVM> _phases = new List<PhaseVM>();
+        public List<PhaseVM> Phases { get; set; }
         
         public bool Closed { get; set; }
-        public int ideaAmount { get; set; }
+        public int IdeaAmount { get; set; }
         public int AmountOfLikes { get; set; }
         public int AmountOfComments { get; set; }
         public int CombinedTotal { get; set; }

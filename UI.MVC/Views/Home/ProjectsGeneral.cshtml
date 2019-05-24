@@ -17,13 +17,13 @@
         if (project.Progress > 0 && project.Progress < 100)
         {
             <div class="col-md-6" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                , new {projectId = project.projectId})'">
+                                                                , new {projectId = project.ProjectId})'">
                 <div class="col-md-12">
                     <div class="textWithBlurredBg">
                         <img src="@project.Base64Image"/>
                         <div class="text-center">
-                            <h3 class="text-light">@project.name</h3>
-                            <h4 class="text-light">@project.description</h4>
+                            <h3 class="text-light">@project.Name</h3>
+                            <h4 class="text-light">@project.Description</h4>
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@
 
                     <div>
                         <p class="text-dark">
-                            <i class="far fa-lightbulb"></i> @project.ideaAmount
+                            <i class="far fa-lightbulb"></i> @project.IdeaAmount
                             <i class="far fa-heart"></i> @project.AmountOfLikes
                             <i class="far fa-comments"></i> @project.AmountOfComments
                         </p>
@@ -59,13 +59,13 @@
             if (project.Closed == false)
             {
                 <div class="col-md-4" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                    , new {projectId = project.projectId})'">
+                                                                    , new {projectId = project.ProjectId})'">
                     <div class="col-md-16">
                         <div class="textWithBlurredBg">
                             <img src="@project.Base64Image"/>
                             <div class="text-center">
-                                <h3 class="text-light">@project.name</h3>
-                                <h4 class="text-light">@project.description</h4>
+                                <h3 class="text-light">@project.Name</h3>
+                                <h4 class="text-light">@project.Description</h4>
                             </div>
                         </div>
                         <div class="progress center-block">
@@ -75,7 +75,7 @@
 
                         <div>
                             <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.ideaAmount
+                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
                                 <i class="far fa-heart"></i> @project.AmountOfLikes
                                 <i class="far fa-comments"></i> @project.AmountOfComments
                             </p>
@@ -99,13 +99,13 @@
         if (project.Closed == true)
         {
             <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                , new {projectId = project.projectId})'">
+                                                                , new {projectId = project.ProjectId})'">
                 <div class="col-md-16">
                     <div class="textWithBlurredBg">
                         <img src="@project.Base64Image"/>
                         <div class="text-center">
-                            <h3 class="text-light">@project.name</h3>
-                            <h4 class="text-light">@project.description</h4>
+                            <h3 class="text-light">@project.Name</h3>
+                            <h4 class="text-light">@project.Description</h4>
                         </div>
                     </div>
                     <div class="progress center-block">
@@ -115,7 +115,7 @@
 
                     <div>
                         <p class="text-dark">
-                            <i class="far fa-lightbulb"></i> @project.ideaAmount
+                            <i class="far fa-lightbulb"></i> @project.IdeaAmount
                             <i class="far fa-heart"></i> @project.AmountOfLikes
                             <i class="far fa-comments"></i> @project.AmountOfComments
                         </p>

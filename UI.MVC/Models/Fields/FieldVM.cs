@@ -10,15 +10,15 @@ namespace D.UI.MVC.Models.Fields
 {
     public class FieldVM
     {
-        public int fieldViewModelId { get; set; }
-        public Boolean isRequired { get; set; }
+        public int FieldViewModelId { get; set; }
+        public Boolean IsRequired { get; set; }
 
     }
 
     public class TextFieldVm : FieldVM
     {
-        public String text { get; set; }
-        public bool IsAnswered => !string.IsNullOrWhiteSpace(text);
+        public String Text { get; set; }
+        public bool IsAnswered => !string.IsNullOrWhiteSpace(Text);
 
 
     }
@@ -27,9 +27,9 @@ namespace D.UI.MVC.Models.Fields
     {
 
 
-        public string imageName { get; set; }
+        public string ImageName { get; set; }
 
-        [Display(Name = "Choose Image")] public IFormCollection imageFile { get; set; }
+        [Display(Name = "Choose Image")] public IFormCollection ImageFile { get; set; }
         //  public IFormFile[] imageFiles { get; set; }
 
         public String Base64Image { get; set; }
@@ -37,7 +37,7 @@ namespace D.UI.MVC.Models.Fields
         public string GetImageData()
         {
             Byte[] data;
-            using (var reader = imageFile.Files[0].OpenReadStream())
+            using (var reader = ImageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
             {
                 {
@@ -56,7 +56,7 @@ namespace D.UI.MVC.Models.Fields
 
     public class VideoFieldVm : FieldVM
     {
-        public string videoName { get; set; }
+        public string VideoName { get; set; }
         public IFormCollection VideoFile { get; set; }
         
         public String Base64Video { get; set; }
@@ -65,16 +65,16 @@ namespace D.UI.MVC.Models.Fields
 
     public class MapFieldVm : FieldVM
     {
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
     public class QuestionFieldVm : FieldVM
     {
-        public int id { get; set; }
+        public int QuestionFieldVMId { get; set; }
         public Question Question { get; set; }
-        public String questionType { get; set; }
-        public String question { get; set; }
+        public String QuestionType { get; set; }
+        public String QuestionText { get; set; }
 
         public String[] Options { get; set; }
        

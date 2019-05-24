@@ -47,10 +47,10 @@ namespace UI.MVC.Controllers
             foreach (var project in projects)
             {
                 ProjectVM projectVm = new ProjectVM();
-                projectVm.projectId = project.ProjectId;
-                projectVm.name = project.Name;
-                projectVm.startDate = project.StartDate;
-                projectVm.endDate = project.EndDate;
+                projectVm.ProjectId = project.ProjectId;
+                projectVm.Name = project.Name;
+                projectVm.StartDate = project.StartDate;
+                projectVm.EndDate = project.EndDate;
                 projectVm.Base64Image = project.ImageField.GetImageString();
                 var likeAmount = 0;
                 var commentAmount = 0;
@@ -74,11 +74,11 @@ namespace UI.MVC.Controllers
                 commentDictionary.Add(project.ProjectId, commentAmount);
                 projectVm.AmountOfLikes = likeAmount;
                 projectVm.AmountOfComments = commentAmount;
-                projectVm.ideaAmount = ideaAmount;
+                projectVm.IdeaAmount = ideaAmount;
                 projectVm.CombinedTotal = total;
                 projectVm.Closed = project.Closed;
-                var daysBetweenStartEnd = (projectVm.startDate - projectVm.endDate).TotalDays;
-                var daysBetweenStartNow = (projectVm.startDate - DateTime.Now).TotalDays;
+                var daysBetweenStartEnd = (projectVm.StartDate - projectVm.EndDate).TotalDays;
+                var daysBetweenStartNow = (projectVm.StartDate - DateTime.Now).TotalDays;
                 double percentage = Convert.ToDouble(daysBetweenStartNow) / Convert.ToDouble(daysBetweenStartEnd) * 100;
                 if (percentage < 0)
                 {
@@ -139,12 +139,12 @@ namespace UI.MVC.Controllers
             foreach (var project in projects)
             {
                 ProjectVM projectVm = new ProjectVM();
-                projectVm.projectId = project.ProjectId;
-                projectVm.name = project.Name;
-                projectVm.startDate = project.StartDate;
-                projectVm.endDate = project.EndDate;
+                projectVm.ProjectId = project.ProjectId;
+                projectVm.Name = project.Name;
+                projectVm.StartDate = project.StartDate;
+                projectVm.EndDate = project.EndDate;
                 projectVm.Base64Image = project.ImageField.GetImageString();
-                projectVm.description = project.Description;
+                projectVm.Description = project.Description;
                 var likeAmount = 0;
                 var commentAmount = 0;
                 var ideaAmount = 0;
@@ -164,10 +164,10 @@ namespace UI.MVC.Controllers
 
                 projectVm.AmountOfLikes = likeAmount;
                 projectVm.AmountOfComments = commentAmount;
-                projectVm.ideaAmount = ideaAmount;
+                projectVm.IdeaAmount = ideaAmount;
                 projectVm.Closed = project.Closed;
-                var daysBetweenStartEnd = (projectVm.startDate - projectVm.endDate).TotalDays;
-                var daysBetweenStartNow = (projectVm.startDate - DateTime.Now).TotalDays;
+                var daysBetweenStartEnd = (projectVm.StartDate - projectVm.EndDate).TotalDays;
+                var daysBetweenStartNow = (projectVm.StartDate - DateTime.Now).TotalDays;
                 double percentage = Convert.ToDouble(daysBetweenStartNow) / Convert.ToDouble(daysBetweenStartEnd) * 100;
                 if (percentage < 0)
                 {

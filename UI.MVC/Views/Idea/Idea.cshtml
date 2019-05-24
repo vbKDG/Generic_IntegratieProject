@@ -17,10 +17,10 @@
     <div class="modal-header">
        
         
-        @if (Model.disapproved == false)
+        @if (Model.Disapproved == false)
         {
             <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). </b>
-            if (@Model.verified)
+            if (@Model.Verified)
             {
                 <i class="glyphicon glyphicon-ok-circle"></i>
             }
@@ -31,7 +31,7 @@
             <tr>
                 <td>
                     @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
-                    <span>(@Model.amountOfLikes)</span><br>
+                    <span>(@Model.AmountOfLikes)</span><br>
                     <span class="text-danger">This idea has been blocked!</span>
                 </td>
             </tr>
@@ -61,13 +61,13 @@
         {
             <div class="TextSlides" style="display: block;">
                 
-                <p>@Model.TextFieldVms[i].text </p>
+                <p>@Model.TextFieldVms[i].Text </p>
             </div>
         }
         else
         {
             <div  class="TextSlides" style="display: none;">
-                <p>@Model.TextFieldVms[i].text </p>
+                <p>@Model.TextFieldVms[i].Text </p>
             </div>
         }
            
@@ -212,8 +212,8 @@
     <div id="map" style="height: 360px; width: 720px;"> </div>
     @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
     {
-        <p hidden="true" class="latitude"  id="location_latitude_@i">@Model.MapFieldVms[i].latitude</p>
-        <p hidden="true" class="longitude"  id="location_longitude_@i">@Model.MapFieldVms[i].longitude</p>
+        <p hidden="true" class="latitude"  id="location_latitude_@i">@Model.MapFieldVms[i].Latitude</p>
+        <p hidden="true" class="longitude"  id="location_longitude_@i">@Model.MapFieldVms[i].Longitude</p>
 
     }
 
@@ -228,20 +228,20 @@
             <b>@item.Question.TheQuestion</b>
             if (item.Question.QuestionType == QuestionType.RADIO_BUTTON)
             {
-                <fieldset id="@item.id">
+                <fieldset id="@item.QuestionFieldVMId">
                     @foreach (var option in item.Question.Options)
                     {
-                        <input type="radio" value="@option.TheOption" name="Answer-@item.id-radiobutton"/>
+                        <input type="radio" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-radiobutton"/>
                         @Html.DisplayFor(modelItem => option.TheOption)<br>
                     }
                 </fieldset>
             }
             if (item.Question.QuestionType == QuestionType.CHECK_BOX)
             {
-                <fieldset id="@item.id">
+                <fieldset id="@item.QuestionFieldVMId">
                     @foreach (var option in item.Question.Options)
                     {
-                        <input type="checkbox" value="@option.TheOption" name="Answer-@item.id-checkbox"/>
+                        <input type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-checkbox"/>
                         @Html.DisplayFor(modelItem => option.TheOption)<br>
                     }
                 </fieldset>
@@ -252,11 +252,11 @@
     }
 </div>
   
-    @if (Model.disapproved == false)
+    @if (Model.Disapproved == false)
     {
         <div>
             <b>Reactions:</b><br>
-            @foreach (var reaction in Model.reactions.ToList())
+            @foreach (var reaction in Model.Reactions.ToList())
             {
                 if (reaction.Disapproved == false)
                 {
@@ -337,7 +337,7 @@
 
     </div>
 <div class="modal-footer">
-    @if (Model.disapproved == false)
+    @if (Model.Disapproved == false)
     {
            
         if (User.Identity.IsAuthenticated)
@@ -347,12 +347,12 @@
                                                   , new {ideaId = @Model.IdeaId})'">
                 Like
             </button>
-            <span id="ideaLikeCount-@Model.IdeaId">(@Model.amountOfLikes)</span><br>
+            <span id="ideaLikeCount-@Model.IdeaId">(@Model.AmountOfLikes)</span><br>
         }
         else
         {
             <button title="You have to be signed in">Like</button>
-            <span>(@Model.amountOfLikes)</span><br>
+            <span>(@Model.AmountOfLikes)</span><br>
         }
 
         if (User.Identity.IsAuthenticated)
@@ -369,7 +369,7 @@
         <tr>
             <td>
                 @Model._user.FirstName @Model._user.LastName.Substring(0, 1).
-                <span>(@Model.amountOfLikes)</span><br>
+                <span>(@Model.AmountOfLikes)</span><br>
                 <span class="text-danger">This idea has been blocked!</span>
             </td>
         </tr>

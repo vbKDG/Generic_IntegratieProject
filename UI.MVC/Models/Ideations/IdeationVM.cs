@@ -21,7 +21,7 @@ namespace UI.MVC.Models.Ideations
         public FieldRange QuestionField { get; set; }
 
         
-        public List<IdeationQuestionVM> ideationQuestionVMs { get; set; }
+        public List<IdeationQuestionVM> IdeationQuestionVMs { get; set; }
      
         
       
@@ -29,7 +29,7 @@ namespace UI.MVC.Models.Ideations
 
     public class IdeationQuestionVM
     {
-        public String question { get; set; }              
+        public String Question { get; set; }              
         
     }
 

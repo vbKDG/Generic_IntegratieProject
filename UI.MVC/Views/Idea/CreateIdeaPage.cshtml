@@ -10,7 +10,7 @@
 <div class="container">
     
 
-@foreach (var item in Model.ideationQuestion)
+@foreach (var item in Model.IdeationQuestion)
 {
     <b><u><h1 class="text-center">@item</h1></u></b>
 }
@@ -19,7 +19,7 @@
 
 
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
-    <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
+    <input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
     <input asp-for="IdeaTitle" />
   
    @if (@Model.TextFieldVms.Count != 0)

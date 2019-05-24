@@ -30,18 +30,18 @@ namespace D.UI.MVC.Models.Ideas
         public ApplicationUser _user { get; set; }
         public int IdeaId { get; set; }
         
-        public int ideationId { get; set; }
-        public bool disapproved { get; set; }
-        public String[] ideationQuestion { get; set; }
+        public int IdeationId { get; set; }
+        public bool Disapproved { get; set; }
+        public String[] IdeationQuestion { get; set; }
         
-        public int amountOfLikes { get; set; }
-        public bool verified { get; set; }
-        public List<Reaction> reactions { get; set; }
+        public int AmountOfLikes { get; set; }
+        public bool Verified { get; set; }
+        public List<Reaction> Reactions { get; set; }
         public string IdeaTitle { get; set; }
 
         
-        public int ideaViewModelId { get; set; }
-        public string name { get; set; }
+        public int IdeaViewModelId { get; set; }
+        public string Name { get; set; }
         //  public ICollection<FieldViewModel> fields { get; set; }
 
         //public IFormFile[] Files { get; set; }

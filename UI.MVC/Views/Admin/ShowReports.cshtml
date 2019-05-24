@@ -19,9 +19,9 @@
                     @textfield.Text<br>
                 }
                 <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
-                      , new {ideaId = @Model.idea.IdeaId})'; approvePost();">Approve</button>
+                      , new {ideaId = @Model.Idea.IdeaId})'; approvePost();">Approve</button>
                 <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                     , new {ideaId = @Model.idea.IdeaId})'; disaprovePost();">Disapprove</button>
+                     , new {ideaId = @Model.Idea.IdeaId})'; disaprovePost();">Disapprove</button>
             </td>
         </tr>
         <tr>
@@ -29,24 +29,24 @@
                 <h4>A list of all reports on this idea and it's reactions</h4>
             </td>
         </tr>
-        foreach (var report in Model.reports)
+        foreach (var report in Model.Reports)
         {
             if (report.Reaction == null && report.SendToAdmin == false)
             {
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.IdeaId == report.Idea.IdeaId)
+                        @if (Model.Idea.IdeaId == report.Idea.IdeaId)
                         {
-                            @Model.idea.User.Email
+                            @Model.Idea.User.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                  , new {userId = @Model.idea.User.Id})', blockUser();">Block user</button><br>
+                                  , new {userId = @Model.Idea.User.Id})', blockUser();">Block user</button><br>
                         }
                         <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                , new {ideaId = @Model.idea.IdeaId})', approvePost()">Approve</button>
+                                , new {ideaId = @Model.Idea.IdeaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                , new {ideaId = @Model.idea.IdeaId})', disaprovePost();">Disapprove</button>
+                                , new {ideaId = @Model.Idea.IdeaId})', disaprovePost();">Disapprove</button>
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
@@ -69,7 +69,7 @@
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
-                        @foreach (var reaction in Model.reactions)
+                        @foreach (var reaction in Model.Reactions)
                         {
                             if (reaction.ReactionId == report.Reaction.ReactionId)
                             {
@@ -81,12 +81,12 @@
                         <b>Reported by:</b> @report.User.Email<br>
                         @if (report.Reaction != null)
                         {
-                            foreach (var reaction in Model.reactions)
+                            foreach (var reaction in Model.Reactions)
                             {
                                 if (reaction.ReactionId == report.Reaction.ReactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
-                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.idea.IdeaId}, FormMethod.Post))
+                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.Idea.IdeaId}, FormMethod.Post))
                                     {
                                         <div class="popup" id="popup-@reaction.ReactionId" name="popup">
                                             <div name="popupContent" id="popupContent">
@@ -135,10 +135,10 @@
                 <h4>A list of all the reactions on this idea without a report</h4>
             </td>
         </tr>
-        foreach (var reaction in Model.reactions)
+        foreach (var reaction in Model.Reactions)
         {
             var reportReactions = 0;
-            foreach (var report in Model.reports)
+            foreach (var report in Model.Reports)
             {
                 if (report.Reaction == reaction)
                 {
@@ -166,24 +166,24 @@
     }
     else if (User.IsInRole("Admin"))
     {
-        foreach (var report in Model.reports)
+        foreach (var report in Model.Reports)
         {
             if (report.Reaction == null && report.SendToAdmin)
             {
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.IdeaId == report.Idea.IdeaId)
+                        @if (Model.Idea.IdeaId == report.Idea.IdeaId)
                         {
-                            @Model.idea.User.Email
+                            @Model.Idea.User.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                   , new {userId = @Model.idea.User.Id})', blockUser();">Block user</button><br>
+                                   , new {userId = @Model.Idea.User.Id})', blockUser();">Block user</button><br>
                         }
                         <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                    , new {ideaId = @Model.idea.IdeaId})', approvePost()">Approve</button>
+                                    , new {ideaId = @Model.Idea.IdeaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                    , new {ideaId = @Model.idea.IdeaId})', disaprovePost();">Disapprove</button>
+                                    , new {ideaId = @Model.Idea.IdeaId})', disaprovePost();">Disapprove</button>
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
@@ -206,7 +206,7 @@
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
-                        @foreach (var reaction in Model.reactions)
+                        @foreach (var reaction in Model.Reactions)
                         {
                             if (reaction.ReactionId == report.Reaction.ReactionId)
                             {
@@ -218,12 +218,12 @@
                         <b>Reported by:</b> @report.User.Email<br>
                         @if (report.Reaction != null)
                         {
-                            foreach (var reaction in Model.reactions)
+                            foreach (var reaction in Model.Reactions)
                             {
                                 if (reaction.ReactionId == report.Reaction.ReactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
-                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.idea.IdeaId}, FormMethod.Post))
+                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.Idea.IdeaId}, FormMethod.Post))
                                     {
                                         <div class="popup" id="popup-@reaction.ReactionId" name="popup">
                                             <div name="popupContent" id="popupContent">

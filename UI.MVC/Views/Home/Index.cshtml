@@ -107,10 +107,10 @@
                 if (project.Closed == false)
                 {
                     <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                         , new {projectId = project.projectId})'">
+                                         , new {projectId = project.ProjectId})'">
                         <h4 id="titleindex" class="text-black">
-                            @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
-                                , new {projectId = project.projectId})
+                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
+                                , new {projectId = project.ProjectId})
                         </h4>
                         <img src="@project.Base64Image" width="365" height="200"/>
                         <div class="progress">
@@ -118,7 +118,7 @@
                         </div>
                         <div>
                             <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.ideaAmount
+                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
                                 <i class="far fa-heart"></i> @project.AmountOfLikes
                                 <i class="far fa-comments"></i> @project.AmountOfComments
                             </p>
@@ -128,10 +128,10 @@
                 else if (project.Closed == true)
                 {
                     <div class="column text-center text-black closedProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                             , new {projectId = project.projectId})'">
+                             , new {projectId = project.ProjectId})'">
                         <h4 id="titleindex" class="text-black">
-                            @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
-                                , new {projectId = project.projectId})
+                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
+                                , new {projectId = project.ProjectId})
                         </h4>
                         <img src="@project.Base64Image" width="365" height="200"/>
                         <div class="progress">
@@ -139,7 +139,7 @@
                         </div>
                         <div>
                             <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.ideaAmount
+                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
                                 <i class="far fa-heart"></i> @project.AmountOfLikes
                                 <i class="far fa-comments"></i> @project.AmountOfComments
                             </p>

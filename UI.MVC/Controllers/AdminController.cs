@@ -51,9 +51,9 @@ namespace UI.MVC.Controllers
         {
             ReportModel reportModel = new ReportModel
             {
-                reports = ideationMgr.getReports(ideaId).ToList(),
-                idea = ideationMgr.getIdea(ideaId),
-                reactions = ideationMgr.getReactions(ideaId).ToList(),
+                Reports = ideationMgr.getReports(ideaId).ToList(),
+                Idea = ideationMgr.getIdea(ideaId),
+                Reactions = ideationMgr.getReactions(ideaId).ToList(),
                 TextFields = ideationMgr.GetFields(ideaId).ToList()
             };
             return View(reportModel);
@@ -78,22 +78,22 @@ namespace UI.MVC.Controllers
         {
             ReportModel reportModel = new ReportModel
             {
-                ideations = (ideationMgr.getIdeations(projectId)).ToList(),
-                ideas = new List<Idea>(),
-                reactions = new List<Reaction>(),
+                Ideations = (ideationMgr.getIdeations(projectId)).ToList(),
+                Ideas = new List<Idea>(),
+                Reactions = new List<Reaction>(),
                 TextFields = new List<TextField>(),
-                reports = new List<Report>(),
-                projects = projectMgr.getProjects().ToList(),
-                selectedProject = projectId
+                Reports = new List<Report>(),
+                Projects = projectMgr.getProjects().ToList(),
+                SelectedProject = projectId
             };
 
-            foreach (var ideation in reportModel.ideations)
+            foreach (var ideation in reportModel.Ideations)
             {
                 foreach (var idea in ideationMgr.getIdeas(ideation.IdeationId))
                 {
                     foreach(var report in ideationMgr.getReports(idea.IdeaId))
                     {
-                        reportModel.reports.Add(report);
+                        reportModel.Reports.Add(report);
                     }
                     foreach (var field in ideationMgr.GetFields(idea.IdeaId).ToList())
                     {

@@ -39,7 +39,7 @@ function currentButton(input) {
     input.className.replace(" active", "");
 }
 
-function currentText(n = slideIndex) {
+function currentText(n ) {
     slideIndex = n;
 
     showTexts(slideIndex);
@@ -108,7 +108,7 @@ function readText() {
         $("#textdots").append(dotString);
         $("#textdots").attr("hidden", false);
         $("#textsliders").attr("hidden", false);
-        var textfield = '#TextFieldVms_' + textIndex + '__text';
+        var textfield = '#TextFieldVms_' + textIndex + '__Text';
         $(textfield).attr('value', input);
         TextTracker[textIndex] = false;
         slideIndex = textIndex;
@@ -186,7 +186,7 @@ function ClearText() {
     TextTracker[id] = true;
     TextDot[slideIndex].remove();
     TextSlide[slideIndex].remove();
-    $('#TextFieldVms_' + slideIndex + '__text').attr('value', '');
+    $('#TextFieldVms_' + slideIndex + '__Text').attr('value', '');
     console.log(TextTracker);
 
     slideIndex = (document.getElementsByClassName('TextSlides')).length - 1;

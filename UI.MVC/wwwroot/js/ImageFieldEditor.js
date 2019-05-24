@@ -59,8 +59,8 @@ function readImage(input) {
         //console.log(imageFiles.length);
         slideIndex = imageFiles.length;
         showSlides(slideIndex);
-        var btn1 = '#ImageFieldVms_' + (imageFiles.length -1 ).toString() + '__imageFile_Files_0_';
-        var btn2 = '#ImageFieldVms_' + imageFiles.length.toString() + '__imageFile_Files_0_';
+        var btn1 = '#ImageFieldVms_' + (imageFiles.length -1 ).toString() + '__ImageFile_Files_0_';
+        var btn2 = '#ImageFieldVms_' + imageFiles.length.toString() + '__ImageFile_Files_0_';
         var remove = '#removeImage';
 
 
@@ -148,9 +148,9 @@ function ClearImage() {
         $('#sliders').attr('hidden', true);
         $('#dots').attr('hidden', true);
     }
-    var btn1 = '#ImageFieldVms_' + (imageFiles.length ).toString() + '__imageFile_Files_0_';
+    var btn1 = '#ImageFieldVms_' + (imageFiles.length ).toString() + '__ImageFile_Files_0_';
     if (imageFiles.length < inputs.length) {
-        var btn2 = '#ImageFieldVms_' + (imageFiles.length + 1).toString() + '__imageFile_Files_0_';
+        var btn2 = '#ImageFieldVms_' + (imageFiles.length + 1).toString() + '__ImageFile_Files_0_';
 
         $(btn2).attr('hidden', true);
 

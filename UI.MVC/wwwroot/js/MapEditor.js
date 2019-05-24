@@ -68,8 +68,8 @@ function initAutocomplete() {
                         var lat = results[0].geometry.location.lat().toString().replace('.', ',');
                         var lng = results[0].geometry.location.lng().toString().replace('.', ',');
 
-                        var latitude = '#MapFieldVms_' + LocationIndex + '__latitude';
-                        var longitude = '#MapFieldVms_' + LocationIndex + '__longitude';
+                        var latitude = '#MapFieldVms_' + LocationIndex + '__Latitude';
+                        var longitude = '#MapFieldVms_' + LocationIndex + '__Longitude';
                         $(latitude).attr('value', lat);
                         $(longitude).attr('value', lng);
                         locationTracker[teller] = false;
@@ -157,8 +157,8 @@ $("#locationRows").on('click', '.remRow', function () {
     var rowIndex = (this).closest(".locationRow").id;
     rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
 
-    var latitude = '#MapFieldVms_' + rowIndex + '__latitude';
-    var longitude = '#MapFieldVms_' + rowIndex + '__longitude';
+    var latitude = '#MapFieldVms_' + rowIndex + '__Latitude';
+    var longitude = '#MapFieldVms_' + rowIndex + '__Longitude';
     $(latitude).attr('value',0);
     $(longitude).attr('value',0);
     locationTracker[rowIndex] = true;

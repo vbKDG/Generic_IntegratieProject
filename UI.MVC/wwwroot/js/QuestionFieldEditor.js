@@ -48,8 +48,8 @@ $('#ideaForm').submit(function  SubmitQuestions(event) {
 function SaveQuestion(parameters) {
 
 
-    var questionInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__question');
-    var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__questionType');
+    var questionInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionText');
+    var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionType');
     var option1Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_0_');
     var option2Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_1_');
     var option3Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_2_');
@@ -161,8 +161,8 @@ function RemoveQuestion(parameters) {
     console.log(questionCount);
     console.log(questionIndex);
 
-    var questionInput = document.getElementById('QuestionFieldVms_' + questionCount + '__question');
-    var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionCount + '__questionType');
+    var questionInput = document.getElementById('QuestionFieldVms_' + questionCount + '__QuestionText');
+    var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionCount + '__QuestionType');
     var option1Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_0_');
     var option2Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_1_');
     var option3Input = document.getElementById('QuestionFieldVms_' + questionCount + '__Options_2_');
@@ -250,8 +250,8 @@ function ChangeQuestion(index, remove = false) {
         questionIndex = questionIndex + index;
         console.log('questionindex: ' + questionIndex);
         console.log('questioncount: ' + questionCount);
-        var questionInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__question');
-        var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__questionType');
+        var questionInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionText');
+        var questionTypeInput = document.getElementById('QuestionFieldVms_' + questionIndex + '__QuestionType');
         var option1Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_0_');
         var option2Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_1_');
         var option3Input = document.getElementById('QuestionFieldVms_' + questionIndex + '__Options_2_');

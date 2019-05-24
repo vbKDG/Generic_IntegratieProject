@@ -99,8 +99,8 @@ namespace UI.MVC.Controllers
 
             }
 
-            ideaVm.ideationQuestion = questions;
-            ideaVm.ideationId = ideationId;
+            ideaVm.IdeationQuestion = questions;
+            ideaVm.IdeationId = ideationId;
 
 
 
@@ -172,30 +172,30 @@ namespace UI.MVC.Controllers
            
            foreach (var mapfield in ideaVm.MapFieldVms)
            {
-               if (!(mapfield.latitude == 0 && mapfield.longitude == 0))
+               if (!(mapfield.Latitude == 0 && mapfield.Longitude == 0))
                {
-                   mapFields.Add(new MapField{Latitude = mapfield.latitude , Longitude = mapfield.longitude});
+                   mapFields.Add(new MapField{Latitude = mapfield.Latitude , Longitude = mapfield.Longitude});
                    
                }
            }
 
            foreach (var textField in ideaVm.TextFieldVms)
            {
-               if (textField.text != null && textField.text != "")
+               if (textField.Text != null && textField.Text != "")
                {
-                   textFields.Add(new TextField{Text = textField.text});
+                   textFields.Add(new TextField{Text = textField.Text});
                }
               
            }
            
             foreach (var questionVM in ideaVm.QuestionFieldVms)
             {
-                if (questionVM.question != null)
+                if (questionVM.QuestionText != null)
                 {
                     Question question = new Question();
                     List<Option> options = new List<Option>();
-                    question.TheQuestion = questionVM.question;
-                    if (questionVM.questionType.Equals("radiobutton"))
+                    question.TheQuestion = questionVM.QuestionText;
+                    if (questionVM.QuestionType.Equals("radiobutton"))
                     {
                         question.QuestionType = QuestionType.RADIO_BUTTON;
                     }
@@ -289,7 +289,7 @@ namespace UI.MVC.Controllers
                 //var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
                 //idea.user = ApplicationUser;
             }
-            Ideation ideation = ideationMgr.getIdeation(ideaVm.ideationId);
+            Ideation ideation = ideationMgr.getIdeation(ideaVm.IdeationId);
             //ApplicationUser user = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes).Value).Result;
 
 //            idea.user = user;
@@ -326,13 +326,13 @@ namespace UI.MVC.Controllers
             idea.Fields = fields;
             ideationMgr.createIdea(idea,ApplicationUserId);
 
-            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).Project.ProjectId;
+            var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
 
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
 
-        public PartialViewResult Idea(int ideaId = 10)
+        public PartialViewResult Idea(int ideaId = 11)
         {
             String[] test = new string[8];
             Idea idea = ideationMgr.getIdea(ideaId);
@@ -350,13 +350,13 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(TextField))
                 {
                     var textField = (TextField) field;
-                    textFieldVms.Add(new TextFieldVm{text = textField.Text});
+                    textFieldVms.Add(new TextFieldVm{Text = textField.Text});
                 }
                   
                 if (field.GetType() == typeof(MapField))
                 {
                     var mapfield = (MapField) field;
-                    mapFieldVms.Add(new MapFieldVm{latitude = mapfield.Latitude , longitude = mapfield.Longitude});
+                    mapFieldVms.Add(new MapFieldVm{Latitude = mapfield.Latitude , Longitude = mapfield.Longitude});
                 }
                  
                 if (field.GetType() == typeof(ImageField))
@@ -387,11 +387,11 @@ namespace UI.MVC.Controllers
             ideaVm.QuestionFieldVms = questionFieldVms;
             ideaVm.MapFieldVms = mapFieldVms;
             ideaVm._user = idea.User;
-            ideaVm.verified = idea.Verified;
-            ideaVm.reactions = reactions;
+            ideaVm.Verified = idea.Verified;
+            ideaVm.Reactions = reactions;
             ideaVm.IdeaId = ideaId;
-            ideaVm.disapproved = idea.Disapproved;
-            ideaVm.amountOfLikes = ideationMgr.getIdeaLikes(ideaId);
+            ideaVm.Disapproved = idea.Disapproved;
+            ideaVm.AmountOfLikes = ideationMgr.getIdeaLikes(ideaId);
 
             return  PartialView("Idea",ideaVm);
         }
@@ -521,9 +521,9 @@ namespace UI.MVC.Controllers
             
             List<IdeationQuestion> ideationQuestions = new List<IdeationQuestion>();
 
-            foreach (var item in ideationVm.ideationQuestionVMs)
+            foreach (var item in ideationVm.IdeationQuestionVMs)
             {            
-                ideationQuestions.Add(new IdeationQuestion{Question = item.question}); 
+                ideationQuestions.Add(new IdeationQuestion{Question = item.Question}); 
             }
 
             ideation.Questions = ideationQuestions;

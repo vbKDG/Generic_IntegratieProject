@@ -9,9 +9,9 @@
 
 <h1>Current project</h1>
 <select onchange = "redirect(this.value)">
-    @foreach (var project in Model.projects)
+    @foreach (var project in Model.Projects)
     {
-        if (project.ProjectId == Model.selectedProject)
+        if (project.ProjectId == Model.SelectedProject)
         {
             <option value="@project.ProjectId" selected>@project.Name</option>
         }
@@ -24,12 +24,12 @@
 </select>
 
 <table class="table">
-    @foreach (var ideation in Model.ideations)
+    @foreach (var ideation in Model.Ideations)
     {
         foreach (var idea in ideation.Ideas)
         {
             var reportReactions = 0;
-            foreach (var report in Model.reports)
+            foreach (var report in Model.Reports)
             {
                 if (report.Idea.IdeaId == idea.IdeaId)
                 {

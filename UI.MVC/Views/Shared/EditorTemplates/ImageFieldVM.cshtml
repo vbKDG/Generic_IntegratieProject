@@ -12,13 +12,13 @@
 
         <link rel="stylesheet" href="~/css/carousel.css"> 
         
-        <input class="ImageUpload" asp-for=@Model.imageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)" />
+        <input class="ImageUpload" asp-for=@Model.ImageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)" />
         
 
     }
     else
     {
-        <input class="ImageUpload" asp-for=@Model.imageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)"  hidden="true" />
+        <input class="ImageUpload" asp-for=@Model.ImageFile.Files[0] type="file" accept="image/*" onchange="readImage(this)"  hidden="true" />
     }
    
 

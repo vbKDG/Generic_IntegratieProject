@@ -91,14 +91,14 @@ namespace UI.MVC.Controllers
         public IActionResult EditProjectPage(int projectId)
         {
             ProjectVM projectVm = new ProjectVM();
-            projectVm.phases = new List<PhaseVM>();
+            projectVm.Phases = new List<PhaseVM>();
             projectVm.SettingVm = new SettingVM();
             Project project = orchestrator.getProject(projectId);
-            projectVm.projectId = project.ProjectId;
-            projectVm.name = project.Name;
-            projectVm.description = project.Description;
-            projectVm.startDate = project.StartDate;
-            projectVm.endDate = project.EndDate;
+            projectVm.ProjectId = project.ProjectId;
+            projectVm.Name = project.Name;
+            projectVm.Description = project.Description;
+            projectVm.StartDate = project.StartDate;
+            projectVm.EndDate = project.EndDate;
             foreach (var phase in project.Phases)
             {
                 PhaseVM phaseVm = new PhaseVM();
@@ -107,7 +107,7 @@ namespace UI.MVC.Controllers
                 phaseVm.Description = phase.Description;
                 phaseVm.StartDate = phase.StartDate;
                 phaseVm.EndDate = phase.EndDate;
-                projectVm.phases.Add(phaseVm);
+                projectVm.Phases.Add(phaseVm);
             }
             projectVm.SettingVm.SettingId = project.Setting.SettingId;
             projectVm.SettingVm.FontFamily = project.Setting.FontFamily;
@@ -194,13 +194,13 @@ namespace UI.MVC.Controllers
             ICollection<Phase> phases = new List<Phase>();
             Setting setting = new Setting();
 
-            project.ProjectId = projectVm.projectId;
-            project.Name = projectVm.name;
-            project.Description = projectVm.description;
-            project.StartDate = projectVm.startDate;
-            project.EndDate = projectVm.endDate;
+            project.ProjectId = projectVm.ProjectId;
+            project.Name = projectVm.Name;
+            project.Description = projectVm.Description;
+            project.StartDate = projectVm.StartDate;
+            project.EndDate = projectVm.EndDate;
             
-            foreach (var phaseVm in projectVm.phases)
+            foreach (var phaseVm in projectVm.Phases)
             {
                 phases.Add(new Phase
                 {
@@ -229,16 +229,16 @@ namespace UI.MVC.Controllers
             ICollection<Phase> phases = new List<Phase>();
             Setting setting = new Setting();
 
-            project.Name = projectVm.name;
-            project.Description = projectVm.description;
-            project.StartDate = projectVm.startDate;
-            project.EndDate = projectVm.endDate;
+            project.Name = projectVm.Name;
+            project.Description = projectVm.Description;
+            project.StartDate = projectVm.StartDate;
+            project.EndDate = projectVm.EndDate;
 
-            mapField.Latitude = projectVm.mapFieldVM.latitude;
-            mapField.Longitude = projectVm.mapFieldVM.longitude;
+            mapField.Latitude = projectVm.MapFieldVM.Latitude;
+            mapField.Longitude = projectVm.MapFieldVM.Longitude;
             project.MapField = mapField;
             
-            using (var reader = projectVm.imageFieldVM.imageFile.Files[0].OpenReadStream())
+            using (var reader = projectVm.ImageFieldVM.ImageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
             {
                 {
@@ -251,7 +251,7 @@ namespace UI.MVC.Controllers
 
             project.ImageField = imageField;
 
-            foreach (var phaseVm in projectVm.phases)
+            foreach (var phaseVm in projectVm.Phases)
             {
                 phases.Add(new Phase
                 {
@@ -275,7 +275,7 @@ namespace UI.MVC.Controllers
         {
             IdeationVM ideationVm = new IdeationVM();
             List<IdeationQuestionVM> questionVms = new List<IdeationQuestionVM>{new IdeationQuestionVM()};
-            ideationVm.ideationQuestionVMs = questionVms;
+            ideationVm.IdeationQuestionVMs = questionVms;
             Project project = orchestrator.getProject(projectId);
             ideationVm.ProjectId = projectId;
             ideationVm.ProjectName = project.Name;
