@@ -66,6 +66,7 @@ namespace DAL.EF
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=app.db");
+            //optionsBuilder.UseSqlServer("Server=localhost;Database=CityOfIdeas");
             
             base.OnConfiguring(optionsBuilder);
         }

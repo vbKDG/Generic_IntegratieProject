@@ -19,9 +19,9 @@
     <h2>"Image list"</h2>
     @foreach (var item in Model)
     {
-        var base64 = Convert.ToBase64String(item.imageData);
+       // var base64 = Convert.ToBase64String(item.ImageData);
        // var imageData = String.Format("data:image/png;base64,{0}", base64);
-        ViewBag.imageData =String.Format("data:image/png;base64,{0}", base64);
+    // ViewBag.imageData =String.Format("data:image/png;base64,{0}", base64);
 
         <img src="@ViewBag.imageData" style="height:100px;width:100px;" />
     }

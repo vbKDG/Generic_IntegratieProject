@@ -187,8 +187,10 @@ namespace DAL.EF
             };
             p1.Setting = new Setting {BackGroundColor1 = "red", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj1 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
-            ImageField imgproj1 = new ImageField();            
-            imgproj1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg");
+            ImageField imgproj1 = new ImageField(); 
+            imgproj1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg")));
+
+            //imgproj1.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg");
             p1.MapField = mapproj1;
             p1.ImageField = imgproj1;
             
@@ -305,8 +307,10 @@ namespace DAL.EF
             };
             p2.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj2 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
-            ImageField imgproj2 = new ImageField();            
-            imgproj2.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
+            ImageField imgproj2 = new ImageField();  
+            imgproj2.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg")));
+
+          //  imgproj2.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
             p2.MapField = mapproj2;
             p2.ImageField = imgproj2;
             
@@ -377,8 +381,9 @@ namespace DAL.EF
             
             Project p3 = new Project();
             MapField map1 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
-            ImageField img1 = new ImageField();            
-            img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq-project.jpg");
+            ImageField img1 = new ImageField();
+            img1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq-project.jpg")));
+
             p3.Name = "Summer bbqs";
             p3.Description =
                 "The city of antwerp wants to host local bbq's this summmer for the inhabitants.";
@@ -398,7 +403,8 @@ namespace DAL.EF
             Project p4 = new Project();
             MapField map4 = new MapField { Latitude = 51.19482591025128, Longitude = 4.424488633272745 };
             ImageField img4 = new ImageField();
-            img4.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg");
+            img4.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg")));
+           // img4.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg");
             p4.Name = "Soccer Tournament";
             p4.Description = "The locals in Berchem are planning on organizing a Soccer Tournament set in June, 2019.";
             p4.StartDate = new DateTime(2019, 5, 6);
@@ -415,7 +421,9 @@ namespace DAL.EF
             Project p5 = new Project();
             MapField map5 = new MapField { Latitude = 51.19085124996951, Longitude = 4.426741327814966 };
             ImageField img5 = new ImageField();
-            img5.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg");
+            img5.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg")));
+
+           // img5.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg");
             p5.Name = "Tug of war!";
             p5.Description = "An elementary school is organizing an event to start off the summer with a boom. People will be able to play tug of war in a huge park.";
             p5.StartDate = new DateTime(2019, 6, 1);
@@ -432,7 +440,9 @@ namespace DAL.EF
             Project p6 = new Project();
             MapField map6 = new MapField { Latitude = 51.18963283343007, Longitude = 4.420076572104449 };
             ImageField img6 = new ImageField();
-            img6.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg");
+            img6.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg")));
+
+           // img6.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg");
             p6.Closed = true;
             p6.Name = "Asian Cuisine";
             p6.Description = "A lovely family is organizing an Asian Cuisine evening in the park for everyone!";
@@ -450,7 +460,9 @@ namespace DAL.EF
             Project p7 = new Project();
             MapField map7 = new MapField { Latitude = 51.1987041954414, Longitude = 4.42399545204978 };
             ImageField img7 = new ImageField();
-            img7.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg");
+            img7.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg")));
+
+           // img7.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg");
             p7.Name = "Flea market in Berchem";
             p7.Description = "The people of Antwerp are organizing a flea market which will take place for 3 days.";
             p7.StartDate = new DateTime(2019, 6, 10);
@@ -468,7 +480,9 @@ namespace DAL.EF
             Project p8 = new Project();
             MapField map8 = new MapField { Latitude = 51.21250372160042, Longitude = 4.4180404853490245 };
             ImageField img8 = new ImageField();
-            img8.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg");
+            img8.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg")));
+
+           // img8.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg");
             p8.Name = "Art gallery in Antwerp";
             p8.Description = "From june 6 to june 11, school of art in Antwerp is organizing an art gallery";
             p8.Closed = true;
@@ -486,7 +500,9 @@ namespace DAL.EF
             Project p9 = new Project();
             MapField map9 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img9 = new ImageField();
-            img9.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg");
+            img9.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg")));
+
+           // img9.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg");
             p9.Name = "Sushi evening";
             p9.Description = "This summer the people of antwerp will organise a traditional japanese weekend.";
             p9.StartDate = new DateTime(2019, 7, 5);
@@ -504,7 +520,9 @@ namespace DAL.EF
             Project p10 = new Project();
             MapField map10 = new MapField { Latitude = 51.21315287598253, Longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
-            img10.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
+            img10.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg")));
+
+           // img10.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
             p10.Name = "Badminton tournament";
             p10.Description = "In the summer , the city will organize a badminton tournament in City park. Everybody is welcome!";
             p10.StartDate = new DateTime(2019, 5, 1);
@@ -710,7 +728,9 @@ namespace DAL.EF
             Project p11 = new Project();
             MapField map11 = new MapField { Latitude = 51.21847254325475, Longitude = 51.21847254325475 };
             ImageField img11 = new ImageField();
-            img11.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg");
+            img11.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg")));
+
+           // img11.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg");
             p11.Name = "Parking lot movie";
             p11.Description = "The people of the harbour will organize parking lot movies every weekend for a few months!";
             p11.StartDate = new DateTime(2019, 5, 3);
@@ -727,7 +747,9 @@ namespace DAL.EF
             Project p12 = new Project();
             MapField map12 = new MapField { Latitude = 51.21215292577289, Longitude = 4.414958953857422 };
             ImageField img12 = new ImageField();
-            img12.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-renaissance-faire.jpg");
+            img12.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-renaissance-faire.jpg")));
+
+          //  img12.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-renaissance-faire.jpg");
             p12.Name = "Renaissance faire in Antwerp";
             p12.Description = "We are very proud to announce that we are finally able to host the Renaissance faire in Antwerp, please join us for a trip back in time!";
             p12.StartDate = new DateTime(2019, 7, 20);
@@ -744,7 +766,9 @@ namespace DAL.EF
             Project p13 = new Project();
             MapField map13 = new MapField { Latitude = 51.20595899589377, Longitude = 4.383128206683523 };
             ImageField img13 = new ImageField();
-            img13.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg");
+            img13.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg")));
+
+          //  img13.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg");
             p13.Name = "Antique flea market";
             p13.Description = "This years Antique flea market will be hosted in Antwerp. The market will be filled with extraordinary itmes, please join us!";
             p13.StartDate = new DateTime(2019, 6, 1);
@@ -763,7 +787,9 @@ namespace DAL.EF
             Project p14 = new Project();
             MapField map14 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img14 = new ImageField();
-            img14.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg");
+            img14.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg")));
+
+            //img14.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg");
             p14.Name = "Concert in the park";
             p14.Description = "This summer the people of antwerp will organise a concert and everybody is welcome.";
             p14.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
@@ -782,7 +808,9 @@ namespace DAL.EF
             Project p15 = new Project();
             MapField map15 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img15 = new ImageField();
-            img15.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg");
+            img15.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg")));
+
+           // img15.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg");
             p15.Name = "marathon";
             p15.Description = "A local school is organizing a marathon to support their schooltrip.";
             p15.StartDate = new DateTime(2019, 4, 5);

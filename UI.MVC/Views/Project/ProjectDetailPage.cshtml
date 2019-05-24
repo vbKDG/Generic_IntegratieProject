@@ -11,7 +11,7 @@
     <p>@Model.Project.Description</p>
     @if (@Model.Project.ImageField != null)
     {
-        <img src=@Model.Project.ImageField.GetImageString() width="500"/>
+        <img src=@Model.Project.ImageField.ImageData width="500"/>
     }
     @if (@Model.Project.Phases.Count > 0)
     {

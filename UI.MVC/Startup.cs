@@ -38,8 +38,11 @@ namespace UI.MVC
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+               
+            options.UseSqlite(
+              Configuration.GetConnectionString("DefaultConnection")));
+//                options.UseSqlServer(
+//                    "Server=localhost;Database=CityOfIdeas"));
             
             services.AddIdentity<ApplicationUser, ApplicationRole>(
                     options =>

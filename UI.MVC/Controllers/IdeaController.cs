@@ -139,7 +139,7 @@ namespace UI.MVC.Controllers
                     {
                         teller++;
                         var imagefield = (ImageField) field;
-                        base64String = imagefield.GetImageString();
+                        base64String = imagefield.ImageData;
                         //imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
                     }
                    
@@ -254,8 +254,9 @@ namespace UI.MVC.Controllers
                         {
                         
                             reader.CopyTo(stream);
-                            imageFields.Add(new ImageField{imageData = stream.ToArray()});
-                           // imageFields[imageIndex].imageData = stream.ToArray();
+                            var base64 = Convert.ToBase64String(stream.ToArray());
+                             base64 =  String.Format("data:image/png;base64,{0}", base64);
+                            imageFields.Add(new ImageField{ImageData = base64});
 
                         }
 
@@ -271,7 +272,9 @@ namespace UI.MVC.Controllers
                         {
                         
                             reader.CopyTo(stream);
-                            videoFields.Add(new VideoField{VideoData = stream.ToArray()});
+                            var base64 = Convert.ToBase64String(stream.ToArray());
+                            base64=  String.Format("data:video/mp4;base64,{0}", base64);
+                            videoFields.Add(new VideoField{VideoData = base64});
 
                         }
 
@@ -327,7 +330,7 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Project", "Project", new {id = projectId});
         }
 
-        public PartialViewResult Idea(int ideaId = 11)
+        public PartialViewResult Idea(int ideaId = 10)
         {
             String[] test = new string[8];
             Idea idea = ideationMgr.getIdea(ideaId);
@@ -357,14 +360,14 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(ImageField))
                 {
                     var imagefield = (ImageField) field;
-                    imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
+                    imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.ImageData});
                 }
                
   
                 if (field.GetType() == typeof(VideoField))
                 {
                     var videoField = (VideoField) field;
-                    videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.GetVideoString() });
+                    videoFieldVms.Add(new VideoFieldVm{Base64Video = videoField.VideoData});
                 }
                    
                 if (field.GetType() == typeof(QuestionField))
