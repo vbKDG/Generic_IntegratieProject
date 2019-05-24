@@ -94,7 +94,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 var user = _userManager.FindByEmailAsync(info.Principal.FindFirstValue(ClaimTypes.Email)).Result;
-                if (user.blocked)
+                if (user.Blocked)
                 {
                     await _signInManager.SignOutAsync();
                     return RedirectToPage("./Blocked");

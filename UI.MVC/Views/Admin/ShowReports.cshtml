@@ -31,18 +31,18 @@
         </tr>
         foreach (var report in Model.reports)
         {
-            if (report.reaction == null && report.sendToAdmin == false)
+            if (report.Reaction == null && report.SendToAdmin == false)
             {
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.ideaId == report.idea.ideaId)
+                        @if (Model.idea.ideaId == report.Idea.ideaId)
                         {
                             @Model.idea.user.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
                                   , new {userId = @Model.idea.user.Id})', blockUser();">Block user</button><br>
                         }
-                        <b>Reported by:</b> @report.user.Email<br>
+                        <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
                                 , new {ideaId = @Model.idea.ideaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
@@ -50,40 +50,40 @@
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
-                                , new {reportId = @report.id})', sendToAdmin()">Send to administrator</button><br>
+                                , new {reportId = @report.ReportId})', sendToAdmin()">Send to administrator</button><br>
                         }
                     </td>
                     <td>
                         <b>Report message:</b><br>
-                        @report.reportMessage
+                        @report.ReportMessage
                     </td>
                     <td>
                         <b>Submit date:</b><br>
-                        @report.dateSubmitted
+                        @report.DateSubmitted
                     </td>
                 </tr>
     
             }
-            else if (report.reaction != null && report.sendToAdmin == false)
+            else if (report.Reaction != null && report.SendToAdmin == false)
             {
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
                         @foreach (var reaction in Model.reactions)
                         {
-                            if (reaction.reactionId == report.reaction.reactionId)
+                            if (reaction.reactionId == report.Reaction.reactionId)
                             {
                                 @reaction.user.Email
                                 <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
                                         , new {userId = @reaction.user.Id})', blockUser();">Block user</button><br>
                             }
                         }
-                        <b>Reported by:</b> @report.user.Email<br>
-                        @if (report.reaction != null)
+                        <b>Reported by:</b> @report.User.Email<br>
+                        @if (report.Reaction != null)
                         {
                             foreach (var reaction in Model.reactions)
                             {
-                                if (reaction.reactionId == report.reaction.reactionId)
+                                if (reaction.reactionId == report.Reaction.reactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
                                         new {reactionId = @reaction.reactionId, ideaId = @Model.idea.ideaId}, FormMethod.Post))
@@ -116,16 +116,16 @@
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
-                                  , new {reportId = @report.id})', sendToAdmin()">Send to administrator</button><br>
+                                  , new {reportId = @report.ReportId})', sendToAdmin()">Send to administrator</button><br>
                         }
                     </td>
                     <td>
                         <b>Report message:</b><br>
-                        @report.reportMessage
+                        @report.ReportMessage
                     </td>
                     <td>
                         <b>Submit date:</b><br>
-                        @report.dateSubmitted
+                        @report.DateSubmitted
                     </td>
                 </tr>
             }
@@ -140,7 +140,7 @@
             var reportReactions = 0;
             foreach (var report in Model.reports)
             {
-                if (report.reaction == reaction)
+                if (report.Reaction == reaction)
                 {
                     reportReactions++;
                 }
@@ -168,18 +168,18 @@
     {
         foreach (var report in Model.reports)
         {
-            if (report.reaction == null && report.sendToAdmin)
+            if (report.Reaction == null && report.SendToAdmin)
             {
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.ideaId == report.idea.ideaId)
+                        @if (Model.idea.ideaId == report.Idea.ideaId)
                         {
                             @Model.idea.user.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
                                    , new {userId = @Model.idea.user.Id})', blockUser();">Block user</button><br>
                         }
-                        <b>Reported by:</b> @report.user.Email<br>
+                        <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
                                     , new {ideaId = @Model.idea.ideaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
@@ -187,40 +187,40 @@
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
-                                   , new {reportId = @report.id})', sendToAdmin()">Send to administrator</button><br>
+                                   , new {reportId = @report.ReportId})', sendToAdmin()">Send to administrator</button><br>
                         }
                     </td>
                     <td>
                         <b>Report message:</b><br>
-                        @report.reportMessage
+                        @report.ReportMessage
                     </td>
                     <td>
                         <b>Submit date:</b><br>
-                        @report.dateSubmitted
+                        @report.DateSubmitted
                     </td>
                 </tr>
     
             }
-            else if (report.reaction != null && report.sendToAdmin)
+            else if (report.Reaction != null && report.SendToAdmin)
             {
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
                         @foreach (var reaction in Model.reactions)
                         {
-                            if (reaction.reactionId == report.reaction.reactionId)
+                            if (reaction.reactionId == report.Reaction.reactionId)
                             {
                                 @reaction.user.Email
                                 <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
                                           , new {userId = @reaction.user.Id})', blockUser();">Block user</button><br>
                             }
                         }
-                        <b>Reported by:</b> @report.user.Email<br>
-                        @if (report.reaction != null)
+                        <b>Reported by:</b> @report.User.Email<br>
+                        @if (report.Reaction != null)
                         {
                             foreach (var reaction in Model.reactions)
                             {
-                                if (reaction.reactionId == report.reaction.reactionId)
+                                if (reaction.reactionId == report.Reaction.reactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
                                         new {reactionId = @reaction.reactionId, ideaId = @Model.idea.ideaId}, FormMethod.Post))
@@ -253,11 +253,11 @@
                     </td>
                     <td>
                         <b>Report message:</b><br>
-                        @report.reportMessage
+                        @report.ReportMessage
                     </td>
                     <td>
                         <b>Submit date:</b><br>
-                        @report.dateSubmitted
+                        @report.DateSubmitted
                     </td>
                 </tr>
             }

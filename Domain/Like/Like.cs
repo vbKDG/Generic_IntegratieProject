@@ -7,8 +7,8 @@ namespace Domain
     public class Like
     {
         [Required]
-        public int likeId { get; set; }
-        public DateTime likeTime { get; set; }
+        public int LikeId { get; set; }
+        public DateTime LikeTime { get; set; }
         public ApplicationUser User { get; set; }
     }
 }

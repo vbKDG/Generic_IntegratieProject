@@ -6,13 +6,13 @@ namespace Domain
 {
     public class Report
     {
-        public int id { get; set; }
+        public int ReportId { get; set; }
         [MaxLength(255)]
-        public string reportMessage { get; set; }
-        public DateTime dateSubmitted { get; set; }
-        public Idea idea { get; set; }
-        public Reaction reaction { get; set; }
-        public ApplicationUser user { get; set; }
-        public bool sendToAdmin { get; set; }
+        public string ReportMessage { get; set; }
+        public DateTime DateSubmitted { get; set; }
+        public Idea Idea { get; set; }
+        public Reaction Reaction { get; set; }
+        public ApplicationUser User { get; set; }
+        public bool SendToAdmin { get; set; }
     }
 }

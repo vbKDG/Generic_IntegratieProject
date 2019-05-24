@@ -80,7 +80,7 @@ namespace UI.MVC.Areas.Identity.Pages.Account
                 var user = _userManager.FindByEmailAsync(Input.Email).Result;
                 if (user != null)
                 {
-                    if (user.blocked == false)
+                    if (user.Blocked == false)
                     {
                         var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                         if (result.Succeeded)

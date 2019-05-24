@@ -44,16 +44,16 @@ namespace DAL.EF
         
         public Organisation Organisation { get; set; }
         
-        public ICollection<QuestionUser> questionnaireAnswer { get; set; }
-        public ICollection<Idea> ideas { get; set; }
-        public ICollection<Reaction> reactions { get; set; }
-        public ICollection<IdeaLike> ideaLikes { get; set; }
-        public ICollection<ProjectLike> projectLikes { get; set; }
-        public ICollection<ReactionLike> reactionLikes { get; set; }
-        public ICollection<IotVote> iotVotes { get; set; }
-        public ICollection<Report> reports { get; set; }
-        public ICollection<Faq> faqs { get; set; }
+        public ICollection<QuestionUser> QuestionnaireAnswer { get; set; }
+        public ICollection<Idea> Ideas { get; set; }
+        public ICollection<Reaction> Reactions { get; set; }
+        public ICollection<IdeaLike> IdeaLikes { get; set; }
+        public ICollection<ProjectLike> ProjectLikes { get; set; }
+        public ICollection<ReactionLike> ReactionLikes { get; set; }
+        public ICollection<IotVote> IotVotes { get; set; }
+        public ICollection<Report> Reports { get; set; }
+        public ICollection<Faq> Faqs { get; set; }
         public ICollection<FaqAnswer> FaqAnswers { get; set; }
-        public bool blocked { get; set; }
+        public bool Blocked { get; set; }
     }
 }

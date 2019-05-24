@@ -57,19 +57,19 @@ namespace D.UI.MVC.Controllers.Api
             
                 ReportDTO responseData = new ReportDTO()
                 {
-                    id = createdReport.id,
-                    dateSubmitted = createdReport.dateSubmitted,
-                    reportMessage = createdReport.reportMessage
+                    ReportDtoId = createdReport.ReportId,
+                    DateSubmitted = createdReport.DateSubmitted,
+                    ReportMessage = createdReport.ReportMessage
                 };
                 if (newReport.Reaction == 0)
                 {
-                    responseData.ideaId = createdReport.idea.ideaId;
+                    responseData.IdeaId = createdReport.Idea.ideaId;
                 }
                 else if (newReport.Idea == 0)
                 {
-                    responseData.reactionId = createdReport.reaction.reactionId;
+                    responseData.ReactionId = createdReport.Reaction.reactionId;
                 }
-                return CreatedAtAction("Get", new {id = responseData.id}, responseData);
+                return CreatedAtAction("Get", new {id = responseData.ReportDtoId}, responseData);
             }
 
             return NoContent();

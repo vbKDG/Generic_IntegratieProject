@@ -105,10 +105,10 @@ namespace BL
                 if (reaction != null)
                 {
                     Report newReport = new Report();
-                    newReport.reaction = reaction;
-                    newReport.dateSubmitted = DateTime.Now;
-                    newReport.idea = idea;
-                    newReport.reportMessage = reportMessage;
+                    newReport.Reaction = reaction;
+                    newReport.DateSubmitted = DateTime.Now;
+                    newReport.Idea = idea;
+                    newReport.ReportMessage = reportMessage;
 
                     var reports = getReports(ideaId);
 
@@ -135,9 +135,9 @@ namespace BL
                 if (idea != null)
                 {
                     Report newReport = new Report();
-                    newReport.idea = idea;
-                    newReport.dateSubmitted = DateTime.Now;
-                    newReport.reportMessage = reportMessage;
+                    newReport.Idea = idea;
+                    newReport.DateSubmitted = DateTime.Now;
+                    newReport.ReportMessage = reportMessage;
 
                     var reports = getReports(ideaId);
 

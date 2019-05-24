@@ -817,9 +817,9 @@ namespace DAL.EF
             i1.reactions = new List<Reaction>(){a1};
             i2.reactions = new List<Reaction>(){a2};
             
-            userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.ideas = new List<Idea>(){i1};
-            userManager.FindByEmailAsync("peter.smet@gmail.com").Result.ideas = new List<Idea>(){i2};
-            userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.reactions = new List<Reaction>(){a1,a2};
+            userManager.FindByEmailAsync("jan.jaap@gmail.com").Result.Ideas = new List<Idea>(){i1};
+            userManager.FindByEmailAsync("peter.smet@gmail.com").Result.Ideas = new List<Idea>(){i2};
+            userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result.Reactions = new List<Reaction>(){a1,a2};
             
             //Faq
             Faq faq = new Faq

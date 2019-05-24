@@ -113,24 +113,24 @@ namespace DAL
         public int getReactionLikes(int reactionId)
         {
             ICollection<ReactionLike> likes = ctx.reactionLikes
-                .Where(r => r.reaction.reactionId == reactionId).ToList();
+                .Where(r => r.Reaction.reactionId == reactionId).ToList();
             return likes.Count;
         }
 
         public IEnumerable<Report> readReports(int ideaId)
         {
             IEnumerable<Report> reports = ctx.reports
-                .Include(r => r.idea)
-                .Include(r => r.reaction)
-                .Include(r => r.user)
-                .Where(r => r.idea.ideaId == ideaId).AsEnumerable();
+                .Include(r => r.Idea)
+                .Include(r => r.Reaction)
+                .Include(r => r.User)
+                .Where(r => r.Idea.ideaId == ideaId).AsEnumerable();
             return reports;
         }
 
         public Report createReport(Report report, string userId)
         {
-            report.user = ctx.Users.Find(userId);
-            report.sendToAdmin = false;
+            report.User = ctx.Users.Find(userId);
+            report.SendToAdmin = false;
             ctx.reports.Add(report);
             ctx.SaveChanges();
             return report;
@@ -139,7 +139,7 @@ namespace DAL
         public void sendToAdmin(int reportId)
         {
             Report report = ctx.reports.Find(reportId);
-            report.sendToAdmin = true;
+            report.SendToAdmin = true;
             ctx.reports.Update(report);
             ctx.SaveChanges();
         }
@@ -147,7 +147,7 @@ namespace DAL
         public void blockUser(string userId)
         {
             ApplicationUser user = ctx.Users.Find(userId);
-            user.blocked = true;
+            user.Blocked = true;
             ctx.Users.Update(user);
             ctx.SaveChanges();
         }
@@ -274,7 +274,7 @@ namespace DAL
             {
                 IdeaLike like = new IdeaLike();
                 like.User = ctx.Users.Find(userId);
-                like.likeTime = DateTime.Now;
+                like.LikeTime = DateTime.Now;
                 like.Idea = ctx.ideas.Find(ideaId);
                 ctx.ideaLikes.Add(like);
                 ctx.SaveChanges();
@@ -284,14 +284,14 @@ namespace DAL
         public void LikeReaction(int reactionId, string userId)
         {
             bool unique = ctx.reactionLikes
-                .Any(x => x.User.Id == userId && x.reaction.reactionId == reactionId);
+                .Any(x => x.User.Id == userId && x.Reaction.reactionId == reactionId);
 
             if (!unique)
             {
                 ReactionLike like = new ReactionLike();
-                like.reaction = ctx.reactions.Find(reactionId);
+                like.Reaction = ctx.reactions.Find(reactionId);
                 like.User = ctx.Users.Find(userId);
-                like.likeTime = DateTime.Now;
+                like.LikeTime = DateTime.Now;
                 ctx.reactionLikes.Add(like);
                 ctx.SaveChanges();
             }

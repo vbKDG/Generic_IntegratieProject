@@ -4,6 +4,6 @@ namespace Domain
 {
     public class ReactionLike: Like
     {
-       public Reaction reaction { get; set; }
+       public Reaction Reaction { get; set; }
     }
 }
