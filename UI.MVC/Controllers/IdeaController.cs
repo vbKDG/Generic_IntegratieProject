@@ -29,15 +29,52 @@ namespace UI.MVC.Controllers
 
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
-//        public IdeaController(ApplicationDbContext ctx)
-//        {
-//            ideationMgr = new IdeationManager(ctx);
-//        }
 
-//        public IdeaController()
-//        {
-//            ideationMgr = DIConfig.container.Resolve<IdeationManager>();
-//        }
+        public IActionResult Ideation(int ideationId =  8)
+        {
+            Ideation ideation = ideationMgr.getIdeation(ideationId);
+            IdeationPageVM ideationPageVm = new IdeationPageVM();
+            List<IdeaListItemVM> ideaListItemVms = new List<IdeaListItemVM>();
+            List<String> ideationQuestions = new List<string>();   
+           // String imagePath = "./wwwroot/images/lightbulb.jpg";
+           
+
+            foreach (var idea in ideation.Ideas)
+            {
+                int likeCount = idea.IdeaLikes.Count;
+                int reactionCount = idea.Reactions.Count;
+                var username = idea.User.FirstName + '.' + idea.User.LastName.Substring(0,1);
+                string base64String = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\lightbulb.jpg")));
+
+                var teller = 0;
+                foreach (var field in idea.Fields)
+                {
+                    if (field.GetType() == typeof(ImageField) && teller==0)
+                    {
+                        teller++;
+                        var imagefield = (ImageField) field;
+                        base64String = imagefield.ImageData;
+                        
+                    }
+                   
+                    
+                }
+                
+                ideaListItemVms.Add(new IdeaListItemVM{IdeaId = idea.IdeaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+            }
+
+            foreach (var question in ideation.Questions)
+            {
+                ideationQuestions.Add(question.Question);
+            }
+
+            ideationPageVm.IdeationId = ideationId;
+            ideationPageVm.IdeaListItemVms = ideaListItemVms;
+            ideationPageVm.IdeationQuestions = ideationQuestions;
+            return View(ideationPageVm);
+            
+
+        }
 
         public IdeaController(UserManager<ApplicationUser> userManager)
         {
@@ -327,7 +364,7 @@ namespace UI.MVC.Controllers
             var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
 
-            return RedirectToAction("Project", "Project", new {id = projectId});
+            return RedirectToAction("Ideation", "idea", new {ideationId = idea.Ideation.IdeationId});
         }
 
         public PartialViewResult Idea(int ideaId = 10)
