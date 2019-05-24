@@ -122,6 +122,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
+        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -206,6 +207,10 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="AdminController.cs" t="Include" />
+          <e p="API" t="Include">
+            <e p="ProjectsController.cs" t="Include" />
+            <e p="QuestionnairesController.cs" t="Include" />
+          </e>
           <e p="HomeController.cs" t="Include" />
           <e p="IdeaController.cs" t="Include" />
           <e p="ProjectController.cs" t="Include" />
@@ -221,14 +226,18 @@
           <e p="FillInQuestionnaireModel.cs" t="Include" />
           <e p="Ideas" t="Include">
             <e p="IdeaVM.cs" t="Include" />
+            <e p="QuestionAnswerRESTModel.cs" t="Include" />
+            <e p="QuestionRESTModel.cs" t="Include" />
           </e>
           <e p="Ideations" t="Include">
             <e p="IdeationVM.cs" t="Include" />
           </e>
           <e p="OptionsAmount.cs" t="Include" />
-          <e p="ProjectAndQuestions.cs" t="Include" />
+          <e p="ProjectAndQuestionnaires.cs" t="Include" />
           <e p="ProjectDetailModel.cs" t="Include" />
           <e p="Projects" t="Include">
+            <e p="ProjectRESTModel.cs" t="Include" />
+            <e p="ProjectRESTModelBasic.cs" t="Include" />
             <e p="ProjectVM.cs" t="Include" />
           </e>
           <e p="QuestionnaireQuestion.cs" t="Include" />
@@ -289,9 +298,9 @@
               <e p="PhaseVM.cshtml" t="Include" />
             </e>
             <e p="EditProjectPage.cshtml" t="Include" />
+            <e p="Ideations.cshtml" t="Include" />
             <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
-            <e p="Project.cshtml" t="Include" />
             <e p="ProjectDetailPage.cshtml" t="Include" />
             <e p="ProjectImageDisplay.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />

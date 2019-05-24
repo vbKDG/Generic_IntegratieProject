@@ -164,11 +164,6 @@ namespace UI.MVC.Controllers
             List<MapField> mapFields = new List<MapField>();
             List<TextField> textFields = new List<TextField>();
             idea.IdeaTitle = ideaVm.IdeaTitle;
-
-           // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
-            //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
-           // MapField mapField = new MapField();
-           
            
            foreach (var mapfield in ideaVm.MapFieldVms)
            {
@@ -216,27 +211,8 @@ namespace UI.MVC.Controllers
                     question.Options = options;
                     questionField.Question = question;
                     questionFields.Add(questionField);
-                    
                 }
-               
-
             }
-
-          
-            
-            
-//            textField.text = Convert.ToString(ideaVm.textFieldVM.text);
-//            mapField.latitude = ideaVm.mapFieldVM.latitude;
-//            mapField.longitude = ideaVm.mapFieldVM.longitude;
-
-//            using (MemoryStream memoryStream = new MemoryStream())
-//            {
-//                ideaVm.imageFieldVM.imageFile.Files[0].CopyTo(memoryStream);
-//                imageField.imageData = memoryStream.ToArray();
-//            }
-           // var imageIndex = 0;
-           // var videoIndex = 0;
-           
            
            
            
@@ -246,40 +222,28 @@ namespace UI.MVC.Controllers
             {
                 if (ideaVm.Files.Files[i].ContentType.StartsWith("image"))
                 {
-                   // imageFields[imageIndex] = new ImageField();
-                   
                     using (var reader = ideaVm.Files.Files[i].OpenReadStream())
                     using (var stream = new MemoryStream())
                     {
                         {
-                        
                             reader.CopyTo(stream);
-                            imageFields.Add(new ImageField{imageData = stream.ToArray()});
-                           // imageFields[imageIndex].imageData = stream.ToArray();
-
+                            imageFields.Add(new ImageField{ImageData = stream.ToArray()});
                         }
 
                     }
-                  //  imageIndex++;
-                    
-                } else if (ideaVm.Files.Files[i].ContentType.StartsWith("video"))
+                } 
+                else if (ideaVm.Files.Files[i].ContentType.StartsWith("video"))
                 {
-                   // videoFields[videoIndex] = new VideoField();
                     using (var reader = ideaVm.Files.Files[i].OpenReadStream())
                     using (var stream = new MemoryStream())
                     {
                         {
-                        
                             reader.CopyTo(stream);
                             videoFields.Add(new VideoField{VideoData = stream.ToArray()});
-
                         }
 
                     } 
-                   // videoIndex++;
-
                 }
-               
             }
 
             var applicationUserId = ""; 
@@ -324,7 +288,7 @@ namespace UI.MVC.Controllers
             var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
 
-            return RedirectToAction("Project", "Project", new {id = projectId});
+            return RedirectToAction("Ideations", "Project", new {id = projectId});
         }
 
         public PartialViewResult Idea(int ideaId = 11)
@@ -505,7 +469,7 @@ namespace UI.MVC.Controllers
              
             ideationMgr.CreateIdeation(ideation,ideationVm.ProjectId);
             
-            return RedirectToAction("Project", "Project", new {id = ideationVm.ProjectId});
+            return RedirectToAction("Ideations", "Project", new {id = ideationVm.ProjectId});
         }
 
         public IActionResult CreateQuestionPage()
