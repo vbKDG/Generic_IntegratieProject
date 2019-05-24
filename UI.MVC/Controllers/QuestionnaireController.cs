@@ -22,9 +22,6 @@ namespace UI.MVC.Controllers
     {
         private readonly IQuestionnaireManager qmgr;
 
-       // private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
-
-
         private UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
 
@@ -392,8 +389,6 @@ namespace UI.MVC.Controllers
             
             foreach (var fieldset in form.Keys)
             {
-                Console.WriteLine("key: " + fieldset);
-                Console.WriteLine("value: " + form[fieldset]);
                 var ending = "dynamicFieldset" + currentFieldset;
                 if (fieldset == ending)
                 {

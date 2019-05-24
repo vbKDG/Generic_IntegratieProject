@@ -20,15 +20,6 @@ namespace UI.MVC.Controllers
     {
         private readonly OrchestratorSystemController orchestrator;
         
-//        private IProjectManager projectMgr;
-//        private IIdeationManager ideationMgr;
-//
-//        public ProjectController(ApplicationDbContext ctx)
-//        {
-//            projectMgr = new ProjectManager(ctx);
-//            ideationMgr = new IdeationManager(ctx);
-//        }
-
         public ProjectController()
         {
             orchestrator = new OrchestratorSystemController();
@@ -39,13 +30,6 @@ namespace UI.MVC.Controllers
             IEnumerable<Project> allProjects = orchestrator.getProjects();
             return View(allProjects);
         }
-        
-        /*[HttpGet]
-        public IActionResult GetAllProjects()
-        {
-            IEnumerable<Project> allProjects = orchestrator.getProjects();
-            return new JsonResult(allProjects.ToList()[0].name);
-        }*/
         
         [HttpGet]
         public IActionResult GetAllProjects()
@@ -177,7 +161,6 @@ namespace UI.MVC.Controllers
             Project p = orchestrator.getProject(3);
 
             return View(p);
-
         }
 
         public IActionResult CreateProjectPage()
@@ -279,7 +262,6 @@ namespace UI.MVC.Controllers
             Project project = orchestrator.getProject(projectId);
             ideationVm.ProjectId = projectId;
             ideationVm.ProjectName = project.Name;
-            
             
             return View(ideationVm);
         }

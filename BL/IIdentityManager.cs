@@ -4,7 +4,7 @@ namespace BL
 {
     public interface IIdentityManager
     {
-        Organisation getOrganisation(string UserId);
+        Organisation getOrganisation(string userId);
         void changeOrganisation(Organisation organisation);
         void removeOrganisation(string organisationId);
     }

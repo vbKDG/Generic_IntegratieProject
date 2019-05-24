@@ -12,7 +12,7 @@ namespace BL
         IEnumerable<Option> getOptions(int questionId);
         Questionnaire getQuestionnaire(int id);
         Question getQuestion(int id);
-        IEnumerable<QuestionUser> getQuestionUsers(int questionaireId);
+        IEnumerable<QuestionUser> getQuestionUsers(int questionnaireId);
         IEnumerable<QuestionUser> getQuestionUsers();
         QuestionUser getQuestionUser(int questionUserId);
         void addQuestionnaire(List<Question> questions, String name,

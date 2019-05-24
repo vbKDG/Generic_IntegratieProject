@@ -13,15 +13,6 @@ namespace BL
     {
         private IIdeationRepository ideationRepo;
         
-//        public IdeationManager(ApplicationDbContext ctx)
-//        {
-//            ideationRepo = new IdeationRepository(ctx);
-//        }
-
-//        public IdeationManager(IIdeationRepository repo)
-//        {
-//            ideationRepo = repo;
-//        }
         public IdeationManager()
         {
             ideationRepo = new IdeationRepository();

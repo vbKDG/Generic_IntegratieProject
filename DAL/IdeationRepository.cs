@@ -346,7 +346,6 @@ namespace DAL
             i.Fields = fields;
             ctx.Ideas.Add(i);
             ctx.SaveChanges();
-            Console.WriteLine("Opslagen gelukt!");
         }
         
 

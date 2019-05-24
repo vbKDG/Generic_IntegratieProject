@@ -369,24 +369,6 @@ namespace DAL.EF
             questionnaire3.Questions = new List<Question>() { q6, q7, q8, q9 };
             #endregion
             
-            /*Project p3 = new Project();
-            MapField map1 = new MapField{latitude = 51.21248,longitude = 4.409641};
-            ImageField img1 = new ImageField();            
-            img1.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq.PNG");
-            p3.name = "Summer bbq's";
-            p3.description =
-                "The city of antwerp wants to host local bbq's this summmer for the inhabitants.";
-            p3.startDate = new DateTime(2019,7,1);
-            p3.endDate = new DateTime(2019,8,1);
-            p3.phases = new List<Phase>
-            {
-                new Phase{name = "Brainstorming",description = "A period where we get the input of the people.",startDate =  new DateTime(2019,7,1),endDate =  new DateTime(2019,7,20)},
-                new Phase{name = "Deployment",description = "Implementing the idea's we've received ",startDate =  new DateTime(2019,7,25),endDate =  new DateTime(2019,8,20)},
-
-            };
-            p3.mapField = map1;
-            p3.imageField = img1;*/
-            
             //Phases
             Phase ph1 = new Phase() { Project = p1, Name = "Brainstorming",Description = "We are starting this project by gathering input from the community"};
             Phase ph2 = new Phase() { Project = p1, Name = "Construction",Description = "We are building the most suggested constructions in the playground"};
@@ -519,7 +501,6 @@ namespace DAL.EF
             p9.MapField = map9;
 
             // Badminton tournament
-             // Badminton tournament
             Project p10 = new Project();
             MapField map10 = new MapField { Latitude = 51.21315287598253, Longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
@@ -779,7 +760,6 @@ namespace DAL.EF
 
             
             // Concert evening
-           
             Project p14 = new Project();
             MapField map14 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img14 = new ImageField();
@@ -799,7 +779,6 @@ namespace DAL.EF
             
             
             // 5km marathon 
-           
             Project p15 = new Project();
             MapField map15 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img15 = new ImageField();
@@ -818,33 +797,24 @@ namespace DAL.EF
 
             
             //Ideations 
-            
             Ideation it1 = new Ideation(){Project = p1};
             
             p1.Ideations = new List<Ideation>(){it1};
             
             //IdeationQuestions 
-
             IdeationQuestion iq1 = new IdeationQuestion(){Ideation = it1, Question = "What type of constructions do you want on the playground ? "};
             it1.Questions = new List<IdeationQuestion>(){iq1};
             
-           
-         //   fields.Add(if1);
             //Ideas 
-            
             Idea i1 = new Idea(){Ideation = it1 , User = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result };
             Idea i2 = new Idea(){Ideation = it1 , User = userManager.FindByEmailAsync("peter.smet@gmail.com").Result };
 
            // it1.fields = null;
-            
             it1.Ideas = new List<Idea>(){ i1,i2};
+            
             //Fields
             ICollection<Field> fields = new List<Field>();
            
-           
-            //answers 
-           // Reaction a3 = new Reaction(){content = "test",idea = null};
-            
             Reaction a1 = new Reaction(){Idea = i1, User = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,Content = " Great Idea !" };
             Reaction a2 = new Reaction(){Idea = i2, User = userManager.FindByEmailAsync("dirk.bakker@gmail.com").Result,Content = " Terrible Idea !" };
             

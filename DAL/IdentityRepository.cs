@@ -13,9 +13,9 @@ namespace DAL
             this.ctx = ctx;
         }
 
-        public Organisation readOrganisation(string UserId)
+        public Organisation readOrganisation(string userId)
         {
-            IEnumerable<Organisation> orgList = ctx.Organisations.Where(o => o.ApplicationUser.Id == UserId).AsEnumerable();
+            IEnumerable<Organisation> orgList = ctx.Organisations.Where(o => o.ApplicationUser.Id == userId).AsEnumerable();
             if (orgList.Any())
             {
                 return orgList.First();

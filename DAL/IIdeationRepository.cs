@@ -64,20 +64,5 @@ namespace DAL
          #endregion
          
          IEnumerable<Faq> readFaqs();
-
-/*
-         #region Answers
-         IEnumerable<Ideation> readIdeations(int id);
-         void createIdeation(Ideation i);
-         Ideation readIdeation(int id);
-         void updateIdeation(Ideation i);
-         void deleteIdeation(int id);
-
-         
-
-         #endregion
-        
-        
-        */
     }
 }

@@ -282,20 +282,15 @@ namespace UI.MVC.Controllers
                
             }
 
-            var ApplicationUserId = ""; 
+            var applicationUserId = ""; 
             if (User.Identity.IsAuthenticated)
             {
-                ApplicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                //var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
-                //idea.user = ApplicationUser;
+                applicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
             }
             Ideation ideation = ideationMgr.getIdeation(ideaVm.IdeationId);
-            //ApplicationUser user = _userManager.FindByIdAsync(User.FindFirst(ClaimTypes).Value).Result;
-
-//            idea.user = user;
             
             idea.Ideation = ideation;
-//           
+          
             foreach (var imageField in imageFields)
             {
                 fields.Add(imageField);
@@ -324,7 +319,7 @@ namespace UI.MVC.Controllers
                 fields.Add(textfield);
             }
             idea.Fields = fields;
-            ideationMgr.createIdea(idea,ApplicationUserId);
+            ideationMgr.createIdea(idea,applicationUserId);
 
             var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
@@ -375,8 +370,6 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(QuestionField))
                 {
                     var questionField = (QuestionField) field;
-                    // Question question = new Question();
-                    //question.question = question.question;
                     questionFieldVms.Add(new QuestionFieldVm{Question = questionField.Question});
                 }
             }
@@ -430,24 +423,6 @@ namespace UI.MVC.Controllers
         
         public IActionResult Ideas(int ideationId)
         {
-            /*IdeasVM ideasVm = new IdeasVM();
-            List<IdeaVM> ideaVmList = new List<IdeaVM>();
-            IEnumerable<Idea> ideas = ideationMgr.getIdeas(ideationId);
-            
-            ideationMgr.GetIdeationQuestions(ideationId);
-            foreach (var idea in ideas)
-            {
-                ideaVmList.Add(new IdeaVM
-                {
-                    ideationId = idea.ideaId,
-                    
-                });
-            }
-            ideasVm.IdeationId = ideationId;
-            ideasVm.IdeaVms = ideaVmList;
-            
-            return View(ideasVm);*/
-            
             IdeasVM ideasVm = new IdeasVM();
             ideasVm.IdeationId = ideationId;
             ideasVm.ideas = ideationMgr.getIdeas(ideationId).ToList();
@@ -530,14 +505,7 @@ namespace UI.MVC.Controllers
              
             ideationMgr.CreateIdeation(ideation,ideationVm.ProjectId);
             
-           
-            
-          
-            
-            
             return RedirectToAction("Project", "Project", new {id = ideationVm.ProjectId});
-
-            
         }
 
         public IActionResult CreateQuestionPage()
@@ -548,26 +516,6 @@ namespace UI.MVC.Controllers
         [HttpPost]
         public IActionResult CreateQuestion(IFormCollection form)
         {
-            /*Idea idea = new Idea();
-            ICollection<Field> fields = new List<Field>();
-            
-            Ideation ideation = ideationMgr.getIdeation(1);
-            idea.ideation = ideation;
-            
-            QuestionField q = new QuestionField()
-            {
-                question = new Question()
-                {
-                    question = ideaVm.QuestionFieldVm.question.question,
-                    questionType = ideaVm.QuestionFieldVm.question.questionType
-                }
-            };
-            
-            fields.Add(q);
-            idea.fields = fields;
-            ideationMgr.createIdea(idea);*/
-
-           
             Question question = new Question()
             {
                 Options = new List<Option>()

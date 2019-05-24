@@ -16,13 +16,7 @@ namespace DAL.EF
         {
             
         }
-//        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-//            : base(options)
-//        {
-//            
-            
-            
-    //    }
+        
         #region Sets
         // Fields 
         public DbSet<FieldRange> FieldRanges { get; set; }

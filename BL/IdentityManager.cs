@@ -16,14 +16,10 @@ namespace BL
         {
             repo = identityRepo;
         }
-//        public IdentityManager()
-//        {
-//            repo = new IdentityRepository();
-//        }
 
-        public Organisation getOrganisation(string UserId)
+        public Organisation getOrganisation(string userId)
         {
-            return repo.readOrganisation(UserId);
+            return repo.readOrganisation(userId);
         }
 
         public void changeOrganisation(Organisation organisation)
