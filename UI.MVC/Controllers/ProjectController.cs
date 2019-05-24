@@ -129,19 +129,19 @@ namespace UI.MVC.Controllers
             {
                 var likeAmount = 0;
                 var commentAmount = 0;
-                foreach (var idea in ideation.ideas)
+                foreach (var idea in ideation.Ideas)
                 {
-                    likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.ideaId);
-                    foreach (var reaction in idea.reactions)
+                    likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.IdeaId);
+                    foreach (var reaction in idea.Reactions)
                     {
-                        likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.reactionId);
+                        likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.ReactionId);
                     } 
-                    commentAmount = commentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
+                    commentAmount = commentAmount + orchestrator.getReactions(idea.IdeaId).ToList().Count;
                 }
                 var total = likeAmount + commentAmount;
-                combinedDictionary.Add(ideation.ideationId, total);
-                likeDictionary.Add(ideation.ideationId, likeAmount);
-                commentDictionary.Add(ideation.ideationId, commentAmount);
+                combinedDictionary.Add(ideation.IdeationId, total);
+                likeDictionary.Add(ideation.IdeationId, likeAmount);
+                commentDictionary.Add(ideation.IdeationId, commentAmount);
             }
 
             var counter = 0;

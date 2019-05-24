@@ -63,11 +63,11 @@ namespace D.UI.MVC.Controllers.Api
                 };
                 if (newReport.Reaction == 0)
                 {
-                    responseData.IdeaId = createdReport.Idea.ideaId;
+                    responseData.IdeaId = createdReport.Idea.IdeaId;
                 }
                 else if (newReport.Idea == 0)
                 {
-                    responseData.ReactionId = createdReport.Reaction.reactionId;
+                    responseData.ReactionId = createdReport.Reaction.ReactionId;
                 }
                 return CreatedAtAction("Get", new {id = responseData.ReportDtoId}, responseData);
             }

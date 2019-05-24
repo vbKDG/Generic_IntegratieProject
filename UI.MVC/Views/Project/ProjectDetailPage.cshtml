@@ -77,7 +77,7 @@
             {
                 foreach (var countLikes in Model.LikeAmounts)
                 {
-                    if (countLikes.Key == ideation.ideationId)
+                    if (countLikes.Key == ideation.IdeationId)
                     {
                         <tr>
                             <td>
@@ -86,7 +86,7 @@
                                 <i class="glyphicon glyphicon-thumbs-up"></i>
                                 @foreach (var countComments in Model.CommentAmounts)
                                 {
-                                    if (countComments.Key == ideation.ideationId)
+                                    if (countComments.Key == ideation.IdeationId)
                                     {
                                         @countComments.Value
                                         <i class="glyphicon glyphicon-comment"></i>
@@ -95,7 +95,7 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Show ideas", "Ideas", "Idea"
-                                    , new {ideationId = ideation.ideationId})
+                                    , new {ideationId = ideation.IdeationId})
                             </td>
                         </tr>
                     }
@@ -148,17 +148,17 @@
                     if (i == 0)
                     {
                         <div class="item active">
-                            <p>@Model.IdeationQuestions.ToList()[i].question</p>
-                            <p>@Model.IdeationQuestions.ToList()[i].description</p>
-                            <a href="http://@Model.IdeationQuestions.ToList()[i].backgroundInfo">More background info</a>
+                            <p>@Model.IdeationQuestions.ToList()[i].Question</p>
+                            <p>@Model.IdeationQuestions.ToList()[i].Description</p>
+                            <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
                         </div>
                     }
                     else
                     {
                         <div class="item">
-                            <p>@Model.IdeationQuestions.ToList()[i].question</p>
-                            <p>@Model.IdeationQuestions.ToList()[i].description</p>
-                            <a href="http://@Model.IdeationQuestions.ToList()[i].backgroundInfo">More background info</a>
+                            <p>@Model.IdeationQuestions.ToList()[i].Question</p>
+                            <p>@Model.IdeationQuestions.ToList()[i].Description</p>
+                            <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
                         </div>
                     }
                 }

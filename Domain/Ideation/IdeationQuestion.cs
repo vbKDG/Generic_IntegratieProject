@@ -8,11 +8,11 @@ namespace Domain
     {
         [Required]     
         [Key]
-        public int ideationQuestonId { get; set; }
+        public int IdeationQuestonId { get; set; }
         
-        public Ideation ideation { get; set; }
-        public string question { get; set; }
-        public string description { get; set; }
-        public string backgroundInfo { get; set; }
+        public Ideation Ideation { get; set; }
+        public string Question { get; set; }
+        public string Description { get; set; }
+        public string BackgroundInfo { get; set; }
     }
 }

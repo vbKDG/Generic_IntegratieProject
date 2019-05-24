@@ -89,17 +89,17 @@ namespace UI.MVC.Controllers
 
             foreach (var ideation in reportModel.ideations)
             {
-                foreach (var idea in ideationMgr.getIdeas(ideation.ideationId))
+                foreach (var idea in ideationMgr.getIdeas(ideation.IdeationId))
                 {
-                    foreach(var report in ideationMgr.getReports(idea.ideaId))
+                    foreach(var report in ideationMgr.getReports(idea.IdeaId))
                     {
                         reportModel.reports.Add(report);
                     }
-                    foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
+                    foreach (var field in ideationMgr.GetFields(idea.IdeaId).ToList())
                     {
                         reportModel.TextFields.Add(field);
                     }
-                    ideation.ideas.Add(idea);
+                    ideation.Ideas.Add(idea);
                 }
             }
             return View(reportModel);
@@ -148,7 +148,7 @@ namespace UI.MVC.Controllers
             {
                 if (key == "reportText")
                 {
-                    reaction.content = form[key];
+                    reaction.Content = form[key];
                 }
             }
             ideationMgr.changeReaction(reaction);

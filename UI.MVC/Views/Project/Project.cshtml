@@ -17,16 +17,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor( modelItem => item.ideationId)
+                @Html.DisplayFor( modelItem => item.IdeationId)
             </td>
             <td>
                 @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
-                    , new { ideationId=item.ideationId })
+                    , new { ideationId=item.IdeationId })
             </td>
             
             <td>
                 @Html.ActionLink("Show ideas", "Ideas", "Idea"
-                    , new {ideationId = item.ideationId})
+                    , new {ideationId = item.IdeationId})
             </td>
 
         </tr>

@@ -258,25 +258,25 @@
             <b>Reactions:</b><br>
             @foreach (var reaction in Model.reactions.ToList())
             {
-                if (reaction.disapproved == false)
+                if (reaction.Disapproved == false)
                 {
-                    if (reaction.idea.ideaId == @Model.IdeaId)
+                    if (reaction.Idea.IdeaId == @Model.IdeaId)
                     {
-                        <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                        if (@reaction.verified)
+                        <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
+                        if (@reaction.Verified)
                         {
                             <i class="glyphicon glyphicon-ok-circle"></i>
                         }
-                        @reaction.content
-                        <button id="likeReaction-@reaction.reactionId" type="button"
+                        @reaction.Content
+                        <button id="likeReaction-@reaction.ReactionId" type="button"
                                 onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                              , new {reactionId = @reaction.reactionId})', userLikedReaction()">
+                                                              , new {reactionId = @reaction.ReactionId})', userLikedReaction()">
                             Like
                         </button>
-                        <span id="reactionLikeCount-@reaction.reactionId">(@reaction.reactionLikes.Count)</span>
+                        <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
                         if (User.Identity.IsAuthenticated)
                         {
-                            <button onclick="showPopup(@reaction.idea.ideaId, 'reaction', @reaction.reactionId)">Report reaction</button><br>
+                            <button onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)">Report reaction</button><br>
                         }
                         else
                         {
@@ -286,8 +286,8 @@
                 }
                 else
                 {
-                    <b>@reaction.user.FirstName @reaction.user.LastName.Substring(0, 1).</b>
-                    <span>(@reaction.reactionLikes.Count)</span>
+                    <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
+                    <span>(@reaction.ReactionLikes.Count)</span>
                     <span class="text-danger">This reaction has been blocked!</span><br>
                 }
             }

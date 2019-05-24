@@ -57,15 +57,15 @@ namespace UI.MVC.Controllers
                 var ideaAmount = 0;
                 foreach (var ideation in project.Ideations)
                 {
-                    foreach (var idea in ideation.ideas)
+                    foreach (var idea in ideation.Ideas)
                     {
                         ideaAmount++;
-                        likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.ideaId);
-                        foreach (var reaction in idea.reactions)
+                        likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.IdeaId);
+                        foreach (var reaction in idea.Reactions)
                         {
-                            likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.reactionId);
+                            likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.ReactionId);
                         } 
-                        commentAmount = commentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
+                        commentAmount = commentAmount + orchestrator.getReactions(idea.IdeaId).ToList().Count;
                     }
                 }
                 var total = likeAmount + commentAmount;
@@ -150,15 +150,15 @@ namespace UI.MVC.Controllers
                 var ideaAmount = 0;
                 foreach (var ideation in project.Ideations)
                 {
-                    foreach (var idea in ideation.ideas)
+                    foreach (var idea in ideation.Ideas)
                     {
                         ideaAmount++;
-                        likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.ideaId);
-                        foreach (var reaction in idea.reactions)
+                        likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.IdeaId);
+                        foreach (var reaction in idea.Reactions)
                         {
-                            likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.reactionId);
+                            likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.ReactionId);
                         }
-                        commentAmount = commentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
+                        commentAmount = commentAmount + orchestrator.getReactions(idea.IdeaId).ToList().Count;
                     }
                 }
 

@@ -9,17 +9,17 @@ namespace Domain
     {
     //
         [Required]     
-        public int ideaId { get; set; }
-        public ApplicationUser user { get; set; } 
-        public Ideation ideation { get; set; }
-        public ICollection<Reaction> reactions { get; set; }
-        public ICollection<IdeaLike> ideaLikes { get; set; }
-        public ICollection<Field> fields { get; set; }
+        public int IdeaId { get; set; }
+        public ApplicationUser User { get; set; } 
+        public Ideation Ideation { get; set; }
+        public ICollection<Reaction> Reactions { get; set; }
+        public ICollection<IdeaLike> IdeaLikes { get; set; }
+        public ICollection<Field> Fields { get; set; }
        // public ICollection<Question> questions { get; set; }
-        public ICollection<Report> reports { get; set; }
-        public bool approved { get; set; }
-        public bool disapproved { get; set; }
-        public bool verified { get; set; }
+        public ICollection<Report> Reports { get; set; }
+        public bool Approved { get; set; }
+        public bool Disapproved { get; set; }
+        public bool Verified { get; set; }
         public string IdeaTitle { get; set; }
     }
 }

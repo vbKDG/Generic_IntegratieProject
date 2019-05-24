@@ -114,14 +114,14 @@ namespace BL
 
                     if (reports != null)
                     {
-                        idea.reports = reports.ToList();
+                        idea.Reports = reports.ToList();
                     }
                     else
                     {
-                        idea.reports = new List<Report>();
+                        idea.Reports = new List<Report>();
                     }
 
-                    idea.reports.Add(newReport);
+                    idea.Reports.Add(newReport);
 
                     ideationRepo.createReport(newReport, userId);
 
@@ -143,14 +143,14 @@ namespace BL
 
                     if (reports != null)
                     {
-                        idea.reports = reports.ToList();
+                        idea.Reports = reports.ToList();
                     }
                     else
                     {
-                        idea.reports = new List<Report>();
+                        idea.Reports = new List<Report>();
                     }
 
-                    idea.reports.Add(newReport);
+                    idea.Reports.Add(newReport);
 
                     ideationRepo.createReport(newReport, userId);
 

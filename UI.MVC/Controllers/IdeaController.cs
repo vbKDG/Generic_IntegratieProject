@@ -95,7 +95,7 @@ namespace UI.MVC.Controllers
 
             for (int i = 0; i < ideationQuestions.Length; i++)
             {
-                questions[i] = ideationQuestions[i].question;
+                questions[i] = ideationQuestions[i].Question;
 
             }
 
@@ -129,11 +129,11 @@ namespace UI.MVC.Controllers
             // String base64Lightbuld = GetBase64StringForImage(imagePath);
             foreach (var idea in ideas)
             {
-                int likeCount = idea.ideaLikes.Count;
-                int reactionCount = idea.reactions.Count;
-                var username = idea.user.FirstName + '.' + idea.user.LastName.Substring(0,1);
+                int likeCount = idea.IdeaLikes.Count;
+                int reactionCount = idea.Reactions.Count;
+                var username = idea.User.FirstName + '.' + idea.User.LastName.Substring(0,1);
                 var teller = 0;
-                foreach (var field in idea.fields)
+                foreach (var field in idea.Fields)
                 {
                     if (field.GetType() == typeof(ImageField) && teller==0)
                     {
@@ -146,7 +146,7 @@ namespace UI.MVC.Controllers
                     
                 }
                 
-                ideaListItems.Add(new IdeaListItemVM{IdeaId = idea.ideaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+                ideaListItems.Add(new IdeaListItemVM{IdeaId = idea.IdeaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
             }
             return View(ideaListItems);
         }
@@ -294,7 +294,7 @@ namespace UI.MVC.Controllers
 
 //            idea.user = user;
             
-            idea.ideation = ideation;
+            idea.Ideation = ideation;
 //           
             foreach (var imageField in imageFields)
             {
@@ -323,10 +323,10 @@ namespace UI.MVC.Controllers
             {
                 fields.Add(textfield);
             }
-            idea.fields = fields;
+            idea.Fields = fields;
             ideationMgr.createIdea(idea,ApplicationUserId);
 
-            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.ProjectId;
+            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).Project.ProjectId;
 
 
             return RedirectToAction("Project", "Project", new {id = projectId});
@@ -344,7 +344,7 @@ namespace UI.MVC.Controllers
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
             List<Reaction> reactions = ideationMgr.getReactions(ideaId).ToList();
 
-            foreach (var field in idea.fields)
+            foreach (var field in idea.Fields)
             {
                 
                 if (field.GetType() == typeof(TextField))
@@ -386,11 +386,11 @@ namespace UI.MVC.Controllers
             ideaVm.VideoFieldVms = videoFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
             ideaVm.MapFieldVms = mapFieldVms;
-            ideaVm._user = idea.user;
-            ideaVm.verified = idea.verified;
+            ideaVm._user = idea.User;
+            ideaVm.verified = idea.Verified;
             ideaVm.reactions = reactions;
             ideaVm.IdeaId = ideaId;
-            ideaVm.disapproved = idea.disapproved;
+            ideaVm.disapproved = idea.Disapproved;
             ideaVm.amountOfLikes = ideationMgr.getIdeaLikes(ideaId);
 
             return  PartialView("Idea",ideaVm);
@@ -455,12 +455,12 @@ namespace UI.MVC.Controllers
             ideasVm.reactions = new List<Reaction>();
             foreach (var idea in ideasVm.ideas)
             {
-                foreach (var field in ideationMgr.GetFields(idea.ideaId).ToList())
+                foreach (var field in ideationMgr.GetFields(idea.IdeaId).ToList())
                 {
                     ideasVm.fields.Add(field);
                 }
 
-                foreach (var reaction in ideationMgr.getReactions(idea.ideaId).ToList())
+                foreach (var reaction in ideationMgr.getReactions(idea.IdeaId).ToList())
                 {
                     ideasVm.reactions.Add(reaction);
                 }
@@ -517,16 +517,16 @@ namespace UI.MVC.Controllers
             ideation.MapFieldRange = ideationVm.MapField;
             ideation.QuestionFieldRange = ideationVm.QuestionField;
 
-            ideation.adminOnly = ideationVm.AdminOnly;
+            ideation.AdminOnly = ideationVm.AdminOnly;
             
             List<IdeationQuestion> ideationQuestions = new List<IdeationQuestion>();
 
             foreach (var item in ideationVm.ideationQuestionVMs)
             {            
-                ideationQuestions.Add(new IdeationQuestion{question = item.question}); 
+                ideationQuestions.Add(new IdeationQuestion{Question = item.question}); 
             }
 
-            ideation.questions = ideationQuestions;
+            ideation.Questions = ideationQuestions;
              
             ideationMgr.CreateIdeation(ideation,ideationVm.ProjectId);
             

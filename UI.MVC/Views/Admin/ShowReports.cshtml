@@ -19,9 +19,9 @@
                     @textfield.Text<br>
                 }
                 <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
-                      , new {ideaId = @Model.idea.ideaId})'; approvePost();">Approve</button>
+                      , new {ideaId = @Model.idea.IdeaId})'; approvePost();">Approve</button>
                 <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                     , new {ideaId = @Model.idea.ideaId})'; disaprovePost();">Disapprove</button>
+                     , new {ideaId = @Model.idea.IdeaId})'; disaprovePost();">Disapprove</button>
             </td>
         </tr>
         <tr>
@@ -36,17 +36,17 @@
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.ideaId == report.Idea.ideaId)
+                        @if (Model.idea.IdeaId == report.Idea.IdeaId)
                         {
-                            @Model.idea.user.Email
+                            @Model.idea.User.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                  , new {userId = @Model.idea.user.Id})', blockUser();">Block user</button><br>
+                                  , new {userId = @Model.idea.User.Id})', blockUser();">Block user</button><br>
                         }
                         <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                , new {ideaId = @Model.idea.ideaId})', approvePost()">Approve</button>
+                                , new {ideaId = @Model.idea.IdeaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                , new {ideaId = @Model.idea.ideaId})', disaprovePost();">Disapprove</button>
+                                , new {ideaId = @Model.idea.IdeaId})', disaprovePost();">Disapprove</button>
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
@@ -71,11 +71,11 @@
                         <b>Reaction is from:</b>
                         @foreach (var reaction in Model.reactions)
                         {
-                            if (reaction.reactionId == report.Reaction.reactionId)
+                            if (reaction.ReactionId == report.Reaction.ReactionId)
                             {
-                                @reaction.user.Email
+                                @reaction.User.Email
                                 <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                        , new {userId = @reaction.user.Id})', blockUser();">Block user</button><br>
+                                        , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                             }
                         }
                         <b>Reported by:</b> @report.User.Email<br>
@@ -83,33 +83,33 @@
                         {
                             foreach (var reaction in Model.reactions)
                             {
-                                if (reaction.reactionId == report.Reaction.reactionId)
+                                if (reaction.ReactionId == report.Reaction.ReactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
-                                        new {reactionId = @reaction.reactionId, ideaId = @Model.idea.ideaId}, FormMethod.Post))
+                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.idea.IdeaId}, FormMethod.Post))
                                     {
-                                        <div class="popup" id="popup-@reaction.reactionId" name="popup">
+                                        <div class="popup" id="popup-@reaction.ReactionId" name="popup">
                                             <div name="popupContent" id="popupContent">
-                                                <div name="inputArea" class="inputArea" id="inputArea-@reaction.reactionId">
+                                                <div name="inputArea" class="inputArea" id="inputArea-@reaction.ReactionId">
                                                     <p id="titelRep">Change this reaction</p>
                                                     <div id="repTextContainer">
-                                                        <textarea id="reportText" name="reportText">@reaction.content</textarea>
+                                                        <textarea id="reportText" name="reportText">@reaction.Content</textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div id="submitReportContainer">
                                                 <button class="submitButton" type="submit">Change reaction</button>
-                                                <button onclick="closePopup(@reaction.reactionId)">Close</button>
+                                                <button onclick="closePopup(@reaction.ReactionId)">Close</button>
                                             </div>
                                         </div>
                                     }
                                     <b>Reaction:</b>
-                                    @reaction.content<br>
-                                    <button onclick="showPopup(@reaction.reactionId);">Change reaction</button>
+                                    @reaction.Content<br>
+                                    <button onclick="showPopup(@reaction.ReactionId);">Change reaction</button>
                                     <button type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
-                                              , new {reactionId = @reaction.reactionId})', approvePost()">Approve</button>
+                                              , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
                                     <button type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
-                                              , new {reactionId = @reaction.reactionId})', disaprovePost();">Disapprove</button>
+                                              , new {reactionId = @reaction.ReactionId})', disaprovePost();">Disapprove</button>
                                 }
                             }
                         }
@@ -150,15 +150,15 @@
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
-                        @reaction.user.Email
+                        @reaction.User.Email
                         <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                       , new {userId = @reaction.user.Id})', blockUser();">Block user</button><br>
+                                       , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                         <b>Reaction:</b>
-                        @reaction.content<br>
+                        @reaction.Content<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
-                                       , new {reactionId = @reaction.reactionId})', approvePost()">Approve</button>
+                                       , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
-                                       , new {reactionId = @reaction.reactionId})', disaprovePost();">Disapprove</button>
+                                       , new {reactionId = @reaction.ReactionId})', disaprovePost();">Disapprove</button>
                     </td>
                 </tr>
             }
@@ -173,17 +173,17 @@
                 <tr>
                     <td>
                         <b>Idea is from:</b>
-                        @if (Model.idea.ideaId == report.Idea.ideaId)
+                        @if (Model.idea.IdeaId == report.Idea.IdeaId)
                         {
-                            @Model.idea.user.Email
+                            @Model.idea.User.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                   , new {userId = @Model.idea.user.Id})', blockUser();">Block user</button><br>
+                                   , new {userId = @Model.idea.User.Id})', blockUser();">Block user</button><br>
                         }
                         <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                    , new {ideaId = @Model.idea.ideaId})', approvePost()">Approve</button>
+                                    , new {ideaId = @Model.idea.IdeaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                    , new {ideaId = @Model.idea.ideaId})', disaprovePost();">Disapprove</button>
+                                    , new {ideaId = @Model.idea.IdeaId})', disaprovePost();">Disapprove</button>
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
@@ -208,11 +208,11 @@
                         <b>Reaction is from:</b>
                         @foreach (var reaction in Model.reactions)
                         {
-                            if (reaction.reactionId == report.Reaction.reactionId)
+                            if (reaction.ReactionId == report.Reaction.ReactionId)
                             {
-                                @reaction.user.Email
+                                @reaction.User.Email
                                 <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                          , new {userId = @reaction.user.Id})', blockUser();">Block user</button><br>
+                                          , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                             }
                         }
                         <b>Reported by:</b> @report.User.Email<br>
@@ -220,33 +220,33 @@
                         {
                             foreach (var reaction in Model.reactions)
                             {
-                                if (reaction.reactionId == report.Reaction.reactionId)
+                                if (reaction.ReactionId == report.Reaction.ReactionId)
                                 {
                                     using (Html.BeginForm("ChangeReaction", "Admin",
-                                        new {reactionId = @reaction.reactionId, ideaId = @Model.idea.ideaId}, FormMethod.Post))
+                                        new {reactionId = @reaction.ReactionId, ideaId = @Model.idea.IdeaId}, FormMethod.Post))
                                     {
-                                        <div class="popup" id="popup-@reaction.reactionId" name="popup">
+                                        <div class="popup" id="popup-@reaction.ReactionId" name="popup">
                                             <div name="popupContent" id="popupContent">
-                                                <div name="inputArea" class="inputArea" id="inputArea-@reaction.reactionId">
+                                                <div name="inputArea" class="inputArea" id="inputArea-@reaction.ReactionId">
                                                     <p id="titelRep">Change this reaction</p>
                                                     <div id="repTextContainer">
-                                                        <textarea id="reportText" name="reportText">@reaction.content</textarea>
+                                                        <textarea id="reportText" name="reportText">@reaction.Content</textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div id="submitReportContainer">
                                                 <button class="submitButton" type="submit" onclick="changeReaction();">Change reaction</button>
-                                                <button onclick="closePopup(@reaction.reactionId)">Close</button>
+                                                <button onclick="closePopup(@reaction.ReactionId)">Close</button>
                                             </div>
                                         </div>
                                     }
                                     <b>Reaction:</b>
-                                    @reaction.content<br>
-                                    <button onclick="showPopup(@reaction.reactionId);">Change reaction</button>
+                                    @reaction.Content<br>
+                                    <button onclick="showPopup(@reaction.ReactionId);">Change reaction</button>
                                     <button type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
-                                             , new {reactionId = @reaction.reactionId})', approvePost()">Approve</button>
+                                             , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
                                     <button type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
-                                             , new {reactionId = @reaction.reactionId})', disapprovePost()">Disapprove</button>
+                                             , new {reactionId = @reaction.ReactionId})', disapprovePost()">Disapprove</button>
                                 }
                             }
                         }
