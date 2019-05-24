@@ -21,6 +21,7 @@ namespace UI.MVC.Controllers
     public class QuestionnaireController : Controller
     {
         private readonly IQuestionnaireManager qmgr;
+        private readonly IProjectManager pmgr;
 
         private UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
@@ -29,14 +30,17 @@ namespace UI.MVC.Controllers
         public QuestionnaireController(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             qmgr = new QuestionnaireManager();
+            pmgr = new ProjectManager();
             _userManager = userManager;
             _emailSender = emailSender;
         }
         
         public IActionResult Questionnaires(int projectId)
         {
-            IEnumerable<Questionnaire> allQuestionnaires = qmgr.getQuestionnaires(projectId);
-            return View(allQuestionnaires);
+            ProjectAndQuestionnaires projectAndQuestionnaires = new ProjectAndQuestionnaires();
+            projectAndQuestionnaires.Project = pmgr.getProject(projectId);
+            projectAndQuestionnaires.Questionnaires = qmgr.getQuestionnaires(projectId);
+            return View(projectAndQuestionnaires);
         }
         
         public IActionResult Questionnaire(int questionnaireId)

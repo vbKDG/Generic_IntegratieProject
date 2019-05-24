@@ -43,10 +43,11 @@ namespace DAL
         {
             return ctx.Projects
                 .Include(p => p.Questionnaires)
-                .Include( p => p.ImageField)
+                .Include(p => p.ImageField)
                 .Include(p => p.MapField)
                 .Include(p => p.Phases)
                 .Include(p => p.Ideations)
+                    .ThenInclude(i => i.Questions)
                 .Include(p => p.ProjectLikes)
                 .Include(p => p.Setting)
                 .SingleOrDefault(p => p.ProjectId == id);

@@ -31,74 +31,55 @@
 </head>
 <body id="general-theme">
 <div id="Start"></div>
-  <nav id="navbox"class="navbar navbar-expand-sm navbar-light fixed-top" id="main-nav">
+<nav id="navbox"class="navbar navbar-expand-sm navbar-light fixed-top" id="main-nav">
     <div class="container-fluid">
-        <a hasp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark"><i class="far fa-lightbulb "></i> <b>City Of Ideas</b></a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse text-black navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="py-5">
-                  <a asp-area="" asp-controller="Home" asp-action="Index">
-                                      <p class="text-dark">
-                                          <i class="fas fa-home"></i><b> Home </b>
-                                      </p>
-                                  </a>
-          </li>
-            <li class="nav-item py-5">
-                <a asp-area="" asp-controller="Home" asp-action="ProjectsGeneral">
-                    <p class="text-dark">
-                        <i class="fas fa-project-diagram"></i><b> General Projects </b>
-                    </p>
-                </a>
-            </li>
-            
-            <li class="nav-item py-5">
-            <a asp-area="" asp-controller="Project" asp-action="Projects">
-                                    <p class="text-dark">
-                                        <i class="fas fa-project-diagram"></i><b> Projects </b>
-                                    </p>
-                                </a>
-          </li>
-            <li class="nav-item py-5">
-                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-                {
-                                
-                    <a asp-area="" asp-controller="Admin" asp-action="AdminPage">
+        <a hasp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark">
+            <i class="far fa-lightbulb "></i> <b>City Of Ideas</b>
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse text-black navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="py-5">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
                         <p class="text-dark">
-                            <i class="fas fa-sliders-h"></i><b> Admin page</b>
+                            <i class="fas fa-home"></i><b> Home </b>
                         </p>
                     </a>
-                                
-                }
-            
-            </li>
-            <li class="nav-item">
-                @if (User.IsInRole("Moderator") || User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-                {
-                        <a onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
+                </li>
+                <li class="nav-item py-5">
+                    <a asp-area="" asp-controller="Home" asp-action="ProjectsGeneral">
+                        <p class="text-dark">
+                            <i class="fas fa-project-diagram"></i><b> General Projects </b>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item py-5">
+                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                    {
+                        <a asp-area="" asp-controller="Admin" asp-action="AdminPage">
                             <p class="text-dark">
-                                <b>Manage posts |</b>
+                                <i class="fas fa-sliders-h"></i><b> Admin page</b>
                             </p>
                         </a>
-                }
-                     </li>
-            <li class="nav-item">
-                        <partial name="_LoginPartial"/>
-                        </li>                            
-                                    <form autocomplete="off" class="navbar-form navbar-left">
-                                                                                            <div class="autocomplete">
-                                                                                                <input id="myInput" type="text" name="myitem" placeholder="Search a project">
-                                                                                            </div>
-                                                                                            <button onclick="klik()" id="search" type="button" class="btn btn-success">search</button>
-                                                                                        </form>
-            
-            
-        </ul>
-      </div>
+                    }
+                </li>
+                <li class="nav-item">
+                    <partial name="_LoginPartial"/>
+                </li>
+                <form autocomplete="off" class="navbar-form navbar-left">
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="myitem" placeholder="Search a project">
+                    </div>
+                    <button onclick="klik()" id="search" type="button" class="btn btn-success">search</button>
+                </form>
+
+
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
 
 <partial name="_CookieConsentPartial"/>
@@ -107,12 +88,13 @@
     @RenderBody()
     <hr/>
     <footer class="center-block text-center">
-        
-        <p>&copy; 2019 - City Of Ideas 
+
+        <p>
+            &copy; 2019 - City Of Ideas
             <i class="fab fa-autoprefixer"></i>
-            <i class="far fa-lightbulb"></i>   
+            <i class="far fa-lightbulb"></i>
         </p>
-        <p><a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")"> About</a>- <a href="@Url.Action("Privacy", "Home")">Privacy</a></p>
+        <p><a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")">About</a> - <a href="@Url.Action("Privacy", "Home")">Privacy</a></p>
     </footer>
 </div>
 

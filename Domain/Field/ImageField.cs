@@ -10,17 +10,12 @@ namespace Domain
     public class ImageField : Field
     {
        public string ImageName { get; set; }
-       public byte[] imageData { get; set; }
+       public byte[] ImageData { get; set; }
       
        public string GetImageString()
        {
-           
-            
-           var base64 = Convert.ToBase64String(imageData);
+           var base64 = Convert.ToBase64String(ImageData);
            return String.Format("data:image/png;base64,{0}", base64);
        }
-        
-       
-
     }
 }
