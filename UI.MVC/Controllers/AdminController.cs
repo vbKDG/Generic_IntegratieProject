@@ -40,13 +40,13 @@ namespace UI.MVC.Controllers
             return View(applicationUser);
         }
         
-        [Authorize(Roles = "SuperAdmin, Admin, Moderator")]
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult AdminPage()
         {
             return View();
         }
 
-        [Authorize(Roles = "Moderator, Admin, SuperAdmin")]
+        [Authorize(Roles = "Moderator, Admin")]
         public IActionResult ShowReports(int ideaId)
         {
             ReportModel reportModel = new ReportModel
@@ -73,7 +73,7 @@ namespace UI.MVC.Controllers
             return new JsonResult(likes);
         }
         
-        [Authorize(Roles = "Moderator, Admin, SuperAdmin")]
+        [Authorize(Roles = "Moderator, Admin")]
         public IActionResult ManagePosts(int projectId)
         {
             ReportModel reportModel = new ReportModel

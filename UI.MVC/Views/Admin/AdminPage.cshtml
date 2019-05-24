@@ -21,9 +21,12 @@
                                             <h4 class="display-4">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </h4>
+
                                             <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageAdmins", "Admin")'">
-                                                Manage admins
+                                                Manage
                                             </button>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -38,46 +41,41 @@
                                             <h4 class="display-4">
                                                 <i class="fas fa-folder"></i>
                                             </h4>
+
+
                                             <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageModerators", "Admin")'">
-                                                Manage moderators
+                                                Manage
                                             </button>
+
+
                                         </div>
                                     </div>
                                 </div>
                             }
+
+
                             @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                             {
                                 <div class="col-md-4 py-2" id="bodyadmin">
                                     <div class="card text-center bg-success text-white mb-3">
                                         <div class="card-body">
-                                            <h3>Manage projects</h3>
-                                            <h4 class="display-4">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("Projects", "Project")'">
-                                                Manage projects
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                            {
-                                <div class="col-md-4 py-2" id="bodyadmin">
-                                    <div class="card text-center bg-success text-white mb-3">
-                                        <div class="card-body">
-                                            <h3>Manage posts</h3>
+                                            <h3>Create a project</h3>
                                             <h4 class="display-4">
                                                 <i class="fas fa-folder"></i>
                                             </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
-                                                Manage posts
+
+                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("CreateProjectPage", "Project")'">
+                                                Create a new project
                                             </button>
+
+
                                         </div>
                                     </div>
                                 </div>
                             }
+
                         </div>
+
                         </tbody>
                     </table>
                 </div>

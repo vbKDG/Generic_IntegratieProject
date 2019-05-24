@@ -1,16 +1,14 @@
-﻿@model ProjectAndQuestionnaires
+﻿@model IEnumerable<Domain.Questionnaire>
 <body>
 <div class="container">
 <h1 class="text-center">Questionnaires</h1>
 @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
 {
-    if (Model != null)
-    {
-        <div class="text-center">
-            @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
-                "Questionnaire", new {projectId = Model.Project.ProjectId})
-        </div> 
-    }
+    
+    <div class="text-center">
+        @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
+            "Questionnaire", new {projectId = Model.ToList()[0].Project.ProjectId})
+    </div> 
 }
 
 <table class="table">
@@ -22,7 +20,7 @@
             <p>Amount of questions</p>
         </th>
     </tr>
-    @foreach (var item in Model.Questionnaires)
+    @foreach (var item in Model)
     {    
         <tr>
             <td>

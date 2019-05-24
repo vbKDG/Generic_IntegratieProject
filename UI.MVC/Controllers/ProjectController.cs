@@ -9,7 +9,6 @@ using BL.Application;
 using D.UI.MVC.Models.Projects;
 using DAL.EF;
 using Domain;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UI.MVC.Models;
@@ -26,7 +25,6 @@ namespace UI.MVC.Controllers
             orchestrator = new OrchestratorSystemController();
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult Projects()
         {
             IEnumerable<Project> allProjects = orchestrator.getProjects();
@@ -48,13 +46,16 @@ namespace UI.MVC.Controllers
             return new JsonResult(projects);
         }
         
-        public IActionResult Ideations(int id)
+        public IActionResult Project(int id)
         {
-            Project project = orchestrator.getProject(id);
-            return View(project);
+            Project p1 = orchestrator.getProject(id);
+            IEnumerable<IdeationQuestion> ideationQuestions1 = orchestrator.GetIdeationQuestionsForProject(id);
+            p1.Phases.ToList().Sort((x, y) => DateTime.Compare(x.StartDate, y.StartDate));
+            var model = new ProjectAndQuestions() {IdeationQuestions = ideationQuestions1, Project = p1};
+
+            return View(model);
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult CloseProject(int projectId)
         {
             Project p = orchestrator.getProject(projectId);
@@ -63,7 +64,6 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Projects","Project");
         }
         
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult OpenProject(int projectId)
         {
             Project p = orchestrator.getProject(projectId);
@@ -72,7 +72,6 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Projects","Project");
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult EditProjectPage(int projectId)
         {
             ProjectVM projectVm = new ProjectVM();
@@ -164,7 +163,6 @@ namespace UI.MVC.Controllers
             return View(p);
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult CreateProjectPage()
         {
             ProjectVM projectVm = new ProjectVM();
@@ -173,7 +171,6 @@ namespace UI.MVC.Controllers
             return View(projectVm);
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult EditProject(ProjectVM projectVm)
         {
             Project project = new Project();
@@ -207,7 +204,6 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Projects", "Project");
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult CreateProject(ProjectVM projectVm)
         {
             Project project = new Project();
@@ -230,7 +226,7 @@ namespace UI.MVC.Controllers
             {
                 {
                     reader.CopyTo(stream);
-                    imageField.ImageData = stream.ToArray();
+                    imageField.imageData = stream.ToArray();
 
                 }
 
@@ -255,10 +251,9 @@ namespace UI.MVC.Controllers
             project.Setting = setting;
 
             orchestrator.addProject(project);
-            return RedirectToAction("Ideations", "Project", new {id = 1});
+            return RedirectToAction("Project", "Project", new {id = 1});
         }
 
-        [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult CreateIdeationPage( int projectId)
         {
             IdeationVM ideationVm = new IdeationVM();
@@ -270,5 +265,6 @@ namespace UI.MVC.Controllers
             
             return View(ideationVm);
         }
+
     }
 }

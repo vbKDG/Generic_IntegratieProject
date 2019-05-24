@@ -1,0 +1,36 @@
+@using Domain
+@model ProjectAndQuestions
+<body>
+<div class="container">
+    
+
+<h2 class="text-center"> @Model.Project.Name</h2>
+
+@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.Project.ProjectId})
+<table class="table">
+    <tr>
+        <th>
+            <p>Ideation Id </p>
+        </th>
+    </tr>
+    @foreach (var item in Model.Project.Ideations)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor( modelItem => item.IdeationId)
+            </td>
+            <td>
+                @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
+                    , new { ideationId=item.IdeationId })
+            </td>
+            
+            <td>
+                @Html.ActionLink("Show ideas", "Ideas", "Idea"
+                    , new {ideationId = item.IdeationId})
+            </td>
+
+        </tr>
+    }
+</table>
+
+</div></body>
