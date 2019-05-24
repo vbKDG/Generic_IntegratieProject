@@ -47,15 +47,15 @@ namespace UI.MVC.Controllers
             foreach (var project in projects)
             {
                 ProjectVM projectVm = new ProjectVM();
-                projectVm.projectId = project.projectId;
-                projectVm.name = project.name;
-                projectVm.startDate = project.startDate;
-                projectVm.endDate = project.endDate;
-                projectVm.Base64Image = project.imageField.GetImageString();
+                projectVm.projectId = project.ProjectId;
+                projectVm.name = project.Name;
+                projectVm.startDate = project.StartDate;
+                projectVm.endDate = project.EndDate;
+                projectVm.Base64Image = project.ImageField.GetImageString();
                 var likeAmount = 0;
                 var commentAmount = 0;
                 var ideaAmount = 0;
-                foreach (var ideation in project.ideations)
+                foreach (var ideation in project.Ideations)
                 {
                     foreach (var idea in ideation.ideas)
                     {
@@ -69,9 +69,9 @@ namespace UI.MVC.Controllers
                     }
                 }
                 var total = likeAmount + commentAmount;
-                combinedDictionary.Add(project.projectId, total);
-                likeDictionary.Add(project.projectId, likeAmount);
-                commentDictionary.Add(project.projectId, commentAmount);
+                combinedDictionary.Add(project.ProjectId, total);
+                likeDictionary.Add(project.ProjectId, likeAmount);
+                commentDictionary.Add(project.ProjectId, commentAmount);
                 projectVm.AmountOfLikes = likeAmount;
                 projectVm.AmountOfComments = commentAmount;
                 projectVm.ideaAmount = ideaAmount;
@@ -139,16 +139,16 @@ namespace UI.MVC.Controllers
             foreach (var project in projects)
             {
                 ProjectVM projectVm = new ProjectVM();
-                projectVm.projectId = project.projectId;
-                projectVm.name = project.name;
-                projectVm.startDate = project.startDate;
-                projectVm.endDate = project.endDate;
-                projectVm.Base64Image = project.imageField.GetImageString();
-                projectVm.description = project.description;
+                projectVm.projectId = project.ProjectId;
+                projectVm.name = project.Name;
+                projectVm.startDate = project.StartDate;
+                projectVm.endDate = project.EndDate;
+                projectVm.Base64Image = project.ImageField.GetImageString();
+                projectVm.description = project.Description;
                 var likeAmount = 0;
                 var commentAmount = 0;
                 var ideaAmount = 0;
-                foreach (var ideation in project.ideations)
+                foreach (var ideation in project.Ideations)
                 {
                     foreach (var idea in ideation.ideas)
                     {

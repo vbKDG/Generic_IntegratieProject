@@ -4,6 +4,6 @@ namespace Domain
 {
     public class TextField : Field
     {
-        public String text { get; set; }
+        public String Text { get; set; }
     }
 }

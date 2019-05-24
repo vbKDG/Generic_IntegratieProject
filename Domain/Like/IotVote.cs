@@ -5,10 +5,8 @@ namespace Domain
 {
     public class IotVote : Like
     {
-        //public QuestionUser questionUser { get; set; }
-        public Question question { get; set; }
-       // public IotSetup iotSetup { get; set; }
-        public Boolean confirmed { get; set; }
-        public String email { get; set; }
+        public Question Question { get; set; }
+        public Boolean Confirmed { get; set; }
+        public String Email { get; set; }
     }
 }

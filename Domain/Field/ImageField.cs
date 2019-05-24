@@ -9,7 +9,7 @@ namespace Domain
 {
     public class ImageField : Field
     {
-       public string imageName { get; set; }
+       public string ImageName { get; set; }
        public byte[] imageData { get; set; }
       
        public string GetImageString()

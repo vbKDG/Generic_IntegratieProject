@@ -35,14 +35,14 @@
                     {
                         <br>
                         <p><b>Answer this question:</b></p>
-                        <input id="faqAnswer-@faq.id" name="answer" type="text"/>
-                        <input name="faq" value="@faq.id" type="hidden"/>
-                        <input id="faqUser-@faq.id" value="@user.FirstName @user.LastName.Substring(0, 1)." type="hidden"/>
-                        <button id="faqSubmit-@faq.id" type="submit">Answer</button>
+                        <input id="faqAnswer-@faq.FaqId" name="answer" type="text"/>
+                        <input name="faq" value="@faq.FaqId" type="hidden"/>
+                        <input id="faqUser-@faq.FaqId" value="@user.FirstName @user.LastName.Substring(0, 1)." type="hidden"/>
+                        <button id="faqSubmit-@faq.FaqId" type="submit">Answer</button>
                     }
                 }
             </td>
-            <td id="faqQuestions-@faq.id">
+            <td id="faqQuestions-@faq.FaqId">
                 @foreach (var answers in faq.Answers)
                 {
                     <b>@answers.User.FirstName @answers.User.LastName.Substring(0, 1).</b>

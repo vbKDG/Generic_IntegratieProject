@@ -86,7 +86,7 @@ namespace DAL.EF
                 .HasForeignKey<Organisation>("ApplicationUserFK_shadow");
 
             builder.Entity<QuestionField>().Property<int>("QuestionFK_shadow");
-            builder.Entity<QuestionField>().HasOne(q => q.question)
+            builder.Entity<QuestionField>().HasOne(q => q.Question)
                 .WithOne(qf => qf.QuestionField)
                 .HasForeignKey<QuestionField>("QuestionFK_shadow");
 

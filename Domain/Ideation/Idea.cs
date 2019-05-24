@@ -20,5 +20,6 @@ namespace Domain
         public bool approved { get; set; }
         public bool disapproved { get; set; }
         public bool verified { get; set; }
+        public string IdeaTitle { get; set; }
     }
 }

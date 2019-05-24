@@ -30,7 +30,7 @@ namespace DAL
                 .Include(p => p.questions)
                 .Include(p => p.ideas)
                     .ThenInclude(p => p.reactions)
-                .Where(p => p.project.projectId == projectId);
+                .Where(p => p.project.ProjectId == projectId);
         }
 
         public void createIdeation(Ideation ideation)
@@ -206,7 +206,7 @@ namespace DAL
 
         public IEnumerable<IdeationQuestion> ReadIdeationQuestionsForProject(int ProjectId)
         {
-            return ctx.ideationQuestions.Include(i => i.ideation).Where(i => i.ideation.project.projectId == ProjectId);
+            return ctx.ideationQuestions.Include(i => i.ideation).Where(i => i.ideation.project.ProjectId == ProjectId);
 
         }
 
@@ -260,7 +260,7 @@ namespace DAL
         public IEnumerable<TextField> readFields(int ideaId)
         {
             IEnumerable<TextField> fields = ctx.textFields
-                .Where(f => f.idea.ideaId == ideaId);
+                .Where(f => f.Idea.ideaId == ideaId);
 
             return fields;
         }
@@ -352,8 +352,8 @@ namespace DAL
 
         public Idea readIdea(int ideaId)
         {
-            var questionFields = ctx.questionFields.Where(q => q.idea.ideaId == ideaId)
-                .Include(q => q.question)
+            var questionFields = ctx.questionFields.Where(q => q.Idea.ideaId == ideaId)
+                .Include(q => q.Question)
                 .ThenInclude(o => o.Options);
             
             Idea idea = ctx.ideas

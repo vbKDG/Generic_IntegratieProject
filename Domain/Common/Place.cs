@@ -6,8 +6,8 @@ namespace Domain
     public class Place
     {
         [Required]
-        public int id { get; set; }
-        public String name { get; set; }
-        public String postalCode { get; set; }
+        public int PlaceId { get; set; }
+        public String Name { get; set; }
+        public String PostalCode { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace Domain
     {
         [Key]
         [Required]
-        public int iotId { get; set; }
-        public Address address { get; set; }
+        public int IotSetupId { get; set; }
+        public Address Address { get; set; }
         
        
     }

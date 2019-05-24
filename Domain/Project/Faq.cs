@@ -7,7 +7,7 @@ namespace Domain
     public class Faq
     {
         [Key]
-        public int id { get; set; }
+        public int FaqId { get; set; }
         public string Question { get; set; }
         public ApplicationUser User { get; set; }
         public ICollection<FaqAnswer> Answers { get; set; }

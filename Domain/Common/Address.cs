@@ -6,9 +6,9 @@ namespace Domain
     public class Address
     {
         [Required]
-        public int id { get; set; }
-        public String street { get; set; }
-        public int number { get; set; }
-        public Place place { get; set; }
+        public int AddressId { get; set; }
+        public String Street { get; set; }
+        public int Number { get; set; }
+        public Place Place { get; set; }
     }
 }

@@ -55,8 +55,8 @@ namespace UI.MVC.Controllers
             {
                 projects.Add(new Project()
                 {
-                    projectId = project.projectId,
-                    name = project.name
+                    ProjectId = project.ProjectId,
+                    Name = project.Name
                 });
             }
             return new JsonResult(projects);
@@ -66,7 +66,7 @@ namespace UI.MVC.Controllers
         {
             Project p1 = orchestrator.getProject(id);
             IEnumerable<IdeationQuestion> ideationQuestions1 = orchestrator.GetIdeationQuestionsForProject(id);
-            p1.phases.ToList().Sort((x, y) => DateTime.Compare(x.startDate, y.startDate));
+            p1.Phases.ToList().Sort((x, y) => DateTime.Compare(x.StartDate, y.StartDate));
             var model = new ProjectAndQuestions() {IdeationQuestions = ideationQuestions1, Project = p1};
 
             return View(model);
@@ -94,22 +94,22 @@ namespace UI.MVC.Controllers
             projectVm.phases = new List<PhaseVM>();
             projectVm.SettingVm = new SettingVM();
             Project project = orchestrator.getProject(projectId);
-            projectVm.projectId = project.projectId;
-            projectVm.name = project.name;
-            projectVm.description = project.description;
-            projectVm.startDate = project.startDate;
-            projectVm.endDate = project.endDate;
-            foreach (var phase in project.phases)
+            projectVm.projectId = project.ProjectId;
+            projectVm.name = project.Name;
+            projectVm.description = project.Description;
+            projectVm.startDate = project.StartDate;
+            projectVm.endDate = project.EndDate;
+            foreach (var phase in project.Phases)
             {
                 PhaseVM phaseVm = new PhaseVM();
-                phaseVm.PhaseId = phase.phaseId;
-                phaseVm.Name = phase.name;
-                phaseVm.Description = phase.description;
-                phaseVm.StartDate = phase.startDate;
-                phaseVm.EndDate = phase.endDate;
+                phaseVm.PhaseId = phase.PhaseId;
+                phaseVm.Name = phase.Name;
+                phaseVm.Description = phase.Description;
+                phaseVm.StartDate = phase.StartDate;
+                phaseVm.EndDate = phase.EndDate;
                 projectVm.phases.Add(phaseVm);
             }
-            projectVm.SettingVm.SettingId = project.Setting.id;
+            projectVm.SettingVm.SettingId = project.Setting.SettingId;
             projectVm.SettingVm.FontFamily = project.Setting.FontFamily;
             projectVm.SettingVm.BackGroundColor1 = project.Setting.BackGroundColor1;
             projectVm.SettingVm.BackGroundColor2 = project.Setting.BackGroundColor2;
@@ -123,9 +123,9 @@ namespace UI.MVC.Controllers
             Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
             Dictionary<int, int> combinedDictionary = new Dictionary<int, int>();
             Project p = orchestrator.getProject(projectId);
-            p.phases = p.phases.OrderBy(x => x.startDate).ToList();
-            p.ideations = orchestrator.getIdeations(projectId).ToList();
-            foreach (var ideation in p.ideations)
+            p.Phases = p.Phases.OrderBy(x => x.StartDate).ToList();
+            p.Ideations = orchestrator.getIdeations(projectId).ToList();
+            foreach (var ideation in p.Ideations)
             {
                 var likeAmount = 0;
                 var commentAmount = 0;
@@ -194,23 +194,23 @@ namespace UI.MVC.Controllers
             ICollection<Phase> phases = new List<Phase>();
             Setting setting = new Setting();
 
-            project.projectId = projectVm.projectId;
-            project.name = projectVm.name;
-            project.description = projectVm.description;
-            project.startDate = projectVm.startDate;
-            project.endDate = projectVm.endDate;
+            project.ProjectId = projectVm.projectId;
+            project.Name = projectVm.name;
+            project.Description = projectVm.description;
+            project.StartDate = projectVm.startDate;
+            project.EndDate = projectVm.endDate;
             
             foreach (var phaseVm in projectVm.phases)
             {
                 phases.Add(new Phase
                 {
-                    name = phaseVm.Name, description = phaseVm.Description, startDate = phaseVm.StartDate,
-                    endDate = phaseVm.EndDate
+                    Name = phaseVm.Name, Description = phaseVm.Description, StartDate = phaseVm.StartDate,
+                    EndDate = phaseVm.EndDate
                 });
             }
-            project.phases = phases;
+            project.Phases = phases;
 
-            setting.id = projectVm.SettingVm.SettingId;
+            setting.SettingId = projectVm.SettingVm.SettingId;
             setting.FontFamily = projectVm.SettingVm.FontFamily;
             setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
             setting.BackGroundColor2 = projectVm.SettingVm.BackGroundColor2;
@@ -229,14 +229,14 @@ namespace UI.MVC.Controllers
             ICollection<Phase> phases = new List<Phase>();
             Setting setting = new Setting();
 
-            project.name = projectVm.name;
-            project.description = projectVm.description;
-            project.startDate = projectVm.startDate;
-            project.endDate = projectVm.endDate;
+            project.Name = projectVm.name;
+            project.Description = projectVm.description;
+            project.StartDate = projectVm.startDate;
+            project.EndDate = projectVm.endDate;
 
-            mapField.latitude = projectVm.mapFieldVM.latitude;
-            mapField.longitude = projectVm.mapFieldVM.longitude;
-            project.mapField = mapField;
+            mapField.Latitude = projectVm.mapFieldVM.latitude;
+            mapField.Longitude = projectVm.mapFieldVM.longitude;
+            project.MapField = mapField;
             
             using (var reader = projectVm.imageFieldVM.imageFile.Files[0].OpenReadStream())
             using (var stream = new MemoryStream())
@@ -249,18 +249,18 @@ namespace UI.MVC.Controllers
 
             }
 
-            project.imageField = imageField;
+            project.ImageField = imageField;
 
             foreach (var phaseVm in projectVm.phases)
             {
                 phases.Add(new Phase
                 {
-                    name = phaseVm.Name, description = phaseVm.Description, startDate = phaseVm.StartDate,
-                    endDate = phaseVm.EndDate
+                    Name = phaseVm.Name, Description = phaseVm.Description, StartDate = phaseVm.StartDate,
+                    EndDate = phaseVm.EndDate
                 });
             }
 
-            project.phases = phases;
+            project.Phases = phases;
 
             setting.FontFamily = projectVm.SettingVm.FontFamily;
             setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
@@ -278,7 +278,7 @@ namespace UI.MVC.Controllers
             ideationVm.ideationQuestionVMs = questionVms;
             Project project = orchestrator.getProject(projectId);
             ideationVm.ProjectId = projectId;
-            ideationVm.ProjectName = project.name;
+            ideationVm.ProjectName = project.Name;
             
             
             return View(ideationVm);

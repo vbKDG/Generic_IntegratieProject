@@ -16,7 +16,7 @@
                 <b>Fields of the idea:</b><br>
                 @foreach (var textfield in Model.TextFields)
                 {
-                    @textfield.text<br>
+                    @textfield.Text<br>
                 }
                 <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
                       , new {ideaId = @Model.idea.ideaId})'; approvePost();">Approve</button>

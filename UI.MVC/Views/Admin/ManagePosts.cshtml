@@ -11,13 +11,13 @@
 <select onchange = "redirect(this.value)">
     @foreach (var project in Model.projects)
     {
-        if (project.projectId == Model.selectedProject)
+        if (project.ProjectId == Model.selectedProject)
         {
-            <option value="@project.projectId" selected>@project.name</option>
+            <option value="@project.ProjectId" selected>@project.Name</option>
         }
         else
         {
-            <option value="@project.projectId">@project.name</option>
+            <option value="@project.ProjectId">@project.Name</option>
         }
        
     }

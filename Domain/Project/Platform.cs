@@ -7,8 +7,8 @@ namespace Domain
     public class Platform
     {
         [Required]
-        public int id { get; set; }
-        public String name { get; set; }
-        public IEnumerable<Project> projects { get; set; }
+        public int PlatformId { get; set; }
+        public String Name { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
     }
 }

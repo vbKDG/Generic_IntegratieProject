@@ -44,7 +44,7 @@ namespace DAL
         {
             return ctx.questionnaires
                 .Include(q => q.Project)
-                .Where(q => q.Project.projectId == projectId);
+                .Where(q => q.Project.ProjectId == projectId);
         }
 
         public IEnumerable<IotSetup> readIotSetups()

@@ -7,7 +7,7 @@ namespace Domain
     public class Setting
     {
         [Key]
-        public int id { get; set; }
+        public int SettingId { get; set; }
         [Required]
         public Project Project { get; set; }
         public string BackGroundColor1 { get; set; }

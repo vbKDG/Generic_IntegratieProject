@@ -37,6 +37,7 @@ namespace D.UI.MVC.Models.Ideas
         public int amountOfLikes { get; set; }
         public bool verified { get; set; }
         public List<Reaction> reactions { get; set; }
+        public string IdeaTitle { get; set; }
 
         
         public int ideaViewModelId { get; set; }
@@ -65,4 +66,22 @@ namespace D.UI.MVC.Models.Ideas
         public ICollection<ApplicationUser> Users { get; set; }
         public int IdeationId { get; set; }
     }
+    
+    public class IdeaListItemVM
+    {
+        public int IdeaId;
+        public String Base64Image { get; set; }
+        public String IdeaTitle { get; set; }
+        public String UserName { get; set; }
+        public int LikeCount { get; set; }
+        public int ReactionCount { get; set; }
+    }
+
+//    public class IdeationVM
+//    {
+//        public int IdeationId { get; set; }
+//        public List<string> IdeationQuestions { get; set; }
+//        public List<IdeaListItemVM> IdeaListItemVms { get; set; }
+//        
+//    }
 }

@@ -18,31 +18,31 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.name)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.description)
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
                     @Html.ActionLink("Details", "ProjectDetailPage", "Project"
-                        , new {projectId = item.projectId})
+                        , new {projectId = item.ProjectId})
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditProjectPage", "Project"
-                        , new {projectId = item.projectId})
+                        , new {projectId = item.ProjectId})
                 </td>
                 @if (item.Closed)
                 {
                     <td>
                         @Html.ActionLink("Open", "OpenProject", "Project"
-                            , new {projectId = item.projectId})
+                            , new {projectId = item.ProjectId})
                     </td>
                 }
                 else
                 {
                     <td>
                         @Html.ActionLink("Close", "CloseProject", "Project"
-                            , new {projectId = item.projectId})
+                            , new {projectId = item.ProjectId})
                     </td>
                 }
             </tr>

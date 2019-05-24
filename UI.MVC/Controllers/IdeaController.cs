@@ -117,6 +117,39 @@ namespace UI.MVC.Controllers
         {
             return View();
         }
+        
+        public IActionResult IdeaList(int ideationId)
+        {
+            var ideas = ideationMgr.getIdeas(ideationId);
+            List<IdeaListItemVM> ideaListItems = new List<IdeaListItemVM>();
+            String imagePath = "./wwwroot/images/lightbulb.jpg";
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);  
+            string base64String = Convert.ToBase64String(imageBytes);
+            // string username = "";
+            // String base64Lightbuld = GetBase64StringForImage(imagePath);
+            foreach (var idea in ideas)
+            {
+                int likeCount = idea.ideaLikes.Count;
+                int reactionCount = idea.reactions.Count;
+                var username = idea.user.FirstName + '.' + idea.user.LastName.Substring(0,1);
+                var teller = 0;
+                foreach (var field in idea.fields)
+                {
+                    if (field.GetType() == typeof(ImageField) && teller==0)
+                    {
+                        teller++;
+                        var imagefield = (ImageField) field;
+                        base64String = imagefield.GetImageString();
+                        //imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
+                    }
+                   
+                    
+                }
+                
+                ideaListItems.Add(new IdeaListItemVM{IdeaId = idea.ideaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+            }
+            return View(ideaListItems);
+        }
 
         [HttpPost]
         public IActionResult CreateIdea(IdeaVM ideaVm)
@@ -130,6 +163,7 @@ namespace UI.MVC.Controllers
             List<QuestionField> questionFields = new List<QuestionField>();
             List<MapField> mapFields = new List<MapField>();
             List<TextField> textFields = new List<TextField>();
+            idea.IdeaTitle = ideaVm.IdeaTitle;
 
            // ImageField[] imageFields; // = new ImageField[ideaVm.images.Files.Count];
             //VideoField[] videoFields; //= new VideoField[ideaVm.images.Files.Count];
@@ -140,7 +174,7 @@ namespace UI.MVC.Controllers
            {
                if (!(mapfield.latitude == 0 && mapfield.longitude == 0))
                {
-                   mapFields.Add(new MapField{latitude = mapfield.latitude , longitude = mapfield.longitude});
+                   mapFields.Add(new MapField{Latitude = mapfield.latitude , Longitude = mapfield.longitude});
                    
                }
            }
@@ -149,7 +183,7 @@ namespace UI.MVC.Controllers
            {
                if (textField.text != null && textField.text != "")
                {
-                   textFields.Add(new TextField{text = textField.text});
+                   textFields.Add(new TextField{Text = textField.text});
                }
               
            }
@@ -180,7 +214,7 @@ namespace UI.MVC.Controllers
                     }
                     QuestionField questionField = new QuestionField();
                     question.Options = options;
-                    questionField.question = question;
+                    questionField.Question = question;
                     questionFields.Add(questionField);
                     
                 }
@@ -237,7 +271,7 @@ namespace UI.MVC.Controllers
                         {
                         
                             reader.CopyTo(stream);
-                            videoFields.Add(new VideoField{videoData = stream.ToArray()});
+                            videoFields.Add(new VideoField{VideoData = stream.ToArray()});
 
                         }
 
@@ -292,7 +326,7 @@ namespace UI.MVC.Controllers
             idea.fields = fields;
             ideationMgr.createIdea(idea,ApplicationUserId);
 
-            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.projectId;
+            var projectId = ideationMgr.getIdeation(ideaVm.ideationId).project.ProjectId;
 
 
             return RedirectToAction("Project", "Project", new {id = projectId});
@@ -316,13 +350,13 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(TextField))
                 {
                     var textField = (TextField) field;
-                    textFieldVms.Add(new TextFieldVm{text = textField.text});
+                    textFieldVms.Add(new TextFieldVm{text = textField.Text});
                 }
                   
                 if (field.GetType() == typeof(MapField))
                 {
                     var mapfield = (MapField) field;
-                    mapFieldVms.Add(new MapFieldVm{latitude = mapfield.latitude , longitude = mapfield.longitude});
+                    mapFieldVms.Add(new MapFieldVm{latitude = mapfield.Latitude , longitude = mapfield.Longitude});
                 }
                  
                 if (field.GetType() == typeof(ImageField))
@@ -343,7 +377,7 @@ namespace UI.MVC.Controllers
                     var questionField = (QuestionField) field;
                     // Question question = new Question();
                     //question.question = question.question;
-                    questionFieldVms.Add(new QuestionFieldVm{Question = questionField.question});
+                    questionFieldVms.Add(new QuestionFieldVm{Question = questionField.Question});
                 }
             }
             

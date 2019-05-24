@@ -28,28 +28,28 @@ namespace DAL
         public IEnumerable<Project> readProjects()
         {
             return ctx.projects
-                .Include(p => p.questionnaires)
-                .Include(p => p.imageField)
-                .Include(p => p.mapField)
-                .Include(p => p.phases)
-                .Include(p => p.ideations)
+                .Include(p => p.Questionnaires)
+                .Include(p => p.ImageField)
+                .Include(p => p.MapField)
+                .Include(p => p.Phases)
+                .Include(p => p.Ideations)
                 .ThenInclude(i => i.ideas)
                 .ThenInclude(i => i.reactions)
-                .Include(p => p.projectLikes)
+                .Include(p => p.ProjectLikes)
                 .Include(p => p.Setting);
         }
 
         public Project readProject(int id)
         {
             return ctx.projects
-                .Include(p => p.questionnaires)
-                .Include( p => p.imageField)
-                .Include(p => p.mapField)
-                .Include(p => p.phases)
-                .Include(p => p.ideations)
-                .Include(p => p.projectLikes)
+                .Include(p => p.Questionnaires)
+                .Include( p => p.ImageField)
+                .Include(p => p.MapField)
+                .Include(p => p.Phases)
+                .Include(p => p.Ideations)
+                .Include(p => p.ProjectLikes)
                 .Include(p => p.Setting)
-                .SingleOrDefault(p => p.projectId == id);
+                .SingleOrDefault(p => p.ProjectId == id);
         }
 
         public IEnumerable<Questionnaire> readQuestionnaires()
@@ -67,9 +67,9 @@ namespace DAL
 
         public void updateProject(Project p)
         {
-            foreach (var phase in ctx.phases.Where(ph => ph.project.projectId == p.projectId))
+            foreach (var phase in ctx.phases.Where(ph => ph.Project.ProjectId == p.ProjectId))
             {
-                ctx.phases.Remove(ctx.phases.Find(phase.phaseId));
+                ctx.phases.Remove(ctx.phases.Find(phase.PhaseId));
             }
             updateSetting(p.Setting);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");

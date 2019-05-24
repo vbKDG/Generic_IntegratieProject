@@ -46,9 +46,9 @@
                     }
                     @foreach (var field in Model.fields)
                     {
-                        if (Model.ideas.ToList()[i].ideaId == field.idea.ideaId)
+                        if (Model.ideas.ToList()[i].ideaId == field.Idea.ideaId)
                         {
-                            @field.text
+                            @field.Text
                             <br>
                         }
                     }

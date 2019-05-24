@@ -5,9 +5,9 @@ namespace Domain
 {
     public class Field
     {
-        [Required] public int fieldId { get; set; }
-        public Idea idea { get; set; }
-        public Boolean required { get; set; }
+        [Required] public int FieldId { get; set; }
+        public Idea Idea { get; set; }
+        public Boolean Required { get; set; }
     }
 
 }
