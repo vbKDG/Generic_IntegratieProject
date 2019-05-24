@@ -46,9 +46,7 @@ namespace UI.MVC.Controllers.api
             {
                 mgr.addQuestionUser("", question.questionId, question.answer);
             }
-            
-            Console.WriteLine("test");
-            
+
             return Ok(model);
         }
     }

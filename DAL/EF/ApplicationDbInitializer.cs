@@ -146,8 +146,8 @@ namespace DAL.EF
             Project p1 = new Project()
             {
                 description = "We are thinking about building a new playground in the middle of central park",
-                endDate = new DateTime(2019, 3,9),
-                startDate = new DateTime(2019,4,10),
+                endDate = new DateTime(2019, 4,9),
+                startDate = new DateTime(2019,3,10),
                 name = "Playground"
             };
             p1.Setting = new Setting {BackGroundColor1 = "red", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
@@ -262,8 +262,8 @@ namespace DAL.EF
             Project p2 = new Project()
             {
                 description = "A project started by the city of antwerp with the intention to adopt street birds",
-                endDate = new DateTime(2019, 3,9),
-                startDate = new DateTime(2019,4,10),
+                endDate = new DateTime(2019, 4,9),
+                startDate = new DateTime(2019,2,10),
                 phases = new List<Phase>(),
                 name = "SAFE THE BIRDS!",
                 place = new Place(),

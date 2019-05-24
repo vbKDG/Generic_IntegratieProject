@@ -22,17 +22,12 @@ namespace UI.MVC.Controllers.api
             List<ProjectRESTModelBasic> newProjects = new List<ProjectRESTModelBasic>();
             foreach (var project in projects)
             {
-                /*int totalProjectDays = (project.endDate - project.startDate).Days;
-                int daysSinceStartup = (DateTime.Now - project.startDate).Days;
-                int percentageOfCompletion = daysSinceStartup / totalProjectDays;*/
-                
                 ProjectRESTModelBasic newProject = new ProjectRESTModelBasic()
                 {
                     projectId = project.projectId,
                     name = project.name,
                     numberOfLikes = project.projectLikes.Count,
                     numberOfIdeations = project.ideations.Count
-                    //numberOfReports = project.reports.Count?
                 };
                 newProjects.Add(newProject);
             }
@@ -42,19 +37,19 @@ namespace UI.MVC.Controllers.api
         [HttpGet("/api/Projects/{id}")]
         public IActionResult GetProject(int id)
         {
-            //Either you add a service in startup.cs to ignore reference loop handling
-            //or you comment/delete the 'include' line in the project repository
             Project project = mgr.getProject(id);
-            /*Bitmap bmp;
-            using (var ms = new MemoryStream(project.imageField.imageData))
-            {
-                bmp = new Bitmap(ms);
-            }*/
+            
             double totalProjectDays = (project.endDate - project.startDate).Days;
             double daysSinceStartup = (DateTime.Now - project.startDate).Days;
-            var percentageOfCompletion = (int)Math.Round(daysSinceStartup / totalProjectDays);
-            /*MemoryStream ms = new MemoryStream(project.imageField.imageData);
-            Image returnImage = Image.FromStream(ms);*/
+            var percentageOfCompletion = 0;
+            if (DateTime.Now >= project.endDate)
+            {
+                percentageOfCompletion = 100;
+            } else if (DateTime.Now > project.startDate && DateTime.Now < project.endDate)
+            {
+                percentageOfCompletion = Convert.ToInt32((daysSinceStartup / totalProjectDays)*100);
+            }
+
             foreach (var questionnaire in project.questionnaires)
             {
                 questionnaire.project = null;
@@ -63,7 +58,6 @@ namespace UI.MVC.Controllers.api
             {
                 projectId = project.projectId,
                 name = project.name,
-                //projectImage = project.imageField.imageData,
                 description = project.description,
                 startDate = project.startDate.ToUniversalTime(),
                 endDate = project.endDate.ToUniversalTime(),
@@ -79,10 +73,11 @@ namespace UI.MVC.Controllers.api
         {
             Project project = mgr.getProject(id);
             byte[] imageString = project.imageField.imageData;
-            
+            //string imageString = project.imageField.imageData;
             
             
             return File(imageString, "image/png");
+            //return "data:image/png;base64," + Convert.ToBase64String(imageString);
         }
         
         [HttpGet("/api/Questionnaires/{id}")]
