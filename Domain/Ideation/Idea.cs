@@ -10,6 +10,8 @@ namespace Domain
     //
         [Required]     
         public int ideaId { get; set; }
+        
+        public string IdeaTitle { get; set; }
         public ApplicationUser user { get; set; } 
         public Ideation ideation { get; set; }
         public ICollection<Reaction> reactions { get; set; }

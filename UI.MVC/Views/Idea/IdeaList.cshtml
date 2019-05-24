@@ -1,0 +1,16 @@
+@model IEnumerable<D.UI.MVC.Models.Ideas.IdeaListItem>
+
+@foreach (var item in @Model)
+{
+    @Html.DisplayFor(x => @item.UserName)
+    @Html.DisplayFor(x => @item.IdeaTitle)
+
+    <img src="@item.Base64Image"/>
+    <h3>Likes</h3>                            
+    @Html.DisplayFor(x => @item.LikeCount)
+    <h3>Reactions</h3>
+    @Html.DisplayFor(x => @item.UserName)
+
+
+    
+}

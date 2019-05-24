@@ -21,8 +21,9 @@
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
     <input asp-for="ideationId" value="@Model.ideationId" type="hidden"/>
     
-  
-   @if (@Model.TextFieldVms.Count != 0)
+  <input asp-for="IdeaTitle"/>
+
+@if (@Model.TextFieldVms.Count != 0)
    {
        <h3>Upload Text</h3>
        <div id="TextUploads">

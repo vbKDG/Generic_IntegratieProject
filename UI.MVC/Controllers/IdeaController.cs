@@ -445,7 +445,43 @@ namespace UI.MVC.Controllers
             }
             return NoContent();
         }
+        
 
+        public IActionResult IdeaList(int ideationId)
+        {
+            var ideas = ideationMgr.getIdeas(ideationId);
+            List<IdeaListItem> ideaListItems = new List<IdeaListItem>();
+            String imagePath = "./wwwroot/images/lightbulb.jpg";
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);  
+            string base64String = Convert.ToBase64String(imageBytes);
+           // string username = "";
+           // String base64Lightbuld = GetBase64StringForImage(imagePath);
+            foreach (var idea in ideas)
+            {
+                int likeCount = idea.ideaLikes.Count;
+                int reactionCount = idea.reactions.Count;
+               var username = idea.user.FirstName + '.' + idea.user.LastName.Substring(0,1);
+               var teller = 0;
+                foreach (var field in idea.fields)
+                {
+                    if (field.GetType() == typeof(ImageField) && teller==0)
+                    {
+                        teller++;
+                        var imagefield = (ImageField) field;
+                        base64String = imagefield.GetImageString();
+                        //imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
+                    }
+                   
+                    
+                }
+                
+                ideaListItems.Add(new IdeaListItem{IdeaId = idea.ideaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+            }
+
+            return View(ideaListItems);
+
+
+        }
         public IActionResult LikeReaction(int reactionId)
         {
             if (User.Identity.IsAuthenticated)

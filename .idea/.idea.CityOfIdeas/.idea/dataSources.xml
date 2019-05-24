@@ -18,5 +18,14 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="CityOfIdeas" uuid="2dac09f4-5e06-44f2-993e-149dc678c8eb">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost:1433</jdbc-url>
+      <driver-properties>
+        <property name="applicationName" value="DataGrip" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
