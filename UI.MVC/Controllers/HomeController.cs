@@ -7,20 +7,22 @@ using System.Linq;
 using BL;
 using BL.Application;
 using D.UI.MVC.Models.Projects;
+using DAL.EF;
 using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using UI.MVC.Models;
 
 namespace UI.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly OrchestratorSystemController orchestrator;
+        private readonly OrchestratorProjectIdeationController orchestrator;
         
-        public HomeController()
+        public HomeController(UserManager<ApplicationUser> userManager)
         {
-            orchestrator = new OrchestratorSystemController();
+            orchestrator = new OrchestratorProjectIdeationController(userManager);
         }
 
         public IActionResult EmailConfirmInfo()

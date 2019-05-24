@@ -10,6 +10,7 @@ using D.UI.MVC.Models.Projects;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using UI.MVC.Models;
@@ -19,11 +20,11 @@ namespace UI.MVC.Controllers
 {
     public class ProjectController : Controller
     {
-        private readonly OrchestratorSystemController orchestrator;
+        private readonly OrchestratorProjectIdeationController orchestrator;
         
-        public ProjectController()
+        public ProjectController(UserManager<ApplicationUser> userManager)
         {
-            orchestrator = new OrchestratorSystemController();
+            orchestrator = new OrchestratorProjectIdeationController(userManager);
         }
 
         [Authorize(Roles = "SuperAdmin, Admin")]

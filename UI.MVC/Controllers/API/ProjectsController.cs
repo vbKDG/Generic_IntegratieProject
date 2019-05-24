@@ -72,12 +72,10 @@ namespace UI.MVC.Controllers.api
         public IActionResult GetProjectImage(int id)
         {
             Project project = mgr.getProject(id);
-            byte[] imageString = project.ImageField.ImageData;
-            //string imageString = project.ImageField.ImageData;
+            string imageString = project.ImageField.ImageData;
             
             
             return File(imageString, "image/png");
-            //return "data:image/png;base64," + Convert.ToBase64String(imageString);
         }
         
         [HttpGet("/api/Questionnaires/{id}")]

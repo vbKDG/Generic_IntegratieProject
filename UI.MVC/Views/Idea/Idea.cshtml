@@ -41,216 +41,236 @@
     </div>
     <div class="modal-body">
         
-            
-<div id="TextUploads">
-    <div id="TextSlideshow" class="textslideshow-container">        
-        <!-- Next and previous buttons -->
-        
-        @if (@Model.TextFieldVms.Count > 1)
-        {
-            <a  class="prevText" onclick="plusTexts(-1)">&#10094;</a>
-            <a  class="nextText" onclick="plusTexts(1)">&#10095;</a>
-        }
-       
-       
    
-     
-    @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+    @if (@Model.TextFieldVms.Count > 0)
     {
-        if (i == 0)
-        {
-            <div class="TextSlides" style="display: block;">
-                
-                <p>@Model.TextFieldVms[i].Text </p>
+        <div id="TextUploads">
+
+            <div id="TextSlideshow" class="textslideshow-container">
+                <!-- Next and previous buttons -->
+
+                @if (@Model.TextFieldVms.Count > 1)
+                {
+                    <a class="prevText" onclick="plusTexts(-1)">&#10094;</a>
+                    <a class="nextText" onclick="plusTexts(1)">&#10095;</a>
+                }
+
+
+
+
+                @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="TextSlides" style="display: block;">
+
+                            <p>@Model.TextFieldVms[i].Text </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="TextSlides" style="display: none;">
+                            <p>@Model.TextFieldVms[i].Text </p>
+                        </div>
+                    }
+
+                }
             </div>
-        }
-        else
-        {
-            <div  class="TextSlides" style="display: none;">
-                <p>@Model.TextFieldVms[i].Text </p>
-            </div>
-        }
-           
-    }
-    </div>  
 
-    <!-- The dots/circles -->
-    @if (@Model.TextFieldVms.Count > 1)
-    {
-        <div id="textdots" style="text-align: center">
-            @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+            <!-- The dots/circles -->
+            @if (@Model.TextFieldVms.Count > 1)
             {
-                <span class="Textdot"></span>
-            }
+                <div id="textdots" style="text-align: center">
+                    @for (var i = 0; i < @Model.TextFieldVms.Count; i++)
+                    {
+                        <span class="Textdot"></span>
+                    }
 
-        </div>
-    }
-    
-    
-    
-       
-    
-    <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
-</div>
-    <div id="ImageUploads">
-
-        <div id="ImageSlideshow" class="slideshow-container">
-
-       
-          
-
-            <!-- Next and previous buttons -->
-            @if (@Model.ImageFieldVms.Count > 1)
-            {
-                <div id="sliders">
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
             }
-         
-        
-            @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
-            {
-                if (i == 0 )
-                {
-                    <div class="mySlides" style="display: block;">
-                        <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
-                    </div>
-                }
-                else
-                {
-                    <div  class="mySlides" style="display: none;">
-                        <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
-                    </div>
-                }
-           
-            }
+
+
+
+
+
+            <script src="@Url.Content("~/js/TextFieldEditor.js")"></script>
         </div>
-    
-    
+    }
+    @if (@Model.ImageFieldVms.Count > 0)
+    {
+
+        <div id="ImageUploads">
+
+            <div id="ImageSlideshow" class="slideshow-container">
 
 
 
 
+                <!-- Next and previous buttons -->
+                @if (@Model.ImageFieldVms.Count > 1)
+                {
+                    <div id="sliders">
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                }
 
 
-        <!-- The dots/circles -->
-        @if (@Model.ImageFieldVms.Count > 1)
-        {
-            <div id="dots" style="text-align: center" >
-    
                 @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
                 {
-                    <span class="dot" onclick="currentSlide(i)"></span>
+                    if (i == 0)
+                    {
+                        <div class="mySlides" style="display: block;">
+                            <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mySlides" style="display: none;">
+                            <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                        </div>
+                    }
+
                 }
-    
-    
             </div>
-        }
-    
-    
-      
-    </div>
 
-<div id="VideoUploads">
-    <div id="VideoSlideshow" class="videoslideshow-container">
 
-          
-        @if (@Model.VideoFieldVms.Count > 1){
 
-            <!-- Next and previous buttons -->
-            <div id="videosliders" >
-                <a class="prevVid" onclick="plusVideos(-1)">&#10094;</a>
-                <a class="nextVid" onclick="plusVideos(1)">&#10095;</a>
-            </div>
-        
-        }
-        @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
-        {
-            if (i == 0 )
+
+
+
+
+
+            <!-- The dots/circles -->
+            @if (@Model.ImageFieldVms.Count > 1)
             {
-                <div class="VideoSlides" style="display: block;">
-                    <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
-                    
-                    
+                <div id="dots" style="text-align: center">
+
+                    @for (var i = 0; i < @Model.ImageFieldVms.Count; i++)
+                    {
+                        <span class="dot" onclick="currentSlide(i)"></span>
+                    }
+
+
                 </div>
             }
-            else
-            {
-                <div  class="VideoSlides" style="display: none;">
-                    <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
-                </div>
-            }
-           
-        }
-        
-        
-    </div>
 
 
 
-
-
-    @if (@Model.VideoFieldVms.Count > 1)
+        </div>
+    }  
+    @if (@Model.VideoFieldVms.Count > 0)
     {
 
-        <!-- The dots/circles -->
-        <div id="videodots" style="text-align: center">
-            @*<span class="dot" onclick="currentSlide(1)"></span>
+        <div id="VideoUploads">
+            <div id="VideoSlideshow" class="videoslideshow-container">
+
+
+                @if (@Model.VideoFieldVms.Count > 1)
+                {
+
+                    <!-- Next and previous buttons -->
+                    <div id="videosliders">
+                        <a class="prevVid" onclick="plusVideos(-1)">&#10094;</a>
+                        <a class="nextVid" onclick="plusVideos(1)">&#10095;</a>
+                    </div>
+
+                }
+                @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="VideoSlides" style="display: block;">
+                            <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="VideoSlides" style="display: none;">
+                            <video src=@Model.VideoFieldVms[i].Base64Video width="560" height="315" controls=""></video>
+                        </div>
+                    }
+
+                }
+
+
+            </div>
+
+
+
+
+
+            @if (@Model.VideoFieldVms.Count > 1)
+            {
+
+                <!-- The dots/circles -->
+                <div id="videodots" style="text-align: center">
+                    @*<span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>*@
 
-            @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
-            {
-                <span class="VideoDot " onclick="currentVideo(i)"></span>
+                    @for (var i = 0; i < @Model.VideoFieldVms.Count; i++)
+                    {
+                        <span class="VideoDot " onclick="currentVideo(i)"></span>
+                    }
+                </div>
             }
         </div>
     }
-</div>
-<div id="MapUploads">
-    <button type="button" id="NextLocation"></button>
-    <div id="map" style="height: 360px; width: 720px;"> </div>
-    @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
+    @if (@Model.MapFieldVms.Count > 0)
     {
-        <p hidden="true" class="latitude"  id="location_latitude_@i">@Model.MapFieldVms[i].Latitude</p>
-        <p hidden="true" class="longitude"  id="location_longitude_@i">@Model.MapFieldVms[i].Longitude</p>
 
+        <div id="MapUploads">
+            <button type="button" id="NextLocation"></button>
+            <div id="map" style="height: 360px; width: 720px;"> </div>
+            @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
+            {
+                <p hidden="true" class="latitude" id="location_latitude_@i">@Model.MapFieldVms[i].Latitude</p>
+                <p hidden="true" class="longitude" id="location_longitude_@i">@Model.MapFieldVms[i].Longitude</p>
+
+            }
+
+
+        </div>
     }
-
-   
-</div>
-<div id="QuestionUploads">
-    @foreach (var item in Model.QuestionFieldVms)
+    @if (@Model.QuestionFieldVms.Count > 0)
     {
-        using (Html.BeginForm("AnswerQuestionFieldIdea", "Questionnaire",
-            FormMethod.Post))
-        {
-            <b>@item.Question.TheQuestion</b>
-            if (item.Question.QuestionType == QuestionType.RADIO_BUTTON)
+
+        <div id="QuestionUploads">
+            @foreach (var item in Model.QuestionFieldVms)
             {
-                <fieldset id="@item.QuestionFieldVMId">
-                    @foreach (var option in item.Question.Options)
+                using (Html.BeginForm("AnswerQuestionFieldIdea", "Questionnaire",
+                    FormMethod.Post))
+                {
+                    <b>@item.Question.TheQuestion</b>
+                    if (item.Question.QuestionType == QuestionType.RADIO_BUTTON)
                     {
-                        <input type="radio" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-radiobutton"/>
-                        @Html.DisplayFor(modelItem => option.TheOption)<br>
+                        <fieldset id="@item.QuestionFieldVMId">
+                            @foreach (var option in item.Question.Options)
+                            {
+                                <input type="radio" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-radiobutton"/>
+                                @Html.DisplayFor(modelItem => option.TheOption)<br>
+                            }
+                        </fieldset>
                     }
-                </fieldset>
-            }
-            if (item.Question.QuestionType == QuestionType.CHECK_BOX)
-            {
-                <fieldset id="@item.QuestionFieldVMId">
-                    @foreach (var option in item.Question.Options)
+                    if (item.Question.QuestionType == QuestionType.CHECK_BOX)
                     {
-                        <input type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-checkbox"/>
-                        @Html.DisplayFor(modelItem => option.TheOption)<br>
+                        <fieldset id="@item.QuestionFieldVMId">
+                            @foreach (var option in item.Question.Options)
+                            {
+                                <input type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionFieldVMId-checkbox"/>
+                                @Html.DisplayFor(modelItem => option.TheOption)<br>
+                            }
+                        </fieldset>
                     }
-                </fieldset>
+                    <button type="submit">Submit answer</button>
+                }
+                <br>
             }
-            <button type="submit">Submit answer</button>
-        }
-        <br>
+        </div>
     }
-</div>
   
     @if (Model.Disapproved == false)
     {

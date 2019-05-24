@@ -8,7 +8,8 @@
     <e p="D:\OneDrive\Documenten\Generic_IntegratieProject" t="IncludeFlat">
       <e p="BL" t="IncludeRecursive">
         <e p="Application" t="Include">
-          <e p="OrchestratorSystemController.cs" t="Include" />
+          <e p="OrchestratorProjectIdeationController.cs" t="Include" />
+          <e p="OrchestratorProjectQuestionnaireController.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="BL.csproj" t="IncludeRecursive" />
@@ -286,10 +287,8 @@
             <e p="CreateIdeaPage.cshtml" t="Include" />
             <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="Idea.cshtml" t="Include" />
-            <e p="IdeaList.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
-            <e p="MapInput.cshtml" t="Include" />
-            <e p="Sort.cshtml" t="Include" />
+            <e p="Ideation.cshtml" t="Include" />
           </e>
           <e p="Project" t="Include">
             <e p="CreateIdeationPage.cshtml" t="Include" />
@@ -299,7 +298,6 @@
             </e>
             <e p="EditProjectPage.cshtml" t="Include" />
             <e p="Ideations.cshtml" t="Include" />
-            <e p="ImageTest.cshtml" t="Include" />
             <e p="Maptest.cshtml" t="Include" />
             <e p="ProjectDetailPage.cshtml" t="Include" />
             <e p="ProjectImageDisplay.cshtml" t="Include" />
@@ -376,6 +374,7 @@
             <e p="icon-person.png" t="Include" />
             <e p="ideeLogo.jpg" t="Include" />
             <e p="leuk.jpg" t="Include" />
+            <e p="lightbulb.jpg" t="Include" />
             <e p="marathon-project.jpg" t="Include" />
             <e p="park1.jpg" t="Include" />
             <e p="park2.jpg" t="Include" />

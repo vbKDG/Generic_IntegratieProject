@@ -8,6 +8,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using Autofac;
 using BL;
+using BL.Application;
 using D.UI.MVC.Models.Fields;
 using D.UI.MVC.Models.Ideas;
 using DAL.EF;
@@ -23,20 +24,23 @@ namespace UI.MVC.Controllers
 {
     public class IdeaController : Controller
     {
-        private IIdeationManager ideationMgr;
-        private IQuestionnaireManager questionnaireMgr;
-        private UserManager<ApplicationUser> _userManager;
+        private OrchestratorProjectIdeationController orchestrator;
+        
+        public IdeaController(UserManager<ApplicationUser> userManager)
+        {
+            orchestrator = new OrchestratorProjectIdeationController(userManager);
+        }
+
 
         private readonly DependencyInjectionConfig DIConfig = new DependencyInjectionConfig();
 
 
         public IActionResult Ideation(int ideationId =  8)
         {
-            Ideation ideation = ideationMgr.getIdeation(ideationId);
+            Ideation ideation = orchestrator.getIdeation(ideationId);
             IdeationPageVM ideationPageVm = new IdeationPageVM();
             List<IdeaListItemVM> ideaListItemVms = new List<IdeaListItemVM>();
             List<String> ideationQuestions = new List<string>();   
-           // String imagePath = "./wwwroot/images/lightbulb.jpg";
            
 
             foreach (var idea in ideation.Ideas)
@@ -76,18 +80,12 @@ namespace UI.MVC.Controllers
 
         }
 
-        public IdeaController(UserManager<ApplicationUser> userManager)
-        {
-            _userManager = userManager;
-            ideationMgr = new IdeationManager();
-            questionnaireMgr = new QuestionnaireManager();
-        }
-
+        
         public IActionResult CreateIdeaPage(int ideationId)
         {
 
-            Ideation ideation = ideationMgr.getIdeation(ideationId);
-            IdeationQuestion[] ideationQuestions = ideationMgr.GetIdeationQuestions(ideationId).ToArray();
+            Ideation ideation = orchestrator.getIdeation(ideationId);
+            IdeationQuestion[] ideationQuestions = orchestrator.GetIdeationQuestions(ideationId).ToArray();
             List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
             List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
             List<VideoFieldVm> videoFieldVms  = new List<VideoFieldVm>();
@@ -144,50 +142,7 @@ namespace UI.MVC.Controllers
 
             return View(ideaVm);
         }
-
-        public IActionResult MapInput()
-        {
-            return View();
-        }
-
-        public IActionResult Sort()
-        {
-            return View();
-        }
         
-        public IActionResult IdeaList(int ideationId)
-        {
-            var ideas = ideationMgr.getIdeas(ideationId);
-            List<IdeaListItemVM> ideaListItems = new List<IdeaListItemVM>();
-            String imagePath = "./wwwroot/images/lightbulb.jpg";
-            byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);  
-            string base64String = Convert.ToBase64String(imageBytes);
-            // string username = "";
-            // String base64Lightbuld = GetBase64StringForImage(imagePath);
-            foreach (var idea in ideas)
-            {
-                int likeCount = idea.IdeaLikes.Count;
-                int reactionCount = idea.Reactions.Count;
-                var username = idea.User.FirstName + '.' + idea.User.LastName.Substring(0,1);
-                var teller = 0;
-                foreach (var field in idea.Fields)
-                {
-                    if (field.GetType() == typeof(ImageField) && teller==0)
-                    {
-                        teller++;
-                        var imagefield = (ImageField) field;
-                        base64String = imagefield.ImageData;
-                        //imageFieldVms.Add(new ImageFieldVm{Base64Image = imagefield.GetImageString()});
-                    }
-                   
-                    
-                }
-                
-                ideaListItems.Add(new IdeaListItemVM{IdeaId = idea.IdeaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
-            }
-            return View(ideaListItems);
-        }
-
         [HttpPost]
         public IActionResult CreateIdea(IdeaVM ideaVm)
         {
@@ -294,7 +249,7 @@ namespace UI.MVC.Controllers
             {
                 applicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
             }
-            Ideation ideation = ideationMgr.getIdeation(ideaVm.IdeationId);
+            Ideation ideation = orchestrator.getIdeation(ideaVm.IdeationId);
             
             idea.Ideation = ideation;
           
@@ -326,9 +281,9 @@ namespace UI.MVC.Controllers
                 fields.Add(textfield);
             }
             idea.Fields = fields;
-            ideationMgr.createIdea(idea,applicationUserId);
+            orchestrator.createIdea(idea,applicationUserId);
 
-            var projectId = ideationMgr.getIdeation(ideaVm.IdeationId).Project.ProjectId;
+            var projectId = orchestrator.getIdeation(ideaVm.IdeationId).Project.ProjectId;
 
 
             return RedirectToAction("Ideation", "idea", new {ideationId = idea.Ideation.IdeationId});
@@ -337,14 +292,14 @@ namespace UI.MVC.Controllers
         public PartialViewResult Idea(int ideaId = 10)
         {
             String[] test = new string[8];
-            Idea idea = ideationMgr.getIdea(ideaId);
+            Idea idea = orchestrator.getIdea(ideaId);
             IdeaVM ideaVm = new IdeaVM();
             List<TextFieldVm> textFieldVms = new List<TextFieldVm>();
             List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();
             List<VideoFieldVm> videoFieldVms = new List<VideoFieldVm>();
             List<MapFieldVm> mapFieldVms = new List<MapFieldVm>();
             List<QuestionFieldVm> questionFieldVms = new List<QuestionFieldVm>();
-            List<Reaction> reactions = ideationMgr.getReactions(ideaId).ToList();
+            List<Reaction> reactions = orchestrator.getReactions(ideaId).ToList();
 
             foreach (var field in idea.Fields)
             {
@@ -391,7 +346,7 @@ namespace UI.MVC.Controllers
             ideaVm.Reactions = reactions;
             ideaVm.IdeaId = ideaId;
             ideaVm.Disapproved = idea.Disapproved;
-            ideaVm.AmountOfLikes = ideationMgr.getIdeaLikes(ideaId);
+            ideaVm.AmountOfLikes = orchestrator.getIdeaLikes(ideaId);
 
             return  PartialView("Idea",ideaVm);
         }
@@ -412,7 +367,7 @@ namespace UI.MVC.Controllers
                     faqId = Convert.ToInt32(form[key]);
                 }
             }
-            ideationMgr.createFaqAnswer(userId, answer, faqId);
+            orchestrator.createFaqAnswer(userId, answer, faqId);
             return NoContent();
         }
 
@@ -422,7 +377,7 @@ namespace UI.MVC.Controllers
             {
                 if (key == "answer")
                 {
-                    ideationMgr.createFaq(form[key], User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                    orchestrator.createFaq(form[key], User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 }
             }
             return NoContent();
@@ -432,17 +387,17 @@ namespace UI.MVC.Controllers
         {
             IdeasVM ideasVm = new IdeasVM();
             ideasVm.IdeationId = ideationId;
-            ideasVm.ideas = ideationMgr.getIdeas(ideationId).ToList();
+            ideasVm.ideas = orchestrator.getIdeas(ideationId).ToList();
             ideasVm.fields = new List<TextField>();
             ideasVm.reactions = new List<Reaction>();
             foreach (var idea in ideasVm.ideas)
             {
-                foreach (var field in ideationMgr.GetFields(idea.IdeaId).ToList())
+                foreach (var field in orchestrator.GetFields(idea.IdeaId).ToList())
                 {
                     ideasVm.fields.Add(field);
                 }
 
-                foreach (var reaction in ideationMgr.getReactions(idea.IdeaId).ToList())
+                foreach (var reaction in orchestrator.getReactions(idea.IdeaId).ToList())
                 {
                     ideasVm.reactions.Add(reaction);
                 }
@@ -454,7 +409,7 @@ namespace UI.MVC.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                ideationMgr.LikeIdea(ideaId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                orchestrator.LikeIdea(ideaId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
             }
             return NoContent();
         }
@@ -463,7 +418,7 @@ namespace UI.MVC.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                ideationMgr.LikeReaction(reactionId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                orchestrator.LikeReaction(reactionId, User.FindFirst(ClaimTypes.NameIdentifier).Value);
             }
             return NoContent();
         }
@@ -484,7 +439,7 @@ namespace UI.MVC.Controllers
                     ideaId = form[key];
                 }
             }
-            ideationMgr.ReactIdea(ideaId, userId, content);
+            orchestrator.ReactIdea(ideaId, userId, content);
             return NoContent();
         }
 
@@ -510,7 +465,7 @@ namespace UI.MVC.Controllers
 
             ideation.Questions = ideationQuestions;
              
-            ideationMgr.CreateIdeation(ideation,ideationVm.ProjectId);
+            orchestrator.CreateIdeation(ideation,ideationVm.ProjectId);
             
             return RedirectToAction("Ideations", "Project", new {id = ideationVm.ProjectId});
         }
@@ -520,7 +475,7 @@ namespace UI.MVC.Controllers
             return View();
         }
         
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult CreateQuestion(IFormCollection form)
         {
             Question question = new Question()
@@ -560,6 +515,6 @@ namespace UI.MVC.Controllers
             question.Options = options;
             questionnaireMgr.changeQuestion(question);
             return RedirectToAction("Index","Home");
-        }
+        }*/
     }
 }

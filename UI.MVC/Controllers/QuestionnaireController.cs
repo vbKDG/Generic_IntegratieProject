@@ -7,6 +7,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using BL;
+using BL.Application;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
@@ -20,39 +21,35 @@ namespace UI.MVC.Controllers
 {
     public class QuestionnaireController : Controller
     {
-        private readonly IQuestionnaireManager qmgr;
-        private readonly IProjectManager pmgr;
-
-        private UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-
+        private OrchestratorProjectQuestionnaireController orchestrator;
+        
         public QuestionnaireController(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
-            qmgr = new QuestionnaireManager();
-            pmgr = new ProjectManager();
-            _userManager = userManager;
+            orchestrator = new OrchestratorProjectQuestionnaireController(userManager);
             _emailSender = emailSender;
         }
+        
         
         public IActionResult Questionnaires(int projectId)
         {
             ProjectAndQuestionnaires projectAndQuestionnaires = new ProjectAndQuestionnaires();
-            projectAndQuestionnaires.Project = pmgr.getProject(projectId);
-            projectAndQuestionnaires.Questionnaires = qmgr.getQuestionnaires(projectId);
+            projectAndQuestionnaires.Project = orchestrator.getProject(projectId);
+            projectAndQuestionnaires.Questionnaires = orchestrator.getQuestionnaires(projectId);
             return View(projectAndQuestionnaires);
         }
         
         public IActionResult Questionnaire(int questionnaireId)
         {
             FillInQuestionnaireModel fillInQuestionnaireModel = new FillInQuestionnaireModel();
-            fillInQuestionnaireModel.Questions = qmgr.getQuestions(questionnaireId);
-            fillInQuestionnaireModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId);
+            fillInQuestionnaireModel.Questions = orchestrator.getQuestions(questionnaireId);
+            fillInQuestionnaireModel.Questionnaire = orchestrator.getQuestionnaire(questionnaireId);
 
             if (User.Identity.IsAuthenticated)
             {
                 var applicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var applicationUser = _userManager.FindByIdAsync(applicationUserId).Result;
+                var applicationUser = orchestrator.FindByIdAsync(applicationUserId).Result;
                 fillInQuestionnaireModel.ApplicationUser = applicationUser;
             }
             return View(fillInQuestionnaireModel);
@@ -74,9 +71,9 @@ namespace UI.MVC.Controllers
             IList<string> answers = new List<string>();
             IList<Question> ques = new List<Question>();
             IList<OptionsAmount> optionsAmounts = new List<OptionsAmount>();
-            combinedModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId); 
+            combinedModel.Questionnaire = orchestrator.getQuestionnaire(questionnaireId); 
             
-            foreach (var qu in qmgr.getQuestionUsers(questionnaireId))
+            foreach (var qu in orchestrator.getQuestionUsers(questionnaireId))
             {
                 questionUsers.Add(qu);
             }
@@ -94,7 +91,7 @@ namespace UI.MVC.Controllers
                 Question q = qu.Question;
                 if (q.QuestionType == QuestionType.DROPDOWN || q.QuestionType == QuestionType.RADIO_BUTTON)
                 {
-                    IList<Option> op = qmgr.getOptions(q.QuestionId).ToList();
+                    IList<Option> op = orchestrator.getOptions(q.QuestionId).ToList();
                     foreach (var o in op)
                     {
                         if (o.TheOption == qu.Answer)
@@ -105,7 +102,7 @@ namespace UI.MVC.Controllers
                 }
                 if (q.QuestionType == QuestionType.CHECK_BOX)
                 {
-                    IList<Option> op = qmgr.getOptions(q.QuestionId).ToList();
+                    IList<Option> op = orchestrator.getOptions(q.QuestionId).ToList();
                     foreach (var o in op)
                     {
                         var parts = qu.Answer.Split(",");
@@ -120,7 +117,7 @@ namespace UI.MVC.Controllers
                 }
             }
 
-            foreach (var q in qmgr.getQuestions(questionnaireId))
+            foreach (var q in orchestrator.getQuestions(questionnaireId))
             {
                 if (q.QuestionType == QuestionType.DROPDOWN || q.QuestionType == QuestionType.RADIO_BUTTON || q.QuestionType == QuestionType.CHECK_BOX)
                 {
@@ -154,15 +151,15 @@ namespace UI.MVC.Controllers
         public IActionResult EditQuestionnairePage(int questionnaireId)
         {
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
-            combinedModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId);
-            combinedModel.Questions = qmgr.getQuestions(questionnaireId);
+            combinedModel.Questionnaire = orchestrator.getQuestionnaire(questionnaireId);
+            combinedModel.Questions = orchestrator.getQuestions(questionnaireId);
             return View(combinedModel);
         }
 
         [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult DeleteQuestionnairePage(int questionnaireId)
         {
-            Questionnaire questionnaire = qmgr.getQuestionnaire(questionnaireId);
+            Questionnaire questionnaire = orchestrator.getQuestionnaire(questionnaireId);
             return View(questionnaire);
         }
 
@@ -182,15 +179,15 @@ namespace UI.MVC.Controllers
                     oldQuestionnaireId = Convert.ToInt32(form[key]);
                 }
             }
-            IList<QuestionUser> questionUsers = qmgr.getQuestionUsers(oldQuestionnaireId).ToList();
+            IList<QuestionUser> questionUsers = orchestrator.getQuestionUsers(oldQuestionnaireId).ToList();
             foreach (var qu in questionUsers)
             {
-                qmgr.removeQuestionUser(qu.QuestionUserId);
+                orchestrator.removeQuestionUser(qu.QuestionUserId);
             }
             
             ICollection<int> notRemovedQuestionIds = new List<int>();
-            Questionnaire oldQuestionnaire = qmgr.getQuestionnaire(oldQuestionnaireId);
-            ICollection<Question> oldQuestions = qmgr.getQuestions(oldQuestionnaireId).ToList();
+            Questionnaire oldQuestionnaire = orchestrator.getQuestionnaire(oldQuestionnaireId);
+            ICollection<Question> oldQuestions = orchestrator.getQuestions(oldQuestionnaireId).ToList();
 
             foreach (var key in form.Keys)
             {
@@ -229,14 +226,14 @@ namespace UI.MVC.Controllers
                         }
                     }
                     q.TheQuestion = form[key];
-                    qmgr.addQuestion(q);                           
-                    qmgr.changeQuestionnaire(oldQuestionnaire);    
+                    orchestrator.addQuestion(q);                           
+                    orchestrator.changeQuestionnaire(oldQuestionnaire);    
                     foreach (var o in newOptions)
                     {
-                        qmgr.addOption(o.TheOption, o.Question);
+                        orchestrator.addOption(o.TheOption, o.Question);
                     }
                     q.Options = newOptions;
-                    qmgr.changeQuestion(q);
+                    orchestrator.changeQuestion(q);
                 }    
                 if (key.StartsWith("question.options-"))         
                 {
@@ -261,13 +258,13 @@ namespace UI.MVC.Controllers
                         {
                             Question q = oldQuestions.ToList()[i];
                             q.TheQuestion = form[key];
-                            qmgr.changeQuestion(q);
+                            orchestrator.changeQuestion(q);
 
-                            ICollection<Option> options = qmgr.getOptions(q.QuestionId).ToList();
+                            ICollection<Option> options = orchestrator.getOptions(q.QuestionId).ToList();
 
                             foreach (var o in options)
                             {
-                                qmgr.removeOption(o.OptionId);
+                                orchestrator.removeOption(o.OptionId);
                             }
 
                             for (var a = 0; a < questionOptionKey.Count(); a++)
@@ -281,8 +278,8 @@ namespace UI.MVC.Controllers
                                         Question = q
                                     };
                                     q.Options.ToList().Add(o);
-                                    qmgr.changeQuestion(q);
-                                    qmgr.addOption(o.TheOption, o.Question);
+                                    orchestrator.changeQuestion(q);
+                                    orchestrator.addOption(o.TheOption, o.Question);
                                 }
                                 if (Convert.ToInt32(partsKey[2]) == counter && Convert.ToInt32(partsKey[3]) == 0)
                                 {
@@ -292,8 +289,8 @@ namespace UI.MVC.Controllers
                                         Question = q
                                     };
                                     q.Options.ToList().Add(o);
-                                    qmgr.addOption(o.TheOption, q);
-                                    qmgr.changeQuestion(q);
+                                    orchestrator.addOption(o.TheOption, q);
+                                    orchestrator.changeQuestion(q);
                                 }
                             }
                         }
@@ -313,14 +310,14 @@ namespace UI.MVC.Controllers
                             if (form[key] == "radiobutton") { q.QuestionType = QuestionType.RADIO_BUTTON; }
                             if (form[key] == "checkbox") { q.QuestionType = QuestionType.CHECK_BOX; }
                             if (form[key] == "textarea") { q.QuestionType = QuestionType.OPEN_QUESTION; }
-                            qmgr.changeQuestion(q);
+                            orchestrator.changeQuestion(q);
                         }
                     }
                 }
             }
             oldQuestionnaire.Name = oldQuestionnaireName;
             oldQuestionnaire.QuestionAmount = oldQuestions.Count;
-            qmgr.changeQuestionnaire(oldQuestionnaire);
+            orchestrator.changeQuestionnaire(oldQuestionnaire);
             foreach (var q in oldQuestions)
             {
                 var removeThis = true;
@@ -333,16 +330,16 @@ namespace UI.MVC.Controllers
                 }
                 if (removeThis)
                 {
-                    IList<Option> remOptions = qmgr.getOptions(q.QuestionId).ToList();
+                    IList<Option> remOptions = orchestrator.getOptions(q.QuestionId).ToList();
                     foreach (var o in remOptions)
                     {
-                        qmgr.removeOption(o.OptionId);
+                        orchestrator.removeOption(o.OptionId);
                     }
-                    qmgr.removeQuestion(q.QuestionId);
+                    orchestrator.removeQuestion(q.QuestionId);
                 }
             }
-            oldQuestionnaire.QuestionAmount = qmgr.getQuestions(oldQuestionnaire.QuestionnaireId).Count();
-            qmgr.changeQuestionnaire(oldQuestionnaire);
+            oldQuestionnaire.QuestionAmount = orchestrator.getQuestions(oldQuestionnaire.QuestionnaireId).Count();
+            orchestrator.changeQuestionnaire(oldQuestionnaire);
             return RedirectToAction("Projects","Project");
         }
 
@@ -355,22 +352,22 @@ namespace UI.MVC.Controllers
                 if (key == "id")
                 {
                     int questionnaireId = Convert.ToInt32(form[key]);
-                    IList<Question> questions = qmgr.getQuestions(questionnaireId).ToList();
-                    IList<QuestionUser> questionUsers = qmgr.getQuestionUsers(questionnaireId).ToList();
+                    IList<Question> questions = orchestrator.getQuestions(questionnaireId).ToList();
+                    IList<QuestionUser> questionUsers = orchestrator.getQuestionUsers(questionnaireId).ToList();
                     foreach (var qu in questionUsers)
                     {
-                        qmgr.removeQuestionUser(qu.QuestionUserId);
+                        orchestrator.removeQuestionUser(qu.QuestionUserId);
                     }
                     foreach (var q in questions)
                     {
-                        IList<Option> options = qmgr.getOptions(q.QuestionId).ToList();
+                        IList<Option> options = orchestrator.getOptions(q.QuestionId).ToList();
                         foreach (var o in options)
                         {
-                            qmgr.removeOption(o.OptionId);
+                            orchestrator.removeOption(o.OptionId);
                         }
-                        qmgr.removeQuestion(q.QuestionId);
+                        orchestrator.removeQuestion(q.QuestionId);
                     }
-                    qmgr.removeQuestionnaire(questionnaireId);
+                    orchestrator.removeQuestionnaire(questionnaireId);
                 }
             }
             return RedirectToAction("Projects","Project");
@@ -461,7 +458,7 @@ namespace UI.MVC.Controllers
                     }
                 }
             }
-            qmgr.addQuestionnaire(questions, questionnaireName, questions.Count, projectId);
+            orchestrator.addQuestionnaire(questions, questionnaireName, questions.Count, projectId);
             return RedirectToAction("Projects","Project");
         }
 
@@ -475,7 +472,7 @@ namespace UI.MVC.Controllers
                     var parts = key.Split("-");
                     if (User.Identity.IsAuthenticated)
                     {
-                        qmgr.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
+                        orchestrator.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
                     }
                 }
             }
@@ -493,12 +490,12 @@ namespace UI.MVC.Controllers
                     var parts = key.Split("-");
                     if (User.Identity.IsAuthenticated)
                     {
-                        qmgr.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
+                        orchestrator.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
                     }
                     else
                     {
-                        qmgr.addQuestionUser("", Convert.ToInt32(parts[1]), form[key]);
-                        questionUserIds.Add(qmgr.getQuestionUsers().Last().QuestionUserId);
+                        orchestrator.addQuestionUser("", Convert.ToInt32(parts[1]), form[key]);
+                        questionUserIds.Add(orchestrator.getQuestionUsers().Last().QuestionUserId);
                     }
                 }
             }
@@ -528,9 +525,9 @@ namespace UI.MVC.Controllers
         {
             foreach (var quId in questionUserIds)
             {
-                QuestionUser questionUser = qmgr.getQuestionUser(quId);
+                QuestionUser questionUser = orchestrator.getQuestionUser(quId);
                 questionUser.Confirmed = true;
-                qmgr.changeQuestionUser(questionUser);
+                orchestrator.changeQuestionUser(questionUser);
             }
             return RedirectToAction("ConfirmQuestionnairePage", "Questionnaire");
         }

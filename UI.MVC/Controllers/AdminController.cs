@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BL;
+using BL.Application;
 using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
@@ -15,28 +16,25 @@ namespace UI.MVC.Controllers
 {
     public class AdminController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
-        private IIdeationManager ideationMgr;
-        private IProjectManager projectMgr;
-
+        private OrchestratorProjectIdeationController orchestrator;
+        
         public AdminController(UserManager<ApplicationUser> userManager)
         {
-            _userManager = userManager;
-            ideationMgr = new IdeationManager();
-            projectMgr = new ProjectManager();
+            orchestrator = new OrchestratorProjectIdeationController(userManager);
         }
         
         [Authorize(Roles="SuperAdmin")]
         public IActionResult ManageAdmins()
         {
-            var usersOfRole =  _userManager.GetUsersInRoleAsync("Admin");
+           // var usersOfRole =  _userManager.GetUsersInRoleAsync("Admin");
+           var usersOfRole = orchestrator.GetUsersInRoleAsync("Admin");
             return View(usersOfRole);
         }
         
         [Authorize(Roles="SuperAdmin")]
         public IActionResult EditAdminPage(string userId)
         {
-            ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
+            ApplicationUser applicationUser = orchestrator.FindByIdAsync(userId).Result;
             return View(applicationUser);
         }
         
@@ -51,10 +49,10 @@ namespace UI.MVC.Controllers
         {
             ReportModel reportModel = new ReportModel
             {
-                Reports = ideationMgr.getReports(ideaId).ToList(),
-                Idea = ideationMgr.getIdea(ideaId),
-                Reactions = ideationMgr.getReactions(ideaId).ToList(),
-                TextFields = ideationMgr.GetFields(ideaId).ToList()
+                Reports = orchestrator.getReports(ideaId).ToList(),
+                Idea = orchestrator.getIdea(ideaId),
+                Reactions = orchestrator.getReactions(ideaId).ToList(),
+                TextFields = orchestrator.GetFields(ideaId).ToList()
             };
             return View(reportModel);
         }
@@ -62,14 +60,14 @@ namespace UI.MVC.Controllers
         [HttpGet]
         public IActionResult GetIdeaLikes(int ideaId)
         {
-            int likes = ideationMgr.getIdeaLikes(ideaId);
+            int likes = orchestrator.getIdeaLikes(ideaId);
             return new JsonResult(likes);
         }
         
         [HttpGet]
         public IActionResult GetReactionLikes(int reactionId)
         {
-            int likes = ideationMgr.getReactionLikes(reactionId);
+            int likes = orchestrator.getReactionLikes(reactionId);
             return new JsonResult(likes);
         }
         
@@ -78,24 +76,24 @@ namespace UI.MVC.Controllers
         {
             ReportModel reportModel = new ReportModel
             {
-                Ideations = (ideationMgr.getIdeations(projectId)).ToList(),
+                Ideations = (orchestrator.getIdeations(projectId)).ToList(),
                 Ideas = new List<Idea>(),
                 Reactions = new List<Reaction>(),
                 TextFields = new List<TextField>(),
                 Reports = new List<Report>(),
-                Projects = projectMgr.getProjects().ToList(),
+                Projects = orchestrator.getProjects().ToList(),
                 SelectedProject = projectId
             };
 
             foreach (var ideation in reportModel.Ideations)
             {
-                foreach (var idea in ideationMgr.getIdeas(ideation.IdeationId))
+                foreach (var idea in orchestrator.getIdeas(ideation.IdeationId))
                 {
-                    foreach(var report in ideationMgr.getReports(idea.IdeaId))
+                    foreach(var report in orchestrator.getReports(idea.IdeaId))
                     {
                         reportModel.Reports.Add(report);
                     }
-                    foreach (var field in ideationMgr.GetFields(idea.IdeaId).ToList())
+                    foreach (var field in orchestrator.GetFields(idea.IdeaId).ToList())
                     {
                         reportModel.TextFields.Add(field);
                     }
@@ -107,43 +105,43 @@ namespace UI.MVC.Controllers
         
         public IActionResult SendToAdmin(int reportId)
         {
-            ideationMgr.sendToAdmin(reportId);
+            orchestrator.sendToAdmin(reportId);
             return NoContent();
         }
 
         public IActionResult ApproveReaction(int reactionId)
         {
-            ideationMgr.approveReaction(reactionId);
+            orchestrator.approveReaction(reactionId);
             return NoContent();
         }
         
         public IActionResult DisapproveReaction(int reactionId)
         {
-            ideationMgr.disapproveReaction(reactionId);
+            orchestrator.disapproveReaction(reactionId);
             return NoContent();
         }
         
         public IActionResult ApproveIdea(int ideaId)
         {
-            ideationMgr.approveIdea(ideaId);
+            orchestrator.approveIdea(ideaId);
             return NoContent();
         }
         
         public IActionResult DisapproveIdea(int ideaId)
         {
-            ideationMgr.disapproveIdea(ideaId);
+            orchestrator.disapproveIdea(ideaId);
             return NoContent();
         }
 
         public IActionResult BlockUser(string userId)
         {
-            ideationMgr.blockUser(userId);
+            orchestrator.blockUser(userId);
             return NoContent();
         }
         
         public IActionResult ChangeReaction(IFormCollection form, int reactionId, int ideaId)
         {
-            Reaction reaction = ideationMgr.getReaction(reactionId);
+            Reaction reaction = orchestrator.getReaction(reactionId);
             foreach (var key in form.Keys)
             {
                 if (key == "reportText")
@@ -151,35 +149,35 @@ namespace UI.MVC.Controllers
                     reaction.Content = form[key];
                 }
             }
-            ideationMgr.changeReaction(reaction);
+            orchestrator.changeReaction(reaction);
             return RedirectToAction("ShowReports", "Admin", new {ideaId = ideaId});
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult EditModeratorPage(string userId)
         {
-            ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
+            ApplicationUser applicationUser = orchestrator.FindByIdAsync(userId).Result;
             return View(applicationUser);
         }
         
         [Authorize(Roles="SuperAdmin")]
         public IActionResult DeleteAdminPage(string userId)
         {
-            ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
+            ApplicationUser applicationUser = orchestrator.FindByIdAsync(userId).Result;
             return View(applicationUser);
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]
         public IActionResult DeleteModeratorPage(string userId)
         {
-            ApplicationUser applicationUser = _userManager.FindByIdAsync(userId).Result;
+            ApplicationUser applicationUser = orchestrator.FindByIdAsync(userId).Result;
             return View(applicationUser);
         }
 
         [Authorize(Roles = "SuperAdmin, Admin")]
         public IActionResult ManageModerators()
         {
-            var usersOfRole =  _userManager.GetUsersInRoleAsync("Moderator");
+            var usersOfRole =  orchestrator.GetUsersInRoleAsync("Moderator");
             return View(usersOfRole);
         }
 
@@ -193,8 +191,8 @@ namespace UI.MVC.Controllers
             {
                 if (key == "Id")
                 {
-                    user = _userManager.FindByIdAsync(formCollection[key]).Result;
-                    list = _userManager.GetRolesAsync(user).Result;
+                    user = orchestrator.FindByIdAsync(formCollection[key]).Result;
+                    list = orchestrator.GetRolesAsync(user).Result;
                 }
             }
             foreach (var key in formCollection.Keys)
@@ -221,7 +219,7 @@ namespace UI.MVC.Controllers
                         break;
                 }
             }
-            _userManager.UpdateAsync(user);
+            orchestrator.UpdateAsync(user);
             if (list[0] == "Admin")
             {
                 return LocalRedirect("~/Admin/ManageAdmins");
@@ -242,9 +240,9 @@ namespace UI.MVC.Controllers
             {
                 if (key == "Id")
                 {
-                    ApplicationUser user = _userManager.FindByIdAsync(formCollection[key]).Result;
-                    list = _userManager.GetRolesAsync(user).Result;
-                    _userManager.DeleteAsync(_userManager.FindByIdAsync(formCollection[key]).Result);
+                    ApplicationUser user = orchestrator.FindByIdAsync(formCollection[key]).Result;
+                    list = orchestrator.GetRolesAsync(user).Result;
+                    orchestrator.DeleteAsync(orchestrator.FindByIdAsync(formCollection[key]).Result);
                 }
             }
             if (list[0] == "Admin")

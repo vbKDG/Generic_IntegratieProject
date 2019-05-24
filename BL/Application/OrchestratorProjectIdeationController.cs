@@ -1,19 +1,24 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using DAL.EF;
 using Domain;
 using Microsoft.AspNetCore.Identity;
 
 namespace BL.Application
 {
-    public class OrchestratorSystemController : IIdeationManager
+    public class OrchestratorProjectIdeationController : IIdeationManager
     {
         private UnitOfWorkManager uowManager;
         
         private IIdeationManager ideationMgr;
         private IProjectManager projectMgr;
         private IQuestionnaireManager questionnaireMgr;
+        private UserManager<ApplicationUser> UserManager;
 
-        public OrchestratorSystemController()
+        public OrchestratorProjectIdeationController(UserManager<ApplicationUser> userManager)
         {
+            UserManager = userManager;
             uowManager = new UnitOfWorkManager();
             ideationMgr = new IdeationManager(uowManager);
             projectMgr = new ProjectManager(uowManager);
@@ -21,6 +26,40 @@ namespace BL.Application
             
         }
 
+        #region User
+
+        public Task<IList<DAL.EF.ApplicationUser>> GetUsersInRoleAsync(string role)
+        {
+            var usersOfRole =  UserManager.GetUsersInRoleAsync(role);
+            return usersOfRole;
+        }
+
+        public Task<ApplicationUser> FindByIdAsync(string userId)
+        {
+            var applicationUser = UserManager.FindByIdAsync(userId);
+            return applicationUser;
+        }
+
+        public Task<IList<string>> GetRolesAsync(ApplicationUser user)
+        {
+            var roles = UserManager.GetRolesAsync(user);
+
+            return roles;
+        }
+        
+        public void DeleteAsync(ApplicationUser user)
+        {
+            UserManager.DeleteAsync(user);
+        }
+        public void UpdateAsync(ApplicationUser user)
+        {
+            UserManager.UpdateAsync(user);
+        }
+        #endregion
+       
+        
+        #region Ideation
+        
         public IEnumerable<Faq> getFaqs()
         {
             return ideationMgr.getFaqs();
@@ -35,8 +74,6 @@ namespace BL.Application
         {
             ideationMgr.createFaq(question, userId);
         }
-
-        #region Ideation
 
         public Ideation getIdeation(int ideationId)
         {
@@ -237,7 +274,7 @@ namespace BL.Application
 
         #endregion
 
-        #region Questionnaire
+        /*#region Questionnaire
 
          public IEnumerable<Questionnaire> getQuestionnaires(int id)
          {
@@ -349,6 +386,6 @@ namespace BL.Application
             questionnaireMgr.removeOption(optionId);
             uowManager.Save();        }
 
-        #endregion
+        #endregion*/
     }
 }
