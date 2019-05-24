@@ -317,9 +317,7 @@ namespace BL.Application
 
         public void addQuestionUser(int userId, int questionId, string answer)
         {
-          //  questionnaireMgr.addQuestionUser(userId ,questionId,answer);
             uowManager.Save();
-
         }
 
         public void removeQuestionUser(int questionUserId)
@@ -352,8 +350,5 @@ namespace BL.Application
             uowManager.Save();        }
 
         #endregion
-
-
-       
     }
 }

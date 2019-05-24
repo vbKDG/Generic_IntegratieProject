@@ -35,10 +35,8 @@ namespace DAL
 
         public void createIdeation(Ideation ideation)
         {
-             
             ctx.Ideations.Add(ideation);
             ctx.SaveChanges();
-
         }
 
         public void createIdeation(Ideation ideation, int projectId)
@@ -100,7 +98,6 @@ namespace DAL
                     }
                 }
             }
-
             return faqs;
         }
 
@@ -207,7 +204,6 @@ namespace DAL
         public IEnumerable<IdeationQuestion> ReadIdeationQuestionsForProject(int ProjectId)
         {
             return ctx.IdeationQuestions.Include(i => i.Ideation).Where(i => i.Ideation.Project.ProjectId == ProjectId);
-
         }
 
         public IEnumerable<IdeationQuestion> ReadIdeationQuestions(int ideationId)
@@ -237,8 +233,6 @@ namespace DAL
 
         public IEnumerable<Idea> readIdeas(int ideationId)
         {
-            //return ctx.ideas.Include(i => i.ideation).Where(i => i.ideation.ideationId == ideationId);
-            // return ctx.ideas.Include(i => i.ideation).Include(i => i.UserId).Where( i => i.ideation.ideationId == ideationId);
             return ctx.Ideas
                 .Include(i => i.Fields)
                 .Include(i => i.User)
@@ -261,7 +255,6 @@ namespace DAL
         {
             IEnumerable<TextField> fields = ctx.TextFields
                 .Where(f => f.Idea.IdeaId == ideaId);
-
             return fields;
         }
 
@@ -319,15 +312,11 @@ namespace DAL
             ctx.Reactions.Add(reaction);
             ctx.SaveChanges();
         }
-
-        #region Idea
+        
         public void createIdea(Idea i)
         {
-
             ctx.Ideas.Add(i);           
             ctx.SaveChanges();
-
-
         }
 
         public void createIdea(Idea i, string userId)
@@ -336,8 +325,6 @@ namespace DAL
             i.User = user;
             ctx.Ideas.Add(i);
             ctx.SaveChanges();
-
-
         }
 
         public void createIdea(ICollection<Field> fields)
@@ -347,7 +334,6 @@ namespace DAL
             ctx.Ideas.Add(i);
             ctx.SaveChanges();
         }
-        
 
         public Idea readIdea(int ideaId)
         {
@@ -363,11 +349,7 @@ namespace DAL
             {
                 idea.Fields.Add(questionField);
             }
-            
-           
             return idea;
-
-
         }
 
         public Reaction readReaction(int reactionId)
@@ -384,9 +366,5 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
-        
-
-        #endregion
-       
     }
 }

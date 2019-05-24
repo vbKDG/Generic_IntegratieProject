@@ -23,8 +23,7 @@ namespace DAL
 
             ctx = unitOfWork.Context;
         }
-        #region Interface Implementation
-
+        
         public void createQuestionUser(string userId, int questionId, String answer)
         {
             QuestionUser qu = new QuestionUser();
@@ -183,6 +182,5 @@ namespace DAL
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (OptionRepo.Ctx)");
             ctx.SaveChanges();
         }
-        #endregion
     }
 }

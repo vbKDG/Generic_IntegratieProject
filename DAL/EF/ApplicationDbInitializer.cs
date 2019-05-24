@@ -180,9 +180,6 @@ namespace DAL.EF
             }
             #endregion
             
-           
-            
-            #region TestProject 1
             Project p1 = new Project()
             {
                 Description = "We are thinking about building a new playground in the middle of central park",
@@ -296,9 +293,7 @@ namespace DAL.EF
             
             questionnaire1.Questions = new List<Question>() { q1, q2, q3, question1 };
             questionnaire2.Questions = new List<Question>() { q4, q5, question2 };
-            #endregion
             
-            #region TestProject 2
             Project p2 = new Project()
             {
                 Description = "A project started by the city of antwerp with the intention to adopt street birds",
@@ -372,7 +367,6 @@ namespace DAL.EF
             Option o15 = new Option() {TheOption = "Hanging in the tree", Question = q9};
             q9.Options = new List<Option>() { o13, o14, o15 };
             questionnaire3.Questions = new List<Question>() { q6, q7, q8, q9 };
-            #endregion
             
             //Phases
             Phase ph1 = new Phase() { Project = p1, Name = "Brainstorming",Description = "We are starting this project by gathering input from the community"};
@@ -710,7 +704,6 @@ namespace DAL.EF
             id1.Questions.Add(iq10d1);
             id1.Questions.Add(iq10d2);
 
-
             // Parking lot movie 
             Project p11 = new Project();
             MapField map11 = new MapField { Latitude = 51.21847254325475, Longitude = 51.21847254325475 };
@@ -762,7 +755,6 @@ namespace DAL.EF
 
             p13.ImageField = img13;
             p13.MapField = map13;
-
             
             // Concert evening
             Project p14 = new Project();
@@ -781,8 +773,6 @@ namespace DAL.EF
             p14.ImageField = img14;
             p14.MapField = map14;
             
-            
-            
             // 5km marathon 
             Project p15 = new Project();
             MapField map15 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
@@ -799,7 +789,6 @@ namespace DAL.EF
             };
             p15.ImageField = img15;
             p15.MapField = map15;
-
             
             //Ideations 
             Ideation it1 = new Ideation(){Project = p1};

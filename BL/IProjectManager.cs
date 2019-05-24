@@ -5,11 +5,13 @@ namespace BL
 {
     public interface IProjectManager
     {
-        IEnumerable<Project> getProjects();
-        Project getProject(int id);
-        IEnumerable<Questionnaire> getQuestionnaires();
         void addProject(Project p);
         void changeProject(Project p);
         void removeProject(int id);
+        
+        Project getProject(int id);
+        
+        IEnumerable<Project> getProjects();
+        IEnumerable<Questionnaire> getQuestionnaires();
     }
 }

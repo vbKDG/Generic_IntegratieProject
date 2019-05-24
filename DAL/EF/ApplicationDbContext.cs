@@ -60,7 +60,6 @@ namespace DAL.EF
         //Faq
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<FaqAnswer> FaqAnswers { get; set; }
-        
         #endregion
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -92,16 +91,9 @@ namespace DAL.EF
 
         public override int SaveChanges()
         {
-        
             if (delaySave)
                 return -1;
             return base.SaveChanges();
-
-
-
-
-
-
         }
         private readonly bool delaySave = false;
 
@@ -110,7 +102,7 @@ namespace DAL.EF
             delaySave = isUnitOfWorkPresent;
         }
         
-        internal int CommitChanges() // in combinatie met override van 'SaveChanges' met UoW-pattern implementatie!
+        internal int CommitChanges()
         {
             if (delaySave)
             {
@@ -122,11 +114,7 @@ namespace DAL.EF
             
                 return infectedRecords;
             }
-            
             throw new InvalidOperationException("No UnitOfWork present, use SaveChanges instead");
         }
-        
-
-     
     }
 }

@@ -24,7 +24,6 @@ namespace DAL
             ctx = unitOfWork.Context;
         }
         
-        #region Projects
         public IEnumerable<Project> readProjects()
         {
             return ctx.Projects
@@ -92,6 +91,5 @@ namespace DAL
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
             ctx.SaveChanges();
         }
-        #endregion
     }
 }

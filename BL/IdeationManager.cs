@@ -240,10 +240,6 @@ namespace BL
         {
             return ideationRepo.readReaction(reactionId);
         }
-
         #endregion
-        
-        
-        
     }
 }

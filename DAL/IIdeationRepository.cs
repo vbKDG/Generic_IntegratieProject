@@ -8,61 +8,63 @@ namespace DAL
     {
         #region Ideations
 
-        IEnumerable<Ideation> readIdeations(int projectId);
         void createIdeation(Ideation ideation);
-        void createIdeation(Ideation ideation , int projectId);
-
-        Ideation readIdeation(int id);
+        void createIdeation(Ideation ideation, int projectId);
         void updateIdeation(Ideation i);
         void deleteIdeation(int id);
-
         
+        Ideation readIdeation(int id);
+        
+        IEnumerable<Ideation> readIdeations(int projectId);
+        
+        #endregion
 
-         #endregion
+        #region IdeationQuestions
+        
+        void createIdeationQuestion(IdeationQuestion i);
+        void updateIdeationQuestion(IdeationQuestion i);
+        void deleteIdeationQuestion(int id);
 
-         #region IdeationQuestions
-         IEnumerable<IdeationQuestion> ReadIdeationQuestionsForProject(int projectId);
-         IEnumerable<IdeationQuestion> ReadIdeationQuestions(int ideationId);
-         
-         void createIdeationQuestion(IdeationQuestion i);
-         IdeationQuestion readIdeationQuestion(int id);
-         void updateIdeationQuestion(IdeationQuestion i);
-         void deleteIdeationQuestion(int id);
-         
+        IdeationQuestion readIdeationQuestion(int id);
+        
+        IEnumerable<IdeationQuestion> ReadIdeationQuestionsForProject(int projectId);
+        IEnumerable<IdeationQuestion> ReadIdeationQuestions(int ideationId);
 
-         #endregion
+        #endregion
 
-         #region Ideas
-         IEnumerable<Idea> readIdeas(int ideationId);
-         void createIdea(Idea i);
-         void createIdea(Idea i, String userId);
+        #region Ideas
 
-         void createIdea(ICollection<Field> fields);
-         Idea readIdea(int ideaId);
-         Reaction readReaction(int reactionId);
-         void updateIdea(Idea i);
-         void deleteIdea(int ideaId);
-         IEnumerable<TextField> readFields(int ideaId);
-         IEnumerable<Reaction> readReactions(int ideaId);
-         void LikeIdea(int ideaId, string userId);
-         void ReactIdea(string ideaId, string userId, string content);
-         void LikeReaction(int reactionId, string userId);
-         IEnumerable<Report> readReports(int ideaId);
-         Report createReport(Report report, string userId);
-         void sendToAdmin(int reportId);
-         void updateReaction(Reaction reaction);
-         void approveReaction(int reactionId);
-         void disapproveReaction(int reactionId);
-         void approveIdea(int ideaId);
-         void disapproveIdea(int ideaId);
-         void blockUser(string userId);
-         int getIdeaLikes(int ideaId);
-         int getReactionLikes(int reactionId);
-         void addFaqAnswer(string userId, string answer, int faqId);
-         void addFaq(string question, string userId);
+        void createIdea(Idea i);
+        void createIdea(Idea i, String userId);
+        void createIdea(ICollection<Field> fields);
+        void updateIdea(Idea i);
+        void deleteIdea(int ideaId);
+        void LikeIdea(int ideaId, string userId);
+        void ReactIdea(string ideaId, string userId, string content);
+        void LikeReaction(int reactionId, string userId);
+        void sendToAdmin(int reportId);
+        void updateReaction(Reaction reaction);
+        void approveReaction(int reactionId);
+        void disapproveReaction(int reactionId);
+        void approveIdea(int ideaId);
+        void disapproveIdea(int ideaId);
+        void blockUser(string userId);
+        void addFaqAnswer(string userId, string answer, int faqId);
+        void addFaq(string question, string userId);
+        
+        Idea readIdea(int ideaId);
+        Reaction readReaction(int reactionId);
+        Report createReport(Report report, string userId);
+        int getIdeaLikes(int ideaId);
+        int getReactionLikes(int reactionId);
+        
+        IEnumerable<Idea> readIdeas(int ideationId);
+        IEnumerable<TextField> readFields(int ideaId);
+        IEnumerable<Reaction> readReactions(int ideaId);
+        IEnumerable<Report> readReports(int ideaId);
+        
+        #endregion
 
-         #endregion
-         
-         IEnumerable<Faq> readFaqs();
+        IEnumerable<Faq> readFaqs();
     }
 }
