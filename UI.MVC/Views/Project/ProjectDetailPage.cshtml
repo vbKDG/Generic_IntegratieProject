@@ -4,76 +4,76 @@
 <script src="~/js/phaseLine.js" asp-append-version="true"></script>
 <link rel="stylesheet" href="~/css/phaseLine.css">
 
-<body onload="loadPage('@Model.project.Setting.BackGroundColor1', '@Model.project.Setting.BackGroundColor2', '@Model.project.Setting.FontFamily')">
+<body onload="loadPage('@Model.Project.Setting.BackGroundColor1', '@Model.Project.Setting.BackGroundColor2', '@Model.Project.Setting.FontFamily')">
 <div id="fontFamily">
-    <h2>Project: @Model.project.name</h2>
+    <h2>Project: @Model.Project.name</h2>
     <h4>Description of the project</h4>
-    <p>@Model.project.description</p>
-    @if (@Model.project.imageField != null)
+    <p>@Model.Project.description</p>
+    @if (@Model.Project.imageField != null)
     {
-        <img src=@Model.project.imageField.GetImageString() width="500"/>
+        <img src=@Model.Project.imageField.GetImageString() width="500"/>
     }
-    @if (@Model.project.phases.Count > 0)
+    @if (@Model.Project.phases.Count > 0)
     {
         <h4>Phases of the project</h4>
         <div class="phaseContainer">
             <ul class="progressbar">
-                @for (int i = 0; i < @Model.project.phases.Count(); i++)
+                @for (int i = 0; i < @Model.Project.phases.Count(); i++)
                 {
                     if (i == 0)
                     {
-                        if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                        if (@DateTime.Now > @Model.Project.phases.ToList()[i].startDate)
                         {
                             <li class="active popper" data-toggle="popover">
-                                @Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                                @Model.Project.phases.ToList()[i].name<br>@Model.Project.startDate</li>
                         }
                         else
                         {
                             <li class="popper" data-toggle="popover">
-                                @Model.project.phases.ToList()[i].name<br>@Model.project.startDate</li>
+                                @Model.Project.phases.ToList()[i].name<br>@Model.Project.startDate</li>
                         }
                     }
-                    else if (i == @Model.project.phases.Count() - 1)
+                    else if (i == @Model.Project.phases.Count() - 1)
                     {
-                        if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                        if (@DateTime.Now > @Model.Project.phases.ToList()[i].startDate)
                         {
                             <li id="phase-@i" class="active popper" data-toggle="popover">
-                                @Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                                @Model.Project.phases.ToList()[i].name<br>@Model.Project.endDate</li>
                         }
                         else
                         {
                             <li id="phase-@i" class="popper" data-toggle="popover">
-                                @Model.project.phases.ToList()[i].name<br>@Model.project.endDate</li>
+                                @Model.Project.phases.ToList()[i].name<br>@Model.Project.endDate</li>
                         }
                     }
                     else
                     {
-                        if (@DateTime.Now > @Model.project.phases.ToList()[i].startDate)
+                        if (@DateTime.Now > @Model.Project.phases.ToList()[i].startDate)
                         {
-                            <li class="active popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
+                            <li class="active popper" data-toggle="popover">@Model.Project.phases.ToList()[i].name</li>
                         }
                         else
                         {
-                            <li class="popper" data-toggle="popover">@Model.project.phases.ToList()[i].name</li>
+                            <li class="popper" data-toggle="popover">@Model.Project.phases.ToList()[i].name</li>
                         }
                     }
                     <div class="popper-content hide">
-                        <h4>@Model.project.phases.ToList()[i].name</h4>
+                        <h4>@Model.Project.phases.ToList()[i].name</h4>
                         <p>
-                            From @Model.project.phases.ToList()[i].startDate <br>
-                            Till @Model.project.phases.ToList()[i].endDate</p>
-                        <p>@Model.project.phases.ToList()[i].description</p>
+                            From @Model.Project.phases.ToList()[i].startDate <br>
+                            Till @Model.Project.phases.ToList()[i].endDate</p>
+                        <p>@Model.Project.phases.ToList()[i].description</p>
                     </div>
                 }
             </ul>
         </div>
     }
 
-    @if (@Model.project.ideations.Count > 0)
+    @if (@Model.Project.ideations.Count > 0)
     {
         <table class="table">
             <h4>Top 5 most popular ideations</h4>
-            @foreach (var ideation in @Model.project.ideations)
+            @foreach (var ideation in @Model.Project.ideations)
             {
                 foreach (var countLikes in Model.LikeAmounts)
                 {
@@ -103,10 +103,10 @@
             }
         </table>
         @Html.ActionLink("Show all ideations", "Project", "Project"
-            , new {id = Model.project.projectId})
+            , new {id = Model.Project.projectId})
     }
 
-    @if (Model.project.questionnaires.Count > 0)
+    @if (Model.Project.questionnaires.Count > 0)
     {
         <h4>All questionnaires</h4>
         <table class="table">
@@ -118,7 +118,7 @@
                     <p>Amount of questions</p>
                 </th>
             </tr>
-            @foreach (var questionnaire in @Model.project.questionnaires)
+            @foreach (var questionnaire in @Model.Project.questionnaires)
             {
                 <tr>
                     <td>
@@ -135,30 +135,30 @@
             }
         </table>
         @Html.ActionLink("Show all questionnaires", "Questionnaires", "Questionnaire"
-            , new {projectId = Model.project.projectId})
+            , new {projectId = Model.Project.projectId})
     }
 
-    @if (@Model.ideationQuestions.Count > 0)
+    @if (@Model.IdeationQuestions.Count > 0)
     {
-        <h3>Central questions (@Model.ideationQuestions.Count)</h3>
+        <h3>Central questions (@Model.IdeationQuestions.Count)</h3>
         <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                @for (var i = 0; i < @Model.ideationQuestions.Count; i++)
+                @for (var i = 0; i < @Model.IdeationQuestions.Count; i++)
                 {
                     if (i == 0)
                     {
                         <div class="item active">
-                            <p>@Model.ideationQuestions.ToList()[i].question</p>
-                            <p>@Model.ideationQuestions.ToList()[i].description</p>
-                            <a href="http://@Model.ideationQuestions.ToList()[i].backgroundInfo">More background info</a>
+                            <p>@Model.IdeationQuestions.ToList()[i].question</p>
+                            <p>@Model.IdeationQuestions.ToList()[i].description</p>
+                            <a href="http://@Model.IdeationQuestions.ToList()[i].backgroundInfo">More background info</a>
                         </div>
                     }
                     else
                     {
                         <div class="item">
-                            <p>@Model.ideationQuestions.ToList()[i].question</p>
-                            <p>@Model.ideationQuestions.ToList()[i].description</p>
-                            <a href="http://@Model.ideationQuestions.ToList()[i].backgroundInfo">More background info</a>
+                            <p>@Model.IdeationQuestions.ToList()[i].question</p>
+                            <p>@Model.IdeationQuestions.ToList()[i].description</p>
+                            <a href="http://@Model.IdeationQuestions.ToList()[i].backgroundInfo">More background info</a>
                         </div>
                     }
                 }

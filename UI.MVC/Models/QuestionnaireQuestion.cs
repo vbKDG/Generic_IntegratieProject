@@ -6,9 +6,9 @@ namespace UI.MVC.Models
 {
     public class QuestionnaireQuestion
     {
-        public int projectId { get; set; }
-        public Questionnaire questionnaire { get; set; }
-        public Question question { get; set; }
-        public IEnumerable<Question> questions { get; set; }
+        public int ProjectId { get; set; }
+        public Questionnaire Questionnaire { get; set; }
+        public Question Question { get; set; }
+        public IEnumerable<Question> Questions { get; set; }
     }
 }

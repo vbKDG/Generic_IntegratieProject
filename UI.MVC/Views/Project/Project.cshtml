@@ -4,16 +4,16 @@
 <div class="container">
     
 
-<h2 class="text-center"> @Model.project.name</h2>
+<h2 class="text-center"> @Model.Project.name</h2>
 
-@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.project.projectId})
+@Html.ActionLink("Create Ideation", "CreateIdeationPage", "Project" , new {projectId=@Model.Project.projectId})
 <table class="table">
     <tr>
         <th>
             <p>Ideation Id </p>
         </th>
     </tr>
-    @foreach (var item in Model.project.ideations)
+    @foreach (var item in Model.Project.ideations)
     {
         <tr>
             <td>

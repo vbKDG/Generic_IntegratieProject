@@ -5,7 +5,7 @@ namespace UI.MVC.Models
 {
     public class ProjectAndQuestions
     {
-        public IEnumerable<IdeationQuestion> ideationQuestions { get; set; }
-        public Project project { get; set; }
+        public IEnumerable<IdeationQuestion> IdeationQuestions { get; set; }
+        public Project Project { get; set; }
     }
 }

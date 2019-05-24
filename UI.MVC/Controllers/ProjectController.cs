@@ -67,7 +67,7 @@ namespace UI.MVC.Controllers
             Project p1 = orchestrator.getProject(id);
             IEnumerable<IdeationQuestion> ideationQuestions1 = orchestrator.GetIdeationQuestionsForProject(id);
             p1.phases.ToList().Sort((x, y) => DateTime.Compare(x.startDate, y.startDate));
-            var model = new ProjectAndQuestions() {ideationQuestions = ideationQuestions1, project = p1};
+            var model = new ProjectAndQuestions() {IdeationQuestions = ideationQuestions1, Project = p1};
 
             return View(model);
         }
@@ -102,11 +102,11 @@ namespace UI.MVC.Controllers
             foreach (var phase in project.phases)
             {
                 PhaseVM phaseVm = new PhaseVM();
-                phaseVm.phaseId = phase.phaseId;
-                phaseVm.name = phase.name;
-                phaseVm.description = phase.description;
-                phaseVm.startDate = phase.startDate;
-                phaseVm.endDate = phase.endDate;
+                phaseVm.PhaseId = phase.phaseId;
+                phaseVm.Name = phase.name;
+                phaseVm.Description = phase.description;
+                phaseVm.StartDate = phase.startDate;
+                phaseVm.EndDate = phase.endDate;
                 projectVm.phases.Add(phaseVm);
             }
             projectVm.SettingVm.SettingId = project.Setting.id;
@@ -160,8 +160,8 @@ namespace UI.MVC.Controllers
             
             ICollection<IdeationQuestion> ideationQuestions =
                 orchestrator.GetIdeationQuestionsForProject(projectId).ToList();
-            projectDetailModel.ideationQuestions = ideationQuestions;
-            projectDetailModel.project = p;
+            projectDetailModel.IdeationQuestions = ideationQuestions;
+            projectDetailModel.Project = p;
             
             return View(projectDetailModel);
         }
@@ -204,8 +204,8 @@ namespace UI.MVC.Controllers
             {
                 phases.Add(new Phase
                 {
-                    name = phaseVm.name, description = phaseVm.description, startDate = phaseVm.startDate,
-                    endDate = phaseVm.endDate
+                    name = phaseVm.Name, description = phaseVm.Description, startDate = phaseVm.StartDate,
+                    endDate = phaseVm.EndDate
                 });
             }
             project.phases = phases;
@@ -255,8 +255,8 @@ namespace UI.MVC.Controllers
             {
                 phases.Add(new Phase
                 {
-                    name = phaseVm.name, description = phaseVm.description, startDate = phaseVm.startDate,
-                    endDate = phaseVm.endDate
+                    name = phaseVm.Name, description = phaseVm.Description, startDate = phaseVm.StartDate,
+                    endDate = phaseVm.EndDate
                 });
             }
 

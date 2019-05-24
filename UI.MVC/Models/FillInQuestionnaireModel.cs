@@ -7,8 +7,8 @@ namespace UI.MVC.Models
 {
     public class FillInQuestionnaireModel
     {
-        public IEnumerable<Question> questions { get; set; }
-        public Questionnaire questionnaire { get; set; }
+        public IEnumerable<Question> Questions { get; set; }
+        public Questionnaire Questionnaire { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

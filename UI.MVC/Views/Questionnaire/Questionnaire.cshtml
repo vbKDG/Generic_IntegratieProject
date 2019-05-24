@@ -16,11 +16,11 @@
 
     <div class="col-lg-4">
     <div class="card bg-light text-center card-form">
-    <h1>@Model.questionnaire.Name</h1>
+    <h1>@Model.Questionnaire.Name</h1>
     <h4>Questionnaire</h4>
     <div class="card-body">
     <table class="table">
-        @foreach (var item in Model.questions)
+        @foreach (var item in Model.Questions)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -94,7 +94,7 @@
     
     </table>
             
-    <input type="hidden" name="questionnaireId" value="@Model.questionnaire.QuestionnaireId"/>
+    <input type="hidden" name="questionnaireId" value="@Model.Questionnaire.QuestionnaireId"/>
     <div class="form-group">
         <input type="submit" value="Submit answers" class="btn btn-default btn-success"/>
     </div>

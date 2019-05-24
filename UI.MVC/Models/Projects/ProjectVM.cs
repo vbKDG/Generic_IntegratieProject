@@ -34,11 +34,11 @@ namespace D.UI.MVC.Models.Projects
 
     public class PhaseVM
     {
-        public int phaseId { get; set; }
-        public String name { get; set; }
-        public String description { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public int PhaseId { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 
     public class SettingVM

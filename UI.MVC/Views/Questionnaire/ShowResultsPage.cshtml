@@ -2,36 +2,36 @@
 @model QuestionResultModel
 
 <h1>Questionnaire results</h1>
-<h3>Questionnaire: @Model.questionnaire.Name</h3>
-<p>The questionnaire has been answered @Model.answeredQuestionAmount time(s).</p>
+<h3>Questionnaire: @Model.Questionnaire.Name</h3>
+<p>The questionnaire has been answered @Model.AnsweredQuestionAmount time(s).</p>
 
 <table class="table">
-    @if (Model.questions == null)
+    @if (Model.Questions == null)
     {
         <p>Unfortunately there is no data collected for this questionnaire yet.</p>
     }
     else
     {
-        for (var i = 0; i < Model.questions.Count(); i++)
+        for (var i = 0; i < Model.Questions.Count(); i++)
         {
             <tr>
                 <td>
-                    <h4>@Model.questions.ToList()[i].TheQuestion</h4>
-                    @foreach (var o in @Model.questions.ToList()[i].Options)
+                    <h4>@Model.Questions.ToList()[i].TheQuestion</h4>
+                    @foreach (var o in @Model.Questions.ToList()[i].Options)
                     {
                         @o.TheOption
-                        foreach (var aqa in @Model.optionsAmounts)
+                        foreach (var aqa in @Model.OptionsAmounts)
                         {
-                            if (aqa.optionId == o.OptionId)
+                            if (aqa.OptionId == o.OptionId)
                             {
                                 if (o.Question.QuestionType == QuestionType.CHECK_BOX)
                                 {
-                                    <span> (@aqa.count)</span>
+                                    <span> (@aqa.Count)</span>
                                 }
                                 else
                                 {
-                                    double percentage = Convert.ToDouble(aqa.count) / Convert.ToDouble(@Model.answeredQuestionAmount) * 100;
-                                    <span> (@aqa.count) @percentage.ToString("0.00")%</span>
+                                    double percentage = Convert.ToDouble(aqa.Count) / Convert.ToDouble(@Model.AnsweredQuestionAmount) * 100;
+                                    <span> (@aqa.Count) @percentage.ToString("0.00")%</span>
                                 }
                             }
                         }

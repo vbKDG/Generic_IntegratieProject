@@ -2,8 +2,8 @@ namespace UI.MVC.Models
 {
     public class OptionsAmount
     {
-        public int optionId { get; set; }
-        public int questionId { get; set; }
-        public int count { get; set; }
+        public int OptionId { get; set; }
+        public int QuestionId { get; set; }
+        public int Count { get; set; }
     }
 }

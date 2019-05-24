@@ -13,12 +13,12 @@
 
 @using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post))
 {
-    <input asp-for="questionnaire.QuestionnaireId" type="hidden">
+    <input asp-for="Questionnaire.QuestionnaireId" type="hidden">
     <table>
         <tr>
             <td>
                 <h4>What is the name of your questionnaire?</h4>
-                <input asp-for="questionnaire.Name" type="text">
+                <input asp-for="Questionnaire.Name" type="text">
             </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
                 <button type="button" id="btnAddField">Add Question</button>
                 @Html.AntiForgeryToken()
                 <div id="fields">
-                    @foreach (var question in Model.questions)
+                    @foreach (var question in Model.Questions)
                     {
                         <div id="@("dynamicDiv"+fieldSetCount)">
                             <hr>

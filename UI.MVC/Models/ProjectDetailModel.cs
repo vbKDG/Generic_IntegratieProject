@@ -8,8 +8,8 @@ namespace UI.MVC.Models
 {
     public class ProjectDetailModel
     {
-        public Project project { get; set; }
-        public ICollection<IdeationQuestion> ideationQuestions { get; set; }
+        public Project Project { get; set; }
+        public ICollection<IdeationQuestion> IdeationQuestions { get; set; }
         public Dictionary<int, int> LikeAmounts { get; set; }
         public Dictionary<int, int> CommentAmounts { get; set; }
     }

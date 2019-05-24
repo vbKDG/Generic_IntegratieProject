@@ -59,10 +59,10 @@
                                     @foreach (var phase in Model.phases)
                                     {
                                         <div class="phaseRow">
-                                            <input asp-for="@phase.name" name="Phases[@rowCount].name" type="text" class="nameType"/>
-                                            <input asp-for="@phase.description" name="Phases[@rowCount].description" type="text" class="descriptionType"/>
-                                            <input asp-for="@phase.startDate" name="Phases[@rowCount].startDate" type="date" class="startDateType"/>
-                                            <input asp-for="@phase.endDate" name="Phases[@rowCount].endDate" type="date" class="endDateType"/>
+                                            <input asp-for="@phase.Name" name="Phases[@rowCount].name" type="text" class="nameType"/>
+                                            <input asp-for="@phase.Description" name="Phases[@rowCount].description" type="text" class="descriptionType"/>
+                                            <input asp-for="@phase.StartDate" name="Phases[@rowCount].startDate" type="date" class="startDateType"/>
+                                            <input asp-for="@phase.EndDate" name="Phases[@rowCount].endDate" type="date" class="endDateType"/>
                                             <a href="javascript:void(0);" class="remRow">Remove</a>
                                         </div>
                                         rowCount++;

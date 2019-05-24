@@ -45,8 +45,8 @@ namespace UI.MVC.Controllers
         public IActionResult Questionnaire(int questionnaireId)
         {
             FillInQuestionnaireModel fillInQuestionnaireModel = new FillInQuestionnaireModel();
-            fillInQuestionnaireModel.questions = qmgr.getQuestions(questionnaireId);
-            fillInQuestionnaireModel.questionnaire = qmgr.getQuestionnaire(questionnaireId);
+            fillInQuestionnaireModel.Questions = qmgr.getQuestions(questionnaireId);
+            fillInQuestionnaireModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId);
 
             if (User.Identity.IsAuthenticated)
             {
@@ -61,7 +61,7 @@ namespace UI.MVC.Controllers
         public IActionResult CreateQuestionnairePage(int projectId)
         {
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
-            combinedModel.projectId = projectId;
+            combinedModel.ProjectId = projectId;
             return View(combinedModel);
         }
 
@@ -73,7 +73,7 @@ namespace UI.MVC.Controllers
             IList<string> answers = new List<string>();
             IList<Question> ques = new List<Question>();
             IList<OptionsAmount> optionsAmounts = new List<OptionsAmount>();
-            combinedModel.questionnaire = qmgr.getQuestionnaire(questionnaireId); 
+            combinedModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId); 
             
             foreach (var qu in qmgr.getQuestionUsers(questionnaireId))
             {
@@ -84,11 +84,11 @@ namespace UI.MVC.Controllers
             {
                 return View(combinedModel);
             }
-            combinedModel.questionUsers = questionUsers;
-            var questionnaireAnswerCount = combinedModel.questionUsers.GroupBy(q => q.Question.QuestionId).ToList()[0].Count();
-            combinedModel.answeredQuestionAmount = questionnaireAnswerCount;
+            combinedModel.QuestionUsers = questionUsers;
+            var questionnaireAnswerCount = combinedModel.QuestionUsers.GroupBy(q => q.Question.QuestionId).ToList()[0].Count();
+            combinedModel.AnsweredQuestionAmount = questionnaireAnswerCount;
 
-            foreach (var qu in combinedModel.questionUsers)
+            foreach (var qu in combinedModel.QuestionUsers)
             {
                 Question q = qu.Question;
                 if (q.QuestionType == QuestionType.DROPDOWN || q.QuestionType == QuestionType.RADIO_BUTTON)
@@ -136,15 +136,15 @@ namespace UI.MVC.Controllers
                 var parts = o.Key.Split("-");
                 OptionsAmount oa = new OptionsAmount()
                 {
-                    optionId = Convert.ToInt32(parts[0]),
-                    questionId = Convert.ToInt32(parts[1]),
-                    count = o.Count()
+                    OptionId = Convert.ToInt32(parts[0]),
+                    QuestionId = Convert.ToInt32(parts[1]),
+                    Count = o.Count()
                 };
                 optionsAmounts.Add(oa);
             }
 
-            combinedModel.optionsAmounts = optionsAmounts;
-            combinedModel.questions = ques;
+            combinedModel.OptionsAmounts = optionsAmounts;
+            combinedModel.Questions = ques;
             
             return View(combinedModel);
         }
@@ -153,8 +153,8 @@ namespace UI.MVC.Controllers
         public IActionResult EditQuestionnairePage(int questionnaireId)
         {
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
-            combinedModel.questionnaire = qmgr.getQuestionnaire(questionnaireId);
-            combinedModel.questions = qmgr.getQuestions(questionnaireId);
+            combinedModel.Questionnaire = qmgr.getQuestionnaire(questionnaireId);
+            combinedModel.Questions = qmgr.getQuestions(questionnaireId);
             return View(combinedModel);
         }
 
