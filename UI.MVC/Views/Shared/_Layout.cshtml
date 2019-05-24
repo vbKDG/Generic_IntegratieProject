@@ -75,7 +75,7 @@
             
             </li>
             <li class="nav-item">
-                @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
+                @if (User.IsInRole("Moderator") || User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
                 {
                         <a onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
                             <p class="text-dark">

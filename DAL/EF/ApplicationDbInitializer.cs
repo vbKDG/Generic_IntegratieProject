@@ -82,6 +82,40 @@ namespace DAL.EF
                     await userManager.AddToRoleAsync(user, role1);
                 }
             }
+            
+            if (await userManager.FindByNameAsync("admin@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com",
+                    FirstName = "Administrator",
+                    LastName = "Admin",
+                    EmailConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role2);
+                }
+            }
+            
+            if (await userManager.FindByNameAsync("mod@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "mod@gmail.com",
+                    Email = "mod@gmail.com",
+                    FirstName = "Moderator",
+                    LastName = "Mod",
+                    EmailConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role3);
+                }
+            }
 
             if (await userManager.FindByNameAsync("jan.jaap@gmail.com") == null)
             {
