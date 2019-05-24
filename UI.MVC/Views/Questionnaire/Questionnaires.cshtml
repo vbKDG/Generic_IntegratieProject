@@ -7,7 +7,7 @@
     
     <div class="text-center">
         @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
-            "Questionnaire", new {projectId = Model.ToList()[0].project.projectId})
+            "Questionnaire", new {projectId = Model.ToList()[0].Project.projectId})
     </div> 
 }
 
@@ -24,26 +24,26 @@
     {    
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.name)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.questionAmount)
+                @Html.DisplayFor(modelItem => item.QuestionAmount)
             </td>
             <td>
                 @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                    , new { questionnaireId=item.id })
+                    , new { questionnaireId=item.QuestionnaireId })
             </td>
             @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
             {
                 <td>
                     @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
-                        , new { questionnaireId = item.id })
+                        , new { questionnaireId = item.QuestionnaireId })
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
-                        , new {questionnaireId = item.id}) | 
+                        , new {questionnaireId = item.QuestionnaireId}) | 
                     @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
-                        , new {questionnaireId = item.id})
+                        , new {questionnaireId = item.QuestionnaireId})
                 </td>
             }
         </tr>

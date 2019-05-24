@@ -81,9 +81,9 @@ namespace BL
         public void addQuestionnaire(List<Question> questions, String name, int questionAmount, int projectId)
         {
             Questionnaire newQuestionnaire = new Questionnaire();
-            newQuestionnaire.questions = questions;
-            newQuestionnaire.name = name;
-            newQuestionnaire.questionAmount = questionAmount;
+            newQuestionnaire.Questions = questions;
+            newQuestionnaire.Name = name;
+            newQuestionnaire.QuestionAmount = questionAmount;
             repo.createQuestionnaire(newQuestionnaire, projectId);
         }
 
@@ -95,8 +95,8 @@ namespace BL
         public void addQuestion(String question, QuestionType questionType)
         {
             Question newQuestion = new Question();
-            newQuestion.question = question;
-            newQuestion.questionType = questionType;
+            newQuestion.TheQuestion = question;
+            newQuestion.QuestionType = questionType;
             repo.createQuestion(newQuestion);
         }
 
@@ -108,8 +108,8 @@ namespace BL
         public void addOption(String option, Question question)
         {
             Option o = new Option();
-            o.question = question;
-            o.option = option;
+            o.Question = question;
+            o.TheOption = option;
             repo.createOption(o);
         }
 

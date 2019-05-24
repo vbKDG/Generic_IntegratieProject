@@ -16,7 +16,7 @@
 
     <div class="col-lg-4">
     <div class="card bg-light text-center card-form">
-    <h1>@Model.questionnaire.name</h1>
+    <h1>@Model.questionnaire.Name</h1>
     <h4>Questionnaire</h4>
     <div class="card-body">
     <table class="table">
@@ -24,65 +24,65 @@
         {
             if (!User.Identity.IsAuthenticated)
             {
-                if (item.questionType == QuestionType.MAILADDRESS)
+                if (item.QuestionType == QuestionType.MAILADDRESS)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.question) <br>
+                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
                             <input name="email" type="text">
                         </td>
                     </tr>
                 }
             }
-            if (item.questionType == QuestionType.DROPDOWN)
+            if (item.QuestionType == QuestionType.DROPDOWN)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.question) <br>
-                        <select id="ddlOptions" name="Answer-@item.id-dropdown">
+                        @Html.DisplayFor(modelItem => item.TheQuestion) <br>
+                        <select id="ddlOptions" name="Answer-@item.QuestionId-dropdown">
                             <option value="0">Please select</option>
-                            @foreach (var option in item.options)
+                            @foreach (var option in item.Options)
                             {
-                                <option value="@option.option">@option.option</option>
+                                <option value="@option.TheOption">@option.TheOption</option>
                             }
                         </select>
                     </td>
                 </tr>
             }
-            if (item.questionType == QuestionType.OPEN_QUESTION)
+            if (item.QuestionType == QuestionType.OPEN_QUESTION)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.question) <br>
-                        <textarea name="Answer-@item.id-openquestion" type="text"></textarea>
+                        @Html.DisplayFor(modelItem => item.TheQuestion) <br>
+                        <textarea name="Answer-@item.QuestionId-openquestion" type="text"></textarea>
                     </td>
                 </tr>
             }
-            if (item.questionType == QuestionType.RADIO_BUTTON)
+            if (item.QuestionType == QuestionType.RADIO_BUTTON)
             {
                 <tr>
                     <td>
-                        <fieldset id="@item.id">
-                            @Html.DisplayFor(modelItem => item.question) <br>
-                            @foreach (var option in item.options)
+                        <fieldset id="@item.QuestionId">
+                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
+                            @foreach (var option in item.Options)
                             {
-                                <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
-                                @Html.DisplayFor(modelItem => option.option)<br>
+                                <input type="radio" value="@option.TheOption" name="Answer-@item.QuestionId-radiobutton"/>
+                                @Html.DisplayFor(modelItem => option.TheOption)<br>
                             }
                         </fieldset>
                     </td>
                 </tr>
             }
-            if (item.questionType == QuestionType.CHECK_BOX)
+            if (item.QuestionType == QuestionType.CHECK_BOX)
             {
                 <tr>
                     <td>
-                        <fieldset id="@item.id">
-                            @Html.DisplayFor(modelItem => item.question) <br>
-                            @foreach (var option in item.options)
+                        <fieldset id="@item.QuestionId">
+                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
+                            @foreach (var option in item.Options)
                             {
-                                <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
-                                @Html.DisplayFor(modelItem => option.option)<br>
+                                <input type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionId-checkbox"/>
+                                @Html.DisplayFor(modelItem => option.TheOption)<br>
                             }
                         </fieldset>
                     </td>
@@ -94,7 +94,7 @@
     
     </table>
             
-    <input type="hidden" name="questionnaireId" value="@Model.questionnaire.id"/>
+    <input type="hidden" name="questionnaireId" value="@Model.questionnaire.QuestionnaireId"/>
     <div class="form-group">
         <input type="submit" value="Submit answers" class="btn btn-default btn-success"/>
     </div>

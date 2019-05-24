@@ -354,7 +354,7 @@ namespace DAL
         {
             var questionFields = ctx.questionFields.Where(q => q.idea.ideaId == ideaId)
                 .Include(q => q.question)
-                .ThenInclude(o => o.options);
+                .ThenInclude(o => o.Options);
             
             Idea idea = ctx.ideas
                 .Include(i => i.fields)

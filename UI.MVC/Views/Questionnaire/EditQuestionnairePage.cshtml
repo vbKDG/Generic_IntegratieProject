@@ -13,12 +13,12 @@
 
 @using (Html.BeginForm("EditQuestionnaire", "Questionnaire", FormMethod.Post))
 {
-    <input asp-for="questionnaire.id" type="hidden">
+    <input asp-for="questionnaire.QuestionnaireId" type="hidden">
     <table>
         <tr>
             <td>
                 <h4>What is the name of your questionnaire?</h4>
-                <input asp-for="questionnaire.name" type="text">
+                <input asp-for="questionnaire.Name" type="text">
             </td>
         </tr>
         <tr>
@@ -32,11 +32,11 @@
                         <div id="@("dynamicDiv"+fieldSetCount)">
                             <hr>
                             <h5>What do you want to ask?</h5>
-                            <input name="@("question-"+@question.id)" type="text" value="@question.question"/>
+                            <input name="@("question-"+@question.QuestionId)" type="text" value="@question.TheQuestion"/>
                             <br>
                             <h5>What type of a question is this?</h5>
                             <fieldset id="@("dynamicFieldset"+fieldSetCount)">
-                                @if (question.questionType == QuestionType.OPEN_QUESTION)
+                                @if (question.QuestionType == QuestionType.OPEN_QUESTION)
                                 { <input type="radio" id="@("dynamicTextArea"+fieldSetCount)" 
                                            name="@("dynamicFieldset"+fieldSetCount)" value="textarea" checked /> }
                                 else
@@ -44,7 +44,7 @@
                                          name="@("dynamicFieldset"+fieldSetCount)" value="textarea" /> }
                                 <span> Text area</span>
                                 <br>
-                                @if (question.questionType == QuestionType.MAILADDRESS)
+                                @if (question.QuestionType == QuestionType.MAILADDRESS)
                                 { <input type="radio" id="@("dynamicEmail" + fieldSetCount)"
                                            name="@("dynamicFieldset" + fieldSetCount)" value="email" checked/> }
                                 else
@@ -52,7 +52,7 @@
                                         name="@("dynamicFieldset" + fieldSetCount)" value="email" /> }
                                 <span> E-mail field</span>
                                 <br>
-                                @if (question.questionType == QuestionType.DROPDOWN)
+                                @if (question.QuestionType == QuestionType.DROPDOWN)
                                 { <input type="radio" id="@("dynamicDropDown" + fieldSetCount)"
                                          name="@("dynamicFieldset" + fieldSetCount)" value="dropdown" checked/> }
                                 else
@@ -60,7 +60,7 @@
                                          name="@("dynamicFieldset" + fieldSetCount)" value="dropdown" /> }
                                 <span> Dropdown menu</span>
                                 <br>
-                                @if (question.questionType == QuestionType.RADIO_BUTTON)
+                                @if (question.QuestionType == QuestionType.RADIO_BUTTON)
                                 { <input type="radio" id="@("dynamicRadioButton" + fieldSetCount)"
                                         name="@("dynamicFieldset" + fieldSetCount)" value="radiobutton" checked/> }
                                 else
@@ -68,7 +68,7 @@
                                          name="@("dynamicFieldset" + fieldSetCount)" value="radiobutton" /> }
                                 <span> Radio buttons</span>
                                 <br>
-                                @if (question.questionType == QuestionType.CHECK_BOX)
+                                @if (question.QuestionType == QuestionType.CHECK_BOX)
                                 { <input type="radio" id="@("dynamicCheckBox" + fieldSetCount)"
                                          name="@("dynamicFieldset" + fieldSetCount)" value="checkbox" checked/> }
                                 else
@@ -82,12 +82,12 @@
                             </div>
                             <div id="@("optionPlaceholder" + fieldSetCount)">
                                 @{ var currentOption = optionSetCount; }
-                                @foreach (var option in question.options)
+                                @foreach (var option in question.Options)
                                 {
                                     <div id="@("optionField"+currentOption+fieldSetCount)">
                                         <input type="text" id="@("inputOption"+currentOption+fieldSetCount)"
-                                               name="@("question.options-"+currentOption+"-"+fieldSetCount+"-"+@question.id)"
-                                               value="@option.option"/>
+                                               name="@("question.options-"+currentOption+"-"+fieldSetCount+"-"+@question.QuestionId)"
+                                               value="@option.TheOption"/>
                                         <button type="button" id="@("btnRemoveOption-" + currentOption + "-" + fieldSetCount)">
                                             Remove option
                                         </button>

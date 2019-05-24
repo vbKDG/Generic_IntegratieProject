@@ -7,12 +7,12 @@ namespace Domain
     public class Questionnaire
     {
         [Required]
-        public int id { get; set; }
+        public int QuestionnaireId { get; set; }
         
-        public string name { get; set; }
-        public int questionAmount { get; set; }
-        public Project project { get; set; }
-        public ICollection<Question> questions { get; set; }
+        public string Name { get; set; }
+        public int QuestionAmount { get; set; }
+        public Project Project { get; set; }
+        public ICollection<Question> Questions { get; set; }
 
         public Questionnaire()
         {
@@ -20,8 +20,8 @@ namespace Domain
 
         public Questionnaire(int questionAmount, ICollection<Question> questions)
         {
-            this.questionAmount = questionAmount;
-            this.questions = questions;
+            this.QuestionAmount = questionAmount;
+            this.Questions = questions;
         }
     }
 }

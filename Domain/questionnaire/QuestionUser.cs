@@ -5,7 +5,7 @@ namespace Domain
 {
     public class QuestionUser
     {
-        public int id { get; set; }
+        public int QuestionUserId { get; set; }
         public Question Question { get; set; }
         public String Answer { get; set; }
         public ApplicationUser User { get; set;  }

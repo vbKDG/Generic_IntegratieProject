@@ -9,31 +9,31 @@ namespace Domain
     public class Question
     {
         [Required]
-        public int id { get; set; }
-        public QuestionType questionType { get; set; }
-        public String question { get; set; }
-        public Questionnaire questionnaire { get; set; }
+        public int QuestionId { get; set; }
+        public QuestionType QuestionType { get; set; }
+        public String TheQuestion { get; set; }
+        public Questionnaire Questionnaire { get; set; }
         public QuestionField QuestionField { get; set; }
-        public int QuestionFK_shadow { get; set; }
-        public ICollection<Option> options { get; set; }
-        public ICollection<QuestionUser> questionnaireAnswers { get; set; }
+        public int QuestionFk_Shadow { get; set; }
+        public ICollection<Option> Options { get; set; }
+        public ICollection<QuestionUser> QuestionnaireAnswers { get; set; }
         public IotSetup IotSetup { get; set; }
-        public ICollection<IotVote> iotVotes { get; set; }
+        public ICollection<IotVote> IotVotes { get; set; }
 
 
         public Question()
         {
         }
 
-        public Question(string question)
+        public Question(string theQuestion)
         {
-            this.question = question;
+            this.TheQuestion = theQuestion;
         }
 
-        public Question(QuestionType questionType, String question)
+        public Question(QuestionType questionType, String theQuestion)
         {
-            this.questionType = questionType;
-            this.question = question;
+            this.QuestionType = questionType;
+            this.TheQuestion = theQuestion;
         }
     }
 }

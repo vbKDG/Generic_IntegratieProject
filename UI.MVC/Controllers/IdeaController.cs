@@ -160,26 +160,26 @@ namespace UI.MVC.Controllers
                 {
                     Question question = new Question();
                     List<Option> options = new List<Option>();
-                    question.question = questionVM.question;
+                    question.TheQuestion = questionVM.question;
                     if (questionVM.questionType.Equals("radiobutton"))
                     {
-                        question.questionType = QuestionType.RADIO_BUTTON;
+                        question.QuestionType = QuestionType.RADIO_BUTTON;
                     }
                     else
                     {
-                        question.questionType = QuestionType.CHECK_BOX;
+                        question.QuestionType = QuestionType.CHECK_BOX;
 
                     }
                     foreach (var OptionVM in questionVM.Options)
                     {
                         if (OptionVM != null)
                         {
-                            options.Add(new Option{ option = OptionVM});
+                            options.Add(new Option{ TheOption = OptionVM});
                         }
                         
                     }
                     QuestionField questionField = new QuestionField();
-                    question.options = options;
+                    question.Options = options;
                     questionField.question = question;
                     questionFields.Add(questionField);
                     
@@ -536,7 +536,7 @@ namespace UI.MVC.Controllers
            
             Question question = new Question()
             {
-                options = new List<Option>()
+                Options = new List<Option>()
             };
             IList<Option> options = new List<Option>();
             
@@ -544,19 +544,19 @@ namespace UI.MVC.Controllers
             {
                 if (key == "questionFieldset")
                 {
-                    if (form[key] == "radiobutton") { question.questionType = QuestionType.RADIO_BUTTON; }
-                    if (form[key] == "checkbox") { question.questionType = QuestionType.CHECK_BOX; }
+                    if (form[key] == "radiobutton") { question.QuestionType = QuestionType.RADIO_BUTTON; }
+                    if (form[key] == "checkbox") { question.QuestionType = QuestionType.CHECK_BOX; }
                 }
 
                 if (key == "question")
                 {
-                    question.question = form[key];
+                    question.TheQuestion = form[key];
                 }
                 if (key.StartsWith("question.options"))
                 {
                     Option o = new Option()
                     {
-                        option = form[key]
+                        TheOption = form[key]
                     };
                     options.Add(o);
                 }
@@ -565,10 +565,10 @@ namespace UI.MVC.Controllers
 
             foreach (var option in options)
             {
-                questionnaireMgr.addOption(option.option, question);
+                questionnaireMgr.addOption(option.TheOption, question);
             }
 
-            question.options = options;
+            question.Options = options;
             questionnaireMgr.changeQuestion(question);
             return RedirectToAction("Index","Home");
         }

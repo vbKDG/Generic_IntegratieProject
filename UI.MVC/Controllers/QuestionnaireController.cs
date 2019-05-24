@@ -85,34 +85,34 @@ namespace UI.MVC.Controllers
                 return View(combinedModel);
             }
             combinedModel.questionUsers = questionUsers;
-            var questionnaireAnswerCount = combinedModel.questionUsers.GroupBy(q => q.Question.id).ToList()[0].Count();
+            var questionnaireAnswerCount = combinedModel.questionUsers.GroupBy(q => q.Question.QuestionId).ToList()[0].Count();
             combinedModel.answeredQuestionAmount = questionnaireAnswerCount;
 
             foreach (var qu in combinedModel.questionUsers)
             {
                 Question q = qu.Question;
-                if (q.questionType == QuestionType.DROPDOWN || q.questionType == QuestionType.RADIO_BUTTON)
+                if (q.QuestionType == QuestionType.DROPDOWN || q.QuestionType == QuestionType.RADIO_BUTTON)
                 {
-                    IList<Option> op = qmgr.getOptions(q.id).ToList();
+                    IList<Option> op = qmgr.getOptions(q.QuestionId).ToList();
                     foreach (var o in op)
                     {
-                        if (o.option == qu.Answer)
+                        if (o.TheOption == qu.Answer)
                         {
-                            answers.Add(o.id + "-" + o.question.id);
+                            answers.Add(o.OptionId + "-" + o.Question.QuestionId);
                         }
                     }
                 }
-                if (q.questionType == QuestionType.CHECK_BOX)
+                if (q.QuestionType == QuestionType.CHECK_BOX)
                 {
-                    IList<Option> op = qmgr.getOptions(q.id).ToList();
+                    IList<Option> op = qmgr.getOptions(q.QuestionId).ToList();
                     foreach (var o in op)
                     {
                         var parts = qu.Answer.Split(",");
                         foreach (var part in parts)
                         {
-                            if (part == o.option)
+                            if (part == o.TheOption)
                             {
-                                answers.Add(o.id + "-" + o.question.id);
+                                answers.Add(o.OptionId + "-" + o.Question.QuestionId);
                             }
                         }
                     }
@@ -121,11 +121,11 @@ namespace UI.MVC.Controllers
 
             foreach (var q in qmgr.getQuestions(questionnaireId))
             {
-                if (q.questionType == QuestionType.DROPDOWN || q.questionType == QuestionType.RADIO_BUTTON || q.questionType == QuestionType.CHECK_BOX)
+                if (q.QuestionType == QuestionType.DROPDOWN || q.QuestionType == QuestionType.RADIO_BUTTON || q.QuestionType == QuestionType.CHECK_BOX)
                 {
-                    foreach (var o in q.options)
+                    foreach (var o in q.Options)
                     {
-                        q.options.Append(o);
+                        q.Options.Append(o);
                     }
                     ques.Add(q);
                 }
@@ -184,7 +184,7 @@ namespace UI.MVC.Controllers
             IList<QuestionUser> questionUsers = qmgr.getQuestionUsers(oldQuestionnaireId).ToList();
             foreach (var qu in questionUsers)
             {
-                qmgr.removeQuestionUser(qu.id);
+                qmgr.removeQuestionUser(qu.QuestionUserId);
             }
             
             ICollection<int> notRemovedQuestionIds = new List<int>();
@@ -197,11 +197,11 @@ namespace UI.MVC.Controllers
                 {
                     Question q = new Question()                    
                     {                                              
-                        question = "",                      
-                        questionnaire = oldQuestionnaire,          
-                        questionType = QuestionType.OPEN_QUESTION, 
+                        TheQuestion = "",                      
+                        Questionnaire = oldQuestionnaire,          
+                        QuestionType = QuestionType.OPEN_QUESTION, 
                         IotSetup = null,                           
-                        options = new List<Option>()               
+                        Options = new List<Option>()               
                     };
                     IList<Option> newOptions = new List<Option>();
                     string[] parts = key.Split("-");
@@ -210,31 +210,31 @@ namespace UI.MVC.Controllers
                     {
                         if (subKey == "dynamicFieldset" + parts[1])                                             
                         {        
-                            if (form[subKey] == "email") { q.questionType = QuestionType.MAILADDRESS; }       
-                            if (form[subKey] == "dropdown") { q.questionType = QuestionType.DROPDOWN; }         
-                            if (form[subKey] == "radiobutton") { q.questionType = QuestionType.RADIO_BUTTON; }  
-                            if (form[subKey] == "checkbox") { q.questionType = QuestionType.CHECK_BOX; }        
-                            if (form[subKey] == "textarea") { q.questionType = QuestionType.OPEN_QUESTION; } 
+                            if (form[subKey] == "email") { q.QuestionType = QuestionType.MAILADDRESS; }       
+                            if (form[subKey] == "dropdown") { q.QuestionType = QuestionType.DROPDOWN; }         
+                            if (form[subKey] == "radiobutton") { q.QuestionType = QuestionType.RADIO_BUTTON; }  
+                            if (form[subKey] == "checkbox") { q.QuestionType = QuestionType.CHECK_BOX; }        
+                            if (form[subKey] == "textarea") { q.QuestionType = QuestionType.OPEN_QUESTION; } 
                         }
                         if (subKey == "question.options-" + optionAmount + "-" + parts[1] + "-0")
                         {
                             Option o = new Option()
                             {
-                                option = form[subKey],
-                                question = q
+                                TheOption = form[subKey],
+                                Question = q
                             };
                             newOptions.Add(o);
                             optionAmount++;
                         }
                     }
-                    q.question = form[key];
+                    q.TheQuestion = form[key];
                     qmgr.addQuestion(q);                           
                     qmgr.changeQuestionnaire(oldQuestionnaire);    
                     foreach (var o in newOptions)
                     {
-                        qmgr.addOption(o.option, o.question);
+                        qmgr.addOption(o.TheOption, o.Question);
                     }
-                    q.options = newOptions;
+                    q.Options = newOptions;
                     qmgr.changeQuestion(q);
                 }    
                 if (key.StartsWith("question.options-"))         
@@ -256,42 +256,42 @@ namespace UI.MVC.Controllers
                     int testt = 1;
                     for (var i = 0; i < oldQuestions.Count; i++)
                     {
-                        if (Convert.ToInt32(parts[1]) == oldQuestions.ToList()[i].id)
+                        if (Convert.ToInt32(parts[1]) == oldQuestions.ToList()[i].QuestionId)
                         {
                             Question q = oldQuestions.ToList()[i];
-                            q.question = form[key];
+                            q.TheQuestion = form[key];
                             qmgr.changeQuestion(q);
 
-                            ICollection<Option> options = qmgr.getOptions(q.id).ToList();
+                            ICollection<Option> options = qmgr.getOptions(q.QuestionId).ToList();
 
                             foreach (var o in options)
                             {
-                                qmgr.removeOption(o.id);
+                                qmgr.removeOption(o.OptionId);
                             }
 
                             for (var a = 0; a < questionOptionKey.Count(); a++)
                             {
                                 string[] partsKey = questionOptionKey.ToList()[a].Split("-");
-                                if (Convert.ToInt32(partsKey[3]) == q.id)
+                                if (Convert.ToInt32(partsKey[3]) == q.QuestionId)
                                 {
                                     Option o = new Option()
                                     {
-                                        option = questionOptionValue.ToList()[a],
-                                        question = q
+                                        TheOption = questionOptionValue.ToList()[a],
+                                        Question = q
                                     };
-                                    q.options.ToList().Add(o);
+                                    q.Options.ToList().Add(o);
                                     qmgr.changeQuestion(q);
-                                    qmgr.addOption(o.option, o.question);
+                                    qmgr.addOption(o.TheOption, o.Question);
                                 }
                                 if (Convert.ToInt32(partsKey[2]) == testt && Convert.ToInt32(partsKey[3]) == 0)
                                 {
                                     Option o = new Option()
                                     {
-                                        option = questionOptionValue.ToList()[a],
-                                        question = q
+                                        TheOption = questionOptionValue.ToList()[a],
+                                        Question = q
                                     };
-                                    q.options.ToList().Add(o);
-                                    qmgr.addOption(o.option, q);
+                                    q.Options.ToList().Add(o);
+                                    qmgr.addOption(o.TheOption, q);
                                     qmgr.changeQuestion(q);
                                 }
                             }
@@ -307,40 +307,40 @@ namespace UI.MVC.Controllers
                         if (Convert.ToInt32(parts[1]) == i+1)
                         {
                             Question q = oldQuestions.ToList()[i];
-                            if (form[key] == "email") { q.questionType = QuestionType.MAILADDRESS; }
-                            if (form[key] == "dropdown") { q.questionType = QuestionType.DROPDOWN; }
-                            if (form[key] == "radiobutton") { q.questionType = QuestionType.RADIO_BUTTON; }
-                            if (form[key] == "checkbox") { q.questionType = QuestionType.CHECK_BOX; }
-                            if (form[key] == "textarea") { q.questionType = QuestionType.OPEN_QUESTION; }
+                            if (form[key] == "email") { q.QuestionType = QuestionType.MAILADDRESS; }
+                            if (form[key] == "dropdown") { q.QuestionType = QuestionType.DROPDOWN; }
+                            if (form[key] == "radiobutton") { q.QuestionType = QuestionType.RADIO_BUTTON; }
+                            if (form[key] == "checkbox") { q.QuestionType = QuestionType.CHECK_BOX; }
+                            if (form[key] == "textarea") { q.QuestionType = QuestionType.OPEN_QUESTION; }
                             qmgr.changeQuestion(q);
                         }
                     }
                 }
             }
-            oldQuestionnaire.name = oldQuestionnaireName;
-            oldQuestionnaire.questionAmount = oldQuestions.Count;
+            oldQuestionnaire.Name = oldQuestionnaireName;
+            oldQuestionnaire.QuestionAmount = oldQuestions.Count;
             qmgr.changeQuestionnaire(oldQuestionnaire);
             foreach (var q in oldQuestions)
             {
                 var removeThis = true;
                 foreach (var id in notRemovedQuestionIds)
                 {
-                    if (q.id == id)
+                    if (q.QuestionId == id)
                     {
                         removeThis = false;
                     }
                 }
                 if (removeThis)
                 {
-                    IList<Option> remOptions = qmgr.getOptions(q.id).ToList();
+                    IList<Option> remOptions = qmgr.getOptions(q.QuestionId).ToList();
                     foreach (var o in remOptions)
                     {
-                        qmgr.removeOption(o.id);
+                        qmgr.removeOption(o.OptionId);
                     }
-                    qmgr.removeQuestion(q.id);
+                    qmgr.removeQuestion(q.QuestionId);
                 }
             }
-            oldQuestionnaire.questionAmount = qmgr.getQuestions(oldQuestionnaire.id).Count();
+            oldQuestionnaire.QuestionAmount = qmgr.getQuestions(oldQuestionnaire.QuestionnaireId).Count();
             qmgr.changeQuestionnaire(oldQuestionnaire);
             return RedirectToAction("Projects","Project");
         }
@@ -358,16 +358,16 @@ namespace UI.MVC.Controllers
                     IList<QuestionUser> questionUsers = qmgr.getQuestionUsers(questionnaireId).ToList();
                     foreach (var qu in questionUsers)
                     {
-                        qmgr.removeQuestionUser(qu.id);
+                        qmgr.removeQuestionUser(qu.QuestionUserId);
                     }
                     foreach (var q in questions)
                     {
-                        IList<Option> options = qmgr.getOptions(q.id).ToList();
+                        IList<Option> options = qmgr.getOptions(q.QuestionId).ToList();
                         foreach (var o in options)
                         {
-                            qmgr.removeOption(o.id);
+                            qmgr.removeOption(o.OptionId);
                         }
-                        qmgr.removeQuestion(q.id);
+                        qmgr.removeQuestion(q.QuestionId);
                     }
                     qmgr.removeQuestionnaire(questionnaireId);
                 }
@@ -392,6 +392,8 @@ namespace UI.MVC.Controllers
             
             foreach (var fieldset in form.Keys)
             {
+                Console.WriteLine("key: " + fieldset);
+                Console.WriteLine("value: " + form[fieldset]);
                 var ending = "dynamicFieldset" + currentFieldset;
                 if (fieldset == ending)
                 {
@@ -407,7 +409,7 @@ namespace UI.MVC.Controllers
                     currentQuestion.Add(Convert.ToInt32(parts[2]));
                     Option o = new Option()
                     {
-                        option = form[fieldset]
+                        TheOption = form[fieldset]
                     };
                     options.Add(o);
                 }
@@ -434,18 +436,18 @@ namespace UI.MVC.Controllers
                     {
                         Question q = new Question()
                         {
-                            question = question,
-                            questionnaire = null,
-                            questionType = QuestionType.OPEN_QUESTION,
+                            TheQuestion = question,
+                            Questionnaire = null,
+                            QuestionType = QuestionType.OPEN_QUESTION,
                             IotSetup = null,
-                            options = new List<Option>()
+                            Options = new List<Option>()
                         };
                         IList<Option> finalOptions = new List<Option>();
-                        if (fieldTypes[currentField] == "email") { q.questionType = QuestionType.MAILADDRESS; }
-                        if (fieldTypes[currentField] == "dropdown") { q.questionType = QuestionType.DROPDOWN; }
-                        if (fieldTypes[currentField] == "radiobutton") { q.questionType = QuestionType.RADIO_BUTTON; }
-                        if (fieldTypes[currentField] == "checkbox") { q.questionType = QuestionType.CHECK_BOX; }
-                        if (fieldTypes[currentField] == "textarea") { q.questionType = QuestionType.OPEN_QUESTION; }
+                        if (fieldTypes[currentField] == "email") { q.QuestionType = QuestionType.MAILADDRESS; }
+                        if (fieldTypes[currentField] == "dropdown") { q.QuestionType = QuestionType.DROPDOWN; }
+                        if (fieldTypes[currentField] == "radiobutton") { q.QuestionType = QuestionType.RADIO_BUTTON; }
+                        if (fieldTypes[currentField] == "checkbox") { q.QuestionType = QuestionType.CHECK_BOX; }
+                        if (fieldTypes[currentField] == "textarea") { q.QuestionType = QuestionType.OPEN_QUESTION; }
                         currentField++;
                         for (var i = 1; i < options.Count+1; i++)
                         {
@@ -454,7 +456,7 @@ namespace UI.MVC.Controllers
                                 finalOptions.Add(options[i-1]);
                             }
                         }
-                        q.options = finalOptions;
+                        q.Options = finalOptions;
                         questions.Add(q);
                         currentOption++;
                     }
@@ -498,7 +500,7 @@ namespace UI.MVC.Controllers
                     else
                     {
                         qmgr.addQuestionUser("", Convert.ToInt32(parts[1]), form[key]);
-                        questionUserIds.Add(qmgr.getQuestionUsers().Last().id);
+                        questionUserIds.Add(qmgr.getQuestionUsers().Last().QuestionUserId);
                     }
                 }
             }

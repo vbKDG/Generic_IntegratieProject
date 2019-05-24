@@ -43,8 +43,8 @@ namespace DAL
         public IEnumerable<Questionnaire> readQuestionnaires(int projectId)
         {
             return ctx.questionnaires
-                .Include(q => q.project)
-                .Where(q => q.project.projectId == projectId);
+                .Include(q => q.Project)
+                .Where(q => q.Project.projectId == projectId);
         }
 
         public IEnumerable<IotSetup> readIotSetups()
@@ -55,24 +55,24 @@ namespace DAL
         public IEnumerable<Question> readQuestions(int questionnaireId)
         {
             return ctx.questions
-                .Include(q => q.questionnaire)
-                .Include(q => q.options)
+                .Include(q => q.Questionnaire)
+                .Include(q => q.Options)
                 .Include(q => q.IotSetup)
-                .Where(q => q.questionnaire.id == questionnaireId);
+                .Where(q => q.Questionnaire.QuestionnaireId == questionnaireId);
         }
 
         public IEnumerable<Option> readOptions(int questionId)
         {
             return ctx.options
-                .Where(o => o.question.id == questionId);
+                .Where(o => o.Question.QuestionId == questionId);
         }
 
         public IEnumerable<QuestionUser> readQuestionUsers(int questionnaireId)
         {
             IList<QuestionUser> questionUsers = new List<QuestionUser>();
-            foreach (var q in ctx.questions.Where(q => q.questionnaire.id == questionnaireId))
+            foreach (var q in ctx.questions.Where(q => q.Questionnaire.QuestionnaireId == questionnaireId))
             {
-                foreach (var qu in ctx.questionUsers.Where(qu => qu.Question.id == q.id))
+                foreach (var qu in ctx.questionUsers.Where(qu => qu.Question.QuestionId == q.QuestionId))
                 {
                     questionUsers.Add(qu);
                 }
@@ -87,11 +87,11 @@ namespace DAL
 
         public void createQuestionnaire(Questionnaire q, int projectId)
         {
-            q.project = ctx.projects.Find(projectId);
+            q.Project = ctx.projects.Find(projectId);
             ctx.questionnaires.Add(q);
-            foreach (Question question in q.questions)
+            foreach (Question question in q.Questions)
             {
-                question.questionnaire = ctx.questionnaires.Find(q.id);
+                question.Questionnaire = ctx.questionnaires.Find(q.QuestionnaireId);
                 ctx.questions.Add(question);
             }
             ctx.SaveChanges();

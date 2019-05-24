@@ -161,93 +161,93 @@ namespace DAL.EF
             // Questionnaires
             Questionnaire questionnaire1 = new Questionnaire()
             {
-                name = "Safety",
-                questionAmount = 4,
-                project = p1,
-                questions = new List<Question>()
+                Name = "Safety",
+                QuestionAmount = 4,
+                Project = p1,
+                Questions = new List<Question>()
             };
             Questionnaire questionnaire2 = new Questionnaire()
             {
-                name = "Noise",
-                questionAmount = 3,
-                project = p1,
-                questions = new List<Question>()
+                Name = "Noise",
+                QuestionAmount = 3,
+                Project = p1,
+                Questions = new List<Question>()
             };
             p1.questionnaires = new List<Questionnaire>() { questionnaire1, questionnaire2 };
             
             // Questions
             Question q1 = new Question()
             {
-                question = "Do we need to build a fence around the playground?",
-                questionnaire = questionnaire1,
-                questionType = QuestionType.RADIO_BUTTON,
+                TheQuestion = "Do we need to build a fence around the playground?",
+                Questionnaire = questionnaire1,
+                QuestionType = QuestionType.RADIO_BUTTON,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option o1 = new Option() {option = "Yes", question = q1};
-            Option o2 = new Option() {option = "No", question = q1};
-            q1.options = new List<Option>() { o1, o2 };
+            Option o1 = new Option() {TheOption = "Yes", Question = q1};
+            Option o2 = new Option() {TheOption = "No", Question = q1};
+            q1.Options = new List<Option>() { o1, o2 };
             Question question1 = new Question()
             {
-                question = "How big should the playground be?",
-                questionnaire = questionnaire1,
-                questionType = QuestionType.RADIO_BUTTON,
+                TheQuestion = "How big should the playground be?",
+                Questionnaire = questionnaire1,
+                QuestionType = QuestionType.RADIO_BUTTON,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option option1 = new Option() {option = "50m²", question = question1};
-            Option option2 = new Option() {option = "60m²", question = question1};
-            Option option3 = new Option() {option = "80m²", question = question1};
-            Option option4 = new Option() {option = "100m²", question = question1};
-            question1.options = new List<Option>() { option1, option2, option3, option4 };
+            Option option1 = new Option() {TheOption = "50m²", Question = question1};
+            Option option2 = new Option() {TheOption = "60m²", Question = question1};
+            Option option3 = new Option() {TheOption = "80m²", Question = question1};
+            Option option4 = new Option() {TheOption = "100m²", Question = question1};
+            question1.Options = new List<Option>() { option1, option2, option3, option4 };
             Question q2 = new Question()
             {
-                question = "Where should we build the playground",
-                questionnaire = questionnaire1,
-                questionType = QuestionType.DROPDOWN,
+                TheQuestion = "Where should we build the playground",
+                Questionnaire = questionnaire1,
+                QuestionType = QuestionType.DROPDOWN,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option o3 = new Option() {option = "Brooklyn Street", question = q2};
-            Option o4 = new Option() {option = "Second street", question = q2};
-            Option o5 = new Option() {option = "New road", question = q2};
-            q2.options = new List<Option>() { o3, o4, o5 };
+            Option o3 = new Option() {TheOption = "Brooklyn Street", Question = q2};
+            Option o4 = new Option() {TheOption = "Second street", Question = q2};
+            Option o5 = new Option() {TheOption = "New road", Question = q2};
+            q2.Options = new List<Option>() { o3, o4, o5 };
             Question q3 = new Question()
             {
-                question = "Fill in your e-mail address:",
-                questionnaire = questionnaire1,
-                questionType = QuestionType.MAILADDRESS,
+                TheQuestion = "Fill in your e-mail address:",
+                Questionnaire = questionnaire1,
+                QuestionType = QuestionType.MAILADDRESS,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
             Question q4 = new Question()
             {
-                question = "What should we do about the noise polution of the playground?",
-                questionnaire = questionnaire2,
-                questionType = QuestionType.OPEN_QUESTION,
+                TheQuestion = "What should we do about the noise polution of the playground?",
+                Questionnaire = questionnaire2,
+                QuestionType = QuestionType.OPEN_QUESTION,
                 IotSetup = new IotSetup(),
-                options = new List<Option>()
+                Options = new List<Option>()
             };
             Question q5 = new Question()
             {
-                question = "Do you think a playground would be anoying if it was near your home?",
-                questionnaire = questionnaire2,
-                questionType = QuestionType.OPEN_QUESTION,
+                TheQuestion = "Do you think a playground would be anoying if it was near your home?",
+                Questionnaire = questionnaire2,
+                QuestionType = QuestionType.OPEN_QUESTION,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
             Question question2 = new Question()
             {
-                question = "What should we add to the playground?",
-                questionnaire = questionnaire2,
-                questionType = QuestionType.CHECK_BOX,
+                TheQuestion = "What should we add to the playground?",
+                Questionnaire = questionnaire2,
+                QuestionType = QuestionType.CHECK_BOX,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option option5 = new Option() {option = "Slide", question = question2};
-            Option option6 = new Option() {option = "Drinking fountain", question = question2};
-            Option option7 = new Option() {option = "Swing", question = question2};
-            question2.options = new List<Option>() { option5, option6, option7 };
+            Option option5 = new Option() {TheOption = "Slide", Question = question2};
+            Option option6 = new Option() {TheOption = "Drinking fountain", Question = question2};
+            Option option7 = new Option() {TheOption = "Swing", Question = question2};
+            question2.Options = new List<Option>() { option5, option6, option7 };
             // IoTSetups
             IotSetup iot1 = new IotSetup()
             {
@@ -255,8 +255,8 @@ namespace DAL.EF
             };
             q4.IotSetup = iot1;
             
-            questionnaire1.questions = new List<Question>() { q1, q2, q3, question1 };
-            questionnaire2.questions = new List<Question>() { q4, q5, question2 };
+            questionnaire1.Questions = new List<Question>() { q1, q2, q3, question1 };
+            questionnaire2.Questions = new List<Question>() { q4, q5, question2 };
             #endregion
             
             #region TestProject 2
@@ -279,60 +279,60 @@ namespace DAL.EF
             // Questionnaires
             Questionnaire questionnaire3 = new Questionnaire()
             {
-                name = "Budget",
-                questionAmount = 4,
-                project = p2,
-                questions = new List<Question>(),
+                Name = "Budget",
+                QuestionAmount = 4,
+                Project = p2,
+                Questions = new List<Question>(),
             };
             p2.questionnaires = new List<Questionnaire>() { questionnaire3 };
             
             // Questions
             Question q6 = new Question()
             {
-                question = "What should we do to save the birds?",
-                questionnaire = questionnaire3,
-                questionType = QuestionType.OPEN_QUESTION,
+                TheQuestion = "What should we do to save the birds?",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.OPEN_QUESTION,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
             Question q7 = new Question()
             {
-                question = "What do you think should be our first priority?",
-                questionnaire = questionnaire3,
-                questionType = QuestionType.RADIO_BUTTON,
+                TheQuestion = "What do you think should be our first priority?",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.RADIO_BUTTON,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option o6 = new Option() {option = "Build birds more houses", question = q7};
-            Option o7 = new Option() {option = "Give more options for birds to eat", question = q7};
-            Option o8 = new Option() {option = "Give more options for birds to drink", question = q7};
-            Option o9 = new Option() {option = "Plant more trees", question = q7};
-            q7.options = new List<Option>() { o6, o7, o8, o9 };
+            Option o6 = new Option() {TheOption = "Build birds more houses", Question = q7};
+            Option o7 = new Option() {TheOption = "Give more options for birds to eat", Question = q7};
+            Option o8 = new Option() {TheOption = "Give more options for birds to drink", Question = q7};
+            Option o9 = new Option() {TheOption = "Plant more trees", Question = q7};
+            q7.Options = new List<Option>() { o6, o7, o8, o9 };
             Question q8 = new Question()
             {
-                question = "What should we feed the birds?",
-                questionnaire = questionnaire3,
-                questionType = QuestionType.CHECK_BOX,
+                TheQuestion = "What should we feed the birds?",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.CHECK_BOX,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option o10 = new Option() {option = "Grains", question = q8};
-            Option o11 = new Option() {option = "Seeds", question = q8};
-            Option o12 = new Option() {option = "Chocolat", question = q8};
-            q8.options = new List<Option>() { o10, o11, o12 };
+            Option o10 = new Option() {TheOption = "Grains", Question = q8};
+            Option o11 = new Option() {TheOption = "Seeds", Question = q8};
+            Option o12 = new Option() {TheOption = "Chocolat", Question = q8};
+            q8.Options = new List<Option>() { o10, o11, o12 };
             Question q9 = new Question()
             {
-                question = "How should we feed the birds",
-                questionnaire = questionnaire3,
-                questionType = QuestionType.CHECK_BOX,
+                TheQuestion = "How should we feed the birds",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.CHECK_BOX,
                 IotSetup = null,
-                options = new List<Option>()
+                Options = new List<Option>()
             };
-            Option o13 = new Option() {option = "With bowls", question = q9};
-            Option o14 = new Option() {option = "On the floor", question = q9};
-            Option o15 = new Option() {option = "Hanging in the tree", question = q9};
-            q9.options = new List<Option>() { o13, o14, o15 };
-            questionnaire3.questions = new List<Question>() { q6, q7, q8, q9 };
+            Option o13 = new Option() {TheOption = "With bowls", Question = q9};
+            Option o14 = new Option() {TheOption = "On the floor", Question = q9};
+            Option o15 = new Option() {TheOption = "Hanging in the tree", Question = q9};
+            q9.Options = new List<Option>() { o13, o14, o15 };
+            questionnaire3.Questions = new List<Question>() { q6, q7, q8, q9 };
             #endregion
             
             /*Project p3 = new Project();

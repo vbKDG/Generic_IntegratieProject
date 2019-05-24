@@ -225,24 +225,24 @@
         using (Html.BeginForm("AnswerQuestionFieldIdea", "Questionnaire",
             FormMethod.Post))
         {
-            <b>@item.Question.question</b>
-            if (item.Question.questionType == QuestionType.RADIO_BUTTON)
+            <b>@item.Question.TheQuestion</b>
+            if (item.Question.QuestionType == QuestionType.RADIO_BUTTON)
             {
                 <fieldset id="@item.id">
-                    @foreach (var option in item.Question.options)
+                    @foreach (var option in item.Question.Options)
                     {
-                        <input type="radio" value="@option.option" name="Answer-@item.id-radiobutton"/>
-                        @Html.DisplayFor(modelItem => option.option)<br>
+                        <input type="radio" value="@option.TheOption" name="Answer-@item.id-radiobutton"/>
+                        @Html.DisplayFor(modelItem => option.TheOption)<br>
                     }
                 </fieldset>
             }
-            if (item.Question.questionType == QuestionType.CHECK_BOX)
+            if (item.Question.QuestionType == QuestionType.CHECK_BOX)
             {
                 <fieldset id="@item.id">
-                    @foreach (var option in item.Question.options)
+                    @foreach (var option in item.Question.Options)
                     {
-                        <input type="checkbox" value="@option.option" name="Answer-@item.id-checkbox"/>
-                        @Html.DisplayFor(modelItem => option.option)<br>
+                        <input type="checkbox" value="@option.TheOption" name="Answer-@item.id-checkbox"/>
+                        @Html.DisplayFor(modelItem => option.TheOption)<br>
                     }
                 </fieldset>
             }

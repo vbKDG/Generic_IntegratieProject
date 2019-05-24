@@ -122,14 +122,14 @@
             {
                 <tr>
                     <td>
-                        @questionnaire.name
+                        @questionnaire.Name
                     </td>
                     <td>
-                        @questionnaire.questionAmount
+                        @questionnaire.QuestionAmount
                     </td>
                     <td>
                         @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                            , new {questionnaireId = questionnaire.id})
+                            , new {questionnaireId = questionnaire.QuestionnaireId})
                     </td>
                 </tr>
             }

@@ -2,7 +2,7 @@
 @model QuestionResultModel
 
 <h1>Questionnaire results</h1>
-<h3>Questionnaire: @Model.questionnaire.name</h3>
+<h3>Questionnaire: @Model.questionnaire.Name</h3>
 <p>The questionnaire has been answered @Model.answeredQuestionAmount time(s).</p>
 
 <table class="table">
@@ -16,15 +16,15 @@
         {
             <tr>
                 <td>
-                    <h4>@Model.questions.ToList()[i].question</h4>
-                    @foreach (var o in @Model.questions.ToList()[i].options)
+                    <h4>@Model.questions.ToList()[i].TheQuestion</h4>
+                    @foreach (var o in @Model.questions.ToList()[i].Options)
                     {
-                        @o.option
+                        @o.TheOption
                         foreach (var aqa in @Model.optionsAmounts)
                         {
-                            if (aqa.optionId == o.id)
+                            if (aqa.optionId == o.OptionId)
                             {
-                                if (o.question.questionType == QuestionType.CHECK_BOX)
+                                if (o.Question.QuestionType == QuestionType.CHECK_BOX)
                                 {
                                     <span> (@aqa.count)</span>
                                 }
