@@ -127,21 +127,21 @@ namespace UI.MVC.Controllers
             p.ideations = orchestrator.getIdeations(projectId).ToList();
             foreach (var ideation in p.ideations)
             {
-                var LikeAmount = 0;
-                var CommentAmount = 0;
+                var likeAmount = 0;
+                var commentAmount = 0;
                 foreach (var idea in ideation.ideas)
                 {
-                    LikeAmount = LikeAmount + orchestrator.getIdeaLikes(idea.ideaId);
+                    likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.ideaId);
                     foreach (var reaction in idea.reactions)
                     {
-                        LikeAmount = LikeAmount + orchestrator.getReactionLikes(reaction.reactionId);
+                        likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.reactionId);
                     } 
-                    CommentAmount = CommentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
+                    commentAmount = commentAmount + orchestrator.getReactions(idea.ideaId).ToList().Count;
                 }
-                var total = LikeAmount + CommentAmount;
+                var total = likeAmount + commentAmount;
                 combinedDictionary.Add(ideation.ideationId, total);
-                likeDictionary.Add(ideation.ideationId, LikeAmount);
-                commentDictionary.Add(ideation.ideationId, CommentAmount);
+                likeDictionary.Add(ideation.ideationId, likeAmount);
+                commentDictionary.Add(ideation.ideationId, commentAmount);
             }
 
             var counter = 0;
@@ -227,7 +227,7 @@ namespace UI.MVC.Controllers
             MapField mapField = new MapField();
             ImageField imageField = new ImageField();
             ICollection<Phase> phases = new List<Phase>();
-            Setting Setting = new Setting();
+            Setting setting = new Setting();
 
             project.name = projectVm.name;
             project.description = projectVm.description;
@@ -262,10 +262,10 @@ namespace UI.MVC.Controllers
 
             project.phases = phases;
 
-            Setting.FontFamily = projectVm.SettingVm.FontFamily;
-            Setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
-            Setting.BackGroundColor2 = projectVm.SettingVm.BackGroundColor2;
-            project.Setting = Setting;
+            setting.FontFamily = projectVm.SettingVm.FontFamily;
+            setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
+            setting.BackGroundColor2 = projectVm.SettingVm.BackGroundColor2;
+            project.Setting = setting;
 
             orchestrator.addProject(project);
             return RedirectToAction("Project", "Project", new {id = 1});

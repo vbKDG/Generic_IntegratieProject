@@ -50,9 +50,9 @@ namespace UI.MVC.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                var ApplicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var ApplicationUser = _userManager.FindByIdAsync(ApplicationUserId).Result;
-                fillInQuestionnaireModel.ApplicationUser = ApplicationUser;
+                var applicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var applicationUser = _userManager.FindByIdAsync(applicationUserId).Result;
+                fillInQuestionnaireModel.ApplicationUser = applicationUser;
             }
             return View(fillInQuestionnaireModel);
         }
@@ -253,7 +253,7 @@ namespace UI.MVC.Controllers
                 {
                     string[] parts = key.Split("-");
                     notRemovedQuestionIds.Add(Convert.ToInt32(parts[1]));
-                    int testt = 1;
+                    int counter = 1;
                     for (var i = 0; i < oldQuestions.Count; i++)
                     {
                         if (Convert.ToInt32(parts[1]) == oldQuestions.ToList()[i].QuestionId)
@@ -283,7 +283,7 @@ namespace UI.MVC.Controllers
                                     qmgr.changeQuestion(q);
                                     qmgr.addOption(o.TheOption, o.Question);
                                 }
-                                if (Convert.ToInt32(partsKey[2]) == testt && Convert.ToInt32(partsKey[3]) == 0)
+                                if (Convert.ToInt32(partsKey[2]) == counter && Convert.ToInt32(partsKey[3]) == 0)
                                 {
                                     Option o = new Option()
                                     {
@@ -296,7 +296,7 @@ namespace UI.MVC.Controllers
                                 }
                             }
                         }
-                        testt++;
+                        counter++;
                     }
                 }
                 if (key.StartsWith("dynamicFieldset"))
@@ -474,7 +474,6 @@ namespace UI.MVC.Controllers
                 if (key.StartsWith("Answer-"))
                 {
                     var parts = key.Split("-");
-                    Console.WriteLine(parts[1]);
                     if (User.Identity.IsAuthenticated)
                     {
                         qmgr.addQuestionUser(User.FindFirst(ClaimTypes.NameIdentifier).Value, Convert.ToInt32(parts[1]), form[key]);
