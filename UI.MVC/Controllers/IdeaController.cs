@@ -450,7 +450,7 @@ namespace UI.MVC.Controllers
         public IActionResult IdeaList(int ideationId)
         {
             var ideas = ideationMgr.getIdeas(ideationId);
-            List<IdeaListItem> ideaListItems = new List<IdeaListItem>();
+            List<IdeaListItemVM> ideaListItems = new List<IdeaListItemVM>();
             String imagePath = "./wwwroot/images/lightbulb.jpg";
             byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);  
             string base64String = Convert.ToBase64String(imageBytes);
@@ -475,7 +475,7 @@ namespace UI.MVC.Controllers
                     
                 }
                 
-                ideaListItems.Add(new IdeaListItem{IdeaId = idea.ideaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
+                ideaListItems.Add(new IdeaListItemVM{IdeaId = idea.ideaId, UserName = username,Base64Image = base64String, IdeaTitle = idea.IdeaTitle , LikeCount = likeCount , ReactionCount = reactionCount});
             }
 
             return View(ideaListItems);

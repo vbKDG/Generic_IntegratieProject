@@ -1,15 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Net;
-using System.Xml.Linq;
-using Domain;
-using System.Web;
 using D.UI.MVC.Models.Fields;
 using DAL.EF;
+using Domain;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 
 namespace D.UI.MVC.Models.Ideas
 {
@@ -57,7 +51,7 @@ namespace D.UI.MVC.Models.Ideas
 //        public ICollection<IdeaVM> IdeaVms { get; set; }
 //        public int IdeationId { get; set; }
 //    }
-    public class IdeaListItem
+    public class IdeaListItemVM
     {
         public int IdeaId;
         public String Base64Image { get; set; }
@@ -65,8 +59,18 @@ namespace D.UI.MVC.Models.Ideas
         public String UserName { get; set; }
         public int LikeCount { get; set; }
         public int ReactionCount { get; set; }
+        
+        
        
     }
+
+//    public class IdeationVM
+//    {
+//        public int IdeationId { get; set; }
+//        public List<string> IdeationQuestions { get; set; }
+//        public List<IdeaListItemVM> IdeaListItemVms { get; set; }
+//        
+//    }
     public class IdeasVM
     {
         public ICollection<Idea> ideas { get; set; }

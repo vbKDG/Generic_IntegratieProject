@@ -11,6 +11,8 @@ namespace Domain
     {
        public string imageName { get; set; }
        public byte[] imageData { get; set; }
+       
+       public String Base64ImageData { get; set; }
       
        public string GetImageString()
        {

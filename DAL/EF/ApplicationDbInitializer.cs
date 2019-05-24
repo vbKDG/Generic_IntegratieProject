@@ -466,7 +466,11 @@ namespace DAL.EF
             Project p9 = new Project();
             MapField map9 = new MapField { latitude = 51.21205064975499, longitude = 4.4135022509701685 };
             ImageField img9 = new ImageField();
+            
             img9.imageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg");
+            var base64 = Convert.ToBase64String( System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg"));
+            img9.Base64ImageData = String.Format("data:image/png;base64,{0}", base64);
+            
             p9.name = "Sushi evening";
             p9.description = "This summer the people of antwerp will organise a traditional japanese weekend.";
             p9.startDate = new DateTime(2019, 7, 5);
