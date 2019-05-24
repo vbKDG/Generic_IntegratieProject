@@ -537,6 +537,7 @@ namespace DAL.EF
             {
                 Ideas = new List<Idea>
                 {
+                    
                     new Idea
                     {
                         User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
@@ -545,13 +546,14 @@ namespace DAL.EF
                             new TextField
                             {
                                 Required = true,
-                                Text = "test idea1 f1"
+                                Text = "Een park voor honden"
                             },
                             new TextField
                             {
                                 Required = true,
-                                Text = "test idea1 f2"
-                            }
+                                Text = "Een park voor katten"
+                            },
+                            
                         },
                         Reactions = new List<Reaction>
                         {
@@ -865,6 +867,8 @@ namespace DAL.EF
                     }
                 }
             };
+            
+            
 
             ctx.Faqs.Add(faq);
             ctx.Projects.AddRange(p1, p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15);

@@ -35,6 +35,7 @@ namespace UI.MVC.Models.Ideations
 
     public class IdeationPageVM
     {
+        public Boolean AdminOnly { get; set; }
         public int IdeationId { get; set; }
         public List<string> IdeationQuestions { get; set; }
         public List<IdeaListItemVM> IdeaListItemVms { get; set; }

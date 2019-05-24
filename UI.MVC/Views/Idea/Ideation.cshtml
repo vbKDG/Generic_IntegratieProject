@@ -3,8 +3,12 @@
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 
 
-@Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
-    , new { ideationId=@Model.IdeationId })
+@if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin") || @Model.AdminOnly ==  false)
+{
+    @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
+        , new { ideationId=@Model.IdeationId })
+}
+
 @foreach (var item in @Model.IdeationQuestions)
 {
     <h1>@item</h1>

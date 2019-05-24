@@ -73,6 +73,7 @@ namespace UI.MVC.Controllers
             }
 
             ideationPageVm.IdeationId = ideationId;
+            ideationPageVm.AdminOnly = ideation.AdminOnly;
             ideationPageVm.IdeaListItemVms = ideaListItemVms;
             ideationPageVm.IdeationQuestions = ideationQuestions;
             return View(ideationPageVm);
