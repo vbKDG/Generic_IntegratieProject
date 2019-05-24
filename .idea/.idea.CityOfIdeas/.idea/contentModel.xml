@@ -60,8 +60,6 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Common" t="Include">
           <e p="Address.cs" t="Include" />
-          <e p="FieldType.cs" t="Include" />
-          <e p="Gender.cs" t="Include" />
           <e p="Place.cs" t="Include" />
           <e p="QuestionType.cs" t="Include" />
         </e>
@@ -123,6 +121,8 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
+        <e p="app.db" t="Include" />
+        <e p="app.db-journal" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -284,7 +284,6 @@
           </e>
           <e p="Idea" t="Include">
             <e p="CreateIdeaPage.cshtml" t="Include" />
-            <e p="CreateQuestionPage.cshtml" t="Include" />
             <e p="Idea.cshtml" t="Include" />
             <e p="Ideas.cshtml" t="Include" />
             <e p="Ideation.cshtml" t="Include" />
@@ -316,11 +315,6 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LoginPartial.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
-            <e p="DisplayTemplates" t="Include">
-              <e p="ImageFieldVM.cshtml" t="Include" />
-              <e p="MapFieldVM.cshtml" t="Include" />
-              <e p="TextFieldVM.cshtml" t="Include" />
-            </e>
             <e p="EditorTemplates" t="Include">
               <e p="ImageFieldVM.cshtml" t="Include" />
               <e p="MapFieldVM.cshtml" t="Include" />
@@ -398,6 +392,7 @@
           <e p="js" t="Include">
             <e p="changeProjectPosts.js" t="Include" />
             <e p="checkIfOrganisation.js" t="Include" />
+            <e p="createIdea.js" t="Include" />
             <e p="DisplayMap.js" t="Include" />
             <e p="dynamicForm.js" t="Include" />
             <e p="dynamicFormIdea.js" t="Include" />

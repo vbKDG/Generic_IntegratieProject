@@ -471,51 +471,8 @@ namespace UI.MVC.Controllers
             return RedirectToAction("Ideations", "Project", new {id = ideationVm.ProjectId});
         }
 
-        public IActionResult CreateQuestionPage()
-        {
-            return View();
-        }
         
-        /*[HttpPost]
-        public IActionResult CreateQuestion(IFormCollection form)
-        {
-            Question question = new Question()
-            {
-                Options = new List<Option>()
-            };
-            IList<Option> options = new List<Option>();
-            
-            foreach (var key in form.Keys)
-            {
-                if (key == "questionFieldset")
-                {
-                    if (form[key] == "radiobutton") { question.QuestionType = QuestionType.RADIO_BUTTON; }
-                    if (form[key] == "checkbox") { question.QuestionType = QuestionType.CHECK_BOX; }
-                }
-
-                if (key == "question")
-                {
-                    question.TheQuestion = form[key];
-                }
-                if (key.StartsWith("question.options"))
-                {
-                    Option o = new Option()
-                    {
-                        TheOption = form[key]
-                    };
-                    options.Add(o);
-                }
-            }
-            questionnaireMgr.addQuestion(question);
-
-            foreach (var option in options)
-            {
-                questionnaireMgr.addOption(option.TheOption, question);
-            }
-
-            question.Options = options;
-            questionnaireMgr.changeQuestion(question);
-            return RedirectToAction("Index","Home");
-        }*/
+        
+       
     }
 }

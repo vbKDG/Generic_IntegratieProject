@@ -19,98 +19,98 @@
 
 
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
-    <input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
-    <input asp-for="IdeaTitle" />
+<input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
+<input asp-for="IdeaTitle" />
   
-   @if (@Model.TextFieldVms.Count != 0)
-   {
-       <h3>Upload Text</h3>
-       <div id="TextUploads">
-           @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
-           {
+@if (@Model.TextFieldVms.Count != 0)
+{
+    <h3>Upload Text</h3>
+    <div id="TextUploads">
+        @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
+        {
 
-               @Html.EditorFor(x => x.TextFieldVms[i], new {index = i})
-           }
-       </div>
-   }
+            @Html.EditorFor(x => x.TextFieldVms[i], new {index = i})
+        }
+    </div>
+}
     
-    @if (@Model.ImageFieldVms.Count != 0){
-        <h3>Upload Images</h3>
-        <div id="ImageUploads" class="py-3">
-            @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
-            {
-                @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
+@if (@Model.ImageFieldVms.Count != 0){
+    <h3>Upload Images</h3>
+    <div id="ImageUploads" class="py-3">
+        @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+        {
+            @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
      
-            }
+        }
          
 
-        </div>
-    }
+    </div>
+}
 
-    @if (@Model.VideoFieldVms.Count != 0)
-    {
-        <h3>Upload Videos</h3>
-        <div id="VideoUploads"class="py-2">
-            @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
-            {
-                @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
+@if (@Model.VideoFieldVms.Count != 0)
+{
+    <h3>Upload Videos</h3>
+    <div id="VideoUploads"class="py-2">
+        @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
+        {
+            @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
      
-            }
-        </div>   
+        }
+    </div>   
 
-    }
-    @if (@Model.MapFieldVms.Count != 0)
-    {
-        <h3 class="py-2">Upload Locations</h3>
-        <div id="MapUploads">
-            @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
-            {
+}
+@if (@Model.MapFieldVms.Count != 0)
+{
+    <h3 class="py-2">Upload Locations</h3>
+    <div id="MapUploads">
+        @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
+        {
             @Html.EditorFor(x => x.MapFieldVms[i] , new { index = i} )    
                 
-            }
-        </div>   
+        }
+    </div>   
 
-    }
+}
     
     
-    @if (@Model.QuestionFieldVms.Count != 0)
-    {
-        <h2>Upload Questions</h2>
-        <div class="row">
-<div class="dark-overlay">
-<div class="container">
-<div class="d-flex" >
-        <div class="card bg-light text-center card-form">
-<div class="card-body" id="card">
-        <div id="QuestionUploads">
-            @for (int i = 0; i < @Model.QuestionFieldVms.Count; i++)
-            {
-                @Html.EditorFor(x => x.QuestionFieldVms[i] , new { index = i +1} )    
+@if (@Model.QuestionFieldVms.Count != 0)
+{
+    <h2>Upload Questions</h2>
+    <div class="row">
+        <div class="dark-overlay">
+            <div class="container">
+                <div class="d-flex" >
+                    <div class="card bg-light text-center card-form">
+                        <div class="card-body" id="card">
+                            <div id="QuestionUploads">
+                                @for (int i = 0; i < @Model.QuestionFieldVms.Count; i++)
+                                {
+                                    @Html.EditorFor(x => x.QuestionFieldVms[i] , new { index = i +1} )    
                     
-            }
-            <div class="py-3">
-                <input type="submit" class="btn btn-success" value="save" onclick="disable()" >   
-</div>
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
+                                }
+                                <div class="py-3">
+                                    <input type="submit" class="btn btn-success" value="save" onclick="disable()" >   
+                                </div>
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
         
 }
    
    
     
-    @*@Html.EditorFor(x => x.ImageFieldVms[0] , new { index = 0} )    
+@*@Html.EditorFor(x => x.ImageFieldVms[0] , new { index = 0} )    
     @Html.EditorFor(x => x.ImageFieldVms[1] , new { index = 1} )    
     @Html.EditorFor(x => x.ImageFieldVms[2] , new { index = 2} )    *@
 
    
    
     
-    @*@for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
+@*@for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
     {
                         
      <input asp-for="ImageFieldVms[i].imageFile.Files[0]" type="file"/>
@@ -118,7 +118,7 @@
         
     }*@
         
-    @*<div id="ImageUploads">
+@*<div id="ImageUploads">
     @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
     {
                         
@@ -130,7 +130,7 @@
     
     
     
-    @*
+@*
     <link rel="stylesheet" href="~/css/carousel.css"> 
     
     
@@ -191,7 +191,7 @@
 
      
   
-    @*<div id="ImageUploads">
+@*<div id="ImageUploads">
     @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
     {
         @Html.EditorFor(x => x.ImageFieldVms[i], new { index = i} )
@@ -199,15 +199,15 @@
     }
     </div>*@
     
-    @*<input name="ImageFieldVms[0].imageFile" type="file"/>
+@*<input name="ImageFieldVms[0].imageFile" type="file"/>
     <input asp-for="ImageFieldVms[0].imageName" type="text"/>*@
 
     
-    @*<input asp-for=@Model.ImageFieldVms[0].imageFile type="file"/>
+@*<input asp-for=@Model.ImageFieldVms[0].imageFile type="file"/>
     
    // <input asp-for=@Model.ImageFieldVms[0].imageFile type="file"/>*@
     
-    @*@for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
+@*@for (int i = 0; i < @Model.VideoFieldVms.Length; i++)
     {
         @Html.EditorFor(x => x.VideoFieldVms[i])
 
@@ -217,7 +217,7 @@
         @Html.EditorFor(x => x.MapFieldVms[i])
 
     }*@
-    @*
+@*
     @Html.EditorFor(x => x.imageFieldVM)
 
 
@@ -240,66 +240,14 @@
      
    
     
-    <script>
-        function disable(parameters) {
-            var images = document.getElementsByClassName("ImageUpload");
-            var videos = document.getElementsByClassName("VideoUpload");
-
-            
-
-            for (var i = 0; i < videos.length; i++) {
-                if(videos[i].files.length == 0)
-                {
-                    $(videos[i]).attr('disabled', true);
-
-                }
-            }
-            
-            for (var i = 0; i < images.length; i++) {
-                if(images[i].files.length == 0)
-                {
-                    $(images[i]).attr('disabled', true);
-
-                }
-            }
-            
-          
-        }
-
-        function LastCheck(parameters) {
-            
-        }
-        
-        $(document).ready(function() {
-            $(window).keydown(function(event){
-                if(event.keyCode == 13) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-        });
-    </script>
+   
     
     
-    @*<form id="test" action="CreateIdea">
-        
-    </form>
-    
-    <button onclick="send()"> Remove</button>
-
-    
-    <script>
-        
-        function send() {
-            $("#test").ajaxSubmit({ url: '', type: 'post' });
-
-        }
-        
-        
-    </script>*@    
+ 
          
     
 </form>
 
 </div>
 </body>
+<script src="@Url.Content("~/js/createIdea.js")"></script>
