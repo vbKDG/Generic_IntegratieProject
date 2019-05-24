@@ -67,9 +67,20 @@ namespace DAL
 
         public void updateProject(Project p)
         {
+            foreach (var phase in ctx.phases.Where(ph => ph.project.projectId == p.projectId))
+            {
+                ctx.phases.Remove(ctx.phases.Find(phase.phaseId));
+            }
+            updateSetting(p.Setting);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
             ctx.projects.Update(p);
             Helper.PrintDbContextTrackedEntitiesStates(ctx, "STATES (ProjectRepo.Ctx)");
+            ctx.SaveChanges();
+        }
+
+        public void updateSetting(Setting s)
+        {
+            ctx.Settings.Update(s);
             ctx.SaveChanges();
         }
 

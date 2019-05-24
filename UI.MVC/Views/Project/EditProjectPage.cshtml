@@ -7,7 +7,7 @@
 }
 
 <body>
-    <form asp-controller="Project" asp-action="CreateProject" method="post" enctype="multipart/form-data">
+    <form asp-controller="Project" asp-action="EditProject" method="post" enctype="multipart/form-data">
 
         <section id="contact" class="py-3 text-light">
             <div class="container">
@@ -20,15 +20,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <input asp-for="projectId" type="hidden" class="form-control" placeholder="Title"/>
                                             <input asp-for="name" type="text" class="form-control" placeholder="Title"/>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            @Html.EditorFor(x => x.imageFieldVM, new { index = 0, Edit = true})
-                                        </div>
-                                    </div> 
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -81,6 +76,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <input asp-for="SettingVm.SettingId" type="text" class="form-control" placeholder="Title"/>
                                             <label>Primaire color:</label>
                                             <select asp-for="SettingVm.BackGroundColor1">
                                                 <option class="standard" value="">Standard</option>

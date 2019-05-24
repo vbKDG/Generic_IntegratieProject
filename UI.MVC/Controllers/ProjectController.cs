@@ -109,6 +109,7 @@ namespace UI.MVC.Controllers
                 phaseVm.endDate = phase.endDate;
                 projectVm.phases.Add(phaseVm);
             }
+            projectVm.SettingVm.SettingId = project.Setting.id;
             projectVm.SettingVm.FontFamily = project.Setting.FontFamily;
             projectVm.SettingVm.BackGroundColor1 = project.Setting.BackGroundColor1;
             projectVm.SettingVm.BackGroundColor2 = project.Setting.BackGroundColor2;
@@ -185,6 +186,39 @@ namespace UI.MVC.Controllers
             List<PhaseVM> phases = new List<PhaseVM>();
 
             return View(projectVm);
+        }
+
+        public IActionResult EditProject(ProjectVM projectVm)
+        {
+            Project project = new Project();
+            ICollection<Phase> phases = new List<Phase>();
+            Setting setting = new Setting();
+
+            project.projectId = projectVm.projectId;
+            project.name = projectVm.name;
+            project.description = projectVm.description;
+            project.startDate = projectVm.startDate;
+            project.endDate = projectVm.endDate;
+            
+            foreach (var phaseVm in projectVm.phases)
+            {
+                phases.Add(new Phase
+                {
+                    name = phaseVm.name, description = phaseVm.description, startDate = phaseVm.startDate,
+                    endDate = phaseVm.endDate
+                });
+            }
+            project.phases = phases;
+
+            setting.id = projectVm.SettingVm.SettingId;
+            setting.FontFamily = projectVm.SettingVm.FontFamily;
+            setting.BackGroundColor1 = projectVm.SettingVm.BackGroundColor1;
+            setting.BackGroundColor2 = projectVm.SettingVm.BackGroundColor2;
+            project.Setting = setting;
+            
+            orchestrator.changeProject(project);
+            
+            return RedirectToAction("Projects", "Project");
         }
 
         public IActionResult CreateProject(ProjectVM projectVm)

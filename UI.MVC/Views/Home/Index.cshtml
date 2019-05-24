@@ -106,7 +106,8 @@
             {
                 if (project.Closed == false)
                 {
-                    <div class="column text-center text-black openProjects">
+                    <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                         , new {projectId = project.projectId})'">
                         <h4 id="titleindex" class="text-black">
                             @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
                                 , new {projectId = project.projectId})
@@ -126,7 +127,8 @@
                 }
                 else if (project.Closed == true)
                 {
-                    <div class="column text-center text-black closedProjects">
+                    <div class="column text-center text-black closedProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                             , new {projectId = project.projectId})'">
                         <h4 id="titleindex" class="text-black">
                             @Html.ActionLink(@project.name, "ProjectDetailPage", "Project"
                                 , new {projectId = project.projectId})
@@ -149,7 +151,7 @@
         <div class="row">
             <div class="col text-center py-5">
                 <div id="ProjectsButton" class="col text-center">
-                    <a asp-action="ProjectsGeneral" class="btn btn-success btn-lg">Projects</a>
+                    <a asp-action="ProjectsGeneral" class="btn btn-success btn-lg">More projects</a>
 
                 </div>
             </div>
