@@ -110,7 +110,10 @@ namespace DAL
 
         public Questionnaire readQuestionnaire(int questionnaireId)
         {
-            return ctx.Questionnaires.Find(questionnaireId);
+            ICollection<Questionnaire> questionnaires =
+                ctx.Questionnaires.Where(q => q.QuestionnaireId == questionnaireId)
+                    .Include(q => q.Project).ToList();
+            return questionnaires.ToList()[0];
         }
 
         public QuestionUser readQuestionUser(int questionUserId)

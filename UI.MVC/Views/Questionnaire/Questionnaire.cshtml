@@ -1,113 +1,98 @@
 ﻿@using Domain
 @model FillInQuestionnaireModel
 
-<body>
+<style>
+    .fwn {
+        font-weight:normal;
+    }
+</style>
 
 @using (Html.BeginForm("CreateUserQuestion", "Questionnaire",
     FormMethod.Post))
 {
-    
-    
-   
-    <div class="row center-block">
-        
-    <div class="dark-overlay">
-    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="card bg-light card-form col-md-4">
+            <div class="card-body">
+                <h1>@Model.Questionnaire.Name</h1>
+                <h4>Fill in the questionnaire:</h4>
+                <table class="table">
+                    @foreach (var item in Model.Questions)
+                    {
+                        if (!User.Identity.IsAuthenticated)
+                        {
+                            if (item.QuestionType == QuestionType.MAILADDRESS)
+                            {
+                                <tr class="form-group">
+                                    <td>
+                                        <label>@item.TheQuestion</label>
+                                        <input class="form-control" name="email" type="text" placeholder="Your email address">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        if (item.QuestionType == QuestionType.DROPDOWN)
+                        {
+                            <tr class="form-group">
+                                <td>
+                                    <label>@item.TheQuestion</label><br>
+                                    <select class="form-control" id="ddlOptions" name="Answer-@item.QuestionId-dropdown">
+                                        <option value="0">Please select</option>
+                                        @foreach (var option in item.Options)
+                                        {
+                                            <option value="@option.TheOption">@option.TheOption</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                        }
+                        if (item.QuestionType == QuestionType.OPEN_QUESTION)
+                        {
+                            <tr class="form-group">
+                                <td>
+                                    <label>@item.TheQuestion</label>
+                                    <textarea class="form-control" rows="3" name="Answer-@item.QuestionId-openquestion" type="text"></textarea>
+                                </td>
+                            </tr>
+                        }
+                        if (item.QuestionType == QuestionType.RADIO_BUTTON)
+                        {
+                            <tr class="form-group">
+                                <td>
+                                    <fieldset id="@item.QuestionId">
+                                        <label>@item.TheQuestion</label><br>
+                                        @foreach (var option in item.Options)
+                                        {
+                                            <input id="option-@option.OptionId-@item.QuestionId" type="radio" value="@option.TheOption" name="Answer-@item.QuestionId-radiobutton"/>
+                                            <label class="fwn" for="option-@option.OptionId-@item.QuestionId">@option.TheOption</label><br>
+                                        }
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        }
+                        if (item.QuestionType == QuestionType.CHECK_BOX)
+                        {
+                            <tr class="form-group">
+                                <td>
+                                    <fieldset id="@item.QuestionId">
+                                        <label>@item.TheQuestion</label><br>
+                                        @foreach (var option in item.Options)
+                                        {
+                                            <input id="option-@option.OptionId-@item.QuestionId" type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionId-checkbox"/>
+                                            <label class="fwn" for="option-@option.OptionId-@item.QuestionId">@option.TheOption</label><br>
+                                        }
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <input type="hidden" name="questionnaireId" value="@Model.Questionnaire.QuestionnaireId"/>
+                <input type="hidden" name="projectId" value="@Model.Questionnaire.Project.ProjectId"/>
+                <div class="form-group">
+                    <input type="submit" value="Submit answers" class="btn btn-default btn-success"/>
+                </div>
 
-    <div class="col-lg-4">
-    <div class="card bg-light text-center card-form">
-    <h1>@Model.Questionnaire.Name</h1>
-    <h4>Questionnaire</h4>
-    <div class="card-body">
-    <table class="table">
-        @foreach (var item in Model.Questions)
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                if (item.QuestionType == QuestionType.MAILADDRESS)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
-                            <input name="email" type="text">
-                        </td>
-                    </tr>
-                }
-            }
-            if (item.QuestionType == QuestionType.DROPDOWN)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TheQuestion) <br>
-                        <select id="ddlOptions" name="Answer-@item.QuestionId-dropdown">
-                            <option value="0">Please select</option>
-                            @foreach (var option in item.Options)
-                            {
-                                <option value="@option.TheOption">@option.TheOption</option>
-                            }
-                        </select>
-                    </td>
-                </tr>
-            }
-            if (item.QuestionType == QuestionType.OPEN_QUESTION)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TheQuestion) <br>
-                        <textarea name="Answer-@item.QuestionId-openquestion" type="text"></textarea>
-                    </td>
-                </tr>
-            }
-            if (item.QuestionType == QuestionType.RADIO_BUTTON)
-            {
-                <tr>
-                    <td>
-                        <fieldset id="@item.QuestionId">
-                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
-                            @foreach (var option in item.Options)
-                            {
-                                <input type="radio" value="@option.TheOption" name="Answer-@item.QuestionId-radiobutton"/>
-                                @Html.DisplayFor(modelItem => option.TheOption)<br>
-                            }
-                        </fieldset>
-                    </td>
-                </tr>
-            }
-            if (item.QuestionType == QuestionType.CHECK_BOX)
-            {
-                <tr>
-                    <td>
-                        <fieldset id="@item.QuestionId">
-                            @Html.DisplayFor(modelItem => item.TheQuestion) <br>
-                            @foreach (var option in item.Options)
-                            {
-                                <input type="checkbox" value="@option.TheOption" name="Answer-@item.QuestionId-checkbox"/>
-                                @Html.DisplayFor(modelItem => option.TheOption)<br>
-                            }
-                        </fieldset>
-                    </td>
-                </tr>
-            }
-            
-
-        }
-    
-    </table>
-            
-    <input type="hidden" name="questionnaireId" value="@Model.Questionnaire.QuestionnaireId"/>
-    <div class="form-group">
-        <input type="submit" value="Submit answers" class="btn btn-default btn-success"/>
+            </div>
+        </div>
     </div>
-    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                       </div>
-
-            
-
-    }
-
-</body>
+}

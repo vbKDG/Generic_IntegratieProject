@@ -483,8 +483,13 @@ namespace UI.MVC.Controllers
         public async Task<IActionResult> CreateUserQuestion(IFormCollection form)
         {
             IList<int> questionUserIds = new List<int>();
+            int projectId = 0;
             foreach (var key in form.Keys)
             {
+                if (key == "projectId")
+                {
+                    projectId = Convert.ToInt32(form[key]);
+                }
                 if (key.StartsWith("Answer-"))
                 {
                     var parts = key.Split("-");
@@ -513,7 +518,7 @@ namespace UI.MVC.Controllers
                         $"<a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                 }       
             }
-            return RedirectToAction("Projects", "Project");
+            return RedirectToAction("ProjectDetailPage", "Project", new { projectId = projectId});
         }
         
         public IActionResult ConfirmQuestionnairePage()

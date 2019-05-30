@@ -51,7 +51,9 @@ html, body {
     height: auto;
 }
 
-
+.underlineText:hover {
+    text-decoration: underline;
+}
 
 /*smooth scroll*/
 html {

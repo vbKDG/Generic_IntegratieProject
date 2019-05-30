@@ -20,7 +20,7 @@
         <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})"></form>
         <a href="#" class="nav-link" id="logoutLink" title="Logout">
             <p class="text-dark">
-                <i class="far fa-user"></i><b> Logout </b>
+                <i class="far fa-user"></i><b class="underlineText"> Logout </b>
             </p>
         </a>
     </li>
@@ -30,14 +30,14 @@ else
     <li class="nav-item py-4">
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">
             <p class="text-dark">
-                <i class="far fa-user"></i><b> Register </b>
+                <i class="far fa-user"></i><b class="underlineText"> Register </b>
             </p>
         </a>
     </li>
     <li class="nav-item py-4">
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">
             <p class="text-dark">
-                <i class="far fa-user"></i><b> Log in </b>
+                <i class="far fa-user"></i><b class="underlineText"> Log in </b>
             </p>
         </a>
     </li>

@@ -8,16 +8,14 @@
 #myInput {
     border: 1px solid transparent;
     background-color: #f1f1f1;
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
 }
 
 #myInput[type=text] {
-    width: 90%;
+    width: 95%;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    font-size: 16px;
 }
 
 #myInput[type=submit] {
@@ -38,7 +36,7 @@
     /* prevent horizontal scrollbar */
     overflow-x: hidden;
     /* add padding to account for vertical scrollbar */
-    width: 90%;
+    width: 95%;
 
 }
 

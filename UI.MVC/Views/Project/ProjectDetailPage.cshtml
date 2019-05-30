@@ -6,207 +6,228 @@
 
 <body onload="loadPage('@Model.Project.Setting.BackGroundColor1', '@Model.Project.Setting.BackGroundColor2', '@Model.Project.Setting.FontFamily')">
 <div id="fontFamily">
-    
-    <div class="py-5">
-        <div id="explore-section" class="container">
-            <div class="row">  
-                <div class="col-md-8">
-                    @if (@Model.Project.ImageField != null)
-                    {
-                        <img src=@Model.Project.ImageField.ImageData width="750" height="450"/>
-                    }
-                </div>
-                <div class="col-md-4 center py-5">
-                    <h1 id="titelDetail" class="text-center py-4"><b>@Model.Project.Name</b></h1>
-                    <div class="py-2">
-                        <h2 id="detaildesc"class="py-4">@Model.Project.Description</h2>
 
-                    </div>
+<div class="py-5">
+    <div id="explore-section" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @if (@Model.Project.ImageField != null)
+                {
+                    <img src=@Model.Project.ImageField.ImageData width="750" height="450"/>
+                }
+            </div>
+            <div class="col-md-4 center py-5">
+                <h1 id="titelDetail" class="text-center py-4">
+                    <b>@Model.Project.Name</b>
+                </h1>
+                <div class="py-2">
+                    <h2 id="detaildesc"class="py-4">@Model.Project.Description</h2>
+
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="container-fluid">
-        @if (@Model.Project.Phases.Count > 0)
-        {
-            <h2 class="text-center py-5"><b>    Phases of the project</b></h2>
-            <div class="phaseContainer">
-                <ul class="progressbar">
-                    @for (int i = 0; i < @Model.Project.Phases.Count(); i++)
-                    {
-                        if (i == 0)
-                        {
-                            if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
-                            {
-                                <li class="active popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name<br>@Model.Project.StartDate</li>
-                            }
-                            else
-                            {
-                                <li class="popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name<br>@Model.Project.StartDate</li>
-                            }
-                        }
-                        else if (i == @Model.Project.Phases.Count() - 1)
-                        {
-                            if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
-                            {
-                                <li id="phase-@i" class="active popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name<br>@Model.Project.EndDate</li>
-                            }
-                            else
-                            {
-                                <li id="phase-@i" class="popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name<br>@Model.Project.EndDate</li>
-                            }
-                        }
-                        else
-                        {
-                            if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
-                            {
-                                <li class="active popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name</li>
-                            }
-                            else
-                            {
-                                <li class="popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name</li>
-                            }
+</div>
 
-                        }
-                        <div class="popper-content hide">
-                            <h4>@Model.Project.Phases.ToList()[i].Name</h4>
-                            <p>From @Model.Project.Phases.ToList()[i].StartDate <br>
-                                Till @Model.Project.Phases.ToList()[i].EndDate</p>
-                            <p>@Model.Project.Phases.ToList()[i].Description</p>
-                        </div>
-                    }
-                </ul>
-            </div>
-        }
-    </div>
-    <div class="row py-5">
-        <div class="col-md-8 center-block">
-            @if (@Model.Project.Ideations.Count > 0)
-            {
-                <div class="card bg-light text-center card-form">
-                    <div class="card-body" id="card">
-                        <table class="table">
-                            <h4>Top 5 most popular ideations</h4>
-                            @foreach (var ideation in @Model.Project.Ideations)
-                            {
-                                foreach (var countLikes in Model.LikeAmounts)
-                                {
-                                    if (countLikes.Key == ideation.IdeationId)
-                                    {
-                                        <tr>
-                                            <td>
-                                                <span>Ideation -</span>
-                                                @countLikes.Value
-                                                <i class="glyphicon glyphicon-thumbs-up"></i>
-                                                @foreach (var countComments in Model.CommentAmounts)
-                                                {
-                                                    if (countComments.Key == ideation.IdeationId)
-                                                    {
-                                                        @countComments.Value
-                                                        <i class="glyphicon glyphicon-comment"></i>
-                                                    }
-                                                }
-                                            </td>
-                                            <td>
-                                                @if (ideation.Questions.Count > 0)
-                                                {
-                                                    @ideation.Questions.ToList()[0].Question
-                                                }
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Show ideation", "Ideation", "Idea"
-                                                    , new {ideationId = ideation.IdeationId})
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                            }
-                        </table>
-                        @Html.ActionLink("Show all ideations", "Ideations", "Project"
-                            , new {id = Model.Project.ProjectId})
-                    </div>
-                </div>
-            }
-        </div>
-
-        <div class="col-md-8 center-block">
-            @if (Model.Project.Questionnaires.Count > 0)
-            {
-                <div class="card bg-light card-form">
-                    <div class="card-body" id="card">
-                        <h4 class="text-center">All questionnaires</h4>
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    <p>Questionnaire name</p>
-                                </th>
-                                <th>
-                                    <p>Amount of questions</p>
-                                </th>
-                            </tr>
-                            @foreach (var questionnaire in @Model.Project.Questionnaires)
-                            {
-                                <tr>
-                                    <td>
-                                        @questionnaire.Name
-                                    </td>
-                                    <td>
-                                        @questionnaire.QuestionAmount
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                                            , new {questionnaireId = questionnaire.QuestionnaireId})
-                                    </td>
-                                </tr>
-                            }
-                        </table>
-                        <span class="text-center">
-                            @Html.ActionLink("Show all questionnaires", "Questionnaires", "Questionnaire"
-                                , new {projectId = Model.Project.ProjectId})
-                        </span>
-                    </div>
-                </div>
-            }    
-        </div>
-        </div>
-
-    @if (@Model.IdeationQuestions.Count > 0)
+<div class="container-fluid">
+    @if (@Model.Project.Phases.Count > 0)
     {
-        <h3>Central questions (@Model.IdeationQuestions.Count)</h3>
-        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                @for (var i = 0; i < @Model.IdeationQuestions.Count; i++)
+        <h2 class="text-center py-5">
+            <b> Phases of the project</b>
+        </h2>
+        <div class="phaseContainer">
+            <ul class="progressbar">
+                @for (int i = 0; i < @Model.Project.Phases.Count(); i++)
                 {
                     if (i == 0)
                     {
-                        <div class="item active">
-                            <p>@Model.IdeationQuestions.ToList()[i].Question</p>
-                            <p>@Model.IdeationQuestions.ToList()[i].Description</p>
-                            <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
-                        </div>
+                        if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
+                        {
+                            <li class="active popper" data-toggle="popover">
+                                @Model.Project.Phases.ToList()[i].Name<br>@Model.Project.StartDate</li>
+                        }
+                        else
+                        {
+                            <li class="popper" data-toggle="popover">
+                                @Model.Project.Phases.ToList()[i].Name<br>@Model.Project.StartDate</li>
+                        }
+                    }
+                    else if (i == @Model.Project.Phases.Count() - 1)
+                    {
+                        if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
+                        {
+                            <li id="phase-@i" class="active popper" data-toggle="popover">
+                                @Model.Project.Phases.ToList()[i].Name<br>@Model.Project.EndDate</li>
+                        }
+                        else
+                        {
+                            <li id="phase-@i" class="popper" data-toggle="popover">
+                                @Model.Project.Phases.ToList()[i].Name<br>@Model.Project.EndDate</li>
+                        }
                     }
                     else
                     {
-                        <div class="item">
-                            <p>@Model.IdeationQuestions.ToList()[i].Question</p>
-                            <p>@Model.IdeationQuestions.ToList()[i].Description</p>
-                            <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
-                        </div>
+                        if (@DateTime.Now > @Model.Project.Phases.ToList()[i].StartDate)
+                        {
+                            <li class="active popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name</li>
+                        }
+                        else
+                        {
+                            <li class="popper" data-toggle="popover">@Model.Project.Phases.ToList()[i].Name</li>
+                        }
                     }
+                    <div class="popper-content hide">
+                        <h4>@Model.Project.Phases.ToList()[i].Name</h4>
+                        <p>
+                            From @Model.Project.Phases.ToList()[i].StartDate <br>
+                            Till @Model.Project.Phases.ToList()[i].EndDate</p>
+                        <p>@Model.Project.Phases.ToList()[i].Description</p>
+                    </div>
                 }
-            </div>
-
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            </ul>
         </div>
     }
+</div>
+<div class="row py-5">
+    <div class="col-md-8 center-block">
+        <div class="card bg-light card-form">
+            <div class="card-body" id="card">
+                @if (@Model.Project.Ideations.Count > 0)
+                {
+                    <h4 class="text-center">Top 5 most popular ideations</h4>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Ideation
+                            </th>
+                            <th>
+                                A central question
+                            </th>
+                        </tr>
+                        @foreach (var ideation in @Model.Project.Ideations)
+                        {
+                            foreach (var countLikes in Model.LikeAmounts)
+                            {
+                                if (countLikes.Key == ideation.IdeationId)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span>Ideation -</span>
+                                            @countLikes.Value
+                                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                                            @foreach (var countComments in Model.CommentAmounts)
+                                            {
+                                                if (countComments.Key == ideation.IdeationId)
+                                                {
+                                                    @countComments.Value
+                                                    <i class="glyphicon glyphicon-comment"></i>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (ideation.Questions.Count > 0)
+                                            {
+                                                @ideation.Questions.ToList()[0].Question
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Show ideation", "Ideation", "Idea"
+                                                , new {ideationId = ideation.IdeationId})
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                    @Html.ActionLink("Show all ideations", "Ideations", "Project"
+                        , new {id = Model.Project.ProjectId})
+                }
+                else
+                {
+                    <h4 class="text-center">Unfortunatly there are no ideations for this project yet.</h4>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8 center-block">
+        <div class="card bg-light card-form">
+            <div class="card-body" id="card">
+                @if (Model.Project.Questionnaires.Count > 0)
+                {
+                    <h4 class="text-center">All questionnaires</h4>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <p>Questionnaire name</p>
+                            </th>
+                            <th>
+                                <p>Amount of questions</p>
+                            </th>
+                        </tr>
+                        @foreach (var questionnaire in @Model.Project.Questionnaires)
+                        {
+                            <tr>
+                                <td>
+                                    @questionnaire.Name
+                                </td>
+                                <td>
+                                    @questionnaire.QuestionAmount
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                                        , new {questionnaireId = questionnaire.QuestionnaireId})
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <h4 class="text-center">Unfortunatly there are no questionnaires for this project yet.</h4>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@if (@Model.IdeationQuestions.Count > 0)
+{
+    <h3>Central questions (@Model.IdeationQuestions.Count)</h3>
+    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            @for (var i = 0; i < @Model.IdeationQuestions.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <div class="item active">
+                        <p>@Model.IdeationQuestions.ToList()[i].Question</p>
+                        <p>@Model.IdeationQuestions.ToList()[i].Description</p>
+                        <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="item">
+                        <p>@Model.IdeationQuestions.ToList()[i].Question</p>
+                        <p>@Model.IdeationQuestions.ToList()[i].Description</p>
+                        <a href="http://@Model.IdeationQuestions.ToList()[i].BackgroundInfo">More background info</a>
+                    </div>
+                }
+            }
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}
 </div>
 
 </body>

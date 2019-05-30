@@ -65,17 +65,15 @@
                         </a>
                     }
                 </li>
+                <partial name="_LoginPartial"/>
                 <li class="nav-item">
-                    <partial name="_LoginPartial"/>
+                    <form autocomplete="off" class="navbar-form navbar-left">
+                        <div class="autocomplete">
+                            <input id="myInput" type="text" name="myitem" placeholder="Search a project">
+                        </div>
+                        <button onclick="klik()" id="search" type="button" class="btn btn-success">search</button>
+                    </form>
                 </li>
-                <form autocomplete="off" class="navbar-form navbar-left">
-                    <div class="autocomplete">
-                        <input id="myInput" type="text" name="myitem" placeholder="Search a project">
-                    </div>
-                    <button onclick="klik()" id="search" type="button" class="btn btn-success">search</button>
-                </form>
-
-
             </ul>
         </div>
     </div>

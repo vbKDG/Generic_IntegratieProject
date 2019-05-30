@@ -318,7 +318,7 @@ namespace DAL.EF
             Questionnaire questionnaire3 = new Questionnaire()
             {
                 Name = "Budget",
-                QuestionAmount = 4,
+                QuestionAmount = 6,
                 Project = p2,
                 Questions = new List<Question>(),
             };
@@ -370,7 +370,28 @@ namespace DAL.EF
             Option o14 = new Option() {TheOption = "On the floor", Question = q9};
             Option o15 = new Option() {TheOption = "Hanging in the tree", Question = q9};
             q9.Options = new List<Option>() { o13, o14, o15 };
-            questionnaire3.Questions = new List<Question>() { q6, q7, q8, q9 };
+            Question q10 = new Question()
+            {
+                TheQuestion = "Fill in your email address to confirm your questionnaire answers!",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.MAILADDRESS,
+                IotSetup = null,
+                Options = new List<Option>()
+            };
+            Question q11 = new Question()
+            {
+                TheQuestion = "What priority do you rate this project?",
+                Questionnaire = questionnaire3,
+                QuestionType = QuestionType.DROPDOWN,
+                IotSetup = null,
+                Options = new List<Option>()
+            };
+            Option o16 = new Option() {TheOption = "Low priority", Question = q11};
+            Option o17 = new Option() {TheOption = "Oke priority", Question = q11};
+            Option o18 = new Option() {TheOption = "High priority", Question = q11};
+            q11.Options = new List<Option>() { o16, o17, o18 };
+            
+            questionnaire3.Questions = new List<Question>() { q6, q7, q8, q9, q10, q11 };
             
             //Phases
             Phase ph1 = new Phase() { Project = p1, Name = "Brainstorming",Description = "We are starting this project by gathering input from the community"};
@@ -533,196 +554,8 @@ namespace DAL.EF
                 new Phase{Name = "Deployment",Description = "Implementing the idea's we've received ",StartDate =  new DateTime(2019,5,17),EndDate =  new DateTime(2019,5,20)},
                 new Phase{Name = "Event",Description = "The badminton tournament takes place",StartDate =  new DateTime(2019,5,21),EndDate =  new DateTime(2019,5,23)},
             };
-            Ideation id1 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "Een park voor honden"
-                            },
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "Een park voor katten"
-                            },
-                            
-                        },
-                        Reactions = new List<Reaction>
-                        {
-                            new Reaction
-                            {
-                                Content = "reaction 1 idea 1",
-                                Date = DateTime.Now,
-                                User = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
-                            },
-                            new Reaction
-                            {
-                                Content = "reaction 2 idea 1",
-                                Date = DateTime.Now,
-                                User = userManager.FindByEmailAsync("peter.smet@gmail.com").Result
-                            }
-                        }
-                    },
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            },
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f2"
-                            },
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f3"
-                            }
-                        },
-                        Reactions = new List<Reaction>
-                        {
-                            new Reaction
-                            {
-                                Content = "reaction 1 idea 2",
-                                Date = DateTime.Now,
-                                User = userManager.FindByEmailAsync("jan.jaap@gmail.com").Result
-                            }
-                        }
-                    }
-                }
-            };
-            Ideation id2 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            }
-                        },
-                        Reactions = new List<Reaction>()
-                    }
-                }
-            };
-            Ideation id3 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            }
-                        },
-                        Reactions = new List<Reaction>()
-                    }
-                }
-            };
-            Ideation id4 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            }
-                        },
-                        Reactions = new List<Reaction>()
-                    }
-                }
-            };
-            Ideation id5 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            }
-                        },
-                        Reactions = new List<Reaction>()
-                    }
-                }
-            };
-            Ideation id6 = new Ideation
-            {
-                Ideas = new List<Idea>
-                {
-                    new Idea
-                    {
-                        User = userManager.FindByEmailAsync("super.admin@gmail.com").Result,
-                        Fields = new List<Field>
-                        {
-                            new TextField
-                            {
-                                Required = true,
-                                Text = "test idea2 f1"
-                            }
-                        },
-                        Reactions = new List<Reaction>()
-                    }
-                }
-            };
-            p10.Ideations = new List<Ideation>()
-            {
-                id1, id2, id3, id4, id5, id6
-            };
             p10.ImageField = img10;
             p10.MapField = map10;
-            IdeationQuestion iq10d1 = new IdeationQuestion()
-            {
-                Ideation = id1,
-                Question = "central question d1",
-                Description = "omschrijving centrale vraag d2",
-                BackgroundInfo = "www.google.be"
-            };
-            IdeationQuestion iq10d2 = new IdeationQuestion()
-            {
-                Ideation = id1,
-                Question = "central question d2",
-                Description = "omschrijving centrale vraag d2",
-                BackgroundInfo = "www.google.be"
-            };
-            ctx.IdeationQuestions.Add(iq10d1);
-            ctx.IdeationQuestions.Add(iq10d2);
-            id1.Questions.Add(iq10d1);
-            id1.Questions.Add(iq10d2);
 
             // Parking lot movie 
             Project p11 = new Project();

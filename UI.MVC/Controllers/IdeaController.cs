@@ -447,7 +447,6 @@ namespace UI.MVC.Controllers
        
         public IActionResult CreateIdeation(IdeationVM ideationVm)
         {
-            
             Ideation ideation = new Ideation();
             ideation.TextFieldRange = ideationVm.TextField;
             ideation.ImageFieldRange = ideationVm.ImageField;
@@ -470,9 +469,5 @@ namespace UI.MVC.Controllers
             
             return RedirectToAction("Ideations", "Project", new {id = ideationVm.ProjectId});
         }
-
-        
-        
-       
     }
 }

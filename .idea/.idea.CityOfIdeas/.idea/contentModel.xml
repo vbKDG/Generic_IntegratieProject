@@ -122,7 +122,6 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
         <e p="app.db" t="Include" />
-        <e p="app.db-journal" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -402,6 +401,7 @@
             <e p="logoutForm.js" t="Include" />
             <e p="MapEditor.js" t="Include" />
             <e p="phaseLine.js" t="Include" />
+            <e p="projectPage.js" t="Include" />
             <e p="QuestionFieldEditor.js" t="Include" />
             <e p="searchBarAutoComplete.js" t="Include" />
             <e p="showCorrectProject.js" t="Include" />
