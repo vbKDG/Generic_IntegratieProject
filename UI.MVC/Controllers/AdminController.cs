@@ -26,7 +26,6 @@ namespace UI.MVC.Controllers
         [Authorize(Roles="SuperAdmin")]
         public IActionResult ManageAdmins()
         {
-           // var usersOfRole =  _userManager.GetUsersInRoleAsync("Admin");
            var usersOfRole = orchestrator.GetUsersInRoleAsync("Admin");
             return View(usersOfRole);
         }

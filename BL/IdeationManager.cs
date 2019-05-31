@@ -25,7 +25,7 @@ namespace BL
 
             ideationRepo = new DAL.IdeationRepository(unitOfWorkManager.UnitOfWork);
         }
-
+        
         public void createFaqAnswer(string userId, string answer, int faqId)
         {
             ideationRepo.addFaqAnswer(userId, answer, faqId);

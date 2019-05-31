@@ -333,6 +333,7 @@ namespace UI.MVC.Controllers
                 if (field.GetType() == typeof(QuestionField))
                 {
                     var questionField = (QuestionField) field;
+                    Console.WriteLine("question id: " + questionField.Question.QuestionId);
                     questionFieldVms.Add(new QuestionFieldVm{Question = questionField.Question});
                 }
             }

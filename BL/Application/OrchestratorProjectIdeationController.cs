@@ -13,7 +13,6 @@ namespace BL.Application
         
         private IIdeationManager ideationMgr;
         private IProjectManager projectMgr;
-        private IQuestionnaireManager questionnaireMgr;
         private UserManager<ApplicationUser> UserManager;
 
         public OrchestratorProjectIdeationController(UserManager<ApplicationUser> userManager)
@@ -22,8 +21,6 @@ namespace BL.Application
             uowManager = new UnitOfWorkManager();
             ideationMgr = new IdeationManager(uowManager);
             projectMgr = new ProjectManager(uowManager);
-            questionnaireMgr = new QuestionnaireManager(uowManager);
-            
         }
 
         #region User
@@ -57,7 +54,6 @@ namespace BL.Application
         }
         #endregion
        
-        
         #region Ideation
         
         public IEnumerable<Faq> getFaqs()
@@ -83,7 +79,6 @@ namespace BL.Application
         public IEnumerable<Ideation> getIdeations(int projectId)
         {
             return ideationMgr.getIdeations(projectId);
-
         }
 
         public IEnumerable<IdeationQuestion> GetIdeationQuestionsForProject(int projectId)
@@ -273,119 +268,5 @@ namespace BL.Application
         }
 
         #endregion
-
-        /*#region Questionnaire
-
-         public IEnumerable<Questionnaire> getQuestionnaires(int id)
-         {
-             return questionnaireMgr.getQuestionnaires(id);
-         }
-
-        public IEnumerable<IotSetup> getIotSetups()
-        {
-            return questionnaireMgr.getIotSetups();
-        }
-
-        public IEnumerable<Question> getQuestions(int id)
-        {
-            return questionnaireMgr.getQuestions(id);
-
-        }
-
-        public IEnumerable<Option> getOptions(int questionId)
-        {
-            return questionnaireMgr.getOptions(questionId);
-        }
-
-        public Questionnaire getQuestionnaire(int id)
-        {
-            return questionnaireMgr.getQuestionnaire(id);
-
-        }
-
-        public Question getQuestion(int id)
-        {
-            return questionnaireMgr.getQuestion(id);
-
-        }
-
-        public IEnumerable<QuestionUser> getQuestionUsers(int questionaireId)
-        {
-            return questionnaireMgr.getQuestionUsers(questionaireId);
-
-        }
-
-        public void addQuestionnaire(List<Question> questions, string name, int questionAmount, int projectId)
-        {
-            questionnaireMgr.addQuestionnaire(questions, name, questionAmount, projectId);
-            uowManager.Save();
-
-        }
-
-        public void addQuestion(string question, QuestionType questionType)
-        {
-             questionnaireMgr.addQuestion(question, questionType);
-             uowManager.Save();
-
-        }
-
-        public void addQuestion(Question question)
-        {
-             questionnaireMgr.addQuestion(question);
-            uowManager.Save();
-        }
-
-        public void addOption(string option, Question question)
-        {
-             questionnaireMgr.addOption(option, question);
-             uowManager.Save();
-        }
-
-        public void changeQuestionnaire(Questionnaire q)
-        {
-             questionnaireMgr.changeQuestionnaire(q);
-             uowManager.Save();
-        }
-
-        public void removeQuestionnaire(int id)
-        {
-            questionnaireMgr.removeQuestionnaire(id);
-            uowManager.Save();        }
-
-        public void addQuestionUser(int userId, int questionId, string answer)
-        {
-            uowManager.Save();
-        }
-
-        public void removeQuestionUser(int questionUserId)
-        {
-            questionnaireMgr.removeQuestionUser(questionUserId);
-            uowManager.Save();
-            
-        }
-
-        public void changeQuestion(Question q)
-        {
-            questionnaireMgr.changeQuestion(q);
-            uowManager.Save();        }
-
-        public void removeQuestion(int id)
-        {
-            questionnaireMgr.removeQuestion(id);
-            uowManager.Save();        }
-
-        public void changeOption(Option o)
-        {
-            questionnaireMgr.changeOption(o);
-            uowManager.Save();
-            
-        }
-
-        public void removeOption(int optionId)
-        {
-            questionnaireMgr.removeOption(optionId);
-            uowManager.Save();        }
-
-        #endregion*/
     }
 }

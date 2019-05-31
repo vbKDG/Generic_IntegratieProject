@@ -174,7 +174,7 @@ namespace UI.MVC.Controllers
             
             foreach (var key in form.Keys)
             {
-                if (key == "questionnaire.id")
+                if (key == "Questionnaire.QuestionnaireId")
                 {
                     oldQuestionnaireId = Convert.ToInt32(form[key]);
                 }
@@ -243,7 +243,7 @@ namespace UI.MVC.Controllers
             }
             foreach (var key in form.Keys)
             {
-                if (key == "questionnaire.name")
+                if (key == "Questionnaire.Name")
                 {
                     oldQuestionnaireName = form[key];
                 }
@@ -349,7 +349,7 @@ namespace UI.MVC.Controllers
         {
             foreach (var key in form.Keys)
             {
-                if (key == "id")
+                if (key == "QuestionnaireId")
                 {
                     int questionnaireId = Convert.ToInt32(form[key]);
                     IList<Question> questions = orchestrator.getQuestions(questionnaireId).ToList();
@@ -412,14 +412,14 @@ namespace UI.MVC.Controllers
             }
             foreach (var key in form.Keys)
             {
-                if (key == "projectId")
+                if (key == "ProjectId")
                 {
                     foreach (var id in form[key])
                     {
                         projectId = Convert.ToInt32(id);
                     }
                 }
-                if (key == "questionnaire.name")
+                if (key == "Questionnaire.Name")
                 {
                     foreach (var name in form[key])
                     {

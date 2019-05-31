@@ -21,6 +21,7 @@ namespace DAL
                 throw new ArgumentNullException("unitOfWork");
 
             ctx = unitOfWork.Context;
+            //ctx = new ApplicationDbContext();
         }
         
         public IEnumerable<Ideation> readIdeations(int projectId)
@@ -143,7 +144,7 @@ namespace DAL
             Report report = ctx.Reports.Find(reportId);
             report.SendToAdmin = true;
             ctx.Reports.Update(report);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void blockUser(string userId)
@@ -151,13 +152,13 @@ namespace DAL
             ApplicationUser user = ctx.Users.Find(userId);
             user.Blocked = true;
             ctx.Users.Update(user);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void updateReaction(Reaction reaction)
         {
             ctx.Reactions.Update(reaction);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void approveReaction(int reactionId)
@@ -166,7 +167,7 @@ namespace DAL
             reaction.Approved = true;
             reaction.Disapproved = false;
             ctx.Reactions.Update(reaction);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void disapproveReaction(int reactionId)
@@ -175,7 +176,7 @@ namespace DAL
             reaction.Disapproved = true;
             reaction.Approved = false;
             ctx.Reactions.Update(reaction);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void approveIdea(int ideaId)
@@ -184,7 +185,7 @@ namespace DAL
             idea.Approved = true;
             idea.Disapproved = false;
             ctx.Ideas.Update(idea);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void disapproveIdea(int ideaId)
@@ -193,7 +194,7 @@ namespace DAL
             idea.Disapproved = true;
             idea.Approved = false;
             ctx.Ideas.Update(idea);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
 
         public void updateIdeation(Ideation i)
@@ -275,7 +276,7 @@ namespace DAL
                 like.LikeTime = DateTime.Now;
                 like.Idea = ctx.Ideas.Find(ideaId);
                 ctx.IdeaLikes.Add(like);
-                ctx.SaveChanges();
+                ctx.CommitChanges();
             }
         }
 
@@ -291,7 +292,7 @@ namespace DAL
                 like.User = ctx.Users.Find(userId);
                 like.LikeTime = DateTime.Now;
                 ctx.ReactionLikes.Add(like);
-                ctx.SaveChanges();
+                ctx.CommitChanges();
             }
         }
 
@@ -315,7 +316,7 @@ namespace DAL
                 }
             }
             ctx.Reactions.Add(reaction);
-            ctx.SaveChanges();
+            ctx.CommitChanges();
         }
         
         public void createIdea(Idea i)

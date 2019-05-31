@@ -10,7 +10,6 @@ namespace BL.Application
     {
         private UnitOfWorkManager uowManager;
         
-      //  private IIdeationManager ideationMgr;
         private IProjectManager projectMgr;
         private IQuestionnaireManager questionnaireMgr;
         private UserManager<ApplicationUser> UserManager;
@@ -19,11 +18,10 @@ namespace BL.Application
         {
             UserManager = userManager;
             uowManager = new UnitOfWorkManager();
-           // ideationMgr = new IdeationManager(uowManager);
             projectMgr = new ProjectManager(uowManager);
             questionnaireMgr = new QuestionnaireManager(uowManager);
-            
         }
+        
         #region User
 
         public Task<IList<DAL.EF.ApplicationUser>> GetUsersInRoleAsync(string role)
@@ -60,7 +58,7 @@ namespace BL.Application
         
         #endregion
         
-         #region Project
+        #region Project
 
         public IEnumerable<Project> getProjects()
         {
