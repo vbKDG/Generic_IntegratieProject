@@ -29,6 +29,7 @@ namespace D.UI.MVC.Models.Projects
         public int AmountOfComments { get; set; }
         public int CombinedTotal { get; set; }
         public int Progress { get; set; }
+        public bool Ongoing { get; set; }
     }
 
     public class PhaseVM

@@ -87,21 +87,25 @@
                 </h3>
             </div>
         </div>
-        <div id="showClosed" class="row">
-            <div class="col text-center py-5">
-                <button id="showClosedBtn" class="btn btn-success btn-lg">
-                    Show Closed projects
-                </button>
+
+        <div class="row">
+            <div class="col text-center py-2">
+                <div class="btn-group" data-toggle="buttons">
+                    <label id="openProjects" class="btn btn-success active">
+                        <input type="radio" name="options" autocomplete="off" checked> Open
+                    </label>
+                    <label id="ongoingProjects" class="btn btn-success">
+                        <input type="radio" name="options" autocomplete="off"> Ongoing
+                    </label>
+                    <label id="closedProjects" class="btn btn-success">
+                        <input type="radio" name="options" autocomplete="off"> Closed
+                    </label>
+                </div>
             </div>
         </div>
-        <div id="showOpen" class="row">
-            <div class="col text-center py-5">
-                <button id="showOpenBtn" class="text-center btn btn-success btn-lg">
-                    Show Open projects
-                </button>
-            </div>
-        </div>
-        <div id="rowPictures"class="row">
+        
+        
+        <div id="rowPictures" class="row">
             @foreach (var project in @Model)
             {
                 if (project.Closed == false)
@@ -146,6 +150,28 @@
                         </div>
                     </div>
                 }
+                
+                if (project.Ongoing == true)
+                {
+                    <div class="column text-center text-black ongoingProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                                                                                             , new {projectId = project.ProjectId})'">
+                        <h4 id="titleindex" class="text-black">
+                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
+                                , new {projectId = project.ProjectId})
+                        </h4>
+                        <img src="@project.Base64Image" width="365" height="200"/>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                        </div>
+                        <div>
+                            <p class="text-dark">
+                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                <i class="far fa-heart"></i> @project.AmountOfLikes
+                                <i class="far fa-comments"></i> @project.AmountOfComments
+                            </p>
+                        </div>
+                    </div>
+                }
             }
         </div>
         <div class="row">
@@ -168,81 +194,4 @@
         <i class="fas fa-arrow-up fa-2x"></i>
     </a>
 </div>
-
-@*
-<div class="col text-center py-5">
-    <h2>Recent Activities</h2>
-</div>
-<section id="Recent" class="p-5">
-    <div class="container.flow">
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card bg-info text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-dark text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-info text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card bg-dark text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-info text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-dark text-white text-center">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/images/icon-person.png" alt="Card image" style="width: 20%">
-                        <h3 class="text-light">"Naam"</h3>
-                        Deze persoon heeft gereageerd op.....
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-*@
-
-
-
-
-
-
-
-
 </body>

@@ -97,10 +97,18 @@ namespace UI.MVC.Controllers
                 
                 if (project.Closed)
                 {
+                    if (projectVm.Progress < 100 && projectVm.Progress > 0)
+                    {
+                        projectVm.Ongoing = true;
+                    }
                     projectVmsClosed.Add(projectVm);  
                 } 
-                else if (!project.Closed)
+                if (!project.Closed)
                 {
+                    if (projectVm.Progress < 100 && projectVm.Progress > 0)
+                    {
+                        projectVm.Ongoing = true;
+                    }
                     projectVmsOpen.Add(projectVm);
                 }
             }
