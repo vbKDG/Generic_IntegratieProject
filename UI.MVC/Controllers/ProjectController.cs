@@ -111,23 +111,37 @@ namespace UI.MVC.Controllers
             Project p = orchestrator.getProject(projectId);
             p.Phases = p.Phases.OrderBy(x => x.StartDate).ToList();
             p.Ideations = orchestrator.getIdeations(projectId).ToList();
-            foreach (var ideation in p.Ideations)
+            foreach (var questionnaire in p.Questionnaires.ToList())
             {
-                var likeAmount = 0;
-                var commentAmount = 0;
-                foreach (var idea in ideation.Ideas)
+                if (questionnaire.Closed == true)
                 {
-                    likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.IdeaId);
-                    foreach (var reaction in idea.Reactions)
-                    {
-                        likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.ReactionId);
-                    } 
-                    commentAmount = commentAmount + orchestrator.getReactions(idea.IdeaId).ToList().Count;
+                    p.Questionnaires.Remove(questionnaire);
                 }
-                var total = likeAmount + commentAmount;
-                combinedDictionary.Add(ideation.IdeationId, total);
-                likeDictionary.Add(ideation.IdeationId, likeAmount);
-                commentDictionary.Add(ideation.IdeationId, commentAmount);
+            }
+            foreach (var ideation in p.Ideations.ToList())
+            {
+                if (ideation.Closed == false)
+                {
+                    var likeAmount = 0;
+                    var commentAmount = 0;
+                    foreach (var idea in ideation.Ideas)
+                    {
+                        likeAmount = likeAmount + orchestrator.getIdeaLikes(idea.IdeaId);
+                        foreach (var reaction in idea.Reactions)
+                        {
+                            likeAmount = likeAmount + orchestrator.getReactionLikes(reaction.ReactionId);
+                        } 
+                        commentAmount = commentAmount + orchestrator.getReactions(idea.IdeaId).ToList().Count;
+                    }
+                    var total = likeAmount + commentAmount;
+                    combinedDictionary.Add(ideation.IdeationId, total);
+                    likeDictionary.Add(ideation.IdeationId, likeAmount);
+                    commentDictionary.Add(ideation.IdeationId, commentAmount);
+                }
+                else
+                {
+                    p.Ideations.Remove(ideation);
+                }
             }
 
             var counter = 0;

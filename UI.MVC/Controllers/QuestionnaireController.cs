@@ -461,6 +461,24 @@ namespace UI.MVC.Controllers
             orchestrator.addQuestionnaire(questions, questionnaireName, questions.Count, projectId);
             return RedirectToAction("Projects","Project");
         }
+        
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public IActionResult CloseQuestionnaire(int questionnaireId)
+        {
+            Questionnaire questionnaire = orchestrator.getQuestionnaire(questionnaireId);
+            questionnaire.Closed = true;
+            orchestrator.changeQuestionnaire(questionnaire);
+            return RedirectToAction("Questionnaires", "Questionnaire", new {projectId = questionnaire.Project.ProjectId});
+        }
+        
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public IActionResult OpenQuestionnaire(int questionnaireId)
+        {
+            Questionnaire questionnaire = orchestrator.getQuestionnaire(questionnaireId);
+            questionnaire.Closed = false;
+            orchestrator.changeQuestionnaire(questionnaire);
+            return RedirectToAction("Questionnaires", "Questionnaire", new {projectId = questionnaire.Project.ProjectId});
+        }
 
         [HttpPost]
         public IActionResult AnswerQuestionFieldIdea(IFormCollection form)

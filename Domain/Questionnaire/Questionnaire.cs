@@ -13,6 +13,7 @@ namespace Domain
         public int QuestionAmount { get; set; }
         public Project Project { get; set; }
         public ICollection<Question> Questions { get; set; }
+        public bool Closed { get; set; }
 
         public Questionnaire()
         {

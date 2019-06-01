@@ -23,6 +23,7 @@ namespace BL
         void blockUser(string userId);
         void createFaqAnswer(string userId, string answer, int faqId);
         void createFaq(string question, string userId);
+        void changeIdeation(Ideation i);
         
         Ideation getIdeation(int ideationId);
         Idea getIdea(int id);

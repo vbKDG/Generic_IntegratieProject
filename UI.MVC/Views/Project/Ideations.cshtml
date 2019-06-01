@@ -32,7 +32,20 @@
                 @Html.ActionLink("Show ideas", "Ideation", "Idea"
                     , new {ideationId = item.IdeationId})
             </td>
-
+            @if (item.Closed)
+            {
+                <td>
+                    @Html.ActionLink("Open", "OpenIdeation", "Idea"
+                        , new {ideationId = item.IdeationId})
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Close", "CloseIdeation", "Idea"
+                        , new {ideationId = item.IdeationId})
+                </td>
+            }
         </tr>
     }
 </table>

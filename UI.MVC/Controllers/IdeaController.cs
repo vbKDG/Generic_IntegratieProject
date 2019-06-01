@@ -352,6 +352,24 @@ namespace UI.MVC.Controllers
 
             return  PartialView("Idea",ideaVm);
         }
+        
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public IActionResult CloseIdeation(int ideationId)
+        {
+            Ideation ideation = orchestrator.getIdeation(ideationId);
+            ideation.Closed = true;
+            orchestrator.changeIdeation(ideation);
+            return RedirectToAction("Ideations", "Project", new {id = ideation.Project.ProjectId});
+        }
+        
+        [Authorize(Roles = "SuperAdmin, Admin")]
+        public IActionResult OpenIdeation(int ideationId)
+        {
+            Ideation ideation = orchestrator.getIdeation(ideationId);
+            ideation.Closed = false;
+            orchestrator.changeIdeation(ideation);
+            return RedirectToAction("Ideations", "Project", new {id = ideation.Project.ProjectId});
+        }
 
         public IActionResult AnswerFaq(IFormCollection form)
         {

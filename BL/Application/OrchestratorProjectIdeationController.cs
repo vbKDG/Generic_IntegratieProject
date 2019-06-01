@@ -60,6 +60,12 @@ namespace BL.Application
         {
             return ideationMgr.getFaqs();
         }
+        
+        public void changeIdeation(Ideation i)
+        {
+            ideationMgr.changeIdeation(i);
+            uowManager.Save();
+        }
 
         public void createFaqAnswer(string userId, string answer, int faqId)
         {
@@ -257,7 +263,6 @@ namespace BL.Application
         {
              projectMgr.changeProject(p);
              uowManager.Save();
-
         }
 
         public void removeProject(int id)

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<D.UI.MVC.Models.Projects.ProjectVM>
+﻿@model D.UI.MVC.Models.Projects.ProjectsVM
 
 <script src="~/js/showCorrectProject.js" asp-append-version="true"></script>
 
@@ -104,9 +104,8 @@
             </div>
         </div>
         
-        
         <div id="rowPictures" class="row">
-            @foreach (var project in @Model)
+            @foreach (var project in @Model.Projects)
             {
                 if (project.Closed == false)
                 {
@@ -150,7 +149,9 @@
                         </div>
                     </div>
                 }
-                
+            }
+            @foreach (var project in @Model.OngoingProjects)
+            {
                 if (project.Ongoing == true)
                 {
                     <div class="column text-center text-black ongoingProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
@@ -178,14 +179,10 @@
             <div class="col text-center py-5">
                 <div id="ProjectsButton" class="col text-center">
                     <a asp-action="ProjectsGeneral" class="btn btn-success btn-lg">More projects</a>
-
                 </div>
             </div>
         </div>
-
     </div>
-
-
 </section>
 
 

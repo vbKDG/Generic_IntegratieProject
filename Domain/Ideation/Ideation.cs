@@ -9,7 +9,8 @@ namespace Domain
         [Required]     
         public int IdeationId { get; set; }     
         public Project Project { get; set; }
-        public Boolean AdminOnly { get; set; }
+        public bool AdminOnly { get; set; }
+        public bool Closed { get; set; }
         public ICollection<IdeationQuestion> Questions { get; set; }
         public ICollection<Idea> Ideas { get; set; }
         

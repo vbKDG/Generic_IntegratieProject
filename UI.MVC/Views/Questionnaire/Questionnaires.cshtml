@@ -41,6 +41,20 @@
                     @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
                         , new { questionnaireId = item.QuestionnaireId })
                 </td>
+                if (item.Closed)
+                {
+                    <td>
+                        @Html.ActionLink("Open", "OpenQuestionnaire", "Questionnaire"
+                            , new {questionnaireId = item.QuestionnaireId})
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Close", "CloseQuestionnaire", "Questionnaire"
+                            , new {questionnaireId = item.QuestionnaireId})
+                    </td>
+                }
                 <td>
                     @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
                         , new {questionnaireId = item.QuestionnaireId}) | 

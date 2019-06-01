@@ -38,9 +38,12 @@ namespace UI.MVC.Controllers
         
         public IActionResult Index()
         {
+            ProjectsVM projectsVm = new ProjectsVM();
+            projectsVm.Projects = new List<ProjectVM>();
+            projectsVm.OngoingProjects = new List<ProjectVM>();
             ICollection<ProjectVM> projectVmsOpen = new List<ProjectVM>();
             ICollection<ProjectVM> projectVmsClosed = new List<ProjectVM>();
-            ICollection<ProjectVM> allProjectVms = new List<ProjectVM>();
+            ICollection<ProjectVM> projectVmsOngoing = new List<ProjectVM>();
             ICollection<Project> projects = orchestrator.getProjects().ToList();
             Dictionary<int, int> likeDictionary = new Dictionary<int, int>();
             Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
@@ -97,19 +100,16 @@ namespace UI.MVC.Controllers
                 
                 if (project.Closed)
                 {
-                    if (projectVm.Progress < 100 && projectVm.Progress > 0)
-                    {
-                        projectVm.Ongoing = true;
-                    }
                     projectVmsClosed.Add(projectVm);  
                 } 
                 if (!project.Closed)
                 {
-                    if (projectVm.Progress < 100 && projectVm.Progress > 0)
-                    {
-                        projectVm.Ongoing = true;
-                    }
                     projectVmsOpen.Add(projectVm);
+                }
+                if (projectVm.Progress < 100 && projectVm.Progress > 0)
+                {
+                    projectVm.Ongoing = true;
+                    projectVmsOngoing.Add(projectVm);
                 }
             }
             var counterOpen = 0;
@@ -122,7 +122,7 @@ namespace UI.MVC.Controllers
                 }
                 else
                 {
-                    allProjectVms.Add(project);
+                    projectsVm.Projects.Add(project);
                 }
             }
             var counterClosed = 0;
@@ -135,10 +135,23 @@ namespace UI.MVC.Controllers
                 }
                 else
                 {
-                    allProjectVms.Add(project);
+                    projectsVm.Projects.Add(project);
                 }
             }
-            return View(allProjectVms);
+            var counterOngoing = 0;
+            foreach (var project in projectVmsOngoing.OrderByDescending(i => i.CombinedTotal))
+            {
+                counterOngoing++;
+                if (counterOngoing > 3)
+                {
+                    projectVmsOngoing.Remove(project);
+                }
+                else
+                {
+                    projectsVm.OngoingProjects.Add(project);
+                }
+            }
+            return View(projectsVm);
         }
 
         public IActionResult ProjectsGeneral()

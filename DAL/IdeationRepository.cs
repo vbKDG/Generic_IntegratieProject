@@ -199,7 +199,8 @@ namespace DAL
 
         public void updateIdeation(Ideation i)
         {
-            throw new System.NotImplementedException();
+            ctx.Ideations.Update(i);
+            ctx.SaveChanges();
         }
 
         public void deleteIdeation(int id)
