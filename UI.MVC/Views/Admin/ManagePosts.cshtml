@@ -7,6 +7,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="~/js/changeProjectPosts.js" asp-append-version="true"></script>
 
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
 <h1>Current project</h1>
 <select onchange = "redirect(this.value)">
     @foreach (var project in Model.Projects)

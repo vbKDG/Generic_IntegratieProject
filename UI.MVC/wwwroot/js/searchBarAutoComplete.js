@@ -29,6 +29,10 @@ function klik() {
     });
 }
 
+function previousPage() {
+    window.history.back();
+}
+
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
