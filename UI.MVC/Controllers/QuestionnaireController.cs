@@ -153,6 +153,7 @@ namespace UI.MVC.Controllers
             QuestionnaireQuestion combinedModel = new QuestionnaireQuestion();
             combinedModel.Questionnaire = orchestrator.getQuestionnaire(questionnaireId);
             combinedModel.Questions = orchestrator.getQuestions(questionnaireId);
+            combinedModel.ProjectId = combinedModel.Questionnaire.Project.ProjectId;
             return View(combinedModel);
         }
 
@@ -169,6 +170,7 @@ namespace UI.MVC.Controllers
         {
             var oldQuestionnaireId = 0;
             var oldQuestionnaireName = "";
+            var projectId = 0;
             ICollection<String> questionOptionKey = new List<string>();
             ICollection<String> questionOptionValue = new List<string>();
             
@@ -177,6 +179,11 @@ namespace UI.MVC.Controllers
                 if (key == "Questionnaire.QuestionnaireId")
                 {
                     oldQuestionnaireId = Convert.ToInt32(form[key]);
+                }
+
+                if (key == "ProjectId")
+                {
+                    projectId = Convert.ToInt32(form[key]);
                 }
             }
             IList<QuestionUser> questionUsers = orchestrator.getQuestionUsers(oldQuestionnaireId).ToList();
@@ -340,13 +347,14 @@ namespace UI.MVC.Controllers
             }
             oldQuestionnaire.QuestionAmount = orchestrator.getQuestions(oldQuestionnaire.QuestionnaireId).Count();
             orchestrator.changeQuestionnaire(oldQuestionnaire);
-            return RedirectToAction("Projects","Project");
+            return RedirectToAction("Questionnaires","Questionnaire", new { projectId = projectId});
         }
 
         [Authorize(Roles="SuperAdmin, Admin")]
         [HttpPost]
         public IActionResult DeleteQuestionnaire(IFormCollection form)
         {
+            var projectId = 0;
             foreach (var key in form.Keys)
             {
                 if (key == "QuestionnaireId")
@@ -369,8 +377,12 @@ namespace UI.MVC.Controllers
                     }
                     orchestrator.removeQuestionnaire(questionnaireId);
                 }
+                if (key == "Project.ProjectId")
+                {
+                    projectId = Convert.ToInt32(form[key]);
+                }
             }
-            return RedirectToAction("Projects","Project");
+            return RedirectToAction("Questionnaires","Questionnaire", new { projectId = projectId});
         }
         
         [Authorize(Roles="SuperAdmin, Admin")]
@@ -459,7 +471,7 @@ namespace UI.MVC.Controllers
                 }
             }
             orchestrator.addQuestionnaire(questions, questionnaireName, questions.Count, projectId);
-            return RedirectToAction("Projects","Project");
+            return RedirectToAction("Questionnaires", "Questionnaire", new {projectId = projectId});
         }
         
         [Authorize(Roles = "SuperAdmin, Admin")]

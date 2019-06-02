@@ -1,6 +1,7 @@
 ﻿@using Domain
 @model QuestionResultModel
 
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
 <h1>Questionnaire results</h1>
 <h3>Questionnaire: @Model.Questionnaire.Name</h3>
 <p>The questionnaire has been answered @Model.AnsweredQuestionAmount time(s).</p>

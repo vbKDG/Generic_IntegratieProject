@@ -8,14 +8,17 @@ $(document).ready(function() {
         
         $('<div></div>')
             .attr('id', 'dynamicDiv' + numberOfFields)
+            .attr('class', 'col-md-13')
             .appendTo('#fields');
-        $('<hr>').appendTo('#dynamicDiv' + numberOfFields);
-        $('<h5>What do you want to ask?</h5>').appendTo('#dynamicDiv' + numberOfFields);
+        $('<label>What do you want to ask?</label>')
+            .attr('class', 'col-md-16')
+            .appendTo('#dynamicDiv' + numberOfFields);
         $('<input type="text" />')
             .attr('name', 'question.question-' + numberOfFields)
+            .attr('class', 'form-control')
+            .attr('placeholder', 'Your new question')
             .appendTo('#dynamicDiv' + numberOfFields);
-        $('<br>').appendTo('#dynamicDiv' + numberOfFields);
-        $('<h5>What type of a question is this?</h5>').appendTo('#dynamicDiv' + numberOfFields);
+        $('<label>What type of a question is this?</label>').appendTo('#dynamicDiv' + numberOfFields);
         $('<fieldset></fieldset>')
             .attr('id', 'dynamicFieldset' + numberOfFields)
             .appendTo('#dynamicDiv' + numberOfFields);
@@ -24,36 +27,50 @@ $(document).ready(function() {
             .attr('name', 'dynamicFieldset' + numberOfFields)
             .attr('value', 'textarea')
             .appendTo('#dynamicFieldset' + numberOfFields);
-        $('<span> Text area</span>').appendTo('#dynamicFieldset' + numberOfFields);
+        $('<label>Text area</label>')
+            .attr('for', 'dynamicTextArea' + numberOfFields)
+            .attr('class', 'fwn')
+            .appendTo('#dynamicFieldset' + numberOfFields);
         $('<br>').appendTo('#dynamicFieldset' + numberOfFields);
         $('<input type="radio" />')
             .attr('id', 'dynamicEmail' + numberOfFields)
             .attr('name', 'dynamicFieldset' + numberOfFields)
             .attr('value', 'email')
             .appendTo('#dynamicFieldset' + numberOfFields);
-        $('<span> E-mail field</span>').appendTo('#dynamicFieldset' + numberOfFields);
+        $('<label>E-mail field</label>')
+            .attr('for', 'dynamicEmail' + numberOfFields)
+            .attr('class', 'fwn')
+            .appendTo('#dynamicFieldset' + numberOfFields);
         $('<br>').appendTo('#dynamicFieldset' + numberOfFields);
         $('<input type="radio" />')
             .attr('id', 'dynamicDropDown' + numberOfFields)
             .attr('name', 'dynamicFieldset' + numberOfFields)
             .attr('value', 'dropdown')
             .appendTo('#dynamicFieldset' + numberOfFields);
-        $('<span> Dropdown menu</span>').appendTo('#dynamicFieldset' + numberOfFields);
+        $('<label>Dropdown menu</label>')
+            .attr('for', 'dynamicDropDown' + numberOfFields)
+            .attr('class', 'fwn')
+            .appendTo('#dynamicFieldset' + numberOfFields);
         $('<br>').appendTo('#dynamicFieldset' + numberOfFields);
         $('<input type="radio" />')
             .attr('id', 'dynamicRadioButton' + numberOfFields)
             .attr('name', 'dynamicFieldset' + numberOfFields)
             .attr('value', 'radiobutton')
             .appendTo('#dynamicFieldset' + numberOfFields);
-        $('<span> Radio buttons</span>').appendTo('#dynamicFieldset' + numberOfFields);
+        $('<label>Radio buttons</label>')
+            .attr('for', 'dynamicRadioButton' + numberOfFields)
+            .attr('class', 'fwn')
+            .appendTo('#dynamicFieldset' + numberOfFields);
         $('<br>').appendTo('#dynamicFieldset' + numberOfFields);
         $('<input type="radio" />')
             .attr('id', 'dynamicCheckBox' + numberOfFields)
             .attr('name', 'dynamicFieldset' + numberOfFields)
             .attr('value', 'checkbox')
             .appendTo('#dynamicFieldset' + numberOfFields);
-        $('<span> Check boxes</span>').appendTo('#dynamicFieldset' + numberOfFields);
-        $('<br>').appendTo('#dynamicFieldset' + numberOfFields);
+        $('<label>Check boxes</label>')
+            .attr('for', 'dynamicCheckBox' + numberOfFields)
+            .attr('class', 'fwn')
+            .appendTo('#dynamicFieldset' + numberOfFields);
         $('<div></div>')
             .attr('id', 'addOptionPlaceholder' + numberOfFields)
             .appendTo('#dynamicDiv' + numberOfFields);
@@ -62,7 +79,9 @@ $(document).ready(function() {
             .appendTo('#dynamicDiv' + numberOfFields);
         $('<button type="button">Remove question</button>')
             .attr('id', 'btnRemoveField' + numberOfFields)
+            .attr('class', 'btn btn-default col-md-12')
             .appendTo('#dynamicDiv' + numberOfFields);
+        $('<br>').appendTo('#dynamicDiv' + numberOfFields);
                 
         var currentField = numberOfFields;
         
@@ -150,6 +169,7 @@ function checkForOptions(field, type, option) {
     if(type === 'checkbox' || type === 'dropdown' || type === 'radiobutton') {
         $('<button type="button">Add option</button>')
             .attr('id', 'btnAddOption' + field)
+            .attr('class', 'btn btn-default')
             .appendTo('#addOptionPlaceholder' + field);
     }
 
@@ -172,9 +192,12 @@ function checkForOptions(field, type, option) {
         $('<input type="text" />')
             .attr('id', 'inputOption' + currentOption + field)
             .attr('name', 'question.options' + '-' + currentOption + '-' + field + '-0')
+            .attr('class', 'form-control col-md-8')
+            .attr('placeholder', 'Your new option')
             .appendTo('#optionField' + currentOption + field);
         $('<button type="button">Remove option</button>')
-            .attr('id', 'btnRemoveOption' + '-' + currentOption + '-' + field)
+            .attr('id', 'btnRemoveOption' + '-' + currentOption + '-' + field)            
+            .attr('class', 'btn btn-default col-md-4')
             .appendTo('#optionField' + currentOption + field);
 
         $('#btnRemoveOption' + '-' + currentOption + '-' + field).click(function() {
