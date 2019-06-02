@@ -104,13 +104,32 @@ namespace UI.MVC.Controllers
 
         public IActionResult ProjectDetailPage(int projectId)
         {
+            Random random = new Random();  
             ProjectDetailModel projectDetailModel = new ProjectDetailModel();
+            projectDetailModel.SelectedQuestionVms = new List<SelectedQuestionVM>();
+            ICollection<Question> questions = new List<Question>();
             Dictionary<int, int> likeDictionary = new Dictionary<int, int>();
             Dictionary<int, int> commentDictionary = new Dictionary<int, int>();
             Dictionary<int, int> combinedDictionary = new Dictionary<int, int>();
             Project p = orchestrator.getProject(projectId);
             p.Phases = p.Phases.OrderBy(x => x.StartDate).ToList();
             p.Ideations = orchestrator.getIdeations(projectId).ToList();
+            
+            foreach (var questionnaire in p.Questionnaires.ToList())
+            {
+                foreach (var question in questionnaire.Questions.ToList())
+                {
+                    if (question.QuestionType == QuestionType.DROPDOWN ||
+                        question.QuestionType == QuestionType.CHECK_BOX ||
+                        question.QuestionType == QuestionType.RADIO_BUTTON)
+                    {
+                        if (question.QuestionnaireAnswers.ToList().Count > 0)
+                        {
+                            questions.Add(question);   
+                        }
+                    }
+                }
+            }
             foreach (var questionnaire in p.Questionnaires.ToList())
             {
                 if (questionnaire.Closed == true)
@@ -152,6 +171,57 @@ namespace UI.MVC.Controllers
                 {
                     likeDictionary.Remove(total.Key);
                     commentDictionary.Remove(total.Key);
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (questions.ToList().Count >= 1)
+                {
+                    int randomSelected = random.Next(0, questions.Count);
+                    SelectedQuestionVM selectedQuestionVm = new SelectedQuestionVM();
+                    selectedQuestionVm.QuestionAnswerCount = 0;
+                    selectedQuestionVm.OptionsVms = new List<OptionsVM>();
+                    selectedQuestionVm.Question = questions.ToList()[randomSelected];
+
+                    foreach (var answer in questions.ToList()[randomSelected].QuestionnaireAnswers)
+                    {
+                        if (answer.Question == questions.ToList()[randomSelected] && questions.ToList()[randomSelected].QuestionType == QuestionType.CHECK_BOX)
+                        {
+                            selectedQuestionVm.QuestionAnswerCount++;
+                        }
+                    }
+                    
+                    foreach (var option in questions.ToList()[randomSelected].Options)
+                    {
+                        OptionsVM optionsVm = new OptionsVM();
+                        optionsVm.Option = option;
+                        foreach (var answer in questions.ToList()[randomSelected].QuestionnaireAnswers)
+                        {
+                            if (questions.ToList()[randomSelected].QuestionType == QuestionType.CHECK_BOX)
+                            {
+                                var parts = answer.Answer.Split(",");
+                                foreach (var part in parts)
+                                {
+                                    if (part == option.TheOption)
+                                    {
+                                        optionsVm.OptionVoteCount++;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (option.TheOption == answer.Answer)
+                                {
+                                    selectedQuestionVm.QuestionAnswerCount++;
+                                    optionsVm.OptionVoteCount++;
+                                }
+                            }
+                        }
+                        selectedQuestionVm.OptionsVms.Add(optionsVm);
+                    }
+                    projectDetailModel.SelectedQuestionVms.Add(selectedQuestionVm);
+                    questions.Remove(questions.ToList()[randomSelected]);
                 }
             }
             

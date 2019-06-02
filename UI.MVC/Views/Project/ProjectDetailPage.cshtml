@@ -1,3 +1,4 @@
+@using Domain
 @model ProjectDetailModel
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -10,13 +11,13 @@
 <div class="py-5">
     <div id="explore-section" class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 @if (@Model.Project.ImageField != null)
                 {
                     <img src=@Model.Project.ImageField.ImageData width="750" height="450"/>
                 }
             </div>
-            <div class="col-md-4 center py-5">
+            <div class="col-lg-4 center py-5">
                 <h1 id="titelDetail" class="text-center py-4">
                     <b>@Model.Project.Name</b>
                 </h1>
@@ -88,8 +89,38 @@
         </div>
     }
 </div>
+
 <div class="row py-5">
-    <div class="col-md-8 center-block">
+    <div class="col-lg-8 center-block">
+        @foreach (var questionVm in Model.SelectedQuestionVms)
+        {
+            <div class="col-lg-4 center-block">
+                <div class="card bg-light card-form">
+                    <div class="card-body" id="card">
+                        @questionVm.Question.TheQuestion - answered @questionVm.QuestionAnswerCount time(s) <br>
+                        @foreach (var o in questionVm.OptionsVms)
+                        {
+                            @o.Option.TheOption
+                            if (questionVm.Question.QuestionType == QuestionType.CHECK_BOX)
+                            {
+                                <span> (@o.OptionVoteCount)</span>
+                            }
+                            else
+                            {
+                                double percentage = Convert.ToDouble(@o.OptionVoteCount) / Convert.ToDouble(@questionVm.QuestionAnswerCount) * 100;
+                                <span> (@o.OptionVoteCount) @percentage.ToString("0.00")%</span>
+                            }
+                            <br>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row py-5">
+    <div class="col-lg-8 center-block">
         <div class="card bg-light card-form">
             <div class="card-body" id="card">
                 @if (@Model.Project.Ideations.Count > 0)
@@ -150,7 +181,7 @@
         </div>
     </div>
     
-    <div class="col-md-8 center-block">
+    <div class="col-lg-8 center-block">
         <div class="card bg-light card-form">
             <div class="card-body" id="card">
                 @if (Model.Project.Questionnaires.Count > 0)
