@@ -1,11 +1,7 @@
 ﻿@using Domain
 @model FillInQuestionnaireModel
 
-<style>
-    .fwn {
-        font-weight:normal;
-    }
-</style>
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
 
 @using (Html.BeginForm("CreateUserQuestion", "Questionnaire",
     FormMethod.Post))

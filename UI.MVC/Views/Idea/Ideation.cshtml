@@ -2,7 +2,7 @@
 
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 
-
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a><br>
 @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin") || @Model.AdminOnly ==  false)
 {
     @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
