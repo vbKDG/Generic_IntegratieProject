@@ -1,90 +1,92 @@
 ﻿<body>
 
-<!-- POSTS -->
-<section id="posts">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card bg-dark">
-                    <div class="card-header">
-                        <h4 class="text-white">Admin Settings</h4>
-                    </div>
-                    <table class="table text-white">
-                        <tbody>
-                        <div class="row py-3">
-                            @if (User.IsInRole("SuperAdmin"))
-                            {
-                                <div class="col-md-4 py-2" id="bodyadmin">
-                                    <div class="card text-center bg-primary text-white mb-3">
-                                        <div class="card-body">
-                                            <h3>Manage admins</h3>
-                                            <h4 class="display-4">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageAdmins", "Admin")'">
-                                                Manage admins
-                                            </button>
-                                        </div>
+<div class="dark-overlay">
+                        <div class="home-inner container py-5">
+                            <div class="col-md-8">
+                                <div class="card text-center card-form">
+                                    <div class="card-body bg-dark">
+                                            <h3>
+                                                <b class="text-light">Admin settings</b>
+                                            </h3>
+                                            <hr/>
+                    
+                                            
+                                            
+                                            
+                                              @if (User.IsInRole("SuperAdmin"))
+                                                        {
+                                                            <div class="col-md-6 py-2">
+                                                                <div class="card text-center bg-primary text-white mb-3">
+                                                                    <div class="card-body">
+                                                                        <h3>Manage admins</h3>
+                                                                        <h4 class="display-4">
+                                                                            <i class="fas fa-pencil-alt"></i>
+                                                                        </h4>
+                                                                        <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageAdmins", "Admin")'">
+                                                                            Manage admins
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                            
+                                            
+                                                     @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                                                                {
+                                                                    <div class="col-md-6 py-2" id="bodyadmin">
+                                                                        <div class="card text-center bg-success text-white mb-3">
+                                                                            <div class="card-body">
+                                                                                <h3>Manage moderators</h3>
+                                                                                <h4 class="display-4">
+                                                                                    <i class="fas fa-folder"></i>
+                                                                                </h4>
+                                                                                <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageModerators", "Admin")'">
+                                                                                    Manage moderators
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                            
+                                            
+                                                         @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                                                                                    {    
+                                                                                        <div class="col-md-6 py-2" id="bodyadmin">
+                                                                                            <div class="card text-center bg-success text-white mb-3">
+                                                                                                <div class="card-body">
+                                                                                                    <h3>Manage projects</h3>
+                                                                                                    <h4 class="display-4">
+                                                                                                        <i class="fas fa-pencil-alt"></i>
+                                                                                                    </h4>
+                                                                                                    <button class="btn btn-default" onclick="location.href = '@Url.Action("Projects", "Project")'">
+                                                                                                        Manage projects
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    }
+                                                                                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                                                                    {
+                                                                                        <div class="col-md-6 py-2" id="bodyadmin">
+                                                                                            <div class="card text-center bg-primary text-white mb-3">
+                                                                                                <div class="card-body">
+                                                                                                    <h3>Manage posts</h3>
+                                                                                                    <h4 class="display-4">
+                                                                                                        <i class="fas fa-folder"></i>
+                                                                                                    </h4>
+                                                                                                    <button class="btn btn-default" onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
+                                                                                                        Manage posts
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    }
+                                            
                                     </div>
                                 </div>
-                            }
-
-                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-                            {
-                                <div class="col-md-4 py-2" id="bodyadmin">
-                                    <div class="card text-center bg-success text-white mb-3">
-                                        <div class="card-body">
-                                            <h3>Manage moderators</h3>
-                                            <h4 class="display-4">
-                                                <i class="fas fa-folder"></i>
-                                            </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("ManageModerators", "Admin")'">
-                                                Manage moderators
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-                            {
-                                <div class="col-md-4 py-2" id="bodyadmin">
-                                    <div class="card text-center bg-success text-white mb-3">
-                                        <div class="card-body">
-                                            <h3>Manage projects</h3>
-                                            <h4 class="display-4">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("Projects", "Project")'">
-                                                Manage projects
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                            {
-                                <div class="col-md-4 py-2" id="bodyadmin">
-                                    <div class="card text-center bg-success text-white mb-3">
-                                        <div class="card-body">
-                                            <h3>Manage posts</h3>
-                                            <h4 class="display-4">
-                                                <i class="fas fa-folder"></i>
-                                            </h4>
-                                            <button class="btn btn-default" onclick="location.href = '@Url.Action("ManagePosts", "Admin", new {projectId = 1})'">
-                                                Manage posts
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                            </div>
                         </div>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+                
+                    </div>
 
 </body>

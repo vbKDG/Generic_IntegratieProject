@@ -42,6 +42,10 @@ html, body {
     
 }
 
+.logonavbar{
+    padding-bottom: 12px;
+}
+
 #detailImage{
     padding-bottom: 25px;
 }
@@ -110,6 +114,7 @@ footer {
 
 .carousel-item {
     height: 340px;
+    max-width: 100%;
 }
 
 .container body-content{
@@ -139,6 +144,11 @@ footer {
     padding-bottom: 2px;
 }
 
+
+#admincard{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 #projecttitlepadding{
     padding-bottom: 35px;
@@ -251,6 +261,8 @@ input, select, textarea {
 }
 
 
+
+
 /* body {padding top & bottom aangepast background-color: #252525; background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;} */
 
 card {
@@ -262,6 +274,10 @@ card {
     float: left;
     width: 33%;
     padding: 2px;
+}
+
+#bodyElements{
+    min-height: 100%;
 }
 
 /* Clearfix (clear floats) */
@@ -297,3 +313,6 @@ card {
         width: 100%;
     }
 }
+
+
+

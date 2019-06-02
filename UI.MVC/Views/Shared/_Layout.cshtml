@@ -31,11 +31,14 @@
 </head>
 <body id="general-theme">
 <div id="Start"></div>
+<div class="container-fluid center-block">
 <nav id="navbox"class="navbar navbar-expand-sm navbar-light fixed-top" id="main-nav">
-    <div class="container-fluid">
-        <a hasp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark">
-            <i class="far fa-lightbulb "></i> <b>City Of Ideas</b>
-        </a>
+    
+        <div class="logonavbar">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand text-dark">
+                <i class="far fa-lightbulb "></i> <b>City Of Ideas</b>
+            </a>
+            </div>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -76,15 +79,16 @@
                 </li>
             </ul>
         </div>
-    </div>
+ 
 </nav>
-
+   </div>
 
 <partial name="_CookieConsentPartial"/>
 
-<div class="container-fluid body-content">
+<div id="bodyElements" class="container-fluid body-content">
     @RenderBody()
-    <hr/>
+</div>
+<hr/>
     <footer class="center-block text-center">
 
         <p>
@@ -94,7 +98,6 @@
         </p>
         <p><a href="@Url.Action("Faq", "Home")">FAQ</a> - <a href="@Url.Action("Contact", "Home")">About</a> - <a href="@Url.Action("Privacy", "Home")">Privacy</a></p>
     </footer>
-</div>
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
