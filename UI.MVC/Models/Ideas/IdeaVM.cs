@@ -45,6 +45,13 @@ namespace D.UI.MVC.Models.Ideas
         public List<QuestionFieldVm> QuestionFieldVms { get; set; }
         
         public List<MapFieldVm> MapFieldVms { get; set; }
+        
+        public int ImageFieldVMMin { get; set; }
+        public int TextFieldVMMin { get; set; }
+        public int VideoFieldVMMin { get; set; }
+        public int MapFieldVMMin { get; set; }
+        public int QuestionVMMin { get; set; }
+
     }
 
     public class IdeasVM
