@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = "Manage moderators";
 }
+
 <body>
 <a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
 <div class="container">
@@ -16,11 +17,10 @@
                 <div class="col-lg-9">
                     <div class="card bg-light card-form">
                         <div class="text-center">
-                            <h1 class="display-4">Manage moderators</h1>
+                            <h1 class="display-4">Manage mods</h1>
                             <h4>Here is a list of all the Moderators</h4>
                         </div>
                         <div class="card-body">
-
 
                             <table class="table">
                                 <tr>
@@ -52,11 +52,12 @@
                                             @Html.ActionLink("Delete", "DeleteModeratorPage", "Admin"
                                                 , new {userId = item.Id})
                                         </td>
-                                    </tr>
+                                    </tr>    
                                 }
                             </table>
                         </div>
-
+                              </div>
+                                                </div>
                         <div class="col-lg-3" id="bodyadmin">
                             <div class="card text-center bg-success text-white mb-3">
                                 <div class="card-body">
@@ -68,14 +69,14 @@
 
 
                                 </div>
-                            </div>
-                        </div>
+                      
 
-                    </div>
-                </div>
-            </div>
+            
+            </div>        </div>
+                                  </div>
         </div>
     </div>
 
 </div>
 </body>
+
