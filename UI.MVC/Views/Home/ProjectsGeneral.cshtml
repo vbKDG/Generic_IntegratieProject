@@ -29,36 +29,38 @@
             <div class="p-5">
                 <div class="tab-content">
                             <div id="recent" class="container tab-pane active">
-                                            <div class="row lg-4">
-                                               <div id="projecttitlepadding" class="row">
+                                            <div class="row">
+                                               <div id="" class="row">
                                                        @foreach (var project in @Model)
                                                        {
                                                            if (project.Closed == false)
                                                            {
-                                                               <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                                                                   , new {projectId = project.ProjectId})'">
-                                                                   <div class="col-md-16">
-                                                                       <div class="textWithBlurredBg">
-                                                                           <img src="@project.Base64Image"/>
-                                                                           <div class="text-center">
-                                                                               <h3 class="text-light">@project.Name</h3>
-                                                                               <h4 class="text-light">@project.Description</h4>
-                                                                           </div>
-                                                                       </div>
-                                                                       <div class="progress center-block">
-                                                                           <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                                                                           </div>
-                                                                       </div>
-                                               
-                                                                       <div>
-                                                                           <p class="text-dark">
-                                                                               <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                                                               <i class="far fa-heart"></i> @project.AmountOfLikes
-                                                                               <i class="far fa-comments"></i> @project.AmountOfComments
-                                                                           </p>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
+                                                                <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                                                                                                                              , new {projectId = project.ProjectId})'">
+                                                            <div id="projectpaddingfix" class="card">
+                                                                <div class="textWithBlurredBg">
+                                                                    <img src="@project.Base64Image" width="365" height="200"/>
+                       
+                                                                    <div class="text-center">
+                                                                        <h3 class="text-light">@project.Name</h3>
+                                                                        <h4 class="text-light">@project.Description</h4>
+                                                                    </div>
+                        
+                                                                </div>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                                                                </div>
+
+
+                                                                <div>
+                                                                    <p class="text-dark">
+                                                                        <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                                                        <i class="far fa-heart"></i> @project.AmountOfLikes
+                                                                        <i class="far fa-comments"></i> @project.AmountOfComments
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                            }
                                                        }
                                                    </div>
@@ -77,22 +79,23 @@
                               {
                                   if (project.Progress > 0 && project.Progress < 100)
                                   {
-                                      <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                                          , new {projectId = project.ProjectId})'">
-                                          <div class="col-md-16">
+                                      <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                                                                                                            , new {projectId = project.ProjectId})'">
+                                          <div id="projectpaddingfix" class="card">
                                               <div class="textWithBlurredBg">
-                                                  <img src="@project.Base64Image"/>
+                                                  <img src="@project.Base64Image" width="365" height="200"/>
+                       
                                                   <div class="text-center">
                                                       <h3 class="text-light">@project.Name</h3>
                                                       <h4 class="text-light">@project.Description</h4>
                                                   </div>
+                        
                                               </div>
-                          
-                                              <div class="progress center-block">
-                                                  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                                                  </div>
+                                              <div class="progress">
+                                                  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
                                               </div>
-                          
+
+
                                               <div>
                                                   <p class="text-dark">
                                                       <i class="far fa-lightbulb"></i> @project.IdeaAmount
@@ -102,6 +105,7 @@
                                               </div>
                                           </div>
                                       </div>
+                                      
                                   }
                               }
                           </div>  
@@ -120,32 +124,37 @@
                                     {
                                         if (project.Closed == true)
                                         {
-                                            <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                                                , new {projectId = project.ProjectId})'">
-                                                <div class="col-md-16">
-                                                    <div class="textWithBlurredBg">
-                                                        <img src="@project.Base64Image"/>
-                                                        <div class="text-center">
-                                                            <h3 class="text-light">@project.Name</h3>
-                                                            <h4 class="text-light">@project.Description</h4>
+                                            
+                
+                                                        <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                                                                                                                              , new {projectId = project.ProjectId})'">
+                                                            <div id="projectpaddingfix" class="card">
+                                                                <div class="textWithBlurredBg">
+                                                                    <img src="@project.Base64Image" width="365" height="200"/>
+                       
+                                                                    <div class="text-center">
+                                                                        <h3 class="text-light">@project.Name</h3>
+                                                                        <h4 class="text-light">@project.Description</h4>
+                                                                    </div>
+                        
+                                                                </div>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                                                                </div>
+
+
+                                                                <div>
+                                                                    <p class="text-dark">
+                                                                        <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                                                        <i class="far fa-heart"></i> @project.AmountOfLikes
+                                                                        <i class="far fa-comments"></i> @project.AmountOfComments
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="progress center-block">
-                                                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                                                        </div>
-                                                    </div>
-                                
-                                                    <div>
-                                                        <p class="text-dark">
-                                                            <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                                            <i class="far fa-heart"></i> @project.AmountOfLikes
-                                                            <i class="far fa-comments"></i> @project.AmountOfComments
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    }
                                         }
-                                    }
+                                    
                             </div>
                             </div>
                     </div>
