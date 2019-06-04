@@ -22,7 +22,7 @@
         <div class="column text-center text-black openProjects" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@item.IdeaId)">
                                                                                              
             <h4 id="titleindex" class="text-black">
-                @item.UserName
+                @item.UserName: @item.IdeaTitle
 
                 
             </h4>
@@ -54,7 +54,6 @@
     });
 
     function OpenIdea(input) {
-        console.log("test2");
         $("#content").load("/Idea/Idea",{ideaId : input});
 
     }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Domain;
 using Microsoft.AspNetCore.Http;
@@ -159,15 +161,33 @@ namespace DAL.EF
                     await userManager.AddToRoleAsync(user, role4);
                 }
             }
-            
             if (await userManager.FindByNameAsync("dirk.bakker@gmail.com") == null)
             {
                 var user = new ApplicationUser {
                     UserName = "dirk.bakker@gmail.com",
                     Email = "dirk.bakker@gmail.com",
-                    FirstName = "dirk",
-                    LastName = "bakker",
-                    Age = "62",
+                    FirstName = "Dirk",
+                    LastName = "Bakker",
+                    Age = "59",
+                    Gender = "M",
+                    PostalCode = "2480",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            
+            if (await userManager.FindByNameAsync("Ajay.Short@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Ajay.Short@gmail.com",
+                    Email = "Ajay.Short@gmail.com",
+                    FirstName = "Ajay ",
+                    LastName = "Short",
+                    Age = "36",
                     Gender = "M",
                     PostalCode = "2000",
                     EmailConfirmed = true
@@ -178,6 +198,151 @@ namespace DAL.EF
                     await userManager.AddToRoleAsync(user, role4);
                 }
             }
+            if (await userManager.FindByNameAsync("Brenna.Seymour@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Brenna.Seymour@gmail.com",
+                    Email = "Brenna.Seymour@gmail.com",
+                    FirstName = "Brenna",
+                    LastName = "Seymour",
+                    Age = "50",
+                    Gender = "F",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Skylah.Chen@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Skylah.Chen@gmail.com",
+                    Email = "Skylah.Chen@gmail.com",
+                    FirstName = "Skylah",
+                    LastName = "Chen",
+                    Age = "60",
+                    Gender = "F",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Kacie.Brewer@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Kacie.Brewer@gmail.com",
+                    Email = "Kacie.Brewer@gmail.com",
+                    FirstName = "Kacie",
+                    LastName = "Brewer",
+                    Age = "24",
+                    Gender = "M",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Scarlette.Thorne@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Scarlette.Thorne@gmail.com",
+                    Email = "Scarlette.Thorne@gmail.com",
+                    FirstName = "Scarlette",
+                    LastName = "Thorne",
+                    Age = "45",
+                    Gender = "F",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Julian.Hensley@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Julian.Hensley@gmail.com",
+                    Email = "Julian.Hensley@gmail.com",
+                    FirstName = "Julian",
+                    LastName = "Hensley",
+                    Age = "19",
+                    Gender = "M",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Kaitlyn.Avalos@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Kaitlyn.Avalos@gmail.com",
+                    Email = "Kaitlyn.Avalos@gmail.com",
+                    FirstName = "Kaitlyn",
+                    LastName = "Avalos",
+                    Age = "42",
+                    Gender = "F",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Rae.Osborne@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Rae.Osborne@gmail.com",
+                    Email = "Rae.Osborne@gmail.com",
+                    FirstName = "Rae",
+                    LastName = "Osborne",
+                    Age = "46",
+                    Gender = "M",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            if (await userManager.FindByNameAsync("Kadie.Callahan@gmail.com") == null)
+            {
+                var user = new ApplicationUser {
+                    UserName = "Kadie.Callahan@gmail.com",
+                    Email = "Kadie.Callahan@gmail.com",
+                    FirstName = "Kadie",
+                    LastName = "Callahan",
+                    Age = "25",
+                    Gender = "F",
+                    PostalCode = "2000",
+                    EmailConfirmed = true
+                };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded) {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
+                }
+            }
+            
             #endregion
             
             Project p1 = new Project()
@@ -657,6 +822,403 @@ namespace DAL.EF
             Ideation it1 = new Ideation(){Project = p1};
             
             p1.Ideations = new List<Ideation>(){it1};
+
+            #region Project13Ideation1
+
+            
+
+           
+
+            Ideation project13Ideation1 = new Ideation()
+            {
+                Project = p13,
+                TextFieldRange = new FieldRange(){Minimum = 1,Maximum = 3},
+                ImageFieldRange = new FieldRange(){Minimum = 1,Maximum = 3},
+                VideoRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                MapFieldRange = new FieldRange(){Minimum = 1,Maximum = 3},
+                QuestionFieldRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                AdminOnly = false,
+                
+                               
+             
+            };
+            IdeationQuestion p13I1Q1 = new IdeationQuestion{BackgroundInfo = null,Description = null,Ideation = project13Ideation1,Question = "Where should the flea market be hosted and why?"};
+            project13Ideation1.Questions = new List<IdeationQuestion>{p13I1Q1};
+
+            Idea p13I1Idea1 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "The groenplaats!",
+                Ideation = project13Ideation1,
+                User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
+                    new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
+                    new MapField{Latitude = 51.2185 , Longitude = 4.4017},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\groenplaats.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\groenplaats2.jpg")))}
+
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
+
+                }
+                
+                
+            };
+            Idea p13I1Idea2 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "The melkmarkt",
+                Ideation = project13Ideation1,
+                User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The melkmarkt is a very cozy place, and there are plenty of places to get food!"},
+                    new MapField{Latitude = 51.2198 , Longitude = 4.4017},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\melkmarkt.jpg")))}
+                        
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "Stupid suggestion!", Date = new DateTime(2019,3,20,7,23,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "hmmm didn't think of this location!", Date = new DateTime(2019,3,20,8,45,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,26,5,34,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Skylah.Chen@gmail.com").Result ,Content = "My idea is better haha", Date = new DateTime(2019,3,29,13,12,0)}
+
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result, LikeTime = new DateTime(2019,3,25,16,40,0)}
+
+                }
+            };
+            Idea p13I1Idea3 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "infront of the MAS",
+                Ideation = project13Ideation1,
+                User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The View of the MAS in the background is incredible!"},
+                    new TextField{Text = "It is also one of the most sunny places in the city."},
+                    new MapField{Latitude = 51.228935 , Longitude = 4.404732},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS2.jpg")))}
+
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "A great idea!", Date = new DateTime(2019,3,25,14,50,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,14,9,30,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Skylah.Chen@gmail.com").Result ,Content = "You couldn't pick a worse place!", Date = new DateTime(2019,3,22,3,20,0)}
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)}
+
+                }
+            };
+            Idea p13I1Idea4 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "Grote markt",
+                Ideation = project13Ideation1,
+                User = userManager.FindByEmailAsync("Julian.Hensley@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The best place in antwerp to host a flea market, and it's good for all the local restaurants here."},
+                    new MapField{Latitude = 51.2211 , Longitude = 4.4001},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\grote markt.jpg")))}
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)}
+
+                }
+            };
+            Idea p13I1Idea5 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "Nieuw zuid or Groenplaats",
+                Ideation = project13Ideation1,
+                User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "These places are very clean and during the day there are a lot of tourists passing by!"},
+                    new MapField{Latitude = 51.2185 , Longitude = 4.4017},
+                    new MapField{Latitude = 51.206031 , Longitude = 4.383324}
+                    
+
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "Nieuw Zuid isn't a good Idea", Date = new DateTime(2019,3,20,9,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "I like the groenplaats more!", Date = new DateTime(2019,3,22,12,30,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)}
+
+                }
+            };
+            #endregion
+
+            #region Project13Ideaton2
+
+            Ideation project13Ideation2 = new Ideation()
+            {
+                Project = p13,
+                TextFieldRange = new FieldRange(){Minimum = 1,Maximum = 3},
+                ImageFieldRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                VideoRange = new FieldRange(){Minimum = 0,Maximum = 2},
+                MapFieldRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                QuestionFieldRange = new FieldRange(){Minimum = 1,Maximum = 1},
+                AdminOnly = false,
+                
+                               
+             
+            };
+            IdeationQuestion p13I2Q1 = new IdeationQuestion{BackgroundInfo = null,Description = null,Ideation = project13Ideation2,Question = "Should there be a theme and what type of items should there be sold ?"};
+            project13Ideation2.Questions = new List<IdeationQuestion>{p13I2Q1};
+           // File file = Path(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4");
+          
+           FileStream fileStream = new FileStream(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4",FileMode.Open,FileAccess.Read);
+           byte[] data = new byte[(int)fileStream.Length];
+               
+           using (var reader = fileStream)
+            
+           using (var stream = new MemoryStream())
+           {
+               {
+                   reader.CopyTo(stream);
+                   var base64 = Convert.ToBase64String(stream.ToArray());
+                   base64=  String.Format("data:video/mp4;base64,{0}", base64);
+                   var x = base64;
+
+               }
+
+           } 
+            Idea p13I2Idea1 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "asian antique!",
+                Ideation = project13Ideation2,
+                User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
+                    new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
+                    
+                  //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4")))} 
+                    //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(fileStream.WriteByte())} 
+
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
+
+                }
+                
+                
+            };
+            Idea p13I2Idea2 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "The melkmarkt",
+                Ideation = project13Ideation2,
+                User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The melkmarkt is a very cozy place, and there are plenty of places to get food!"},
+                    new MapField{Latitude = 51.2198 , Longitude = 4.4017},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\melkmarkt.jpg")))}
+                        
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "Stupid suggestion!", Date = new DateTime(2019,3,20,7,23,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "hmmm didn't think of this location!", Date = new DateTime(2019,3,20,8,45,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,26,5,34,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Skylah.Chen@gmail.com").Result ,Content = "My idea is better haha", Date = new DateTime(2019,3,29,13,12,0)}
+
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result, LikeTime = new DateTime(2019,3,25,16,40,0)}
+
+                }
+            };
+            Idea p13I2Idea3 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "infront of the MAS",
+                Ideation = project13Ideation2,
+                User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The View of the MAS in the background is incredible!"},
+                    new TextField{Text = "It is also one of the most sunny places in the city."},
+                    new MapField{Latitude = 51.228935 , Longitude = 4.404732},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS2.jpg")))}
+
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "A great idea!", Date = new DateTime(2019,3,25,14,50,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,14,9,30,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Skylah.Chen@gmail.com").Result ,Content = "You couldn't pick a worse place!", Date = new DateTime(2019,3,22,3,20,0)}
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)}
+
+                }
+            };
+            Idea p13I2Idea4 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "Grote markt",
+                Ideation = project13Ideation2,
+                User = userManager.FindByEmailAsync("Julian.Hensley@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "The best place in antwerp to host a flea market, and it's good for all the local restaurants here."},
+                    new MapField{Latitude = 51.2211 , Longitude = 4.4001},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\grote markt.jpg")))}
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)}
+
+                }
+            };
+            Idea p13I2Idea5 = new Idea
+            {
+                
+                Approved = true,
+                IdeaTitle = "Nieuw zuid or Groenplaats",
+                Ideation = project13Ideation2,
+                User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result,
+                Fields = new List<Field>
+                {
+                    new TextField{Text = "These places are very clean and during the day there are a lot of tourists passing by!"},
+                    new MapField{Latitude = 51.2185 , Longitude = 4.4017},
+                    new MapField{Latitude = 51.206031 , Longitude = 4.383324}
+                    
+
+                    
+                },
+                Reactions = new List<Reaction>
+                {
+                    new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "Nieuw Zuid isn't a good Idea", Date = new DateTime(2019,3,20,9,40,0)},
+                    new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "I like the groenplaats more!", Date = new DateTime(2019,3,22,12,30,0)}
+
+                },
+                IdeaLikes = new List<IdeaLike>
+                {
+                    new IdeaLike{User = userManager.FindByEmailAsync("Kadie.Callahan@gmail.com").Result, LikeTime = new DateTime(2019,3,20,13,40,0)},
+                    new IdeaLike{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result, LikeTime = new DateTime(2019,3,21,13,40,0)}
+
+                }
+            };
+            
+
+            #endregion
+            
+            
+            
+            
+            //project13Ideation1.Ideas.Add(p13I1Idea1);
+            
+            /*
+            Ideation p13I2 = new Ideation()
+            {
+                Project = p13,
+                TextFieldRange = new FieldRange(){Minimum = 0,Maximum = 3},
+                ImageFieldRange = new FieldRange(){Minimum = 0,Maximum = 3},
+                VideoRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                MapFieldRange = new FieldRange(){Minimum = 0,Maximum = 3},
+                QuestionFieldRange = new FieldRange(){Minimum = 0,Maximum = 0},
+                AdminOnly = false,
+                
+                               
+             
+            };
+            IdeationQuestion p13I2Q1 = new IdeationQuestion{BackgroundInfo = null,Description = null,Ideation = p13I2,Question = "Where should the flea market be hosted and why?"};
+            project13Ideation1.Questions = new List<IdeationQuestion>{p13I2Q1};
+            */
+
+            
+            
+            
             
             //IdeationQuestions 
             IdeationQuestion iq1 = new IdeationQuestion(){Ideation = it1, Question = "What type of constructions do you want on the playground ? "};
@@ -709,10 +1271,10 @@ namespace DAL.EF
             ctx.Questions.AddRange(q1, question1, q2, q3, q4, q5, question2, q6, q7, q8, q9);
             ctx.IotSetups.AddRange(iot1);
             ctx.Phases.AddRange(ph1,ph2);
-            ctx.Ideations.Add(it1);
-            ctx.IdeationQuestions.Add(iq1);
-            ctx.Ideas.AddRange(i1,i2);
-
+            ctx.Ideations.AddRange(it1,project13Ideation1,project13Ideation2);
+            ctx.IdeationQuestions.AddRange(iq1,p13I2Q1);
+            ctx.Ideas.AddRange(i1,i2,p13I1Idea1,p13I1Idea2,p13I1Idea3,p13I1Idea4,p13I1Idea5);
+            ctx.Ideas.AddRange(p13I2Idea1);
             ctx.Reactions.AddRange(a1,a2);
             ctx.Options.AddRange(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, option1, option2, option3, option4, option5, option6, option7);
             
