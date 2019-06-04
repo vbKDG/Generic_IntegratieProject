@@ -73,6 +73,7 @@ namespace UI.MVC.Controllers
             }
 
             ideationPageVm.IdeationId = ideationId;
+            
             ideationPageVm.AdminOnly = ideation.AdminOnly;
             ideationPageVm.IdeaListItemVms = ideaListItemVms;
             ideationPageVm.IdeationQuestions = ideationQuestions;
@@ -348,6 +349,7 @@ namespace UI.MVC.Controllers
             ideaVm.Reactions = reactions;
             ideaVm.IdeaId = ideaId;
             ideaVm.Disapproved = idea.Disapproved;
+            ideaVm.IdeaTitle = idea.IdeaTitle;
             ideaVm.AmountOfLikes = orchestrator.getIdeaLikes(ideaId);
 
             return  PartialView("Idea",ideaVm);

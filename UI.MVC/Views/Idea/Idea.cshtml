@@ -17,7 +17,7 @@
 <div class="modal-header">
     @if (Model.Disapproved == false)
     {
-        <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). </b>
+        <b>@Model._user.FirstName @Model._user.LastName.Substring(0, 1). : @Model.IdeaTitle</b>
         if (@Model.Verified)
         {
             <i class="glyphicon glyphicon-ok-circle"></i>
@@ -365,8 +365,21 @@
             </td>
         </tr>
     }
-    <button class="btn panel-primary" data-dismiss="modal">close</button>
+    <button class="btn panel-primary" data-dismiss="modal" onclick="Clearbox()">close</button>
 
 </div>
 
 </div>
+<script>
+    function Clearbox(parameters) {
+        console.log('close');
+      
+        $('#content').empty();
+        $('#MyModal').click();
+
+
+    }
+    
+    
+
+</script>
