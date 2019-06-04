@@ -779,6 +779,90 @@ namespace DAL.EF
 
             p13.ImageField = img13;
             p13.MapField = map13;
+
+            p13.Questionnaires = new List<Questionnaire>()
+            {
+                new Questionnaire()
+                {
+                    Closed = false,
+                    Name = "General info about the flee market",
+                    QuestionAmount = 5,
+                    Questions = new List<Question>()
+                    {
+                        new Question()
+                        {
+                            TheQuestion = "If you would like to, you can confirm this questionnaire with your e-mail address",
+                            QuestionType = QuestionType.MAILADDRESS,
+                            QuestionnaireAnswers = new List<QuestionUser>()
+                            {
+                                new QuestionUser() { Answer = "stef.delaet@gmail.com", Confirmed = false }
+                            }
+                        },
+                        new Question()
+                        {
+                            TheQuestion = "Is there any extra information you want to add?",
+                            QuestionType = QuestionType.OPEN_QUESTION,
+                            QuestionnaireAnswers = new List<QuestionUser>()
+                            {
+                                new QuestionUser() { Answer = "No, not really", Confirmed = false },
+                                new QuestionUser() { Answer = "I would like to come, i'm really looking forward to this.", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
+                                new QuestionUser() { Answer = "No, everything looks fine by me!", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
+                            }
+                        },
+                        new Question()
+                        {
+                            TheQuestion = "What do you think is the best location for this event?",
+                            Options = new List<Option>()
+                            {
+                                new Option() { TheOption = "The Meir" },
+                                new Option() { TheOption = "The Groenplaats"},
+                                new Option() { TheOption = "The Astridplein" }
+                            },
+                            QuestionType = QuestionType.DROPDOWN,
+                            QuestionnaireAnswers = new List<QuestionUser>()
+                            {
+                                new QuestionUser() { Answer = "The Groenplaats", Confirmed = false },
+                                new QuestionUser() { Answer = "The Meir", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
+                                new QuestionUser() { Answer = "The Groenplaats", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
+                            }
+                        },
+                        new Question()
+                        {
+                            TheQuestion = "What kind of food stands would you like to see at the flee market?",
+                            Options = new List<Option>()
+                            {
+                                new Option() { TheOption = "Hotdogs" },
+                                new Option() { TheOption = "French fries" },
+                                new Option() { TheOption = "Pizza" },
+                                new Option() { TheOption = "Sushi" }
+                            },
+                            QuestionType = QuestionType.CHECK_BOX,
+                            QuestionnaireAnswers = new List<QuestionUser>()
+                            {
+                                new QuestionUser() { Answer = "Hotdogs,Pizza,French fries", Confirmed = false },
+                                new QuestionUser() {Answer = "French fries, Sushi", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
+                                new QuestionUser() { Answer = "Sushi", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
+                            }
+                        },
+                        new Question()
+                        {
+                            TheQuestion = "Do you think flee markets are a good idea?",
+                            Options = new List<Option>()
+                            {
+                                new Option() { TheOption = "Yes" },
+                                new Option() { TheOption = "No" }
+                            },
+                            QuestionType = QuestionType.RADIO_BUTTON,
+                            QuestionnaireAnswers = new List<QuestionUser>()
+                            {
+                                new QuestionUser() { Answer = "Yes", Confirmed = false },
+                                new QuestionUser() { Answer = "Yes", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
+                                new QuestionUser() { Answer = "Yes", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
+                            }
+                        }
+                    }
+                }
+            };
             
             // Concert evening
             Project p14 = new Project();
@@ -866,7 +950,7 @@ namespace DAL.EF
                 {
                     new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
                     new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
-
+            
                 },
                 IdeaLikes = new List<IdeaLike>
                 {
@@ -875,9 +959,12 @@ namespace DAL.EF
                     new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
                     new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
 
+                },
+                Reports = new List<Report>()
+                {
+                    new Report() { DateSubmitted = new DateTime(2019, 4, 4), ReportMessage = "I think this is quiet offensive !!", User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
+                    new Report() { DateSubmitted = new DateTime(2019, 5, 26), ReportMessage = "This should not be allowed", User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result}
                 }
-                
-                
             };
             Idea p13I1Idea2 = new Idea
             {
@@ -910,6 +997,10 @@ namespace DAL.EF
                     new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
                     new IdeaLike{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result, LikeTime = new DateTime(2019,3,25,16,40,0)}
 
+                },
+                Reports = new List<Report>()
+                {
+                    new Report() { DateSubmitted = new DateTime(2019, 5, 23), ReportMessage = "WHY???", User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
                 }
             };
             Idea p13I1Idea3 = new Idea
@@ -1045,7 +1136,7 @@ namespace DAL.EF
                 User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result,
                 Fields = new List<Field>
                 {
-                    new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
+                    new TextField{Text = "The Groenplaats seems like a fun place to host the flea market !!"},
                     new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
                     
                   //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4")))} 

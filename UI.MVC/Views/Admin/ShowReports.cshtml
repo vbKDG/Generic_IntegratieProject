@@ -3,25 +3,43 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="~/js/showPostChange.js" asp-append-version="true"></script>
 <link rel="stylesheet" href="~/css/reportPopUp.css">
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 
 @{
     ViewData["Title"] = "Show reports";
 }
+<script>
+    $(document).ready(function(input) {
+    });
+
+    function OpenIdea(input) {
+        $("#content").load("/Idea/Idea", { ideaId: input });
+
+    }
+
+</script>
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
 <div id="blur" name="blur"></div>
 <table class="table">
-    @if (User.IsInRole("Moderator"))
+    @if (User.IsInRole("Moderator") || User.IsInRole("SuperAdmin"))
     {
         <tr>
             <td>
-                <b>Fields of the idea:</b><br>
-                @foreach (var textfield in Model.TextFields)
-                {
-                    @textfield.Text<br>
-                }
-                <button type="button" onclick="location.href='@Url.Action("ApproveIdea", "Admin"
-                      , new {ideaId = @Model.Idea.IdeaId})'; approvePost();">Approve</button>
+                <button class="btn btn-default" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@Model.Idea.IdeaId)">Show the idea</button>
+                <div class="container">
+                    <div class="modal" id="MyModal" role="dialog">
+                        <div id="content" class="modal-dialog modal-lg">
+
+    
+                        </div>
+
+
+                    </div>
+                </div>
+                <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
+                                                                    , new {ideaId = @Model.Idea.IdeaId})';approvePost();">Approve</button>
                 <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                     , new {ideaId = @Model.Idea.IdeaId})'; disaprovePost();">Disapprove</button>
+                                                                    , new {ideaId = @Model.Idea.IdeaId})';disaprovePost();">Disapprove</button>
             </td>
         </tr>
         <tr>
@@ -152,13 +170,13 @@
                         <b>Reaction is from:</b>
                         @reaction.User.Email
                         <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                       , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
+                                                                            , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                         <b>Reaction:</b>
                         @reaction.Content<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
-                                       , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
+                                                                            , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
-                                       , new {reactionId = @reaction.ReactionId})', disaprovePost();">Disapprove</button>
+                                                                            , new {reactionId = @reaction.ReactionId})', disaprovePost();">Disapprove</button>
                     </td>
                 </tr>
             }
@@ -166,28 +184,41 @@
     }
     else if (User.IsInRole("Admin"))
     {
+        var showEmptyText = true;
         foreach (var report in Model.Reports)
         {
             if (report.Reaction == null && report.SendToAdmin)
             {
+                showEmptyText = false;
                 <tr>
                     <td>
+                        <button class="btn btn-default" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@Model.Idea.IdeaId)">Show the idea</button>
+                        <div class="container">
+                            <div class="modal" id="MyModal" role="dialog">
+                                <div id="content" class="modal-dialog modal-lg">
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
                         <b>Idea is from:</b>
                         @if (Model.Idea.IdeaId == report.Idea.IdeaId)
                         {
                             @Model.Idea.User.Email
                             <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
-                                   , new {userId = @Model.Idea.User.Id})', blockUser();">Block user</button><br>
+                                                                                , new {userId = @Model.Idea.User.Id})', blockUser();">Block user</button><br>
                         }
                         <b>Reported by:</b> @report.User.Email<br>
                         <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                    , new {ideaId = @Model.Idea.IdeaId})', approvePost()">Approve</button>
+                                                                            , new {ideaId = @Model.Idea.IdeaId})', approvePost()">Approve</button>
                         <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                    , new {ideaId = @Model.Idea.IdeaId})', disaprovePost();">Disapprove</button>
+                                                                            , new {ideaId = @Model.Idea.IdeaId})', disaprovePost();">Disapprove</button>
                         @if (User.IsInRole("Moderator"))
                         {
                             <button type="button" onclick="location.href = '@Url.Action("SendToAdmin", "Admin"
-                                   , new {reportId = @report.ReportId})', sendToAdmin()">Send to administrator</button><br>
+                                                                                , new {reportId = @report.ReportId})', sendToAdmin()">Send to administrator</button><br>
                         }
                     </td>
                     <td>
@@ -203,6 +234,7 @@
             }
             else if (report.Reaction != null && report.SendToAdmin)
             {
+                showEmptyText = false;
                 <tr>
                     <td>
                         <b>Reaction is from:</b>
@@ -261,6 +293,10 @@
                     </td>
                 </tr>
             }
+        }
+        if (showEmptyText == true)
+        {
+            <h4>There are no posts which have been send to you yet!</h4>
         }
     }
 </table>

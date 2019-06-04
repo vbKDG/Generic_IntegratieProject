@@ -9,6 +9,7 @@ namespace UI.MVC.Models
         public IEnumerable<Question> Questions { get; set; }
         public Questionnaire Questionnaire { get; set; }
         public IList<OptionsAmount> OptionsAmounts { get; set; }
+        public ICollection<QuestionUser> OpenQuestionsEmail { get; set; }
         public int AnsweredQuestionAmount { get; set; }
     }
 }

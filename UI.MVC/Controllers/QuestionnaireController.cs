@@ -69,6 +69,7 @@ namespace UI.MVC.Controllers
             QuestionResultModel combinedModel = new QuestionResultModel();
             IList<QuestionUser> questionUsers = new List<QuestionUser>();
             IList<string> answers = new List<string>();
+            combinedModel.OpenQuestionsEmail = new List<QuestionUser>();
             IList<Question> ques = new List<Question>();
             IList<OptionsAmount> optionsAmounts = new List<OptionsAmount>();
             combinedModel.Questionnaire = orchestrator.getQuestionnaire(questionnaireId); 
@@ -114,6 +115,10 @@ namespace UI.MVC.Controllers
                             }
                         }
                     }
+                }
+                if (q.QuestionType == QuestionType.MAILADDRESS || q.QuestionType == QuestionType.OPEN_QUESTION)
+                {
+                    combinedModel.OpenQuestionsEmail.Add(qu);
                 }
             }
 
