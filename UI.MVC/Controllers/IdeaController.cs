@@ -101,7 +101,12 @@ namespace UI.MVC.Controllers
             ideaVm.TextFieldVms = textFieldVms;
             ideaVm.QuestionFieldVms = questionFieldVms;
             ideaVm.MapFieldVms = mapFieldVms;
-            
+            ideaVm.ImageFieldVMMin = ideation.ImageFieldRange.Minimum;
+            ideaVm.TextFieldVMMin = ideation.TextFieldRange.Minimum;
+            ideaVm.VideoFieldVMMin = ideation.VideoRange.Minimum;
+            ideaVm.MapFieldVMMin = ideation.MapFieldRange.Minimum;
+            ideaVm.QuestionVMMin = ideation.QuestionFieldRange.Minimum;
+
             
             for (int i = 0; i < ideation.QuestionFieldRange.Maximum ; i++)
             {        
