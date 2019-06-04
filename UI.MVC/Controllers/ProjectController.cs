@@ -114,7 +114,7 @@ namespace UI.MVC.Controllers
             Project p = orchestrator.getProject(projectId);
             p.Phases = p.Phases.OrderBy(x => x.StartDate).ToList();
             p.Ideations = orchestrator.getIdeations(projectId).ToList();
-            
+
             foreach (var questionnaire in p.Questionnaires.ToList())
             {
                 foreach (var question in questionnaire.Questions.ToList())

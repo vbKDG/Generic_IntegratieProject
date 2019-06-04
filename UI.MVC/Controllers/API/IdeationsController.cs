@@ -17,7 +17,6 @@ namespace UI.MVC.Controllers.api
         public IActionResult GetIdeations(int projectId)
         {
             List<Ideation> ideations = mgr.getIdeations(projectId).ToList();
-            Console.WriteLine(ideations.ToString());
             List<IdeationRESTModel> newIdeations = new List<IdeationRESTModel>();
             foreach (var ideation in ideations)
             {
