@@ -160,22 +160,27 @@
                 {
                     <div class="column text-center text-black ongoingProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
                                                                                                              , new {projectId = project.ProjectId})'">
-                        <h4 id="titleindex" class="text-black">
-                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
-                                , new {projectId = project.ProjectId})
-                        </h4>
-                        <img src="@project.Base64Image" width="365" height="200"/>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                        <div class="card">
+                           
+                            <div class="homePageImage">
+                                <img src="@project.Base64Image" width="365" height="200"/>
+                            </div>
+                            
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                            </div>
+                            <h4 class="card-title text-black">@project.Name</h4>
+                                <div>
+                                    <p class="text-dark">
+                                        <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                        <i class="far fa-heart"></i> @project.AmountOfLikes
+                                        <i class="far fa-comments"></i> @project.AmountOfComments
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                <i class="far fa-heart"></i> @project.AmountOfLikes
-                                <i class="far fa-comments"></i> @project.AmountOfComments
-                            </p>
-                        </div>
-                    </div>
+             
+                    
                 }
             }
         </div>
