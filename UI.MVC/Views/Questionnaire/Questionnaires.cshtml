@@ -1,72 +1,144 @@
 ﻿@model ProjectAndQuestionnaires
 
-<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
-<body>
-<div class="container">
-<h1 class="text-center">Questionnaires</h1>
-@if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-{
-    if (Model != null)
-    {
-        <div class="text-center">
-            @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
-                "Questionnaire", new {projectId = Model.Project.ProjectId})
-        </div> 
-    }
-}
 
-<table class="table">
-    <tr>
-        <th>
-            <p>name</p>
-        </th>
-        <th>
-            <p>Amount of questions</p>
-        </th>
-    </tr>
-    @foreach (var item in Model.Questionnaires)
-    {    
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuestionAmount)
-            </td>
-            <td>
-                @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
-                    , new { questionnaireId=item.QuestionnaireId })
-            </td>
-            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
-                        , new { questionnaireId = item.QuestionnaireId })
-                </td>
-                if (item.Closed)
-                {
-                    <td>
-                        @Html.ActionLink("Open", "OpenQuestionnaire", "Questionnaire"
-                            , new {questionnaireId = item.QuestionnaireId})
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.ActionLink("Close", "CloseQuestionnaire", "Questionnaire"
-                            , new {questionnaireId = item.QuestionnaireId})
-                    </td>
-                }
-                <td>
-                    @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
-                        , new {questionnaireId = item.QuestionnaireId}) | 
-                    @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
-                        , new {questionnaireId = item.QuestionnaireId})
-                </td>
-            }
-        </tr>
-        
-    }
-</table>
+<body>
+<a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
+<div class="container">
+   
+
+    <div class="row center-block">
+            <div class="dark-overlay">
+                <div class="container">
+                    
+                    <div class="col-lg-9">
+                        <div class="card bg-light card-form">
+                            <div class="text-center">
+                                <h1 class="display-4">Manage Questionnaires</h1>
+                                
+                            </div>
+                            <div class="card-body">
+    
+                                <table class="table">
+                                            <tr>
+                                                <th>
+                                                    <p>name</p>
+                                                </th>
+                                                <th>
+                                                    <p>Amount of questions</p>
+                                                </th>
+                                                <th>
+                                                    <p></p>
+                                                </th>
+                                                <th>
+                                                    <p></p>
+                                                </th>
+                                                <th>
+                                                    <p></p>
+                                                </th>
+                                                <th>
+                                                    <p></p>
+                                                </th>
+                                                
+                                            </tr>
+                                    @foreach (var item in Model.Questionnaires)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.QuestionAmount)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Complete Questionnaire", "Questionnaire", "Questionnaire"
+                                                    , new {questionnaireId = item.QuestionnaireId})
+                                            </td>
+                                            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                                            {
+                                                <td>
+                                                    @Html.ActionLink("Show results", "ShowResultsPage", "Questionnaire"
+                                                        , new {questionnaireId = item.QuestionnaireId})
+                                                </td>
+                                                if (item.Closed)
+                                                {
+                                                    <td>
+                                                        @Html.ActionLink("Open", "OpenQuestionnaire", "Questionnaire"
+                                                            , new {questionnaireId = item.QuestionnaireId})
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td>
+                                                        @Html.ActionLink("Close", "CloseQuestionnaire", "Questionnaire"
+                                                            , new {questionnaireId = item.QuestionnaireId})
+                                                    </td>
+                                                }
+                                                <td>
+                                                    @Html.ActionLink("Edit", "EditQuestionnairePage", "Questionnaire"
+                                                        , new {questionnaireId = item.QuestionnaireId}) |
+                                                    @Html.ActionLink("Delete", "DeleteQuestionnairePage", "Questionnaire"
+                                                        , new {questionnaireId = item.QuestionnaireId})
+                                                </td>
+                                            }
+                                        </tr>
+
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3" id="bodyadmin">
+                        <div class="card text-center bg-primary text-white mb-3">
+                            <div class="card-body">
+                                <h3>Add Questionnaire</h3>
+                                <h4 class="display-4">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </h4>
+                                <div class="text-center">
+                                                @Html.ActionLink("Create a new questionnaire", "CreateQuestionnairePage",
+                                                    "Questionnaire", new {projectId = Model.Project.ProjectId})
+                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </div>
 </body>
