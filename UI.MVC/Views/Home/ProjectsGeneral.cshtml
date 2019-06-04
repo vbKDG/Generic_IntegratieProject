@@ -1,168 +1,74 @@
 ﻿@model IEnumerable<D.UI.MVC.Models.Projects.ProjectVM>
 @{
-    ViewData["Title"] = "Overzicht";
+    ViewData["Title"] = "Projects";
 }
 
 
 <body id="projectsgeneral">
 
 
-<div class="text-center">
-    <h2 id="projecttitlepadding" class="text-dark">Ongoing projects</h2>
-</div>
-
-<div id="projectelementpadding" class="row center-block">
-    @foreach (var project in @Model)
-    {
-        if (project.Progress > 0 && project.Progress < 100)
-        {
-            <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                , new {projectId = project.ProjectId})'">
-                <div class="col-md-16">
-                    <div class="textWithBlurredBg">
-                        <img src="@project.Base64Image"/>
-                        <div class="text-center">
-                            <h3 class="text-light">@project.Name</h3>
-                            <h4 class="text-light">@project.Description</h4>
-                        </div>
-                    </div>
-
-                    <div class="progress center-block">
-                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="text-dark">
-                            <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                            <i class="far fa-heart"></i> @project.AmountOfLikes
-                            <i class="far fa-comments"></i> @project.AmountOfComments
-                        </p>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-</div>
-
-
-<div class="container.fluid py-5">
-
-
-    <div class="text-center">
-        <h2 id="projecttitlepadding" class="text-dark">Open Projects</h2>
-    </div>
-
-    <div id="projecttitlepadding" class="row">
-        @foreach (var project in @Model)
-        {
-            if (project.Closed == false)
-            {
-                <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                    , new {projectId = project.ProjectId})'">
-                    <div class="col-md-16">
-                        <div class="textWithBlurredBg">
-                            <img src="@project.Base64Image"/>
-                            <div class="text-center">
-                                <h3 class="text-light">@project.Name</h3>
-                                <h4 class="text-light">@project.Description</h4>
-                            </div>
-                        </div>
-                        <div class="progress center-block">
-                            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                            </div>
-                        </div>
-
-                        <div>
-                            <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                <i class="far fa-heart"></i> @project.AmountOfLikes
-                                <i class="far fa-comments"></i> @project.AmountOfComments
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-
-</div>
-
-
-
-<div class="text-center">
-    <h2 id="projecttitlepadding" class="text-dark"> Closed projects</h2>
-</div>
-
-
-<div class="row">
-    @foreach (var project in @Model)
-    {
-        if (project.Closed == true)
-        {
-            <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                , new {projectId = project.ProjectId})'">
-                <div class="col-md-16">
-                    <div class="textWithBlurredBg">
-                        <img src="@project.Base64Image"/>
-                        <div class="text-center">
-                            <h3 class="text-light">@project.Name</h3>
-                            <h4 class="text-light">@project.Description</h4>
-                        </div>
-                    </div>
-                    <div class="progress center-block">
-                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="text-dark">
-                            <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                            <i class="far fa-heart"></i> @project.AmountOfLikes
-                            <i class="far fa-comments"></i> @project.AmountOfComments
-                        </p>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-</div>
-<div class="col text-center py-5">
-    <a href="#Start">
-        <i class="fas fa-arrow-up fa-2x"></i>
-    </a>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 <h2 class="text-center"><b>Our projects</b></h2>
-            <div class="container.fluid mt-3">  
+            <div class="container mt-3">  
             <!-- tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#ongoing">Ongoing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#closed">Closed</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#recent">Recent</a>
-                    </li>
-                </ul>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#recent"><b>Recent</b></a>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#closed"><b>Closed</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#ongoing"><b>Ongoing</b></a>
+                </li>
+
+            </ul>
             </div>
             <!-- Tab panes -->
             <div class="p-5">
                 <div class="tab-content">
+                            <div id="recent" class="container tab-pane active">
+                                            <div class="row lg-4">
+                                               <div id="projecttitlepadding" class="row">
+                                                       @foreach (var project in @Model)
+                                                       {
+                                                           if (project.Closed == false)
+                                                           {
+                                                               <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
+                                                                                                                   , new {projectId = project.ProjectId})'">
+                                                                   <div class="col-md-16">
+                                                                       <div class="textWithBlurredBg">
+                                                                           <img src="@project.Base64Image"/>
+                                                                           <div class="text-center">
+                                                                               <h3 class="text-light">@project.Name</h3>
+                                                                               <h4 class="text-light">@project.Description</h4>
+                                                                           </div>
+                                                                       </div>
+                                                                       <div class="progress center-block">
+                                                                           <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
+                                                                           </div>
+                                                                       </div>
+                                               
+                                                                       <div>
+                                                                           <p class="text-dark">
+                                                                               <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                                                               <i class="far fa-heart"></i> @project.AmountOfLikes
+                                                                               <i class="far fa-comments"></i> @project.AmountOfComments
+                                                                           </p>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           }
+                                                       }
+                                                   </div>
+                                                
+                                            </div>
+                                        </div>
+                    
+                    
         
-                    <div id="ongoing" class="container.fluid tab-pane active">
+                    <div id="ongoing" class="container tab-pane fade">
         
                         <div class="row mb-4">
                             
@@ -207,9 +113,9 @@
         
                     
                     
-                    <div id="closed" class="container.fluid tab-pane fade">
+                    <div id="closed" class="container tab-pane fade">
                         <div class="row mb-4">
-                            <div id="projectelementpadding" class="row">
+                            <div id="projecttitlepadding" class="row">
                                 @foreach (var project in @Model)
                                     {
                                         if (project.Closed == true)
@@ -244,43 +150,7 @@
                             </div>
                     </div>
         
-                    <div id="recent" class="container.fluid tab-pane fade">
-                        <div class="row mb-4">
-                           <div id="projecttitlepadding" class="row">
-                                   @foreach (var project in @Model)
-                                   {
-                                       if (project.Closed == false)
-                                       {
-                                           <div class="col-md-3" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                                                                               , new {projectId = project.ProjectId})'">
-                                               <div class="col-md-16">
-                                                   <div class="textWithBlurredBg">
-                                                       <img src="@project.Base64Image"/>
-                                                       <div class="text-center">
-                                                           <h3 class="text-light">@project.Name</h3>
-                                                           <h4 class="text-light">@project.Description</h4>
-                                                       </div>
-                                                   </div>
-                                                   <div class="progress center-block">
-                                                       <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: @project.Progress%">
-                                                       </div>
-                                                   </div>
-                           
-                                                   <div>
-                                                       <p class="text-dark">
-                                                           <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                                           <i class="far fa-heart"></i> @project.AmountOfLikes
-                                                           <i class="far fa-comments"></i> @project.AmountOfComments
-                                                       </p>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       }
-                                   }
-                               </div>
-                            
-                        </div>
-                    </div>
+            
                 </div>
             </div>
 

@@ -10,13 +10,13 @@
 <body>
     <form asp-controller="Project" asp-action="EditProject" method="post" enctype="multipart/form-data">
 
-        <section id="contact" class="py-3 text-light">
+        <section id="contact" class="py-3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <div class="card p-4 bg-dark">
+                        <div class="card p-4 bg-light">
                             <div class="card-body">
-                                <h3 class="text-center text-light">Edit a project</h3>
+                                <h3 class="text-center">Edit project</h3>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -49,12 +49,9 @@
                                     @Html.EditorFor(x => x.MapFieldVM)
                                 </div>
 
-                                <h3 class="text-center text-light">Phases</h3>
+                                <h3 class="text-center">Phases</h3>
                                 <hr>
-                                <label asp-for="Name">Name: </label>
-                                <label asp-for="Description">Description: </label>
-                                <label asp-for="StartDate">Start Date: </label>
-                                <label asp-for="EndDate">End Date: </label>
+                                
 
                                 <div class="text-dark" id="phaseList">
                                     @foreach (var phase in Model.Phases)
@@ -70,9 +67,9 @@
                                     }
                                 </div>
                                 
-                                <input type="button" name="addRow" id="addRow" value="Add" class="btn bg-success btn-sm">
+                                <input type="button" name="addRow" id="addRow" value="Add" class="btn bg-success text-white btn-sm">
                                 
-                                <h3 class="text-center text-light">Settings</h3>
+                                <h3 class="text-center">Settings</h3>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -110,7 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Submit" class="btn bg-success btn-sm">
+                                <input type="submit" value="Submit" class="btn bg-success text-white btn-sm">
                             </div>
                         </div>
                     </div>

@@ -6,44 +6,110 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="~/js/changeProjectPosts.js" asp-append-version="true"></script>
+<body>
+<div class="container">
+    <h1 class="py-3 text-center">Manage Posts</h1>
+</div>
 
-<h1>Current project</h1>
-<select onchange = "redirect(this.value)">
-    @foreach (var project in Model.Projects)
-    {
-        if (project.ProjectId == Model.SelectedProject)
-        {
-            <option value="@project.ProjectId" selected>@project.Name</option>
-        }
-        else
-        {
-            <option value="@project.ProjectId">@project.Name</option>
-        }
-       
-    }
-</select>
+<div class="container">
 
-<table class="table">
-    @foreach (var ideation in Model.Ideations)
-    {
-        foreach (var idea in ideation.Ideas)
-        {
-            var reportReactions = 0;
-            foreach (var report in Model.Reports)
-            {
-                if (report.Idea.IdeaId == idea.IdeaId)
-                {
-                    reportReactions++;
-                }
-            }
-            <tr>
-                <td>
-                    Idea from: @idea.User.Email <br>
-                    Amount of reports: @reportReactions <br>
-                    <button type="button" onclick="location.href='@Url.Action("ShowReports", "Admin"
-                        , new { ideaId = @idea.IdeaId})'" >Handle posts</button>
-                </td>
-            </tr>
-        }
-    }
-</table>
+     <div class="row center-block">
+            
+                <div class="dark-overlay">
+                    <div class="container">
+    
+                        <div class="col-lg-9">
+                            <div class="card bg-light card-form">
+                                <div class="text-center">
+                                    <h1 class="display-4">Posts</h1>
+                                    <h4>Here is a list of all the Posts</h4>
+                                </div>
+                                <div class="card-body">
+
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                <p>From</p>
+                                            </th>
+                                            
+                                            <th>
+                                                <p></p>
+                                            </th>
+                                            <th>
+                                                <p></p>
+                                            </th>
+                                            
+                                            <th>
+                                                <p id="reportelement">Reports</p>
+                                            </th>
+
+                                        </tr>
+                                        <table class="table">
+                                                @foreach (var ideation in Model.Ideations)
+                                                {
+                                                    foreach (var idea in ideation.Ideas)
+                                                    {
+                                                        var reportReactions = 0;
+                                                        foreach (var report in Model.Reports)
+                                                        {
+                                                            if (report.Idea.IdeaId == idea.IdeaId)
+                                                            {
+                                                                reportReactions++;
+                                                            }
+                                                        }
+                                                        
+                                                        <tr>
+                                                            <td>
+                                                                <p>@idea.User.Email</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>@reportReactions</p>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" onclick="location.href='@Url.Action("ShowReports", "Admin"
+                                                                                                                  , new {ideaId = @idea.IdeaId})'">Handle posts</button>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    }
+                                                }
+                                            </table>
+                                       
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-3" id="bodyadmin">
+                            <div class="card text-center bg-primary text-white mb-3">
+                                                    <div class="card-body">
+                                                        <h3>Select Project</h3>
+                                                        <h4 class="display-4">
+                                                            <i class="fas fa-pencil-alt"></i> 
+                                                        </h4>
+                                                         <div class="py-2">
+                                                                 <select onchange="redirect(this.value)">
+                                                         
+                                                                     @foreach (var project in Model.Projects)
+                                                                     {
+                                                                         if (project.ProjectId == Model.SelectedProject)
+                                                                         {
+                                                                             <option value="@project.ProjectId" selected>@project.Name</option>
+                                                                         }
+                                                                         else
+                                                                         {
+                                                                             <option value="@project.ProjectId">@project.Name</option>
+                                                                         }
+                                                         
+                                                                     }
+                                                                 </select>
+                                                             </div>
+                                                         
+                                                    </div>
+                                                </div>
+                            </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                
+</div>
+</body>
