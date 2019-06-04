@@ -121,7 +121,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
-        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -370,6 +369,14 @@
             <e p="leuk.jpg" t="Include" />
             <e p="lightbulb.jpg" t="Include" />
             <e p="marathon-project.jpg" t="Include" />
+            <e p="P13I1" t="Include">
+              <e p="groenplaats.jpg" t="Include" />
+              <e p="groenplaats2.jpg" t="Include" />
+              <e p="grote markt.jpg" t="Include" />
+              <e p="MAS.jpg" t="Include" />
+              <e p="MAS2.jpg" t="Include" />
+              <e p="melkmarkt.jpg" t="Include" />
+            </e>
             <e p="park1.jpg" t="Include" />
             <e p="park2.jpg" t="Include" />
             <e p="park3.jpg" t="Include" />
@@ -484,6 +491,10 @@
             <e p="sticks.PNG" t="Include" />
             <e p="testvid.mp4" t="Include" />
             <e p="tom.png" t="Include" />
+          </e>
+          <e p="videos" t="Include">
+            <e p="Asian Antiques Online Auction Preview - November 2016.mp4" t="Include" />
+            <e p="testvid.mp4" t="Include" />
           </e>
         </e>
       </e>

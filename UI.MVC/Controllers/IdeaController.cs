@@ -158,25 +158,33 @@ namespace UI.MVC.Controllers
             List<MapField> mapFields = new List<MapField>();
             List<TextField> textFields = new List<TextField>();
             idea.IdeaTitle = ideaVm.IdeaTitle;
-           
-           foreach (var mapfield in ideaVm.MapFieldVms)
-           {
-               if (!(mapfield.Latitude == 0 && mapfield.Longitude == 0))
-               {
-                   mapFields.Add(new MapField{Latitude = mapfield.Latitude , Longitude = mapfield.Longitude});
-                   
-               }
-           }
 
-           foreach (var textField in ideaVm.TextFieldVms)
-           {
-               if (textField.Text != null && textField.Text != "")
-               {
-                   textFields.Add(new TextField{Text = textField.Text});
-               }
-              
-           }
-           
+        if(ideaVm.MapFieldVms != null)
+            {
+                foreach (var mapfield in ideaVm.MapFieldVms)
+                {
+                    if (!(mapfield.Latitude == 0 && mapfield.Longitude == 0))
+                    {
+                        mapFields.Add(new MapField {Latitude = mapfield.Latitude, Longitude = mapfield.Longitude});
+
+                    }
+                }
+            }
+
+        if (ideaVm.TextFieldVms != null)
+        {
+            foreach (var textField in ideaVm.TextFieldVms)
+            {
+                if (textField.Text != null && textField.Text != "")
+                {
+                    textFields.Add(new TextField {Text = textField.Text});
+                }
+
+            }
+        }
+
+        if (ideaVm.QuestionFieldVms != null)
+        {
             foreach (var questionVM in ideaVm.QuestionFieldVms)
             {
                 if (questionVM.QuestionText != null)
@@ -193,24 +201,27 @@ namespace UI.MVC.Controllers
                         question.QuestionType = QuestionType.CHECK_BOX;
 
                     }
+
                     foreach (var OptionVM in questionVM.Options)
                     {
                         if (OptionVM != null)
                         {
-                            options.Add(new Option{ TheOption = OptionVM});
+                            options.Add(new Option {TheOption = OptionVM});
                         }
-                        
+
                     }
+
                     QuestionField questionField = new QuestionField();
                     question.Options = options;
                     questionField.Question = question;
                     questionFields.Add(questionField);
                 }
             }
-           
-           
-           
-           
+
+        }
+
+        if (ideaVm.Files != null)
+        {
 
             for (int i = 0; i < ideaVm.Files.Files.Count; i++)
             {
@@ -222,13 +233,13 @@ namespace UI.MVC.Controllers
                         {
                             reader.CopyTo(stream);
                             var base64 = Convert.ToBase64String(stream.ToArray());
-                             base64 =  String.Format("data:image/png;base64,{0}", base64);
-                            imageFields.Add(new ImageField{ImageData = base64});
+                            base64 = String.Format("data:image/png;base64,{0}", base64);
+                            imageFields.Add(new ImageField {ImageData = base64});
 
                         }
 
                     }
-                } 
+                }
                 else if (ideaVm.Files.Files[i].ContentType.StartsWith("video"))
                 {
                     using (var reader = ideaVm.Files.Files[i].OpenReadStream())
@@ -237,16 +248,17 @@ namespace UI.MVC.Controllers
                         {
                             reader.CopyTo(stream);
                             var base64 = Convert.ToBase64String(stream.ToArray());
-                            base64=  String.Format("data:video/mp4;base64,{0}", base64);
-                            videoFields.Add(new VideoField{VideoData = base64});
+                            base64 = String.Format("data:video/mp4;base64,{0}", base64);
+                            videoFields.Add(new VideoField {VideoData = base64});
 
                         }
 
-                    } 
+                    }
                 }
             }
+        }
 
-            var applicationUserId = ""; 
+        var applicationUserId = ""; 
             if (User.Identity.IsAuthenticated)
             {
                 applicationUserId =  User.FindFirst(ClaimTypes.NameIdentifier).Value;
