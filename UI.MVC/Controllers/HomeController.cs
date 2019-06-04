@@ -156,6 +156,7 @@ namespace UI.MVC.Controllers
 
         public IActionResult ProjectsGeneral()
         {
+            ProjectsVM projectsVm = new ProjectsVM();
             ICollection<ProjectVM> allProjectVms = new List<ProjectVM>();
             ICollection<Project> projects = orchestrator.getProjects().ToList();
             
@@ -187,6 +188,7 @@ namespace UI.MVC.Controllers
 
                 projectVm.AmountOfLikes = likeAmount;
                 projectVm.AmountOfComments = commentAmount;
+                projectVm.CombinedTotal = likeAmount + commentAmount;
                 projectVm.IdeaAmount = ideaAmount;
                 projectVm.Closed = project.Closed;
                 var daysBetweenStartEnd = (projectVm.StartDate - projectVm.EndDate).TotalDays;
@@ -206,7 +208,9 @@ namespace UI.MVC.Controllers
                 }
                 allProjectVms.Add(projectVm);
             }
-            return View(allProjectVms);
+            
+            projectsVm.Projects = allProjectVms;
+            return View(projectsVm);
         }
 
         public IActionResult Contact()
@@ -226,8 +230,5 @@ namespace UI.MVC.Controllers
         {
             return View(new ErrorModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
-        
-        
-        
     }
 }

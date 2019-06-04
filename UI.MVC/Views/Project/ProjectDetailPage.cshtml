@@ -23,7 +23,6 @@
                 </h1>
                 <div class="py-2">
                     <h2 id="detaildesc"class="py-4">@Model.Project.Description</h2>
-
                 </div>
             </div>
         </div>
@@ -97,7 +96,7 @@
             <div class="col-lg-4 center-block">
                 <div class="card bg-light card-form">
                     <div class="card-body" id="card">
-                        @questionVm.Question.TheQuestion - answered @questionVm.QuestionAnswerCount time(s) <br>
+                        <b>@questionVm.Question.TheQuestion - answered @questionVm.QuestionAnswerCount time(s)</b><br>
                         @foreach (var o in questionVm.OptionsVms)
                         {
                             @o.Option.TheOption
