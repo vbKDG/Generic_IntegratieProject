@@ -47,6 +47,13 @@ html, body {
     padding-left: 35%;
 }
 
+.container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+}
+
 #locationRows{
     padding-left: 10px;
 }
@@ -58,6 +65,10 @@ html, body {
 #IdeaElement{
     padding-left: 2px;
     
+}
+
+.logonavbar{
+    padding-bottom: 12px;
 }
 
 #detailImage{
@@ -106,9 +117,11 @@ html {
     background-color: #cae5ff;
 
     padding-top: 20px;
-
-    width: 100%;
+    
+    
 }
+
+
 
 
 h1, h3, h4 {
@@ -127,7 +140,8 @@ footer {
 
 
 .carousel-item {
-    height: 340px;
+    height: 500px;
+    max-width: 100%;
 }
 
 .container body-content{
@@ -139,7 +153,13 @@ footer {
     border-radius: 5px;
     width: 100%;
     height: 400px;
-}   
+}
+
+.homePageImage img{
+    border-radius: 5px;
+    width: 100%;
+    height: 400px;
+}
 
 
 
@@ -153,35 +173,33 @@ footer {
     
 }
 
+#reportelement{
+    padding-left: 10px;
+}
+
 .form-inline{
     padding-bottom: 2px;
 }
 
 
-#projecttitlepadding{
-    padding-bottom: 35px;
-    padding-left: 100px;
-    padding-right: 100px;
+#admincard{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
-
-
-#projectelementpadding{
-    padding-bottom: 20px;
-}
 
 .textWithBlurredBg :not(img){
     position: absolute;
     top: 10%;
-    width: 90%;
+    width: 95%;
     height: 30%;
     z-index: 1;
     color: white;
     text-align: center;
     opacity: 0;
     transition: .9s;
-    padding-left: 27px;
+    padding-left: 10px;
 }
 
 
@@ -207,20 +225,28 @@ footer {
     filter:blur(2px) brightness(50%);
 }
 
-
 .carousel-image-1 {
-    background: url(/images/carousel-image1.jpg);
+    background: url(/images/foto1car.jpg);
     background-size: cover;
 }
+
 
 .carousel-image-2 {
-    background: url(/images/carousel-image2.jpg);
+    background: url(/images/portcar.jpg);
     background-size: cover;
 }
 
+#MapUploads{
+    padding-left: 2px;
+    
+}
+
+#cardcreate{
+ background-color: #edfcff;   
+}
 
 .carousel-image-3 {
-    background: url(/images/carousel-image3.jpg);
+    background: url(/images/stationcar.jpg);
     background-size: cover;
 }
 
@@ -269,6 +295,8 @@ input, select, textarea {
 }
 
 
+
+
 /* body {padding top & bottom aangepast background-color: #252525; background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;} */
 
 card {
@@ -282,11 +310,20 @@ card {
     padding: 2px;
 }
 
+#bodyElements{
+    min-height: 100%;
+}
+
 /* Clearfix (clear floats) */
 .row::after {
     content: "";
     clear: both;
     display: table;
+}
+
+#extraquestion{
+    padding-left: 50px;
+    
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -300,6 +337,9 @@ card {
     cursor: pointer;
 }
 
+.minElement{
+    
+}
 
 
 /* Hide/rearrange for smaller screens */
@@ -315,3 +355,5 @@ card {
         width: 100%;
     }
 }
+
+

@@ -12,59 +12,121 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="~/js/handleFaq.js"></script>
 
-<h1>Frequently Asked Questions (FAQ)</h1>
-<table class="table text-left">
-    <tr>
-        <th>
-            Question
-        </th>
-        <th>
-            Answers
-        </th>
-    </tr>
-    @foreach (var faq in Model)
-    {
-        <tr>
-            <td>
-                <b>@faq.User.FirstName @faq.User.LastName.Substring(0, 1).</b><br>
-                @faq.Question
-                @if (User.Identity.IsAuthenticated)
-                {
-                    using (Html.BeginForm("AnswerFaq", "Idea",
-                        FormMethod.Post))
-                    {
-                        <br>
-                        <p><b>Answer this question:</b></p>
-                        <input id="faqAnswer-@faq.FaqId" name="answer" type="text"/>
-                        <input name="faq" value="@faq.FaqId" type="hidden"/>
-                        <input id="faqUser-@faq.FaqId" value="@user.FirstName @user.LastName.Substring(0, 1)." type="hidden"/>
-                        <button id="faqSubmit-@faq.FaqId" type="submit">Answer</button>
-                    }
-                }
-            </td>
-            <td id="faqQuestions-@faq.FaqId">
-                @foreach (var answers in faq.Answers)
-                {
-                    <b>@answers.User.FirstName @answers.User.LastName.Substring(0, 1).</b>
-                    <br>
-                    @answers.Answer<hr>
-                }
-            </td>
-        </tr>
-    }
-    @if (User.Identity.IsAuthenticated)
-    {
-        <tr>
-            <td>
-                <p><b>If you can't find your answer, ask your own question here</b></p>
-                @using (Html.BeginForm("NewFaqQuestion", "Idea",
-                    FormMethod.Post))
-                {
-                    <input id="newFaqQuestion" name="answer" type="text"/>
-                    <button id="faqSubmit" type="submit">Ask question</button>
-                }
-            </td>
-            <td id="faqInfo"></td>
-        </tr>
-    }
-</table>
+<body>
+<div class="container">
+<h1 class="text-center">Frequently asked questions</h1>
+<!-- ACCORDION -->
+<div class="py-5" id="accordion">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                   <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>How do i create an account?</b></h4>
+                </div>
+            </h5>
+        </div>
+
+        <div id="collapse1" class="collapse">
+            <div class="card-body">
+                By going to the register page and filling in your personal information!                      
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                    <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>Is there an app available in the App Store?</b></h4>
+                </div>
+            </h5>
+        </div>
+
+        <div id="collapse2" class="collapse">
+            <div class="card-body">
+                We're only available on the Android play store for now, but stay tuned!
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                                   <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>Do i have to create an account?</b></h4>
+                    </div>
+            </h5>
+        </div>
+        <div id="collapse3" class="collapse">
+            <div class="card-body">
+                You don't have to create an account on this website to be able to use our services. 
+                To make it easier for the users we added external logins like Facebook and Google!
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse4" data-toggle="collapse" data-parent="#accordion">
+                        
+                    <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>How can i recover my lost account?</b></h4>
+                </div>
+            </h5>
+        </div>
+        <div id="collapse4" class="collapse">
+            <div class="card-body">
+                You can easily go to the Login page and request a password reset.
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse5" data-toggle="collapse" data-parent="#accordion">
+                            
+                    <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>What can i do with the search option in the navigation bar?</b></h4>
+                </div>
+            </h5>
+        </div>
+        <div id="collapse5" class="collapse">
+            <div class="card-body">
+                The search option allows you to search for projects.
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse6" data-toggle="collapse" data-parent="#accordion">
+                            
+                    <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>What is a Questionnaire?</b></h4>
+                </div>
+            </h5>
+        </div>
+        <div id="collapse6" class="collapse">
+            <div class="card-body">
+                A series of questions to help us make decisions.
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <div href="#collapse7" data-toggle="collapse" data-parent="#accordion">
+                            
+                    <h4> <i class="fas fa-arrow-circle-down lg"></i> <b>Can i report people?</b></h4>
+                </div>
+            </h5>
+        </div>
+        <div id="collapse7" class="collapse">
+            <div class="card-body">
+                Yes of course, if you see offensive statements please report them.
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+</body>

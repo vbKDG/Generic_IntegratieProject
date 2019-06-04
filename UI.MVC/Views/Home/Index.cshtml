@@ -2,65 +2,61 @@
 
 <script src="~/js/showCorrectProject.js" asp-append-version="true"></script>
 
-<body id="Homepage">
+    <body id="Homepage">
+        <div class="container-fluid">
+    
+            <section id="showcase">
+                
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item carousel-image-1 active">
+                            <div class="container">
+                                <div class="carousel-caption d-none d-sm-block text-right mb-1">
+                                    <h1 class="display-1 text-white"><b>Think.</b></h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-item carousel-image-2">
+                            <div class="container">
+                                <div class="carousel-caption d-none d-sm-block text-right mb-1">
+                                    <h1 class="display-1 text-white"><b>Share.</b></h1>
 
-<section id="showcase">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item carousel-image-1">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3"></h1>
-                        <p class="lead">
+                                </div>
+                            </div>
+                        </div>
 
-                        </p>
+                        <div class="carousel-item carousel-image-3">
+                            <div class="container">
+                                <div class="carousel-caption d-none d-sm-block text-right mb-1">
+                                    <h1 class="display-1 text-white"><b>Connect.</b></h1>
 
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+
+                    <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
-            </div>
-
-            <div class="carousel-item carousel-image-2">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3"></h1>
-                        <p class="lead">
-
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item carousel-image-3 active">
-                <div class="container">
-                    <div class="carousel-caption d-none d-sm-block text-right mb-5">
-                        <h1 class="display-3"></h1>
-                        <p class="lead">
-
-                        </p>
-
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
 
-        <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
 
-        <a href="#myCarousel" data-slide="next" class="carousel-control-next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</section>
-
-<!-- HOME SECTION -->
-<div class="container">
+    <!-- HOME SECTION -->
+        <div class="container">
     <div class="col text-center py-5">
         <h1 class="text-dark">Welcome</h1>
         <h3 class="text-dark">
@@ -69,18 +65,20 @@
 
         </h3>
         <div class="col text-center py-5">
-            <a class="btn btn-success btn-lg" href="#projectTop">More</a>
+            <a class="btn btn-success btn-lg" href="#pro">More</a>
 
         </div>
+        
+
     </div>
 </div>
 
 
 <!-- Projects HEAD -->
-<section id="projectTop">
-    <div id="projects-head-section" class="container">
+<section id="projects-head-section">
+    <div  class="container" id="pro">
         <div class="row">
-            <div class="col text-center">
+            <div  class="col text-center">
                 <h1>Our Projects</h1>
                 <h3>
                     Are you interested in projects in your neighbourhood, No need to look further.
@@ -110,43 +108,49 @@
                 if (project.Closed == false)
                 {
                     <div class="column text-center text-black openProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                                         , new {projectId = project.ProjectId})'">
-                        <h4 id="titleindex" class="text-black">
-                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
-                                , new {projectId = project.ProjectId})
-                        </h4>
-                        <img src="@project.Base64Image" width="365" height="200"/>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                                                                                                          , new {projectId = project.ProjectId})'">
+                        <div id="projectpaddingfix" class="card">
+                            <div class="homePageImage">
+                                <img src="@project.Base64Image" width="365" height="200"/>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                            </div>
+                            
+                            <h4 class="card-title text-black">@project.Name</h4>
+                            <div>
+                                <p class="text-dark">
+                                    <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                    <i class="far fa-heart"></i> @project.AmountOfLikes
+                                    <i class="far fa-comments"></i> @project.AmountOfComments
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                <i class="far fa-heart"></i> @project.AmountOfLikes
-                                <i class="far fa-comments"></i> @project.AmountOfComments
-                            </p>
                         </div>
-                    </div>
-                }
+                        }
+                        
                 else if (project.Closed == true)
                 {
+                
+                
                     <div class="column text-center text-black closedProjects" onclick="location.href = '@Url.Action("ProjectDetailPage", "Project"
-                             , new {projectId = project.ProjectId})'">
-                        <h4 id="titleindex" class="text-black">
-                            @Html.ActionLink(@project.Name, "ProjectDetailPage", "Project"
-                                , new {projectId = project.ProjectId})
-                        </h4>
-                        <img src="@project.Base64Image" width="365" height="200"/>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                                                                                                            , new {projectId = project.ProjectId})'">
+                        <div class="card">
+                        <div class="homePageImage">
+                        <img src="@project.Base64Image" class="img-responsive" width="365" height="200"/>
                         </div>
-                        <div>
-                            <p class="text-dark">
-                                <i class="far fa-lightbulb"></i> @project.IdeaAmount
-                                <i class="far fa-heart"></i> @project.AmountOfLikes
-                                <i class="far fa-comments"></i> @project.AmountOfComments
-                            </p>
-                        </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: @project.Progress%"></div>
+                            </div>
+                             <h4 class="card-title text-black">@project.Name</h4>
+                            <div>
+                                <p class="text-dark">
+                                    <i class="far fa-lightbulb"></i> @project.IdeaAmount
+                                    <i class="far fa-heart"></i> @project.AmountOfLikes
+                                    <i class="far fa-comments"></i> @project.AmountOfComments
+                                </p>
+                            </div>
+                            </div>
                     </div>
                 }
             }
