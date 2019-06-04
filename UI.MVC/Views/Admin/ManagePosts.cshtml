@@ -12,21 +12,6 @@
 </div>
 
 <a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
-<h1>Current project</h1>
-<select onchange = "redirect(this.value)">
-    @foreach (var project in Model.Projects)
-    {
-        if (project.ProjectId == Model.SelectedProject)
-        {
-            <option value="@project.ProjectId" selected>@project.Name</option>
-        }
-        else
-        {
-            <option value="@project.ProjectId">@project.Name</option>
-        }
-       
-    }
-</select>
 <div class="container">
 
      <div class="row center-block">
