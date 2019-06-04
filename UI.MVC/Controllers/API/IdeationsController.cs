@@ -8,15 +8,14 @@ using UI.MVC.Models.Ideations;
 
 namespace UI.MVC.Controllers.api
 {
-    [ApiController]
     public class IdeationsController : Controller
     {
         IIdeationManager mgr = new IdeationManager();
         
         [HttpGet("/api/Ideations/{id}")]
-        public IActionResult GetIdeations(int projectId)
+        public IActionResult GetIdeations(int id)
         {
-            List<Ideation> ideations = mgr.getIdeations(projectId).ToList();
+            IEnumerable<Ideation> ideations = mgr.getIdeations(id); 
             List<IdeationRESTModel> newIdeations = new List<IdeationRESTModel>();
             foreach (var ideation in ideations)
             {
@@ -28,7 +27,8 @@ namespace UI.MVC.Controllers.api
                 };
                 newIdeations.Add(model);
             }
-            return Ok(newIdeations);
+            Console.WriteLine(ideations.Count());
+            return Ok(ideations);
         }
     }
 }
