@@ -121,6 +121,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
+        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -343,6 +344,7 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
+            <e p="aboutpage.jpg" t="Include" />
             <e p="antique-project.jpg" t="Include" />
             <e p="Antwerp-logo.png" t="Include" />
             <e p="antwerp.jpg" t="Include" />
@@ -356,6 +358,9 @@
             <e p="bbq.PNG" t="Include" />
             <e p="bgcity.jpg" t="Include" />
             <e p="building3.jpg" t="Include" />
+            <e p="car1.jpg" t="Include" />
+            <e p="car2.jpg" t="Include" />
+            <e p="car3.jpg" t="Include" />
             <e p="carousel-image1.jpg" t="Include" />
             <e p="carousel-image2.jpg" t="Include" />
             <e p="carousel-image3.jpg" t="Include" />
@@ -363,6 +368,7 @@
             <e p="concertproject.jpg" t="Include" />
             <e p="delen.jpg" t="Include" />
             <e p="fleamarket-project.jpg" t="Include" />
+            <e p="foto1car.jpg" t="Include" />
             <e p="green_check.png" t="Include" />
             <e p="icon-person.png" t="Include" />
             <e p="ideeLogo.jpg" t="Include" />
@@ -383,6 +389,7 @@
             <e p="park4.jpg" t="Include" />
             <e p="perry-grone-732606-unsplash.jpg" t="Include" />
             <e p="playground-project.jpg" t="Include" />
+            <e p="portcar.jpg" t="Include" />
             <e p="project-flea-market.jpg" t="Include" />
             <e p="project-park-badminton.jpg" t="Include" />
             <e p="project-parking-lot.jpg" t="Include" />
@@ -392,9 +399,11 @@
             <e p="ryoji-iwata-543189-unsplash.jpg" t="Include" />
             <e p="safebird-project.jpg" t="Include" />
             <e p="soccerProject.jpg" t="Include" />
+            <e p="stationcar.jpg" t="Include" />
             <e p="straat2.jpg" t="Include" />
             <e p="straat3.jpg" t="Include" />
             <e p="sushi-project.jpg" t="Include" />
+            <e p="tets.jpg" t="Include" />
             <e p="volleyballProject.jpg" t="Include" />
           </e>
           <e p="js" t="Include">
