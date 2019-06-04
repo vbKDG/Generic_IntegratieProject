@@ -90,6 +90,5 @@ namespace UI.MVC.Controllers.api
 
             return Ok(questionnaires);
         }
-        
     }
 }
