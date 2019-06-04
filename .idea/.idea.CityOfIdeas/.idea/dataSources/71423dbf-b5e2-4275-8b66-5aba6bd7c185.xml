@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="app">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.14">
     <root id="1">
       <ServerVersion>3.25.1</ServerVersion>
     </root>
@@ -66,6 +66,7 @@
     </column>
     <index id="40" parent="6" name="IX_Address_PlaceId">
       <ColNames>PlaceId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="41" parent="6" name="PK_Address">
       <ColNames>AddressId</ColNames>
@@ -99,6 +100,7 @@
     </column>
     <index id="47" parent="7" name="IX_AspNetRoleClaims_RoleId">
       <ColNames>RoleId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="48" parent="7" name="PK_AspNetRoleClaims">
       <ColNames>Id</ColNames>
@@ -131,10 +133,12 @@
     <index id="54" parent="8" name="sqlite_autoindex_AspNetRoles_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="55" parent="8" name="RoleNameIndex">
       <ColNames>NormalizedName</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="56" parent="8" name="PK_AspNetRoles">
@@ -163,6 +167,7 @@
     </column>
     <index id="61" parent="9" name="IX_AspNetUserClaims_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="62" parent="9" name="PK_AspNetUserClaims">
       <ColNames>Id</ColNames>
@@ -198,10 +203,12 @@
       <NameSurrogate>1</NameSurrogate>
       <ColNames>LoginProvider
 ProviderKey</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="69" parent="10" name="IX_AspNetUserLogins_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="70" parent="10" name="PK_AspNetUserLogins">
       <ColNames>LoginProvider
@@ -230,10 +237,12 @@ ProviderKey</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>UserId
 RoleId</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="75" parent="11" name="IX_AspNetUserRoles_RoleId">
       <ColNames>RoleId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="76" parent="11" name="PK_AspNetUserRoles">
       <ColNames>UserId
@@ -279,6 +288,7 @@ RoleId</ColNames>
       <ColNames>UserId
 LoginProvider
 Name</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="84" parent="12" name="PK_AspNetUserTokens">
@@ -391,14 +401,17 @@ Name</ColNames>
     <index id="107" parent="13" name="sqlite_autoindex_AspNetUsers_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="108" parent="13" name="UserNameIndex">
       <ColNames>NormalizedUserName</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="109" parent="13" name="EmailIndex">
       <ColNames>NormalizedEmail</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="110" parent="13" name="PK_AspNetUsers">
       <ColNames>Id</ColNames>
@@ -425,9 +438,11 @@ Name</ColNames>
     </column>
     <index id="115" parent="14" name="IX_FaqAnswers_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="116" parent="14" name="IX_FaqAnswers_FaqId">
       <ColNames>FaqId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="117" parent="14" name="PK_FaqAnswers">
       <ColNames>FaqAnswerId</ColNames>
@@ -463,6 +478,7 @@ Name</ColNames>
     </column>
     <index id="123" parent="15" name="IX_Faqs_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="124" parent="15" name="PK_Faqs">
       <ColNames>FaqId</ColNames>
@@ -553,10 +569,12 @@ Name</ColNames>
     </column>
     <index id="143" parent="17" name="IX_Fields_QuestionFK_shadow">
       <ColNames>QuestionFK_shadow</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="144" parent="17" name="IX_Fields_IdeaId">
       <ColNames>IdeaId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="145" parent="17" name="PK_Fields">
       <ColNames>FieldId</ColNames>
@@ -611,9 +629,11 @@ Name</ColNames>
     </column>
     <index id="155" parent="18" name="IX_Ideas_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="156" parent="18" name="IX_Ideas_IdeationId">
       <ColNames>IdeationId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="157" parent="18" name="PK_Ideas">
       <ColNames>IdeaId</ColNames>
@@ -657,6 +677,7 @@ Name</ColNames>
     </column>
     <index id="165" parent="19" name="IX_IdeationQuestions_IdeationId">
       <ColNames>IdeationId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="166" parent="19" name="PK_IdeationQuestions">
       <ColNames>IdeationQuestonId</ColNames>
@@ -711,21 +732,27 @@ Name</ColNames>
     </column>
     <index id="177" parent="20" name="IX_Ideations_ProjectId">
       <ColNames>ProjectId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="178" parent="20" name="IX_Ideations_TextFieldRangeFieldRangeId">
       <ColNames>TextFieldRangeFieldRangeId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="179" parent="20" name="IX_Ideations_ImageFieldRangeFieldRangeId">
       <ColNames>ImageFieldRangeFieldRangeId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="180" parent="20" name="IX_Ideations_VideoRangeFieldRangeId">
       <ColNames>VideoRangeFieldRangeId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="181" parent="20" name="IX_Ideations_MapFieldRangeFieldRangeId">
       <ColNames>MapFieldRangeFieldRangeId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="182" parent="20" name="IX_Ideations_QuestionFieldRangeFieldRangeId">
       <ColNames>QuestionFieldRangeFieldRangeId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="183" parent="20" name="PK_Ideations">
       <ColNames>IdeationId</ColNames>
@@ -789,9 +816,11 @@ Name</ColNames>
     </column>
     <index id="193" parent="21" name="IX_IotSetups_AddressId">
       <ColNames>AddressId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="194" parent="21" name="IX_IotSetups_IdeationId">
       <ColNames>IdeationId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="195" parent="21" name="PK_IotSetups">
       <ColNames>IotSetupId</ColNames>
@@ -869,27 +898,35 @@ Name</ColNames>
     </column>
     <index id="211" parent="22" name="IX_Likes_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="212" parent="22" name="IX_Likes_IdeaId">
       <ColNames>IdeaId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="213" parent="22" name="IX_Likes_IotVote_UserId">
       <ColNames>IotVote_UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="214" parent="22" name="IX_Likes_QuestionId">
       <ColNames>QuestionId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="215" parent="22" name="IX_Likes_ProjectLike_UserId">
       <ColNames>ProjectLike_UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="216" parent="22" name="IX_Likes_ProjectId">
       <ColNames>ProjectId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="217" parent="22" name="IX_Likes_ReactionLike_UserId">
       <ColNames>ReactionLike_UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="218" parent="22" name="IX_Likes_ReactionId">
       <ColNames>ReactionId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="219" parent="22" name="PK_Likes">
       <ColNames>LikeId</ColNames>
@@ -967,6 +1004,7 @@ Name</ColNames>
     </column>
     <index id="231" parent="23" name="IX_Options_QuestionId">
       <ColNames>QuestionId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="232" parent="23" name="PK_Options">
       <ColNames>OptionId</ColNames>
@@ -1000,10 +1038,12 @@ Name</ColNames>
     <index id="238" parent="24" name="sqlite_autoindex_Organisations_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <index id="239" parent="24" name="IX_Organisations_ApplicationUserFK_shadow">
       <ColNames>ApplicationUserFK_shadow</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="240" parent="24" name="PK_Organisations">
@@ -1048,6 +1088,7 @@ Name</ColNames>
     </column>
     <index id="248" parent="25" name="IX_Phases_ProjectId">
       <ColNames>ProjectId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="249" parent="25" name="PK_Phases">
       <ColNames>PhaseId</ColNames>
@@ -1121,12 +1162,15 @@ Name</ColNames>
     </column>
     <index id="264" parent="27" name="IX_Projects_ImageFieldFieldId">
       <ColNames>ImageFieldFieldId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="265" parent="27" name="IX_Projects_MapFieldFieldId">
       <ColNames>MapFieldFieldId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="266" parent="27" name="IX_Projects_PlaceId">
       <ColNames>PlaceId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="267" parent="27" name="PK_Projects">
       <ColNames>ProjectId</ColNames>
@@ -1178,9 +1222,11 @@ Name</ColNames>
     </column>
     <index id="276" parent="28" name="IX_QuestionUsers_QuestionId">
       <ColNames>QuestionId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="277" parent="28" name="IX_QuestionUsers_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="278" parent="28" name="PK_QuestionUsers">
       <ColNames>QuestionUserId</ColNames>
@@ -1226,6 +1272,7 @@ Name</ColNames>
     </column>
     <index id="286" parent="29" name="IX_Questionnaires_ProjectId">
       <ColNames>ProjectId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="287" parent="29" name="PK_Questionnaires">
       <ColNames>QuestionnaireId</ColNames>
@@ -1268,9 +1315,11 @@ Name</ColNames>
     </column>
     <index id="295" parent="30" name="IX_Questions_QuestionnaireId">
       <ColNames>QuestionnaireId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="296" parent="30" name="IX_Questions_IotSetupId">
       <ColNames>IotSetupId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="297" parent="30" name="PK_Questions">
       <ColNames>QuestionId</ColNames>
@@ -1331,9 +1380,11 @@ Name</ColNames>
     </column>
     <index id="308" parent="31" name="IX_Reactions_IdeaId">
       <ColNames>IdeaId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="309" parent="31" name="IX_Reactions_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="310" parent="31" name="PK_Reactions">
       <ColNames>ReactionId</ColNames>
@@ -1387,12 +1438,15 @@ Name</ColNames>
     </column>
     <index id="320" parent="32" name="IX_Reports_IdeaId">
       <ColNames>IdeaId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="321" parent="32" name="IX_Reports_ReactionId">
       <ColNames>ReactionId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <index id="322" parent="32" name="IX_Reports_UserId">
       <ColNames>UserId</ColNames>
+      <ColumnCollations></ColumnCollations>
     </index>
     <key id="323" parent="32" name="PK_Reports">
       <ColNames>ReportId</ColNames>
@@ -1444,6 +1498,7 @@ Name</ColNames>
     </column>
     <index id="332" parent="33" name="IX_Settings_ProjectFK_shadow">
       <ColNames>ProjectFK_shadow</ColNames>
+      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="333" parent="33" name="PK_Settings">

@@ -27,8 +27,7 @@ namespace UI.MVC.Controllers.api
                 };
                 newIdeations.Add(model);
             }
-            Console.WriteLine(ideations.Count());
-            return Ok(ideations);
+            return Ok(newIdeations);
         }
     }
 }

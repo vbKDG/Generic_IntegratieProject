@@ -8,6 +8,7 @@ using D.UI.MVC.Models;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using UI.MVC.Models.Projects;
+using UI.MVC.Models.Questions;
 
 namespace UI.MVC.Controllers.api
 {
@@ -83,12 +84,18 @@ namespace UI.MVC.Controllers.api
         {
             Project project = mgr.getProject(id);
             IEnumerable<Questionnaire> questionnaires = project.Questionnaires;
+            List<QuestionnaireRESTModel> newQuestionnaires = new List<QuestionnaireRESTModel>();
             foreach (var questionnaire in questionnaires)
             {
-                questionnaire.Project = null;
+                QuestionnaireRESTModel model = new QuestionnaireRESTModel()
+                {
+                    questionnaireId = questionnaire.QuestionnaireId,
+                    name = questionnaire.Name
+                };
+                newQuestionnaires.Add(model);
             }
 
-            return Ok(questionnaires);
+            return Ok(newQuestionnaires);
         }
         
     }
