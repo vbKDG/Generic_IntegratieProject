@@ -264,10 +264,10 @@
                         @reaction.Content
                         if (User.Identity.IsAuthenticated)
                         {
-                            <button id="likeReaction-@reaction.ReactionId" type="button"
+                            <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
                                     onclick="location.href = '@Url.Action("LikeReaction", "Idea"
                                                                   , new {reactionId = @reaction.ReactionId})', userLikedReaction(), changeLikesReactionLike(@Model.IdeaId, @reaction.ReactionId)">
-                                Like
+                                <i class="far fa-thumbs-up"></i>
                             </button>
                             <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
                         }
@@ -278,7 +278,7 @@
 
                         if (User.Identity.IsAuthenticated)
                         {
-                            <button onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)">Report reaction</button><br>
+                            <button class="btn-success" onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)"><i class="far fa-flag"></i></button><br>
                         }
                         else
                         {
@@ -289,7 +289,7 @@
                 else
                 {
                     <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
-                    /*<span>(@reaction.ReactionLikes.Count)</span>
+                    <span>(@reaction.ReactionLikes.Count)</span>
                     <span class="text-danger">This reaction has been blocked!</span><br>
                 }
             }
@@ -298,57 +298,20 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     using (Html.BeginForm("ReactIdea", "Idea",
-                        FormMethod.Post))*/
-                    if (@reaction.Verified)
-                    {
-                        <i class="glyphicon glyphicon-ok-circle"></i>
-                    }
-                    @reaction.Content
-                    
-                    <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
-                                                                                                onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                                                                                              , new {reactionId = @reaction.ReactionId})', userLikedReaction()" ><i class="far fa-thumbs-up"></i>
-                                        
-                                                    </button>
-                    
-                    
-                    
-                    <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
-                    if (User.Identity.IsAuthenticated)
-                    {
-                         <button class="btn-success"
-                                            onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)"><i class="far fa-flag"></i>
-                                    </button>
-                    }
-                    else
+                        FormMethod.Post))
                     {
                         <p>Write your own reaction: </p>
                         <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
                         <input name="idea" value="@Model.IdeaId" type="hidden"/>
-                        <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction(), changeReactions(@Model.IdeaId)">React</button>
+                        <button class="btn-success" id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction(), changeReactions(@Model.IdeaId)"><i class="fas fa-reply"></i></button>
                     }
                 }
-            }
-            else
-            {
-                <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
-                <span>(@reaction.ReactionLikes.Count)</span>
-                <span class="text-danger">This reaction has been blocked!</span><br>
-            }
-        }
-        <div id="newReaction-@Model.IdeaId"></div>
-        <div>
-            @using (Html.BeginForm("ReactIdea", "Idea",
-                FormMethod.Post))
-            {
-                <p>Write your own reaction: </p>
-                <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
-                <input name="idea" value="@Model.IdeaId" type="hidden"/>
-                <button class="btn-success"
-                        id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()" ><i class="fas fa-reply"></i>
-                </button>
-                
-            }
+                else
+                {
+                    <p class="text-danger">If you want to post your own reactions, you have to sign in !</p>
+                }
+
+            </div>
         </div>
     }
 
@@ -416,31 +379,21 @@ else
     {
         if (User.Identity.IsAuthenticated)
         {
-            <button class="btn-success" id="likeIdea-@Model.IdeaId" type="button" 
-                 onclick="location.href = '@Url.Action("LikeIdea", "Idea"
-                                                                   , new {ideaId = @Model.IdeaId})'"><i class="far fa-thumbs-up"></i>
-
+            <button class="btn-success" id="likeIdea-@Model.IdeaId" type="button"
+                    onclick="location.href = '@Url.Action("LikeIdea", "Idea"
+                                                  , new {ideaId = @Model.IdeaId})', changeLikesIdeaLike(@Model.IdeaId), userLikedIdea()">
+                <i class="far fa-thumbs-up"></i>
             </button>
-            
             <span id="ideaLikeCount-@Model.IdeaId">(@Model.AmountOfLikes)</span><br>
         }
         else
         {
-            
-            <button  title="You have to be signed in" class="btn-success" id="likeIdea-@Model.IdeaId" type="button" 
-                             onclick="location.href = '@Url.Action("LikeIdea", "Idea"
-                                                                               , new {ideaId = @Model.IdeaId})'"><i class="far fa-thumbs-up"></i>
-            
-                        </button>
-            <span>(@Model.AmountOfLikes)</span><br>
+            <span id="ideaLikeCount-@Model.IdeaId">(@Model.AmountOfLikes) likes</span><br>
         }
 
         if (User.Identity.IsAuthenticated)
         {
-            <button class="btn-success"
-                    onclick="showPopup(@Model.IdeaId, 'idea', 0);"><i class="far fa-flag"></i>
-            </button>
-          
+            <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
         }
     }
     else
