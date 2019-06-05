@@ -23,60 +23,66 @@
                                     </th>
 
                                 </tr>
-                                        @foreach (var item in Model.Ideations)
+                                @foreach (var item in Model.Ideations)
+                                {
+                                    <tr>
+                                        <td>
+                                            @if (item.Questions.Count > 0)
+                                            {
+                                                @item.Questions.ToList()[0].Question
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Show ideas", "Ideation", "Idea"
+                                                , new {ideationId = item.IdeationId})
+                                        </td>
+                                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
                                         {
-                                            <tr>
+                                            <td>
+                                                @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
+                                                    , new {ideationId = item.IdeationId})
+                                            </td>
+                                                    
+                                            if (item.Closed)
+                                            {
                                                 <td>
-                                                    @if (item.Questions.Count > 0)
-                                                    {
-                                                        @item.Questions.ToList()[0].Question
-                                                    }
-                                                </td>
-                                                <td>
-                                                    @Html.ActionLink("Create Idea", "CreateIdeaPage", "Idea"
+                                                    @Html.ActionLink("Open", "OpenIdeation", "Idea"
                                                         , new {ideationId = item.IdeationId})
                                                 </td>
-                                
+                                            }
+                                            else
+                                            {
                                                 <td>
-                                                    @Html.ActionLink("Show ideas", "Ideation", "Idea"
+                                                    @Html.ActionLink("Close", "CloseIdeation", "Idea"
                                                         , new {ideationId = item.IdeationId})
                                                 </td>
-                                                @if (item.Closed)
-                                                {
-                                                    <td>
-                                                        @Html.ActionLink("Open", "OpenIdeation", "Idea"
-                                                            , new {ideationId = item.IdeationId})
-                                                    </td>
-                                                }
-                                                else
-                                                {
-                                                    <td>
-                                                        @Html.ActionLink("Close", "CloseIdeation", "Idea"
-                                                            , new {ideationId = item.IdeationId})
-                                                    </td>
-                                                }
-                                            </tr>
+                                            }
                                         }
+                                    </tr>
+                                }
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3" id="bodyadmin">
-                    <div class="card text-center bg-primary text-white mb-3">
-                        <div class="card-body">
-                            <h3>Add Ideation</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-pencil-alt"></i>
-                            </h4>
+                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
+                    <div class="col-lg-3" id="bodyadmin">
+                        <div class="card text-center bg-primary text-white mb-3">
+                            <div class="card-body">
+                                <h3>Add Ideation</h3>
+                                <h4 class="display-4">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </h4>
                             
-                            <div class="btn btn-success btn-lg" onclick="location.href = '@Url.Action("CreateIdeationPage", "Project"
-                                                                                                                                         , new {projectId = @Model.ProjectId})'">+
+                                <div class="btn btn-success btn-lg" onclick="location.href = '@Url.Action("CreateIdeationPage", "Project"
+                                                                                                  , new {projectId = @Model.ProjectId})'">+
 
 
+                                </div>
                             </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
         </div>
     </div>
 

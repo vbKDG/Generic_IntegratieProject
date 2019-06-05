@@ -239,7 +239,7 @@
                             }
                         </fieldset>
                     }
-                    <button type="submit">Submit answer</button>
+                    <button type="submit" onclick="userSubmittedAnswer()">Submit answer</button>
                 }
                 <br>
             }
@@ -393,7 +393,7 @@ else
 
         if (User.Identity.IsAuthenticated)
         {
-            <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
+            <button class="btn-success" onclick="showPopup(@Model.IdeaId, 'idea', 0);"><i class="far fa-flag"></i></button><br>
         }
     }
     else

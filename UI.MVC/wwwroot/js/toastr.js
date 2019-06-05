@@ -19,6 +19,11 @@ function userLikedReaction() {
     toastr.success('Thank you for your feedback', 'Your like on this reaction has been received!');
 }
 
+function userSubmittedAnswer() {
+    toastr.options.fadeOut = 4000;
+    toastr.success('Thank you for answering this question', 'Your answer has been received!');
+}
+
 function userSubmittedReaction() {
     toastr.options.fadeOut = 4000;
     toastr.success('Thank you for leaving a reaction', 'Your reaction on this idea has been received!');

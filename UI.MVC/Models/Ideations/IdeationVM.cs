@@ -39,6 +39,7 @@ namespace UI.MVC.Models.Ideations
         public int IdeationId { get; set; }
         public List<string> IdeationQuestions { get; set; }
         public List<IdeaListItemVM> IdeaListItemVms { get; set; }
+        public int projectId { get; set; }
     }
     public class IdeaListItemVM
     {
