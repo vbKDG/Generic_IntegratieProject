@@ -1,10 +1,69 @@
 ﻿@using Domain
 @model QuestionResultModel
-
+<body>
 <a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
-<h1>Questionnaire results</h1>
-<h3>Questionnaire: @Model.Questionnaire.Name</h3>
-<p>The questionnaire has been answered @Model.AnsweredQuestionAmount time(s).</p>
+<div class="row center-block">
+    <div class="dark-overlay">
+        <div class="container">
+            <div class="d-flex justify-content-center" >
+                <div class="card bg-light text-center card-form col-lg-4">
+                    <div class="card-body" id="card">
+                        <h1>Questionnaire results</h1>
+                        
+                            <h4><h3>Questionnaire: @Model.Questionnaire.Name</h3>
+                                <p>The questionnaire has been answered <b>@Model.AnsweredQuestionAmount</b> time(s).</p></h4>
+                        <hr />
+                        
+                            <div class="form-group text-dark">
+                               
+                                <table class="table">
+                                    @if (Model.Questions == null)
+                                    {
+                                        <p>Unfortunately there is no data collected for this questionnaire yet.</p>
+                                    }
+                                    else
+                                    {
+                                        for (var i = 0; i < Model.Questions.Count(); i++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <h4>@Model.Questions.ToList()[i].TheQuestion</h4>
+                                                    @foreach (var o in @Model.Questions.ToList()[i].Options)
+                                                    {
+                                                        @o.TheOption
+                                                        foreach (var aqa in @Model.OptionsAmounts)
+                                                        {
+                                                            if (aqa.OptionId == o.OptionId)
+                                                            {
+                                                                if (o.Question.QuestionType == QuestionType.CHECK_BOX)
+                                                                {
+                                                                    <span> (@aqa.Count)</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    double percentage = Convert.ToDouble(aqa.Count) / Convert.ToDouble(@Model.AnsweredQuestionAmount) * 100;
+                                                                    <span> (@aqa.Count) @percentage.ToString("0.00")%</span>
+                                                                }
+                                                            }
+                                                        }
+                                                        <br>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </table>
+                                
+                            </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <table class="table">
     @if (Model.Questions == null)

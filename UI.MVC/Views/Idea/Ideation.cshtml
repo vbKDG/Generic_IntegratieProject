@@ -20,50 +20,75 @@ else
     <p class="text-danger">You have to be signed in to be able to create an Idea!</p>
 }
 
-@foreach (var item in @Model.IdeationQuestions)
-{
-    <h1>@item</h1>
-}
+<body>
+<div class="container text-center center-block">
+   
 
-<div id="rowPictures"class="row">
-@foreach (var item in @Model.IdeaListItemVms)
-{
-
+    @foreach (var item in @Model.IdeationQuestions)
     {
-        <div class="column text-center text-black openProjects" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@item.IdeaId)">
-                                                                                             
-            <h4 id="titleindex" class="text-black">
-                @item.UserName: @item.IdeaTitle
-
-                
-            </h4>
-            <img src="@item.Base64Image" width="365" height="200"/>
-           
-            <div>
-                <p class="text-dark">
-                    <i class="far fa-heart"></i> <span id="idea-@item.IdeaId">@item.LikeCount</span>
-                    <i class="far fa-comments"></i> <span id="reactions-@item.IdeaId">@item.ReactionCount</span>
-                </p>
-            </div>
-        </div>
+        <h1>@item</h1>
     }
 
-}  
-</div>
-<div class="container">
-    <div class="modal" id="MyModal" role="dialog">
-        <div id="content" class="modal-dialog modal-lg">
-       
-        
-        </div>
-       
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin") || @Model.AdminOnly ==  false)
+    {
+        <div class="py-3">
+            <div class="btn btn-success btn-lg" onclick="location.href = '@Url.Action("CreateIdeaPage", "Idea"
+                                                                              , new { ideationId=@Model.IdeationId })'">Create Idea
+
+            </div></div>
     
+    }
+
+    <div id="rowPictures"class="row">
+        @foreach (var item in @Model.IdeaListItemVms)
+        {
+
+            {
+                <div class="column text-center text-black openProjects" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@item.IdeaId)">
+                                                                                             
+                    <h4 id="titleindex" class="text-black">
+                        @item.UserName: @item.IdeaTitle
+
+                
+                    </h4>
+                    <img src="@item.Base64Image" width="365" height="200"/>
+           
+                    <div>
+                        <p class="text-dark">
+                            <i class="far fa-heart"></i> @item.LikeCount
+                            <i class="far fa-comments"></i> @item.ReactionCount
+                        </p>
+                    </div>    
+                </div>
+            }
+
+        }  
     </div>
-</div> 
+    <div class="container center-block text-center">
+            
+            <div class="modal" id="MyModal" role="dialog">
+                <div class="modal-body center-block text-center">
+                    <div class="form-group-sm">
+                    <div id="content" class="modal-dialog modal-lg text-center center-block"></div>
+                </div>
+                </div>
+            </div>
+
+    
+    </div> 
+
+
+</div>
+
+
+</body>
+
+
+
 <script>
     $(document).ready(function(input) {
     });
-
+    
     function OpenIdea(input) {
         $("#content").load("/Idea/Idea",{ideaId : input});
 
