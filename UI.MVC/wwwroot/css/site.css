@@ -291,7 +291,15 @@ input, select, textarea {
     padding-right: 15px;
 }
 
+.navSearch{
+    padding-left: 0px;
+}
 
+.autocomplete{
+    padding-left: 5px;
+}
+
+    
 
 
 /* body {padding top & bottom aangepast background-color: #252525; background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;} */
