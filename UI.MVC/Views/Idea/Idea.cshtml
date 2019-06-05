@@ -199,8 +199,8 @@
     @if (@Model.MapFieldVms.Count > 0)
     {
         <div id="MapUploads">
-            <button type="button" id="NextLocation"></button>
-            <div id="map" style="height: 360px; width: 720px;"> </div>
+            <button type="button" id="NextLocation">Next Location</button>
+            <div id="map" style="height: 360px; width: 104%;"> </div>
             @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
             {
                 <p hidden="true" class="latitude" id="location_latitude_@i">@Model.MapFieldVms[i].Latitude</p>
@@ -245,76 +245,79 @@
             }
         </div>
     }
-
-    @if (Model.Disapproved == false)
-    {
-        <div>
-            <b>Reactions:</b><br>
-            @foreach (var reaction in Model.Reactions.ToList())
-            {
-                if (reaction.Disapproved == false)
+    <table>
+        <tr>
+        @if (Model.Disapproved == false)
+        {
+            <div>
+                <b>Reactions:</b><br>
+               
+                @foreach (var reaction in Model.Reactions.ToList())
                 {
-                    if (reaction.Idea.IdeaId == @Model.IdeaId)
+                    if (reaction.Disapproved == false)
+                    {
+                        if (reaction.Idea.IdeaId == @Model.IdeaId)
+                        {
+                             <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
+                            if (@reaction.Verified)
+                            {
+                                <i class="glyphicon glyphicon-ok-circle"></i>
+                            }
+                            @reaction.Content
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
+                                        onclick="location.href = '@Url.Action("LikeReaction", "Idea"
+                                                                      , new {reactionId = @reaction.ReactionId})', userLikedReaction(), changeLikesReactionLike(@Model.IdeaId, @reaction.ReactionId)">
+                                    <i class="far fa-thumbs-up"></i>
+                                </button>
+                                <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
+                            }
+                            else
+                            {
+                                <span id="reactionLikeCount-@reaction.ReactionId"> | likes (@reaction.ReactionLikes.Count)</span>
+                            }
+
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <button class="btn-success" onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)"><i class="far fa-flag"></i></button><br>
+                            }
+                            else
+                            {
+                                <br>
+                            }
+                        }
+                    }
+                    else
                     {
                         <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
-                        if (@reaction.Verified)
-                        {
-                            <i class="glyphicon glyphicon-ok-circle"></i>
-                        }
-                        @reaction.Content
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
-                                    onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                                  , new {reactionId = @reaction.ReactionId})', userLikedReaction(), changeLikesReactionLike(@Model.IdeaId, @reaction.ReactionId)">
-                                <i class="far fa-thumbs-up"></i>
-                            </button>
-                            <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
-                        }
-                        else
-                        {
-                            <span id="reactionLikeCount-@reaction.ReactionId"> | likes (@reaction.ReactionLikes.Count)</span>
-                        }
-
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <button class="btn-success" onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)"><i class="far fa-flag"></i></button><br>
-                        }
-                        else
-                        {
-                            <br>
-                        }
+                        <span>(@reaction.ReactionLikes.Count)</span>
+                        <span class="text-danger">This reaction has been blocked!</span><br>
                     }
                 }
-                else
-                {
-                    <b>@reaction.User.FirstName @reaction.User.LastName.Substring(0, 1).</b>
-                    <span>(@reaction.ReactionLikes.Count)</span>
-                    <span class="text-danger">This reaction has been blocked!</span><br>
-                }
-            }
-            <div id="newReaction-@Model.IdeaId"></div>
-            <div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    using (Html.BeginForm("ReactIdea", "Idea",
-                        FormMethod.Post))
+                <div id="newReaction-@Model.IdeaId"></div>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        <p>Write your own reaction: </p>
-                        <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
-                        <input name="idea" value="@Model.IdeaId" type="hidden"/>
-                        <button class="btn-success" id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction(), changeReactions(@Model.IdeaId)"><i class="fas fa-reply"></i></button>
+                        using (Html.BeginForm("ReactIdea", "Idea",
+                            FormMethod.Post))
+                        {
+                            <p>Write your own reaction: </p>
+                            <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
+                            <input name="idea" value="@Model.IdeaId" type="hidden"/>
+                            <button class="btn-success" id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction(), changeReactions(@Model.IdeaId)"><i class="fas fa-reply"></i></button>
+                        }
                     }
-                }
-                else
-                {
-                    <p class="text-danger">If you want to post your own reactions, you have to sign in !</p>
-                }
+                    else
+                    {
+                        <p class="text-danger">If you want to post your own reactions, you have to sign in !</p>
+                    }
 
+                </div>
             </div>
-        </div>
-    }
-
+        }
+        </tr>
+    </table>
 
     <div id="blur" name="blur"></div>
     <div id="popup" name="popup" class="text-center">

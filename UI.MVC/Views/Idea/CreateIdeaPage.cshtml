@@ -215,24 +215,27 @@ $('#ideaForm').submit(function  SubmitQuestions(event) {
           document.getElementById('VideoLink').click();
           event.preventDefault();
           
-      } else if (questionCount + 1 < questionfieldMin) {
-       //   alert("5 questions required!");
-          document.getElementById('QuestionLink').click();
-          event.preventDefault();
+      }  else {
 
-      } else  if (Validate()) {
-
-          
-           //   alert("Question fields can't be empty !");
-              document.getElementById('QuestionLink').click();
-              event.preventDefault();
-      } else {
-
-              SaveQuestion();
+             
               disable();
       }
-      
-     
+     /*
+      else if (questionCount + 1 < questionfieldMin) {
+          //   alert("5 questions required!");
+          document.getElementById('QuestionLink').click();
+          event.preventDefault();
+           
+       
+            
+
+      } else  if (Validate()) {
+ SaveQuestion();
+          
+          //   alert("Question fields can't be empty !");
+          document.getElementById('QuestionLink').click();
+          event.preventDefault();
+      }*/
     });
 
 </script>
