@@ -1021,7 +1021,7 @@ namespace DAL.EF
             project13Ideation2.Questions = new List<IdeationQuestion>{p13I2Q1};
            // File file = Path(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4");
           
-           FileStream fileStream = new FileStream(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4",FileMode.Open,FileAccess.Read);
+          /* FileStream fileStream = new FileStream(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4",FileMode.Open,FileAccess.Read);
            byte[] data = new byte[(int)fileStream.Length];
                
            using (var reader = fileStream)
@@ -1036,7 +1036,7 @@ namespace DAL.EF
 
                }
 
-           } 
+           } */
             Idea p13I2Idea1 = new Idea
             {
                 
@@ -1049,7 +1049,10 @@ namespace DAL.EF
                     new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
                     new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
                     
-                  //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4")))} 
+                // new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("C:\\Users\\Alex\\Pictures\\testvid.mp4")))} 
+                 new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\Antique1.mp4")))}, 
+                 new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\AntiqueWeapons.mp4")))} 
+
                     //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(fileStream.WriteByte())} 
 
                 },

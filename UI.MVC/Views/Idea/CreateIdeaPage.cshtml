@@ -29,11 +29,12 @@
 
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
     <input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
+    <h2>Idea Title</h2>
     <input asp-for="IdeaTitle" />
     <div id="text"> </div>
     @if (@Model.TextFieldVms.Count != 0)
     {
-        <h3>Upload Text </h3>
+        <h3 id="textlink">Upload Text </h3>
         if (@Model.TextFieldVMMin > 0)
         {
             <h5>Required: @Model.TextFieldVMMin</h5>
@@ -48,7 +49,7 @@
     }
     
     @if (@Model.ImageFieldVms.Count != 0){
-        <h3>Upload Images</h3>
+        <h3 id="imagelink">Upload Images</h3>
         if (@Model.ImageFieldVMMin > 0)
         {
             <h5>Required: @Model.ImageFieldVMMin</h5>
@@ -66,7 +67,7 @@
 
     @if (@Model.VideoFieldVms.Count != 0)
     {
-        <h3>Upload Videos</h3>
+        <h3 id="videolink">Upload Videos</h3>
         if (@Model.VideoFieldVMMin > 0)
         {
             <h5>Required: @Model.VideoFieldVMMin</h5>
@@ -82,7 +83,7 @@
     }
     @if (@Model.MapFieldVms.Count != 0)
     {
-        <h3 class="py-2">Upload Locations</h3>
+        <h3  id="maplink" class="py-2">Upload Locations</h3>
         if (@Model.MapFieldVMMin > 0)
         {
             <h5>Required: @Model.MapFieldVMMin</h5>
@@ -101,7 +102,7 @@
     
     @if (@Model.QuestionFieldVms.Count != 0)
     {
-        <h3>Upload Questions</h3>
+        <h3 id="questionlink">Upload Questions</h3>
         if (@Model.QuestionVMMin > 0)
         {
             <h5>Required: @Model.QuestionVMMin</h5>
@@ -142,16 +143,37 @@
 <p id="mapFieldMin" hidden="">@Model.MapFieldVMMin</p>
 <p id="questionFieldMin" hidden="">@Model.QuestionVMMin</p>
 
-<a id="TextLink" href="#TextSlideshow" hidden></a>
-<a id="ImageLink" href="#ImageUploads" hidden></a>
-<a id="VideoLink" href="#VideoUploads" hidden></a>
-<a id="MapLink" href="#MapUploads" hidden></a>
-<a id="QuestionLink" href="#QuestionUploads" hidden></a>
+<a id="TextLink" href="#textlink" hidden></a>
+<a id="ImageLink" href="#imagelink" hidden></a>
+<a id="VideoLink" href="#videolink" hidden></a>
+<a id="MapLink" href="#maplink" hidden></a>
+<a id="QuestionLink" href="#questionlink" hidden></a>
 
 
 <script>
-    $(".remRow").click(function () {
-        console.log('xxx');
+    $("#locationRows").on('click', '.remMapRow', function () {
+
+
+        // var max = document.getElementsByClassName('location');
+        // var max = max.length;
+        var rowIndex = (this).closest(".locationRow").id;
+        rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
+
+        var latitude = '#MapFieldVms_' + rowIndex + '__latitude';
+        var longitude = '#MapFieldVms_' + rowIndex + '__longitude';
+        $(latitude).attr('value',0);
+        $(longitude).attr('value',0);
+        locationTracker[rowIndex] = true;
+
+        (this).closest(".locationRow").remove();
+
+        var locationtexts = document.getElementsByClassName('locationText');
+        for (var i = 0; i < locationtexts.length; i++) {
+            locationtexts[i].innerText = 'Location ' + (i + 1);
+        }
+
+
+
 
     });
 
@@ -173,33 +195,33 @@ $('#ideaForm').submit(function  SubmitQuestions(event) {
       var questionfieldMin = document.getElementById('questionFieldMin').innerText;
 
       if (textslides.length < textfieldmin) {
-          alert("The minimum amount of textfields is " + textfieldmin + "!");
+        //  alert("The minimum amount of textfields is " + textfieldmin + "!");
           document.getElementById('TextLink').click();
           event.preventDefault();
       }else if( imageslides.length < imageFieldmin ){
           
-          alert("The minimum amount of imagefields is " + imageFieldmin + "!");
+        //  alert("The minimum amount of imagefields is " + imageFieldmin + "!");
           document.getElementById('ImageLink').click();
           event.preventDefault();
       }else if( videoslides.length < videoFieldmin){
-          alert("The minimum amount of videofields is " + videoFieldmin + "!");
+        //  alert("The minimum amount of videofields is " + videoFieldmin + "!");
           document.getElementById('VideoLink').click();
           event.preventDefault();
           
       } else if (mapslides.length < mapfieldmin) {
-          alert("The minimum amount of mapfields is " + mapfieldmin + "!");
+        //  alert("The minimum amount of mapfields is " + mapfieldmin + "!");
           document.getElementById('VideoLink').click();
           event.preventDefault();
           
       } else if (questionCount + 1 < questionfieldMin) {
-          alert("5 questions required!");
+       //   alert("5 questions required!");
           document.getElementById('QuestionLink').click();
           event.preventDefault();
 
       } else  if (Validate()) {
 
           
-              alert("Question fields can't be empty !");
+           //   alert("Question fields can't be empty !");
               document.getElementById('QuestionLink').click();
               event.preventDefault();
       } else {
