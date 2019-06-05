@@ -355,7 +355,7 @@ namespace DAL.EF
             p1.Setting = new Setting {BackGroundColor1 = "red", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj1 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
             ImageField imgproj1 = new ImageField(); 
-            imgproj1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg")));
+            imgproj1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/playground-project.jpg")));
 
             //imgproj1.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg");
             p1.MapField = mapproj1;
@@ -473,7 +473,8 @@ namespace DAL.EF
             p2.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj2 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
             ImageField imgproj2 = new ImageField();  
-            imgproj2.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg")));
+            imgproj2.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/safebird-project.jpg")));
+            
 
           //  imgproj2.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
             p2.MapField = mapproj2;
@@ -567,7 +568,7 @@ namespace DAL.EF
             Project p3 = new Project();
             MapField map1 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
             ImageField img1 = new ImageField();
-            img1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\bbq-project.jpg")));
+            img1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/bbq-project.jpg")));
 
             p3.Name = "Summer bbqs";
             p3.Description =
@@ -588,7 +589,7 @@ namespace DAL.EF
             Project p4 = new Project();
             MapField map4 = new MapField { Latitude = 51.19482591025128, Longitude = 4.424488633272745 };
             ImageField img4 = new ImageField();
-            img4.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg")));
+            img4.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/soccerProject.jpg")));
            // img4.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\soccerProject.jpg");
             p4.Name = "Soccer Tournament";
             p4.Description = "The locals in Berchem are planning on organizing a Soccer Tournament set in June, 2019.";
@@ -606,7 +607,7 @@ namespace DAL.EF
             Project p5 = new Project();
             MapField map5 = new MapField { Latitude = 51.19085124996951, Longitude = 4.426741327814966 };
             ImageField img5 = new ImageField();
-            img5.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg")));
+            img5.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/ropepulling-project.jpg")));
 
            // img5.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\ropepulling-project.jpg");
             p5.Name = "Tug of war!";
@@ -625,7 +626,7 @@ namespace DAL.EF
             Project p6 = new Project();
             MapField map6 = new MapField { Latitude = 51.18963283343007, Longitude = 4.420076572104449 };
             ImageField img6 = new ImageField();
-            img6.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg")));
+            img6.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/asian-food-project.jpg")));
 
            // img6.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\asian-food-project.jpg");
             p6.Closed = true;
@@ -645,7 +646,7 @@ namespace DAL.EF
             Project p7 = new Project();
             MapField map7 = new MapField { Latitude = 51.1987041954414, Longitude = 4.42399545204978 };
             ImageField img7 = new ImageField();
-            img7.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg")));
+            img7.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/fleamarket-project.jpg")));
 
            // img7.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\fleamarket-project.jpg");
             p7.Name = "Flea market in Berchem";
@@ -665,7 +666,7 @@ namespace DAL.EF
             Project p8 = new Project();
             MapField map8 = new MapField { Latitude = 51.21250372160042, Longitude = 4.4180404853490245 };
             ImageField img8 = new ImageField();
-            img8.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg")));
+            img8.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/artgallery-project.jpg")));
 
            // img8.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\artgallery-project.jpg");
             p8.Name = "Art gallery in Antwerp";
@@ -685,7 +686,7 @@ namespace DAL.EF
             Project p9 = new Project();
             MapField map9 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img9 = new ImageField();
-            img9.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg")));
+            img9.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/sushi-project.jpg")));
 
            // img9.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\sushi-project.jpg");
             p9.Name = "Sushi evening";
@@ -705,7 +706,7 @@ namespace DAL.EF
             Project p10 = new Project();
             MapField map10 = new MapField { Latitude = 51.21315287598253, Longitude = 4.415047195504712 };
             ImageField img10 = new ImageField();
-            img10.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg")));
+            img10.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/project-park-badminton.jpg")));
 
            // img10.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-park-badminton.jpg");
             p10.Name = "Badminton tournament";
@@ -726,7 +727,7 @@ namespace DAL.EF
             Project p11 = new Project();
             MapField map11 = new MapField { Latitude = 51.21847254325475, Longitude = 51.21847254325475 };
             ImageField img11 = new ImageField();
-            img11.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg")));
+            img11.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/project-parking-lot.jpg")));
 
            // img11.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-parking-lot.jpg");
             p11.Name = "Parking lot movie";
@@ -745,7 +746,7 @@ namespace DAL.EF
             Project p12 = new Project();
             MapField map12 = new MapField { Latitude = 51.21215292577289, Longitude = 4.414958953857422 };
             ImageField img12 = new ImageField();
-            img12.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-renaissance-faire.jpg")));
+            img12.ImageData =String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/project-renaissance-faire.jpg")));
 
           //  img12.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\project-renaissance-faire.jpg");
             p12.Name = "Renaissance faire in Antwerp";
@@ -764,7 +765,7 @@ namespace DAL.EF
             Project p13 = new Project();
             MapField map13 = new MapField { Latitude = 51.20595899589377, Longitude = 4.383128206683523 };
             ImageField img13 = new ImageField();
-            img13.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg")));
+            img13.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/antique-project.jpg")));
 
           //  img13.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\antique-project.jpg");
             p13.Name = "Antique flea market";
@@ -779,96 +780,12 @@ namespace DAL.EF
 
             p13.ImageField = img13;
             p13.MapField = map13;
-
-            p13.Questionnaires = new List<Questionnaire>()
-            {
-                new Questionnaire()
-                {
-                    Closed = false,
-                    Name = "General info about the flee market",
-                    QuestionAmount = 5,
-                    Questions = new List<Question>()
-                    {
-                        new Question()
-                        {
-                            TheQuestion = "If you would like to, you can confirm this questionnaire with your e-mail address",
-                            QuestionType = QuestionType.MAILADDRESS,
-                            QuestionnaireAnswers = new List<QuestionUser>()
-                            {
-                                new QuestionUser() { Answer = "stef.delaet@gmail.com", Confirmed = false }
-                            }
-                        },
-                        new Question()
-                        {
-                            TheQuestion = "Is there any extra information you want to add?",
-                            QuestionType = QuestionType.OPEN_QUESTION,
-                            QuestionnaireAnswers = new List<QuestionUser>()
-                            {
-                                new QuestionUser() { Answer = "No, not really", Confirmed = false },
-                                new QuestionUser() { Answer = "I would like to come, i'm really looking forward to this.", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
-                                new QuestionUser() { Answer = "No, everything looks fine by me!", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
-                            }
-                        },
-                        new Question()
-                        {
-                            TheQuestion = "What do you think is the best location for this event?",
-                            Options = new List<Option>()
-                            {
-                                new Option() { TheOption = "The Meir" },
-                                new Option() { TheOption = "The Groenplaats"},
-                                new Option() { TheOption = "The Astridplein" }
-                            },
-                            QuestionType = QuestionType.DROPDOWN,
-                            QuestionnaireAnswers = new List<QuestionUser>()
-                            {
-                                new QuestionUser() { Answer = "The Groenplaats", Confirmed = false },
-                                new QuestionUser() { Answer = "The Meir", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
-                                new QuestionUser() { Answer = "The Groenplaats", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
-                            }
-                        },
-                        new Question()
-                        {
-                            TheQuestion = "What kind of food stands would you like to see at the flee market?",
-                            Options = new List<Option>()
-                            {
-                                new Option() { TheOption = "Hotdogs" },
-                                new Option() { TheOption = "French fries" },
-                                new Option() { TheOption = "Pizza" },
-                                new Option() { TheOption = "Sushi" }
-                            },
-                            QuestionType = QuestionType.CHECK_BOX,
-                            QuestionnaireAnswers = new List<QuestionUser>()
-                            {
-                                new QuestionUser() { Answer = "Hotdogs,Pizza,French fries", Confirmed = false },
-                                new QuestionUser() {Answer = "French fries, Sushi", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
-                                new QuestionUser() { Answer = "Sushi", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
-                            }
-                        },
-                        new Question()
-                        {
-                            TheQuestion = "Do you think flee markets are a good idea?",
-                            Options = new List<Option>()
-                            {
-                                new Option() { TheOption = "Yes" },
-                                new Option() { TheOption = "No" }
-                            },
-                            QuestionType = QuestionType.RADIO_BUTTON,
-                            QuestionnaireAnswers = new List<QuestionUser>()
-                            {
-                                new QuestionUser() { Answer = "Yes", Confirmed = false },
-                                new QuestionUser() { Answer = "Yes", Confirmed = true, User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
-                                new QuestionUser() { Answer = "Yes", Confirmed = true, User = userManager.FindByEmailAsync("Kacie.Brewer@gmail.com").Result}
-                            }
-                        }
-                    }
-                }
-            };
             
             // Concert evening
             Project p14 = new Project();
             MapField map14 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img14 = new ImageField();
-            img14.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg")));
+            img14.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/concertproject.jpg")));
 
             //img14.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\concertproject.jpg");
             p14.Name = "Concert in the park";
@@ -887,7 +804,7 @@ namespace DAL.EF
             Project p15 = new Project();
             MapField map15 = new MapField { Latitude = 51.21205064975499, Longitude = 4.4135022509701685 };
             ImageField img15 = new ImageField();
-            img15.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg")));
+            img15.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/marathon-project.jpg")));
 
            // img15.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\marathon-project.jpg");
             p15.Name = "marathon";
@@ -941,8 +858,8 @@ namespace DAL.EF
                     new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
                     new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
                     new MapField{Latitude = 51.2185 , Longitude = 4.4017},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\groenplaats.jpg")))},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\groenplaats2.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/groenplaats.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/groenplaats2.jpg")))}
 
                     
                 },
@@ -950,7 +867,7 @@ namespace DAL.EF
                 {
                     new Reaction{User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result ,Content = "I think it would to crowded there ...", Date = new DateTime(2019,3,20,12,40,0)},
                     new Reaction{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result ,Content = "This seems like a great idea", Date = new DateTime(2019,3,20,12,40,0)}
-            
+
                 },
                 IdeaLikes = new List<IdeaLike>
                 {
@@ -959,12 +876,9 @@ namespace DAL.EF
                     new IdeaLike{User = userManager.FindByEmailAsync("Kaitlyn.Avalos@gmail.com").Result, LikeTime = new DateTime(2019,3,22,14,40,0)},
                     new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
 
-                },
-                Reports = new List<Report>()
-                {
-                    new Report() { DateSubmitted = new DateTime(2019, 4, 4), ReportMessage = "I think this is quiet offensive !!", User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
-                    new Report() { DateSubmitted = new DateTime(2019, 5, 26), ReportMessage = "This should not be allowed", User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result}
                 }
+                
+                
             };
             Idea p13I1Idea2 = new Idea
             {
@@ -977,7 +891,7 @@ namespace DAL.EF
                 {
                     new TextField{Text = "The melkmarkt is a very cozy place, and there are plenty of places to get food!"},
                     new MapField{Latitude = 51.2198 , Longitude = 4.4017},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\melkmarkt.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/melkmarkt.jpg")))}
                         
                 },
                 Reactions = new List<Reaction>
@@ -997,10 +911,6 @@ namespace DAL.EF
                     new IdeaLike{User = userManager.FindByEmailAsync("Brenna.Seymour@gmail.com").Result, LikeTime = new DateTime(2019,3,23,15,40,0)},
                     new IdeaLike{User = userManager.FindByEmailAsync("Rae.Osborne@gmail.com").Result, LikeTime = new DateTime(2019,3,25,16,40,0)}
 
-                },
-                Reports = new List<Report>()
-                {
-                    new Report() { DateSubmitted = new DateTime(2019, 5, 23), ReportMessage = "WHY???", User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result},
                 }
             };
             Idea p13I1Idea3 = new Idea
@@ -1015,8 +925,8 @@ namespace DAL.EF
                     new TextField{Text = "The View of the MAS in the background is incredible!"},
                     new TextField{Text = "It is also one of the most sunny places in the city."},
                     new MapField{Latitude = 51.228935 , Longitude = 4.404732},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS.jpg")))},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS2.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/MAS.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/MAS2.jpg")))}
 
                     
                 },
@@ -1045,7 +955,7 @@ namespace DAL.EF
                 {
                     new TextField{Text = "The best place in antwerp to host a flea market, and it's good for all the local restaurants here."},
                     new MapField{Latitude = 51.2211 , Longitude = 4.4001},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\grote markt.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/grote markt.jpg")))}
                     
                 },
                 Reactions = new List<Reaction>
@@ -1109,24 +1019,6 @@ namespace DAL.EF
             };
             IdeationQuestion p13I2Q1 = new IdeationQuestion{BackgroundInfo = null,Description = null,Ideation = project13Ideation2,Question = "Should there be a theme and what type of items should there be sold ?"};
             project13Ideation2.Questions = new List<IdeationQuestion>{p13I2Q1};
-           // File file = Path(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4");
-          
-           FileStream fileStream = new FileStream(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4",FileMode.Open,FileAccess.Read);
-           byte[] data = new byte[(int)fileStream.Length];
-               
-           using (var reader = fileStream)
-            
-           using (var stream = new MemoryStream())
-           {
-               {
-                   reader.CopyTo(stream);
-                   var base64 = Convert.ToBase64String(stream.ToArray());
-                   base64=  String.Format("data:video/mp4;base64,{0}", base64);
-                   var x = base64;
-
-               }
-
-           } 
             Idea p13I2Idea1 = new Idea
             {
                 
@@ -1136,10 +1028,13 @@ namespace DAL.EF
                 User = userManager.FindByEmailAsync("Ajay.Short@gmail.com").Result,
                 Fields = new List<Field>
                 {
-                    new TextField{Text = "The Groenplaats seems like a fun place to host the flea market !!"},
+                    new TextField{Text = "The Groenplaats seems like a fun place to host the fleam market !!"},
                     new TextField{Text = "It's located in the center of the city so people won't have to go far with the items they want to sell!"},
                     
-                  //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\videos\\Asian Antiques Online Auction Preview - November 2016.mp4")))} 
+                // new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("C:\\Users\\Alex\\Pictures\\testvid.mp4")))} 
+                 new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/videos/Antique1.mp4")))}, 
+                 new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/videos/AntiqueWeapons.mp4")))} 
+
                     //new VideoField{VideoData = String.Format("data:video/mp4;base64,{0}", Convert.ToBase64String(fileStream.WriteByte())} 
 
                 },
@@ -1171,7 +1066,7 @@ namespace DAL.EF
                 {
                     new TextField{Text = "The melkmarkt is a very cozy place, and there are plenty of places to get food!"},
                     new MapField{Latitude = 51.2198 , Longitude = 4.4017},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\melkmarkt.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/melkmarkt.jpg")))}
                         
                 },
                 Reactions = new List<Reaction>
@@ -1205,8 +1100,8 @@ namespace DAL.EF
                     new TextField{Text = "The View of the MAS in the background is incredible!"},
                     new TextField{Text = "It is also one of the most sunny places in the city."},
                     new MapField{Latitude = 51.228935 , Longitude = 4.404732},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS.jpg")))},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\MAS2.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/MAS.jpg")))},
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/MAS2.jpg")))}
 
                     
                 },
@@ -1235,7 +1130,7 @@ namespace DAL.EF
                 {
                     new TextField{Text = "The best place in antwerp to host a flea market, and it's good for all the local restaurants here."},
                     new MapField{Latitude = 51.2211 , Longitude = 4.4001},
-                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\P13I1\\grote markt.jpg")))}
+                    new ImageField{ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/P13I1/grote markt.jpg")))}
                     
                 },
                 Reactions = new List<Reaction>

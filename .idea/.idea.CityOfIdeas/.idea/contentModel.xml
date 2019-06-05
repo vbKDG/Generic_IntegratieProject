@@ -121,7 +121,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
-        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -207,6 +206,7 @@
         <e p="Controllers" t="Include">
           <e p="AdminController.cs" t="Include" />
           <e p="API" t="Include">
+            <e p="IdeationsController.cs" t="Include" />
             <e p="ProjectsController.cs" t="Include" />
             <e p="QuestionnairesController.cs" t="Include" />
           </e>
@@ -229,6 +229,7 @@
             <e p="QuestionRESTModel.cs" t="Include" />
           </e>
           <e p="Ideations" t="Include">
+            <e p="IdeationRESTModel.cs" t="Include" />
             <e p="IdeationVM.cs" t="Include" />
           </e>
           <e p="OptionsAmount.cs" t="Include" />
@@ -502,7 +503,10 @@
             <e p="tom.png" t="Include" />
           </e>
           <e p="videos" t="Include">
+            <e p="Antique1.mp4" t="Include" />
+            <e p="AntiqueWeapons.mp4" t="Include" />
             <e p="Asian Antiques Online Auction Preview - November 2016.mp4" t="Include" />
+            <e p="Giant BBQ Rib Sandwich to Feed a Crowd.mp4" t="Include" />
             <e p="testvid.mp4" t="Include" />
           </e>
         </e>
