@@ -7,7 +7,8 @@ namespace UI.MVC.Models.Ideations
     {
         public int IdeationId { get; set; }
 
-        public ICollection<IdeationQuestion> Questions { get; set; }
-        public ICollection<Idea> Ideas { get; set; }
+        public string Question { get; set; }
+        public int NumberOfLikes { get; set; }
+        public int NumberOfIdeas { get; set; }
     }
 }
