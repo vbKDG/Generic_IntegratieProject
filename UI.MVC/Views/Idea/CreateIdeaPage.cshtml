@@ -30,10 +30,14 @@
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
     <input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
     <input asp-for="IdeaTitle" />
-  
+    <div id="text"> </div>
     @if (@Model.TextFieldVms.Count != 0)
     {
-        <h3>Upload Text</h3>
+        <h3>Upload Text </h3>
+        if (@Model.TextFieldVMMin > 0)
+        {
+            <h5>Required: @Model.TextFieldVMMin</h5>
+        }
         <div id="TextUploads">
             @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
             {
@@ -45,6 +49,10 @@
     
     @if (@Model.ImageFieldVms.Count != 0){
         <h3>Upload Images</h3>
+        if (@Model.ImageFieldVMMin > 0)
+        {
+            <h5>Required: @Model.ImageFieldVMMin</h5>
+        }
         <div id="ImageUploads" class="py-3">
             @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
             {
@@ -59,6 +67,10 @@
     @if (@Model.VideoFieldVms.Count != 0)
     {
         <h3>Upload Videos</h3>
+        if (@Model.VideoFieldVMMin > 0)
+        {
+            <h5>Required: @Model.VideoFieldVMMin</h5>
+        }
         <div id="VideoUploads"class="py-2">
             @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
             {
@@ -71,6 +83,11 @@
     @if (@Model.MapFieldVms.Count != 0)
     {
         <h3 class="py-2">Upload Locations</h3>
+        if (@Model.MapFieldVMMin > 0)
+        {
+            <h5>Required: @Model.MapFieldVMMin</h5>
+        }
+        
         <div id="MapUploads">
             @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
             {
@@ -84,7 +101,11 @@
     
     @if (@Model.QuestionFieldVms.Count != 0)
     {
-        <h2>Upload Questions</h2>
+        <h3>Upload Questions</h3>
+        if (@Model.QuestionVMMin > 0)
+        {
+            <h5>Required: @Model.QuestionVMMin</h5>
+        }
         <div class="row">
             <div class="dark-overlay">
                 <div class="container">
@@ -97,9 +118,7 @@
                                         @Html.EditorFor(x => x.QuestionFieldVms[i] , new { index = i +1} )    
                     
                                     }
-                                    <div class="py-3">
-                                        <input type="submit" class="btn btn-success" value="save" onclick="disable()" >   
-                                    </div>
+                                    
                                 </div> 
                             </div> 
                         </div> 
@@ -110,7 +129,7 @@
         
 }
 <div class="py-3">
-        <input type="submit" class="btn btn-success center-block" value="save" onclick="disable()">
+        <input type="submit" class="btn btn-success center-block" value="save" >
     </div>
 </form>
 
@@ -121,12 +140,78 @@
 <p id="imageFieldMin" hidden="">@Model.ImageFieldVMMin</p>
 <p id="videoFieldMin" hidden="">@Model.VideoFieldVMMin</p>
 <p id="mapFieldMin" hidden="">@Model.MapFieldVMMin</p>
-<p id="questionFieldMin" hidden="">@Model.TextFieldVMMin</p>
+<p id="questionFieldMin" hidden="">@Model.QuestionVMMin</p>
+
+<a id="TextLink" href="#TextSlideshow" hidden></a>
+<a id="ImageLink" href="#ImageUploads" hidden></a>
+<a id="VideoLink" href="#VideoUploads" hidden></a>
+<a id="MapLink" href="#MapUploads" hidden></a>
+<a id="QuestionLink" href="#QuestionUploads" hidden></a>
+
 
 <script>
-    
-</script>
+    $(".remRow").click(function () {
+        console.log('xxx');
 
+    });
+
+$('#ideaForm').submit(function  SubmitQuestions(event) {
+
+      var textslides = document.getElementsByClassName('TextSlides');
+      var textfieldmin = document.getElementById('textFieldMin').innerText;
+      
+      var imageslides = document.getElementsByClassName('mySlides');
+      var imageFieldmin = document.getElementById('imageFieldMin').innerText;
+      
+      var videoslides = document.getElementsByClassName('VideoSlides');
+      var videoFieldmin = document.getElementById('videoFieldMin').innerText;
+      
+      var mapslides = document.getElementsByClassName('locationRow');
+      var mapfieldmin = document.getElementById('mapFieldMin').innerText;
+      
+      var questionslides = document.getElementsByClassName('TextSlides');
+      var questionfieldMin = document.getElementById('questionFieldMin').innerText;
+
+      if (textslides.length < textfieldmin) {
+          alert("The minimum amount of textfields is " + textfieldmin + "!");
+          document.getElementById('TextLink').click();
+          event.preventDefault();
+      }else if( imageslides.length < imageFieldmin ){
+          
+          alert("The minimum amount of imagefields is " + imageFieldmin + "!");
+          document.getElementById('ImageLink').click();
+          event.preventDefault();
+      }else if( videoslides.length < videoFieldmin){
+          alert("The minimum amount of videofields is " + videoFieldmin + "!");
+          document.getElementById('VideoLink').click();
+          event.preventDefault();
+          
+      } else if (mapslides.length < mapfieldmin) {
+          alert("The minimum amount of mapfields is " + mapfieldmin + "!");
+          document.getElementById('VideoLink').click();
+          event.preventDefault();
+          
+      } else if (questionCount + 1 < questionfieldMin) {
+          alert("5 questions required!");
+          document.getElementById('QuestionLink').click();
+          event.preventDefault();
+
+      } else  if (Validate()) {
+
+          
+              alert("Question fields can't be empty !");
+              document.getElementById('QuestionLink').click();
+              event.preventDefault();
+      } else {
+
+              SaveQuestion();
+              disable();
+      }
+      
+     
+    });
+
+</script>
 
 
 

@@ -355,7 +355,7 @@ namespace DAL.EF
             p1.Setting = new Setting {BackGroundColor1 = "red", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj1 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
             ImageField imgproj1 = new ImageField(); 
-            imgproj1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg")));
+            imgproj1.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/playground-project.jpg")));
 
             //imgproj1.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\playground-project.jpg");
             p1.MapField = mapproj1;
@@ -473,7 +473,8 @@ namespace DAL.EF
             p2.Setting = new Setting {BackGroundColor1 = "", BackGroundColor2 = "white", FontFamily = "Times new Roman"};
             MapField mapproj2 = new MapField{Latitude = 51.21248,Longitude = 4.409641};
             ImageField imgproj2 = new ImageField();  
-            imgproj2.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg")));
+            imgproj2.ImageData = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/images/safebird-project.jpg")));
+            
 
           //  imgproj2.ImageData = System.IO.File.ReadAllBytes(".\\wwwroot\\images\\safebird-project.jpg");
             p2.MapField = mapproj2;

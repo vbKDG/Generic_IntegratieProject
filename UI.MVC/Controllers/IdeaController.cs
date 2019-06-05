@@ -85,7 +85,6 @@ namespace UI.MVC.Controllers
         
         public IActionResult CreateIdeaPage(int ideationId)
         {
-
             Ideation ideation = orchestrator.getIdeation(ideationId);
             IdeationQuestion[] ideationQuestions = orchestrator.GetIdeationQuestions(ideationId).ToArray();
             List<ImageFieldVm> imageFieldVms = new List<ImageFieldVm>();

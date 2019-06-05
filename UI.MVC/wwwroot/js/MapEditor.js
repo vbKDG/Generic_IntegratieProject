@@ -138,13 +138,19 @@ function AddLocation (input,index) {
     for (var i = 0; i < locationtexts.length; i++) {
         locationtexts[i].innerText = 'Location ' + (i + 1);
     }
-};
+}
 
+$(".remRow").click(function () {
+    console.log('xxx');
+
+});
+
+
+    
 
 $("#locationRows").on('click', '.remRow', function () {
 
 
-    
     var rowIndex = (this).closest(".locationRow").id;
     rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
 

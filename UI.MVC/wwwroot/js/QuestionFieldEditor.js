@@ -25,17 +25,6 @@ $(document).ready(function() {
         $('#Add_Question').attr('hidden', false);
     }        });
 
-$('#ideaForm').submit(function  SubmitQuestions(event) {
-
-    if (Validate()) {
-        alert("Question fields can't be empty !");
-        event.preventDefault();
-    } else {
-
-        SaveQuestion();
-    }
-});
-
 
 
 
@@ -70,7 +59,7 @@ function SaveQuestion(parameters) {
     option3Input.value = option3.value;
     option4Input.value = option4.value;
     option5Input.value = option5.value;
- 
+
 
 
 
@@ -89,7 +78,7 @@ function AddQuestion() {
 
         ChangeQuestion(questionCount - questionIndex);
         questionIndex = questionCount;
-        
+
 
         var titleNumber = questionIndex + 1;
         // reset form 
@@ -283,7 +272,7 @@ function ChangeQuestion(index, remove = false) {
             $('.prevQuestion').attr('hidden', false);
             $('.nextQuestion').attr('hidden', false);
         }
-        
+
 
     }
 
@@ -301,7 +290,3 @@ function Validate() {
 
     return check;
 }
-        
-        
-        
-           
