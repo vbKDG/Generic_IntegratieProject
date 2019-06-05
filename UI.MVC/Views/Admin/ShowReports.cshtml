@@ -19,32 +19,40 @@
 
 </script>
 <a class="previousButton" onclick="previousPage()">&laquo; Previous</a>
+<body>
+<div class="row center-block">
+<div class="container center-block">
+<div class="col-lg-9">
+
+<div class="card bg-light card-form">
+
 <div id="blur" name="blur"></div>
 <table class="table">
     @if (User.IsInRole("Moderator") || User.IsInRole("SuperAdmin"))
     {
         <tr>
-            <td>
+            
                 <button class="btn btn-default" data-target="#MyModal" data-toggle="modal" onclick="OpenIdea(@Model.Idea.IdeaId)">Show the idea</button>
-                <div class="container">
-                    <div class="modal" id="MyModal" role="dialog">
-                        <div id="content" class="modal-dialog modal-lg">
+            <div class="container">
+                <div class="modal" id="MyModal" role="dialog">
+                    <div id="content" class="modal-dialog modal-lg">
 
     
-                        </div>
-
-
                     </div>
+
+
                 </div>
-                <button type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
-                                                                    , new {ideaId = @Model.Idea.IdeaId})';approvePost();">Approve</button>
-                <button type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
-                                                                    , new {ideaId = @Model.Idea.IdeaId})';disaprovePost();">Disapprove</button>
-            </td>
+            </div>
+            <td class="row center-block pull-right">
+                <button class="btn-success" type="button" onclick="location.href = '@Url.Action("ApproveIdea", "Admin"
+                                                                                    , new {ideaId = @Model.Idea.IdeaId})';approvePost();">Approve</button>
+                <button class="btn-warning" type="button" onclick="location.href = '@Url.Action("DisapproveIdea", "Admin"
+                                                                                   , new {ideaId = @Model.Idea.IdeaId})';disaprovePost();">Disapprove</button>
+           </td>
         </tr>
         <tr>
             <td>
-                <h4>A list of all reports on this idea and it's reactions</h4>
+                <h4 class="text-center"><b>A list of all reports on this idea and it's reactions</b></h4>
             </td>
         </tr>
         foreach (var report in Model.Reports)
@@ -148,9 +156,11 @@
                 </tr>
             }
         }
+        
+        
         <tr>
             <td>
-                <h4>A list of all the reactions on this idea without a report</h4>
+                <h4 class="text-center"><b>A list of all the reactions on this idea without a report</b></h4>
             </td>
         </tr>
         foreach (var reaction in Model.Reactions)
@@ -173,9 +183,9 @@
                                                                             , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                         <b>Reaction:</b>
                         @reaction.Content<br>
-                        <button type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
+                        <button class="btn-success" type="button" onclick="location.href = '@Url.Action("ApproveReaction", "Admin"
                                                                             , new {reactionId = @reaction.ReactionId})', approvePost()">Approve</button>
-                        <button type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
+                        <button  class="btn-warning"  type="button" onclick="location.href = '@Url.Action("DisapproveReaction", "Admin"
                                                                             , new {reactionId = @reaction.ReactionId})', disaprovePost();">Disapprove</button>
                     </td>
                 </tr>
@@ -300,3 +310,13 @@
         }
     }
 </table>
+
+
+                        </div>
+</div>
+
+
+</div>
+
+</div>
+</body>
