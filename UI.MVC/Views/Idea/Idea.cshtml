@@ -261,12 +261,11 @@
                     }
                     @reaction.Content
                     
-                    
                     <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
-                                                                            onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                                                                          , new {reactionId = @reaction.ReactionId})', userLikedReaction()" ><i class="far fa-thumbs-up"></i>
-                    
-                                </button>
+                                                                                                onclick="location.href = '@Url.Action("LikeReaction", "Idea"
+                                                                                                                              , new {reactionId = @reaction.ReactionId})', userLikedReaction()" ><i class="far fa-thumbs-up"></i>
+                                        
+                                                    </button>
                     
                     
                     
@@ -353,7 +352,12 @@
         }
         else
         {
-            <button title="You have to be signed in">Like</button>
+            
+            <button  title="You have to be signed in" class="btn-success" id="likeIdea-@Model.IdeaId" type="button" 
+                             onclick="location.href = '@Url.Action("LikeIdea", "Idea"
+                                                                               , new {ideaId = @Model.IdeaId})'"><i class="far fa-thumbs-up"></i>
+            
+                        </button>
             <span>(@Model.AmountOfLikes)</span><br>
         }
 
