@@ -100,7 +100,7 @@
                             if (reaction.ReactionId == report.Reaction.ReactionId)
                             {
                                 @reaction.User.Email
-                                <button type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
+                                <button class="btn btn-success" type="button" onclick="location.href = '@Url.Action("BlockUser", "Admin"
                                         , new {userId = @reaction.User.Id})', blockUser();">Block user</button><br>
                             }
                         }

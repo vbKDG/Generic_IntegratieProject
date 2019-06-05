@@ -2,166 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15d638c2-8f92-4480-a7d5-f49e0511c865" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CityOfIdeas/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CityOfIdeas/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CityOfIdeas/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CityOfIdeas/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/BL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/DAL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/DAL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/DAL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/DAL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BL/bin/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/BL.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/BL.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/BL.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/BL.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/Debug/netcoreapp2.2/BL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BL/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/BL/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/DAL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/bin/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/DAL.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/DAL.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/DAL.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/DAL.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/Debug/netcoreapp2.2/DAL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/bin/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/BL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/BL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/BL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/BL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/DAL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/DAL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/DAL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/DAL.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/Domain.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/Domain.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/bin/Debug/netcoreapp2.2/UI.MVC.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/AccessDenied.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/AccessDenied.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Blocked.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Blocked.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ConfirmEmail.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ConfirmEmail.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ConfirmQuestionnaire.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ConfirmQuestionnaire.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/CreateAdmin.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/CreateAdmin.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/CreateModerator.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/CreateModerator.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ExternalLogin.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ExternalLogin.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ForgotPassword.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ForgotPassword.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Lockout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Lockout.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Login.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Login.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/LoginWith2fa.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/LoginWith2fa.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/LoginWithRecoveryCode.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/LoginWithRecoveryCode.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Logout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Logout.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ChangePassword.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ChangePassword.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/DeletePersonalData.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/DeletePersonalData.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/Disable2fa.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/Disable2fa.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ExternalLogins.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ExternalLogins.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/Index.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/PersonalData.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/PersonalData.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/SetPassword.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/SetPassword.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_Layout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_Layout.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_ManageNav.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_ManageNav.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_StatusMessage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_StatusMessage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_ViewImports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Manage/_ViewImports.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Register.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/Register.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ResetPassword.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ResetPassword.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/ResetPasswordConfirmation.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/_ViewImports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Account/_ViewImports.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Error.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/Error.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ValidationScriptsPartial.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ViewImports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ViewImports.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ViewStart.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Areas/Identity/Pages/_ViewStart.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/AdminPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/AdminPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/DeleteAdminPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/DeleteAdminPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/DeleteModeratorPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/DeleteModeratorPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditAdminPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditAdminPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditModeratorPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/EditModeratorPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageAdmins.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageAdmins.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageModerators.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManageModerators.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManagePosts.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ManagePosts.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ShowReports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Admin/ShowReports.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Contact.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Contact.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/EmailConfirmInfo.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/EmailConfirmInfo.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Faq.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Faq.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/ProjectsGeneral.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Home/ProjectsGeneral.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/CreateIdeaPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/CreateIdeaPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Idea.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Idea.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Ideas.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Ideas.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Ideation.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Idea/Ideation.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/CreateIdeationPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/CreateIdeationPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/CreateProjectPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/CreateProjectPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/EditProjectPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/EditProjectPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/EditorTemplates/PhaseVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/EditorTemplates/PhaseVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Ideations.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Ideations.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Maptest.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Maptest.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/ProjectDetailPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/ProjectDetailPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/ProjectImageDisplay.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/ProjectImageDisplay.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Projects.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Project/Projects.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/ConfirmQuestionnairePage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/ConfirmQuestionnairePage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/CreateQuestionnairePage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/CreateQuestionnairePage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/DeleteQuestionnairePage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/DeleteQuestionnairePage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/EditQuestionnairePage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/EditQuestionnairePage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/Questionnaire.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/Questionnaire.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/Questionnaires.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/Questionnaires.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/ShowResultsPage.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Questionnaire/ShowResultsPage.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/ImageFieldVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/ImageFieldVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/MapFieldVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/MapFieldVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/QuestionFieldVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/QuestionFieldVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/TextFieldVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/TextFieldVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/VideoFieldVM.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/EditorTemplates/VideoFieldVM.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LoginPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LoginPartial.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/Debug/netcoreapp2.2/UI.MVC.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/UI.MVC.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/UI.MVC.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/UI.MVC.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/UI.MVC.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/UI.MVC/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/carousel-image1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/carousel-image2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/carousel-image3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/park2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/park4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.MVC/wwwroot/images/ryoji-iwata-543189-unsplash.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,38 +50,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Ideation.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-              <folding>
-                <marker date="1559740103768" expanded="true" signature="224:721" ph="@..." />
-                <marker date="1559740103768" expanded="true" signature="259:555" ph="{...}" />
-                <marker date="1559740103768" expanded="true" signature="354:553" ph="{...}" />
-                <marker date="1559740103768" expanded="true" signature="560:721" ph="{...}" />
-                <marker date="1559740103768" expanded="true" signature="788:870" ph="@..." />
-                <marker date="1559740103768" expanded="true" signature="835:870" ph="{...}" />
-                <marker date="1559740103768" expanded="true" signature="876:1278" ph="@..." />
-                <marker date="1559740103768" expanded="true" signature="965:1278" ph="{...}" />
-                <marker date="1559740103768" expanded="true" signature="1073:1227" ph="@{...}" />
-                <marker date="1559740103768" expanded="true" signature="1326:2220" ph="@..." />
-                <marker date="1559740103768" expanded="true" signature="1371:2220" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/stationcar.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/soccerProject.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/ropepulling-project.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
@@ -253,55 +69,130 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/marathon-project.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="78" column="116" lean-forward="true" selection-start-line="78" selection-start-column="116" selection-end-line="78" selection-end-column="116" />
+              <folding>
+                <marker date="1559748453817" expanded="true" signature="803:2185" ph="@..." />
+                <marker date="1559748453817" expanded="true" signature="836:2185" ph="{...}" />
+                <marker date="1559748453817" expanded="true" signature="2329:3880" ph="@..." />
+                <marker date="1559748453817" expanded="true" signature="2388:3880" ph="{...}" />
+                <marker date="1559748453817" expanded="true" signature="4044:5893" ph="@..." />
+                <marker date="1559748453817" expanded="true" signature="4103:5893" ph="{...}" />
+                <marker date="1559748453817" expanded="true" signature="5978:7865" ph="@..." />
+                <marker date="1559748453817" expanded="true" signature="6067:7865" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="70" column="82" selection-start-line="70" selection-start-column="82" selection-end-line="70" selection-end-column="82" />
+              <folding>
+                <marker date="1559748675029" expanded="true" signature="20:64" ph="@..." />
+                <marker date="1559748675029" expanded="true" signature="1659:3331" ph="@..." />
+                <marker date="1559748675029" expanded="true" signature="1701:3331" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="1816:3293" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="2009:2359" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="2142:2313" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="2953:3122" ph="@{...}" />
+                <marker date="1559748675029" expanded="true" signature="4032:4663" ph="@..." />
+                <marker date="1559748675029" expanded="true" signature="4072:4663" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="4198:4393" ph="{...}" />
+                <marker date="1559748675029" expanded="true" signature="4438:4624" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="298" column="25" lean-forward="true" selection-start-line="298" selection-start-column="25" selection-end-line="298" selection-end-column="25" />
+            <state relative-caret-position="442">
+              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
               <folding>
-                <marker date="1559742556680" expanded="true" signature="331:375" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="814:16256" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="877:9720" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="1445:1600" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="1719:1876" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="2160:8038" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="2242:3938" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="2372:2741" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="2417:2741" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="2571:2675" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="2881:2984" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="3091:3197" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="3262:3578" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="3294:3578" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="3397:3500" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="4015:8028" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="4149:4668" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="4191:4668" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="4300:4642" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="4464:4572" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="4760:7330" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="4789:7330" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="4885:7304" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="5002:7274" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="5286:6516" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="6824:6951" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="7070:7200" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="7355:7673" ph="@..." />
-                <marker date="1559742556680" expanded="true" signature="7387:7673" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="7490:7595" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="8278:9714" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="8375:8527" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="8438:8513" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="8565:9704" ph="{...}" />
-                <marker date="1559742556680" expanded="true" signature="8792:8936" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="9156:9313" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="9442:9602" ph="@{...}" />
-                <marker date="1559742556680" expanded="true" signature="9757:16256" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="331:375" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="814:16280" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="877:9744" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="1445:1600" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="1719:1876" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="2160:8062" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="2242:3938" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="2372:2741" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="2417:2741" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="2571:2675" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="2881:2984" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="3091:3197" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="3262:3578" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="3294:3578" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="3397:3500" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="4015:8052" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="4149:4692" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="4191:4692" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="4300:4666" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="4488:4596" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="4784:7354" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="4813:7354" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="4909:7328" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="5026:7298" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="5310:6540" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="6848:6975" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="7094:7224" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="7379:7697" ph="@..." />
+                <marker date="1559748862132" expanded="true" signature="7411:7697" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="7514:7619" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="8302:9738" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="8399:8551" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="8462:8537" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="8589:9728" ph="{...}" />
+                <marker date="1559748862132" expanded="true" signature="8816:8960" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="9180:9337" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="9466:9626" ph="@{...}" />
+                <marker date="1559748862132" expanded="true" signature="9781:16280" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="199" column="20" selection-start-line="199" selection-start-column="20" selection-end-line="199" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <marker date="1559750534954" expanded="true" signature="43:83" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="1318:3221" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="1359:3221" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="1434:3199" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="1571:1766" ph="@{...}" />
+                <marker date="1559750534954" expanded="true" signature="3433:5384" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="3474:5384" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="3572:5337" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="3709:3904" ph="@{...}" />
+                <marker date="1559750534954" expanded="true" signature="5614:7516" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="5655:7516" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="5729:7494" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="5866:6061" ph="@{...}" />
+                <marker date="1559750534954" expanded="true" signature="7747:10129" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="7828:10129" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="7981:8196" ph="@{...}" />
+                <marker date="1559750534954" expanded="true" signature="10383:12112" ph="@..." />
+                <marker date="1559750534954" expanded="true" signature="10493:12112" ph="{...}" />
+                <marker date="1559750534954" expanded="true" signature="10588:10745" ph="@{...}" />
               </folding>
             </state>
           </provider>
@@ -324,8 +215,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>readproject</find>
-      <find>questionuser</find>
       <find>result</find>
       <find>questionres</find>
       <find>remove question</find>
@@ -354,6 +243,8 @@
       <find>a list of all repo</find>
       <find>here is a list</find>
       <find>here is a list of all</find>
+      <find>handle po</find>
+      <find>a list of all rep</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -361,8 +252,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Projects/ProjectsVM.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Projects/SelectedQuestionVM.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UI.MVC/Controllers/API/IdeationsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Home/Faq.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Ideas/QuestionAnswerRESTModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Ideas/QuestionRESTModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -374,12 +264,11 @@
     <setting file="file://$PROJECT_DIR$/UI.MVC/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Controllers/QuestionnaireController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Ideation.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Ideation.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Idea.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Project/EditProjectPage.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Project/Ideations.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Home/EmailConfirmInfo.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UI.MVC/Controllers/API/IdeationsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Models/ReportModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/IdentityHostingStartup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Models/ProjectDetailModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -387,7 +276,6 @@
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/_ViewImports.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90E93788-E934-48B7-A7CB-CECAB05F4851/62/d945fc6f/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Ideations/IdeationRESTModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/AccessDenied.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/CreateAdmin.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/ExternalLogin.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -414,6 +302,7 @@
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/ForgotPassword.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Like/IdeaLike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Ideations/IdeationRESTModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Like/ReactionLike.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Like/ProjectLike.cs" root0="FORCE_HIGHLIGHTING" />
@@ -508,8 +397,10 @@
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Project/Projects.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Project/CreateProjectPage.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Questionnaire/DeleteQuestionnairePage.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Projects/ProjectsVM.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BL/Application/OrchestratorProjectQuestionnaireController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Questionnaire/EditQuestionnairePage.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UI.MVC/Models/Projects/SelectedQuestionVM.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BL/Application/OrchestratorProjectIdeationController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UI.MVC/Views/Questionnaire/CreateQuestionnairePage.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -565,7 +456,6 @@
         <option value="$PROJECT_DIR$/UI.MVC/wwwroot/js/searchBarAutoComplete.js" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/ManageAdmins.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Project/Projects.cshtml" />
-        <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Project/Ideations.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Questionnaire/Questionnaire.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/wwwroot/css/site.css" />
@@ -586,16 +476,17 @@
         <option value="$PROJECT_DIR$/UI.MVC/Views/Home/Index.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Models/QuestionResultModel.cs" />
         <option value="$PROJECT_DIR$/UI.MVC/Controllers/QuestionnaireController.cs" />
-        <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml" />
         <option value="$PROJECT_DIR$/Domain/Project/Project.cs" />
         <option value="$PROJECT_DIR$/UI.MVC/Models/Projects/ProjectsVM.cs" />
         <option value="$PROJECT_DIR$/UI.MVC/Controllers/HomeController.cs" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Project/ProjectDetailPage.cshtml" />
-        <option value="$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Idea/Idea.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Questionnaire/ShowResultsPage.cshtml" />
         <option value="$PROJECT_DIR$/DAL/EF/ApplicationDbInitializer.cs" />
+        <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml" />
+        <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml" />
         <option value="$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml" />
+        <option value="$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml" />
       </list>
     </option>
   </component>
@@ -613,8 +504,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -638,41 +527,22 @@
               <item name="CityOfIdeas" type="24d0babc:SolutionExplorerModelNode" />
               <item name="UI.MVC" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Shared" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Admin" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="" type="784c90a0:SolutionExplorerRootNode" />
               <item name="CityOfIdeas" type="24d0babc:SolutionExplorerModelNode" />
               <item name="UI.MVC" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Shared" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="EditorTemplates" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CityOfIdeas" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="UI.MVC" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CityOfIdeas" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="UI.MVC" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="css" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="CityOfIdeas" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="UI.MVC" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="images" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Home" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -775,11 +645,12 @@
       <workItem from="1559649408286" duration="18783000" />
       <workItem from="1559720944693" duration="35000" />
       <workItem from="1559733417134" duration="246000" />
+      <workItem from="1559747370142" duration="3137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="594416000" />
+    <option name="totallyTimeSpent" value="597553000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -794,7 +665,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6924429" visible="true" weight="0.17643923" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6924429" visible="true" weight="0.17803837" />
       <window_info id="Structure" order="1" sideWeight="0.20243903" side_tool="true" weight="0.15511727" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -815,7 +686,7 @@
       <window_info anchor="bottom" id="REST Client" order="13" />
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.50067115" side_tool="true" weight="0.26912183" />
-      <window_info anchor="bottom" id="Build" order="16" weight="0.24362606" />
+      <window_info anchor="bottom" id="Build" order="16" weight="0.24307036" />
       <window_info anchor="bottom" id="Database Console" order="17" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -890,13 +761,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://cfdb20a5-1903-490c-8062-83efb90edb35/schema/main/table/QuestionUsers">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/Models/OptionsAmount.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -1282,105 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <marker date="1559737133176" expanded="true" signature="43:83" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="86:11352" ph="&lt;body.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="116:170" ph="&lt;h2.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="171:1061" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="222:1054" ph="&lt;ul.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="256:409" ph="&lt;li.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="290:395" ph="&lt;a.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="418:566" ph="&lt;li.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="452:552" ph="&lt;a.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="575:725" ph="&lt;li.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="609:711" ph="&lt;a.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="734:884" ph="&lt;li.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="768:870" ph="&lt;a.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="893:1044" ph="&lt;li.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="927:1030" ph="&lt;a.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1081:11343" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1103:11336" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1137:3217" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1201:3202" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1240:3183" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1303:3160" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="1344:3160" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="1419:3138" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="1474:3112" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1522:1683" ph="@{...}" />
-            <marker date="1559737133176" expanded="true" signature="1719:3077" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1779:2219" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="1925:2176" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="2256:2550" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="2332:2507" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="2588:3038" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="2634:2995" ph="&lt;p.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3226:5344" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3289:5329" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3328:5310" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3406:5287" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="3447:5287" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="3545:5265" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="3600:5239" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3648:3809" ph="@{...}" />
-            <marker date="1559737133176" expanded="true" signature="3845:5204" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="3905:4345" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="4051:4302" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="4383:4677" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="4459:4634" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="4715:5165" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="4761:5122" ph="&lt;p.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5353:7430" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5415:7415" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5454:7396" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5517:7373" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="5558:7373" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="5632:7351" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="5687:7325" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5735:5896" ph="@{...}" />
-            <marker date="1559737133176" expanded="true" signature="5932:7290" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="5992:6432" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="6138:6389" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="6469:6763" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="6545:6720" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="6801:7251" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="6847:7208" ph="&lt;p.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="7439:9361" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="7502:9346" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="7541:9327" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="7604:9304" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="7685:9304" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="7732:9282" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="7780:7937" ph="@{...}" />
-            <marker date="1559737133176" expanded="true" signature="7969:9251" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8025:8441" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8163:8402" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8474:8756" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8546:8717" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8790:9216" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="8832:9177" ph="&lt;p.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9370:11325" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9435:11310" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9474:11291" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9537:11268" ph="@..." />
-            <marker date="1559737133176" expanded="true" signature="9647:11268" ph="{...}" />
-            <marker date="1559737133176" expanded="true" signature="9694:11244" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9742:9899" ph="@{...}" />
-            <marker date="1559737133176" expanded="true" signature="9931:11213" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="9987:10403" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="10125:10364" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="10436:10718" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="10508:10679" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="10752:11178" ph="&lt;div.../&gt;" />
-            <marker date="1559737133176" expanded="true" signature="10794:11139" ph="&lt;p.../&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Project/Maptest.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1403,33 +1168,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Models/Ideations/IdeationRESTModel.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <marker date="1559736574695" expanded="false" signature="6:47" ph="..." />
-            <marker date="1559736574695" expanded="true" signature="82:317" ph="{...}" />
-            <marker date="1559736574695" expanded="true" signature="119:315" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Controllers/API/IdeationsController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <marker date="1559736551019" expanded="false" signature="6:195" ph="..." />
-            <marker date="1559736551019" expanded="true" signature="229:1374" ph="{...}" />
-            <marker date="1559736551019" expanded="true" signature="281:1372" ph="{...}" />
-            <marker date="1559736551019" expanded="true" signature="441:1366" ph="{...}" />
-            <marker date="1559736551019" expanded="true" signature="650:1319" ph="{...}" />
-            <marker date="1559736551019" expanded="true" signature="1009:1263" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Models/Ideations/IdeationRESTModel.cs" />
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Controllers/API/IdeationsController.cs" />
     <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Questionnaire/ShowResultsPage.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="896">
@@ -1630,14 +1370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="17" selection-end-column="57" />
-          <folding>
-            <marker date="1559659929328" expanded="false" signature="7:50" ph="..." />
-            <marker date="1559659929328" expanded="true" signature="144:193" ph="@..." />
-            <marker date="1559659929328" expanded="true" signature="1345:2445" ph="@..." />
-            <marker date="1559659929328" expanded="true" signature="1380:2445" ph="{...}" />
-            <marker date="1559659929328" expanded="true" signature="2014:2141" ph="@{...}" />
-            <marker date="1559659929328" expanded="true" signature="2188:2319" ph="@{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1648,101 +1380,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-          <folding>
-            <marker date="1559740103654" expanded="true" signature="20:64" ph="@..." />
-            <marker date="1559740103654" expanded="true" signature="1659:3307" ph="@..." />
-            <marker date="1559740103654" expanded="true" signature="1701:3307" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="1816:3269" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="2009:2359" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="2142:2313" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="2929:3098" ph="@{...}" />
-            <marker date="1559740103654" expanded="true" signature="4008:4639" ph="@..." />
-            <marker date="1559740103654" expanded="true" signature="4048:4639" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="4174:4369" ph="{...}" />
-            <marker date="1559740103654" expanded="true" signature="4414:4600" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Project/ProjectImageDisplay.cshtml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/carousel-image1.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="298" column="25" lean-forward="true" selection-start-line="298" selection-start-column="25" selection-end-line="298" selection-end-column="25" />
-          <folding>
-            <marker date="1559742556680" expanded="true" signature="331:375" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="814:16256" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="877:9720" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="1445:1600" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="1719:1876" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="2160:8038" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="2242:3938" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="2372:2741" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="2417:2741" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="2571:2675" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="2881:2984" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="3091:3197" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="3262:3578" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="3294:3578" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="3397:3500" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="4015:8028" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="4149:4668" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="4191:4668" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="4300:4642" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="4464:4572" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="4760:7330" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="4789:7330" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="4885:7304" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="5002:7274" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="5286:6516" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="6824:6951" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="7070:7200" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="7355:7673" ph="@..." />
-            <marker date="1559742556680" expanded="true" signature="7387:7673" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="7490:7595" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="8278:9714" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="8375:8527" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="8438:8513" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="8565:9704" ph="{...}" />
-            <marker date="1559742556680" expanded="true" signature="8792:8936" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="9156:9313" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="9442:9602" ph="@{...}" />
-            <marker date="1559742556680" expanded="true" signature="9757:16256" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Ideation.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-          <folding>
-            <marker date="1559740103768" expanded="true" signature="224:721" ph="@..." />
-            <marker date="1559740103768" expanded="true" signature="259:555" ph="{...}" />
-            <marker date="1559740103768" expanded="true" signature="354:553" ph="{...}" />
-            <marker date="1559740103768" expanded="true" signature="560:721" ph="{...}" />
-            <marker date="1559740103768" expanded="true" signature="788:870" ph="@..." />
-            <marker date="1559740103768" expanded="true" signature="835:870" ph="{...}" />
-            <marker date="1559740103768" expanded="true" signature="876:1278" ph="@..." />
-            <marker date="1559740103768" expanded="true" signature="965:1278" ph="{...}" />
-            <marker date="1559740103768" expanded="true" signature="1073:1227" ph="@{...}" />
-            <marker date="1559740103768" expanded="true" signature="1326:2220" ph="@..." />
-            <marker date="1559740103768" expanded="true" signature="1371:2220" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Shared/EditorTemplates/MapFieldVM.cshtml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1755,10 +1397,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/stationcar.jpg">
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/ryoji-iwata-543189-unsplash.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/ryoji-iwata-543189-unsplash.jpg">
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park4.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Idea/Ideation.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+          <folding>
+            <marker date="1559746685038" expanded="true" signature="224:721" ph="@..." />
+            <marker date="1559746685038" expanded="true" signature="259:555" ph="{...}" />
+            <marker date="1559746685038" expanded="true" signature="354:553" ph="{...}" />
+            <marker date="1559746685038" expanded="true" signature="560:721" ph="{...}" />
+            <marker date="1559746685038" expanded="true" signature="788:870" ph="@..." />
+            <marker date="1559746685038" expanded="true" signature="835:870" ph="{...}" />
+            <marker date="1559746685038" expanded="true" signature="876:1278" ph="@..." />
+            <marker date="1559746685038" expanded="true" signature="965:1278" ph="{...}" />
+            <marker date="1559746685038" expanded="true" signature="1073:1227" ph="@{...}" />
+            <marker date="1559746685038" expanded="true" signature="1326:2220" ph="@..." />
+            <marker date="1559746685038" expanded="true" signature="1371:2220" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/stationcar.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/soccerProject.jpg">
@@ -1770,20 +1438,133 @@
     <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/portcar.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park4.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/perry-grone-732606-unsplash.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/park1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/marathon-project.jpg">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/AdminPage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="78" column="116" lean-forward="true" selection-start-line="78" selection-start-column="116" selection-end-line="78" selection-end-column="116" />
+          <folding>
+            <marker date="1559748453817" expanded="true" signature="803:2185" ph="@..." />
+            <marker date="1559748453817" expanded="true" signature="836:2185" ph="{...}" />
+            <marker date="1559748453817" expanded="true" signature="2329:3880" ph="@..." />
+            <marker date="1559748453817" expanded="true" signature="2388:3880" ph="{...}" />
+            <marker date="1559748453817" expanded="true" signature="4044:5893" ph="@..." />
+            <marker date="1559748453817" expanded="true" signature="4103:5893" ph="{...}" />
+            <marker date="1559748453817" expanded="true" signature="5978:7865" ph="@..." />
+            <marker date="1559748453817" expanded="true" signature="6067:7865" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ManagePosts.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="70" column="82" selection-start-line="70" selection-start-column="82" selection-end-line="70" selection-end-column="82" />
+          <folding>
+            <marker date="1559748675029" expanded="true" signature="20:64" ph="@..." />
+            <marker date="1559748675029" expanded="true" signature="1659:3331" ph="@..." />
+            <marker date="1559748675029" expanded="true" signature="1701:3331" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="1816:3293" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="2009:2359" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="2142:2313" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="2953:3122" ph="@{...}" />
+            <marker date="1559748675029" expanded="true" signature="4032:4663" ph="@..." />
+            <marker date="1559748675029" expanded="true" signature="4072:4663" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="4198:4393" ph="{...}" />
+            <marker date="1559748675029" expanded="true" signature="4438:4624" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Admin/ShowReports.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <marker date="1559748862132" expanded="true" signature="331:375" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="814:16280" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="877:9744" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="1445:1600" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="1719:1876" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="2160:8062" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="2242:3938" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="2372:2741" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="2417:2741" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="2571:2675" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="2881:2984" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="3091:3197" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="3262:3578" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="3294:3578" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="3397:3500" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="4015:8052" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="4149:4692" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="4191:4692" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="4300:4666" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="4488:4596" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="4784:7354" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="4813:7354" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="4909:7328" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="5026:7298" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="5310:6540" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="6848:6975" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="7094:7224" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="7379:7697" ph="@..." />
+            <marker date="1559748862132" expanded="true" signature="7411:7697" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="7514:7619" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="8302:9738" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="8399:8551" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="8462:8537" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="8589:9728" ph="{...}" />
+            <marker date="1559748862132" expanded="true" signature="8816:8960" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="9180:9337" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="9466:9626" ph="@{...}" />
+            <marker date="1559748862132" expanded="true" signature="9781:16280" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/wwwroot/images/perry-grone-732606-unsplash.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI.MVC/Views/Home/ProjectsGeneral.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="199" column="20" selection-start-line="199" selection-start-column="20" selection-end-line="199" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <marker date="1559750534954" expanded="true" signature="43:83" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="1318:3221" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="1359:3221" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="1434:3199" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="1571:1766" ph="@{...}" />
+            <marker date="1559750534954" expanded="true" signature="3433:5384" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="3474:5384" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="3572:5337" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="3709:3904" ph="@{...}" />
+            <marker date="1559750534954" expanded="true" signature="5614:7516" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="5655:7516" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="5729:7494" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="5866:6061" ph="@{...}" />
+            <marker date="1559750534954" expanded="true" signature="7747:10129" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="7828:10129" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="7981:8196" ph="@{...}" />
+            <marker date="1559750534954" expanded="true" signature="10383:12112" ph="@..." />
+            <marker date="1559750534954" expanded="true" signature="10493:12112" ph="{...}" />
+            <marker date="1559750534954" expanded="true" signature="10588:10745" ph="@{...}" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
