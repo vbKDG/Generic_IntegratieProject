@@ -2,9 +2,9 @@
 @model D.UI.MVC.Models.Ideas.IdeaVM
 
 <script src="@Url.Content("~/js/ImageFieldEditor.js")"></script>
-<link rel="stylesheet" href="~/css/carousel.css">
+<link rel="stylesheet" href="~/css/DisplayImage.css">
 <script src="@Url.Content("~/js/ImageFieldEditor.js")"></script>
-<link rel="stylesheet" href="~/css/TextSlideShow.css">
+<link rel="stylesheet" href="~/css/TextDisplay.css">
 <link rel="stylesheet" href="~/css/VideoSlideShow.css">
 <script src="@Url.Content("~/js/VideoFieldEditor.js")"></script>
 <script src="~/js/showReactionsReport.js" asp-append-version="true"></script>
@@ -61,7 +61,7 @@
                 {
                     if (i == 0)
                     {
-                        <div class="TextSlides" style="display: block;">
+                        <div class="TextSlides text-center" style="display: block;">
 
                             <p>@Model.TextFieldVms[i].Text </p>
                         </div>
@@ -101,10 +101,10 @@
                 <!-- Next and previous buttons -->
                 @if (@Model.ImageFieldVms.Count > 1)
                 {
-                    <div id="sliders">
+                   
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
+                    
                 }
 
 
@@ -113,13 +113,13 @@
                     if (i == 0)
                     {
                         <div class="mySlides" style="display: block;">
-                            <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                            <img src=@Model.ImageFieldVms[i].Base64Image width="300" height="300"/>
                         </div>
                     }
                     else
                     {
                         <div class="mySlides" style="display: none;">
-                            <img src=@Model.ImageFieldVms[i].Base64Image width="200" height="200"/>
+                            <img src=@Model.ImageFieldVms[i].Base64Image width="300" height="300"/>
                         </div>
                     }
                 }
@@ -203,7 +203,7 @@
             <button type="button" id="NextLocation">Next Location</button>
 
             }
-            <div id="map" style="height: 360px; width: 104%;"> </div>
+            <div id="map" style="height: 360px; width: 102%;"> </div>
             @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
             {
                 <p hidden="true" class="latitude" id="location_latitude_@i">@Model.MapFieldVms[i].Latitude</p>
@@ -427,5 +427,11 @@ else
 
     }
 
-
+     
 </script>
+<style>
+   #QuestionUploads {
+       padding-top: 20px;
+       padding-bottom: 10px;
+   } 
+</style>
