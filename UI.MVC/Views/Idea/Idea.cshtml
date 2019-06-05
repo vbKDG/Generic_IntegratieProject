@@ -199,7 +199,10 @@
     @if (@Model.MapFieldVms.Count > 0)
     {
         <div id="MapUploads">
+            @if(@Model.MapFieldVms.Count > 1){
             <button type="button" id="NextLocation">Next Location</button>
+
+            }
             <div id="map" style="height: 360px; width: 104%;"> </div>
             @for (var i = 0; i < @Model.MapFieldVms.Count; i++)
             {
