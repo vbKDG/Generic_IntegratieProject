@@ -260,15 +260,22 @@
                         <i class="glyphicon glyphicon-ok-circle"></i>
                     }
                     @reaction.Content
-                    <button id="likeReaction-@reaction.ReactionId" type="button"
-                            onclick="location.href = '@Url.Action("LikeReaction", "Idea"
-                                                          , new {reactionId = @reaction.ReactionId})', userLikedReaction()">
-                        Like
-                    </button>
+                    
+                    
+                    <button class="btn-success" id="likeReaction-@reaction.ReactionId" type="button"
+                                                                            onclick="location.href = '@Url.Action("LikeReaction", "Idea"
+                                                                                                          , new {reactionId = @reaction.ReactionId})', userLikedReaction()" ><i class="far fa-thumbs-up"></i>
+                    
+                                </button>
+                    
+                    
+                    
                     <span id="reactionLikeCount-@reaction.ReactionId">(@reaction.ReactionLikes.Count)</span>
                     if (User.Identity.IsAuthenticated)
                     {
-                        <button onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)">Report reaction</button><br>
+                         <button class="btn-success"
+                                            onclick="showPopup(@reaction.Idea.IdeaId, 'reaction', @reaction.ReactionId)"><i class="far fa-flag"></i>
+                                    </button>
                     }
                     else
                     {
@@ -291,7 +298,10 @@
                 <p>Write your own reaction: </p>
                 <input name="reaction" id="reaction-@Model.IdeaId" type="text"/>
                 <input name="idea" value="@Model.IdeaId" type="hidden"/>
-                <button id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()">React</button>
+                <button class="btn-success"
+                        id="submitReaction-@Model.IdeaId" type="submit" onclick="userSubmittedReaction()" ><i class="fas fa-reply"></i>
+                </button>
+                
             }
         </div>
     </div>
@@ -333,11 +343,12 @@
     {
         if (User.Identity.IsAuthenticated)
         {
-            <button id="likeIdea-@Model.IdeaId" type="button"
-                    onclick="location.href = '@Url.Action("LikeIdea", "Idea"
-                                                  , new {ideaId = @Model.IdeaId})'">
-                Like
+            <button class="btn-success" id="likeIdea-@Model.IdeaId" type="button" 
+                 onclick="location.href = '@Url.Action("LikeIdea", "Idea"
+                                                                   , new {ideaId = @Model.IdeaId})'"><i class="far fa-thumbs-up"></i>
+
             </button>
+            
             <span id="ideaLikeCount-@Model.IdeaId">(@Model.AmountOfLikes)</span><br>
         }
         else
@@ -348,7 +359,10 @@
 
         if (User.Identity.IsAuthenticated)
         {
-            <button onclick="showPopup(@Model.IdeaId, 'idea', 0);">Report idea</button><br>
+            <button class="btn-success"
+                    onclick="showPopup(@Model.IdeaId, 'idea', 0);"><i class="far fa-flag"></i>
+            </button>
+          
         }
         else
         {

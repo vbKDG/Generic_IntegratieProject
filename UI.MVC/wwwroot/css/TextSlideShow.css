@@ -2,7 +2,8 @@
 
 /* Slideshow container */
 .textslideshow-container {
-    width: 600px;
+    min-width: 550px;
+
     height: 300px;
     position: relative;
     margin: auto;
@@ -13,7 +14,7 @@
 }
 #TextSlideshow {
     
-    width: 600px;
+    min-width: 550px;
     max-height: 300px;
     word-wrap: break-word;
     text-align: center;
@@ -29,7 +30,8 @@
 
 .TextSlides p{
 
-    width: 500px;
+    min-width: 550px;
+
     max-height: 300px;
     align-self: center;
     align-items: center;
@@ -37,14 +39,15 @@
     margin: auto;
     color: black;
     font-size: 20px;
-    vertical-align: middle;
+    vertical-align: mreiddle;
 
 
 }
 
 .TextSlides{
     max-height: 300px;
-    width: 500px;
+    min-width: 550px;
+
     display: inline-block;
     padding-left: 50px;
 
@@ -135,6 +138,7 @@
 
 #removeVid {
     color: black;
+    
     margin-top: 10px;
 }
 .active, .dot:hover {

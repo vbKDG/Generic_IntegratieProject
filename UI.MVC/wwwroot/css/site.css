@@ -102,6 +102,7 @@ html {
     padding-left: 10px;
     padding-right: 5px;
     
+    
 }
 
 #rowPictures img {
@@ -301,7 +302,16 @@ card {
 
 #TextUpload{
     padding-left: 40px;
+    
 }
+
+.modal-body{
+    padding-left: 40px;
+    padding-right: 70px;
+    
+}
+
+
 
 .column {
     float: left;
@@ -312,6 +322,8 @@ card {
 #bodyElements{
     min-height: 100%;
 }
+
+
 
 /* Clearfix (clear floats) */
 .row::after {
@@ -330,6 +342,10 @@ card {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 0px;
+}
+
+.modalelements{
+    padding-left: 200px;
 }
 
 .extraNavItem {
