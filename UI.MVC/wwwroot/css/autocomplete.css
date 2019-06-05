@@ -29,6 +29,7 @@
     border-bottom: none;
     border-top: none;
     z-index: 99;
+    margin-left: 2.5%;
     /*position the autocomplete items to be the same width as the container:*/
 
     max-height: 200px;
