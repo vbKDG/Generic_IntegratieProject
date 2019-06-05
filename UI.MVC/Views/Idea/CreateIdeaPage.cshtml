@@ -28,83 +28,99 @@
 
 
 <form id="ideaForm" asp-controller="Idea" asp-action="CreateIdea" method="post" enctype="multipart/form-data">
-<h3 class="py-4"><b>Pick a title</b></h3>
-<input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
-<input asp-for="IdeaTitle"/>
-
-@if (@Model.TextFieldVms.Count != 0)
-{
-    <h3><b>Upload Text</b></h3>
-    <div id="TextUploads">
-        @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
-        {
-
-            @Html.EditorFor(x => x.TextFieldVms[i], new {index = i})
-        }
-    </div>
-}
-
-<div class="py-3">
-    @if (@Model.ImageFieldVms.Count != 0)
+    <input asp-for="IdeationId" value="@Model.IdeationId" type="hidden"/>
+    <h2>Idea Title</h2>
+    <input asp-for="IdeaTitle" />
+    <div id="text"> </div>
+    @if (@Model.TextFieldVms.Count != 0)
     {
-        <h3><b>Upload Images</b></h3>
+        <h3 id="textlink">Upload Text </h3>
+        if (@Model.TextFieldVMMin > 0)
+        {
+            <h5>Required: @Model.TextFieldVMMin</h5>
+        }
+        <div id="TextUploads">
+            @for (int i = 0; i < @Model.TextFieldVms.Count; i++)
+            {
+
+                @Html.EditorFor(x => x.TextFieldVms[i], new {index = i})
+            }
+        </div>
+    }
+    
+    @if (@Model.ImageFieldVms.Count != 0){
+        <h3 id="imagelink">Upload Images</h3>
+        if (@Model.ImageFieldVMMin > 0)
+        {
+            <h5>Required: @Model.ImageFieldVMMin</h5>
+        }
         <div id="ImageUploads" class="py-3">
             @for (int i = 0; i < @Model.ImageFieldVms.Count; i++)
             {
-                @Html.EditorFor(x => x.ImageFieldVms[i], new {index = i})
-
+                @Html.EditorFor(x => x.ImageFieldVms[i] , new { index = i} )    
+     
             }
-
+         
 
         </div>
     }
 
-</div>
-
-<div class="py-3">
     @if (@Model.VideoFieldVms.Count != 0)
     {
-        <h3><b>Videos</b></h3>
+        <h3 id="videolink">Upload Videos</h3>
+        if (@Model.VideoFieldVMMin > 0)
+        {
+            <h5>Required: @Model.VideoFieldVMMin</h5>
+        }
         <div id="VideoUploads"class="py-2">
             @for (int i = 0; i < @Model.VideoFieldVms.Count; i++)
             {
-                @Html.EditorFor(x => x.VideoFieldVms[i], new {index = i})
-
+                @Html.EditorFor(x => x.VideoFieldVms[i] , new { index = i} )    
+     
             }
-        </div>
+        </div>   
 
     }
-</div>
-<div class="py-3">
     @if (@Model.MapFieldVms.Count != 0)
     {
-        <h3 class="py-2"><b>Upload Locations</b></h3>
+        <h3  id="maplink" class="py-2">Upload Locations</h3>
+        if (@Model.MapFieldVMMin > 0)
+        {
+            <h5>Required: @Model.MapFieldVMMin</h5>
+        }
+        
         <div id="MapUploads">
             @for (int i = 0; i < @Model.MapFieldVms.Count; i++)
             {
-                @Html.EditorFor(x => x.MapFieldVms[i], new {index = i})
-
+                @Html.EditorFor(x => x.MapFieldVms[i] , new { index = i} )    
+                
             }
-        </div>
+        </div>   
 
     }
-</div>
-
-
-@if (@Model.QuestionFieldVms.Count != 0)
-{
-    <h3><b>Upload Questions</b></h3>
-    <div class="row">
-        <div class="dark-overlay">
-            <div class="container">
-                <div class="d-flex">
-                        <div class="card-body" id="card">
-                            <div id="QuestionUploads">
-                                @for (int i = 0; i < @Model.QuestionFieldVms.Count; i++)
-                                {
-                                    @Html.EditorFor(x => x.QuestionFieldVms[i], new {index = i + 1})
-
-                                }
+    
+    
+    @if (@Model.QuestionFieldVms.Count != 0)
+    {
+        <h3 id="questionlink">Upload Questions</h3>
+        if (@Model.QuestionVMMin > 0)
+        {
+            <h5>Required: @Model.QuestionVMMin</h5>
+        }
+        <div class="row">
+            <div class="dark-overlay">
+                <div class="container">
+                    <div class="d-flex" >
+                        <div class="card bg-light text-center card-form">
+                            <div class="card-body" id="card">
+                                <div id="QuestionUploads">
+                                    @for (int i = 0; i < @Model.QuestionFieldVms.Count; i++)
+                                    {
+                                        @Html.EditorFor(x => x.QuestionFieldVms[i] , new { index = i +1} )    
+                    
+                                    }
+                                    
+                                </div> 
                             </div> 
                         </div> 
                     </div> 
@@ -114,15 +130,110 @@
         
 }
 <div class="py-3">
-        <input type="submit" class="btn btn-success center-block" value="save" onclick="disable()">
+        <input type="submit" class="btn btn-success center-block" value="save" >
     </div>
 </form>
 
 
 
 
+<p id="textFieldMin" hidden="">@Model.TextFieldVMMin</p>
+<p id="imageFieldMin" hidden="">@Model.ImageFieldVMMin</p>
+<p id="videoFieldMin" hidden="">@Model.VideoFieldVMMin</p>
+<p id="mapFieldMin" hidden="">@Model.MapFieldVMMin</p>
+<p id="questionFieldMin" hidden="">@Model.QuestionVMMin</p>
+
+<a id="TextLink" href="#textlink" hidden></a>
+<a id="ImageLink" href="#imagelink" hidden></a>
+<a id="VideoLink" href="#videolink" hidden></a>
+<a id="MapLink" href="#maplink" hidden></a>
+<a id="QuestionLink" href="#questionlink" hidden></a>
 
 
+<script>
+    $("#locationRows").on('click', '.remMapRow', function () {
+
+
+        // var max = document.getElementsByClassName('location');
+        // var max = max.length;
+        var rowIndex = (this).closest(".locationRow").id;
+        rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
+
+        var latitude = '#MapFieldVms_' + rowIndex + '__latitude';
+        var longitude = '#MapFieldVms_' + rowIndex + '__longitude';
+        $(latitude).attr('value',0);
+        $(longitude).attr('value',0);
+        locationTracker[rowIndex] = true;
+
+        (this).closest(".locationRow").remove();
+
+        var locationtexts = document.getElementsByClassName('locationText');
+        for (var i = 0; i < locationtexts.length; i++) {
+            locationtexts[i].innerText = 'Location ' + (i + 1);
+        }
+
+
+
+
+    });
+
+$('#ideaForm').submit(function  SubmitQuestions(event) {
+
+      var textslides = document.getElementsByClassName('TextSlides');
+      var textfieldmin = document.getElementById('textFieldMin').innerText;
+      
+      var imageslides = document.getElementsByClassName('mySlides');
+      var imageFieldmin = document.getElementById('imageFieldMin').innerText;
+      
+      var videoslides = document.getElementsByClassName('VideoSlides');
+      var videoFieldmin = document.getElementById('videoFieldMin').innerText;
+      
+      var mapslides = document.getElementsByClassName('locationRow');
+      var mapfieldmin = document.getElementById('mapFieldMin').innerText;
+      
+      var questionslides = document.getElementsByClassName('TextSlides');
+      var questionfieldMin = document.getElementById('questionFieldMin').innerText;
+
+      if (textslides.length < textfieldmin) {
+        //  alert("The minimum amount of textfields is " + textfieldmin + "!");
+          document.getElementById('TextLink').click();
+          event.preventDefault();
+      }else if( imageslides.length < imageFieldmin ){
+          
+        //  alert("The minimum amount of imagefields is " + imageFieldmin + "!");
+          document.getElementById('ImageLink').click();
+          event.preventDefault();
+      }else if( videoslides.length < videoFieldmin){
+        //  alert("The minimum amount of videofields is " + videoFieldmin + "!");
+          document.getElementById('VideoLink').click();
+          event.preventDefault();
+          
+      } else if (mapslides.length < mapfieldmin) {
+        //  alert("The minimum amount of mapfields is " + mapfieldmin + "!");
+          document.getElementById('VideoLink').click();
+          event.preventDefault();
+          
+      } else if (questionCount + 1 < questionfieldMin) {
+       //   alert("5 questions required!");
+          document.getElementById('QuestionLink').click();
+          event.preventDefault();
+
+      } else  if (Validate()) {
+
+          
+           //   alert("Question fields can't be empty !");
+              document.getElementById('QuestionLink').click();
+              event.preventDefault();
+      } else {
+
+              SaveQuestion();
+              disable();
+      }
+      
+     
+    });
+
+</script>
 
 
 

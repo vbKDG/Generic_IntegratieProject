@@ -131,20 +131,48 @@ function AddLocation (input,index) {
     var inputString = "";
 
     inputString += '<p class="locationText" >Location '+ index  + '</p>';
-    inputString += '<p>' + input +' <a href="javascript:void(0);" class="remRow">Remove</a> </p>';
+    inputString += '<p>' + input +' <a href="javascript:void(0);" class="remMapRow">Remove</a> </p>';
     $("#locationRows").append('<div id="locationRow'+ index  +'" class="locationRow">' + inputString + '</div>');
 
     var locationtexts = document.getElementsByClassName('locationText');
     for (var i = 0; i < locationtexts.length; i++) {
         locationtexts[i].innerText = 'Location ' + (i + 1);
     }
-};
+}
 
+
+
+$("#locationRows").on('click', '.remMapRow', function () {
+
+
+    // var max = document.getElementsByClassName('location');
+    // var max = max.length;
+    var rowIndex = (this).closest(".locationRow").id;
+    rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
+
+    var latitude = '#MapFieldVms_' + rowIndex + '__latitude';
+    var longitude = '#MapFieldVms_' + rowIndex + '__longitude';
+    $(latitude).attr('value',0);
+    $(longitude).attr('value',0);
+    locationTracker[rowIndex] = true;
+
+    (this).closest(".locationRow").remove();
+
+    var locationtexts = document.getElementsByClassName('locationText');
+    for (var i = 0; i < locationtexts.length; i++) {
+        locationtexts[i].innerText = 'Location ' + (i + 1);
+    }
+
+
+
+
+});
+/*
+    
 
 $("#locationRows").on('click', '.remRow', function () {
 
 
-    
     var rowIndex = (this).closest(".locationRow").id;
     rowIndex = rowIndex.charAt(rowIndex.length - 1) ;
 
@@ -164,4 +192,4 @@ $("#locationRows").on('click', '.remRow', function () {
 
 
 
-});
+});*/
