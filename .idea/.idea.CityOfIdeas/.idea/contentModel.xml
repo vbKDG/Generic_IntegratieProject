@@ -121,7 +121,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UI.MVC" t="IncludeRecursive">
-        <e p="app.db" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="Areas" t="Include">
@@ -504,6 +503,7 @@
             <e p="Antique1.mp4" t="Include" />
             <e p="AntiqueWeapons.mp4" t="Include" />
             <e p="Asian Antiques Online Auction Preview - November 2016.mp4" t="Include" />
+            <e p="AsianPorcelain.webm" t="Include" />
           </e>
         </e>
       </e>
