@@ -1944,11 +1944,6 @@ using Microsoft.EntityFrameworkCore;
                             VideoData = String.Format("data:video/mp4;base64,{0}",
                                 Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/videos/Antique1.mp4")))
                         },
-                        new VideoField
-                        {
-                            VideoData = String.Format("data:video/mp4;base64,{0}",
-                                Convert.ToBase64String(System.IO.File.ReadAllBytes("./wwwroot/videos/AsianPorcelain.webm")))
-                        },
                         new QuestionField
                         {
                             Question = new Question()
